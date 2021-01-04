@@ -4,6 +4,9 @@
 #
 *.vsconfig
 .vsconfig
+.DS_Store
+*.DS_Store
+
 
 /[Ll]ibrary/
 /[Tt]emp/
