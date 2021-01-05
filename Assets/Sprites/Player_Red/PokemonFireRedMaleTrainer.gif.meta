@@ -13,10 +13,10 @@ TextureImporter:
     second: PokemonFireRedMaleTrainer_2
   - first:
       213: 95685243779050173
-    second: PokemonFireRedMaleTrainer_3
+    second: FireRedMaleTrainerWalkUp1
   - first:
       213: 3702708716430772706
-    second: PokemonFireRedMaleTrainer_4
+    second: FireRedMaleTrainerWalkUp2
   - first:
       213: -8593861121678514879
     second: PokemonFireRedMaleTrainer_5
@@ -664,7 +664,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_3
+      name: FireRedMaleTrainerWalkUp1
       rect:
         serializedVersion: 2
         x: 153
@@ -685,7 +685,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_4
+      name: FireRedMaleTrainerWalkUp2
       rect:
         serializedVersion: 2
         x: 172
