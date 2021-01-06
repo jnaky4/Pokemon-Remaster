@@ -4,25 +4,25 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 6270466390675778096
-    second: FireRedMaleTrainerBackIdle
+    second: PokemonFireRedMaleTrainer_0
   - first:
       213: -388196328527058410
     second: PokemonFireRedMaleTrainer_1
   - first:
       213: -667437312018328399
-    second: PokemonFireRedMaleTrainer_2
+    second: FireRedMaleTrainer_Up_Walk3
   - first:
       213: 95685243779050173
-    second: FireRedMaleTrainerWalkUp1
+    second: PokemonFireRedMaleTrainer_3
   - first:
       213: 3702708716430772706
-    second: FireRedMaleTrainerWalkUp2
+    second: PokemonFireRedMaleTrainer_4
   - first:
       213: -8593861121678514879
-    second: PokemonFireRedMaleTrainer_5
+    second: FireRedMaleTrainer_Up_Walk1
   - first:
       213: -3660708250088951423
-    second: PokemonFireRedMaleTrainer_6
+    second: FireRedMaleTrainer_Up_Walk3
   - first:
       213: -6954107535179190594
     second: PokemonFireRedMaleTrainer_7
@@ -31,7 +31,7 @@ TextureImporter:
     second: PokemonFireRedMaleTrainer_8
   - first:
       213: -110699503648604414
-    second: PokemonFireRedMaleTrainer_9
+    second: FireRedMaleTrainer_Walk_Left2
   - first:
       213: -2365760204234698242
     second: PokemonFireRedMaleTrainer_10
@@ -43,10 +43,10 @@ TextureImporter:
     second: PokemonFireRedMaleTrainer_12
   - first:
       213: -9123914684818227369
-    second: PokemonFireRedMaleTrainer_13
+    second: FireRedMaleTrainer_Walk_Left3
   - first:
       213: -8764359156259766846
-    second: PokemonFireRedMaleTrainer_14
+    second: FireRedMaleTrainer_Walk_Left1
   - first:
       213: 9063409185755882082
     second: PokemonFireRedMaleTrainer_15
@@ -55,10 +55,10 @@ TextureImporter:
     second: PokemonFireRedMaleTrainer_16
   - first:
       213: 40895236026214154
-    second: PokemonFireRedMaleTrainer_17
+    second: FireRedMaleTrainer_Walk_Right1
   - first:
       213: -3479653437993048205
-    second: PokemonFireRedMaleTrainer_18
+    second: FireRedMaleTrainer_Walk_Right3
   - first:
       213: 197044917086200659
     second: PokemonFireRedMaleTrainer_19
@@ -70,7 +70,7 @@ TextureImporter:
     second: PokemonFireRedMaleTrainer_21
   - first:
       213: 596729948537395872
-    second: PokemonFireRedMaleTrainer_22
+    second: FireRedMaleTrainer_Walk_Right2
   - first:
       213: 6888241577308163387
     second: PokemonFireRedMaleTrainer_23
@@ -85,13 +85,13 @@ TextureImporter:
     second: PokemonFireRedMaleTrainer_26
   - first:
       213: 8018022699325199145
-    second: FireRedMaleTrainerFrontIdle
+    second: FireRedMaleTrainer_Walk_Down2
   - first:
       213: -8540071790758190003
-    second: PokemonFireRedMaleTrainer_28
+    second: FireRedMaleTrainer_Walk_Down1
   - first:
       213: 42103406665272244
-    second: PokemonFireRedMaleTrainer_29
+    second: FireRedMaleTrainer_Walk_Down3
   - first:
       213: -5824400628191759516
     second: PokemonFireRedMaleTrainer_30
@@ -601,7 +601,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireRedMaleTrainerBackIdle
+      name: PokemonFireRedMaleTrainer_0
       rect:
         serializedVersion: 2
         x: 101
@@ -643,7 +643,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_2
+      name: FireRedMaleTrainer_Up_Walk2
       rect:
         serializedVersion: 2
         x: 135
@@ -664,7 +664,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedMaleTrainerWalkUp1
+      name: PokemonFireRedMaleTrainer_3
       rect:
         serializedVersion: 2
         x: 153
@@ -685,7 +685,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedMaleTrainerWalkUp2
+      name: PokemonFireRedMaleTrainer_4
       rect:
         serializedVersion: 2
         x: 172
@@ -706,7 +706,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_5
+      name: FireRedMaleTrainer_Up_Walk1
       rect:
         serializedVersion: 2
         x: 189
@@ -727,7 +727,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_6
+      name: FireRedMaleTrainer_Up_Walk3
       rect:
         serializedVersion: 2
         x: 206
@@ -790,7 +790,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_9
+      name: FireRedMaleTrainer_Walk_Left2
       rect:
         serializedVersion: 2
         x: 52
@@ -874,7 +874,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_13
+      name: FireRedMaleTrainer_Walk_Left3
       rect:
         serializedVersion: 2
         x: 122
@@ -895,7 +895,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_14
+      name: FireRedMaleTrainer_Walk_Left1
       rect:
         serializedVersion: 2
         x: 138
@@ -958,7 +958,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_17
+      name: FireRedMaleTrainer_Walk_Right1
       rect:
         serializedVersion: 2
         x: 188
@@ -979,7 +979,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_18
+      name: FireRedMaleTrainer_Walk_Right3
       rect:
         serializedVersion: 2
         x: 204
@@ -1063,7 +1063,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_22
+      name: FireRedMaleTrainer_Walk_Right2
       rect:
         serializedVersion: 2
         x: 274
@@ -1168,7 +1168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedMaleTrainerFrontIdle
+      name: FireRedMaleTrainer_Walk_Down2
       rect:
         serializedVersion: 2
         x: 62
@@ -1189,7 +1189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_28
+      name: FireRedMaleTrainer_Walk_Down1
       rect:
         serializedVersion: 2
         x: 79
@@ -1210,7 +1210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PokemonFireRedMaleTrainer_29
+      name: FireRedMaleTrainer_Walk_Down3
       rect:
         serializedVersion: 2
         x: 97
