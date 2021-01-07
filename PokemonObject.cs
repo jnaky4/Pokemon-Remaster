@@ -23,7 +23,7 @@ Pokemon Object
 */
 
 
-public class pokemon
+public class Pokemon
 {
     private pokedex name;
     Image pokemonImage;
