@@ -1,445 +1,439 @@
 fileFormatVersion: 2
-guid: da16ed6144fd2274b8d4d932024e95d0
+guid: c5139976fd74b4b28967b23ee05aca2f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1809485295395325965
-    second: FireRedPlayer1_0
+      213: 3938143436275592783
+    second: FireRedPlayer1Flipped_0
   - first:
-      213: 1601290094503169242
-    second: FireRedPlayer1_1
+      213: -5884110163247745068
+    second: FireRedPlayer1Flipped_1
   - first:
-      213: 5863264028414936574
-    second: FireRedPlayer1_2
+      213: -6467152305121700921
+    second: FireRedPlayer1Flipped_2
   - first:
-      213: -83706638006151871
-    second: FireRedPlayer1_3
+      213: 3601704205501420595
+    second: FireRedPlayer1Flipped_3
   - first:
-      213: 6660213435362566264
-    second: FireRedPlayer1_4
+      213: -5364816491802523740
+    second: FireRedPlayer1Flipped_4
   - first:
-      213: -5754854671359680627
-    second: FireRedPlayer1_5
+      213: 5790155806366185040
+    second: FireRedPlayer1Flipped_5
   - first:
-      213: -2104521238414358875
-    second: FireRedPlayer1_6
+      213: 4900568894975287646
+    second: FireRedPlayer1Flipped_6
   - first:
-      213: 3528147771649230354
-    second: FireRedPlayer1_7
+      213: 2763030403561725336
+    second: FireRedPlayer1Flipped_7
   - first:
-      213: -5177203719530723091
-    second: FireRedPlayer1_8
+      213: -3933457306877506623
+    second: FireRedPlayer1Flipped_8
   - first:
-      213: 5743443613635908405
-    second: FireRedPlayer1_9
+      213: -3841902288425107146
+    second: FireRedPlayer1Flipped_9
   - first:
-      213: -1801225744026786965
-    second: FireRedPlayer1_10
+      213: -5613774120035617479
+    second: FireRedPlayer1Flipped_10
   - first:
-      213: 4324405542380855575
-    second: FireRedPlayer1_11
+      213: -4682095488210234880
+    second: FireRedPlayer1Flipped_11
   - first:
-      213: -3797792878255099607
-    second: FireRedPlayer1_12
+      213: -4773376737304010552
+    second: FireRedPlayer1Flipped_12
   - first:
-      213: -3312294118054778633
-    second: FireRedPlayer1_13
+      213: 6781490860262813896
+    second: FireRedPlayer1Flipped_13
   - first:
-      213: -7459546743736828688
-    second: FireRedPlayer1_14
+      213: -5235268194356852009
+    second: FireRedPlayer1Flipped_14
   - first:
-      213: -3389953049887538497
-    second: FireRedPlayer1_15
+      213: -8363153458027916623
+    second: FireRedPlayer1Flipped_15
   - first:
-      213: -8144238050943826169
-    second: FireRedPlayer1_16
+      213: 4636824349092384273
+    second: FireRedPlayer1Flipped_16
   - first:
-      213: 8500729523461599132
-    second: FireRedPlayer1_17
+      213: -6640145387336771981
+    second: FireRedPlayer1Flipped_17
   - first:
-      213: 4806194107809583475
-    second: FireRedPlayer1_18
+      213: 1800974707651987156
+    second: FireRedPlayer1Flipped_18
   - first:
-      213: 1658573331587643706
-    second: FireRedPlayer1_19
+      213: -8331217221929732197
+    second: FireRedPlayer1Flipped_19
   - first:
-      213: 3570351555338662839
-    second: FireRedPlayer1_20
+      213: -7391710314139263266
+    second: FireRedPlayer1Flipped_20
   - first:
-      213: -5968112829645518424
-    second: FireRedPlayer1_21
+      213: 243390297541228769
+    second: FireRedPlayer1Flipped_21
   - first:
-      213: 6379198644117595511
-    second: FireRedPlayer1_22
+      213: -220705722937087448
+    second: FireRedPlayer1Flipped_22
   - first:
-      213: -8107698846567104033
-    second: FireRedPlayer1_23
+      213: -1910614987483057130
+    second: FireRedPlayer1Flipped_23
   - first:
-      213: 1401771883015672339
-    second: FireRedPlayer1_24
+      213: -7031372624574560207
+    second: FireRedPlayer1Flipped_24
   - first:
-      213: 297747316161732355
-    second: FireRedPlayer1_25
+      213: -8620264522459290435
+    second: FireRedPlayer1Flipped_25
   - first:
-      213: 1697253038857848504
-    second: FireRedPlayer1_26
+      213: -231456360924482337
+    second: FireRedPlayer1Flipped_26
   - first:
-      213: 7993557572267956917
-    second: FireRedPlayer1_27
+      213: 122099730593140302
+    second: FireRedPlayer1Flipped_27
   - first:
-      213: -5688186113438356662
-    second: FireRedPlayer1_28
+      213: -9221422393836221292
+    second: FireRedPlayer1Flipped_28
   - first:
-      213: 6762079790861828211
-    second: FireRedPlayer1_29
+      213: -4746183203804196521
+    second: FireRedPlayer1Flipped_29
   - first:
-      213: -4284367793308500556
-    second: FireRedPlayer1_30
+      213: 8112398972512685213
+    second: FireRedPlayer1Flipped_30
   - first:
-      213: 2158866866984893461
-    second: FireRedPlayer1_31
+      213: -8579836498231582311
+    second: FireRedPlayer1Flipped_31
   - first:
-      213: 4182977116347527945
-    second: FireRedPlayer1_32
+      213: 1955248799900599493
+    second: FireRedPlayer1Flipped_32
   - first:
-      213: 76634557899970631
-    second: FireRedPlayer1_33
+      213: 188573264874343270
+    second: FireRedPlayer1Flipped_33
   - first:
-      213: 7441543605258953740
-    second: FireRedPlayer1_34
+      213: -8565058942516571342
+    second: FireRedPlayer1Flipped_34
   - first:
-      213: -6082365257446807769
-    second: FireRedPlayer1_35
+      213: -4727915204100052565
+    second: FireRedPlayer1Flipped_35
   - first:
-      213: -1376622587691985775
-    second: FireRedPlayer1_36
+      213: -5425751286168100687
+    second: FireRedPlayer1Flipped_36
   - first:
-      213: -7095968280045089579
-    second: FireRedPlayer1_37
+      213: -7439721741907115933
+    second: FireRedPlayer1Flipped_37
   - first:
-      213: -3895793833127263518
-    second: FireRedPlayer1_38
+      213: -6423060236497718041
+    second: FireRedPlayer1Flipped_38
   - first:
-      213: 5111891862332836426
-    second: FireRedPlayer1_39
+      213: 1179958881987513929
+    second: FireRedPlayer1Flipped_39
   - first:
-      213: -3325092022995852527
-    second: FireRedPlayer1_40
+      213: 9168873732575643452
+    second: FireRedPlayer1Flipped_40
   - first:
-      213: 6812850737299732978
-    second: FireRedPlayer1_41
+      213: 7487562570363728369
+    second: FireRedPlayer1Flipped_41
   - first:
-      213: 3413612144764730404
-    second: FireRedPlayer1_42
+      213: 8656016258390066667
+    second: FireRedPlayer1Flipped_42
   - first:
-      213: 2583061269255917987
-    second: FireRedPlayer1_43
+      213: 1586598401375199294
+    second: FireRedPlayer1Flipped_43
   - first:
-      213: -8977893128686340433
-    second: FireRedPlayer1_44
+      213: 2491304746118915209
+    second: FireRedPlayer1Flipped_44
   - first:
-      213: -8140933229763440709
-    second: FireRedPlayer1_45
+      213: -7896389896845348564
+    second: FireRedPlayer1Flipped_45
   - first:
-      213: 8374599160451676975
-    second: FireRedPlayer1_46
+      213: 4744094077232374292
+    second: FireRedPlayer1Flipped_46
   - first:
-      213: -7403825396466148600
-    second: FireRedPlayer1_47
+      213: -7847242216700044832
+    second: FireRedPlayer1Flipped_47
   - first:
-      213: -1619931148855282312
-    second: FireRedPlayer1_48
+      213: 6988345286568921483
+    second: FireRedPlayer1Flipped_48
   - first:
-      213: -144963007964708887
-    second: FireRedPlayer1_49
+      213: 4922248177277790744
+    second: FireRedPlayer1Flipped_49
   - first:
-      213: 5793168000426893039
-    second: FireRedPlayer1_50
+      213: -340646896984741882
+    second: FireRedPlayer1Flipped_50
   - first:
-      213: -5486664108901574058
-    second: FireRedPlayer1_51
+      213: -1999712808360217118
+    second: FireRedPlayer1Flipped_51
   - first:
-      213: -4332955534852694221
-    second: FireRedPlayer1_52
+      213: -176940402338846427
+    second: FireRedPlayer1Flipped_52
   - first:
-      213: 1422179348717887537
-    second: FireRedPlayer1_53
+      213: -4320920420987819869
+    second: FireRedPlayer1Flipped_53
   - first:
-      213: -14534395853773958
-    second: FireRedPlayer1_54
+      213: -4751916331488971885
+    second: FireRedPlayer1Flipped_54
   - first:
-      213: -2956282582373669422
-    second: FireRedPlayer1_55
+      213: -2460391216105037014
+    second: FireRedPlayer1Flipped_55
   - first:
-      213: 5748965689994944881
-    second: FireRedPlayer1_56
+      213: -4438735529112316409
+    second: FireRedPlayer1Flipped_56
   - first:
-      213: 5187141254244201054
-    second: FireRedPlayer1_57
+      213: 6876374649597420764
+    second: FireRedPlayer1Flipped_57
   - first:
-      213: -1598949878791452615
-    second: FireRedPlayer1_58
+      213: -5905232656102037465
+    second: FireRedPlayer1Flipped_58
   - first:
-      213: -1878525671924049743
-    second: FireRedPlayer1_59
+      213: -7001232931613881949
+    second: FireRedPlayer1Flipped_59
   - first:
-      213: -2770300813301178171
-    second: FireRedPlayer1_60
+      213: -2272458118969585557
+    second: FireRedPlayer1Flipped_60
   - first:
-      213: 8806594528436684464
-    second: FireRedPlayer1_61
+      213: -6098609500587633972
+    second: FireRedPlayer1Flipped_61
   - first:
-      213: -6753737616633308334
-    second: FireRedPlayer1_62
+      213: -3384265729227247006
+    second: FireRedPlayer1Flipped_62
   - first:
-      213: -2618529741266783194
-    second: FireRedPlayer1_63
+      213: -4127377061851097970
+    second: FireRedPlayer1Flipped_63
   - first:
-      213: -4206959127951082574
-    second: FireRedPlayer1_64
+      213: -8099051870007557180
+    second: FireRedPlayer1Flipped_64
   - first:
-      213: 6365928847861650910
-    second: FireRedPlayer1_65
+      213: 8255672169279379786
+    second: FireRedPlayer1Flipped_65
   - first:
-      213: 2083313549454025236
-    second: FireRedPlayer1_66
+      213: 5316228909835088293
+    second: FireRedPlayer1Flipped_66
   - first:
-      213: 4787943710699152472
-    second: FireRedPlayer1_67
+      213: 7640971389489596340
+    second: FireRedPlayer1Flipped_67
   - first:
-      213: -7843780354462147979
-    second: FireRedPlayer1_68
+      213: 9200002519991470363
+    second: FireRedPlayer1Flipped_68
   - first:
-      213: 1102388303754121523
-    second: FireRedPlayer1_69
+      213: 8261566318443681577
+    second: FireRedPlayer1Flipped_69
   - first:
-      213: 2749813744809406212
-    second: FireRedPlayer1_70
+      213: -4972858038421949216
+    second: FireRedPlayer1Flipped_70
   - first:
-      213: -6592719810160179419
-    second: FireRedPlayer1_71
+      213: 1228333848863892515
+    second: FireRedPlayer1Flipped_71
   - first:
-      213: 1099141318145460175
-    second: FireRedPlayer1_72
+      213: 3486056239757848165
+    second: FireRedPlayer1Flipped_72
   - first:
-      213: 7335402953366189637
-    second: FireRedPlayer1_73
+      213: 8995325721272234076
+    second: FireRedPlayer1Flipped_73
   - first:
-      213: 3184021163882608360
-    second: FireRedPlayer1_74
+      213: 6147573613441802895
+    second: FireRedPlayer1Flipped_74
   - first:
-      213: -2345230815101588293
-    second: FireRedPlayer1_75
+      213: 8886176114959875819
+    second: FireRedPlayer1Flipped_75
   - first:
-      213: -6965877424261396644
-    second: FireRedPlayer1_76
+      213: 3666442725985613321
+    second: FireRedPlayer1Flipped_76
   - first:
-      213: 6352242341690930384
-    second: FireRedPlayer1_77
+      213: 8147696702508721974
+    second: FireRedPlayer1Flipped_77
   - first:
-      213: -3048809003554855908
-    second: FireRedPlayer1_78
+      213: -312629688067751562
+    second: FireRedPlayer1Flipped_78
   - first:
-      213: -2776959963245617272
-    second: FireRedPlayer1_79
+      213: -315550345349529397
+    second: FireRedPlayer1Flipped_79
   - first:
-      213: 1774438332853288738
-    second: FireRedPlayer1_80
+      213: -5652912309053454263
+    second: FireRedPlayer1Flipped_80
   - first:
-      213: -5905743342525962735
-    second: FireRedPlayer1_81
+      213: -4548337299409237678
+    second: FireRedPlayer1Flipped_81
   - first:
-      213: 5810165148594174415
-    second: FireRedPlayer1_82
+      213: -2370564628286429669
+    second: FireRedPlayer1Flipped_82
   - first:
-      213: -6484518888505629239
-    second: FireRedPlayer1_83
+      213: 3792649391740914654
+    second: FireRedPlayer1Flipped_83
   - first:
-      213: -2633865599305358319
-    second: FireRedPlayer1_84
+      213: 51788455877248351
+    second: FireRedPlayer1Flipped_84
   - first:
-      213: -2986892332349564380
-    second: FireRedPlayer1_85
+      213: -6275976367475111886
+    second: FireRedPlayer1Flipped_85
   - first:
-      213: -4841060533750623892
-    second: FireRedPlayer1_86
+      213: 2760872866773658033
+    second: FireRedPlayer1Flipped_86
   - first:
-      213: -8145029082594241277
-    second: FireRedPlayer1_87
+      213: 2787942408051988569
+    second: FireRedPlayer1Flipped_87
   - first:
-      213: 8338529083380754581
-    second: FireRedPlayer1_88
+      213: -8844504495035173807
+    second: FireRedPlayer1Flipped_88
   - first:
-      213: -2522955823214254248
-    second: FireRedPlayer1_89
+      213: -2231981841471290979
+    second: FireRedPlayer1Flipped_89
   - first:
-      213: -201541457693876986
-    second: FireRedPlayer1_90
+      213: 6358388919925284106
+    second: FireRedPlayer1Flipped_90
   - first:
-      213: 2437863945702568527
-    second: FireRedPlayer1_91
+      213: 3751309739924768417
+    second: FireRedPlayer1Flipped_91
   - first:
-      213: 2836131183534461330
-    second: FireRedPlayer1_92
+      213: -6522542829278227919
+    second: FireRedPlayer1Flipped_92
   - first:
-      213: -705630186989707153
-    second: FireRedPlayer1_93
+      213: -6016611354288944062
+    second: FireRedPlayer1Flipped_93
   - first:
-      213: -3213224506524415305
-    second: FireRedPlayer1_94
+      213: 1846834451463516077
+    second: FireRedPlayer1Flipped_94
   - first:
-      213: -3864563075442348826
-    second: FireRedPlayer1_95
+      213: -8740580819047810811
+    second: FireRedPlayer1Flipped_95
   - first:
-      213: -7591751933346871144
-    second: FireRedPlayer1_96
+      213: -5242062595183856319
+    second: FireRedPlayer1Flipped_96
   - first:
-      213: -7878356064752933165
-    second: FireRedPlayer1_97
+      213: 746113800366770621
+    second: FireRedPlayer1Flipped_97
   - first:
-      213: -331393263106802522
-    second: FireRedPlayer1_98
+      213: -5070573864116583269
+    second: FireRedPlayer1Flipped_98
   - first:
-      213: -582763981635001375
-    second: FireRedPlayer1_99
+      213: 3177442668655423868
+    second: FireRedPlayer1Flipped_99
   - first:
-      213: 7263273699369736159
-    second: FireRedPlayer1_100
+      213: 2478748810205282926
+    second: FireRedPlayer1Flipped_100
   - first:
-      213: -5790808203109292638
-    second: FireRedPlayer1_101
+      213: -4621792738757949663
+    second: FireRedPlayer1Flipped_101
   - first:
-      213: 4529475918268981159
-    second: FireRedPlayer1_102
+      213: -8795137202874942925
+    second: FireRedPlayer1Flipped_102
   - first:
-      213: -1278464102544211746
-    second: FireRedPlayer1_103
+      213: 5913550805732301539
+    second: FireRedPlayer1Flipped_103
   - first:
-      213: -6155262656058575143
-    second: FireRedPlayer1_104
+      213: 5138748653197515478
+    second: FireRedPlayer1Flipped_104
   - first:
-      213: -2455565124080459196
-    second: FireRedPlayer1_105
+      213: 5866855984912055699
+    second: FireRedPlayer1Flipped_105
   - first:
-      213: -1984156715024158340
-    second: FireRedPlayer1_106
+      213: 2910691458459970765
+    second: FireRedPlayer1Flipped_106
   - first:
-      213: -5532094369595235613
-    second: FireRedPlayer1_107
+      213: 345053457288254373
+    second: FireRedPlayer1Flipped_107
   - first:
-      213: 1290841799176498969
-    second: FireRedPlayer1_108
+      213: -4026636059077012702
+    second: FireRedPlayer1Flipped_108
   - first:
-      213: 1148153130626168682
-    second: FireRedPlayer1_109
+      213: -7261002027595199969
+    second: FireRedPlayer1Flipped_109
   - first:
-      213: -6664213437727298695
-    second: FireRedPlayer1_110
+      213: 7550259711922528705
+    second: FireRedPlayer1Flipped_110
   - first:
-      213: -6650666104723518513
-    second: FireRedPlayer1_111
+      213: -4058557336570200435
+    second: FireRedPlayer1Flipped_111
   - first:
-      213: 731013475228995669
-    second: FireRedPlayer1_112
+      213: -3922740099764831164
+    second: FireRedPlayer1Flipped_112
   - first:
-      213: 843724229616214581
-    second: FireRedPlayer1_113
+      213: -1412086920785965886
+    second: FireRedPlayer1Flipped_113
   - first:
-      213: -2578269395704472348
-    second: FireRedPlayer1_114
+      213: -6148258162890123708
+    second: FireRedPlayer1Flipped_114
   - first:
-      213: -2271056426045354900
-    second: FireRedPlayer1_115
+      213: -1956901880092295964
+    second: FireRedPlayer1Flipped_115
   - first:
-      213: 1102310779125469696
-    second: FireRedPlayer1_116
+      213: -7270625447777823026
+    second: FireRedPlayer1Flipped_116
   - first:
-      213: -6363934087347218505
-    second: FireRedPlayer1_117
+      213: 5995959533398269210
+    second: FireRedPlayer1Flipped_117
   - first:
-      213: -6135571689079727845
-    second: FireRedPlayer1_118
+      213: -5751467786529297288
+    second: FireRedPlayer1Flipped_118
   - first:
-      213: 4600551346302444715
-    second: FireRedPlayer1_119
+      213: -5816279656351087330
+    second: FireRedPlayer1Flipped_119
   - first:
-      213: 2414365132875573810
-    second: FireRedPlayer1_120
+      213: -5864137588769550417
+    second: FireRedPlayer1Flipped_120
   - first:
-      213: 3033958785815064266
-    second: FireRedPlayer1_121
+      213: -4387554513093804083
+    second: FireRedPlayer1Flipped_121
   - first:
-      213: -8249491144395770137
-    second: FireRedPlayer1_122
+      213: 8181988405948578549
+    second: FireRedPlayer1Flipped_122
   - first:
-      213: 3031683856349007472
-    second: FireRedPlayer1_123
+      213: 4404060427956419491
+    second: FireRedPlayer1Flipped_123
   - first:
-      213: 5045286609671162692
-    second: FireRedPlayer1_124
+      213: 3713119670512398879
+    second: FireRedPlayer1Flipped_124
   - first:
-      213: 4808642430063462372
-    second: FireRedPlayer1_125
+      213: 8348882447755271772
+    second: FireRedPlayer1Flipped_125
   - first:
-      213: 1635443195735507306
-    second: FireRedPlayer1_126
+      213: 8586890783172846936
+    second: FireRedPlayer1Flipped_126
   - first:
-      213: -6438617106783632719
-    second: FireRedPlayer1_127
+      213: 2787945084514429088
+    second: FireRedPlayer1Flipped_127
   - first:
-      213: 5362888351495059848
-    second: FireRedPlayer1_128
+      213: 7067072942119218034
+    second: FireRedPlayer1Flipped_128
   - first:
-      213: 3898030402116154905
-    second: FireRedPlayer1_129
+      213: -6242132747203588329
+    second: FireRedPlayer1Flipped_129
   - first:
-      213: -8068700102645063678
-    second: FireRedPlayer1_130
+      213: -4490780119460578591
+    second: FireRedPlayer1Flipped_130
   - first:
-      213: 348802339504162559
-    second: FireRedPlayer1_131
+      213: 3784415249899138424
+    second: FireRedPlayer1Flipped_131
   - first:
-      213: 7052515583842947492
-    second: FireRedPlayer1_132
+      213: -5914672439715919310
+    second: FireRedPlayer1Flipped_132
   - first:
-      213: -1152835253780066718
-    second: FireRedPlayer1_133
+      213: 7397303797474197471
+    second: FireRedPlayer1Flipped_133
   - first:
-      213: 3122784979455014205
-    second: FireRedPlayer1_134
+      213: -3714432830324254577
+    second: FireRedPlayer1Flipped_134
   - first:
-      213: -5025806757621895089
-    second: FireRedPlayer1_135
+      213: -1638287368952646757
+    second: FireRedPlayer1Flipped_135
   - first:
-      213: 7956542533718670301
-    second: FireRedPlayer1_136
+      213: -8432379805063667257
+    second: FireRedPlayer1Flipped_136
   - first:
-      213: 8197328846979156908
-    second: FireRedPlayer1_137
+      213: 4025973427447744335
+    second: FireRedPlayer1Flipped_137
   - first:
-      213: 9136078429528753547
-    second: FireRedPlayer1_138
+      213: -2588144084481858681
+    second: FireRedPlayer1Flipped_138
   - first:
-      213: -683903416276608427
-    second: FireRedPlayer1_139
+      213: 323938420719049548
+    second: FireRedPlayer1Flipped_139
   - first:
-      213: 7358967346059614054
-    second: FireRedPlayer1_140
+      213: -8863204298413080563
+    second: FireRedPlayer1Flipped_140
   - first:
-      213: -3180156827988375755
-    second: FireRedPlayer1_141
+      213: -650013965582068980
+    second: FireRedPlayer1Flipped_141
   - first:
-      213: 1034218980780860612
-    second: FireRedPlayer1_142
+      213: -4276124753078378346
+    second: FireRedPlayer1Flipped_142
   - first:
-      213: -7961507546884170072
-    second: FireRedPlayer1_143
-  - first:
-      213: -8847401461511485336
-    second: FireRedPlayer1_144
-  - first:
-      213: -3122865410543028326
-    second: FireRedPlayer1_145
+      213: -647493061473606891
+    second: FireRedPlayer1Flipped_143
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -553,325 +547,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FireRedPlayer1_0
+      name: FireRedPlayer1Flipped_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 456
-        width: 15
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d08c4520a459c1910800000000000000
-      internalID: 1809485295395325965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_1
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 457
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: adc86316bdce83610800000000000000
-      internalID: 1601290094503169242
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_2
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 456
-        width: 15
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef58ff5a19f7e5150800000000000000
-      internalID: 5863264028414936574
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_3
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 457
-        width: 15
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1451d48914d96def0800000000000000
-      internalID: -83706638006151871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_4
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 459
-        width: 14
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 870e11705d4dd6c50800000000000000
-      internalID: 6660213435362566264
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_5
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 457
-        width: 15
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d8fdb9bba26a220b0800000000000000
-      internalID: -5754854671359680627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_6
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 456
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a60c0a751d3bc2e0800000000000000
-      internalID: -2104521238414358875
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_7
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 456
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2160d3494bf76f030800000000000000
-      internalID: 3528147771649230354
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_8
-      rect:
-        serializedVersion: 2
-        x: 194
-        y: 456
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de84a87a5a0e628b0800000000000000
-      internalID: -5177203719530723091
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_9
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 459
-        width: 14
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 533114a598fc4bf40800000000000000
-      internalID: 5743443613635908405
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_10
-      rect:
-        serializedVersion: 2
-        x: 263
-        y: 465
-        width: 17
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b63aef6aab2c007e0800000000000000
-      internalID: -1801225744026786965
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_11
-      rect:
-        serializedVersion: 2
-        x: 296
-        y: 458
-        width: 16
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 711675addef530c30800000000000000
-      internalID: 4324405542380855575
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_12
-      rect:
-        serializedVersion: 2
-        x: 329
-        y: 456
-        width: 14
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 921b811bf778b4bc0800000000000000
-      internalID: -3797792878255099607
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_13
-      rect:
-        serializedVersion: 2
-        x: 366
-        y: 460
-        width: 20
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f8aab58c0e5802d0800000000000000
-      internalID: -3312294118054778633
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_14
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 460
-        width: 22
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fcf42a42cd5a7890800000000000000
-      internalID: -7459546743736828688
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_15
-      rect:
-        serializedVersion: 2
-        x: 440
+        x: 88
         y: 450
         width: 32
         height: 27
@@ -882,208 +561,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb2833079a774f0d0800000000000000
-      internalID: -3389953049887538497
+      spriteID: f4e2eb1179817a630800000000000000
+      internalID: 3938143436275592783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_16
+      name: FireRedPlayer1Flipped_1
       rect:
         serializedVersion: 2
-        x: 9
-        y: 424
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 707064784aad9fe80800000000000000
-      internalID: -8144238050943826169
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_17
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 425
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c9faa997678a8f570800000000000000
-      internalID: 8500729523461599132
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_18
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 424
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 371d095a31803b240800000000000000
-      internalID: 4806194107809583475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_19
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 424
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a39b73758af640710800000000000000
-      internalID: 1658573331587643706
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_20
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 426
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b37933b2df6c8130800000000000000
-      internalID: 3570351555338662839
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_21
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 424
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8a9078970010d2da0800000000000000
-      internalID: -5968112829645518424
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_22
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 424
-        width: 15
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 775684e4e57778850800000000000000
-      internalID: 6379198644117595511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_23
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 424
-        width: 14
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fd106800bdaab7f80800000000000000
-      internalID: -8107698846567104033
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_24
-      rect:
-        serializedVersion: 2
-        x: 193
-        y: 424
-        width: 15
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3129747c918147310800000000000000
-      internalID: 1401771883015672339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_25
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 425
-        width: 15
+        x: 141
+        y: 460
+        width: 22
         height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1092,20 +582,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30f55a44b9fc12400800000000000000
-      internalID: 297747316161732355
+      spriteID: 4d73a5c5bf0775ea0800000000000000
+      internalID: -5884110163247745068
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_26
+      name: FireRedPlayer1Flipped_2
       rect:
         serializedVersion: 2
-        x: 264
-        y: 424
-        width: 17
-        height: 18
+        x: 174
+        y: 460
+        width: 20
+        height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1113,18 +603,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b6031b75aadd8710800000000000000
-      internalID: 1697253038857848504
+      spriteID: 7c35fd03e3f0046a0800000000000000
+      internalID: -6467152305121700921
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_27
+      name: FireRedPlayer1Flipped_3
       rect:
         serializedVersion: 2
-        x: 297
-        y: 427
+        x: 217
+        y: 456
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33451fa64e2dbf130800000000000000
+      internalID: 3601704205501420595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_4
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 458
         width: 16
         height: 24
       alignment: 0
@@ -1134,18 +645,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ba5aa2a242deee60800000000000000
-      internalID: 7993557572267956917
+      spriteID: 4a704f023d75c85b0800000000000000
+      internalID: -5364816491802523740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_28
+      name: FireRedPlayer1Flipped_5
       rect:
         serializedVersion: 2
-        x: 329
-        y: 426
+        x: 280
+        y: 465
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0563f904704ca5050800000000000000
+      internalID: 5790155806366185040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_6
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 459
         width: 14
         height: 27
       alignment: 0
@@ -1155,20 +687,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a4b623cfdd08f01b0800000000000000
-      internalID: -5688186113438356662
+      spriteID: e51a4561271520440800000000000000
+      internalID: 4900568894975287646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_29
+      name: FireRedPlayer1Flipped_7
       rect:
         serializedVersion: 2
-        x: 366
-        y: 426
-        width: 20
-        height: 26
+        x: 352
+        y: 456
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1176,20 +708,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 370ca252ebbb7dd50800000000000000
-      internalID: 6762079790861828211
+      spriteID: 89d96eb4381485620800000000000000
+      internalID: 2763030403561725336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_30
+      name: FireRedPlayer1Flipped_8
       rect:
         serializedVersion: 2
-        x: 397
-        y: 426
-        width: 22
-        height: 25
+        x: 385
+        y: 456
+        width: 14
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1197,17 +729,164 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bdf8b8013eda84c0800000000000000
-      internalID: -4284367793308500556
+      spriteID: 1cbc6647b6d8969c0800000000000000
+      internalID: -3933457306877506623
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_31
+      name: FireRedPlayer1Flipped_9
       rect:
         serializedVersion: 2
-        x: 440
+        x: 418
+        y: 456
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63149a45932deaac0800000000000000
+      internalID: -3841902288425107146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_10
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 457
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 935fefd4e2ed712b0800000000000000
+      internalID: -5613774120035617479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_11
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 459
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00215c4d5fad50fb0800000000000000
+      internalID: -4682095488210234880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_12
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 457
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c0a1e9d52f81cdb0800000000000000
+      internalID: -4773376737304010552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_13
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 456
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c0f58de102bc1e50800000000000000
+      internalID: 6781490860262813896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_14
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 457
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7da857b90579857b0800000000000000
+      internalID: -5235268194356852009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_15
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 456
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b29a246d3c10fb80800000000000000
+      internalID: -8363153458027916623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_16
+      rect:
+        serializedVersion: 2
+        x: 88
         y: 401
         width: 32
         height: 29
@@ -1218,19 +897,103 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51cbef33af5d5fd10800000000000000
-      internalID: 2158866866984893461
+      spriteID: 11e8885bd2f495040800000000000000
+      internalID: 4636824349092384273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_32
+      name: FireRedPlayer1Flipped_17
       rect:
         serializedVersion: 2
-        x: 8
-        y: 393
+        x: 141
+        y: 426
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 376d7d283f679d3a0800000000000000
+      internalID: -6640145387336771981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_18
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 426
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d64f0364f85ef810800000000000000
+      internalID: 1800974707651987156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_19
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 426
         width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b97f24cc312916c80800000000000000
+      internalID: -8331217221929732197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_20
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 427
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ede532bd1ae5b6990800000000000000
+      internalID: -7391710314139263266
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_21
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 424
+        width: 17
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1239,18 +1002,102 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9037b73668bec0a30800000000000000
-      internalID: 4182977116347527945
+      spriteID: 1e8b8b2af22b06300800000000000000
+      internalID: 243390297541228769
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_33
+      name: FireRedPlayer1Flipped_22
       rect:
         serializedVersion: 2
-        x: 24
-        y: 393
+        x: 313
+        y: 425
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82a60787055efecf0800000000000000
+      internalID: -220705722937087448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_23
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 424
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 614f880bac12c75e0800000000000000
+      internalID: -1910614987483057130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_24
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 424
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 138c3dc0adb8b6e90800000000000000
+      internalID: -7031372624574560207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_25
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 424
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db469e4c61bae5880800000000000000
+      internalID: -8620264522459290435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_26
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 424
         width: 14
         height: 19
       alignment: 0
@@ -1260,18 +1107,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 748952179b2401100800000000000000
-      internalID: 76634557899970631
+      spriteID: fd477128aa3b9ccf0800000000000000
+      internalID: -231456360924482337
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_34
+      name: FireRedPlayer1Flipped_27
       rect:
         serializedVersion: 2
-        x: 40
-        y: 393
+        x: 465
+        y: 426
         width: 14
         height: 18
       alignment: 0
@@ -1281,20 +1128,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c042a046b7ca54760800000000000000
-      internalID: 7441543605258953740
+      spriteID: e4ecc2dde09c1b100800000000000000
+      internalID: 122099730593140302
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_35
+      name: FireRedPlayer1Flipped_28
       rect:
         serializedVersion: 2
-        x: 64
-        y: 394
-        width: 15
-        height: 17
+        x: 481
+        y: 424
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1302,20 +1149,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 727a4bb2609179ba0800000000000000
-      internalID: -6082365257446807769
+      spriteID: 49c4f83a03de60080800000000000000
+      internalID: -9221422393836221292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_36
+      name: FireRedPlayer1Flipped_29
       rect:
         serializedVersion: 2
-        x: 80
-        y: 394
-        width: 15
-        height: 18
+        x: 505
+        y: 424
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1323,20 +1170,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19417d6dc0145ece0800000000000000
-      internalID: -1376622587691985775
+      spriteID: 7515352c58b222eb0800000000000000
+      internalID: -4746183203804196521
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_37
+      name: FireRedPlayer1Flipped_30
       rect:
         serializedVersion: 2
-        x: 96
-        y: 393
-        width: 16
-        height: 18
+        x: 521
+        y: 425
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1344,20 +1191,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dc0972027e068d90800000000000000
-      internalID: -7095968280045089579
+      spriteID: d9cccd852e7059070800000000000000
+      internalID: 8112398972512685213
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_38
+      name: FireRedPlayer1Flipped_31
       rect:
         serializedVersion: 2
-        x: 125
-        y: 392
-        width: 20
-        height: 22
+        x: 537
+        y: 424
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1365,62 +1212,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e2ca4a462c5fe9c0800000000000000
-      internalID: -3895793833127263518
+      spriteID: 991a9fba92c4ee880800000000000000
+      internalID: -8579836498231582311
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_39
+      name: FireRedPlayer1Flipped_32
       rect:
         serializedVersion: 2
-        x: 157
-        y: 392
-        width: 20
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4a0f88909611f640800000000000000
-      internalID: 5111891862332836426
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_40
-      rect:
-        serializedVersion: 2
-        x: 189
-        y: 392
-        width: 20
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 113e8d31c66ead1d0800000000000000
-      internalID: -3325092022995852527
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_41
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 393
+        x: 140
+        y: 396
         width: 22
-        height: 27
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1428,40 +1233,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2f9328846ab1c8e50800000000000000
-      internalID: 6812850737299732978
+      spriteID: 5c485959c60722b10800000000000000
+      internalID: 1955248799900599493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_42
+      name: FireRedPlayer1Flipped_33
       rect:
         serializedVersion: 2
-        x: 272
-        y: 393
-        width: 15
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42c39a9d8269f5f20800000000000000
-      internalID: 3413612144764730404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_43
-      rect:
-        serializedVersion: 2
-        x: 292
-        y: 392
-        width: 25
+        x: 172
+        y: 396
+        width: 21
         height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1470,17 +1254,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a1911be980e8d320800000000000000
-      internalID: 2583061269255917987
+      spriteID: 66b88f2a262fd9200800000000000000
+      internalID: 188573264874343270
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_44
+      name: FireRedPlayer1Flipped_34
       rect:
         serializedVersion: 2
-        x: 323
+        x: 210
         y: 393
         width: 27
         height: 19
@@ -1491,20 +1275,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa6fa3134cd186380800000000000000
-      internalID: -8977893128686340433
+      spriteID: 233540b754cc22980800000000000000
+      internalID: -8565058942516571342
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_45
+      name: FireRedPlayer1Flipped_35
       rect:
         serializedVersion: 2
-        x: 367
-        y: 396
-        width: 21
-        height: 24
+        x: 243
+        y: 392
+        width: 25
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1512,20 +1296,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bbfc6cb2c58950f80800000000000000
-      internalID: -8140933229763440709
+      spriteID: ba9a273eb22136eb0800000000000000
+      internalID: -4727915204100052565
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_46
+      name: FireRedPlayer1Flipped_36
       rect:
         serializedVersion: 2
-        x: 398
-        y: 396
+        x: 273
+        y: 393
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b0e45cb3fbd3b4b0800000000000000
+      internalID: -5425751286168100687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_37
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 393
         width: 22
-        height: 23
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1533,40 +1338,103 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2bb10fd09d883470800000000000000
-      internalID: 8374599160451676975
+      spriteID: 36040e93e7cc0c890800000000000000
+      internalID: -7439721741907115933
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_47
+      name: FireRedPlayer1Flipped_38
       rect:
         serializedVersion: 2
-        x: 9
-        y: 353
+        x: 351
+        y: 392
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e4fd98eeb4bcd6a0800000000000000
+      internalID: -6423060236497718041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_39
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 392
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94ece6af95e006010800000000000000
+      internalID: 1179958881987513929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_40
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 392
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c37c49cb4126e3f70800000000000000
+      internalID: 9168873732575643452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_41
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 393
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f17a08ac7a29e760800000000000000
+      internalID: 7487562570363728369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_42
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 394
         width: 15
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 80b9e907704504990800000000000000
-      internalID: -7403825396466148600
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_48
-      rect:
-        serializedVersion: 2
-        x: 23
-        y: 353
-        width: 16
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -1575,83 +1443,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 875f3efe339d489e0800000000000000
-      internalID: -1619931148855282312
+      spriteID: be5885bece8502870800000000000000
+      internalID: 8656016258390066667
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_49
+      name: FireRedPlayer1Flipped_43
       rect:
         serializedVersion: 2
-        x: 40
-        y: 353
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9eff0bc89ecfcfdf0800000000000000
-      internalID: -144963007964708887
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_50
-      rect:
-        serializedVersion: 2
-        x: 57
-        y: 353
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: feeda955a97756050800000000000000
-      internalID: 5793168000426893039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_51
-      rect:
-        serializedVersion: 2
-        x: 72
-        y: 353
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65a590300147bd3b0800000000000000
-      internalID: -5486664108901574058
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_52
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 353
+        x: 481
+        y: 394
         width: 15
-        height: 19
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1659,102 +1464,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33fda85e5ef3ed3c0800000000000000
-      internalID: -4332955534852694221
+      spriteID: e30eb2307dab40610800000000000000
+      internalID: 1586598401375199294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_53
+      name: FireRedPlayer1Flipped_44
       rect:
         serializedVersion: 2
-        x: 111
-        y: 353
-        width: 16
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 130e93725989cb310800000000000000
-      internalID: 1422179348717887537
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_54
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 353
-        width: 15
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a736c124b0d5ccff0800000000000000
-      internalID: -14534395853773958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_55
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 353
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2d561f587ac29f6d0800000000000000
-      internalID: -2956282582373669422
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_56
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 353
-        width: 32
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 171ae02f5dd68cf40800000000000000
-      internalID: 5748965689994944881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_57
-      rect:
-        serializedVersion: 2
-        x: 201
-        y: 354
+        x: 506
+        y: 393
         width: 14
         height: 18
       alignment: 0
@@ -1764,18 +1485,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e52fff2fc7d6cf740800000000000000
-      internalID: 5187141254244201054
+      spriteID: 984a9a39774e29220800000000000000
+      internalID: 2491304746118915209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_58
+      name: FireRedPlayer1Flipped_45
       rect:
         serializedVersion: 2
-        x: 217
-        y: 354
+        x: 522
+        y: 393
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c21bc86c9336a6290800000000000000
+      internalID: -7896389896845348564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_46
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 393
         width: 14
         height: 18
       alignment: 0
@@ -1785,59 +1527,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9384bfc8e836fc9e0800000000000000
-      internalID: -1598949878791452615
+      spriteID: 412687e8d6866d140800000000000000
+      internalID: 4744094077232374292
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_59
+      name: FireRedPlayer1Flipped_47
       rect:
         serializedVersion: 2
-        x: 233
-        y: 354
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1b8d38faad22ee5e0800000000000000
-      internalID: -1878525671924049743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_60
-      rect:
-        serializedVersion: 2
-        x: 404
-        y: 288
-        width: 88
-        height: 91
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5c02536861aed89d0800000000000000
-      internalID: -2770300813301178171
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_61
-      rect:
-        serializedVersion: 2
-        x: 513
+        x: 14
         y: 299
         width: 33
         height: 80
@@ -1848,20 +1548,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b60e54701f473a70800000000000000
-      internalID: 8806594528436684464
+      spriteID: 0e91527c7cef81390800000000000000
+      internalID: -7847242216700044832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_62
+      name: FireRedPlayer1Flipped_48
       rect:
         serializedVersion: 2
-        x: 27
-        y: 280
-        width: 36
-        height: 48
+        x: 68
+        y: 288
+        width: 88
+        height: 91
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1869,20 +1569,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25bd066ab67e542a0800000000000000
-      internalID: -6753737616633308334
+      spriteID: b8947b523079bf060800000000000000
+      internalID: 6988345286568921483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_63
+      name: FireRedPlayer1Flipped_49
       rect:
         serializedVersion: 2
-        x: 72
-        y: 280
-        width: 63
-        height: 44
+        x: 313
+        y: 354
+        width: 14
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1890,17 +1590,332 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6247ff9e21d19abd0800000000000000
-      internalID: -2618529741266783194
+      spriteID: 81ae4f653a65f4440800000000000000
+      internalID: 4922248177277790744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_64
+      name: FireRedPlayer1Flipped_50
       rect:
         serializedVersion: 2
-        x: 136
+        x: 329
+        y: 354
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 608a267b377c54bf0800000000000000
+      internalID: -340646896984741882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_51
+      rect:
+        serializedVersion: 2
+        x: 345
+        y: 354
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e5f3e4bbc79f34e0800000000000000
+      internalID: -1999712808360217118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_52
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 353
+        width: 32
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 529ad2c34a16b8df0800000000000000
+      internalID: -176940402338846427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_53
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 353
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a82a4435c10904c0800000000000000
+      internalID: -4320920420987819869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_54
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 353
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 393f833f54dcd0eb0800000000000000
+      internalID: -4751916331488971885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_55
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 353
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a236193893feaddd0800000000000000
+      internalID: -2460391216105037014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_56
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 353
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 706da5fbd817662c0800000000000000
+      internalID: -4438735529112316409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_57
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 353
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd461cbaf4acd6f50800000000000000
+      internalID: 6876374649597420764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_58
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 353
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7286001cf266c0ea0800000000000000
+      internalID: -5905232656102037465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_59
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 353
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a943692ebf96de90800000000000000
+      internalID: -7001232931613881949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_60
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 353
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b609ddb716b9670e0800000000000000
+      internalID: -2272458118969585557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_61
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 353
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc2d6a598f26d5ba0800000000000000
+      internalID: -6098609500587633972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_62
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 285
+        width: 40
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 262b1e7ff3ca801d0800000000000000
+      internalID: -3384265729227247006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_63
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 280
+        width: 55
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8415461e6c98b6c0800000000000000
+      internalID: -4127377061851097970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_64
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 280
+        width: 64
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c38cbe1c336a9f80800000000000000
+      internalID: -8099051870007557180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_65
+      rect:
+        serializedVersion: 2
+        x: 372
         y: 280
         width: 52
         height: 47
@@ -1911,20 +1926,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bb73e966f0ed95c0800000000000000
-      internalID: -4206959127951082574
+      spriteID: a49d9f7f81a029270800000000000000
+      internalID: 8255672169279379786
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_65
+      name: FireRedPlayer1Flipped_66
       rect:
         serializedVersion: 2
-        x: 200
+        x: 425
         y: 280
-        width: 64
-        height: 49
+        width: 63
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1932,20 +1947,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed5943a1f82585850800000000000000
-      internalID: 6365928847861650910
+      spriteID: 5a1f163e60a07c940800000000000000
+      internalID: 5316228909835088293
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_66
+      name: FireRedPlayer1Flipped_67
       rect:
         serializedVersion: 2
-        x: 265
+        x: 497
         y: 280
-        width: 66
-        height: 43
+        width: 36
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1953,311 +1968,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 41227f6a2aa69ec10800000000000000
-      internalID: 2083313549454025236
+      spriteID: 4b74371cefe2a0a60800000000000000
+      internalID: 7640971389489596340
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_67
+      name: FireRedPlayer1Flipped_68
       rect:
         serializedVersion: 2
-        x: 343
-        y: 285
-        width: 49
-        height: 55
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 854e9c0ff61327240800000000000000
-      internalID: 4787943710699152472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_68
-      rect:
-        serializedVersion: 2
-        x: 9
-        y: 240
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 57a9814635b452390800000000000000
-      internalID: -7843780354462147979
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_69
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 241
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3315fc152587c4f00800000000000000
-      internalID: 1102388303754121523
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_70
-      rect:
-        serializedVersion: 2
-        x: 41
-        y: 240
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 40fe9d1280d492620800000000000000
-      internalID: 2749813744809406212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_71
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 241
-        width: 46
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 527c8bb2344f184a0800000000000000
-      internalID: -6592719810160179419
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_72
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 240
-        width: 16
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc7c302943fe04f00800000000000000
-      internalID: 1099141318145460175
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_73
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 240
-        width: 14
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5463eb71f169cc560800000000000000
-      internalID: 7335402953366189637
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_74
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 240
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8e67c8ef06aef2c20800000000000000
-      internalID: 3184021163882608360
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_75
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 243
-        width: 14
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bbce19dcff0147fd0800000000000000
-      internalID: -2345230815101588293
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_76
-      rect:
-        serializedVersion: 2
-        x: 263
-        y: 249
-        width: 17
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c578cf1b36b345f90800000000000000
-      internalID: -6965877424261396644
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_77
-      rect:
-        serializedVersion: 2
-        x: 296
-        y: 242
-        width: 16
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0d4feaf01c2b72850800000000000000
-      internalID: 6352242341690930384
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_78
-      rect:
-        serializedVersion: 2
-        x: 329
-        y: 240
-        width: 14
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c14a9135d5470b5d0800000000000000
-      internalID: -3048809003554855908
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_79
-      rect:
-        serializedVersion: 2
-        x: 366
-        y: 244
-        width: 20
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 88f534b50a14679d0800000000000000
-      internalID: -2776959963245617272
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_80
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 244
-        width: 22
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 22f7e89234210a810800000000000000
-      internalID: 1774438332853288738
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_81
-      rect:
-        serializedVersion: 2
-        x: 440
+        x: 88
         y: 234
         width: 32
         height: 27
@@ -2268,209 +1989,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 116ac1e48b59a0ea0800000000000000
-      internalID: -5905743342525962735
+      spriteID: b194ac85c89fcaf70800000000000000
+      internalID: 9200002519991470363
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_82
+      name: FireRedPlayer1Flipped_69
       rect:
         serializedVersion: 2
-        x: 8
-        y: 208
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc97f484b6ad1a050800000000000000
-      internalID: 5810165148594174415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_83
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 209
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9c5af476d6c5206a0800000000000000
-      internalID: -6484518888505629239
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_84
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 208
-        width: 16
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11468473131a27bd0800000000000000
-      internalID: -2633865599305358319
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_85
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 208
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42a57fbbf3d6c86d0800000000000000
-      internalID: -2986892332349564380
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_86
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 210
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6191a5f71911dcb0800000000000000
-      internalID: -4841060533750623892
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_87
-      rect:
-        serializedVersion: 2
-        x: 97
-        y: 208
-        width: 14
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3059ebe143b07fe80800000000000000
-      internalID: -8145029082594241277
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_88
-      rect:
-        serializedVersion: 2
-        x: 129
-        y: 208
-        width: 15
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5986c2c950868b370800000000000000
-      internalID: 8338529083380754581
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_89
-      rect:
-        serializedVersion: 2
-        x: 161
-        y: 208
-        width: 14
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 857af45cb09acfcd0800000000000000
-      internalID: -2522955823214254248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_90
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 208
-        width: 15
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 60d54aeac1bf33df0800000000000000
-      internalID: -201541457693876986
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_91
-      rect:
-        serializedVersion: 2
-        x: 234
-        y: 209
+        x: 141
+        y: 244
         width: 22
-        height: 25
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2478,40 +2010,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f42755e975805d120800000000000000
-      internalID: 2437863945702568527
+      spriteID: 927da238bcaf6a270800000000000000
+      internalID: 8261566318443681577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_92
+      name: FireRedPlayer1Flipped_70
       rect:
         serializedVersion: 2
-        x: 273
-        y: 209
-        width: 15
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 291daf2f846fb5720800000000000000
-      internalID: 2836131183534461330
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_93
-      rect:
-        serializedVersion: 2
-        x: 292
-        y: 208
-        width: 28
+        x: 174
+        y: 244
+        width: 20
         height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2520,19 +2031,187 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f60afa165191536f0800000000000000
-      internalID: -705630186989707153
+      spriteID: 0e4f96d16fbdcfab0800000000000000
+      internalID: -4972858038421949216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_94
+      name: FireRedPlayer1Flipped_71
       rect:
         serializedVersion: 2
-        x: 323
-        y: 209
-        width: 29
+        x: 217
+        y: 240
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 324ee17a02beb0110800000000000000
+      internalID: 1228333848863892515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_72
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 242
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56eeccd1ea5f06030800000000000000
+      internalID: 3486056239757848165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_73
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 249
+        width: 17
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50bd5f8511d5dc70800000000000000
+      internalID: 8995325721272234076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_74
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 243
+        width: 14
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8263c351a1905550800000000000000
+      internalID: 6147573613441802895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_75
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 240
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bee7eb7781a025b70800000000000000
+      internalID: 8886176114959875819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_76
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 240
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 906ffafcb32d1e230800000000000000
+      internalID: 3666442725985613321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_77
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 240
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63767aa8bfe621170800000000000000
+      internalID: 8147696702508721974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_78
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 241
+        width: 46
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6710b7084f059abf0800000000000000
+      internalID: -312629688067751562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_79
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 240
+        width: 14
         height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2541,20 +2220,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ba4801f5555863d0800000000000000
-      internalID: -3213224506524415305
+      spriteID: bc080bcf1a0fe9bf0800000000000000
+      internalID: -315550345349529397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_95
+      name: FireRedPlayer1Flipped_80
       rect:
         serializedVersion: 2
-        x: 366
-        y: 210
-        width: 20
-        height: 26
+        x: 521
+        y: 241
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2562,20 +2241,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ecea24bb505e5ac0800000000000000
-      internalID: -3864563075442348826
+      spriteID: 9488f609432dc81b0800000000000000
+      internalID: -5652912309053454263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_96
+      name: FireRedPlayer1Flipped_81
       rect:
         serializedVersion: 2
-        x: 397
-        y: 210
-        width: 22
-        height: 25
+        x: 537
+        y: 240
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2583,17 +2262,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89889f5e6dda4a690800000000000000
-      internalID: -7591751933346871144
+      spriteID: 2598d06035f01e0c0800000000000000
+      internalID: -4548337299409237678
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_97
+      name: FireRedPlayer1Flipped_82
       rect:
         serializedVersion: 2
-        x: 440
+        x: 88
         y: 185
         width: 32
         height: 29
@@ -2604,20 +2283,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d66b5286e47aa290800000000000000
-      internalID: -7878356064752933165
+      spriteID: b16a1e5c7001a1fd0800000000000000
+      internalID: -2370564628286429669
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_98
+      name: FireRedPlayer1Flipped_83
       rect:
         serializedVersion: 2
-        x: 8
-        y: 177
-        width: 16
-        height: 18
+        x: 141
+        y: 210
+        width: 22
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2625,19 +2304,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6acbf8f3597a66bf0800000000000000
-      internalID: -331393263106802522
+      spriteID: edb8158078232a430800000000000000
+      internalID: 3792649391740914654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_99
+      name: FireRedPlayer1Flipped_84
       rect:
         serializedVersion: 2
-        x: 25
-        y: 177
-        width: 15
+        x: 174
+        y: 210
+        width: 20
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f558704835df7b000800000000000000
+      internalID: 51788455877248351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_85
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 209
+        width: 29
         height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2646,19 +2346,166 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e3e0ce0f3b99e7f0800000000000000
-      internalID: -582763981635001375
+      spriteID: 23846edceb047e8a0800000000000000
+      internalID: -6275976367475111886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_100
+      name: FireRedPlayer1Flipped_86
       rect:
         serializedVersion: 2
-        x: 41
-        y: 177
+        x: 240
+        y: 208
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b9ee0e9e37905620800000000000000
+      internalID: 2760872866773658033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_87
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 209
         width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9589f2659d2c0b620800000000000000
+      internalID: 2787942408051988569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_88
+      rect:
+        serializedVersion: 2
+        x: 304
+        y: 209
+        width: 22
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154351f9502024580800000000000000
+      internalID: -8844504495035173807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_89
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 208
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d914bf937586601e0800000000000000
+      internalID: -2231981841471290979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_90
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 208
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d1de3d8098d3850800000000000000
+      internalID: 6358388919925284106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_91
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 208
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6cdaa45545f0430800000000000000
+      internalID: 3751309739924768417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_92
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 208
+        width: 14
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 132999ccad54b75a0800000000000000
+      internalID: -6522542829278227919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_93
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 210
+        width: 14
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2667,20 +2514,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fd7de5572f45cc460800000000000000
-      internalID: 7263273699369736159
+      spriteID: 24c8604c9d3b08ca0800000000000000
+      internalID: -6016611354288944062
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_101
+      name: FireRedPlayer1Flipped_94
       rect:
         serializedVersion: 2
-        x: 64
-        y: 178
-        width: 15
-        height: 17
+        x: 481
+        y: 208
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2688,20 +2535,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2a5a04bce9ae2afa0800000000000000
-      internalID: -5790808203109292638
+      spriteID: dafaf6e062641a910800000000000000
+      internalID: 1846834451463516077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_102
+      name: FireRedPlayer1Flipped_95
       rect:
         serializedVersion: 2
-        x: 80
-        y: 178
-        width: 31
-        height: 18
+        x: 505
+        y: 208
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2709,20 +2556,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7afdb17795eebde30800000000000000
-      internalID: 4529475918268981159
+      spriteID: 509ff0efd0833b680800000000000000
+      internalID: -8740580819047810811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_103
+      name: FireRedPlayer1Flipped_96
       rect:
         serializedVersion: 2
-        x: 125
-        y: 176
-        width: 20
-        height: 22
+        x: 521
+        y: 209
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2730,20 +2577,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed083cd1cabf14ee0800000000000000
-      internalID: -1278464102544211746
+      spriteID: 14534b3e7d37047b0800000000000000
+      internalID: -5242062595183856319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_104
+      name: FireRedPlayer1Flipped_97
       rect:
         serializedVersion: 2
-        x: 157
-        y: 176
-        width: 20
-        height: 22
+        x: 537
+        y: 208
+        width: 14
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2751,40 +2598,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d6b66ee93d149aa0800000000000000
-      internalID: -6155262656058575143
+      spriteID: db9c0e06c8aba5a00800000000000000
+      internalID: 746113800366770621
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_105
+      name: FireRedPlayer1Flipped_98
       rect:
         serializedVersion: 2
-        x: 189
-        y: 176
-        width: 20
-        height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 442a850a7841cedd0800000000000000
-      internalID: -2455565124080459196
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_106
-      rect:
-        serializedVersion: 2
-        x: 232
-        y: 177
-        width: 15
+        x: 140
+        y: 180
+        width: 22
         height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2793,40 +2619,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c71774eeafbd674e0800000000000000
-      internalID: -1984156715024158340
+      spriteID: b9483f58fe3b1a9b0800000000000000
+      internalID: -5070573864116583269
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_107
+      name: FireRedPlayer1Flipped_99
       rect:
         serializedVersion: 2
-        x: 264
-        y: 176
-        width: 17
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e2665c2b7d0a33b0800000000000000
-      internalID: -5532094369595235613
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_108
-      rect:
-        serializedVersion: 2
-        x: 297
-        y: 179
-        width: 16
+        x: 172
+        y: 180
+        width: 21
         height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2835,17 +2640,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91f2425f6cdf9e110800000000000000
-      internalID: 1290841799176498969
+      spriteID: c713067b54b881c20800000000000000
+      internalID: 3177442668655423868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_109
+      name: FireRedPlayer1Flipped_100
       rect:
         serializedVersion: 2
-        x: 329
+        x: 217
         y: 178
         width: 14
         height: 27
@@ -2856,19 +2661,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a67b9ba603f0fef00800000000000000
-      internalID: 1148153130626168682
+      spriteID: e6245bfe8e8466220800000000000000
+      internalID: 2478748810205282926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_110
+      name: FireRedPlayer1Flipped_101
       rect:
         serializedVersion: 2
-        x: 367
-        y: 180
-        width: 21
+        x: 247
+        y: 179
+        width: 16
         height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2877,19 +2682,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97b21e8df25f383a0800000000000000
-      internalID: -6664213437727298695
+      spriteID: 1274adccdf71cdfb0800000000000000
+      internalID: -4621792738757949663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_111
+      name: FireRedPlayer1Flipped_102
       rect:
         serializedVersion: 2
-        x: 398
-        y: 180
-        width: 22
+        x: 279
+        y: 176
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33af0d7005561f580800000000000000
+      internalID: -8795137202874942925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_103
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 177
+        width: 15
         height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -2898,20 +2724,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcb493c1a6614b3a0800000000000000
-      internalID: -6650666104723518513
+      spriteID: 3ea16e06027211250800000000000000
+      internalID: 5913550805732301539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_112
+      name: FireRedPlayer1Flipped_104
       rect:
         serializedVersion: 2
-        x: 8
-        y: 137
-        width: 15
-        height: 19
+        x: 351
+        y: 176
+        width: 20
+        height: 22
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -2919,18 +2745,102 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5505c05f1e4152a00800000000000000
-      internalID: 731013475228995669
+      spriteID: 6dadadf7ca0805740800000000000000
+      internalID: 5138748653197515478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_113
+      name: FireRedPlayer1Flipped_105
       rect:
         serializedVersion: 2
-        x: 25
-        y: 137
+        x: 383
+        y: 176
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39dbe013f624b6150800000000000000
+      internalID: 5866855984912055699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_106
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 176
+        width: 20
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcc2540c57ad46820800000000000000
+      internalID: 2910691458459970765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_107
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 178
+        width: 31
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a3df2e8a40e9c400800000000000000
+      internalID: 345053457288254373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_108
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 178
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2239fea96d38e18c0800000000000000
+      internalID: -4026636059077012702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_109
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 177
         width: 15
         height: 18
       alignment: 0
@@ -2940,18 +2850,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5322aa277b285bb00800000000000000
-      internalID: 843724229616214581
+      spriteID: f1a0cc7502dbb3b90800000000000000
+      internalID: -7261002027595199969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_114
+      name: FireRedPlayer1Flipped_110
       rect:
         serializedVersion: 2
-        x: 40
-        y: 137
+        x: 520
+        y: 177
         width: 15
         height: 19
       alignment: 0
@@ -2961,60 +2871,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ec16c515a5283cd0800000000000000
-      internalID: -2578269395704472348
+      spriteID: 1c1e51b7439e7c860800000000000000
+      internalID: 7550259711922528705
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_115
+      name: FireRedPlayer1Flipped_111
       rect:
         serializedVersion: 2
-        x: 57
-        y: 137
-        width: 30
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c6cc2bc86369b70e0800000000000000
-      internalID: -2271056426045354900
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_116
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 137
-        width: 15
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0029bd530d13c4f00800000000000000
-      internalID: 1102310779125469696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_117
-      rect:
-        serializedVersion: 2
-        x: 113
-        y: 137
+        x: 536
+        y: 177
         width: 15
         height: 18
       alignment: 0
@@ -3024,164 +2892,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b75ba54aa3cea7a0800000000000000
-      internalID: -6363934087347218505
+      spriteID: d8e7d250b9b1da7c0800000000000000
+      internalID: -4058557336570200435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_118
+      name: FireRedPlayer1Flipped_112
       rect:
         serializedVersion: 2
-        x: 128
-        y: 137
-        width: 15
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1995727e021adaa0800000000000000
-      internalID: -6135571689079727845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_119
-      rect:
-        serializedVersion: 2
-        x: 145
-        y: 137
-        width: 30
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba46d4f131178df30800000000000000
-      internalID: 4600551346302444715
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_120
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 137
-        width: 15
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 23a2327eb4c818120800000000000000
-      internalID: 2414365132875573810
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_121
-      rect:
-        serializedVersion: 2
-        x: 201
-        y: 138
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aceaeabe079ca1a20800000000000000
-      internalID: 3033958785815064266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_122
-      rect:
-        serializedVersion: 2
-        x: 217
-        y: 138
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e63f88038be38d80800000000000000
-      internalID: -8249491144395770137
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_123
-      rect:
-        serializedVersion: 2
-        x: 233
-        y: 138
-        width: 15
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07e08f0a764b21a20800000000000000
-      internalID: 3031683856349007472
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_124
-      rect:
-        serializedVersion: 2
-        x: 396
-        y: 72
-        width: 100
-        height: 90
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44b0c7fb075740640800000000000000
-      internalID: 5045286609671162692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_125
-      rect:
-        serializedVersion: 2
-        x: 510
+        x: 12
         y: 83
         width: 38
         height: 79
@@ -3192,20 +2913,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e7cdc710dabbb240800000000000000
-      internalID: 4808642430063462372
+      spriteID: 44c365fa9a0af89c0800000000000000
+      internalID: -3922740099764831164
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_126
+      name: FireRedPlayer1Flipped_113
       rect:
         serializedVersion: 2
-        x: 19
-        y: 64
-        width: 36
-        height: 49
+        x: 68
+        y: 72
+        width: 88
+        height: 90
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3213,20 +2934,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a61052cebe242b610800000000000000
-      internalID: 1635443195735507306
+      spriteID: 2ccc3965d62476ce0800000000000000
+      internalID: -1412086920785965886
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_127
+      name: FireRedPlayer1Flipped_114
       rect:
         serializedVersion: 2
-        x: 73
-        y: 49
-        width: 56
-        height: 60
+        x: 312
+        y: 138
+        width: 15
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3234,20 +2955,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b28869cadf65a6a0800000000000000
-      internalID: -6438617106783632719
+      spriteID: 446d98596cffcaaa0800000000000000
+      internalID: -6148258162890123708
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_128
+      name: FireRedPlayer1Flipped_115
       rect:
         serializedVersion: 2
-        x: 136
-        y: 64
-        width: 52
-        height: 48
+        x: 329
+        y: 138
+        width: 14
+        height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3255,59 +2976,227 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88971f8ba8ecc6a40800000000000000
-      internalID: 5362888351495059848
+      spriteID: 4ecfdc0bb10b7d4e0800000000000000
+      internalID: -1956901880092295964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_129
-      rect:
-        serializedVersion: 2
-        x: 200
-        y: 42
-        width: 64
-        height: 72
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9167ec18ff5981630800000000000000
-      internalID: 3898030402116154905
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_130
-      rect:
-        serializedVersion: 2
-        x: 264
-        y: 64
-        width: 66
-        height: 46
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 200eea6a108360090800000000000000
-      internalID: -8068700102645063678
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_131
+      name: FireRedPlayer1Flipped_116
       rect:
         serializedVersion: 2
         x: 345
+        y: 138
+        width: 14
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec6994a3dac891b90800000000000000
+      internalID: -7270625447777823026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_117
+      rect:
+        serializedVersion: 2
+        x: 369
+        y: 137
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1d12db7d6de53350800000000000000
+      internalID: 5995959533398269210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_118
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 137
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87ca1de458eae20b0800000000000000
+      internalID: -5751467786529297288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_119
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 137
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e15ccd0f77c684fa0800000000000000
+      internalID: -5816279656351087330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_120
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 137
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faf006bbee56e9ea0800000000000000
+      internalID: -5864137588769550417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_121
+      rect:
+        serializedVersion: 2
+        x: 449
+        y: 137
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcfb166aa664c13c0800000000000000
+      internalID: -4387554513093804083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_122
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 137
+        width: 30
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fafdecea134c8170800000000000000
+      internalID: 8181988405948578549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_123
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 137
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab72b120ad5e1d30800000000000000
+      internalID: 4404060427956419491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_124
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 137
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f123869daa6a78330800000000000000
+      internalID: 3713119670512398879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_125
+      rect:
+        serializedVersion: 2
+        x: 537
+        y: 137
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5e52f91a503dd370800000000000000
+      internalID: 8348882447755271772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_126
+      rect:
+        serializedVersion: 2
+        x: 175
         y: 69
         width: 40
         height: 55
@@ -3318,19 +3207,145 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff688f631e137d400800000000000000
-      internalID: 348802339504162559
+      spriteID: 855e7180ca3ca2770800000000000000
+      internalID: 8586890783172846936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_132
+      name: FireRedPlayer1Flipped_127
       rect:
         serializedVersion: 2
-        x: 67
+        x: 240
+        y: 64
+        width: 56
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a867cf7845c0b620800000000000000
+      internalID: 2787945084514429088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_128
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 64
+        width: 64
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b6accd569431260800000000000000
+      internalID: 7067072942119218034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_129
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 64
+        width: 52
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71fc812b65d7f59a0800000000000000
+      internalID: -6242132747203588329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_130
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 64
+        width: 56
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ea7a27464b8da1c0800000000000000
+      internalID: -4490780119460578591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_131
+      rect:
+        serializedVersion: 2
+        x: 505
+        y: 64
+        width: 36
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87d2fcc7e91f48430800000000000000
+      internalID: 3784415249899138424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_132
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 16
+        width: 104
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23a80fbd0ccdaeda0800000000000000
+      internalID: -5914672439715919310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_133
+      rect:
+        serializedVersion: 2
+        x: 469
         y: 49
-        width: 10
+        width: 24
         height: 4
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3339,80 +3354,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a19dd3ce819fd160800000000000000
-      internalID: 7052515583842947492
+      spriteID: fdff8187c9088a660800000000000000
+      internalID: 7397303797474197471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_133
+      name: FireRedPlayer1Flipped_134
       rect:
         serializedVersion: 2
-        x: 109
-        y: 49
-        width: 16
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26e44e5d17e4000f0800000000000000
-      internalID: -1152835253780066718
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_134
-      rect:
-        serializedVersion: 2
-        x: 176
-        y: 48
-        width: 4
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d357752c46c565b20800000000000000
-      internalID: 3122784979455014205
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_135
-      rect:
-        serializedVersion: 2
-        x: 17
-        y: 17
-        width: 29
-        height: 30
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f40703eb16fb04ab0800000000000000
-      internalID: -5025806757621895089
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_136
-      rect:
-        serializedVersion: 2
-        x: 64
+        x: 480
         y: 32
         width: 16
         height: 5
@@ -3423,20 +3375,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ddb769267415b6e60800000000000000
-      internalID: 7956542533718670301
+      spriteID: f88597e450fa37cc0800000000000000
+      internalID: -3714432830324254577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_137
+      name: FireRedPlayer1Flipped_135
       rect:
         serializedVersion: 2
-        x: 108
-        y: 16
-        width: 88
-        height: 24
+        x: 514
+        y: 17
+        width: 29
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3444,61 +3396,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cab414fa723c2c170800000000000000
-      internalID: 8197328846979156908
+      spriteID: b9371956152a349e0800000000000000
+      internalID: -1638287368952646757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_138
+      name: FireRedPlayer1Flipped_136
       rect:
         serializedVersion: 2
-        x: 65
-        y: 9
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b858b283deed9ce70800000000000000
-      internalID: 9136078429528753547
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_139
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 9
-        width: 14
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55a182467794286f0800000000000000
-      internalID: -683903416276608427
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_140
-      rect:
-        serializedVersion: 2
-        x: 214
+        x: 164
         y: 12
-        width: 20
+        width: 22
         height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3507,80 +3417,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 667159fcfcd402660800000000000000
-      internalID: 7358967346059614054
+      spriteID: 7c1a0047e3b2afa80800000000000000
+      internalID: -8432379805063667257
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_141
+      name: FireRedPlayer1Flipped_137
       rect:
         serializedVersion: 2
-        x: 245
-        y: 12
-        width: 22
-        height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 53748b1d630ddd3d0800000000000000
-      internalID: -3180156827988375755
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_142
-      rect:
-        serializedVersion: 2
-        x: 278
-        y: 10
-        width: 20
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c4e869fea84a5e00800000000000000
-      internalID: 1034218980780860612
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_143
-      rect:
-        serializedVersion: 2
-        x: 309
-        y: 10
-        width: 22
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8ae9067611b038190800000000000000
-      internalID: -7961507546884170072
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FireRedPlayer1_144
-      rect:
-        serializedVersion: 2
-        x: 343
+        x: 196
         y: 12
         width: 21
         height: 14
@@ -3591,19 +3438,82 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 868065d0f37b73580800000000000000
-      internalID: -8847401461511485336
+      spriteID: f474f2270812fd730800000000000000
+      internalID: 4025973427447744335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FireRedPlayer1_145
+      name: FireRedPlayer1Flipped_138
       rect:
         serializedVersion: 2
-        x: 374
+        x: 229
+        y: 10
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7832ee0faa0151cd0800000000000000
+      internalID: -2588144084481858681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_139
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 10
+        width: 20
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4b5f00074cde7400800000000000000
+      internalID: 323938420719049548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_140
+      rect:
+        serializedVersion: 2
+        x: 293
         y: 12
         width: 22
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d008f5d56a29ff480800000000000000
+      internalID: -8863204298413080563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_141
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 12
+        width: 20
         height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -3612,8 +3522,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a977a3b647a59a4d0800000000000000
-      internalID: -3122865410543028326
+      spriteID: c0310720ebfaaf6f0800000000000000
+      internalID: -650013965582068980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_142
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 9
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6902285613728a4c0800000000000000
+      internalID: -4276124753078378346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FireRedPlayer1Flipped_143
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 9
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513e55cbd74a307f0800000000000000
+      internalID: -647493061473606891
       vertices: []
       indices: 
       edges: []
