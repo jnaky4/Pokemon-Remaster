@@ -743,8 +743,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -66.099976, y: -16.315002}
-  m_SizeDelta: {x: 40.28, y: 32.63}
+  m_AnchoredPosition: {x: 26.563, y: -11.65}
+  m_SizeDelta: {x: 225.61, y: 23.31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &268788843
 MonoBehaviour:
@@ -984,7 +984,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -393.97177, y: -122.13335}
+  m_AnchoredPosition: {x: -393.9718, y: -122.13335}
   m_SizeDelta: {x: 800, y: 108.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &862281699
@@ -1673,6 +1673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 1841181817}
   enemyPrefab: {fileID: 1855794858}
+  attackButton: {fileID: 1771759507}
   playerHUD: {fileID: 1581915313}
   enemyHUD: {fileID: 1973017725}
   dialogueText: {fileID: 629524541}
@@ -3017,6 +3018,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789374994166179982, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: level
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789374994166179982, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: damage
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3470d4591a44ec54baa62f32b6f4be44, type: 3}

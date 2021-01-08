@@ -8,24 +8,32 @@ public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
 
 public class BattleSystem : MonoBehaviour
 {
+    /**********************************************************************************************************************************************
+     * VARIABLES
+     **********************************************************************************************************************************************/
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
-
-    //public Transform playerStation;
-    //public Transform enemyStation;
+    //IDK what these are
 
     Unit playerUnit;
     Unit enemyUnit;
+    //The pokemon used in the fight
 
     public Button attackButton;
+    //Our button used to attack
 
     public BattleHUD playerHUD;
     public BattleHUD enemyHUD;
+    //The HUDs (the shit that shows our current hp and stuff like that
 
     public Text dialogueText;
+    //The dialogue text to let us know what is happening
 
     public BattleState state;
-    // Start is called before the first frame update
+    //The current state of the battle
+    /**********************************************************************************************************************************************
+     * FUNCTIONS
+     **********************************************************************************************************************************************/
     void Start()
     {
         state = BattleState.START;
@@ -35,10 +43,10 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
-        GameObject player = Instantiate(playerPrefab/*, playerStation*/);
+        GameObject player = Instantiate(playerPrefab);
         playerUnit = player.GetComponent<Unit>();
 
-        GameObject enemy = Instantiate(enemyPrefab/*, enemyStation*/);
+        GameObject enemy = Instantiate(enemyPrefab);
         enemyUnit = enemy.GetComponent<Unit>();
 
         dialogueText.text = "A wild " + enemyUnit.name + " appears!";
