@@ -84,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsWalkable(Vector3 targetPos)
     {
-        if (Physics2D.OverlapCircle(targetPos, 0.18f, solidObjectsLayer | interactableLayer) != null)
+        if (Physics2D.OverlapCircle(targetPos, 0.125f, solidObjectsLayer | interactableLayer) != null)
         {
             return false;
         }
