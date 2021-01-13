@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY }
 
 public class BattleSystem : MonoBehaviour
 {
@@ -20,6 +20,9 @@ public class BattleSystem : MonoBehaviour
     //The pokemon used in the fight
 
     public Button attackButton;
+    public Button runAwayButton;
+    public Button pokemonButton;
+    public Button ballsButton;
     //Our button used to attack
 
     public BattleHUD playerHUD;
@@ -37,9 +40,11 @@ public class BattleSystem : MonoBehaviour
     void Start()
     {
         state = BattleState.START;
-        attackButton.interactable = false;
+        SetDownButtons();
+        enemyUnit = 
         StartCoroutine(SetupBattle());
     }
+    //This function starts the battle sequence
 
     IEnumerator SetupBattle()
     {
@@ -59,6 +64,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.PLAYERTURN;
         PlayerTurn();
     }
+    //This function sets up the battle state for us including the UI
 
     IEnumerator PlayerAttack()
     {
@@ -81,7 +87,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyAttack()
     {
-        
+
         dialogueText.text = enemyUnit.name + " attacks!";
         bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
         playerHUD.SetHP(playerUnit.currentHP, playerUnit);
@@ -113,19 +119,64 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = "You lost! You blacked out!";
         }
+        else if (state == BattleState.RUNAWAY)
+        {
+            dialogueText.text = "Got away safely...";
+        }
     }
 
     void PlayerTurn()
     {
         dialogueText.text = "Choose an action";
-        attackButton.interactable = true;
+        SetUpButtons();
     }
 
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYERTURN) return;
-        attackButton.interactable = false;
+        SetDownButtons();
         StartCoroutine(PlayerAttack());
+    }
+
+    public void OnRunAwayButton()
+    {
+        if (state != BattleState.PLAYERTURN) return;
+        SetDownButtons();
+        RunAway();
+    }
+
+    public void OnPokemonButton()
+    {
+        if (state != BattleState.PLAYERTURN) return;
+        SetDownButtons();
+    }
+
+    public void OnBallsButton()
+    {
+        if (state != BattleState.PLAYERTURN) return;
+        SetDownButtons();
+    }
+
+    public void RunAway()
+    {
+        state = BattleState.RUNAWAY;
+        EndBattle();
+    }
+
+    public void SetUpButtons()
+    {
+        attackButton.interactable = true;
+        runAwayButton.interactable = true;
+        pokemonButton.interactable = true;
+        ballsButton.interactable = true;
+    }
+
+    public void SetDownButtons()
+    {
+        attackButton.interactable = false;
+        runAwayButton.interactable = false;
+        pokemonButton.interactable = false;
+        ballsButton.interactable = false;
     }
 
 }
