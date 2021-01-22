@@ -1396,6 +1396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc62e3eb59dc4d39a4e068e4f213a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Dialog: I am the pokemon professor
 --- !u!1 &1675646420
 GameObject:
   m_ObjectHideFlags: 0

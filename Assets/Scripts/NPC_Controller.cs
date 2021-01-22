@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class NPC_Controller : MonoBehaviour, Interactable
 {
+    public string Dialog;
+
     public void Interact()
     {
-        Debug.Log("Interacting with NPC");
+        Debug.Log(Dialog);
     }
 }
