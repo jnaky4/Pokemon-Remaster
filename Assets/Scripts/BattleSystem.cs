@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class BattleSystem : MonoBehaviour
      **********************************************************************************************************************************************/
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
-    //IDK what these are
+    //IDK what these are but they need to stay
 
     Unit playerUnit;
     Unit enemyUnit;
@@ -41,7 +42,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.START;
         SetDownButtons();
-        enemyUnit = 
+        //enemyUnit = 
         StartCoroutine(SetupBattle());
     }
     //This function starts the battle sequence
@@ -50,24 +51,60 @@ public class BattleSystem : MonoBehaviour
     {
         GameObject player = Instantiate(playerPrefab);
         playerUnit = player.GetComponent<Unit>();
+        playerUnit.attack = 84;
+        playerUnit.defense = 78;
+        playerUnit.speed = 80;
+        playerUnit.moves = new ArrayList();
+        //playerUnit.moves.Add
 
         GameObject enemy = Instantiate(enemyPrefab);
         enemyUnit = enemy.GetComponent<Unit>();
+        enemyUnit.attack = 82;
+        enemyUnit.defense = 83;
+        enemyUnit.speed = 80;
 
         dialogueText.text = "A wild " + enemyUnit.name + " appears!";
 
         playerHUD.SetHUD(playerUnit);
         enemyHUD.SetHUD(enemyUnit);
 
+
         yield return new WaitForSeconds(2);
 
-        state = BattleState.PLAYERTURN;
-        PlayerTurn();
+        if (enemyUnit.speed > playerUnit.speed)
+        {
+            state = BattleState.ENEMYTURN;
+            EnemyTurn();
+        }
+        else if (enemyUnit.speed < playerUnit.speed)
+        {
+            state = BattleState.PLAYERTURN;
+            PlayerTurn();
+        }
+        else
+        {
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(1, 3);
+            if (num == 1)
+            {
+                state = BattleState.PLAYERTURN;
+                PlayerTurn();
+            }
+            else
+            {
+                state = BattleState.ENEMYTURN;
+                EnemyTurn();
+            }
+        }
+
+
     }
     //This function sets up the battle state for us including the UI
 
     IEnumerator PlayerAttack()
     {
+        playerUnit.SetDamage(enemyUnit.defense);
+
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
         enemyHUD.SetHP(enemyUnit.currentHP);
         dialogueText.text = enemyUnit.name + " took " + playerUnit.damage + " amount of damage...";
@@ -81,13 +118,13 @@ public class BattleSystem : MonoBehaviour
         else
         {
             state = BattleState.ENEMYTURN;
-            StartCoroutine(EnemyAttack());
+            EnemyTurn();
         }
     }
 
     IEnumerator EnemyAttack()
     {
-
+        enemyUnit.SetDamage(playerUnit.defense);
         dialogueText.text = enemyUnit.name + " attacks!";
         bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
         playerHUD.SetHP(playerUnit.currentHP, playerUnit);
@@ -129,6 +166,10 @@ public class BattleSystem : MonoBehaviour
     {
         dialogueText.text = "Choose an action";
         SetUpButtons();
+    }
+    void EnemyTurn()
+    {
+        StartCoroutine(EnemyAttack());
     }
 
     public void OnAttackButton()

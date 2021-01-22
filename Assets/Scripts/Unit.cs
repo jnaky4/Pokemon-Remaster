@@ -6,11 +6,28 @@ public class Unit : MonoBehaviour
 {
     public string name;
     public int level;
+    public ArrayList moves;
+
+    public int attack;
+    public int defense;
+    public int speed;
+
+    public int badge = 1;
+    public int critical = 1;
+    public int stab = 1;
+    public int type = 1;
+    public int burn = 1;
 
     public int damage;
 
     public int maxHP;
     public int currentHP;
+
+    public void SetDamage(int enemyDefense)
+    {
+        this.damage = (((((2 * level) / 5) + 2) * 1 * (this.attack/enemyDefense))/50) + 2;
+        this.damage = this.damage * (badge * critical * stab * type * burn);
+    }
 
     public bool TakeDamage(int dmg)
     {
