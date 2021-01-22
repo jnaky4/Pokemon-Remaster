@@ -236,7 +236,7 @@ Grid:
   m_GameObject: {fileID: 49354967}
   m_Enabled: 1
   m_CellSize: {x: 1, y: 1, z: 0}
-  m_CellGap: {x: 0, y: 0, z: 0}
+  m_CellGap: {x: -0.0001, y: -0.0001, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
 --- !u!4 &49354969
@@ -268,12 +268,12 @@ GameObject:
   - component: {fileID: 334190926}
   - component: {fileID: 334190925}
   m_Layer: 5
-  m_Name: Image
+  m_Name: dialogBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &334190924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -281,17 +281,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334190923}
-  m_LocalRotation: {x: -0, y: -0, z: 0.0029287343, w: -0.9999957}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1709115461}
   m_Father: {fileID: 897496896}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.336}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -398.91525, y: -212.4865}
-  m_SizeDelta: {x: 4.8078, y: 1.0132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.0000095367, y: 75}
+  m_SizeDelta: {x: 726.3198, y: 119.1759}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &334190925
 MonoBehaviour:
@@ -313,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e91a276c252fd481ba880e6e50cc69e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -948,68 +949,68 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 473820312}
     m_ColliderPaths:
-    - - X: 100000000
-        Y: 50000000
-      - X: 120000000
-        Y: 50000000
-      - X: 120000000
-        Y: 80000000
-      - X: 100000000
-        Y: 80000000
-      - X: 100000000
-        Y: 100000000
-      - X: 80000000
-        Y: 100000000
-      - X: 80000000
-        Y: 30000000
-      - X: 100000000
-        Y: 30000000
-    - - X: 30000000
-        Y: -20000000
-      - X: 10000000
-        Y: -20000000
-      - X: 10000000
-        Y: -50000000
-      - X: 30000000
-        Y: -50000000
-    - - X: 80000000
-        Y: -40000000
-      - X: 60000000
-        Y: -40000000
-      - X: 60000000
-        Y: -70000000
-      - X: 80000000
-        Y: -70000000
-    - - X: -40000000
-        Y: -50000000
-      - X: -60000000
-        Y: -50000000
-      - X: -60000000
-        Y: -80000000
-      - X: -40000000
-        Y: -80000000
+    - - X: 99991000
+        Y: 49994996
+      - X: 119988992
+        Y: 49994996
+      - X: 119988992
+        Y: 79993000
+      - X: 99991000
+        Y: 79993000
+      - X: 99991000
+        Y: 99991000
+      - X: 79992000
+        Y: 99991000
+      - X: 79992000
+        Y: 29997000
+      - X: 99991000
+        Y: 29997000
+    - - X: 29998000
+        Y: -19997000
+      - X: 9999000
+        Y: -19997000
+      - X: 9999000
+        Y: -49994996
+      - X: 29998000
+        Y: -49994996
+    - - X: 79993000
+        Y: -39994996
+      - X: 59994000
+        Y: -39994996
+      - X: 59994000
+        Y: -69993000
+      - X: 79993000
+        Y: -69993000
+    - - X: -39994996
+        Y: -49994000
+      - X: -59994000
+        Y: -49994000
+      - X: -59994000
+        Y: -79992000
+      - X: -39994996
+        Y: -79992000
   m_CompositePaths:
     m_Paths:
-    - - {x: 9.99997, y: 3}
-      - {x: 10.00003, y: 5}
-      - {x: 12, y: 5.000029}
-      - {x: 11.99997, y: 8}
-      - {x: 10, y: 8.00003}
-      - {x: 9.99997, y: 10}
-      - {x: 8, y: 9.99997}
-      - {x: 8.00003, y: 3}
-    - - {x: 2.999971, y: -5}
-      - {x: 2.999971, y: -2}
-      - {x: 1, y: -2.0000293}
-      - {x: 1.0000293, y: -5}
-    - - {x: 7.9999704, y: -7}
-      - {x: 7.9999704, y: -4}
-      - {x: 6, y: -4.000029}
-      - {x: 6.000029, y: -7}
-    - - {x: -4.000029, y: -8}
-      - {x: -4.000029, y: -5}
-      - {x: -6, y: -5.000029}
-      - {x: -5.999971, y: -8}
+    - - {x: 9.99907, y: 2.9997}
+      - {x: 9.999129, y: 4.9995}
+      - {x: 11.998899, y: 4.999529}
+      - {x: 11.99887, y: 7.9993}
+      - {x: 9.9991, y: 7.9993296}
+      - {x: 9.99907, y: 9.9991}
+      - {x: 7.9992, y: 9.99907}
+      - {x: 7.99923, y: 2.9997}
+    - - {x: 2.9997709, y: -4.9995}
+      - {x: 2.9997709, y: -1.9997001}
+      - {x: 0.9999, y: -1.9997293}
+      - {x: 0.9999293, y: -4.9995}
+    - - {x: 7.9992704, y: -6.9993}
+      - {x: 7.9992704, y: -3.9994996}
+      - {x: 5.9994, y: -3.999529}
+      - {x: 5.999429, y: -6.9993}
+    - - {x: -3.999529, y: -7.9992}
+      - {x: -3.999529, y: -4.9994}
+      - {x: -5.9994, y: -4.999429}
+      - {x: -5.999371, y: -7.9992}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &473820314
@@ -1396,7 +1397,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc62e3eb59dc4d39a4e068e4f213a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialog: I am the pokemon professor
+  dialogBox: {fileID: 334190923}
+  dialogText: {fileID: 1709115462}
+  dialog: I am the pokemon professor
+  dialogActive: 0
 --- !u!1 &1675646420
 GameObject:
   m_ObjectHideFlags: 0
@@ -9948,20 +9952,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 1682460823}
     m_ColliderPaths:
-    - - X: -40000000
-        Y: 30000000
-      - X: -40000000
-        Y: 70000000
-      - X: -80000000
-        Y: 70000000
-      - X: -80000000
-        Y: 30000000
+    - - X: -79992000
+        Y: 69994000
+      - X: -79992000
+        Y: 29997000
+      - X: -39994996
+        Y: 29997000
+      - X: -39994996
+        Y: 69994000
   m_CompositePaths:
     m_Paths:
-    - - {x: -4.000029, y: 3}
-      - {x: -4.000029, y: 7}
-      - {x: -8, y: 6.9999704}
-      - {x: -7.9999704, y: 3}
+    - - {x: -3.999529, y: 2.9997}
+      - {x: -3.999529, y: 6.9994}
+      - {x: -7.9992, y: 6.9993706}
+      - {x: -7.9991703, y: 2.9997}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &1682460822
@@ -10001,6 +10005,85 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!1 &1709115460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1709115461}
+  - component: {fileID: 1709115463}
+  - component: {fileID: 1709115462}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1709115461
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709115460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 334190924}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -14.6459, y: 4.6806}
+  m_SizeDelta: {x: 628.7081, y: 74.6389}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1709115462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709115460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Dialog
+--- !u!222 &1709115463
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709115460}
+  m_CullTransparentMesh: 1
 --- !u!1 &1935248541
 GameObject:
   m_ObjectHideFlags: 0
