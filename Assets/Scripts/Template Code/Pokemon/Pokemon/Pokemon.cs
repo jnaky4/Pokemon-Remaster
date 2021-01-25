@@ -170,6 +170,7 @@ namespace Pokemon
         public string type2;
         public ArrayList currentMoves;
         public int currentEXP;
+        
 
         /*
         Open the CSV BASE_STATS and get the values for hp, attack, defense, sp_atk, sp_def, speed
@@ -256,6 +257,7 @@ namespace Pokemon
             Pokemon Charizard = new Pokemon(6, 50);
             Pokemon Venusaur = new Pokemon(3, 50);
             Pokemon Blastoise = new Pokemon(9, 50);
+            Pokemon Caterpie = new Pokemon(10, 50);
 
             PokemonTeam.Add(Charizard);
             PokemonTeam.Add(Blastoise);
