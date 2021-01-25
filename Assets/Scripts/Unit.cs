@@ -27,6 +27,7 @@ public class Unit : MonoBehaviour
     {
         this.damage = (((((2 * level) / 5) + 2) * 1 * (this.attack/enemyDefense))/50) + 2;
         this.damage = this.damage * (badge * critical * stab * type * burn);
+
     }
 
     public bool TakeDamage(int dmg)

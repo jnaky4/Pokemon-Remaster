@@ -42,6 +42,8 @@ namespace Pokemon
             this.name = dictionary_pokemon[dexNum];
             get_base_stats();
             calculate_stats();
+            this.type1 = new Type("Fire");
+            this.type2 = new Type("Flying");
         }
         public static Dictionary<int, string> dictionary_pokemon = new Dictionary<int, string> {
             {1, "Bulbasaur" },{2 ,"Ivysaur"},{3 ,"Venusaur"},
@@ -166,8 +168,8 @@ namespace Pokemon
         public int current_sp_defense;
         public int current_speed;
 
-        public string type1;
-        public string type2;
+        public Type type1;
+        public Type type2;
         public ArrayList currentMoves;
         public int currentEXP;
         
@@ -214,14 +216,14 @@ namespace Pokemon
             this.base_sp_defense = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][6]);
             this.base_speed = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][7]);
 
-            Console.WriteLine("name: " + this.name);
+/*            Console.WriteLine("name: " + this.name);
             Console.WriteLine("level: " + this.level);
             Console.WriteLine("base_hp: " + this.base_hp);
             Console.WriteLine("base_attack: " + this.base_attack);
             Console.WriteLine("base_defense: " + this.base_defense);
             Console.WriteLine("base_sp_attack: " + this.base_sp_attack);
             Console.WriteLine("base_sp_defense: " + this.base_sp_defense);
-            Console.WriteLine("base_speed: " + this.base_speed);
+            Console.WriteLine("base_speed: " + this.base_speed);*/
         }
 
         public void calculate_stats()
@@ -238,12 +240,12 @@ namespace Pokemon
             this.current_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
             this.current_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
 
-            Console.WriteLine("HP: " + this.current_hp);
+/*            Console.WriteLine("HP: " + this.current_hp);
             Console.WriteLine("ATK: " + this.current_attack);
             Console.WriteLine("DEF: " + this.current_defense);
             Console.WriteLine("SAT: " + this.current_sp_attack);
             Console.WriteLine("SDF: " + this.current_sp_defense);
-            Console.WriteLine("SPD: " + this.current_speed);
+            Console.WriteLine("SPD: " + this.current_speed);*/
 
 
         }
@@ -255,7 +257,8 @@ namespace Pokemon
 
             ArrayList PokemonTeam = new ArrayList();
             Pokemon Charizard = new Pokemon(6, 50);
-            Pokemon Venusaur = new Pokemon(3, 50);
+
+/*          Pokemon Venusaur = new Pokemon(3, 50);
             Pokemon Blastoise = new Pokemon(9, 50);
             Pokemon Caterpie = new Pokemon(10, 50);
 
@@ -263,6 +266,11 @@ namespace Pokemon
             PokemonTeam.Add(Blastoise);
             PokemonTeam.Add(Venusaur);
 
+            Type fire = new Type("fire");*/
+
+            Console.WriteLine(Charizard.name + " attacks fire for X" + Charizard.type1.attack_water + " fire damage");
+            Console.WriteLine("Charizards type1 is: " + Charizard.type1.type);
+            Console.WriteLine("Charizards type2 is: " + Charizard.type2.type);
         }
     }
 }
