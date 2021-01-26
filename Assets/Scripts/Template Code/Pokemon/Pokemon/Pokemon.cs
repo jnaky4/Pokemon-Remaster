@@ -28,7 +28,22 @@ Pokemon Object
         currentMoves: {Fire Blast, Earthquake, Sword Dance, Hyper Beam}
         EXP100: 1600000  -> this is the amount of EXP to get to lvl 100
         currentEXP: 650245
-        
+                
+        private int hp = 78;
+        private int attack = 84;
+        private int defense = 78;
+        private int sp_attack = 109;
+        private int sp_defense = 85;
+        private int speed = 100;
+        private static ArrayList currentMoves = new ArrayList { "Slash", "Flamethrower", "Wing Attack", "Earthquake" };
+        Image pokemonImage { get; set; }
+        private type type1 { get; set; }
+        private type type2 { get; set; }
+        Dictionary<string, int> learnset { get; set; }
+        ArrayList learnableTms { get; set; }
+        ArrayList learnableHMs { get; set; }
+        private int EXP100 { get; set; }
+                 
 
 */
 namespace Pokemon
@@ -39,12 +54,26 @@ namespace Pokemon
         {
             this.level = level;
             this.dexnum = dexNum;
+
+            //grab name from dictionary
             this.name = dictionary_pokemon[dexNum];
-            get_base_stats();
+            //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats();
-            this.type1 = new Type("Fire");
-            this.type2 = new Type("Flying");
+            //creates Pokedex Object for this pokemon
+            this.pokedex_entry = new Pokedex(dexNum);
+            //gets type for this pokemon from pokedex and creates type object
+            /*            this.type1 = new Type(this.pokedex_entry.get_type1());
+                        this.type2 = new Type(this.pokedex_entry.get_type2());*/
+            this.type1 = Type.get_type(this.pokedex_entry.get_type1());
+            this.type2 = Type.get_type(this.pokedex_entry.get_type2());
+            //TODO change later to load in from other source
+            //sets moves in currentmoves for this Pokemon from Move dictionary
+            this.currentMoves[0] = Moves.get_move("Flamethrower");
+            this.currentMoves[1] = Moves.get_move("Earthquake");
+            this.currentMoves[2] = Moves.get_move("Wing Attack");
+            this.currentMoves[3] = Moves.get_move("Hyper Beam");
         }
+        
         public static Dictionary<int, string> dictionary_pokemon = new Dictionary<int, string> {
             {1, "Bulbasaur" },{2 ,"Ivysaur"},{3 ,"Venusaur"},
             {4 ,"Charmander"},{5 ,"Charmeleon"},{6 ,"Charizard"},
@@ -126,31 +155,16 @@ namespace Pokemon
             {150 ,"Mewtwo"},
             {151 ,"Mew"}
     };
-
-        //public static ArrayList base_stats = new ArrayList();
-        //public static string[,] base_stats2 = new string[151, 8];
+        //gets loaded in once, have to call load_base_stats before creating new pokemon
         public static string[][] base_stats = new string[151][];
 
-        private string name;
 
-        private int dexnum;
+        public string name;
+        public int dexnum;
         public int level;
-        /*
-            private int hp = 78;
-            private int attack = 84;
-            private int defense = 78;
-            private int sp_attack = 109;
-            private int sp_defense = 85;
-            private int speed = 100;
-            private static ArrayList currentMoves = new ArrayList { "Slash", "Flamethrower", "Wing Attack", "Earthquake" };
-            Image pokemonImage { get; set; }
-            private type type1 { get; set; }
-            private type type2 { get; set; }
-            Dictionary<string, int> learnset { get; set; }
-            ArrayList learnableTms { get; set; }
-            ArrayList learnableHMs { get; set; }
-            private int EXP100 { get; set; }
-                 */
+        public Pokedex pokedex_entry;
+        public Type type1;
+        public Type type2;
 
         public int iv = 30;
 
@@ -168,16 +182,15 @@ namespace Pokemon
         public int current_sp_defense;
         public int current_speed;
 
-        public Type type1;
-        public Type type2;
-        public ArrayList currentMoves;
+
+        public Moves[] currentMoves = new Moves[4];
         public int currentEXP;
         
 
         /*
         Open the CSV BASE_STATS and get the values for hp, attack, defense, sp_atk, sp_def, speed
         */
-        public void get_base_stats()
+        public static void load_base_stats()
         {
             var path = @"E:\Pokemon\Pokemon\BASE_STATS.csv";
 
@@ -203,18 +216,9 @@ namespace Pokemon
 
 
             }
-
-
-
             //Console.WriteLine(String.Join(" ", Pokemon.base_stats3[this.dexnum-1].Cast<string>()));
 
-           
-            this.base_hp = Int32.Parse(Pokemon.base_stats[this.dexnum-1][2]);
-            this.base_attack = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][3]);
-            this.base_defense = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][4]);
-            this.base_sp_attack = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][5]);
-            this.base_sp_defense = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][6]);
-            this.base_speed = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][7]);
+          
 
 /*            Console.WriteLine("name: " + this.name);
             Console.WriteLine("level: " + this.level);
@@ -228,10 +232,15 @@ namespace Pokemon
 
         public void calculate_stats()
         {
+            this.base_hp = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][2]);
+            this.base_attack = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][3]);
+            this.base_defense = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][4]);
+            this.base_sp_attack = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][5]);
+            this.base_sp_defense = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][6]);
+            this.base_speed = Int32.Parse(Pokemon.base_stats[this.dexnum - 1][7]);
 
-            
             //iv is set to 30 
-            //ev set for +20 for each pokemon
+            //ev set for +20 for each stat
             //510 total ev / 4 = 127.5 / 6 = 21.25, each pokemon should have +21.25 to each stat when using all evs
             this.current_hp = (((((this.base_hp + this.iv) * 2) + 20 ) * this.level) / 100) + this.level + 10;
             this.current_attack = (((((this.base_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
@@ -239,6 +248,8 @@ namespace Pokemon
             this.current_sp_attack = (((((this.base_sp_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
             this.current_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
             this.current_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
+
+
 
 /*            Console.WriteLine("HP: " + this.current_hp);
             Console.WriteLine("ATK: " + this.current_attack);
@@ -254,7 +265,16 @@ namespace Pokemon
 
         static void Main(string[] args)
         {
+            //Pokedex pokedex = new Pokedex();
 
+
+            //Loads in required CSV's to create objects, must be done first
+            Pokedex.load_pokemon_into_pokedex();
+            Type.load_type();
+            Pokemon.load_base_stats();
+            Moves.load_moves();
+            
+            
             ArrayList PokemonTeam = new ArrayList();
             Pokemon Charizard = new Pokemon(6, 50);
 
@@ -267,10 +287,16 @@ namespace Pokemon
             PokemonTeam.Add(Venusaur);
 
             Type fire = new Type("fire");*/
+            
+            Console.WriteLine(Charizard.name + " attacks water/dragon type for X" + ((Charizard.type1.attack_water) * (Charizard.type1.attack_dragon)) + " fire damage");
 
-            Console.WriteLine(Charizard.name + " attacks fire for X" + Charizard.type1.attack_water + " fire damage");
             Console.WriteLine("Charizards type1 is: " + Charizard.type1.type);
             Console.WriteLine("Charizards type2 is: " + Charizard.type2.type);
+            Console.WriteLine("Charizards attack1 is: " + Charizard.currentMoves[0].move);
+            Console.WriteLine("Charizards attack1 dmg is: " + Charizard.currentMoves[0].base_power);
+            Console.WriteLine("Charizards attack2 is: " + Charizard.currentMoves[1].move);
+            Console.WriteLine("Charizards attack3 is: " + Charizard.currentMoves[2].move);
+            Console.WriteLine("Charizards attack4 is: " + Charizard.currentMoves[3].move);
         }
     }
 }
