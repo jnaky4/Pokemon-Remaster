@@ -34,9 +34,9 @@ namespace Pokemon
         public static string[][] move_list = new string[151][];
         public static Dictionary<string, Moves> move_dictionary = new Dictionary<string, Moves>();
 
-        public static void load_moves()
+        public static void load_moves(string path)
         {
-            var path = @"E:\Pokemon\Pokemon\MOVES.csv";
+            //var path = @"C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\MOVES.csv";
 
 
             using (TextFieldParser csvParser = new TextFieldParser(path, System.Text.Encoding.Default))
@@ -64,6 +64,7 @@ namespace Pokemon
         public static Moves get_move(string move)
         {
             return Moves.move_dictionary[move];
+
         }
     }
 }

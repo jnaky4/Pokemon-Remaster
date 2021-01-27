@@ -102,10 +102,10 @@ namespace Pokemon
 
 
         }
-        public static void load_type()
+        public static void load_type(string path)
         {
             
-            var path = @"E:\Pokemon\Pokemon\TYPE.csv";
+            //var path = @"C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\TYPE.csv";
 
 
             using (TextFieldParser csvParser = new TextFieldParser(path, System.Text.Encoding.Default))

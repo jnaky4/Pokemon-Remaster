@@ -24,3 +24,16 @@ E:\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.csproj.CoreCompileInputs.cach
 E:\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.dll
 E:\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.pdb
 E:\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.genruntimeconfig.cache
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\bin\Debug\netcoreapp3.1\Pokemon.exe
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\bin\Debug\netcoreapp3.1\Pokemon.deps.json
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\bin\Debug\netcoreapp3.1\Pokemon.runtimeconfig.json
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\bin\Debug\netcoreapp3.1\Pokemon.runtimeconfig.dev.json
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\bin\Debug\netcoreapp3.1\Pokemon.dll
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\bin\Debug\netcoreapp3.1\Pokemon.pdb
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.AssemblyInfoInputs.cache
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.AssemblyInfo.cs
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.csproj.CoreCompileInputs.cache
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.dll
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.pdb
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.genruntimeconfig.cache
+C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\obj\Debug\netcoreapp3.1\Pokemon.csprojAssemblyReference.cache

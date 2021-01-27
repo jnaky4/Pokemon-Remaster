@@ -30,9 +30,9 @@ namespace Pokemon
             get_pokemon_info();
         }
 
-        public static void load_pokemon_into_pokedex()
+        public static void load_pokemon_into_pokedex(string path)
         {
-            var path = @"E:\Pokemon\Pokemon\POKEMON.csv";
+            //var path = @"C:\Users\Hyperlight Drifter\Desktop\Pokemon\Pokemon\POKEMON.csv";
 
 
             using (TextFieldParser csvParser = new TextFieldParser(path, System.Text.Encoding.Default))
@@ -40,6 +40,7 @@ namespace Pokemon
                 csvParser.CommentTokens = new string[] { "#" };
                 csvParser.SetDelimiters(new string[] { "," });
                 csvParser.HasFieldsEnclosedInQuotes = true;
+
                 //skip headers
                 //csvParser.ReadLine();
 
@@ -81,6 +82,9 @@ namespace Pokemon
         {
             //Console.WriteLine("TYPE2: " + this.type2);
             return this.type2;
+
+
+
         }
     }
 }

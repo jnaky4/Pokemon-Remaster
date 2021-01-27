@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Pokemon\\Pokemon\\Pokemon.csproj": {}
+    "C:\\Users\\Hyperlight Drifter\\Desktop\\Pokemon\\Pokemon\\Pokemon.csproj": {}
   },
   "projects": {
-    "E:\\Pokemon\\Pokemon\\Pokemon.csproj": {
+    "C:\\Users\\Hyperlight Drifter\\Desktop\\Pokemon\\Pokemon\\Pokemon.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Pokemon\\Pokemon\\Pokemon.csproj",
+        "projectUniqueName": "C:\\Users\\Hyperlight Drifter\\Desktop\\Pokemon\\Pokemon\\Pokemon.csproj",
         "projectName": "Pokemon",
-        "projectPath": "E:\\Pokemon\\Pokemon\\Pokemon.csproj",
+        "projectPath": "C:\\Users\\Hyperlight Drifter\\Desktop\\Pokemon\\Pokemon\\Pokemon.csproj",
         "packagesPath": "C:\\Users\\Hyperlight Drifter\\.nuget\\packages\\",
-        "outputPath": "E:\\Pokemon\\Pokemon\\obj\\",
+        "outputPath": "C:\\Users\\Hyperlight Drifter\\Desktop\\Pokemon\\Pokemon\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hyperlight Drifter\\AppData\\Roaming\\NuGet\\NuGet.Config",
