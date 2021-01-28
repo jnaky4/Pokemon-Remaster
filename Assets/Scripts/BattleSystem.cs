@@ -58,6 +58,7 @@ public class BattleSystem : MonoBehaviour
         pokeMenuUI.SetActive(false);
         attackMenuUI.SetActive(false);
         SetDownButtons();
+
         //enemyUnit = 
         StartCoroutine(SetupBattle());
     }
@@ -94,7 +95,7 @@ public class BattleSystem : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab);
         enemyUnit = enemy.GetComponent<Unit>();
         enemyUnit.attack = 82;
-        enemyUnit.defense = 83;
+        enemyUnit.defense = 50;
         enemyUnit.speed = 80;
 
         dialogueText.text = "A wild " + enemyUnit.name + " appears!";
@@ -135,12 +136,14 @@ public class BattleSystem : MonoBehaviour
     }
     //This function sets up the battle state for us including the UI
 
-    IEnumerator PlayerAttack()
+    IEnumerator PlayerAttack(Pkm_Moves attack)
     {
-        playerUnit.SetDamage(enemyUnit.defense);
+        playerUnit.SetDamage(enemyUnit.defense, attack.damage);
 
         bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
         enemyHUD.SetHP(enemyUnit.currentHP);
+        dialogueText.text = playerUnit.name + " used " + attack.name + "!";
+        yield return new WaitForSeconds(2);
         dialogueText.text = enemyUnit.name + " took " + playerUnit.damage + " amount of damage...";
         yield return new WaitForSeconds(2);
 
@@ -158,7 +161,7 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator EnemyAttack()
     {
-        enemyUnit.SetDamage(playerUnit.defense);
+        enemyUnit.SetDamage(playerUnit.defense, 10);
         dialogueText.text = enemyUnit.name + " attacks!";
         bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
         playerHUD.SetHP(playerUnit.currentHP, playerUnit);
@@ -209,7 +212,8 @@ public class BattleSystem : MonoBehaviour
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYERTURN) return;
-        attackMenuUI.SetActive(true);
+        if (attackMenuUI.activeSelf) attackMenuUI.SetActive(false);
+        else attackMenuUI.SetActive(true);
         //SetDownButtons();
 
         //StartCoroutine(PlayerAttack());
@@ -274,4 +278,28 @@ public class BattleSystem : MonoBehaviour
         SetUpButtons();
     }
 
+    public void Attack1()
+    {
+        attackMenuUI.SetActive(false);
+        SetDownButtons();
+        StartCoroutine(PlayerAttack(playerUnit.move1));
+    }
+    public void Attack2()
+    {
+        attackMenuUI.SetActive(false);
+        SetDownButtons();
+        StartCoroutine(PlayerAttack(playerUnit.move2));
+    }
+    public void Attack3()
+    {
+        attackMenuUI.SetActive(false);
+        SetDownButtons();
+        StartCoroutine(PlayerAttack(playerUnit.move3));
+    }
+    public void Attack4()
+    {
+        attackMenuUI.SetActive(false);
+        SetDownButtons();
+        StartCoroutine(PlayerAttack(playerUnit.move4));
+    }
 }

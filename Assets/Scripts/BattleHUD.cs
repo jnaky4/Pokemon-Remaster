@@ -23,6 +23,8 @@ public class BattleHUD : MonoBehaviour
         hpSlider.value = unit.currentHP;
         currentHP.text = unit.currentHP + "/" + unit.maxHP;
         if (isPlayer) SetMoves(unit);
+        hpSlider.interactable = false;
+        //hpSlider.colors.disabledColor = Color.black;
     }
 
     public void SetHP(int hp)
