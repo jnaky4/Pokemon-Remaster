@@ -39,6 +39,13 @@ public class BattleSystem : MonoBehaviour
     public static bool poekmonMenuOpen = false;
     public GameObject pokeMenuUI;
 
+    public static bool attackMenuOpen = false;
+    public GameObject attackMenuUI;
+    public Button attack1Button;
+    public Button attack2Button;
+    public Button attack3Button;
+    public Button attack4Button;
+
     public string path = "..\\..\\CSV";
     public string moves = "\\MOVES.csv";
 
@@ -49,6 +56,7 @@ public class BattleSystem : MonoBehaviour
     {
         state = BattleState.START;
         pokeMenuUI.SetActive(false);
+        attackMenuUI.SetActive(false);
         SetDownButtons();
         //enemyUnit = 
         StartCoroutine(SetupBattle());
@@ -64,20 +72,23 @@ public class BattleSystem : MonoBehaviour
         playerUnit = player.GetComponent<Unit>();
         playerUnit.attack = 84;
         playerUnit.defense = 78;
-        playerUnit.speed = 80;
+        playerUnit.speed = 82;
         Pkm_Moves pkm = new Pkm_Moves();
         pkm.name = "Fireball";
         pkm.damage = 60;
         playerUnit.move1 = pkm;
-        pkm.name = "Fly";
-        pkm.damage = 30;
-        playerUnit.move2 = pkm;
-        pkm.name = "Rage";
-        pkm.damage = 10;
-        playerUnit.move3 = pkm;
-        pkm.name = "Splash";
-        pkm.damage = 0;
-        playerUnit.move4 = pkm;
+        Pkm_Moves pkm2 = new Pkm_Moves();
+        pkm2.name = "Fly";
+        pkm2.damage = 30;
+        playerUnit.move2 = pkm2;
+        Pkm_Moves pkm3 = new Pkm_Moves();
+        pkm3.name = "Rage";
+        pkm3.damage = 10;
+        playerUnit.move3 = pkm3;
+        Pkm_Moves pkm4 = new Pkm_Moves();
+        pkm4.name = "Splash";
+        pkm4.damage = 0;
+        playerUnit.move4 = pkm4;
         //playerUnit.moves.Add
 
         GameObject enemy = Instantiate(enemyPrefab);
@@ -88,8 +99,8 @@ public class BattleSystem : MonoBehaviour
 
         dialogueText.text = "A wild " + enemyUnit.name + " appears!";
 
-        playerHUD.SetHUD(playerUnit);
-        enemyHUD.SetHUD(enemyUnit);
+        playerHUD.SetHUD(playerUnit, true);
+        enemyHUD.SetHUD(enemyUnit, false);
 
 
         yield return new WaitForSeconds(2);
@@ -198,13 +209,16 @@ public class BattleSystem : MonoBehaviour
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYERTURN) return;
-        SetDownButtons();
-        StartCoroutine(PlayerAttack());
+        attackMenuUI.SetActive(true);
+        //SetDownButtons();
+
+        //StartCoroutine(PlayerAttack());
     }
 
     public void OnRunAwayButton()
     {
         if (state != BattleState.PLAYERTURN) return;
+        attackMenuUI.SetActive(false);
         SetDownButtons();
         RunAway();
     }
@@ -212,6 +226,7 @@ public class BattleSystem : MonoBehaviour
     public void OnPokemonButton()
     {
         if (state != BattleState.PLAYERTURN) return;
+        attackMenuUI.SetActive(false);
         OpenPokemonMenu();
         SetDownButtons();
     }
@@ -219,6 +234,7 @@ public class BattleSystem : MonoBehaviour
     public void OnBallsButton()
     {
         if (state != BattleState.PLAYERTURN) return;
+        attackMenuUI.SetActive(false);
         SetDownButtons();
     }
 
