@@ -6,7 +6,10 @@ public class Unit : MonoBehaviour
 {
     public string name;
     public int level;
-    public ArrayList moves;
+    public Pkm_Moves move1;
+    public Pkm_Moves move2;
+    public Pkm_Moves move3;
+    public Pkm_Moves move4;
 
     public int attack;
     public int defense;
@@ -38,4 +41,6 @@ public class Unit : MonoBehaviour
         else return false;
     }
 }
+
+
 

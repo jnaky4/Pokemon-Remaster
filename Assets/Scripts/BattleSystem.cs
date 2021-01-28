@@ -35,12 +35,20 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
     //The current state of the battle
+
+    public static bool poekmonMenuOpen = false;
+    public GameObject pokeMenuUI;
+
+    public string path = "..\\..\\CSV";
+    public string moves = "\\MOVES.csv";
+
     /**********************************************************************************************************************************************
      * FUNCTIONS
      **********************************************************************************************************************************************/
     void Start()
     {
         state = BattleState.START;
+        pokeMenuUI.SetActive(false);
         SetDownButtons();
         //enemyUnit = 
         StartCoroutine(SetupBattle());
@@ -49,12 +57,27 @@ public class BattleSystem : MonoBehaviour
 
     IEnumerator SetupBattle()
     {
+        //GameObject pokeMenu = Instantiate(pokemonMenuUI);
+
+
         GameObject player = Instantiate(playerPrefab);
         playerUnit = player.GetComponent<Unit>();
         playerUnit.attack = 84;
         playerUnit.defense = 78;
         playerUnit.speed = 80;
-        playerUnit.moves = new ArrayList();
+        Pkm_Moves pkm = new Pkm_Moves();
+        pkm.name = "Fireball";
+        pkm.damage = 60;
+        playerUnit.move1 = pkm;
+        pkm.name = "Fly";
+        pkm.damage = 30;
+        playerUnit.move2 = pkm;
+        pkm.name = "Rage";
+        pkm.damage = 10;
+        playerUnit.move3 = pkm;
+        pkm.name = "Splash";
+        pkm.damage = 0;
+        playerUnit.move4 = pkm;
         //playerUnit.moves.Add
 
         GameObject enemy = Instantiate(enemyPrefab);
@@ -189,6 +212,7 @@ public class BattleSystem : MonoBehaviour
     public void OnPokemonButton()
     {
         if (state != BattleState.PLAYERTURN) return;
+        OpenPokemonMenu();
         SetDownButtons();
     }
 
@@ -218,6 +242,20 @@ public class BattleSystem : MonoBehaviour
         runAwayButton.interactable = false;
         pokemonButton.interactable = false;
         ballsButton.interactable = false;
+    }
+
+    public void OpenPokemonMenu()
+    {
+        pokeMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        poekmonMenuOpen = true;
+    }
+    public void ClosePokemonMenu()
+    {
+        pokeMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        poekmonMenuOpen = false;
+        SetUpButtons();
     }
 
 }
