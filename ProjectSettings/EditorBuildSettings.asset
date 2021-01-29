@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BattleScene.unity
     guid: 874f3e3807c0ffa42a75d976a9361ee9
+  - enabled: 1
+    path: Assets/Scenes/Pallet Town.unity
+    guid: 16e44797b9d9c13408baa5ecd29e5ffb
+  - enabled: 1
+    path: Assets/Scenes/OaksLab.unity
+    guid: 58112b75735f54137a2936425b944c49
   m_configObjects: {}
