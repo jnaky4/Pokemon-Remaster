@@ -14,6 +14,8 @@ public class BattleSystem : MonoBehaviour
      **********************************************************************************************************************************************/
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
+    public PlayerBattle player;
+    
     //IDK what these are but they need to stay
 
     Unit playerUnit;
@@ -46,6 +48,17 @@ public class BattleSystem : MonoBehaviour
     public Button attack3Button;
     public Button attack4Button;
 
+    public static bool ballsMenuOpen = false;
+    public GameObject ballsMenuUI;
+    public Button balls1Button;
+    public Button balls2Button;
+    public Button balls3Button;
+    public Button balls4Button;
+    public GameObject b1GO;
+    public GameObject b2GO;
+    public GameObject b3GO;
+    public GameObject b4GO;
+
     public string path = "..\\..\\CSV";
     public string moves = "\\MOVES.csv";
 
@@ -57,6 +70,7 @@ public class BattleSystem : MonoBehaviour
         state = BattleState.START;
         pokeMenuUI.SetActive(false);
         attackMenuUI.SetActive(false);
+        ballsMenuUI.SetActive(false);
         SetDownButtons();
 
         //enemyUnit = 
@@ -68,9 +82,8 @@ public class BattleSystem : MonoBehaviour
     {
         //GameObject pokeMenu = Instantiate(pokemonMenuUI);
 
-
-        GameObject player = Instantiate(playerPrefab);
-        playerUnit = player.GetComponent<Unit>();
+        GameObject playerGO = Instantiate(playerPrefab);
+        playerUnit = playerGO.GetComponent<Unit>();
         playerUnit.attack = 84;
         playerUnit.defense = 78;
         playerUnit.speed = 82;
@@ -87,21 +100,40 @@ public class BattleSystem : MonoBehaviour
         pkm3.damage = 10;
         playerUnit.move3 = pkm3;
         Pkm_Moves pkm4 = new Pkm_Moves();
-        pkm4.name = "Splash";
+        pkm4.name = "Water Gun";
         pkm4.damage = 0;
         playerUnit.move4 = pkm4;
         //playerUnit.moves.Add
 
-        GameObject enemy = Instantiate(enemyPrefab);
-        enemyUnit = enemy.GetComponent<Unit>();
+        PlayerBattle playerTemp = new PlayerBattle();
+        
+        playerTemp.name = "Red";
+        playerTemp.pokeBalls = true;
+        playerTemp.numPokeBalls = 11;
+        playerTemp.greatBalls = false;
+        playerTemp.numGreatBalls = 0;
+        playerTemp.ultraBalls = false;
+        playerTemp.numUltraBalls = 0;
+        playerTemp.masterBalls = false;
+        playerTemp.numMasterBalls = 0;
+
+        player = playerTemp;
+
+        if (!player.pokeBalls) b1GO.SetActive(false);
+        if (!player.greatBalls) b2GO.SetActive(false);
+        if (!player.ultraBalls) b3GO.SetActive(false);
+        if (!player.masterBalls) b4GO.SetActive(false);
+
+        GameObject enemyGO = Instantiate(enemyPrefab);
+        enemyUnit = enemyGO.GetComponent<Unit>();
         enemyUnit.attack = 82;
         enemyUnit.defense = 50;
         enemyUnit.speed = 80;
 
         dialogueText.text = "A wild " + enemyUnit.name + " appears!";
 
-        playerHUD.SetHUD(playerUnit, true);
-        enemyHUD.SetHUD(enemyUnit, false);
+        playerHUD.SetHUD(playerUnit, true, player);
+        enemyHUD.SetHUD(enemyUnit, false, player);
 
 
         yield return new WaitForSeconds(2);
@@ -146,6 +178,9 @@ public class BattleSystem : MonoBehaviour
         yield return new WaitForSeconds(2);
         dialogueText.text = enemyUnit.name + " took " + playerUnit.damage + " amount of damage...";
         yield return new WaitForSeconds(2);
+        ClosePokemonMenu();
+        CloseMovesMenu();
+        CloseBallsMenu();
 
         if (isDead)
         {
@@ -187,11 +222,11 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.WON)
         {
-            dialogueText.text = "You won!";
+            dialogueText.text = player.name + " won!";
         }
         else if (state == BattleState.LOST)
         {
-            dialogueText.text = "You lost! You blacked out!";
+            dialogueText.text = player.name + " lost! You blacked out!";
         }
         else if (state == BattleState.RUNAWAY)
         {
@@ -206,14 +241,20 @@ public class BattleSystem : MonoBehaviour
     }
     void EnemyTurn()
     {
+        SetDownButtons();
         StartCoroutine(EnemyAttack());
     }
 
     public void OnAttackButton()
     {
         if (state != BattleState.PLAYERTURN) return;
-        if (attackMenuUI.activeSelf) attackMenuUI.SetActive(false);
-        else attackMenuUI.SetActive(true);
+        if (attackMenuOpen) CloseMovesMenu();
+        else
+        {
+            ClosePokemonMenu();
+            CloseBallsMenu();
+            OpenMovesMenu();
+        }
         //SetDownButtons();
 
         //StartCoroutine(PlayerAttack());
@@ -224,6 +265,9 @@ public class BattleSystem : MonoBehaviour
         if (state != BattleState.PLAYERTURN) return;
         attackMenuUI.SetActive(false);
         SetDownButtons();
+        ClosePokemonMenu();
+        CloseMovesMenu();
+        CloseBallsMenu();
         RunAway();
     }
 
@@ -239,12 +283,21 @@ public class BattleSystem : MonoBehaviour
     {
         if (state != BattleState.PLAYERTURN) return;
         attackMenuUI.SetActive(false);
-        SetDownButtons();
+        if (ballsMenuOpen) CloseBallsMenu();
+        else
+        {
+            ClosePokemonMenu();
+            CloseMovesMenu();
+            OpenBallsMenu();
+        }
     }
 
     public void RunAway()
     {
         state = BattleState.RUNAWAY;
+        CloseBallsMenu();
+        CloseMovesMenu();
+        ClosePokemonMenu();
         EndBattle();
     }
 
@@ -276,6 +329,26 @@ public class BattleSystem : MonoBehaviour
         Time.timeScale = 1f;
         poekmonMenuOpen = false;
         SetUpButtons();
+    }
+    public void OpenMovesMenu()
+    {
+        attackMenuUI.SetActive(true);
+        attackMenuOpen = true;
+    }
+    public void CloseMovesMenu()
+    {
+        attackMenuUI.SetActive(false);
+        attackMenuOpen = false;
+    }
+    public void OpenBallsMenu()
+    {
+        ballsMenuUI.SetActive(true);
+        ballsMenuOpen = true;
+    }
+    public void CloseBallsMenu()
+    {
+        ballsMenuUI.SetActive(false);
+        ballsMenuOpen = false;
     }
 
     public void Attack1()

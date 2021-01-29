@@ -15,7 +15,12 @@ public class BattleHUD : MonoBehaviour
     public Text moves3;
     public Text moves4;
 
-    public void SetHUD(Unit unit, bool isPlayer)
+    public Text pokeBalls;
+    public Text greatBalls;
+    public Text ultraBalls;
+    public Text masterBalls;
+
+    public void SetHUD(Unit unit, bool isPlayer, PlayerBattle player)
     {
         name.text = unit.name;
         level.text = "Level " + unit.level;
@@ -23,6 +28,7 @@ public class BattleHUD : MonoBehaviour
         hpSlider.value = unit.currentHP;
         currentHP.text = unit.currentHP + "/" + unit.maxHP;
         if (isPlayer) SetMoves(unit);
+        if (isPlayer) SetBalls(player);
         hpSlider.interactable = false;
         //hpSlider.colors.disabledColor = Color.black;
     }
@@ -44,4 +50,13 @@ public class BattleHUD : MonoBehaviour
         moves3.text = unit.move3.name;
         moves4.text = unit.move4.name;
     }
+
+    public void SetBalls(PlayerBattle player)
+    {
+        if (player.pokeBalls) pokeBalls.text = "Poke balls (" + player.numPokeBalls + ")";
+        if (player.greatBalls) greatBalls.text = "Great balls (" + player.numGreatBalls + ")";
+        if (player.ultraBalls) ultraBalls.text = "Ultra balls (" + player.numUltraBalls + ")";
+        if (player.masterBalls) masterBalls.text = "Master balls (" + player.numMasterBalls + ")";
+    }
+
 }
