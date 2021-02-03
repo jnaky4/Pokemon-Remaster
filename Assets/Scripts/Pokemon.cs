@@ -53,16 +53,25 @@ namespace Pokemon
     class Pokemon
     {
         //create pokemon with specific moves, chains the 2 arg constructor
-        public Pokemon(int dexNum, int level, string move1, string move2, string move3, string move4): this(dexNum, level)
+        public Pokemon(int dexNum, int level, string move1, string move2, string move3, string move4): this(dexNum, level, move1, move2, move3)
         {
-            
-            this.currentMoves[0] = Moves.get_move(move1);
-            this.currentMoves[1] = Moves.get_move(move2);
-            this.currentMoves[2] = Moves.get_move(move3);
             this.currentMoves[3] = Moves.get_move(move4);
         }
-        //create pokemon with no moves
-        public Pokemon(int dexNum, int level)
+
+        public Pokemon(int dexNum, int level, string move1, string move2, string move3) : this(dexNum, level, move1, move2)
+        {
+            this.currentMoves[2] = Moves.get_move(move3);
+        }
+        public Pokemon(int dexNum, int level, string move1, string move2) : this(dexNum, level, move1)
+        {
+            this.currentMoves[1] = Moves.get_move(move2);
+        }
+        public Pokemon(int dexNum, int level, string move1) : this(dexNum, level)
+        {
+            this.currentMoves[0] = Moves.get_move(move1);
+        }
+            //create pokemon with no moves
+            public Pokemon(int dexNum, int level)
         {
             this.level = level;
             this.dexnum = dexNum;
