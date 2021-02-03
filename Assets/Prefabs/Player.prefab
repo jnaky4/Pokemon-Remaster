@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7389597823947240992}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -107,6 +107,7 @@ MonoBehaviour:
   grassLayer:
     serializedVersion: 2
     m_Bits: 512
+  startingPosition: {fileID: 11400000, guid: 74664f11c5b064f85be2716b35a57b5d, type: 2}
   animator: {fileID: 7389597823947240995}
 --- !u!95 &7389597823947240995
 Animator:
