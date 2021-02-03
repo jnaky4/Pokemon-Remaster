@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON }
 
 public class BattleSystem : MonoBehaviour
 {
@@ -15,7 +15,7 @@ public class BattleSystem : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject enemyPrefab;
     public PlayerBattle player;
-    
+
     //IDK what these are but they need to stay
 
     Unit playerUnit;
@@ -106,16 +106,16 @@ public class BattleSystem : MonoBehaviour
         //playerUnit.moves.Add
 
         PlayerBattle playerTemp = new PlayerBattle();
-        
+
         playerTemp.name = "Red";
         playerTemp.pokeBalls = true;
         playerTemp.numPokeBalls = 11;
-        playerTemp.greatBalls = false;
+        playerTemp.greatBalls = true;
         playerTemp.numGreatBalls = 0;
-        playerTemp.ultraBalls = false;
+        playerTemp.ultraBalls = true;
         playerTemp.numUltraBalls = 0;
-        playerTemp.masterBalls = false;
-        playerTemp.numMasterBalls = 0;
+        playerTemp.masterBalls = true;
+        playerTemp.numMasterBalls = 10;
 
         player = playerTemp;
 
@@ -129,6 +129,7 @@ public class BattleSystem : MonoBehaviour
         enemyUnit.attack = 82;
         enemyUnit.defense = 50;
         enemyUnit.speed = 80;
+        enemyUnit.catchRate = 255;
 
         dialogueText.text = "A wild " + enemyUnit.name + " appears!";
 
@@ -185,13 +186,111 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             state = BattleState.WON;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else
         {
             state = BattleState.ENEMYTURN;
             EnemyTurn();
         }
+    }
+
+    IEnumerator CatchPokemon(int typeOfPokeball)
+    {
+        if (!enemyUnit.canBeCaught)
+        {
+            dialogueText.text = "You can't catch other trainer's Pokemon!";
+            yield return new WaitForSeconds(2);
+            PlayerTurn();
+            yield break;
+        }
+        System.Random rnd = new System.Random();
+        
+        int randomNumber = 0, catchRate = 1, randomNumber2, f, numShakes = 0;
+        if (typeOfPokeball == 1)
+        {
+            if (player.numPokeBalls == 0)
+            {
+                dialogueText.text = "You don't have enough Poke Balls!";
+                yield return new WaitForSeconds(2);
+                PlayerTurn();
+                yield break;
+            }
+            player.numPokeBalls--;
+            randomNumber = rnd.Next(256);
+            catchRate = 6;
+            numShakes = 255;
+        }
+        if (typeOfPokeball == 2)
+        {
+            if (player.numGreatBalls == 0)
+            {
+                dialogueText.text = "You don't have enough Great Balls!";
+                yield return new WaitForSeconds(2);
+                PlayerTurn();
+                yield break;
+            }
+            player.numGreatBalls--;
+            randomNumber = rnd.Next(201);
+            catchRate = 8;
+            numShakes = 200;
+        }
+        if (typeOfPokeball == 3)
+        {
+            if (player.numUltraBalls == 0)
+            {
+                dialogueText.text = "You don't have enough Ultra Balls!";
+                yield return new WaitForSeconds(2);
+                PlayerTurn();
+                yield break;
+            }
+            player.numUltraBalls--;
+            randomNumber = rnd.Next(151);
+            catchRate = 12;
+            numShakes = 150;
+        }
+        if (typeOfPokeball == 4)
+        {
+            if (player.numMasterBalls == 0)
+            {
+                dialogueText.text = "You don't have enough Master Balls!";
+                yield return new WaitForSeconds(2);
+                PlayerTurn();
+                yield break;
+            }
+            player.numMasterBalls--;
+            state = BattleState.CAUGHTPOKEMON;
+            StartCoroutine(EndBattle());
+            yield break;
+        }
+
+        //if (/*pokemon is asleep or frozen and n is < 25 */) { }
+        //if (/*pokemon is paralyzed burned poisoned and n is < 12 */) { }
+        if (randomNumber < enemyUnit.catchRate)
+        {
+            dialogueText.text = enemyUnit.name + " broke free!";
+            yield return new WaitForSeconds(2);
+            EnemyTurn();
+            yield break;
+        }
+        randomNumber2 = rnd.Next(256);
+        f = (enemyUnit.maxHP * 255 * 4);
+        f = f / (enemyUnit.currentHP * catchRate);
+        if (f >= randomNumber2)
+        {
+            state = BattleState.CAUGHTPOKEMON;
+            StartCoroutine(EndBattle());
+            yield break;
+        }
+        else
+        {
+            int d = (enemyUnit.catchRate * 100) / numShakes;
+            dialogueText.text = enemyUnit.name + " broke free!";
+            yield return new WaitForSeconds(2);
+            EnemyTurn();
+            yield break;
+        }
+
     }
 
     IEnumerator EnemyAttack()
@@ -209,7 +308,7 @@ public class BattleSystem : MonoBehaviour
         if (isDead)
         {
             state = BattleState.LOST;
-            EndBattle();
+            StartCoroutine(EndBattle());
         }
         else
         {
@@ -218,7 +317,7 @@ public class BattleSystem : MonoBehaviour
         }
     }
 
-    void EndBattle()
+    IEnumerator EndBattle()
     {
         if (state == BattleState.WON)
         {
@@ -232,6 +331,15 @@ public class BattleSystem : MonoBehaviour
         {
             dialogueText.text = "Got away safely...";
         }
+        else if (state == BattleState.CAUGHTPOKEMON)
+        {
+            dialogueText.text = "You caught a " + enemyUnit.name + "!";
+        }
+        else
+        {
+            dialogueText.text = "What the fuck just happened";
+        }
+        yield return new WaitForSeconds(2);
     }
 
     void PlayerTurn()
@@ -298,7 +406,7 @@ public class BattleSystem : MonoBehaviour
         CloseBallsMenu();
         CloseMovesMenu();
         ClosePokemonMenu();
-        EndBattle();
+        StartCoroutine(EndBattle());
     }
 
     public void SetUpButtons()
@@ -353,26 +461,50 @@ public class BattleSystem : MonoBehaviour
 
     public void Attack1()
     {
-        attackMenuUI.SetActive(false);
+        CloseMovesMenu();
         SetDownButtons();
         StartCoroutine(PlayerAttack(playerUnit.move1));
     }
     public void Attack2()
     {
-        attackMenuUI.SetActive(false);
+        CloseMovesMenu();
         SetDownButtons();
         StartCoroutine(PlayerAttack(playerUnit.move2));
     }
     public void Attack3()
     {
-        attackMenuUI.SetActive(false);
+        CloseMovesMenu();
         SetDownButtons();
         StartCoroutine(PlayerAttack(playerUnit.move3));
     }
     public void Attack4()
     {
-        attackMenuUI.SetActive(false);
+        CloseMovesMenu();
         SetDownButtons();
         StartCoroutine(PlayerAttack(playerUnit.move4));
+    }
+    public void PokeBall()
+    {
+        CloseBallsMenu();
+        SetDownButtons();
+        StartCoroutine(CatchPokemon(1));
+    }
+    public void GreatBall()
+    {
+        CloseBallsMenu();
+        SetDownButtons();
+        StartCoroutine(CatchPokemon(2));
+    }
+    public void UltraBall()
+    {
+        CloseBallsMenu();
+        SetDownButtons();
+        StartCoroutine(CatchPokemon(3));
+    }
+    public void MasterBall()
+    {
+        CloseBallsMenu();
+        SetDownButtons();
+        StartCoroutine(CatchPokemon(4));
     }
 }

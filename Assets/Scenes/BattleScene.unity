@@ -977,7 +977,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1137204565}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: GreatBall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1631,7 +1631,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1137204565}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: UltraBall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4329,7 +4329,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1137204565}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: MasterBall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4855,7 +4855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1546859265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6056,7 +6056,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1137204565}
         m_TargetAssemblyTypeName: BattleSystem, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: PokeBall
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7487,6 +7487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: damage
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8789374994166179982, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: catchRate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3470d4591a44ec54baa62f32b6f4be44, type: 3}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Unit : MonoBehaviour
 {
+    public bool canBeCaught = true;
+    public int catchRate = 1;
+
     public string name;
     public int level;
     public Pkm_Moves move1;
