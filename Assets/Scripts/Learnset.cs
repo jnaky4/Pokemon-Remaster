@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pokemon
 {
-    class Learnset
+    public class Learnset
     {
         //public static string[][] all_learnset = new string[1089][];
         public static List<Dictionary<string, object>> all_learnset = new List<Dictionary<string, object>>();

@@ -50,7 +50,7 @@ Pokemon Object
 
 namespace Pokemon
 {
-    class Pokemon
+    public class Pokemon
     {
         //create pokemon with specific moves, chains the 2 arg constructor
         public Pokemon(int dexNum, int level, string move1, string move2, string move3, string move4): this(dexNum, level, move1, move2, move3)
@@ -71,7 +71,7 @@ namespace Pokemon
             this.currentMoves[0] = Moves.get_move(move1);
         }
             //create pokemon with no moves
-            public Pokemon(int dexNum, int level)
+        public Pokemon(int dexNum, int level)
         {
             this.level = level;
             this.dexnum = dexNum;
@@ -97,7 +97,7 @@ namespace Pokemon
             {
                 this.type2 = null;
             }
-
+            get_image_path();
 
         }
 
@@ -185,18 +185,21 @@ namespace Pokemon
         //gets loaded in once, have to call load_base_stats before creating new pokemon
         public static List<Dictionary<string, object>> all_base_stats = new List<Dictionary<string, object>>();
 
+        
 
         public string name;
         public int dexnum;
         public int level;
         public Pokedex pokedex_entry;
-        //TODO need to turn back to type object
-        /*        public string type1;
-                public string type2;*/
 
         public Type type1;
         public Type type2 = null;
         public List<Learnset> learnset = new List<Learnset>();
+
+        string image1;
+        string image2;
+        string shiny_image;
+
         public int iv = 30;
 
         public int base_hp;
@@ -206,6 +209,14 @@ namespace Pokemon
         public int base_sp_defense;
         public int base_speed;
 
+        public int temp_hp;
+        public int temp_attack;
+        public int temp_defense;
+        public int temp_sp_attack;
+        public int temp_sp_defense;
+        public int temp_speed;
+
+        //Current just means max
         public int current_hp;
         public int current_attack;
         public int current_defense;
@@ -216,8 +227,6 @@ namespace Pokemon
 
         public Moves[] currentMoves = new Moves[4];
         public int currentEXP;
-
-
 
         public void calculate_stats()
         {
@@ -240,7 +249,12 @@ namespace Pokemon
             this.current_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
             this.current_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
 
-
+            this.temp_hp = current_hp;
+            this.temp_attack = current_attack;
+            this.temp_defense = current_defense;
+            this.temp_sp_attack = current_sp_attack;
+            this.temp_sp_defense = current_sp_defense;
+            this.temp_speed = current_speed;
         }
 
         public void print_pokemon()
@@ -260,6 +274,16 @@ namespace Pokemon
             Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].move);
 
            
+        }
+        //loads an image of the pokemon when created
+        public void get_image_path()
+        {
+            var path = Directory.GetCurrentDirectory();
+            this.image1 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
+            this.image2 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
+            Debug.Log(image1);
+            Debug.Log(image2);
+
         }
     }
 }
