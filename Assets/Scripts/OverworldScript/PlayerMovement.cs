@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask solidObjectsLayer;
     public LayerMask interactableLayer;
     public LayerMask grassLayer;
+    public VectorValue startingPosition;
 
     //public Rigidbody2D rb;
     public Animator animator;
@@ -20,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        transform.position = startingPosition.initialValue;
     }
 
     // Update is called once per frame
