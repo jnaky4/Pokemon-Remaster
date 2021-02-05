@@ -97,7 +97,7 @@ namespace Pokemon
             {
                 this.type2 = null;
             }
-
+            get_image_path();
 
         }
 
@@ -185,6 +185,7 @@ namespace Pokemon
         //gets loaded in once, have to call load_base_stats before creating new pokemon
         public static List<Dictionary<string, object>> all_base_stats = new List<Dictionary<string, object>>();
 
+        
 
         public string name;
         public int dexnum;
@@ -194,6 +195,11 @@ namespace Pokemon
         public Type type1;
         public Type type2 = null;
         public List<Learnset> learnset = new List<Learnset>();
+
+        string image1;
+        string image2;
+        string shiny_image;
+
         public int iv = 30;
 
         public int base_hp;
@@ -268,6 +274,16 @@ namespace Pokemon
             Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].move);
 
            
+        }
+        //loads an image of the pokemon when created
+        public void get_image_path()
+        {
+            var path = Directory.GetCurrentDirectory();
+            this.image1 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
+            this.image2 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
+            Debug.Log(image1);
+            Debug.Log(image2);
+
         }
     }
 }
