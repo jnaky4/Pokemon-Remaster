@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON }
 
-namespace Pokemon{ 
+namespace Pokemon
+{
     public class BattleSystem : MonoBehaviour
     {
         /**********************************************************************************************************************************************
@@ -77,63 +78,6 @@ namespace Pokemon{
             Type.load_type();
             Moves.load_moves();
 
-<<<<<<< HEAD
-    IEnumerator SetupBattle()
-    {
-        //GameObject pokeMenu = Instantiate(pokemonMenuUI);
-
-        GameObject playerGO = Instantiate(playerPrefab);
-        playerUnit = playerGO.GetComponent<Unit>();
-        playerUnit.attack = 84;
-        playerUnit.defense = 78;
-        playerUnit.speed = 82;
-
-        PlayerBattle playerTemp = new PlayerBattle();
-
-        playerTemp.name = "Red";
-        playerTemp.pokeBalls = true;
-        playerTemp.numPokeBalls = 11;
-        playerTemp.greatBalls = true;
-        playerTemp.numGreatBalls = 0;
-        playerTemp.ultraBalls = true;
-        playerTemp.numUltraBalls = 0;
-        playerTemp.masterBalls = true;
-        playerTemp.numMasterBalls = 10;
-
-        player = playerTemp;
-
-        if (!player.pokeBalls) b1GO.SetActive(false);
-        if (!player.greatBalls) b2GO.SetActive(false);
-        if (!player.ultraBalls) b3GO.SetActive(false);
-        if (!player.masterBalls) b4GO.SetActive(false);
-
-        GameObject enemyGO = Instantiate(enemyPrefab);
-        enemyUnit = enemyGO.GetComponent<Unit>();
-        enemyUnit.attack = 82;
-        enemyUnit.defense = 50;
-        enemyUnit.speed = 80;
-        enemyUnit.catchRate = 255;
-
-        dialogueText.text = "A wild " + enemyUnit.name + " appears!";
-
-        playerHUD.SetHUD(playerUnit, true, player);
-        enemyHUD.SetHUD(enemyUnit, false, player);
-
-
-        yield return new WaitForSeconds(2);
-
-        if (enemyUnit.speed > playerUnit.speed)
-        {
-            state = BattleState.ENEMYTURN;
-            EnemyTurn();
-        }
-        else if (enemyUnit.speed < playerUnit.speed)
-        {
-            state = BattleState.PLAYERTURN;
-            PlayerTurn();
-        }
-        else
-=======
             //dexnum and lvl
             Pokemon pokemon_variable = new Pokemon(6, 30);
             //devnum, lvl, 4 moves in string
@@ -150,7 +94,7 @@ namespace Pokemon{
             double multiplier = fire.attack_bug;
             double multiplier2 = fire.defend_bug;
 
-           
+
 
 
             //size 4 list of 4 current moves added
@@ -159,10 +103,8 @@ namespace Pokemon{
 
 
 
-            //debugger for all pokemon
-/*            print_pokemon();
- *            //debugger for moves
-            print_moves();*/
+
+
 
 
 
@@ -175,9 +117,7 @@ namespace Pokemon{
             //enemyUnit = 
             StartCoroutine(SetupBattle());
         }
-        
         List<Dictionary<string, object>> load_CSV(string name)
->>>>>>> 37b9fe5a931f29d6612e1b53e384bb341f2e33d9
         {
             List<Dictionary<string, object>> data = CSVReader.Read(name);
 
@@ -224,9 +164,8 @@ namespace Pokemon{
                 Debug.Log(move.Key);
             }
         }
-
-
         //This function starts the battle sequence
+
         IEnumerator SetupBattle()
         {
             //GameObject pokeMenu = Instantiate(pokemonMenuUI);
@@ -236,23 +175,6 @@ namespace Pokemon{
             playerUnit.attack = 84;
             playerUnit.defense = 78;
             playerUnit.speed = 82;
-            Pkm_Moves pkm = new Pkm_Moves();
-            pkm.name = "Fireball";
-            pkm.damage = 60;
-            playerUnit.move1 = pkm;
-            Pkm_Moves pkm2 = new Pkm_Moves();
-            pkm2.name = "Fly";
-            pkm2.damage = 30;
-            playerUnit.move2 = pkm2;
-            Pkm_Moves pkm3 = new Pkm_Moves();
-            pkm3.name = "Rage";
-            pkm3.damage = 10;
-            playerUnit.move3 = pkm3;
-            Pkm_Moves pkm4 = new Pkm_Moves();
-            pkm4.name = "Water Gun";
-            pkm4.damage = 0;
-            playerUnit.move4 = pkm4;
-            //playerUnit.moves.Add
 
             PlayerBattle playerTemp = new PlayerBattle();
 
@@ -316,9 +238,9 @@ namespace Pokemon{
 
 
         }
-            //This function sets up the battle state for us including the UI
+        //This function sets up the battle state for us including the UI
 
-            IEnumerator PlayerAttack(Pkm_Moves attack)
+        IEnumerator PlayerAttack(Pkm_Moves attack)
         {
             playerUnit.SetDamage(enemyUnit.defense, attack.damage);
 
@@ -354,7 +276,7 @@ namespace Pokemon{
                 yield break;
             }
             System.Random rnd = new System.Random();
-        
+
             int randomNumber = 0, catchRate = 1, randomNumber2, f, numShakes = 0;
             if (typeOfPokeball == 1)
             {
