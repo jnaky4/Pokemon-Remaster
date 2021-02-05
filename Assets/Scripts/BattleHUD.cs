@@ -24,11 +24,11 @@ namespace Pokemon
 
         public void SetHUD(Unit unit, bool isPlayer, PlayerBattle player)
         {
-            name.text = unit.name;
-            level.text = "Level " + unit.level;
-            hpSlider.maxValue = unit.maxHP;
-            hpSlider.value = unit.currentHP;
-            currentHP.text = unit.currentHP + "/" + unit.maxHP;
+            name.text = unit.pokemon.name;
+            level.text = "Level " + unit.pokemon.level;
+            hpSlider.maxValue = unit.pokemon.current_hp;
+            hpSlider.value = unit.pokemon.temp_hp;
+            currentHP.text = unit.pokemon.temp_hp + "/" + unit.pokemon.current_hp;
             if (isPlayer) SetMoves(unit);
             if (isPlayer) SetBalls(player);
             hpSlider.interactable = false;
@@ -43,14 +43,14 @@ namespace Pokemon
         public void SetHP(int hp, Unit unit)
         {
             hpSlider.value = hp;
-            currentHP.text = unit.currentHP + "/" + unit.maxHP;
+            currentHP.text = unit.pokemon.temp_hp + "/" + unit.pokemon.current_hp;
         }
         public void SetMoves(Unit unit)
         {
-            moves1.text = unit.move1.name;
-            moves2.text = unit.move2.name;
-            moves3.text = unit.move3.name;
-            moves4.text = unit.move4.name;
+            moves1.text = unit.pokemon.currentMoves[0].move;
+            moves2.text = unit.pokemon.currentMoves[1].move;
+            moves3.text = unit.pokemon.currentMoves[2].move;
+            moves4.text = unit.pokemon.currentMoves[3].move;
         }
 
         public void SetBalls(PlayerBattle player)

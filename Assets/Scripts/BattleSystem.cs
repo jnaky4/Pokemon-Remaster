@@ -14,6 +14,7 @@ namespace Pokemon
         /**********************************************************************************************************************************************
          * VARIABLES
          **********************************************************************************************************************************************/
+        
         public GameObject playerPrefab;
         public GameObject enemyPrefab;
         public PlayerBattle player;
@@ -60,6 +61,10 @@ namespace Pokemon
         public GameObject b2GO;
         public GameObject b3GO;
         public GameObject b4GO;
+        public GameObject b5GO;
+        public GameObject b6GO;
+        public GameObject b7GO;
+        public GameObject b8GO;
 
         public string path = "..\\..\\CSV";
         public string moves = "\\MOVES.csv";
@@ -94,19 +99,9 @@ namespace Pokemon
             double multiplier = fire.attack_bug;
             double multiplier2 = fire.defend_bug;
 
-
-
-
             //size 4 list of 4 current moves added
             Moves move = Charizard.currentMoves[0];
             int base_power = Charizard.currentMoves[0].base_power;
-
-
-
-
-
-
-
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
@@ -114,25 +109,16 @@ namespace Pokemon
             ballsMenuUI.SetActive(false);
             SetDownButtons();
 
-            //enemyUnit = 
             StartCoroutine(SetupBattle());
         }
+
         List<Dictionary<string, object>> load_CSV(string name)
         {
             List<Dictionary<string, object>> data = CSVReader.Read(name);
-
-            /*            for (var i = 0; i < data.Count; i++)
-                        {
-                            Debug.Log("Name " + data[i]["Name"] + " " +
-                                    "Type " + data[i]["Type"] + " " +
-                                    "PP " + data[i]["PP"] + " " +
-                                    "Base Power " + data[i]["Att."] + " " +
-                                    "Accuracy " + data[i]["Acc."] + " " +
-                                    "Effect " + data[i]["Effect"]
-                                    );
-                        }*/
             return data;
         }
+
+
         public void print_pokemon()
         {
 
@@ -164,7 +150,6 @@ namespace Pokemon
                 Debug.Log(move.Key);
             }
         }
-        //This function starts the battle sequence
 
         IEnumerator SetupBattle()
         {
@@ -172,9 +157,7 @@ namespace Pokemon
 
             GameObject playerGO = Instantiate(playerPrefab);
             playerUnit = playerGO.GetComponent<Unit>();
-            playerUnit.attack = 84;
-            playerUnit.defense = 78;
-            playerUnit.speed = 82;
+            playerUnit.pokemon = new Pokemon(6, 30, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
 
             PlayerBattle playerTemp = new PlayerBattle();
 
@@ -194,15 +177,17 @@ namespace Pokemon
             if (!player.greatBalls) b2GO.SetActive(false);
             if (!player.ultraBalls) b3GO.SetActive(false);
             if (!player.masterBalls) b4GO.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[0].move, "default") == 0) b5GO.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[1].move, "default") == 0) b6GO.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[2].move, "default") == 0) b7GO.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[3].move, "default") == 0) b8GO.SetActive(false);
 
             GameObject enemyGO = Instantiate(enemyPrefab);
             enemyUnit = enemyGO.GetComponent<Unit>();
-            enemyUnit.attack = 82;
-            enemyUnit.defense = 50;
-            enemyUnit.speed = 80;
+            enemyUnit.pokemon = new Pokemon(3, 45, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
             enemyUnit.catchRate = 255;
 
-            dialogueText.text = "A wild " + enemyUnit.name + " appears!";
+            dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
 
             playerHUD.SetHUD(playerUnit, true, player);
             enemyHUD.SetHUD(enemyUnit, false, player);
@@ -210,12 +195,12 @@ namespace Pokemon
 
             yield return new WaitForSeconds(2);
 
-            if (enemyUnit.speed > playerUnit.speed)
+            if (enemyUnit.pokemon.temp_speed > playerUnit.pokemon.temp_speed)
             {
                 state = BattleState.ENEMYTURN;
                 EnemyTurn();
             }
-            else if (enemyUnit.speed < playerUnit.speed)
+            else if (enemyUnit.pokemon.temp_speed < playerUnit.pokemon.temp_speed)
             {
                 state = BattleState.PLAYERTURN;
                 PlayerTurn();
@@ -240,15 +225,15 @@ namespace Pokemon
         }
         //This function sets up the battle state for us including the UI
 
-        IEnumerator PlayerAttack(Pkm_Moves attack)
+        IEnumerator PlayerAttack(Moves attack)
         {
-            playerUnit.SetDamage(enemyUnit.defense, attack.damage);
+            playerUnit.SetDamage(enemyUnit.pokemon.temp_defense, attack.base_power);
 
             bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
-            enemyHUD.SetHP(enemyUnit.currentHP);
-            dialogueText.text = playerUnit.name + " used " + attack.name + "!";
+            enemyHUD.SetHP(enemyUnit.pokemon.temp_hp);
+            dialogueText.text = playerUnit.pokemon.name + " used " + attack.move + "!";
             yield return new WaitForSeconds(2);
-            dialogueText.text = enemyUnit.name + " took " + playerUnit.damage + " amount of damage...";
+            dialogueText.text = enemyUnit.pokemon.name + " took " + playerUnit.damage + " amount of damage...";
             yield return new WaitForSeconds(2);
             ClosePokemonMenu();
             CloseMovesMenu();
@@ -345,8 +330,8 @@ namespace Pokemon
                 yield break;
             }
             randomNumber2 = rnd.Next(256);
-            f = (enemyUnit.maxHP * 255 * 4);
-            f = f / (enemyUnit.currentHP * catchRate);
+            f = (enemyUnit.pokemon.current_hp * 255 * 4);
+            f = f / (enemyUnit.pokemon.temp_hp * catchRate);
             if (f >= randomNumber2)
             {
                 state = BattleState.CAUGHTPOKEMON;
@@ -366,10 +351,10 @@ namespace Pokemon
 
         IEnumerator EnemyAttack()
         {
-            enemyUnit.SetDamage(playerUnit.defense, 10);
+            enemyUnit.SetDamage(playerUnit.pokemon.temp_defense, 10);
             dialogueText.text = enemyUnit.name + " attacks!";
             bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
-            playerHUD.SetHP(playerUnit.currentHP, playerUnit);
+            playerHUD.SetHP(playerUnit.pokemon.temp_hp, playerUnit);
             yield return new WaitForSeconds(2);
 
             dialogueText.text = playerUnit.name + " took " + enemyUnit.damage + " points of damage!";
@@ -534,25 +519,25 @@ namespace Pokemon
         {
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(PlayerAttack(playerUnit.move1));
+            StartCoroutine(PlayerAttack(playerUnit.pokemon.currentMoves[0]));
         }
         public void Attack2()
         {
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(PlayerAttack(playerUnit.move2));
+            StartCoroutine(PlayerAttack(playerUnit.pokemon.currentMoves[1]));
         }
         public void Attack3()
         {
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(PlayerAttack(playerUnit.move3));
+            StartCoroutine(PlayerAttack(playerUnit.pokemon.currentMoves[2]));
         }
         public void Attack4()
         {
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(PlayerAttack(playerUnit.move4));
+            StartCoroutine(PlayerAttack(playerUnit.pokemon.currentMoves[3]));
         }
         public void PokeBall()
         {
