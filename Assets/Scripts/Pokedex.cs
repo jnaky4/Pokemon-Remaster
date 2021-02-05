@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pokemon
 {
-    class Pokedex
+    public class Pokedex
     {
         public static string[][] pokedex = new string[152][];
         public static Dictionary<int,Pokedex> pokedex_dictionary = new Dictionary<int, Pokedex>();

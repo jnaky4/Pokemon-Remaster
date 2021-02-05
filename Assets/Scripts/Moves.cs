@@ -7,7 +7,7 @@ namespace Pokemon
 {
     public class Moves
     {
-        public string move;
+        public string move = "default";
         public Type move_type;
         public int pp;
         public int base_power;
