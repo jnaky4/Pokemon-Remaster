@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pokemon
 {
-    class Type
+    public class Type
     {
         //CSV's get loaded into these Lists
         public static List<Dictionary<string, object>> type_attack = new List<Dictionary<string, object>>();

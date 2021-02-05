@@ -87,23 +87,6 @@ public class BattleSystem : MonoBehaviour
         playerUnit.attack = 84;
         playerUnit.defense = 78;
         playerUnit.speed = 82;
-        Pkm_Moves pkm = new Pkm_Moves();
-        pkm.name = "Fireball";
-        pkm.damage = 60;
-        playerUnit.move1 = pkm;
-        Pkm_Moves pkm2 = new Pkm_Moves();
-        pkm2.name = "Fly";
-        pkm2.damage = 30;
-        playerUnit.move2 = pkm2;
-        Pkm_Moves pkm3 = new Pkm_Moves();
-        pkm3.name = "Rage";
-        pkm3.damage = 10;
-        playerUnit.move3 = pkm3;
-        Pkm_Moves pkm4 = new Pkm_Moves();
-        pkm4.name = "Water Gun";
-        pkm4.damage = 0;
-        playerUnit.move4 = pkm4;
-        //playerUnit.moves.Add
 
         PlayerBattle playerTemp = new PlayerBattle();
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pokemon
 {
-    class Moves
+    public class Moves
     {
         public string move;
         public Type move_type;
