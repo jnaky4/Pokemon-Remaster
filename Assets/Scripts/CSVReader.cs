@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
+namespace Pokemon { 
 public class CSVReader
 {
 	static string SPLIT_RE = @",(?=(?:[^""]*""[^""]*"")*(?![^""]*""))";
@@ -48,4 +49,5 @@ public class CSVReader
 		}
 		return list;
 	}
+}
 }
