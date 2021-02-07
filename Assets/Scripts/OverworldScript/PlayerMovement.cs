@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask interactableLayer;
     public LayerMask grassLayer;
     public VectorValue startingPosition;
+    public LayerMask boundary;
 
     //public Rigidbody2D rb;
     public Animator animator;
@@ -100,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
             if (Random.Range(1, 101) <= 10)
             {
                 Debug.Log("Encountered a wild Pokemon");
-                SceneManager.LoadScene("BattleScene");
+                //SceneManager.LoadScene("BattleScene");
             }
         }
     }
