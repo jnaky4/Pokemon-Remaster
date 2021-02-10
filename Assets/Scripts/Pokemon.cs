@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-/*using UnityEngine;*/
+using System.IO;
 using System.Linq;
-//using Microsoft.VisualBasic.FileIO;
+using UnityEngine;
 
 /*
 Pokemon Object
@@ -283,7 +283,6 @@ namespace Pokemon
             this.image2 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
             Debug.Log(image1);
             Debug.Log(image2);
-
         }
     }
 }

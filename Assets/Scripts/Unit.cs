@@ -27,7 +27,7 @@ namespace Pokemon
                 this.damage = ((((((2 * pokemon.level) / 5) + 2) * attackPower * ( pokemon.temp_attack / enemyDefense)))/50) + 2;
                 this.damage = this.damage * (badge * critical * stab * type * burn);
             }
-            catch (Exception ex)
+            catch
             {
                 this.damage = 100000;
             }

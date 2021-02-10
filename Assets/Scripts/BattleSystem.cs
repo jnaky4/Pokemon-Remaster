@@ -161,7 +161,7 @@ namespace Pokemon
 
             PlayerBattle playerTemp = new PlayerBattle();
 
-            playerTemp.name = "Red";
+            playerTemp.myName = "Red";
             playerTemp.pokeBalls = true;
             playerTemp.numPokeBalls = 11;
             playerTemp.greatBalls = true;

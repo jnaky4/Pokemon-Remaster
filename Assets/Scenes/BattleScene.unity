@@ -3751,10 +3751,10 @@ MonoBehaviour:
   b2GO: {fileID: 1919359086}
   b3GO: {fileID: 723340096}
   b4GO: {fileID: 396360787}
-  b5GO: {fileID: 0}
-  b6GO: {fileID: 0}
-  b7GO: {fileID: 0}
-  b8GO: {fileID: 0}
+  b5GO: {fileID: 181207155}
+  b6GO: {fileID: 1148799361}
+  b7GO: {fileID: 1022696524}
+  b8GO: {fileID: 550357545}
   path: ..\..\CSV
   moves: \MOVES.csv
 --- !u!4 &1137204566
@@ -5254,7 +5254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441ad06eed388fb47a0d84c0e4fa159c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 117963324}
+  yourName: {fileID: 117963324}
   level: {fileID: 204469172}
   hpSlider: {fileID: 992536387}
   currentHP: {fileID: 268788843}
@@ -6941,7 +6941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441ad06eed388fb47a0d84c0e4fa159c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: {fileID: 1707408728}
+  yourName: {fileID: 1707408728}
   level: {fileID: 1172416709}
   hpSlider: {fileID: 163006169}
   currentHP: {fileID: 1585529277}

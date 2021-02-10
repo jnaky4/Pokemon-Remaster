@@ -7,7 +7,7 @@ namespace Pokemon
 {
     public class BattleHUD : MonoBehaviour
     {
-        public Text name;
+        public Text yourName;
         public Text level;
         public Slider hpSlider;
         public Text currentHP;
@@ -24,7 +24,7 @@ namespace Pokemon
 
         public void SetHUD(Unit unit, bool isPlayer, PlayerBattle player)
         {
-            name.text = unit.pokemon.name;
+            yourName.text = unit.pokemon.name;
             level.text = "Level " + unit.pokemon.level;
             hpSlider.maxValue = unit.pokemon.current_hp;
             hpSlider.value = unit.pokemon.temp_hp;

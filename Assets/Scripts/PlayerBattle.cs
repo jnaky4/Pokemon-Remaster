@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBattle : MonoBehaviour
 {
-    public string name;
+    public string myName;
 
     public bool pokeBalls = false;
     public bool greatBalls = false;
