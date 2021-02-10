@@ -1,21 +1,21 @@
 Area,Dexnum,Name,Chance,Level Min,Level Max,Cap,Gym Available,Badges,Terrain
-Pallet Town,60,Poliwag,0.1,-5,-2,24,any,0,Old Rod
-Pallet Town,61,Poliwhirl,0.1,-5,-2,24,any,0,Good Rod
-Route 1,16,Pidgey,0.4,-8,-5,18,any,0,Grass
-Route 1,17,Pidgeotto,0.1,-5,-2,25,Ground,0,Grass
-Route 1,18,Pidgeot ,0.1,-2,0,50,Ground,0,Grass
-Route 1,19,Rattata,0.3,-8,-5,19,any,0,Grass
-Route 1,20,Raticate,0.1,-5,-1,50,Ground,0,Grass
-Route 2,16,Pidgey,0.4,-8,-5,18,any,0,Grass
-Route 2,17,Pidgeotto,0.1,-5,-2,25,Ground,0,Grass
-Route 2,18,Pidgeot ,0.1,-2,0,50,Ground,0,Grass
-Route 2,19,Rattata,0.3,-8,-5,19,any,0,Grass
-Route 2,20,Raticate,0.1,-5,-1,50,Ground,0,Grass
-Route 2,29,Nidoran,0.3,-8,-5,15,any,0,Grass
+Pallet Town,60,Poliwag,0.1,-5,-2,24,any,10,Old Rod
+Pallet Town,61,Poliwhirl,0.1,-5,-2,24,any,10,Good Rod
+Route 1,16,Pidgey,0.4,-8,-5,18,any,10,Grass
+Route 1,17,Pidgeotto,0.1,-5,-2,25,Ground,10,Grass
+Route 1,18,Pidgeot ,0.1,-2,0,50,Ground,10,Grass
+Route 1,19,Rattata,0.3,-8,-5,19,any,10,Grass
+Route 1,20,Raticate,0.1,-5,-1,50,none,2,Grass
+Route 2,16,Pidgey,0.4,-8,-5,18,any,10,Grass
+Route 2,17,Pidgeotto,0.1,-5,-2,25,Ground,10,Grass
+Route 2,18,Pidgeot ,0.1,-2,0,50,Ground,10,Grass
+Route 2,19,Rattata,0.3,-8,-5,19,any,10,Grass
+Route 2,20,Raticate,0.1,-5,-1,50,Ground,10,Grass
+Route 2,29,Nidoran,0.3,-8,-5,15,any,10,Grass
 Route 2,30,Nidorina,0.2,-8,-5,30,none,2,Grass
 Route 2,31,Nidoqueen,0.1,-2,0,50,none,3,Grass
-Route 2,32,Nidoran,0.3,-8,-5,15,any,0,Grass
+Route 2,32,Nidoran,0.3,-8,-5,15,any,10,Grass
 Route 2,33,Nidorino,0.2,-8,-5,30,none,2,Grass
 Route 2,34,Nidoking,0.1,-2,0,50,none,3,Grass
-Route 2,21,Spearow,0.3,-8,-5,19,any,0,Grass
-Route 2,22,Fearow,0.1,-5,-2,50,Ground,0,Grass
+Route 2,21,Spearow,0.3,-8,-5,19,any,10,Grass
+Route 2,22,Fearow,0.1,-5,-2,50,Ground,10,Grass
