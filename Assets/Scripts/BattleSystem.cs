@@ -14,7 +14,11 @@ namespace Pokemon
         /**********************************************************************************************************************************************
          * VARIABLES
          **********************************************************************************************************************************************/
-        
+        public static Pokemon[] playerPokemon = new Pokemon[6];
+
+        public static Pokemon[] opponentPokemon = new Pokemon[6];
+        public int activePokemon = 0;
+
         public GameObject playerPrefab;
         public GameObject enemyPrefab;
         public PlayerBattle player;
@@ -51,6 +55,13 @@ namespace Pokemon
         public Button attack3Button;
         public Button attack4Button;
 
+        public Button pokemon1Button;
+        public Button pokemon2Button;
+        public Button pokemon3Button;
+        public Button pokemon4Button;
+        public Button pokemon5Button;
+        public Button pokemon6Button;
+
         public static bool ballsMenuOpen = false;
         public GameObject ballsMenuUI;
         public Button balls1Button;
@@ -65,6 +76,12 @@ namespace Pokemon
         public GameObject b6GO;
         public GameObject b7GO;
         public GameObject b8GO;
+        public GameObject poke1;
+        public GameObject poke2;
+        public GameObject poke3;
+        public GameObject poke4;
+        public GameObject poke5;
+        public GameObject poke6;
 
         public string path = "..\\..\\CSV";
         public string moves = "\\MOVES.csv";
@@ -82,26 +99,6 @@ namespace Pokemon
             Pokedex.all_pokedex = load_CSV("POKEMON");
             Type.load_type();
             Moves.load_moves();
-
-            //dexnum and lvl
-            Pokemon pokemon_variable = new Pokemon(6, 30);
-            //devnum, lvl, 4 moves in string
-            Pokemon Charizard = new Pokemon(6, 54, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
-            Pokemon Metapod = new Pokemon(11, 69, "Harden");
-
-            int base_attack = pokemon_variable.base_attack;
-            int current_attack = pokemon_variable.current_attack;
-            string name = pokemon_variable.name;
-
-            List<Learnset> pokemon_learnset = pokemon_variable.learnset;
-
-            Type fire = pokemon_variable.type1;
-            double multiplier = fire.attack_bug;
-            double multiplier2 = fire.defend_bug;
-
-            //size 4 list of 4 current moves added
-            Moves move = Charizard.currentMoves[0];
-            int base_power = Charizard.currentMoves[0].base_power;
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
@@ -154,10 +151,16 @@ namespace Pokemon
         IEnumerator SetupBattle()
         {
             //GameObject pokeMenu = Instantiate(pokemonMenuUI);
+            for (var i = 0; i < 6; i++)
+            {
+                playerPokemon[i] = null;
+            }
 
             GameObject playerGO = Instantiate(playerPrefab);
             playerUnit = playerGO.GetComponent<Unit>();
-            playerUnit.pokemon = new Pokemon(6, 30, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+            playerPokemon[0] = new Pokemon(6, 30, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+
+            playerUnit.pokemon = playerPokemon[0];
 
             PlayerBattle playerTemp = new PlayerBattle();
 
@@ -182,6 +185,12 @@ namespace Pokemon
             if (String.Compare(playerUnit.pokemon.currentMoves[2].move, "default") == 0) b7GO.SetActive(false);
             if (String.Compare(playerUnit.pokemon.currentMoves[3].move, "default") == 0) b8GO.SetActive(false);
 
+            if (playerPokemon[1] == null) poke2.SetActive(false);
+            if (playerPokemon[2] == null) poke3.SetActive(false);
+            if (playerPokemon[3] == null) poke4.SetActive(false);
+            if (playerPokemon[4] == null) poke5.SetActive(false);
+            if (playerPokemon[5] == null) poke6.SetActive(false);
+
             GameObject enemyGO = Instantiate(enemyPrefab);
             enemyUnit = enemyGO.GetComponent<Unit>();
             enemyUnit.pokemon = new Pokemon(3, 45, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
@@ -189,8 +198,8 @@ namespace Pokemon
 
             dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
 
-            playerHUD.SetHUD(playerUnit, true, player);
-            enemyHUD.SetHUD(enemyUnit, false, player);
+            playerHUD.SetHUD(playerUnit, true, player, playerPokemon);
+            enemyHUD.SetHUD(enemyUnit, false, player, playerPokemon);
 
 
             yield return new WaitForSeconds(2);
@@ -348,16 +357,30 @@ namespace Pokemon
             }
 
         }
+        IEnumerator SwitchPokemon(int num)
+        {
+            if (activePokemon == num)
+            {
+                dialogueText.text = "You already have that pokemon out!";
+                yield return new WaitForSeconds(2);
+                PlayerTurn();
+                yield break;
+            }
+            state = BattleState.ENEMYTURN;
+            EnemyTurn();
+            yield break;
+
+        }
 
         IEnumerator EnemyAttack()
         {
             enemyUnit.SetDamage(playerUnit.pokemon.temp_defense, 10);
-            dialogueText.text = enemyUnit.name + " attacks!";
+            dialogueText.text = enemyUnit.pokemon.name + " attacks!";
             bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
             playerHUD.SetHP(playerUnit.pokemon.temp_hp, playerUnit);
             yield return new WaitForSeconds(2);
 
-            dialogueText.text = playerUnit.name + " took " + enemyUnit.damage + " points of damage!";
+            dialogueText.text = playerUnit.pokemon.name + " took " + enemyUnit.damage + " points of damage!";
 
             yield return new WaitForSeconds(2);
 
@@ -389,7 +412,7 @@ namespace Pokemon
             }
             else if (state == BattleState.CAUGHTPOKEMON)
             {
-                dialogueText.text = "You caught a " + enemyUnit.name + "!";
+                dialogueText.text = "You caught a " + enemyUnit.pokemon.name + "!";
             }
             else
             {
@@ -494,6 +517,46 @@ namespace Pokemon
             poekmonMenuOpen = false;
             SetUpButtons();
         }
+
+
+
+        public void OnPokemon0()
+        {
+            ClosePokemonMenu();
+            SetDownButtons();
+            StartCoroutine(SwitchPokemon(0));
+        }
+        public void OnPokemon1()
+        {
+            ClosePokemonMenu();
+            SetDownButtons();
+            StartCoroutine(SwitchPokemon(1));
+        }
+        public void OnPokemon2()
+        {
+            ClosePokemonMenu();
+            SetDownButtons();
+            StartCoroutine(SwitchPokemon(2));
+        }
+        public void OnPokemon3()
+        {
+            ClosePokemonMenu();
+            SetDownButtons();
+            StartCoroutine(SwitchPokemon(3));
+        }
+        public void OnPokemon4()
+        {
+            ClosePokemonMenu();
+            SetDownButtons();
+            StartCoroutine(SwitchPokemon(4));
+        }
+        public void OnPokemon5()
+        {
+            ClosePokemonMenu();
+            SetDownButtons();
+            StartCoroutine(SwitchPokemon(5));
+        }
+
         public void OpenMovesMenu()
         {
             attackMenuUI.SetActive(true);
