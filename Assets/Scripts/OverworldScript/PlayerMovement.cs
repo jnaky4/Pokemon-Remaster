@@ -15,6 +15,7 @@ namespace Pokemon
         public VectorValue startingPosition;
         public LayerMask boundary;
         public string location = "Route 1";
+        Dictionary<string, int> badges_completed = new Dictionary<string, int>(){};
 
         //public Rigidbody2D rb;
         public Animator animator;
@@ -47,8 +48,10 @@ namespace Pokemon
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
 
+                //prevents diagonal movement
                 if (movement.x != 0) movement.y = 0;
 
+                //find the next target position when a player attempts to move
                 if (movement != Vector2.zero)
                 {
                     animator.SetFloat("Horizontal", movement.x);
@@ -58,6 +61,7 @@ namespace Pokemon
                     targetPos.x += movement.x;
                     targetPos.y += movement.y;
 
+                    //makes sure an area is walkable before allowing a move
                     if (IsWalkable(targetPos))
                         StartCoroutine(Move(targetPos));
                 }
@@ -116,9 +120,6 @@ namespace Pokemon
                     Dictionary<string, Route> route1_dic = Route.get_route(location);
                     string terrain = "Grass";
                     //list of spcific completed badges
-                    Dictionary<string, int> badges_completed = new Dictionary<string, int>()
-                    {
-                    };
 
                     Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, badges_completed, badges_completed.Count);
                     Debug.Log("Wild Pokemon! " + wild_spawn.name);
@@ -165,7 +166,7 @@ namespace Pokemon
             //Debug.Log("Possible Spawns: " + possible_spawns.Count);
 
 
-            double temp = 0;
+            //double temp = 0;
             //sum_probability: sum of chance of all pokemon that can spawn
             //possibile_spawns: Dictionary of <dexnum, Route object> of all pokemon that can spawn in that route after filtering
             foreach (KeyValuePair<string, Route> wild_spawn in possible_spawns)
