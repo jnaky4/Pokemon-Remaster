@@ -16,6 +16,7 @@ namespace Pokemon
         public LayerMask boundary;
         public string location = "Route 1";
         Dictionary<string, int> badges_completed = new Dictionary<string, int>(){};
+        public GameObject dialogBox;
 
         //public Rigidbody2D rb;
         public Animator animator;
@@ -61,8 +62,8 @@ namespace Pokemon
                     targetPos.x += movement.x;
                     targetPos.y += movement.y;
 
-                    //makes sure an area is walkable before allowing a move
-                    if (IsWalkable(targetPos))
+                    //makes sure an area is walkable before allowing a player move
+                    if (IsWalkable(targetPos) && !dialogBox.activeInHierarchy)
                         StartCoroutine(Move(targetPos));
                 }
             }

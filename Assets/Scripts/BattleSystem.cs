@@ -91,14 +91,14 @@ namespace Pokemon
          **********************************************************************************************************************************************/
         void Start()
         {
-            Pokemon.all_base_stats = load_CSV("BASE_STATS");
+            /*Pokemon.all_base_stats = load_CSV("BASE_STATS");
             Moves.all_moves = load_CSV("MOVES");
             Type.type_attack = load_CSV("TYPE_ATTACK");
             Type.type_defend = load_CSV("TYPE_DEFEND");
             Learnset.all_learnset = load_CSV("LEARNSET");
             Pokedex.all_pokedex = load_CSV("POKEMON");
             Type.load_type();
-            Moves.load_moves();
+            Moves.load_moves();*/
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
@@ -193,7 +193,8 @@ namespace Pokemon
 
             GameObject enemyGO = Instantiate(enemyPrefab);
             enemyUnit = enemyGO.GetComponent<Unit>();
-            enemyUnit.pokemon = new Pokemon(3, 45, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+            //enemyUnit.pokemon = new Pokemon(3, 45, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+            enemyUnit.pokemon = opponentPokemon[0];
             enemyUnit.catchRate = 255;
 
             dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
