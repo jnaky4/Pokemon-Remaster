@@ -122,9 +122,10 @@ namespace Pokemon
                     //list of spcific completed badges
 
                     Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, badges_completed, badges_completed.Count);
+                    BattleSystem.opponentPokemon[0] = wild_spawn;
                     Debug.Log("Wild Pokemon! " + wild_spawn.name);
                     Debug.Log("Level: " + wild_spawn.level);
-                    //SceneManager.LoadScene("BattleScene");
+                    SceneManager.LoadScene("BattleScene");
                 }
             }
         }
