@@ -112,7 +112,7 @@ namespace Pokemon
             StartCoroutine(SetupBattle());
         }
 
-        List<Dictionary<string, object>> load_CSV(string name)
+        public static List<Dictionary<string, object>> load_CSV(string name)
         {
             List<Dictionary<string, object>> data = CSVReader.Read(name);
             return data;
