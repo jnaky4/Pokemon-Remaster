@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask grassLayer;
     public VectorValue startingPosition;
     public LayerMask boundary;
+    public string location = "Route 1";
 
     //public Rigidbody2D rb;
     public Animator animator;
