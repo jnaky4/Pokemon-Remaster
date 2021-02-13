@@ -1984,6 +1984,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 456948493}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &456948495 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8005153498504540612, guid: 23b3bbc46de4b7241baf0e4ed4578c15,
+    type: 3}
+  m_PrefabInstance: {fileID: 456948493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &491074787
 GameObject:
   m_ObjectHideFlags: 0
@@ -3945,6 +3951,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 644132775}
   enemyPrefab: {fileID: 1855794858}
   player: {fileID: 0}
+  playerSprite: {fileID: 456948495}
   enemySprite: {fileID: 1855794860}
   attackButton: {fileID: 1771759507}
   runAwayButton: {fileID: 1666210759}
@@ -7775,6 +7782,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3585835957746705857, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585835957746705857, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585835957746705857, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585835957746705857, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
@@ -7821,12 +7843,12 @@ PrefabInstance:
     - target: {fileID: 8740941942004996123, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 325.34995
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 8740941942004996123, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 164.24997
+      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 8740941942004996123, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
