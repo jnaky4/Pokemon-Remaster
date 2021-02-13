@@ -3959,12 +3959,12 @@ MonoBehaviour:
   attack2Button: {fileID: 2086950924}
   attack3Button: {fileID: 714292608}
   attack4Button: {fileID: 1957132885}
-  pokemon1Button: {fileID: 0}
-  pokemon2Button: {fileID: 0}
-  pokemon3Button: {fileID: 0}
-  pokemon4Button: {fileID: 0}
-  pokemon5Button: {fileID: 0}
-  pokemon6Button: {fileID: 0}
+  pokemon1Button: {fileID: 310341077}
+  pokemon2Button: {fileID: 1253649764}
+  pokemon3Button: {fileID: 1396055879}
+  pokemon4Button: {fileID: 130044395}
+  pokemon5Button: {fileID: 847586488}
+  pokemon6Button: {fileID: 1278880454}
   ballsMenuUI: {fileID: 1401377332}
   balls1Button: {fileID: 1823969290}
   balls2Button: {fileID: 241108891}
@@ -5268,7 +5268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1546859265
 MonoBehaviour:
   m_ObjectHideFlags: 0
