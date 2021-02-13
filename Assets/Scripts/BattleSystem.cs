@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON }
@@ -23,6 +24,7 @@ namespace Pokemon
         public GameObject playerPrefab;
         public GameObject enemyPrefab;
         public PlayerBattle player;
+        public SpriteRenderer playerSprite;
         public SpriteRenderer enemySprite;
 
         //IDK what these are but they need to stay
@@ -91,7 +93,9 @@ namespace Pokemon
          **********************************************************************************************************************************************/
         void Start()
         {
-            Pokemon.all_base_stats = load_CSV("BASE_STATS");
+            //COMMENT THIS SHIT OUT LEVI
+
+            /*Pokemon.all_base_stats = load_CSV("BASE_STATS");
             Moves.all_moves = load_CSV("MOVES");
             Type.type_attack = load_CSV("TYPE_ATTACK");
             Type.type_defend = load_CSV("TYPE_DEFEND");
@@ -99,6 +103,9 @@ namespace Pokemon
             Pokedex.all_pokedex = load_CSV("POKEMON");
             Type.load_type();
             Moves.load_moves();
+            */
+
+            //END COMMENTING OUT LEVI
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
@@ -159,6 +166,7 @@ namespace Pokemon
             GameObject playerGO = Instantiate(playerPrefab);
             playerUnit = playerGO.GetComponent<Unit>();
             playerPokemon[0] = new Pokemon(6, 30, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+            playerPokemon[1] = new Pokemon(9, 35, "Water Gun", "Hydro Pump", "Blizzard", "Slash");
 
             playerUnit.pokemon = playerPokemon[0];
 
@@ -193,25 +201,18 @@ namespace Pokemon
 
             GameObject enemyGO = Instantiate(enemyPrefab);
             enemyUnit = enemyGO.GetComponent<Unit>();
-            opponentPokemon[0] = new Pokemon(1, 5, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+            //opponentPokemon[0] = new Pokemon(3, 5, "Wing Attack", "Flamethrower", "Earthquake", "Slash"); //COMMENT OUT THIS ONE LINE LEVI
             enemyUnit.pokemon = opponentPokemon[0];
 
-            Texture2D SpriteTexture = new Texture2D(2, 2);
-            byte[] fileData;
-            fileData = File.ReadAllBytes(enemyUnit.pokemon.image1);
-            SpriteTexture.LoadImage(fileData);
-            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
-            enemySprite.sprite = NewSprite;
-            
-
-            //enemyUnit.pokemon = opponentPokemon[0];
-            enemyUnit.catchRate = 255;
+            enemyUnit.catchRate = 3;
 
             dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
 
             playerHUD.SetHUD(playerUnit, true, player, playerPokemon);
             enemyHUD.SetHUD(enemyUnit, false, player, playerPokemon);
+            SetSprite(playerUnit, playerSprite);
+            SetSprite(enemyUnit, enemySprite);
 
 
             yield return new WaitForSeconds(2);
@@ -345,7 +346,7 @@ namespace Pokemon
             //if (/*pokemon is paralyzed burned poisoned and n is < 12 */) { }
             if (randomNumber < enemyUnit.catchRate)
             {
-                dialogueText.text = enemyUnit.name + " broke free!";
+                dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
                 EnemyTurn();
                 yield break;
@@ -378,10 +379,30 @@ namespace Pokemon
                 PlayerTurn();
                 yield break;
             }
+            dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
+            yield return new WaitForSeconds(2);
+            playerUnit.pokemon = playerPokemon[num];
+            activePokemon = num;
+
+            playerHUD.SetActivePokemon(playerPokemon, num, playerUnit);
+            SetSprite(playerUnit, playerSprite);
+            dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
+            yield return new WaitForSeconds(2);
+
+
             state = BattleState.ENEMYTURN;
             EnemyTurn();
             yield break;
+        }
+        void SetSprite(Unit unit, SpriteRenderer sprite)
+        {
+            Texture2D SpriteTexture = new Texture2D(2, 2);
+            byte[] fileData;
+            fileData = File.ReadAllBytes(unit.pokemon.image1);
+            SpriteTexture.LoadImage(fileData);
+            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
+            sprite.sprite = NewSprite;
         }
 
         IEnumerator EnemyAttack()
@@ -410,13 +431,14 @@ namespace Pokemon
 
         IEnumerator EndBattle()
         {
+            SetDownButtons();
             if (state == BattleState.WON)
             {
-                dialogueText.text = player.name + " won!";
+                dialogueText.text = player.myName + " won!";
             }
             else if (state == BattleState.LOST)
             {
-                dialogueText.text = player.name + " lost! You blacked out!";
+                dialogueText.text = player.myName + " lost! You blacked out!";
             }
             else if (state == BattleState.RUNAWAY)
             {
@@ -431,6 +453,7 @@ namespace Pokemon
                 dialogueText.text = "What the fuck just happened";
             }
             yield return new WaitForSeconds(2);
+            SceneManager.LoadScene("Pallet Town");
         }
 
         void PlayerTurn()

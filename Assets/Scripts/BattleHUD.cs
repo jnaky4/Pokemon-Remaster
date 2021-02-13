@@ -42,6 +42,14 @@ namespace Pokemon
             hpSlider.interactable = false;
             //hpSlider.colors.disabledColor = Color.black;
         }
+        public void SetHUD(Unit unit)
+        {
+            yourName.text = unit.pokemon.name;
+            level.text = "Level " + unit.pokemon.level;
+            hpSlider.maxValue = unit.pokemon.current_hp;
+            hpSlider.value = unit.pokemon.temp_hp;
+            currentHP.text = unit.pokemon.temp_hp + "/" + unit.pokemon.current_hp;
+        }
 
         public void SetHP(int hp)
         {
@@ -72,11 +80,17 @@ namespace Pokemon
         public void SetPokemon(Pokemon[] pokemons)
         {
             if (pokemons[0] != null) pokemon1.text = pokemons[0].name + ", Level " + pokemons[0].level;
-            if (pokemons[1] != null) pokemon1.text = pokemons[1].name + ", Level " + pokemons[1].level;
-            if (pokemons[2] != null) pokemon1.text = pokemons[2].name + ", Level " + pokemons[2].level;
-            if (pokemons[3] != null) pokemon1.text = pokemons[3].name + ", Level " + pokemons[3].level;
-            if (pokemons[4] != null) pokemon1.text = pokemons[4].name + ", Level " + pokemons[4].level;
-            if (pokemons[5] != null) pokemon1.text = pokemons[5].name + ", Level " + pokemons[5].level;
+            if (pokemons[1] != null) pokemon2.text = pokemons[1].name + ", Level " + pokemons[1].level;
+            if (pokemons[2] != null) pokemon3.text = pokemons[2].name + ", Level " + pokemons[2].level;
+            if (pokemons[3] != null) pokemon4.text = pokemons[3].name + ", Level " + pokemons[3].level;
+            if (pokemons[4] != null) pokemon5.text = pokemons[4].name + ", Level " + pokemons[4].level;
+            if (pokemons[5] != null) pokemon6.text = pokemons[5].name + ", Level " + pokemons[5].level;
+        }
+        public void SetActivePokemon(Pokemon[] pokemons, int num, Unit unit)
+        {
+            unit.pokemon = pokemons[num];
+            SetMoves(unit);
+            SetHUD(unit);
         }
     }
 }
