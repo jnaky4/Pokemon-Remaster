@@ -3945,6 +3945,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 644132775}
   enemyPrefab: {fileID: 1855794858}
   player: {fileID: 0}
+  enemySprite: {fileID: 1855794860}
   attackButton: {fileID: 1771759507}
   runAwayButton: {fileID: 1666210759}
   pokemonButton: {fileID: 1885681006}
@@ -3984,8 +3985,6 @@ MonoBehaviour:
   poke4: {fileID: 218480837}
   poke5: {fileID: 1681975198}
   poke6: {fileID: 1133348084}
-  path: ..\..\CSV
-  moves: \MOVES.csv
 --- !u!4 &1137204566
 Transform:
   m_ObjectHideFlags: 0
@@ -6683,6 +6682,12 @@ CanvasRenderer:
 --- !u!1 &1855794858 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5575576220928370512, guid: 3470d4591a44ec54baa62f32b6f4be44,
+    type: 3}
+  m_PrefabInstance: {fileID: 6398116694724334200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1855794860 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3585835957746705857, guid: 3470d4591a44ec54baa62f32b6f4be44,
     type: 3}
   m_PrefabInstance: {fileID: 6398116694724334200}
   m_PrefabAsset: {fileID: 0}
