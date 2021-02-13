@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,9 @@ namespace Pokemon
         public static Pokemon[] playerPokemon = new Pokemon[6];
 
         public static Pokemon[] opponentPokemon = new Pokemon[6];
+
+        public SpriteRenderer playerSprite;
+        public SpriteRenderer enemySprite;
         public int activePokemon = 0;
 
         public GameObject playerPrefab;
@@ -83,22 +87,19 @@ namespace Pokemon
         public GameObject poke5;
         public GameObject poke6;
 
-        public string path = "..\\..\\CSV";
-        public string moves = "\\MOVES.csv";
-
         /**********************************************************************************************************************************************
          * FUNCTIONS
          **********************************************************************************************************************************************/
         void Start()
         {
-            /*Pokemon.all_base_stats = load_CSV("BASE_STATS");
+            Pokemon.all_base_stats = load_CSV("BASE_STATS");
             Moves.all_moves = load_CSV("MOVES");
             Type.type_attack = load_CSV("TYPE_ATTACK");
             Type.type_defend = load_CSV("TYPE_DEFEND");
             Learnset.all_learnset = load_CSV("LEARNSET");
             Pokedex.all_pokedex = load_CSV("POKEMON");
             Type.load_type();
-            Moves.load_moves();*/
+            Moves.load_moves();
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
@@ -193,7 +194,7 @@ namespace Pokemon
 
             GameObject enemyGO = Instantiate(enemyPrefab);
             enemyUnit = enemyGO.GetComponent<Unit>();
-            //enemyUnit.pokemon = new Pokemon(3, 45, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+            opponentPokemon[0] = new Pokemon(1, 5, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
             enemyUnit.pokemon = opponentPokemon[0];
             enemyUnit.catchRate = 255;
 
@@ -202,7 +203,14 @@ namespace Pokemon
             playerHUD.SetHUD(playerUnit, true, player, playerPokemon);
             enemyHUD.SetHUD(enemyUnit, false, player, playerPokemon);
 
+            Texture2D SpriteTexture = new Texture2D(2,2);
+            byte[] fileData;
+            fileData = File.ReadAllBytes(enemyUnit.pokemon.image1);
+            SpriteTexture.LoadImage(fileData);
+            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0,0,SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
+            enemySprite.sprite = NewSprite;
+            Debug.Log(enemySprite.sprite);
             yield return new WaitForSeconds(2);
 
             if (enemyUnit.pokemon.temp_speed > playerUnit.pokemon.temp_speed)

@@ -198,9 +198,9 @@ namespace Pokemon
         public Type type2 = null;
         public List<Learnset> learnset = new List<Learnset>();
 
-        string image1;
-        string image2;
-        string shiny_image;
+        public string image1;
+        public string image2;
+        public string shiny_image;
 
         public int iv = 30;
 
