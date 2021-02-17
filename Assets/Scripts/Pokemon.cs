@@ -9,7 +9,7 @@ using Microsoft.VisualBasic.FileIO;
 
 /*
 Pokemon Object
-    A Pokemon will be derived from a pokemon object 
+    A Pokemon will be derived from a pokemon object
         Each pokemon generated in the game will have the following Example Attributes:
 
         //DONE
@@ -29,16 +29,16 @@ Pokemon Object
 
         //TODO
         pokemonImage: PokemonImages/Charizard.jpg
-        LearnableTms{Mega Punch, Sword Dance, Mega Kick, Toxic, 
+        LearnableTms{Mega Punch, Sword Dance, Mega Kick, Toxic,
             Body Slam, Take Down, Double-Edge, Hyper Beam, Submission,
-            Counter, Seismic Toss, Rage, Dragon Rage, Earthquake, 
-            Fissure, Dig, Mimic, Double Team, Reflect, Bide, Fire Blast, 
+            Counter, Seismic Toss, Rage, Dragon Rage, Earthquake,
+            Fissure, Dig, Mimic, Double Team, Reflect, Bide, Fire Blast,
             Swift, Skull Bash, Rest, Substitute}
         LearnableHMs: {Cut, Strength, Fly}
-        
+
         EXP100: 1600000  -> this is the amount of EXP to get to lvl 100
         currentEXP: 650245
-                
+
 
         private static ArrayList currentMoves = new ArrayList { "Slash", "Flamethrower", "Wing Attack", "Earthquake" };
         Image pokemonImage { get; set; }
@@ -47,7 +47,7 @@ Pokemon Object
         Dictionary<string, int> learnset { get; set; }
         ArrayList learnableTms { get; set; }
         ArrayList learnableHMs { get; set; }
-        private int EXP100 { get; set; }               
+        private int EXP100 { get; set; }
 */
 
 namespace Pokemon
@@ -187,7 +187,7 @@ namespace Pokemon
         //gets loaded in once, have to call load_base_stats before creating new pokemon
         public static List<Dictionary<string, object>> all_base_stats = new List<Dictionary<string, object>>();
 
-        
+
 
         public string name;
         public int dexnum;
@@ -241,7 +241,7 @@ namespace Pokemon
             this.base_speed = int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["Speed"].ToString());
 
 
-            //iv is set to 30 
+            //iv is set to 30
             //ev set for +20 for each stat
             //510 total ev / 4 = 127.5 / 6 = 21.25, each pokemon should have +21.25 to each stat when using all evs
             this.current_hp = (((((this.base_hp + this.iv) * 2) + 20) * this.level) / 100) + this.level + 10;
@@ -268,14 +268,14 @@ namespace Pokemon
             {
                 Console.WriteLine(this.name + "s type2 is: " + this.type2);
             }
-            
+
             Console.WriteLine(this.name + "s attack1 is: " + this.currentMoves[0].move);
             Console.WriteLine(this.name + "s attack1 dmg is: " + this.currentMoves[0].base_power);
             Console.WriteLine(this.name + "s attack2 is: " + this.currentMoves[1].move);
             Console.WriteLine(this.name + "s attack3 is: " + this.currentMoves[2].move);
             Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].move);
 
-           
+
         }
         //loads an image of the pokemon when created
         public void get_image_path()

@@ -124,7 +124,7 @@ namespace Pokemon
                     //list of spcific completed badges
 
                     Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, badges_completed, badges_completed.Count);
-                    BattleSystem.opponentPokemon[0] = wild_spawn;
+                    GameController.opponentPokemon[0] = wild_spawn;
                     Debug.Log("Wild Pokemon! " + wild_spawn.name);
                     Debug.Log("Level: " + wild_spawn.level);
                     //Time.timeScale = 0;
@@ -142,7 +142,7 @@ namespace Pokemon
             Dictionary<string, Route> possible_spawns = new Dictionary<string, Route>();
             List<Dictionary<string, Route>> final_list = new List<Dictionary<string, Route>>();
 
-            //make a new dictionary of possible spawning pokemon 
+            //make a new dictionary of possible spawning pokemon
             foreach (KeyValuePair<string, Route> wild_spawn in route)
             {
 
@@ -183,7 +183,7 @@ namespace Pokemon
             double cumulativeProbability = 0;
 
 
-            /*    
+            /*
             cumulativeProbability += item.probability();
             if (p <= cumulativeProbability) {
             return item;
@@ -202,7 +202,7 @@ namespace Pokemon
                     //Debug.Log("Random Level: " + random_level);
 
 
-                    // if level_cap > pokemon_cap 
+                    // if level_cap > pokemon_cap
                     // pokemon_level = pokemon_cap
                     // add in random_level takeaway from cap
                     int level_cap = ((badges * 10) + 10);

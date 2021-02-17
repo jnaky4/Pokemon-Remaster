@@ -6,6 +6,10 @@ namespace Pokemon
 {
     public class GameController : MonoBehaviour
     {
+        public static Pokemon[] playerPokemon = new Pokemon[6];
+
+        public static Pokemon[] opponentPokemon = new Pokemon[6];
+
         // Start is called before the first frame update
         void Awake ()
         {
@@ -22,6 +26,9 @@ namespace Pokemon
             Moves.load_moves();
 
             Debug.Log("CSV's have been loaded");
+
+            playerPokemon[0] = new Pokemon(6, 30, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+            playerPokemon[1] = new Pokemon(9, 35, "Water Gun", "Hydro Pump", "Blizzard", "Slash");
         }
 
     }
