@@ -453,7 +453,8 @@ namespace Pokemon
                 dialogueText.text = "What the fuck just happened";
             }
             yield return new WaitForSeconds(2);
-            SceneManager.LoadScene("Pallet Town");
+            SceneManager.UnloadSceneAsync("BattleScene");
+            //SceneManager.LoadScene("Pallet Town");
         }
 
         void PlayerTurn()
