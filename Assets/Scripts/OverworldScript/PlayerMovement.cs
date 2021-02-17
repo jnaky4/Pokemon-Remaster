@@ -26,6 +26,7 @@ namespace Pokemon
 
         private void Awake()
         {
+            /*DontDestroyOnLoad(transform.gameObject);
             Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
             Moves.all_moves = BattleSystem.load_CSV("MOVES");
             Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK");
@@ -34,7 +35,7 @@ namespace Pokemon
             Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON");
             Route.all_routes = BattleSystem.load_CSV("ROUTES");
             Type.load_type();
-            Moves.load_moves();
+            Moves.load_moves();*/
 
             animator = GetComponent<Animator>();
             transform.position = startingPosition.initialValue;
@@ -126,7 +127,8 @@ namespace Pokemon
                     BattleSystem.opponentPokemon[0] = wild_spawn;
                     Debug.Log("Wild Pokemon! " + wild_spawn.name);
                     Debug.Log("Level: " + wild_spawn.level);
-                    SceneManager.LoadScene("BattleScene");
+                    //Time.timeScale = 0;
+                    SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
                 }
             }
         }
