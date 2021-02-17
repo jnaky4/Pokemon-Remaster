@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,10 +65,10 @@ namespace Pokemon
         }
         public void SetMoves(Unit unit)
         {
-            moves1.text = unit.pokemon.currentMoves[0].move;
-            moves2.text = unit.pokemon.currentMoves[1].move;
-            moves3.text = unit.pokemon.currentMoves[2].move;
-            moves4.text = unit.pokemon.currentMoves[3].move;
+            if (unit.pokemon.currentMoves[0] != null) moves1.text = unit.pokemon.currentMoves[0].move;
+            if (unit.pokemon.currentMoves[1] != null) moves2.text = unit.pokemon.currentMoves[1].move;
+            if (unit.pokemon.currentMoves[2] != null) moves3.text = unit.pokemon.currentMoves[2].move;
+            if (unit.pokemon.currentMoves[3] != null) moves4.text = unit.pokemon.currentMoves[3].move;
         }
 
         public void SetBalls(PlayerBattle player)
@@ -79,18 +81,19 @@ namespace Pokemon
 
         public void SetPokemon(Pokemon[] pokemons)
         {
-            if (pokemons[0] != null) pokemon1.text = pokemons[0].name + ", Level " + pokemons[0].level;
-            if (pokemons[1] != null) pokemon2.text = pokemons[1].name + ", Level " + pokemons[1].level;
-            if (pokemons[2] != null) pokemon3.text = pokemons[2].name + ", Level " + pokemons[2].level;
-            if (pokemons[3] != null) pokemon4.text = pokemons[3].name + ", Level " + pokemons[3].level;
-            if (pokemons[4] != null) pokemon5.text = pokemons[4].name + ", Level " + pokemons[4].level;
-            if (pokemons[5] != null) pokemon6.text = pokemons[5].name + ", Level " + pokemons[5].level;
+            if (pokemons[0] != null) pokemon1.text = pokemons[0].name + ", Level " + pokemons[0].level + ", HP: " + pokemons[0].temp_hp + "/" + pokemons[0].current_hp;
+            if (pokemons[1] != null) pokemon2.text = pokemons[1].name + ", Level " + pokemons[1].level + ", HP: " + pokemons[1].temp_hp + "/" + pokemons[1].current_hp;
+            if (pokemons[2] != null) pokemon3.text = pokemons[2].name + ", Level " + pokemons[2].level + ", HP: " + pokemons[2].temp_hp + "/" + pokemons[2].current_hp;
+            if (pokemons[3] != null) pokemon4.text = pokemons[3].name + ", Level " + pokemons[3].level + ", HP: " + pokemons[3].temp_hp + "/" + pokemons[3].current_hp;
+            if (pokemons[4] != null) pokemon5.text = pokemons[4].name + ", Level " + pokemons[4].level + ", HP: " + pokemons[4].temp_hp + "/" + pokemons[4].current_hp;
+            if (pokemons[5] != null) pokemon6.text = pokemons[5].name + ", Level " + pokemons[5].level + ", HP: " + pokemons[5].temp_hp + "/" + pokemons[5].current_hp;
         }
         public void SetActivePokemon(Pokemon[] pokemons, int num, Unit unit)
         {
             unit.pokemon = pokemons[num];
             SetMoves(unit);
             SetHUD(unit);
+            SetPokemon(pokemons);
         }
     }
 }

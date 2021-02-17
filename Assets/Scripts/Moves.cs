@@ -48,7 +48,6 @@ namespace Pokemon
                     int.Parse(all_moves[i]["Acc."].ToString()),
                     all_moves[i]["Effect"].ToString());
 
-
                 move_dictionary.Add(move.move, move);
             }
 
@@ -59,6 +58,5 @@ namespace Pokemon
             return Moves.move_dictionary[move];
 
         }
-        
     }
 }
