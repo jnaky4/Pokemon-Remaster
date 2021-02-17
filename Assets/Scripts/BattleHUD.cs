@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -63,10 +65,10 @@ namespace Pokemon
         }
         public void SetMoves(Unit unit)
         {
-            moves1.text = unit.pokemon.currentMoves[0].move;
-            moves2.text = unit.pokemon.currentMoves[1].move;
-            moves3.text = unit.pokemon.currentMoves[2].move;
-            moves4.text = unit.pokemon.currentMoves[3].move;
+            if (unit.pokemon.currentMoves[0] != null) moves1.text = unit.pokemon.currentMoves[0].move;
+            if (unit.pokemon.currentMoves[1] != null) moves2.text = unit.pokemon.currentMoves[1].move;
+            if (unit.pokemon.currentMoves[2] != null) moves3.text = unit.pokemon.currentMoves[2].move;
+            if (unit.pokemon.currentMoves[3] != null) moves4.text = unit.pokemon.currentMoves[3].move;
         }
 
         public void SetBalls(PlayerBattle player)
@@ -91,6 +93,7 @@ namespace Pokemon
             unit.pokemon = pokemons[num];
             SetMoves(unit);
             SetHUD(unit);
+            SetPokemon(pokemons);
         }
     }
 }

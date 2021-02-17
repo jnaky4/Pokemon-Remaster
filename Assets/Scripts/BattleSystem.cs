@@ -383,6 +383,38 @@ namespace Pokemon
             dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
             yield return new WaitForSeconds(2);
 
+            if (playerUnit.pokemon.currentMoves[0] == null)
+            {
+                b5GO.SetActive(false);
+            }
+            else
+            {
+                b5GO.SetActive(true);
+            }
+            if (playerUnit.pokemon.currentMoves[1] == null)
+            {
+                b6GO.SetActive(false);
+            }
+            else
+            {
+                b6GO.SetActive(true);
+            }
+            if (playerUnit.pokemon.currentMoves[2] == null)
+            {
+                b7GO.SetActive(false);
+            }
+            else
+            {
+                b7GO.SetActive(true);
+            }
+            if (playerUnit.pokemon.currentMoves[3] == null)
+            {
+                b8GO.SetActive(false);
+            }
+            else
+            {
+                b8GO.SetActive(true);
+            }
 
             state = BattleState.ENEMYTURN;
             EnemyTurn();
@@ -451,6 +483,14 @@ namespace Pokemon
             else if (state == BattleState.CAUGHTPOKEMON)
             {
                 dialogueText.text = "You caught a " + enemyUnit.pokemon.name + "!";
+                for(var p = 0; p < 6; p++)
+                {
+                    if (GameController.playerPokemon[p] == null)
+                    {
+                        GameController.playerPokemon[p] = enemyUnit.pokemon;
+                        break;
+                    }
+                }
             }
             else
             {
@@ -466,6 +506,7 @@ namespace Pokemon
         {
             dialogueText.text = "Choose an action";
             SetUpButtons();
+            playerHUD.SetPokemon(GameController.playerPokemon);
         }
         void EnemyTurn()
         {
