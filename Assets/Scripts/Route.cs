@@ -20,7 +20,7 @@ namespace Pokemon
         public string gym_available;
         public int required_badges;
         public string terrain;
-        
+        public string route_background;
 
         public static List<Dictionary<string, object>> all_routes = new List<Dictionary<string, object>>();
 
@@ -40,7 +40,7 @@ namespace Pokemon
             this.gym_available = gym_available;
             this.required_badges = badges;
             this.terrain = terrain;
-
+            this.route_background = name + ".png";
 
         }
 
@@ -72,6 +72,21 @@ namespace Pokemon
             return spawns;
         }
 
+        public void get_background_path()
+        {
+            var path = Directory.GetCurrentDirectory();
+            if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+            {
+                //Debug.Log("Does something happen here?");
+                this.route_background = path + "/Images/Backgrounds/" + (this.route_background).ToString();
+            }
+            else
+            {
+                this.route_background = path + "\\Images\\Backgrounds\\" + (this.route_background).ToString();
 
+            }
+            Debug.Log(this.route_background);
+        
+        }
     }
 }
