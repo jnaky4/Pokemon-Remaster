@@ -7107,6 +7107,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7389597823947240994, guid: fddeef3e1184340ffbf48c9ddb8ea5d9,
         type: 3}
+      propertyPath: dialogBox
+      value: 
+      objectReference: {fileID: 1557351915}
+    - target: {fileID: 7389597823947240994, guid: fddeef3e1184340ffbf48c9ddb8ea5d9,
+        type: 3}
       propertyPath: sceneToLoad
       value: Pallet Town
       objectReference: {fileID: 0}
@@ -7371,6 +7376,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dd5b123ef0ea4921ae26f67fc5ed81c, type: 3}
+--- !u!1 &1557351915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4637347877672407524, guid: 2dd5b123ef0ea4921ae26f67fc5ed81c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1557351914}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1568752969
 GameObject:
   m_ObjectHideFlags: 0
