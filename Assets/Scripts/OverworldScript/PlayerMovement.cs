@@ -220,7 +220,7 @@ namespace Pokemon
             }
 
             //If no pokemon found to spawn? spawn a lvl 69 Slowbro
-            Pokemon temp_pokemon2 = new Pokemon(80, 69);
+            Pokemon temp_pokemon2 = new Pokemon(80, 69, "Hyper Beam", "Flamethrower", "Planeshift", "Wish");
             return temp_pokemon2;
         }
 

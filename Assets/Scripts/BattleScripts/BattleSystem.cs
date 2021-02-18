@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, CHANGEPOKEMON }
 
 namespace Pokemon
 {
@@ -84,6 +84,7 @@ namespace Pokemon
         public GameObject poke4;
         public GameObject poke5;
         public GameObject poke6;
+        public Button backPoke;
 
 
         /**********************************************************************************************************************************************
@@ -248,7 +249,7 @@ namespace Pokemon
             enemyHUD.SetHP(enemyUnit.pokemon.temp_hp);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.move + "!";
             yield return new WaitForSeconds(2);
-            dialogueText.text = enemyUnit.pokemon.name + " took " + playerUnit.damage + " amount of damage...";
+            dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
             yield return new WaitForSeconds(2);
             ClosePokemonMenu();
             CloseMovesMenu();
@@ -365,13 +366,23 @@ namespace Pokemon
         }
         IEnumerator SwitchPokemon(int num)
         {
+            if (GameController.playerPokemon[num].temp_hp <= 0)
+            {
+                dialogueText.text = "That pokemon has no HP remaining!";
+                yield return new WaitForSeconds(2);
+                if (state != BattleState.CHANGEPOKEMON) PlayerTurn();
+                else SwitchPokemonAfterDeath();
+                yield break;
+            }
             if (activePokemon == num)
             {
                 dialogueText.text = "You already have that pokemon out!";
                 yield return new WaitForSeconds(2);
-                PlayerTurn();
+                if (state != BattleState.CHANGEPOKEMON) PlayerTurn();
+                else SwitchPokemonAfterDeath();
                 yield break;
             }
+
             dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
             GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
             yield return new WaitForSeconds(2);
@@ -417,8 +428,15 @@ namespace Pokemon
             }
 
             state = BattleState.ENEMYTURN;
+            backPoke.interactable = true;
             EnemyTurn();
             yield break;
+        }
+        void SwitchPokemonAfterDeath()
+        {
+            //activePokemon = -1;
+            backPoke.interactable = false;
+            OpenPokemonMenu();
         }
         void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
         {
@@ -444,7 +462,7 @@ namespace Pokemon
         IEnumerator EnemyAttack()
         {
             enemyUnit.SetDamage(playerUnit.pokemon.temp_defense, 10);
-            dialogueText.text = enemyUnit.pokemon.name + " attacks!";
+            dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " attacks!";
             bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
             playerHUD.SetHP(playerUnit.pokemon.temp_hp, playerUnit);
             yield return new WaitForSeconds(2);
@@ -455,8 +473,27 @@ namespace Pokemon
 
             if (isDead)
             {
-                state = BattleState.LOST;
-                StartCoroutine(EndBattle());
+                bool endBattle = true;
+                foreach(var p in GameController.playerPokemon)
+                {
+                    if (p.temp_hp >= 0)
+                    {
+                        endBattle = false;
+                        break;
+                    }
+                }
+                if (endBattle)
+                {
+                    state = BattleState.LOST;
+                    StartCoroutine(EndBattle());
+                }
+                else
+                {
+                    state = BattleState.CHANGEPOKEMON;
+                    dialogueText.text = playerUnit.pokemon.name + " faints!";
+                    yield return new WaitForSeconds(2);
+                    SwitchPokemonAfterDeath();
+                }
             }
             else
             {

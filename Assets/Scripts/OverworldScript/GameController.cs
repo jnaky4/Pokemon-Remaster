@@ -27,8 +27,9 @@ namespace Pokemon
 
             Debug.Log("CSV's have been loaded");
 
-            playerPokemon[0] = new Pokemon(6, 30, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
-            playerPokemon[1] = new Pokemon(9, 35, "Water Gun", "Hydro Pump", "Blizzard", "Slash");
+            playerPokemon[0] = new Pokemon(4, 5, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
+            playerPokemon[1] = new Pokemon(7, 5, "Water Gun", "Hydro Pump", "Blizzard", "Slash");
+            playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Slash");
         }
 
     }
