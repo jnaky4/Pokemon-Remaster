@@ -84,7 +84,7 @@ namespace Pokemon
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats();
             //get learnset added to learnset_dictionary for this pokemon
-            this.learnset = Learnset.get_learnset(this.dexnum, this.learnset);
+            this.learnset = Learnset.get_learnset(this.dexnum);
             //creates Pokedex Object for this pokemon
             this.pokedex_entry = new Pokedex(dexNum);
             //gets type for this pokemon from pokedex and creates type object

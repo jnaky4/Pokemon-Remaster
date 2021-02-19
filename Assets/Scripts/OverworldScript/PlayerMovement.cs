@@ -142,6 +142,7 @@ namespace Pokemon
             Dictionary<string, Route> possible_spawns = new Dictionary<string, Route>();
             List<Dictionary<string, Route>> final_list = new List<Dictionary<string, Route>>();
 
+
             //make a new dictionary of possible spawning pokemon
             foreach (KeyValuePair<string, Route> wild_spawn in route)
             {
@@ -213,14 +214,16 @@ namespace Pokemon
                     }
                     level_cap += random_level;
 
-                    Pokemon temp_pokemon = new Pokemon(wild_spawn.Value.dexnum, level_cap);
+                    //new Pokemon(wild_spawn.Value.dexnum, level_cap);
+                    Pokemon temp_pokemon = Learnset.add_wild_moves(wild_spawn.Value.dexnum, level_cap);
+
                     return temp_pokemon;
                 }
 
             }
 
             //If no pokemon found to spawn? spawn a lvl 69 Slowbro
-            Pokemon temp_pokemon2 = new Pokemon(80, 69, "Hyper Beam", "Flamethrower", "Planeshift", "Wish");
+            Pokemon temp_pokemon2 = new Pokemon(80, 69, "Hyper Beam", "Flamethrower", "Psychic", "Recover");
             return temp_pokemon2;
         }
 

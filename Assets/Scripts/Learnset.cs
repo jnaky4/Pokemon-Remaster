@@ -22,8 +22,9 @@ namespace Pokemon
             this.move = Moves.get_move(move); 
         }
 
-        public static List<Learnset> get_learnset(int dexnum, List<Learnset> pokemons_learnset)
+        public static List<Learnset> get_learnset(int dexnum)
         {
+            List<Learnset> pokemons_learnset = new List<Learnset>();
             //Console.WriteLine(Pokemon.learnset.Length);
             for (var i = 0; i < all_learnset.Count; i++)
             {
@@ -38,6 +39,7 @@ namespace Pokemon
             }
             return pokemons_learnset;
         }
+        
         public int get_lvl()
         {
             return this.level;
@@ -46,6 +48,45 @@ namespace Pokemon
         {
             return this.move;
         }
+        public static Pokemon add_wild_moves(int dexnum, int level)
+        {
+
+            //create a temp pokemon to grab the learnset
+            Pokemon temp_pokemon = new Pokemon(dexnum, level);
+            List<Learnset> pokemons_learnset = temp_pokemon.learnset;
+            List<Learnset> learnable_moves = new List<Learnset>();
+            foreach (Learnset learnable_move in pokemons_learnset)
+            {
+                if (learnable_move.level <= level)
+                {
+                    learnable_moves.Add(learnable_move);
+                }
+            }
+            int num_available_moves = learnable_moves.Count;
+            for (int i = 0; i < 4; i++)
+            {
+                if (i >= num_available_moves)
+                {
+                    return temp_pokemon;
+                }
+                else
+                {
+                    //Debug.Log("Size of Learnable Moves: " + learnable_moves.Count);
+                    int random = UnityEngine.Random.Range(0, learnable_moves.Count);
+                    //Debug.Log("Random Pick Index: " + random);
+                    Moves move = new Moves(learnable_moves[random].move.move);
+                    //Debug.Log("Move Learned: " + move.move);
+                    temp_pokemon.currentMoves[i] = move;
+                    //make sure not to add duplicates
+                    learnable_moves.Remove(learnable_moves[random]);
+                }
+            }
+            return temp_pokemon;
+
+
+            //currentMoves = new Moves[4];
+        }
+
     }
 
 }
