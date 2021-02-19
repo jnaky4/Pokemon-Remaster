@@ -19,6 +19,6 @@ public class NPC_Controller : MonoBehaviour, Interactable
             dialogBox.SetActive(true);
             dialogText.text = dialog;
         }
-        Debug.Log(dialog);
+        //Debug.Log(dialog);
     }
 }

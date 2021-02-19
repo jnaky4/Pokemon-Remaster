@@ -1,16 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Pokemon
 {
     public class GameController : MonoBehaviour
     {
+        //player data
         public static Pokemon[] playerPokemon = new Pokemon[6];
+        public static bool inCombat = false;
+        public GameObject player;
 
+        //combat data
         public static Pokemon[] opponentPokemon = new Pokemon[6];
-
         public static bool isCatchable = false;
+
+        //overworld data
+        public GameObject overworldCam;
+        public GameObject eventSystem;
+
+        //triggers
+        public static bool triggerCombat = false;
+        public static bool endCombat = false;
 
         // Start is called before the first frame update
         void Awake ()
@@ -27,11 +39,32 @@ namespace Pokemon
             Type.load_type();
             Moves.load_moves();
 
-            Debug.Log("CSV's have been loaded");
+            //Debug.Log("CSV's have been loaded");
 
             playerPokemon[0] = new Pokemon(4, 5, "Wing Attack", "Flamethrower", "Earthquake", "Slash");
             playerPokemon[1] = new Pokemon(7, 5, "Water Gun", "Hydro Pump", "Blizzard", "Slash");
             playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Slash");
+        }
+
+        private void Update()
+        {
+            if (triggerCombat == true)
+            {
+                //overworldCam.SetActive(false);
+                player.SetActive(false);
+                eventSystem.SetActive(false);
+                SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
+                overworldCam.SetActive(false);
+                triggerCombat = false;
+            }
+            if (endCombat == true)
+            {
+                SceneManager.UnloadSceneAsync("BattleScene");
+                eventSystem.SetActive(true);
+                overworldCam.SetActive(true);
+                player.SetActive(true);
+                endCombat = false;
+            }
         }
 
     }
