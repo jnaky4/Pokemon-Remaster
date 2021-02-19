@@ -6,7 +6,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.EventSystems;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, CHANGEPOKEMON }
 
@@ -107,11 +107,21 @@ namespace Pokemon
 
             //END COMMENTING OUT LEVI
 
+            
+
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
             attackMenuUI.SetActive(false);
             ballsMenuUI.SetActive(false);
             SetDownButtons();
+
+            /* EventSystem sceneEventSystem = FindObjectOfType<EventSystem>();
+            if (sceneEventSystem == null)
+            {
+                GameObject eventSystem = new GameObject("EventSystem");
+                eventSystem.AddComponent<EventSystem>();
+                eventSystem.AddComponent<StandaloneInputModule>();
+            }*/
 
             StartCoroutine(SetupBattle());
         }
@@ -539,7 +549,8 @@ namespace Pokemon
             }
             yield return new WaitForSeconds(2);
             GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
-            SceneManager.UnloadSceneAsync("BattleScene");
+            GameController.endCombat = true;
+            //SceneManager.UnloadSceneAsync("BattleScene");
             //SceneManager.LoadScene("Pallet Town");
         }
 

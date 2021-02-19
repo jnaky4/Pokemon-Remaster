@@ -17,6 +17,7 @@ namespace Pokemon
         public string location = "Route 1";
         Dictionary<string, int> badges_completed = new Dictionary<string, int>(){};
         public GameObject dialogBox;
+        public GameObject overworldCam;
 
         //public Rigidbody2D rb;
         public Animator animator;
@@ -125,10 +126,10 @@ namespace Pokemon
 
                     Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, badges_completed, badges_completed.Count);
                     GameController.opponentPokemon[0] = wild_spawn;
-                    Debug.Log("Wild Pokemon! " + wild_spawn.name);
-                    Debug.Log("Level: " + wild_spawn.level);
-                    //Time.timeScale = 0;
-                    SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
+                    GameController.triggerCombat = true;
+                    
+                    //overworldCam.SetActive(false);
+                    //SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
                 }
             }
         }
