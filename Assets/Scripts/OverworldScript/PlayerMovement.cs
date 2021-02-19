@@ -17,7 +17,6 @@ namespace Pokemon
         public string location = "Route 1";
         Dictionary<string, int> badges_completed = new Dictionary<string, int>(){};
         public GameObject dialogBox;
-        public GameObject overworldCam;
 
         //public Rigidbody2D rb;
         public Animator animator;
