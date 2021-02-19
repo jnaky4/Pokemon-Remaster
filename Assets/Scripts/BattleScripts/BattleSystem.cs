@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -461,8 +462,11 @@ namespace Pokemon
 
         IEnumerator EnemyAttack()
         {
-            enemyUnit.SetDamage(playerUnit.pokemon.temp_defense, 10);
-            dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " attacks!";
+            System.Random rnd = new System.Random();
+            int moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
+
+            enemyUnit.SetDamage(playerUnit.pokemon.temp_defense, enemyUnit.pokemon.currentMoves[moveNum].base_power);
+            dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + enemyUnit.pokemon.currentMoves[moveNum].move + "!";
             bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
             playerHUD.SetHP(playerUnit.pokemon.temp_hp, playerUnit);
             yield return new WaitForSeconds(2);

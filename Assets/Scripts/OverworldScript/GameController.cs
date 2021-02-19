@@ -10,6 +10,8 @@ namespace Pokemon
 
         public static Pokemon[] opponentPokemon = new Pokemon[6];
 
+        public static bool isCatchable = false;
+
         // Start is called before the first frame update
         void Awake ()
         {
