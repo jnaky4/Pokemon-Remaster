@@ -59,17 +59,20 @@ namespace Pokemon
     public class Status
     {
 
-        Dictionary<string, Status> all_status_effects = new Dictionary<string, Status>()
+        static Dictionary<string, Status> all_status_effects = new Dictionary<string, Status>()
         {
 
-            //name, persistance, ignoretype, self_dmg%, unable attack%, affect_stat, affect_stat_multiplier, removal_chance, max_duration
+            //name, persistance, ignoretype, self_dmg%, unable attack%, affect_stat, affect_stat_multiplier, removal_chance, min_duration, max_duration
             {"Burn",  new Status("Burn", true, "Fire", .25, 0, "Physical", .25, 0, -1, -1)},
             {"Freeze",  new Status("Freeze", true, "Ice", 0, 1.0, "null", 0, .2, -1, -1)},
             {"Sleep",  new Status("Sleep", true, "null", 0, 1.0, "null", 0, 0, 3, 1)},
             {"Paralysis", new Status("Paralysis", true, "Electric", 0, .25, "Speed", .5, 0, -1, -1) },
             {"Poison", new Status("Poison", true, "Poison", .125, 0, "null", 0, 0, -1, -1) },
-            {"Confusion", new Status("Confusion", false, "null", .175, .33, "null", 0, 0, 5, 2) }
-        
+            {"Confusion", new Status("Confusion", false, "null", .175, .33, "null", 0, 0, 5, 2) },
+            {"Flinch", new Status("Flinch", false, "null", 0, 1.0, "null", 0, 0, 1, 1) },
+            //for csv, does nothing
+            {"null", new Status("null", false, "null", 0, 0, "null", 0, 0, -1, -1) }
+
         };
         public string name;
         //if the move persist outside battle/switched out
@@ -95,6 +98,10 @@ namespace Pokemon
             this.removal_chance = removal_chance;
             this.max_duration = max_duration;
             this.min_duration = min_duration;
+        }
+        public static Status get_status(string name)
+        {
+            return all_status_effects[name];
         }
 
 
