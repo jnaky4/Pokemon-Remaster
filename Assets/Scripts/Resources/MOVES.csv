@@ -1,4 +1,4 @@
-Name,Type,PP,Att.,Acc.,Status,Status_Chance,Status_Target,Max_Per_Turns,Min_Per_Turns,Max_Turns,Min_Turns,Target,Chance_Stat_Change,Current_Stat_Change,Stat_Change_Amount,Priority,Heal,Effect
+Name,Type,PP,Att.,Acc.,Status,Status_Chance,Status_Target,Max_Per_Turn,Min_Per_Turn,Max_Turns,Min_Turns,Target,Chance_Stat_Change,Current_Stat_Change,Stat_Change_Amount,Priority,Heal,Effect
 Absorb,Grass,20,20,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,A GRASS-type attack. It adds half the HP it drained from the target to the attacker's HP.
 Acid,Poison,30,40,100,null,0,enemy,1,1,1,1,enemy,0.33,Defense,-1,0,0,A POISON-type attack. Has a one-in-three chance of lowering the target's DEFENSE.
 Acid Armor,Poison,40,-1,100,null,0,enemy,1,1,1,1,self,1,Defense,2,0,0,Melts the user's body for protection. A move that sharply raises DEFENSE.
