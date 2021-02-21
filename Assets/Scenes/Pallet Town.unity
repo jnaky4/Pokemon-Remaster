@@ -1148,6 +1148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 37502025}
   overworldCam: {fileID: 1925116576}
+  eventSystem: {fileID: 898752953}
 --- !u!1 &194772738
 GameObject:
   m_ObjectHideFlags: 0
@@ -113377,7 +113378,7 @@ PrefabInstance:
     - target: {fileID: 8253830089586189132, guid: a198f1684d43149d5827bc9ad5f6f491,
         type: 3}
       propertyPath: m_Priority
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8253830089586189133, guid: a198f1684d43149d5827bc9ad5f6f491,
         type: 3}

@@ -19,6 +19,7 @@ namespace Pokemon
         //overworld data
         public GameObject overworldCam;
         public GameObject eventSystem;
+        public Camera test;
 
         //triggers
         public static bool triggerCombat = false;
