@@ -78,15 +78,17 @@ namespace Pokemon
             this.level = level;
             this.dexnum = dexNum;
 
-            //grab name from dictionary
-            this.name = dictionary_pokemon[dexNum];
+            //creates Pokedex Object for this pokemon
+            this.pokedex_entry = new Pokedex(dexNum);
+
+            //grab name from pokedex
+            this.name = pokedex_entry.name;
 
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats();
             //get learnset added to learnset_dictionary for this pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);
-            //creates Pokedex Object for this pokemon
-            this.pokedex_entry = new Pokedex(dexNum);
+
             //gets type for this pokemon from pokedex and creates type object
             //TODO need to turn back to type object
             this.type1 = Type.get_type(this.pokedex_entry.get_type1());
