@@ -12,6 +12,7 @@ namespace Pokemon
         public static List<Dictionary<string, object>> all_pokedex = new List<Dictionary<string, object>>();
 
         public int dexnum;
+        public string name;
         public string type1;
         public string type2;
         public string stage;
@@ -38,7 +39,7 @@ namespace Pokemon
 
             //int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["HP"].ToString());
 
-
+            this.name = Pokedex.all_pokedex[this.dexnum - 1]["Pokemon_Name"].ToString();
             this.type1 = Pokedex.all_pokedex[this.dexnum - 1]["Type1"].ToString();
             this.type2 = Pokedex.all_pokedex[this.dexnum - 1]["Type2"].ToString();
             this.stage = Pokedex.all_pokedex[this.dexnum - 1]["Stage"].ToString();

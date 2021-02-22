@@ -78,15 +78,17 @@ namespace Pokemon
             this.level = level;
             this.dexnum = dexNum;
 
-            //grab name from dictionary
-            this.name = dictionary_pokemon[dexNum];
+            //creates Pokedex Object for this pokemon
+            this.pokedex_entry = new Pokedex(dexNum);
+
+            //grab name from pokedex
+            this.name = pokedex_entry.name;
 
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats();
             //get learnset added to learnset_dictionary for this pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);
-            //creates Pokedex Object for this pokemon
-            this.pokedex_entry = new Pokedex(dexNum);
+
             //gets type for this pokemon from pokedex and creates type object
             //TODO need to turn back to type object
             this.type1 = Type.get_type(this.pokedex_entry.get_type1());
@@ -269,11 +271,11 @@ namespace Pokemon
                 Console.WriteLine(this.name + "s type2 is: " + this.type2);
             }
 
-            Console.WriteLine(this.name + "s attack1 is: " + this.currentMoves[0].move);
+            Console.WriteLine(this.name + "s attack1 is: " + this.currentMoves[0].name);
             Console.WriteLine(this.name + "s attack1 dmg is: " + this.currentMoves[0].base_power);
-            Console.WriteLine(this.name + "s attack2 is: " + this.currentMoves[1].move);
-            Console.WriteLine(this.name + "s attack3 is: " + this.currentMoves[2].move);
-            Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].move);
+            Console.WriteLine(this.name + "s attack2 is: " + this.currentMoves[1].name);
+            Console.WriteLine(this.name + "s attack3 is: " + this.currentMoves[2].name);
+            Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].name);
 
 
         }
