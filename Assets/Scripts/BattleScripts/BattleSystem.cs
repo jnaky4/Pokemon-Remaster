@@ -185,10 +185,10 @@ namespace Pokemon
             if (!player.greatBalls) b2GO.SetActive(false);
             if (!player.ultraBalls) b3GO.SetActive(false);
             if (!player.masterBalls) b4GO.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[0].move, "default") == 0) b5GO.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[1].move, "default") == 0) b6GO.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[2].move, "default") == 0) b7GO.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[3].move, "default") == 0) b8GO.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[0].name, "default") == 0) b5GO.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[1].name, "default") == 0) b6GO.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[2].name, "default") == 0) b7GO.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[3].name, "default") == 0) b8GO.SetActive(false);
 
             if (GameController.playerPokemon[1] == null) poke2.SetActive(false);
             if (GameController.playerPokemon[2] == null) poke3.SetActive(false);
@@ -250,7 +250,7 @@ namespace Pokemon
 
             bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
             enemyHUD.SetHP(enemyUnit.pokemon.temp_hp);
-            dialogueText.text = playerUnit.pokemon.name + " used " + attack.move + "!";
+            dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(2);
             dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
             yield return new WaitForSeconds(2);
@@ -468,7 +468,7 @@ namespace Pokemon
             int moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
 
             enemyUnit.SetDamage(playerUnit.pokemon.temp_defense, enemyUnit.pokemon.currentMoves[moveNum].base_power);
-            dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + enemyUnit.pokemon.currentMoves[moveNum].move + "!";
+            dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + enemyUnit.pokemon.currentMoves[moveNum].name + "!";
             bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
             playerHUD.SetHP(playerUnit.pokemon.temp_hp, playerUnit);
             yield return new WaitForSeconds(2);

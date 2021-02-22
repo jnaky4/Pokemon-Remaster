@@ -71,8 +71,8 @@ namespace Pokemon {
                 foreach(Learnset learned in TestPokemon.learnset)
                 {
                     Debug.Log(learned.ToString());
-                    Debug.Log("PP " + learned.get_move().pp);
-                    Debug.Log("TYPE " + learned.get_move().move_type.type);
+/*                    Debug.Log("PP " + learned.Get_move().pp);
+                    Debug.Log("TYPE " + learned.Get_move().move_type.type);*/
 
                 }
                     

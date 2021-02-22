@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Pokemon
 {
-    class Moves
+    public class Moves
     {
-        public string name;
+        public string name = "default";
         public Type move_type;
         public int pp;
         public int base_power;
@@ -33,7 +33,9 @@ namespace Pokemon
         {
             //this.Moves = move_dictionary[move];
             this.name = move;
+
         }
+
         public Moves(string move, Type move_type, int pp, int base_power,
             int accuracy, Status status, double status_chance,
             string status_target, int max_per_turn, int min_per_turn, int max_turns, int min_turns,

@@ -271,11 +271,11 @@ namespace Pokemon
                 Console.WriteLine(this.name + "s type2 is: " + this.type2);
             }
 
-            Console.WriteLine(this.name + "s attack1 is: " + this.currentMoves[0].move);
+            Console.WriteLine(this.name + "s attack1 is: " + this.currentMoves[0].name);
             Console.WriteLine(this.name + "s attack1 dmg is: " + this.currentMoves[0].base_power);
-            Console.WriteLine(this.name + "s attack2 is: " + this.currentMoves[1].move);
-            Console.WriteLine(this.name + "s attack3 is: " + this.currentMoves[2].move);
-            Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].move);
+            Console.WriteLine(this.name + "s attack2 is: " + this.currentMoves[1].name);
+            Console.WriteLine(this.name + "s attack3 is: " + this.currentMoves[2].name);
+            Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].name);
 
 
         }

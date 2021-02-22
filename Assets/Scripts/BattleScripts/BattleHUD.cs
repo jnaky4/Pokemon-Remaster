@@ -65,10 +65,10 @@ namespace Pokemon
         }
         public void SetMoves(Unit unit)
         {
-            if (unit.pokemon.currentMoves[0] != null) moves1.text = unit.pokemon.currentMoves[0].move;
-            if (unit.pokemon.currentMoves[1] != null) moves2.text = unit.pokemon.currentMoves[1].move;
-            if (unit.pokemon.currentMoves[2] != null) moves3.text = unit.pokemon.currentMoves[2].move;
-            if (unit.pokemon.currentMoves[3] != null) moves4.text = unit.pokemon.currentMoves[3].move;
+            if (unit.pokemon.currentMoves[0] != null) moves1.text = unit.pokemon.currentMoves[0].name;
+            if (unit.pokemon.currentMoves[1] != null) moves2.text = unit.pokemon.currentMoves[1].name;
+            if (unit.pokemon.currentMoves[2] != null) moves3.text = unit.pokemon.currentMoves[2].name;
+            if (unit.pokemon.currentMoves[3] != null) moves4.text = unit.pokemon.currentMoves[3].name;
         }
 
         public void SetBalls(PlayerBattle player)

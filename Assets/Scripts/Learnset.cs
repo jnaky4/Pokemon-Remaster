@@ -9,11 +9,11 @@ namespace Pokemon
     {
         //public static string[][] all_learnset = new string[1089][];
         public static List<Dictionary<string, object>> all_learnset = new List<Dictionary<string, object>>();
-        int level;
-        Moves move;
+        public int level;
+        public Moves move;
         public override string ToString()
         {
-            return "Level: " + level + "   Move: " + move.move;
+            return "Level: " + level + "   Move: " + move.name;
         }
 
         public Learnset(int level, string move)
@@ -40,11 +40,11 @@ namespace Pokemon
             return pokemons_learnset;
         }
         
-        public int get_lvl()
+        public int Get_lvl()
         {
             return this.level;
         }
-        public Moves get_move()
+        Moves Get_move()
         {
             return this.move;
         }
@@ -74,7 +74,7 @@ namespace Pokemon
                     //Debug.Log("Size of Learnable Moves: " + learnable_moves.Count);
                     int random = UnityEngine.Random.Range(0, learnable_moves.Count);
                     //Debug.Log("Random Pick Index: " + random);
-                    Moves move = new Moves(learnable_moves[random].move.move);
+                    Moves move = new Moves(learnable_moves[random].move.name);
                     //Debug.Log("Move Learned: " + move.move);
                     temp_pokemon.currentMoves[i] = move;
                     //make sure not to add duplicates
