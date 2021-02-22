@@ -107,7 +107,6 @@ namespace Pokemon
 
             //END COMMENTING OUT LEVI
 
-            
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
@@ -272,7 +271,7 @@ namespace Pokemon
 
         IEnumerator CatchPokemon(int typeOfPokeball)
         {
-            if (!enemyUnit.canBeCaught)
+            if (!GameController.isCatchable)
             {
                 dialogueText.text = "You can't catch other trainer's Pokemon!";
                 yield return new WaitForSeconds(2);
@@ -635,6 +634,9 @@ namespace Pokemon
             pokeMenuUI.SetActive(true);
             Time.timeScale = 0f;
             poekmonMenuOpen = true;
+            CloseBallsMenu();
+            CloseMovesMenu();
+            SetDownButtons();
         }
         public void ClosePokemonMenu()
         {
