@@ -12,7 +12,6 @@ namespace Pokemon
         //After a Static Dictionary of Types is created with load_type()
         public static Dictionary<string, Type> type_dictionary = new Dictionary<string, Type>();
         public string type;
-        
 
         //for defenses
         public double defend_fire;
@@ -50,44 +49,44 @@ namespace Pokemon
         public double attack_normal;
 
         public Type(
-            string type, 
-            
-            double a_fire, 
-            double a_water, 
+            string type,
+
+            double a_fire,
+            double a_water,
             double a_grass,
-            double a_electric, 
-            double a_ice, 
-            double a_fighting, 
+            double a_electric,
+            double a_ice,
+            double a_fighting,
             double a_poison,
-            double a_ground, 
-            double a_flying, 
-            double a_psychic, 
+            double a_ground,
+            double a_flying,
+            double a_psychic,
             double a_bug,
-            double a_rock, 
-            double a_ghost, 
+            double a_rock,
+            double a_ghost,
             double a_dragon,
             double a_normal,
 
-            double d_fire, 
-            double d_water, 
+            double d_fire,
+            double d_water,
             double d_grass,
-            double d_electric, 
-            double d_ice, 
-            double d_fighting, 
+            double d_electric,
+            double d_ice,
+            double d_fighting,
             double d_poison,
-            double d_ground, 
-            double d_flying, 
-            double d_psychic, 
+            double d_ground,
+            double d_flying,
+            double d_psychic,
             double d_bug,
-            double d_rock, 
-            double d_ghost, 
-            double d_dragon, 
+            double d_rock,
+            double d_ghost,
+            double d_dragon,
             double d_normal)
 
         {
             this.type = type;
             //for attacking
-            this.attack_fire = a_fire; 
+            this.attack_fire = a_fire;
             this.attack_water = a_water;
             this.attack_grass = a_grass;
             this.attack_electric = a_electric;
@@ -167,37 +166,37 @@ namespace Pokemon
 
                 Type temp_type = new Type
                     (
-                    temp_type_str, 
-                    attack_fire, 
-                    attack_water, 
+                    temp_type_str,
+                    attack_fire,
+                    attack_water,
                     attack_grass,
-                    attack_electric, 
-                    attack_ice, 
-                    attack_fighting, 
+                    attack_electric,
+                    attack_ice,
+                    attack_fighting,
                     attack_poison,
-                    attack_ground, 
-                    attack_flying, 
-                    attack_psychic, 
+                    attack_ground,
+                    attack_flying,
+                    attack_psychic,
                     attack_bug,
-                    attack_rock, 
-                    attack_ghost, 
-                    attack_dragon, 
+                    attack_rock,
+                    attack_ghost,
+                    attack_dragon,
                     attack_normal,
 
-                    defend_fire, 
-                    defend_water, 
+                    defend_fire,
+                    defend_water,
                     defend_grass,
-                    defend_electric, 
-                    defend_ice, 
-                    defend_fighting, 
+                    defend_electric,
+                    defend_ice,
+                    defend_fighting,
                     defend_poison,
-                    defend_ground, 
-                    defend_flying, 
-                    defend_psychic, 
+                    defend_ground,
+                    defend_flying,
+                    defend_psychic,
                     defend_bug,
-                    defend_rock, 
-                    defend_ghost, 
-                    defend_dragon, 
+                    defend_rock,
+                    defend_ghost,
+                    defend_dragon,
                     defend_normal
                     );
 

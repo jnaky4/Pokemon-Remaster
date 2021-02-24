@@ -16,6 +16,7 @@ namespace Pokemon
         //combat data
         public static Pokemon[] opponentPokemon = new Pokemon[6];
         public static bool isCatchable = true;
+        public static int catchRate = 0;
 
         //overworld data
         public GameObject overworldCam;

@@ -9,23 +9,50 @@ namespace Pokemon
     {
         public Pokemon pokemon;
 
-        public bool canBeCaught = true;
-        public int catchRate = 1;
+        public double damage;
+        private double stab = 1;
+        private double critical = 1;
+        private double random = 1;
 
-        public int badge = 1;
-        public int critical = 1;
-        public int stab = 1;
-        public int type = 1;
-        public int burn = 1;
+        public void DoPP(int numMove)
+        {
+            pokemon.currentMoves[numMove].pp--;
+        }
 
-        public int damage;
-
-        public void SetDamage(int enemyDefense, int attackPower)
+        public void SetDamage(int enemyDefense, int attackPower, Moves move, bool crit)
         {
             try
             {
-                this.damage = ((((((2 * pokemon.level) / 5) + 2) * attackPower * ( pokemon.temp_attack / enemyDefense)))/50) + 2;
-                this.damage = this.damage * (badge * critical * stab * type * burn);
+                if (pokemon.type1.type.Equals(move.move_type.type) || (pokemon.type2.type != null && pokemon.type2.type.Equals(move.move_type.type)))
+                {
+                    stab = 1.5;
+                }
+                else
+                {
+                    stab = 1;
+                }
+            }
+            catch
+            {
+                stab = 1;
+            }
+
+            if (crit)
+            {
+                critical = 1.5;
+            }
+            else
+            {
+                critical = 1;
+            }
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(85, 100);
+            random = num / 100;
+
+            try
+            {
+                this.damage = ((((((2 * pokemon.level) / 5) + 2) * attackPower * ( pokemon.current_attack / enemyDefense)))/50) + 2;
+                this.damage = this.damage * (critical * stab * random * pokemon.type * pokemon.burn);
             }
             catch
             {
@@ -33,11 +60,11 @@ namespace Pokemon
             }
         }
 
-        public bool TakeDamage(int dmg)
+        public bool TakeDamage(double dmg)
         {
-            pokemon.temp_hp -= dmg;
+            pokemon.current_hp -= (int)dmg;
 
-            if (pokemon.temp_hp <= 0) return true;
+            if (pokemon.current_hp <= 0) return true;
             else return false;
         }
     }
