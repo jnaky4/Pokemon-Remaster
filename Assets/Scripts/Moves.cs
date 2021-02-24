@@ -9,7 +9,8 @@ namespace Pokemon
     {
         public string name = "default";
         public Type move_type;
-        public int pp;
+        public int current_pp;
+        public int maxpp;
         public int base_power;
         public int accuracy;
         public string description;
@@ -44,7 +45,8 @@ namespace Pokemon
         {
             this.name = move;
             this.move_type = move_type;
-            this.pp = pp;
+            this.current_pp = pp;
+            this.maxpp = pp;
             this.base_power = base_power;
             this.accuracy = accuracy;
             this.description = description;
@@ -61,7 +63,6 @@ namespace Pokemon
             this.stat_change_amount = stat_change_amount;
             this.priority = priority;
             this.heal = heal;
-
 
         }
         //public static string[][] move_list = new string[151][];
