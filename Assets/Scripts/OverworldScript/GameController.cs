@@ -54,7 +54,8 @@ namespace Pokemon
             if (triggerCombat == true)
             {
                 //overworldCam.SetActive(false);
-                player.SetActive(false);
+                //player.SetActive(false);
+                inCombat = true;
                 eventSystem.SetActive(false);
                 SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
                 overworldCam.SetActive(false);
@@ -63,9 +64,10 @@ namespace Pokemon
             if (endCombat == true)
             {
                 SceneManager.UnloadSceneAsync("BattleScene");
+                inCombat = false;
                 eventSystem.SetActive(true);
                 overworldCam.SetActive(true);
-                player.SetActive(true);
+                //player.SetActive(true);
                 endCombat = false;
             }
         }

@@ -14,14 +14,17 @@ namespace Pokemon
         public LayerMask grassLayer;
         public VectorValue startingPosition;
         public LayerMask boundary;
+        public LayerMask FovLayer;
         public string location = "Route 1";
         //Dictionary<string, int> badges_completed = new Dictionary<string, int>(){};
         public GameObject dialogBox;
 
         //public Rigidbody2D rb;
-        public Animator animator;
+        //public Animator animator;
+        private CharacterAnimator animator;
 
         private bool isMoving;
+        private bool inCombat = false;
         Vector2 movement;
 
         private void Awake()
@@ -37,7 +40,8 @@ namespace Pokemon
             Type.load_type();
             Moves.load_moves();*/
 
-            animator = GetComponent<Animator>();
+            //animator = GetComponent<Animator>();
+            animator = GetComponent<CharacterAnimator>();
             transform.position = startingPosition.initialValue;
         }
 
@@ -56,20 +60,23 @@ namespace Pokemon
                 //find the next target position when a player attempts to move
                 if (movement != Vector2.zero)
                 {
-                    animator.SetFloat("Horizontal", movement.x);
-                    animator.SetFloat("Vertical", movement.y);
+                    //animator.SetFloat("Horizontal", movement.x);
+                    //animator.SetFloat("Vertical", movement.y);
+                    animator.MoveX = movement.x;
+                    animator.MoveY = movement.y;
 
                     var targetPos = transform.position;
                     targetPos.x += movement.x;
                     targetPos.y += movement.y;
 
                     //makes sure an area is walkable before allowing a player move
-                    if (IsWalkable(targetPos) && !dialogBox.activeInHierarchy)
+                    if (IsWalkable(targetPos) && !dialogBox.activeInHierarchy && !GameController.inCombat)
                         StartCoroutine(Move(targetPos));
                 }
             }
 
-            animator.SetBool("IsMoving", isMoving);
+            //animator.SetBool("IsMoving", isMoving);
+            animator.IsMoving = isMoving;
 
             if (Input.GetKeyDown(KeyCode.Z))
                 Interact();
@@ -77,7 +84,8 @@ namespace Pokemon
 
         void Interact()
         {
-            var faceDir = new Vector3(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
+            //var faceDir = new Vector3(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
+            var faceDir = new Vector3(animator.MoveX, animator.MoveY);
             var interactPos = transform.position + faceDir;
 
             //Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
@@ -101,7 +109,7 @@ namespace Pokemon
 
             isMoving = false;
 
-            CheckForEncounters();
+            OnMoveOver();
         }
 
         private bool IsWalkable(Vector3 targetPos)
@@ -113,12 +121,21 @@ namespace Pokemon
             return true;
         }
 
+        private void OnMoveOver()
+        {
+            CheckForEncounters();
+            CheckIfInTrainerView();
+        }
+
         private void CheckForEncounters()
         {
             if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)
             {
                 if (Random.Range(1, 101) <= 10)
                 {
+                    //new code
+                    animator.IsMoving = false;
+
                     Dictionary<string, Route> route1_dic = Route.get_route(location);
                     string terrain = "Grass";
                     //list of spcific completed badges
@@ -130,6 +147,14 @@ namespace Pokemon
                     //overworldCam.SetActive(false);
                     //SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
                 }
+            }
+        }
+
+        private void CheckIfInTrainerView()
+        {
+            if (Physics2D.OverlapCircle(transform.position, 0.2f, FovLayer) != null)
+            {
+                Debug.Log("In Trainer's View");
             }
         }
 
