@@ -268,7 +268,7 @@ namespace Pokemon
 
         IEnumerator PlayerAttack(Moves attack, int moveNum)
         {
-            if (playerUnit.pokemon.currentMoves[moveNum].pp == 0)
+            if (playerUnit.pokemon.currentMoves[moveNum].current_pp == 0)
             {
                 dialogueText.text = "No remaining PP for " + attack.name + "!";
                 yield return new WaitForSeconds(2);
@@ -518,7 +518,7 @@ namespace Pokemon
             System.Random rnd = new System.Random();
             int moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
             int num = rnd.Next(1, 100);
-            if (enemyUnit.pokemon.currentMoves[moveNum]. pp == 0)
+            if (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0)
             {
                 EnemyTurn();
                 yield break;

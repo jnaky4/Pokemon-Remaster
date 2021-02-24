@@ -190,7 +190,7 @@ namespace Pokemon
         public static List<Dictionary<string, object>> all_base_stats = new List<Dictionary<string, object>>();
 
 
-
+        
         public string name;
         public int dexnum;
         public int level;
@@ -240,7 +240,10 @@ namespace Pokemon
         public int burn = 1;
 
         public Moves[] currentMoves = new Moves[4];
+        public Moves struggle = Moves.get_move("Struggle");
         public int currentEXP;
+
+        
 
         public void calculate_stats()
         {
