@@ -133,7 +133,7 @@ Spore,Grass,15,-1,100,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"Special spores a
 Stomp,Normal,20,65,100,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-three chance of making the target flinch if it connects.
 Strength,Normal,15,80,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A very powerful NORMAL-type attack. Also used for moving obstacles like boulders.
 String Shot,Bug,40,-1,95,null,0,enemy,1,1,1,1,enemy,1,Speed,-1,0,0,Strings are sprayed out and wrapped around the target to reduce its SPEED.
-Struggle,Normal,10,50,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,Used only if the user runs totally out of PP. The user is hit with 1/4 of the damage it inflicts.
+Struggle,Normal,100,50,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,Used only if the user runs totally out of PP. The user is hit with 1/4 of the damage it inflicts.
 Stun Spore,Grass,30,-1,75,Paralysis,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A special move that causes paralysis. When paralyzed, the victim has a one-in-four chance of immobility."
 Submission,Fighting,25,80,80,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-0.25,The strongest FIGHTING attack. One quarter of the damage it inflicts comes back to hurt the attacker.
 Substitute,Normal,10,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,Uses 1/4 of the user's maximum HP to create a substitute that takes the opponent's attacks.
