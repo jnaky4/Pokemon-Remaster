@@ -323,6 +323,70 @@ namespace Pokemon
             }
             yield break;
         }
+        IEnumerator PlayerAttack(Moves attack)
+        {
+            ClosePokemonMenu();
+            CloseMovesMenu();
+            CloseBallsMenu();
+            SetDownButtons();
+            dialogueText.text = playerUnit.pokemon + " has no remaining available moves.";
+            yield return new WaitForSeconds(2);
+            dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
+            yield return new WaitForSeconds(2);
+            playerUnit.SetDamage(enemyUnit.pokemon.current_defense, attack.base_power, attack, false);
+            bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+            enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
+
+
+            dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
+            yield return new WaitForSeconds(2);
+
+            bool isPlayerDead = playerUnit.TakeDamage(playerUnit.pokemon.max_hp / 4);
+            dialogueText.text = playerUnit.pokemon.name + " got hit with recoil damage!";
+            playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
+            yield return new WaitForSeconds(2);
+
+            if (isPlayerDead)
+            {
+                bool endBattle = true;
+                foreach (var p in GameController.playerPokemon)
+                {
+                    if (p.current_hp >= 0)
+                    {
+                        endBattle = false;
+                        break;
+                    }
+                }
+                if (endBattle)
+                {
+                    state = BattleState.LOST;
+                    StartCoroutine(EndBattle());
+                    yield break;
+                }
+                else
+                {
+                    state = BattleState.CHANGEPOKEMON;
+                    dialogueText.text = playerUnit.pokemon.name + " faints!";
+                    yield return new WaitForSeconds(2);
+                    SwitchPokemonAfterDeath();
+                    yield break;
+                }
+            }
+
+            if (isDead)
+            {
+                state = BattleState.WON;
+                StartCoroutine(EndBattle());
+            }
+            else
+            {
+                state = BattleState.ENEMYTURN;
+                EnemyTurn();
+            }
+
+
+            yield break;
+        }
 
         IEnumerator CatchPokemon(int typeOfPokeball)
         {
@@ -519,7 +583,7 @@ namespace Pokemon
         IEnumerator EnemyAttack()
         {
             int i;
-            /*bool struggle = false;
+           bool struggle = false;
             for (i = 0; i < enemyUnit.pokemon.currentMoves.Count(s => s != null); i++)
             {
                 if (enemyUnit.pokemon.currentMoves[i].current_pp != 0)
@@ -528,22 +592,21 @@ namespace Pokemon
                     break;
                 }
                 struggle = true;
-            }*/
+            }
             bool crit = CriticalHit(enemyUnit);
 
-            /*if (struggle)
+            if (struggle)
             {
                 dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used Struggle" + "!";
                 yield return new WaitForSeconds(2);
                 enemyUnit.SetDamage(playerUnit.pokemon.current_defense, enemyUnit.pokemon.struggle.base_power, enemyUnit.pokemon.struggle, false);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-
+                bool isEnemyDead = enemyUnit.TakeDamage(enemyUnit.pokemon.max_hp / 4);
                 dialogueText.text = playerUnit.pokemon.name + " took damage!";
-
                 yield return new WaitForSeconds(2);
 
-                if (isDead)
+                if (isDead && !isEnemyDead)
                 {
                     bool endBattle = true;
                     foreach (var p in GameController.playerPokemon)
@@ -569,13 +632,19 @@ namespace Pokemon
                         yield break;
                     }
                 }
-                else
+                else if (!isDead && !isEnemyDead)
                 {
                     state = BattleState.PLAYERTURN;
                     PlayerTurn();
                     yield break;
                 }
-            }*/
+                else
+                {
+                    state = BattleState.WON;
+                    StartCoroutine(EndBattle());
+                    yield break;
+                }
+            }
 
             System.Random rnd = new System.Random();
             int moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
@@ -836,6 +905,20 @@ namespace Pokemon
 
         public void OpenMovesMenu()
         {
+            bool struggle = false;
+            foreach (var x in playerUnit.pokemon.currentMoves)
+            {
+                if (x.current_pp == 0)
+                {
+                    struggle = true;
+                }
+                struggle = false;
+            }
+            if (struggle)
+            {
+                StartCoroutine(PlayerAttack(playerUnit.pokemon.struggle));
+                return;
+            }
             attackMenuUI.SetActive(true);
             attackMenuOpen = true;
         }
