@@ -213,14 +213,6 @@ namespace Pokemon
         public int base_sp_defense;
         public int base_speed;
 
-        public int temp_hp;
-        public int temp_attack;
-        public int temp_defense;
-        public int temp_sp_attack;
-        public int temp_sp_defense;
-        public int temp_speed;
-
-        //Current just means max
         public int current_hp;
         public int current_attack;
         public int current_defense;
@@ -228,6 +220,24 @@ namespace Pokemon
         public int current_sp_defense;
         public int current_speed;
 
+        //This means the maximum at this level
+        public int max_hp;
+        public int max_attack;
+        public int max_defense;
+        public int max_sp_attack;
+        public int max_sp_defense;
+        public int max_speed;
+
+        public int critical_stage = 0;
+        public int attack_stage = 0;
+        public int defense_stage = 0;
+        public int sp_attack_stage = 0;
+        public int sp_defense_stage = 0;
+        public int speed_stage = 0;
+        public int accuracy_stage = 0;
+
+        public int type = 1;
+        public int burn = 1;
 
         public Moves[] currentMoves = new Moves[4];
         public int currentEXP;
@@ -246,19 +256,19 @@ namespace Pokemon
             //iv is set to 30
             //ev set for +20 for each stat
             //510 total ev / 4 = 127.5 / 6 = 21.25, each pokemon should have +21.25 to each stat when using all evs
-            this.current_hp = (((((this.base_hp + this.iv) * 2) + 20) * this.level) / 100) + this.level + 10;
-            this.current_attack = (((((this.base_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.current_defense = (((((this.base_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.current_sp_attack = (((((this.base_sp_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.current_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.current_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_hp = (((((this.base_hp + this.iv) * 2) + 20) * this.level) / 100) + this.level + 10;
+            this.max_attack = (((((this.base_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_defense = (((((this.base_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_sp_attack = (((((this.base_sp_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
 
-            this.temp_hp = current_hp;
-            this.temp_attack = current_attack;
-            this.temp_defense = current_defense;
-            this.temp_sp_attack = current_sp_attack;
-            this.temp_sp_defense = current_sp_defense;
-            this.temp_speed = current_speed;
+            this.current_hp = max_hp;
+            this.current_attack = max_attack;
+            this.current_defense = max_defense;
+            this.current_sp_attack = max_sp_attack;
+            this.current_sp_defense = max_sp_defense;
+            this.current_speed = max_speed;
         }
 
         public void print_pokemon()
