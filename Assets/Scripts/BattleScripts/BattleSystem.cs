@@ -113,7 +113,10 @@ namespace Pokemon
             attackMenuUI.SetActive(false);
             ballsMenuUI.SetActive(false);
             SetDownButtons();
-
+            foreach (var x in GameController.playerPokemon[0].currentMoves)
+            {
+                Debug.Log("PP: " + x.current_pp + "Accuracy: " + x.accuracy);
+            }
             StartCoroutine(SetupBattle());
         }
 
@@ -278,6 +281,7 @@ namespace Pokemon
             ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
+            SetDownButtons();
             bool crit = CriticalHit(playerUnit);
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
@@ -317,7 +321,7 @@ namespace Pokemon
                 state = BattleState.ENEMYTURN;
                 EnemyTurn();
             }
-
+            yield break;
         }
 
         IEnumerator CatchPokemon(int typeOfPokeball)
@@ -514,22 +518,80 @@ namespace Pokemon
 
         IEnumerator EnemyAttack()
         {
+            int i;
+            /*bool struggle = false;
+            for (i = 0; i < enemyUnit.pokemon.currentMoves.Count(s => s != null); i++)
+            {
+                if (enemyUnit.pokemon.currentMoves[i].current_pp != 0)
+                {
+                    struggle = false;
+                    break;
+                }
+                struggle = true;
+            }*/
             bool crit = CriticalHit(enemyUnit);
+
+            /*if (struggle)
+            {
+                dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used Struggle" + "!";
+                yield return new WaitForSeconds(2);
+                enemyUnit.SetDamage(playerUnit.pokemon.current_defense, enemyUnit.pokemon.struggle.base_power, enemyUnit.pokemon.struggle, false);
+                bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
+
+                dialogueText.text = playerUnit.pokemon.name + " took damage!";
+
+                yield return new WaitForSeconds(2);
+
+                if (isDead)
+                {
+                    bool endBattle = true;
+                    foreach (var p in GameController.playerPokemon)
+                    {
+                        if (p.current_hp >= 0)
+                        {
+                            endBattle = false;
+                            break;
+                        }
+                    }
+                    if (endBattle)
+                    {
+                        state = BattleState.LOST;
+                        StartCoroutine(EndBattle());
+                        yield break;
+                    }
+                    else
+                    {
+                        state = BattleState.CHANGEPOKEMON;
+                        dialogueText.text = playerUnit.pokemon.name + " faints!";
+                        yield return new WaitForSeconds(2);
+                        SwitchPokemonAfterDeath();
+                        yield break;
+                    }
+                }
+                else
+                {
+                    state = BattleState.PLAYERTURN;
+                    PlayerTurn();
+                    yield break;
+                }
+            }*/
+
             System.Random rnd = new System.Random();
             int moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
             int num = rnd.Next(1, 100);
-            if (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0)
+            /*if (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0)
             {
                 EnemyTurn();
                 yield break;
-            }
+            }*/
             dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + enemyUnit.pokemon.currentMoves[moveNum].name + "!";
             yield return new WaitForSeconds(2);
             if (num <= enemyUnit.pokemon.currentMoves[moveNum].accuracy)
             {
                 enemyUnit.SetDamage(playerUnit.pokemon.current_defense, enemyUnit.pokemon.currentMoves[moveNum].base_power, enemyUnit.pokemon.currentMoves[moveNum], crit);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
-                enemyUnit.DoPP(moveNum);
+                //enemyUnit.DoPP(moveNum);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                 if (crit)
                 {
@@ -577,7 +639,7 @@ namespace Pokemon
                 state = BattleState.PLAYERTURN;
                 PlayerTurn();
             }
-
+            yield break;
         }
 
         IEnumerator EndBattle()
@@ -636,6 +698,7 @@ namespace Pokemon
             dialogueText.text = "Choose an action";
             SetUpButtons();
             playerHUD.SetPokemon(GameController.playerPokemon);
+            playerHUD.SetMoves(playerUnit);
         }
         void EnemyTurn()
         {

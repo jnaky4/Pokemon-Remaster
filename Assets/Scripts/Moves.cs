@@ -63,7 +63,6 @@ namespace Pokemon
             this.stat_change_amount = stat_change_amount;
             this.priority = priority;
             this.heal = heal;
-            
 
         }
         //public static string[][] move_list = new string[151][];

@@ -36,28 +36,31 @@ namespace Pokemon
             {
                 stab = 1;
             }
+            finally
+            {
+                if (crit)
+                {
+                    critical = 1.5;
+                }
+                else
+                {
+                    critical = 1;
+                }
+                System.Random rnd = new System.Random();
+                double num = rnd.Next(85, 100);
+                random = num / 100;
 
-            if (crit)
-            {
-                critical = 1.5;
+                try
+                {
+                    this.damage = ((((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemon.current_attack / enemyDefense))) / 50) + 2;
+                    this.damage = this.damage * (critical * stab * random * pokemon.type * pokemon.burn);
+                }
+                catch
+                {
+                    this.damage = 100000;
+                }
             }
-            else
-            {
-                critical = 1;
-            }
-            System.Random rnd = new System.Random();
-            int num = rnd.Next(85, 100);
-            random = num / 100;
 
-            try
-            {
-                this.damage = ((((((2 * pokemon.level) / 5) + 2) * attackPower * ( pokemon.current_attack / enemyDefense)))/50) + 2;
-                this.damage = this.damage * (critical * stab * random * pokemon.type * pokemon.burn);
-            }
-            catch
-            {
-                this.damage = 100000;
-            }
         }
 
         public bool TakeDamage(double dmg)

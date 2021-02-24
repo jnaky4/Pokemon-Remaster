@@ -19,7 +19,7 @@ namespace Pokemon
         public Learnset(int level, string move)
         {
             this.level = level;
-            this.move = Moves.get_move(move); 
+            this.move = Moves.get_move(move);
         }
 
         public static List<Learnset> get_learnset(int dexnum)
@@ -29,17 +29,17 @@ namespace Pokemon
             for (var i = 0; i < all_learnset.Count; i++)
             {
                 //int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["HP"].ToString());
-                
+
                 if (dexnum == int.Parse(Learnset.all_learnset[i]["dexnum"].ToString()))
                 {
-                    
+
                     Learnset temp = new Learnset(int.Parse(Learnset.all_learnset[i]["lvl"].ToString()), Learnset.all_learnset[i]["move"].ToString());
                     pokemons_learnset.Add(temp);
                 }
             }
             return pokemons_learnset;
         }
-        
+
         public int Get_lvl()
         {
             return this.level;
@@ -74,7 +74,7 @@ namespace Pokemon
                     //Debug.Log("Size of Learnable Moves: " + learnable_moves.Count);
                     int random = UnityEngine.Random.Range(0, learnable_moves.Count);
                     //Debug.Log("Random Pick Index: " + random);
-                    Moves move = new Moves(learnable_moves[random].move.name);
+                    Moves move = Moves.get_move(learnable_moves[random].move.name);
                     //Debug.Log("Move Learned: " + move.move);
                     temp_pokemon.currentMoves[i] = move;
                     //make sure not to add duplicates
