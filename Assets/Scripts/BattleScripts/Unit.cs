@@ -16,7 +16,7 @@ namespace Pokemon
 
         public void DoPP(int numMove)
         {
-            pokemon.currentMoves[numMove].pp--;
+            pokemon.currentMoves[numMove].current_pp--;
         }
 
         public void SetDamage(int enemyDefense, int attackPower, Moves move, bool crit)
