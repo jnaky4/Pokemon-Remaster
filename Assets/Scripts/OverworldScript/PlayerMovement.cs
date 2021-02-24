@@ -15,7 +15,7 @@ namespace Pokemon
         public VectorValue startingPosition;
         public LayerMask boundary;
         public string location = "Route 1";
-        Dictionary<string, int> badges_completed = new Dictionary<string, int>(){};
+        //Dictionary<string, int> badges_completed = new Dictionary<string, int>(){};
         public GameObject dialogBox;
 
         //public Rigidbody2D rb;
@@ -123,7 +123,7 @@ namespace Pokemon
                     string terrain = "Grass";
                     //list of spcific completed badges
 
-                    Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, badges_completed, badges_completed.Count);
+                    Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, GameController.badges_completed, GameController.badges_completed.Count);
                     GameController.opponentPokemon[0] = wild_spawn;
                     GameController.triggerCombat = true;
                     
