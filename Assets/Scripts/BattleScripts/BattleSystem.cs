@@ -25,8 +25,19 @@ namespace Pokemon
         public PlayerBattle player;
         public SpriteRenderer playerSprite;
         public SpriteRenderer enemySprite;
+        public SpriteRenderer playerAttackSprite;
+        public SpriteRenderer enemyAttackSprite;
 
         //IDK what these are but they need to stay
+
+        [SerializeField] List<Sprite> AttackSprites;
+        SpriteAnimator PlayerAttackAnim;
+        SpriteAnimator EnemyAttackAnim;
+        bool playerAttack;
+        bool playerInitialAttack;
+        bool enemyAttack;
+        bool enemyInitialAttack;
+        //all of this stuff is for animation
 
         Unit playerUnit;
         Unit enemyUnit;
@@ -107,6 +118,8 @@ namespace Pokemon
 
             //END COMMENTING OUT LEVI
 
+            PlayerAttackAnim = new SpriteAnimator(AttackSprites, playerAttackSprite, 0.07f);
+            EnemyAttackAnim = new SpriteAnimator(AttackSprites, enemyAttackSprite, 0.07f);
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
@@ -118,6 +131,51 @@ namespace Pokemon
                 Debug.Log("PP: " + x.current_pp + "Accuracy: " + x.accuracy);
             }
             StartCoroutine(SetupBattle());
+        }
+
+        //logic for wether a player or opponent's attack animation plays
+        private void Update()
+        {
+
+            if (playerInitialAttack == true)
+            {
+                PlayerAttackAnim.Start();
+                playerInitialAttack = false;
+                playerAttack = true;
+            }
+            if (playerAttack == true)
+            {
+                if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
+                {
+                    PlayerAttackAnim.HandleUpdate();
+                }
+                else
+                {
+                    Debug.Log("End Animation now");
+                    PlayerAttackAnim.EndAnimation();
+                    playerAttack = false;
+                }
+            }
+
+            if (enemyInitialAttack == true)
+            {
+                EnemyAttackAnim.Start();
+                enemyInitialAttack = false;
+                enemyAttack = true;
+            }
+            if (enemyAttack == true)
+            {
+                if (EnemyAttackAnim.CurrentFrame < EnemyAttackAnim.Frames.Count - 1)
+                {
+                    EnemyAttackAnim.HandleUpdate();
+                }
+                else
+                {
+                    Debug.Log("End Animation now");
+                    EnemyAttackAnim.EndAnimation();
+                    enemyAttack = false;
+                }
+            }
         }
 
         public static List<Dictionary<string, object>> load_CSV(string name)
@@ -282,6 +340,9 @@ namespace Pokemon
             CloseMovesMenu();
             CloseBallsMenu();
             SetDownButtons();
+
+            playerInitialAttack = true;
+     
             bool crit = CriticalHit(playerUnit);
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
@@ -584,6 +645,9 @@ namespace Pokemon
         {
             int i;
            bool struggle = false;
+
+            enemyInitialAttack = true;
+
             for (i = 0; i < enemyUnit.pokemon.currentMoves.Count(s => s != null); i++)
             {
                 if (enemyUnit.pokemon.currentMoves[i].current_pp != 0)

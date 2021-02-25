@@ -36,6 +36,17 @@ public class SpriteAnimator
         }
     }
 
+    public void EndAnimation()
+    {
+        currentFrame = 0;
+        spriteRenderer.sprite = frames[currentFrame];
+    }
+
+    public int CurrentFrame
+    {
+        get { return currentFrame; }
+    }
+
     public List<Sprite> Frames
     {
         get { return frames; }
