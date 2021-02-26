@@ -298,7 +298,7 @@ namespace Pokemon
 
             if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
             {
-                Debug.Log("Does something happen here?");
+                //Debug.Log("Does something happen here?");
                 this.image1 = path + "/Images/PokemonImages/" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
                 this.image2 = path + "/Images/PokemonImages/" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
             }
@@ -307,8 +307,8 @@ namespace Pokemon
                 this.image1 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
                 this.image2 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
             }
-            Debug.Log(image1);
-            Debug.Log(image2);
+            //Debug.Log(image1);
+            //Debug.Log(image2);
         }
     }
 }
