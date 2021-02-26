@@ -219,6 +219,8 @@ namespace Pokemon
         public int current_sp_attack;
         public int current_sp_defense;
         public int current_speed;
+        public int current_accuracy = 1;
+        public int current_evasion = 1;
 
         //This means the maximum at this level
         public int max_hp;
@@ -235,6 +237,7 @@ namespace Pokemon
         public int sp_defense_stage = 0;
         public int speed_stage = 0;
         public int accuracy_stage = 0;
+        public int evasion_stage = 0;
 
         public int type = 1;
         public int burn = 1;
@@ -243,6 +246,17 @@ namespace Pokemon
         public Moves struggle = Moves.get_move("Struggle");
         public int currentEXP;
 
+        public void reset_stages()
+        {
+            critical_stage = 0;
+            attack_stage = 0;
+            defense_stage = 0;
+            sp_attack_stage = 0;
+            sp_defense_stage = 0;
+            speed_stage = 0;
+            accuracy_stage = 0;
+            evasion_stage = 0;
+    }
 
         public void calculate_stats()
         {

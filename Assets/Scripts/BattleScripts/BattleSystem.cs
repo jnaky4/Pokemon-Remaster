@@ -41,7 +41,7 @@ namespace Pokemon
 
         Unit playerUnit;
         Unit enemyUnit;
-        //The pokemon used in the fight
+        //The Pokemon used in the fight
 
         public Button attackButton;
         public Button runAwayButton;
@@ -54,7 +54,7 @@ namespace Pokemon
         //The HUDs (the shit that shows our current hp and stuff like that
 
         public Text dialogueText;
-        //The dialogue text to let us know what is happening
+        //The dailogue text to let us know what is happening
 
         public BattleState state;
         //The current state of the battle
@@ -121,19 +121,19 @@ namespace Pokemon
             PlayerAttackAnim = new SpriteAnimator(AttackSprites, playerAttackSprite, 0.07f);
             EnemyAttackAnim = new SpriteAnimator(AttackSprites, enemyAttackSprite, 0.07f);
 
+            Debug.Log(GameController.opponentPokemon[0].current_attack);
+            Debug.Log(GameController.opponentPokemon[0].currentMoves[0].base_power);
+            Debug.Log(GameController.playerPokemon[0].current_defense);
+
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
             attackMenuUI.SetActive(false);
             ballsMenuUI.SetActive(false);
             SetDownButtons();
-            foreach (var x in GameController.playerPokemon[0].currentMoves)
-            {
-                Debug.Log("PP: " + x.current_pp + "Accuracy: " + x.accuracy);
-            }
             StartCoroutine(SetupBattle());
         }
 
-        //logic for wether a player or opponent's attack animation plays
+        //logic for whether a player or opponent's attack animation plays
         private void Update()
         {
 
@@ -327,6 +327,27 @@ namespace Pokemon
             return false;
         }
 
+        public string GetCategoryOfMove(Moves move)
+        {
+            return move.category;
+        }
+
+        public void DoDamage(Unit attacker, Unit defender, Moves attack, bool crit)
+        {
+            if (GetCategoryOfMove(attack).CompareTo("Physical") == 0)
+            {
+                attacker.SetDamage(defender.pokemon.current_defense, attacker.pokemon.current_attack, attack.base_power, attack, crit);
+            }
+            if (GetCategoryOfMove(attack).CompareTo("Special") == 0)
+            {
+                attacker.SetDamage(defender.pokemon.current_sp_defense, attacker.pokemon.current_sp_attack, attack.base_power, attack, crit);
+            }
+            if (GetCategoryOfMove(attack).CompareTo("Status") == 0)
+            {
+                attacker.SetDamage(defender.pokemon.current_sp_defense, 0, 0, attack, crit);
+            }
+        }
+
         IEnumerator PlayerAttack(Moves attack, int moveNum)
         {
             if (playerUnit.pokemon.currentMoves[moveNum].current_pp == 0)
@@ -342,25 +363,31 @@ namespace Pokemon
             SetDownButtons();
 
             playerInitialAttack = true;
-     
+
             bool crit = CriticalHit(playerUnit);
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(2);
-            if (num <= attack.accuracy)
+            if (num <= (attack.accuracy*playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion))
             {
-                playerUnit.SetDamage(enemyUnit.pokemon.current_defense, attack.base_power, attack, crit);
+                if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
+                DoDamage(playerUnit, enemyUnit, attack, crit);
                 playerUnit.DoPP(moveNum);
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
 
-                if (crit)
+                if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + attack.current_stat_change + " fell!";
+                else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + attack.current_stat_change + " rose!";
+                else
                 {
-                    dialogueText.text = "Critical hit!";
-                    yield return new WaitForSeconds(2);
+                    if (crit)
+                    {
+                        dialogueText.text = "Critical hit!";
+                        yield return new WaitForSeconds(2);
+                    }
+                    dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                 }
-                dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                 yield return new WaitForSeconds(2);
 
 
@@ -372,6 +399,7 @@ namespace Pokemon
                 else
                 {
                     state = BattleState.ENEMYTURN;
+                    Debug.Log(enemyUnit.pokemon.attack_stage.ToString());
                     EnemyTurn();
                 }
             }
@@ -384,6 +412,7 @@ namespace Pokemon
             }
             yield break;
         }
+
         IEnumerator PlayerAttack(Moves attack)
         {
             ClosePokemonMenu();
@@ -394,7 +423,7 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(2);
-            playerUnit.SetDamage(enemyUnit.pokemon.current_defense, attack.base_power, attack, false);
+            DoDamage(playerUnit, enemyUnit, attack, false);
             bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
             enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
 
@@ -539,7 +568,7 @@ namespace Pokemon
             else
             {
                 int d = (GameController.catchRate * 100) / numShakes;
-                dialogueText.text = enemyUnit.name + " broke free!";
+                dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
                 EnemyTurn();
                 yield break;
@@ -566,6 +595,7 @@ namespace Pokemon
             }
 
             dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
+            playerUnit.pokemon.reset_stages();
             GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
             yield return new WaitForSeconds(2);
             playerUnit.pokemon = GameController.playerPokemon[num];
@@ -617,6 +647,7 @@ namespace Pokemon
         void SwitchPokemonAfterDeath()
         {
             //activePokemon = -1;
+            playerHUD.SetPokemon(GameController.playerPokemon);
             backPoke.interactable = false;
             OpenPokemonMenu();
         }
@@ -663,7 +694,7 @@ namespace Pokemon
             {
                 dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used Struggle" + "!";
                 yield return new WaitForSeconds(2);
-                enemyUnit.SetDamage(playerUnit.pokemon.current_defense, enemyUnit.pokemon.struggle.base_power, enemyUnit.pokemon.struggle, false);
+                DoDamage(enemyUnit, playerUnit, enemyUnit.pokemon.struggle, false);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                 bool isEnemyDead = enemyUnit.TakeDamage(enemyUnit.pokemon.max_hp / 4);
@@ -713,25 +744,32 @@ namespace Pokemon
             System.Random rnd = new System.Random();
             int moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
             int num = rnd.Next(1, 100);
-            /*if (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0)
+            if (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0)
             {
                 EnemyTurn();
                 yield break;
-            }*/
+            }
             dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + enemyUnit.pokemon.currentMoves[moveNum].name + "!";
             yield return new WaitForSeconds(2);
-            if (num <= enemyUnit.pokemon.currentMoves[moveNum].accuracy)
+            if (num <= enemyUnit.pokemon.currentMoves[moveNum].accuracy * enemyUnit.pokemon.current_accuracy * playerUnit.pokemon.current_evasion)
             {
-                enemyUnit.SetDamage(playerUnit.pokemon.current_defense, enemyUnit.pokemon.currentMoves[moveNum].base_power, enemyUnit.pokemon.currentMoves[moveNum], crit);
+                if (enemyUnit.pokemon.currentMoves[moveNum].current_stat_change.CompareTo("null") != 0) enemyUnit.SetStages(enemyUnit.pokemon.currentMoves[moveNum], playerUnit);
+                DoDamage(enemyUnit, playerUnit, enemyUnit.pokemon.currentMoves[moveNum], crit);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
-                //enemyUnit.DoPP(moveNum);
+                Debug.Log(enemyUnit.damage.ToString());
+                enemyUnit.DoPP(moveNum);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                if (crit)
+                if (enemyUnit.pokemon.currentMoves[moveNum].current_stat_change.CompareTo("null") != 0 && enemyUnit.pokemon.currentMoves[moveNum].target.CompareTo("enemy") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + enemyUnit.pokemon.currentMoves[moveNum].current_stat_change + " fell!";
+                else if (enemyUnit.pokemon.currentMoves[moveNum].current_stat_change.CompareTo("null") != 0 && enemyUnit.pokemon.currentMoves[moveNum].target.CompareTo("self") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + enemyUnit.pokemon.currentMoves[moveNum].current_stat_change + " rose!";
+                else
                 {
-                    dialogueText.text = "Critical hit!";
-                    yield return new WaitForSeconds(2);
+                    if (crit)
+                    {
+                        dialogueText.text = "Critical hit!";
+                        yield return new WaitForSeconds(2);
+                    }
+                    dialogueText.text = playerUnit.pokemon.name + " took damage!";
                 }
-                dialogueText.text = playerUnit.pokemon.name + " took damage!";
 
                 yield return new WaitForSeconds(2);
 
@@ -819,6 +857,14 @@ namespace Pokemon
                     GameController.playerPokemon[i].sp_defense_stage = 0;
                     GameController.playerPokemon[i].speed_stage = 0;
                     GameController.playerPokemon[i].accuracy_stage = 0;
+                    GameController.playerPokemon[i].evasion_stage = 0;
+                    GameController.playerPokemon[i].current_attack = GameController.playerPokemon[i].max_attack;
+                    GameController.playerPokemon[i].current_defense = GameController.playerPokemon[i].max_defense;
+                    GameController.playerPokemon[i].current_sp_attack = GameController.playerPokemon[i].max_sp_attack;
+                    GameController.playerPokemon[i].current_sp_defense = GameController.playerPokemon[i].max_sp_defense;
+                    GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed;
+                    GameController.playerPokemon[i].current_accuracy = 1;
+                    GameController.playerPokemon[i].current_evasion = 1;
                 }
             }
             GameController.endCombat = true;
@@ -929,7 +975,6 @@ namespace Pokemon
         }
 
 
-
         public void OnPokemon0()
         {
             ClosePokemonMenu();
@@ -970,9 +1015,9 @@ namespace Pokemon
         public void OpenMovesMenu()
         {
             bool struggle = false;
-            foreach (var x in playerUnit.pokemon.currentMoves)
+            for (int i = 0; i < playerUnit.pokemon.currentMoves.Count(s => s != null); i++)
             {
-                if (x.current_pp == 0)
+                if (playerUnit.pokemon.currentMoves[i].current_pp == 0)
                 {
                     struggle = true;
                 }
