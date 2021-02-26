@@ -4121,28 +4121,28 @@ MonoBehaviour:
   enemyAttackSprite: {fileID: 563169330}
   AttackSprites:
   - {fileID: 0}
-  - {fileID: 21300000, guid: 6d6290812f2ad43799135b8fe39e38e6, type: 3}
-  - {fileID: 21300000, guid: f14dcfb77de254c4a8fdcaa80ee41887, type: 3}
-  - {fileID: 21300000, guid: 156b8e469931d4edf98ceedfa8471249, type: 3}
-  - {fileID: 21300000, guid: 21fc6d7528bf4442f9473f2703060887, type: 3}
-  - {fileID: 21300000, guid: 3411c2298519144c398cf71c39356113, type: 3}
-  - {fileID: 21300000, guid: c27479a186a98464a901b9262596dac7, type: 3}
-  - {fileID: 21300000, guid: 96f22e27f0a5748a1807618c9b9fcd49, type: 3}
-  - {fileID: 21300000, guid: 734a344223af443baa53dea4f489bcc9, type: 3}
-  - {fileID: 21300000, guid: 08b60d22d510e40f586dee638c0720ec, type: 3}
-  - {fileID: 21300000, guid: 1a0026790013d4715bbe71fa5a69b511, type: 3}
-  - {fileID: 21300000, guid: d401e5c6c5a3e45f5aa6a86efb22e683, type: 3}
-  - {fileID: 21300000, guid: 46f60205dca6a45f8a8ea269221758b7, type: 3}
-  - {fileID: 21300000, guid: a665b89aa7757430f825660914ceba71, type: 3}
-  - {fileID: 21300000, guid: 3cef39a71cf3e426c90d297752549f99, type: 3}
-  - {fileID: 21300000, guid: 0a280850de52c44839a139c80e5e81eb, type: 3}
-  - {fileID: 21300000, guid: f1990029e60db4cbbaa341327d9e3b69, type: 3}
-  - {fileID: 21300000, guid: d474d46484a034cdea143a3ce63d423f, type: 3}
-  - {fileID: 21300000, guid: ca4f45f6e65e84681a75ea3bc563b780, type: 3}
-  - {fileID: 21300000, guid: 9b7693a4f9e72405fa67431a328690a1, type: 3}
-  - {fileID: 21300000, guid: 232761d6e06f2473e88e750d2a2bc806, type: 3}
-  - {fileID: 21300000, guid: 1a4dad47fcf1648038777e923dc2d64d, type: 3}
-  - {fileID: 21300000, guid: 0f8705798e92147a6b8087e8bddde895, type: 3}
+  - {fileID: 21300000, guid: 862c2c2606c6f4d4eb1d4ebd05f7e591, type: 3}
+  - {fileID: 21300000, guid: 25c1924574b8a054383b23cb5e34a3f4, type: 3}
+  - {fileID: 21300000, guid: 17a294b2ade4c184cbfb32a5bf283d81, type: 3}
+  - {fileID: 21300000, guid: 633d8010bdd25f64f8d674934bbc9a73, type: 3}
+  - {fileID: 21300000, guid: b9a277b8516b84a4fbe8fbc803e1ac37, type: 3}
+  - {fileID: 21300000, guid: 347a23c305161a94896c5f41800edc36, type: 3}
+  - {fileID: 21300000, guid: f753c7d0b33072e47acb4c3ffcf98eb9, type: 3}
+  - {fileID: 21300000, guid: e9ee5c8f3d2d85d428febb115f5675aa, type: 3}
+  - {fileID: 21300000, guid: ceda320a349b3534e9e596ff1bbf262b, type: 3}
+  - {fileID: 21300000, guid: 3776fb63b8896c94bb8d0de81d001ce4, type: 3}
+  - {fileID: 21300000, guid: 35730725f87325e4e8767342a8992578, type: 3}
+  - {fileID: 21300000, guid: c5534c799952de54986cd3735b021cb3, type: 3}
+  - {fileID: 21300000, guid: 2511938e554cd4549847c4e8070e28f5, type: 3}
+  - {fileID: 21300000, guid: 3695c024d3fc50949b2a440b2693da46, type: 3}
+  - {fileID: 21300000, guid: 23dc1c744bd0c194295ed2f3431a7d40, type: 3}
+  - {fileID: 21300000, guid: 56a7b2a608ec8ff478a0fd669830185a, type: 3}
+  - {fileID: 21300000, guid: c3d65b6c0b196d74b84858e5e6b0d6bb, type: 3}
+  - {fileID: 21300000, guid: f0648fa5ed2bffb4fa0596651b224d27, type: 3}
+  - {fileID: 21300000, guid: 5cf6094f00d047d4e892efbdebc56649, type: 3}
+  - {fileID: 21300000, guid: 7d820655ca1cb9d459841bea3277a427, type: 3}
+  - {fileID: 21300000, guid: ed8f3e588e78acf44b140b30673a41ad, type: 3}
+  - {fileID: 21300000, guid: 3877912558e5fa2439e70e36035e3249, type: 3}
   attackButton: {fileID: 1771759507}
   runAwayButton: {fileID: 1666210759}
   pokemonButton: {fileID: 1885681006}
