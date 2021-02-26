@@ -13,7 +13,7 @@ namespace Pokemon
         public int maxpp;
         public int base_power;
         public int accuracy;
-        public string description;
+        public string category;
         public Status status;
         public double status_chance;
         public string status_target;
@@ -27,7 +27,7 @@ namespace Pokemon
         public int stat_change_amount;
         public int priority;
         public double heal;
-
+        public string description;
 
 
         public Moves(string move)
@@ -38,7 +38,7 @@ namespace Pokemon
         }
 
         public Moves(string move, Type move_type, int pp, int base_power,
-            int accuracy, Status status, double status_chance,
+            int accuracy, string category, Status status, double status_chance,
             string status_target, int max_per_turn, int min_per_turn, int max_turns, int min_turns,
             string target, double chance_stat_change, string current_stat_change,
             int stat_change_amount, int priority, double heal, string description)
@@ -49,7 +49,7 @@ namespace Pokemon
             this.maxpp = pp;
             this.base_power = base_power;
             this.accuracy = accuracy;
-            this.description = description;
+            this.category = category;
             this.status = status;
             this.status_chance = status_chance;
             this.status_target = status_target;
@@ -63,7 +63,7 @@ namespace Pokemon
             this.stat_change_amount = stat_change_amount;
             this.priority = priority;
             this.heal = heal;
-
+            this.description = description;
         }
         //public static string[][] move_list = new string[151][];
         public static Dictionary<string, Moves> move_dictionary = new Dictionary<string, Moves>();
@@ -81,6 +81,7 @@ namespace Pokemon
                     int.Parse(all_moves[i]["PP"].ToString()),
                     int.Parse(all_moves[i]["Att."].ToString()),
                     int.Parse(all_moves[i]["Acc."].ToString()),
+                    all_moves[i]["Category"].ToString(),
                     Status.get_status(all_moves[i]["Status"].ToString()),
                     double.Parse(all_moves[i]["Status_Chance"].ToString()),
                     all_moves[i]["Status_Target"].ToString(),

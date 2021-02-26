@@ -1,169 +1,170 @@
-Name,Type,PP,Att.,Acc.,Status,Status_Chance,Status_Target,Max_Per_Turn,Min_Per_Turn,Max_Turns,Min_Turns,Target,Chance_Stat_Change,Current_Stat_Change,Stat_Change_Amount,Priority,Heal,Effect
-Absorb,Grass,20,20,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,A GRASS-type attack. It adds half the HP it drained from the target to the attacker's HP.
-Acid,Poison,30,40,100,null,0,enemy,1,1,1,1,enemy,0.33,Defense,-1,0,0,A POISON-type attack. Has a one-in-three chance of lowering the target's DEFENSE.
-Acid Armor,Poison,40,-1,100,null,0,enemy,1,1,1,1,self,1,Defense,2,0,0,Melts the user's body for protection. A move that sharply raises DEFENSE.
-Agility,Psychic,30,-1,100,null,0,enemy,1,1,1,1,self,1,Speed,2,0,0,A special technique that greatly boosts the user's SPEED. Can normally be used up to three times.
-Amnesia,Psychic,20,-1,100,null,0,enemy,1,1,1,1,self,1,"Special Attack,Special Defense",2,0,0,Sharply raises the user's SPECIAL stat. Also increases protection against special attacks.
-Aurora Beam,Ice,20,65,100,null,0,enemy,1,1,1,1,enemy,0.33,Attack,1,0,0,An ICE-type attack. Has a one-in-three chance of reducing the target's ATTACK power.
-Barrage,Normal,20,15,85,null,0,enemy,1,1,5,1,enemy,0,null,0,0,0,Several spheres are thrown consecutively at the target to inflict damage.
-Barrier,Psychic,30,-1,100,null,0,enemy,1,1,1,1,self,1,Defense,2,0,0,Instantly forms a barrier between the user and the opponent. DEFENSE is sharply increased.
-Bide,Normal,10,-1,100,null,0,enemy,1,1,2,2,both,0,null,0,0,0,"The user waits for several turns. At the end, it returns double the damage it received."
-Bind,Normal,20,15,75,null,0,enemy,1,1,5,2,enemy,0,null,0,0,0,Traps and squeezes the target over several turns. The target cannot move while under attack.
-Bite,Normal,25,60,100,Flinch,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A bite made using sharp fangs. This may cause the opponent to flinch, and it might not attack."
-Blizzard,Ice,5,120,90,Freeze,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,The strongest ICE-type attack. Has a one-in-ten chance of freezing the target solid.
-Body Slam,Normal,15,85,100,Paralysis,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-three chance of paralyzing the target if it connects.
-Bone Club,Ground,20,65,85,Flinch,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A physical attack using a bone as a club. If it connects, it may cause the target to flinch."
-Bonemerang,Ground,10,50,90,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,A boomerang made of bone is thrown to inflict damage twice -- on the way out and on its return.
-Bubble,Water,30,20,100,null,0,enemy,1,1,1,1,enemy,0.3,Speed,-1,0,0,A WATER-type attack. Has a one-in-three chance of reducing the target's SPEED.
-Bubble Beam,Water,20,65,100,null,0,enemy,1,1,1,1,enemy,0.33,Speed,-1,0,0,A WATER-type attack. Has a one-in-three chance of reducing the target's SPEED.
-Bug Bite,Bug,20,60,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,The user bites the foe. bug bites really hurt.
-Clamp,Water,10,35,75,null,0,enemy,5,1,1,1,enemy,0,null,0,0,0,The target is gripped in the attacker's shell for two to five turns. It can't move while under attack.
-Comet Punch,Normal,15,18,85,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,"Although each slap is weak, this attack hits the target two to five times in succession."
-Confuse Ray,Ghost,10,-1,100,Confusion,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A sinister flash of light makes the target confused. A special GHOST-type technique.
-Confusion,Psychic,25,50,100,Confusion,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A PSYCHIC-type attack. Has a one-in-ten chance of leaving the target confused.
-Constrict,Normal,35,10,100,null,0,enemy,1,1,1,1,enemy,0.33,Speed,-1,0,0,A NORMAL-type attack. Has a one-in-three chance of reducing the target's SPEED.
-Conversion,Normal,30,-1,100,null,0,enemy,1,1,1,1,self,0,null,0,0,0,A special move that switches the user's elemental type to that of the target.
-Counter,Fighting,20,-1,100,null,0,enemy,1,1,1,1,both,0,null,0,-1,0,A retaliation move that pays back double the damage of a physical attack. Highly accurate.
-Crabhammer,Water,10,90,85,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move that is used only by Pokémon with pincers. Likely to get a critical hit.
-Cut,Normal,30,50,95,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Also used for cutting small bushes to open new paths.
-Defense Curl,Normal,40,-1,100,null,0,enemy,1,1,1,1,self,1,Defense,1,0,0,Raises the user's DEFENSE. Can normally be used up to six times in a row.
-Dig,Ground,10,100,100,null,0,enemy,2,2,1,1,enemy,0,null,0,0,0,"The attacker digs underground in the first turn, then pops up in the next turn to attack."
-Disable,Normal,20,-1,55,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A technique that disables one of the target's moves. The disabled move can't be used until it wears off.
-Dizzy Punch,Normal,10,70,100,Confusion,0.2,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. The punch is relatively strong and highly accurate.
-Double Kick,Fighting,30,30,100,null,0,enemy,2,2,1,1,enemy,0,null,0,0,0,"A FIGHTING-type attack. As the name implies, it is actually two quick kicks in succession."
-Double Slap,Normal,10,15,85,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,"Although each slap is weak, this attack hits the target two to five times in succession."
-Double Team,Normal,15,-1,100,null,0,enemy,1,1,1,1,self,1,Evasion,0,0,0,"Creates illusionary copies of the user. The copies disorient the enemy, reducing its accuracy."
-Double-Edge,Normal,15,100,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-0.25,A charging tackle attack. One quarter of the damage it inflicts comes back to hurt the attacker.
-Dragon Rage,Dragon,10,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A DRAGON-type attack. It inflicts a set amount of damage, regardless of the target's type."
-Dream Eater,Psychic,15,100,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,Works only on sleeping Pokémon. This technique steals the target's HP and adds it to the user's HP.
-Drill Peck,Flying,20,80,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A standard FLYING-type attack. It is strong and highly likely to hit the target.
-Earthquake,Ground,10,100,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,An attack that inflicts damage by shaking the ground. It is useless against FLYING-type Pokémon.
-Egg Bomb,Normal,10,100,75,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A NORMAL-type attack. An egg is launched at the target. It may miss, however."
-Ember,Fire,25,40,100,Burn,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A FIRE-type attack. Has a one-in-ten chance of leaving the target with a damaging burn.
-Explosion,Normal,5,170,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-1000,"The most powerful attack of all. However, the attacker faints after using this move."
-Fire Blast,Fire,5,120,85,Burn,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,The strongest FIRE-type attack. Has a one-in-three chance of inflicting a burn on the target.
-Fire Punch,Fire,15,75,100,Burn,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special FIRE-type attack. Has a one-in-ten chance of inflicting a burn on the target.
-Fire Spin,Fire,15,15,70,null,0,enemy,1,1,5,2,enemy,0,null,0,0,0,A FIRE-type attack that lasts two to five turns. The target cannot move while surrounded by flames.
-Fissure,Ground,5,-1,30,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,Causes a single-hit knockout if it hits. Useless against FLYING-type Pokémon.
-Flamethrower,Fire,15,95,100,Burn,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A powerful FIRE-type attack. Has a one-in-ten chance of leaving the target with a damaging burn.
-Flash,Normal,20,-1,70,null,0,enemy,1,1,1,1,enemy,1,Accuracy,-1,0,0,Creates a brilliant flash of light that blinds the target. This technique reduces the opponent's accuracy.
-Fly,Flying,15,70,95,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"The Pokémon flies high, then strikes in the next turn. Used for flying to places already visited."
-Focus Energy,Normal,30,-1,100,null,0,enemy,1,1,1,1,self,1,Critical,1,0,0,Raises the likelihood of nailing the opponent's weak spot for a critical hit.
-Fury Attack,Normal,20,15,85,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. The Pokémon rapidly jabs at its opponent several times.
-Fury Swipes,Normal,15,18,80,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,The target is scratched by sharp claws two to five times in quick succession.
-Glare,Normal,30,-1,75,Paralysis,1,enemy,1,1,1,1,enemy,0,null,0,0,0,The target is transfixed with terrifying sharp eyes. The target is frightened into paralysis.
-Growl,Normal,40,-1,100,null,0,enemy,1,1,1,1,enemy,1,Attack,-1,0,0,A technique that lowers the target's ATTACK power. Can normally be used up to six times.
-Growth,Normal,40,-1,100,null,0,enemy,1,1,1,1,self,1,"Attack,Special Attack",1,0,0,Raises SPECIAL to make special attacks stronger and enhance protection against special moves.
-Guillotine,Normal,5,-1,30,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A single-hit knockout attack. Learned only by Pokémon that have large pincers.
-Gust,Normal,35,40,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack used by bird Pokémon. A powerful wind is generated by flapping wings.
-Harden,Normal,30,-1,100,null,0,enemy,1,1,1,1,self,1,Defense,1,0,0,Raises the user's DEFENSE. Useful when battling physically strong Pokémon.
-Haze,Ice,30,-1,100,null,0,enemy,1,1,1,1,both,1,All,0,0,0,"Eliminates all changes affecting status, such as SPEED and accuracy, of both Pokémon in battle."
-Headbutt,Normal,15,70,100,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-three chance of making the target flinch if it connects.
-Hi Jump Kick,Fighting,20,85,90,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"Stronger than a JUMP KICK. If it misses, the attacker sustains 1/8 the damage it should have caused."
-Horn Attack,Normal,25,65,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. A sharp horn is driven hard into the target to inflict damage.
-Horn Drill,Normal,5,-1,30,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A single-hit knockout attack. Learned only by Pokémon with a horn or horns.
-Hydro Pump,Water,5,120,80,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"The strongest WATER-type attack. However, while it is powerful, it may miss the target."
-Hyper Beam,Normal,5,150,90,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"An extremely powerful attack. The attacker becomes so tired, it has to rest the next turn."
-Hyper Fang,Normal,15,80,90,Flinch,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-ten chance of making the target flinch.
-Hypnosis,Psychic,20,-1,60,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special PSYCHIC-type move. The target is hypnotized into a deep sleep.
-Ice Beam,Ice,10,95,100,Freeze,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,An ICE-type attack. Has a one-in-ten chance of freezing the target solid.
-Ice Punch,Ice,15,75,100,Freeze,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special ICE-type attack. Has a one-in-ten chance of freezing the target.
-Jump Kick,Fighting,25,70,95,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A forceful FIGHTING-type attack. If it misses, however, the attacker gets hurt."
-Karate Chop,Normal,25,50,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Often turns into a critical hit and inflicts double the damage.
-Kinesis,Psychic,15,-1,80,null,0,enemy,1,1,1,1,self,1,Evasion,1,0,0,A special move of bending spoons to confound the enemy. Makes the user harder to hit.
-Leech Life,Bug,15,20,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,An HP-draining attack. It adds half the HP it drained from the target to the attacker's HP.
-Leech Seed,Grass,10,-1,90,null,0,enemy,1,1,100,100,enemy,0,null,0,0,0.0625,Plants a seed on the target Pokémon. The seed slowly drains the target's HP for the attacker.
-Leer,Normal,30,-1,100,null,0,enemy,1,1,1,1,enemy,1,Defense,-1,0,0,"A technique that lowers the target's DEFENSE. Useful against tough, armored Pokémon."
-Lick,Ghost,30,20,100,Paralysis,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A GHOST-type attack. Has a one-in-three chance of leaving the target with paralysis.
-Light Screen,Psychic,30,-1,100,null,0,enemy,1,1,1,1,self,0,null,0,0,0,Reduces damage from special attacks by about half. A special PSYCHIC-type technique.
-Lovely Kiss,Normal,10,-1,75,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A special move that puts the target to sleep with a big kiss. (Actually, the victim passes out.)"
-Low Kick,Fighting,20,50,90,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A FIGHTING-type attack. Has a one-in-three chance of making the target flinch if it connects.
-Meditate,Psychic,40,-1,100,null,0,enemy,1,1,1,1,self,1,Attack,1,0,0,A special technique that boosts the user's ATTACK power. Can normally be used up to six times.
-Mega Drain,Grass,10,40,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,A GRASS-type attack. It adds half the HP it drained from the target to the attacker's HP.
-Mega Kick,Normal,5,120,75,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A NORMAL-type attack. Out of all the Pokémon kicking attacks, this is the strongest."
-Mega Punch,Normal,20,80,85,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack move. It is highly accurate and relatively powerful.
-Metronome,Normal,10,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"The user waggles its finger, triggering a move. There is no telling what will happen."
-Mimic,Normal,10,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A move for learning one of the opponent's moves, for use during that battle only."
-Minimize,Normal,20,-1,100,null,0,enemy,1,1,1,1,self,1,Evasion,1,0,0,Reduces the user's size and makes it harder to hit. Can normally be used up to six times.
-Mirror Move,Flying,20,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move that strikes back with the opponent's last move. This move comes after the enemy's move.
-Mist,Ice,30,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"Provides full protection against any enemy status attack, such as those that lower DEFENSE."
-Night Shade,Ghost,15,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A GHOST-type attack. Highly accurate, it inflicts damage regardless of the target's type."
-Pay Day,Normal,20,40,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move that also nets money at the end of battle. How much depends on the attack frequency and level.
-Peck,Flying,35,35,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A standard FLYING-type attack. It is favored by Pokémon that have beaks and/or horns.
-Petal Dance,Grass,20,70,100,Confusion,1,self,1,1,3,2,enemy,0,null,0,0,0,"A dance-like attack that lasts two to three turns. Afterwards, the attacker becomes confused."
-Pin Missile,Bug,20,14,85,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,An attack that fires many needle-like projectiles from the body. Strikes several times.
-Poison Gas,Poison,40,-1,55,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A poisonous cloud of gas is forcefully expelled to poison the target.
-Poison Powder,Poison,35,-1,75,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A technique that poisons the target. If poisoned, the victim loses HP steadily."
-Poison Sting,Poison,35,15,100,Poison,0.2,enemy,1,1,1,1,enemy,0,null,0,0,0,A POISON-type attack. Has a one-in- five chance of leaving the target with the lingering effects of poison.
-Pound,Normal,35,40,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Slightly stronger than TACKLE. Many Pokémon know this move.
-Psybeam,Psychic,20,65,100,Confusion,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A PSYCHIC-type attack. Has a one-in-ten chance of making the target confused.
-Psychic,Psychic,10,90,100,null,0,enemy,1,1,1,1,enemy,0.3,Special Defense,-1,0,0,A PSYCHIC-type attack. Has a one-in-three chance of lowering the target's SPECIAL rating.
-Psywave,Psychic,15,-1,80,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A PSYCHIC-type attack of varying intensity. It occasionally inflicts heavy damage.
-Quick Attack,Normal,30,40,100,null,0,enemy,1,1,1,1,enemy,0,null,0,1,0,"An attack that always strikes first. If both Pokémon use this, the one with higher SPEED attacks first."
-Rage,Normal,20,20,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A non-stop attack move. The user's ATTACK power increases every time it sustains damage.
-Razor Leaf,Grass,25,55,95,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A GRASS-type attack that sends sharp-edged leaves at the target. Likely to get a critical hit.
-Razor Wind,Normal,10,80,75,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A two-turn attack with the wind attack in the second turn. Learned by many FLYING-type Pokémon.
-Recover,Normal,20,-1,100,null,0,enemy,1,1,1,1,self,0,null,0,0,0.5,Restores HP by 1/2 of the user's maximum HP. Few Pokémon learn this technique on their own.
-Reflect,Psychic,20,-1,100,null,0,enemy,1,1,1,1,self,0,null,0,0,0,Reduces damage from physical attacks by about half. A special PSYCHIC-type technique.
-Rest,Psychic,10,-1,100,Sleep,1,enemy,1,1,1,1,self,0,null,0,0,1,The user takes a nap to fully restore its HP and recover from any status abnormalities.
-Roar,Normal,20,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A terrifying roar that drives wild Pokémon away. It is useful only in the wild.
-Rock Slide,Rock,10,75,90,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A ROCK-type attack that hits the target with an avalanche of rocks and boulders.
-Rock Throw,Rock,15,50,65,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A ROCK-type attack. As the name implies, a huge boulder is dropped on the target."
-Rolling Kick,Fighting,15,60,85,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A sharp FIGHTING-type attack. Has a one-in-three chance of making the target flinch if it connects.
-Sand-Attack,Normal,15,-1,100,null,0,enemy,1,1,1,1,enemy,0.3,Accuracy,-1,0,0,An attack in which sand is used to blind the target and reduce its attack accuracy.
-Scratch,Normal,35,40,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Sharp claws are used to inflict damage on the target.
-Screech,Normal,40,-1,85,null,0,enemy,1,1,1,1,enemy,1,Defense,-2,0,0,A move that makes a horrible noise. It sharply reduces the target's DEFENSE.
-Seismic Toss,Fighting,20,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A FIGHTING-type attack. Throws the target with enough force to flip the world upside down.
-Self-Destruct,Normal,5,130,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-1000,"The user explodes, inflicting damage on the enemy, then faints. Useless against GHOST-type."
-Shadow Ball,Ghost,15,80,100,null,0,enemy,1,1,1,1,enemy,0.2,Special Defense,-1,0,0,Deals damage and has a 20% chance of lowering the target's Special Defense by one stage.
-Shadow Sneak,Ghost,30,40,100,null,0,enemy,1,1,1,1,enemy,0,null,0,1,0,The user extends its shadow and attacks the foe from behind. This move always goes first.
-Sharpen,Normal,30,-1,100,null,0,enemy,1,1,1,1,self,1,Attack,1,0,0,Raises the user's ATTACK power. The edges of the Pokémon are made harder for more impact.
-Sing,Normal,15,-1,55,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special NORMAL-type technique. A soothing melody lulls the target to sleep.
-Skull Bash,Normal,15,100,100,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"In the first turn, the attacker tucks in its head. The next turn, it head-butts at full steam."
-Sky Attack,Flying,5,140,90,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"The strongest FLYING-type attack. Energy is stored in the first turn, then fired the next turn."
-Slam,Normal,20,80,75,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack move. The attacker uses an appendage (e.g. tail) to slam the target hard.
-Slash,Normal,20,70,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. It has a high probability of a critical hit for inflicting double the damage.
-Sleep Powder,Grass,15,-1,75,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,Induces sleep. A Pokémon will stay asleep for several turns if an item isn't used to wake it.
-Sludge,Poison,20,65,100,Poison,0.5,enemy,1,1,1,1,enemy,0,null,0,0,0,A POISON-type attack. Has a fifty-fifty chance of poisoning the target.
-Smog,Poison,20,20,70,Poison,0.5,enemy,1,1,1,1,enemy,0,null,0,0,0,Smog is spewed as a cloud. Has a fifty-fifty chance of poisoning the target.
-Smokescreen,Normal,20,-1,100,null,0,enemy,1,1,1,1,enemy,1,Accuracy,-1,0,0,Creates an obscuring cloud of smoke that reduces the enemy's accuracy.
-Soft-Boiled,Normal,10,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,Restores HP by 1/2 of the user's maximum HP. May also be used in the field.
-Solar Beam,Grass,10,120,100,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"The strongest GRASS-type attack. Energy is absorbed in the first turn, then fired the next turn."
-Sonic Boom,Normal,20,-1,90,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. It inflicts a set amount of damage regardless of the target's type.
-Spike Cannon,Normal,15,20,100,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,A physical attack consisting of two to five consecutive hits. Highly accurate.
-Splash,Normal,40,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move that involves only flopping and SPLASHing around in front of the opponent. It has no effect.
-Spore,Grass,15,-1,100,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"Special spores are scattered from mushrooms. If the opponent inhales the spores, it will fall asleep."
-Stomp,Normal,20,65,100,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-three chance of making the target flinch if it connects.
-Strength,Normal,15,80,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A very powerful NORMAL-type attack. Also used for moving obstacles like boulders.
-String Shot,Bug,40,-1,95,null,0,enemy,1,1,1,1,enemy,1,Speed,-1,0,0,Strings are sprayed out and wrapped around the target to reduce its SPEED.
-Struggle,Normal,10,50,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,Used only if the user runs totally out of PP. The user is hit with 1/4 of the damage it inflicts.
-Stun Spore,Grass,30,-1,75,Paralysis,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A special move that causes paralysis. When paralyzed, the victim has a one-in-four chance of immobility."
-Submission,Fighting,25,80,80,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-0.25,The strongest FIGHTING attack. One quarter of the damage it inflicts comes back to hurt the attacker.
-Substitute,Normal,10,-1,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,Uses 1/4 of the user's maximum HP to create a substitute that takes the opponent's attacks.
-Super Fang,Normal,10,-1,90,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"If it hits, this attack cuts the target's HP in half. Learned by Pokémon with developed fangs."
-Supersonic,Normal,20,-1,55,Confusion,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special NORMAL-type technique. Supersonic sound waves are used to confuse the target.
-Surf,Water,15,95,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A WATER-type attack. The power of this technique is strong and highly accurate.
-Swift,Normal,20,60,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A NORMAL-type attack. It is highly accurate, so it can be counted on to inflict damage."
-Swords Dance,Normal,30,-1,100,null,0,enemy,1,1,1,1,self,1,Attack,2,0,0,A special move that greatly boosts the user's ATTACK power. Can normally be used up to three times.
-Tackle,Normal,35,35,95,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Many Pokémon know this attack right from the start.
-Tail Whip,Normal,30,-1,100,null,0,enemy,1,1,1,1,enemy,1,Defense,-1,0,0,"A technique that lowers the target's DEFENSE. Useful against tough, armored Pokémon."
-Take Down,Normal,20,90,85,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-0.25,A charging attack. One quarter of the damage it inflicts comes back to hurt the attacker.
-Teleport,Psychic,20,-1,100,null,0,self,1,1,1,1,enemy,0,null,0,0,0,A special technique for instantly escaping from wild Pokémon. Useful in the wild only.
-Thrash,Normal,20,90,100,Confusion,1,self,1,1,5,2,enemy,0,null,0,0,0,"An attack that lasts two to three turns. Afterwards, the attacker becomes confused."
-Thunder,Electric,10,120,70,Paralysis,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,The strongest of all ELECTRIC-type attacks. Has a one-in-ten chance of paralyzing the target.
-Thunder Punch,Electric,15,75,100,Paralysis,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special ELECTRIC-type attack. Has a one-in-ten chance of paralyzing the target.
-Thunder Shock,Electric,30,40,100,Paralysis,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,An ELECTRIC-type attack. Has a one-in-ten chance of paralyzing the target.
-Thunder Wave,Electric,20,-1,100,Paralysis,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A special move that causes paralysis. When paralyzed, the victim has a one-in-four chance of immobility."
-Thunderbolt,Electric,15,95,100,Paralysis,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,An ELECTRIC-type attack. Has a one-in-ten chance of paralyzing the target.
-Toxic,Poison,10,-1,85,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A technique that badly poisons the target. The amount of damage from the poison increases every turn.
-Transform,Normal,10,-1,100,null,0,self,1,1,1,1,enemy,0,null,0,0,0,"Transforms the user into a copy of the target, including the type. All moves have only five PP each."
-Tri Attack,Normal,10,80,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. A triangular field of energy is created and launched at the target.
-Twineedle,Bug,40,25,100,Poison,0.2,enemy,2,2,1,1,enemy,0,null,0,0,0,An attack that strikes twice. The target may occasionally become poisoned.
-Vice Grip,Normal,30,55,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack used only by Pokémon with pincers. The target is gripped and injured.
-Vine Whip,Grass,10,35,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A GRASS-type attack. The Pokémon uses its cruel whips to strike the opponent.
-Water Gun,Water,25,40,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A WATER-type attack. Stronger than BUBBLE. Many WATER-type Pokémon learn this move.
-Waterfall,Water,15,80,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A WATER-type attack. The target is hit with a blow packing the power of fish traveling up waterfalls.
-Whirlwind,Normal,20,-1,85,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,Generates a powerful wind that blows away wild Pokémon. Useful in the wild only.
-Wing Attack,Flying,35,35,100,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A FLYING-type attack. The attacking Pokémon spreads its wings and charges at the target.
-Withdraw,Water,40,-1,100,null,0,enemy,1,1,1,1,self,1,Defense,1,0,0,"Used mainly by Pokémon with shells. By withdrawing into the shell, DEFENSE is increased."
-Wrap,Normal,20,15,85,null,0,enemy,1,1,5,2,enemy,0,null,0,0,0,Traps and squeezes the target over two to five turns. The target cannot move while under attack.
+Name,Type,PP,Att.,Acc.,Category,Status,Status_Chance,Status_Target,Max_Per_Turn,Min_Per_Turn,Max_Turns,Min_Turns,Target,Chance_Stat_Change,Current_Stat_Change,Stat_Change_Amount,Priority,Heal,Effect
+Absorb,Grass,20,20,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,A GRASS-type attack. It adds half the HP it drained from the target to the attacker's HP.
+Acid,Poison,30,40,100,Special,null,0,enemy,1,1,1,1,enemy,0.33,Defense,-1,0,0,A POISON-type attack. Has a one-in-three chance of lowering the target's DEFENSE.
+Acid Armor,Poison,40,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Defense,2,0,0,Melts the user's body for protection. A move that sharply raises DEFENSE.
+Agility,Psychic,30,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Speed,2,0,0,A special technique that greatly boosts the user's SPEED. Can normally be used up to three times.
+Amnesia,Psychic,20,-1,100,Status,null,0,enemy,1,1,1,1,self,1,"Special Attack,Special Defense",2,0,0,Sharply raises the user's SPECIAL stat. Also increases protection against special attacks.
+Aurora Beam,Ice,20,65,100,Special,null,0,enemy,1,1,1,1,enemy,0.33,Attack,1,0,0,An ICE-type attack. Has a one-in-three chance of reducing the target's ATTACK power.
+Barrage,Normal,20,15,85,Physical,null,0,enemy,1,1,5,1,enemy,0,null,0,0,0,Several spheres are thrown consecutively at the target to inflict damage.
+Barrier,Psychic,30,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Defense,2,0,0,Instantly forms a barrier between the user and the opponent. DEFENSE is sharply increased.
+Bide,Normal,10,-1,100,Physical,null,0,enemy,1,1,2,2,both,0,null,0,0,0,"The user waits for several turns. At the end, it returns double the damage it received."
+Bind,Normal,20,15,75,Physical,null,0,enemy,1,1,5,2,enemy,0,null,0,0,0,Traps and squeezes the target over several turns. The target cannot move while under attack.
+Bite,Normal,25,60,100,Physical,Flinch,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A bite made using sharp fangs. This may cause the opponent to flinch, and it might not attack."
+Blizzard,Ice,5,120,90,Special,Freeze,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,The strongest ICE-type attack. Has a one-in-ten chance of freezing the target solid.
+Body Slam,Normal,15,85,100,Physical,Paralysis,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-three chance of paralyzing the target if it connects.
+Bone Club,Ground,20,65,85,Physical,Flinch,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A physical attack using a bone as a club. If it connects, it may cause the target to flinch."
+Bonemerang,Ground,10,50,90,Physical,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,A boomerang made of bone is thrown to inflict damage twice -- on the way out and on its return.
+Bubble,Water,30,20,100,Special,null,0,enemy,1,1,1,1,enemy,0.3,Speed,-1,0,0,A WATER-type attack. Has a one-in-three chance of reducing the target's SPEED.
+Bubble Beam,Water,20,65,100,Special,null,0,enemy,1,1,1,1,enemy,0.33,Speed,-1,0,0,A WATER-type attack. Has a one-in-three chance of reducing the target's SPEED.
+Bug Bite,Bug,20,60,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,The user bites the foe. bug bites really hurt.
+Clamp,Water,10,35,75,Physical,null,0,enemy,5,1,1,1,enemy,0,null,0,0,0,The target is gripped in the attacker's shell for two to five turns. It can't move while under attack.
+Comet Punch,Normal,15,18,85,Physical,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,"Although each slap is weak, this attack hits the target two to five times in succession."
+Confuse Ray,Ghost,10,-1,100,Status,Confusion,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A sinister flash of light makes the target confused. A special GHOST-type technique.
+Confusion,Psychic,25,50,100,Special,Confusion,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A PSYCHIC-type attack. Has a one-in-ten chance of leaving the target confused.
+Constrict,Normal,35,10,100,Physical,null,0,enemy,1,1,1,1,enemy,0.33,Speed,-1,0,0,A NORMAL-type attack. Has a one-in-three chance of reducing the target's SPEED.
+Conversion,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,self,0,null,0,0,0,A special move that switches the user's elemental type to that of the target.
+Counter,Fighting,20,-1,100,Physical,null,0,enemy,1,1,1,1,both,0,null,0,-1,0,A retaliation move that pays back double the damage of a physical attack. Highly accurate.
+Crabhammer,Water,10,90,85,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move that is used only by Pokémon with pincers. Likely to get a critical hit.
+Cut,Normal,30,50,95,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Also used for cutting small bushes to open new paths.
+Defense Curl,Normal,40,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Defense,1,0,0,Raises the user's DEFENSE. Can normally be used up to six times in a row.
+Dig,Ground,10,100,100,Physical,null,0,enemy,2,2,1,1,enemy,0,null,0,0,0,"The attacker digs underground in the first turn, then pops up in the next turn to attack."
+Disable,Normal,20,-1,55,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A technique that disables one of the target's moves. The disabled move can't be used until it wears off.
+Dizzy Punch,Normal,10,70,100,Physical,Confusion,0.2,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. The punch is relatively strong and highly accurate.
+Double Kick,Fighting,30,30,100,Physical,null,0,enemy,2,2,1,1,enemy,0,null,0,0,0,"A FIGHTING-type attack. As the name implies, it is actually two quick kicks in succession."
+Double Slap,Normal,10,15,85,Physical,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,"Although each slap is weak, this attack hits the target two to five times in succession."
+Double Team,Normal,15,-1,100,Physical,null,0,enemy,1,1,1,1,self,1,Evasion,0,0,0,"Creates illusionary copies of the user. The copies disorient the enemy, reducing its accuracy."
+Double-Edge,Normal,15,100,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-0.25,A charging tackle attack. One quarter of the damage it inflicts comes back to hurt the attacker.
+Dragon Rage,Dragon,10,-1,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A DRAGON-type attack. It inflicts a set amount of damage, regardless of the target's type."
+Dream Eater,Psychic,15,100,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,Works only on sleeping Pokémon. This technique steals the target's HP and adds it to the user's HP.
+Drill Peck,Flying,20,80,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A standard FLYING-type attack. It is strong and highly likely to hit the target.
+Earthquake,Ground,10,100,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,An attack that inflicts damage by shaking the ground. It is useless against FLYING-type Pokémon.
+Egg Bomb,Normal,10,100,75,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A NORMAL-type attack. An egg is launched at the target. It may miss, however."
+Ember,Fire,25,40,100,Special,Burn,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A FIRE-type attack. Has a one-in-ten chance of leaving the target with a damaging burn.
+Explosion,Normal,5,170,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-1000,"The most powerful attack of all. However, the attacker faints after using this move."
+Fire Blast,Fire,5,120,85,Special,Burn,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,The strongest FIRE-type attack. Has a one-in-three chance of inflicting a burn on the target.
+Fire Punch,Fire,15,75,100,Physical,Burn,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special FIRE-type attack. Has a one-in-ten chance of inflicting a burn on the target.
+Fire Spin,Fire,15,15,70,Special,null,0,enemy,1,1,5,2,enemy,0,null,0,0,0,A FIRE-type attack that lasts two to five turns. The target cannot move while surrounded by flames.
+Fissure,Ground,5,-1,30,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,Causes a single-hit knockout if it hits. Useless against FLYING-type Pokémon.
+Flamethrower,Fire,15,95,100,Special,Burn,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A powerful FIRE-type attack. Has a one-in-ten chance of leaving the target with a damaging burn.
+Flash,Normal,20,-1,70,Status,null,0,enemy,1,1,1,1,enemy,1,Accuracy,-1,0,0,Creates a brilliant flash of light that blinds the target. This technique reduces the opponent's accuracy.
+Fly,Flying,15,70,95,Physical,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"The Pokémon flies high, then strikes in the next turn. Used for flying to places already visited."
+Focus Energy,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Critical,1,0,0,Raises the likelihood of nailing the opponent's weak spot for a critical hit.
+Fury Attack,Normal,20,15,85,Physical,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. The Pokémon rapidly jabs at its opponent several times.
+Fury Swipes,Normal,15,18,80,Physical,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,The target is scratched by sharp claws two to five times in quick succession.
+Glare,Normal,30,-1,75,Status,Paralysis,1,enemy,1,1,1,1,enemy,0,null,0,0,0,The target is transfixed with terrifying sharp eyes. The target is frightened into paralysis.
+Growl,Normal,40,-1,100,Status,null,0,enemy,1,1,1,1,enemy,1,Attack,-1,0,0,A technique that lowers the target's ATTACK power. Can normally be used up to six times.
+Growth,Normal,40,-1,100,Status,null,0,enemy,1,1,1,1,self,1,"Attack,Special Attack",1,0,0,Raises SPECIAL to make special attacks stronger and enhance protection against special moves.
+Guillotine,Normal,5,-1,30,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A single-hit knockout attack. Learned only by Pokémon that have large pincers.
+Gust,Normal,35,40,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack used by bird Pokémon. A powerful wind is generated by flapping wings.
+Harden,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Defense,1,0,0,Raises the user's DEFENSE. Useful when battling physically strong Pokémon.
+Haze,Ice,30,-1,100,Status,null,0,enemy,1,1,1,1,both,1,All,0,0,0,"Eliminates all changes affecting status, such as SPEED and accuracy, of both Pokémon in battle."
+Headbutt,Normal,15,70,100,Physical,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-three chance of making the target flinch if it connects.
+Hi Jump Kick,Fighting,20,85,90,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"Stronger than a JUMP KICK. If it misses, the attacker sustains 1/8 the damage it should have caused."
+Horn Attack,Normal,25,65,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. A sharp horn is driven hard into the target to inflict damage.
+Horn Drill,Normal,5,-1,30,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A single-hit knockout attack. Learned only by Pokémon with a horn or horns.
+Hydro Pump,Water,5,120,80,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"The strongest WATER-type attack. However, while it is powerful, it may miss the target."
+Hyper Beam,Normal,5,150,90,Special,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"An extremely powerful attack. The attacker becomes so tired, it has to rest the next turn."
+Hyper Fang,Normal,15,80,90,Physical,Flinch,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-ten chance of making the target flinch.
+Hypnosis,Psychic,20,-1,60,Status,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special PSYCHIC-type move. The target is hypnotized into a deep sleep.
+Ice Beam,Ice,10,95,100,Special,Freeze,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,An ICE-type attack. Has a one-in-ten chance of freezing the target solid.
+Ice Punch,Ice,15,75,100,Physical,Freeze,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special ICE-type attack. Has a one-in-ten chance of freezing the target.
+Jump Kick,Fighting,25,70,95,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A forceful FIGHTING-type attack. If it misses, however, the attacker gets hurt."
+Karate Chop,Normal,25,50,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Often turns into a critical hit and inflicts double the damage.
+Kinesis,Psychic,15,-1,80,Status,null,0,enemy,1,1,1,1,self,1,Evasion,1,0,0,A special move of bending spoons to confound the enemy. Makes the user harder to hit.
+Leech Life,Bug,15,20,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,An HP-draining attack. It adds half the HP it drained from the target to the attacker's HP.
+Leech Seed,Grass,10,-1,90,Status,null,0,enemy,1,1,100,100,enemy,0,null,0,0,0.0625,Plants a seed on the target Pokémon. The seed slowly drains the target's HP for the attacker.
+Leer,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,enemy,1,Defense,-1,0,0,"A technique that lowers the target's DEFENSE. Useful against tough, armored Pokémon."
+Lick,Ghost,30,20,100,Physical,Paralysis,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A GHOST-type attack. Has a one-in-three chance of leaving the target with paralysis.
+Light Screen,Psychic,30,-1,100,Status,null,0,enemy,1,1,1,1,self,0,null,0,0,0,Reduces damage from special attacks by about half. A special PSYCHIC-type technique.
+Lovely Kiss,Normal,10,-1,75,Status,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A special move that puts the target to sleep with a big kiss. (Actually, the victim passes out.)"
+Low Kick,Fighting,20,50,90,Physical,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A FIGHTING-type attack. Has a one-in-three chance of making the target flinch if it connects.
+Meditate,Psychic,40,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Attack,1,0,0,A special technique that boosts the user's ATTACK power. Can normally be used up to six times.
+Mega Drain,Grass,10,40,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,A GRASS-type attack. It adds half the HP it drained from the target to the attacker's HP.
+Mega Kick,Normal,5,120,75,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A NORMAL-type attack. Out of all the Pokémon kicking attacks, this is the strongest."
+Mega Punch,Normal,20,80,85,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack move. It is highly accurate and relatively powerful.
+Metronome,Normal,10,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"The user waggles its finger, triggering a move. There is no telling what will happen."
+Mimic,Normal,10,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A move for learning one of the opponent's moves, for use during that battle only."
+Minimize,Normal,20,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Evasion,1,0,0,Reduces the user's size and makes it harder to hit. Can normally be used up to six times.
+Mirror Move,Flying,20,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move that strikes back with the opponent's last move. This move comes after the enemy's move.
+Mist,Ice,30,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"Provides full protection against any enemy status attack, such as those that lower DEFENSE."
+Night Shade,Ghost,15,-1,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A GHOST-type attack. Highly accurate, it inflicts damage regardless of the target's type."
+Pay Day,Normal,20,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move that also nets money at the end of battle. How much depends on the attack frequency and level.
+Peck,Flying,35,35,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A standard FLYING-type attack. It is favored by Pokémon that have beaks and/or horns.
+Petal Dance,Grass,20,70,100,Physical,Confusion,1,self,1,1,3,2,enemy,0,null,0,0,0,"A dance-like attack that lasts two to three turns. Afterwards, the attacker becomes confused."
+Pin Missile,Bug,20,14,85,Physical,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,An attack that fires many needle-like projectiles from the body. Strikes several times.
+Poison Gas,Poison,40,-1,55,Status,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A poisonous cloud of gas is forcefully expelled to poison the target.
+Poison Powder,Poison,35,-1,75,Status,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A technique that poisons the target. If poisoned, the victim loses HP steadily."
+Poison Sting,Poison,35,15,100,Physical,Poison,0.2,enemy,1,1,1,1,enemy,0,null,0,0,0,A POISON-type attack. Has a one-in- five chance of leaving the target with the lingering effects of poison.
+Pound,Normal,35,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Slightly stronger than TACKLE. Many Pokémon know this move.
+Psybeam,Psychic,20,65,100,Special,Confusion,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A PSYCHIC-type attack. Has a one-in-ten chance of making the target confused.
+Psychic,Psychic,10,90,100,Special,null,0,enemy,1,1,1,1,enemy,0.3,Special Defense,-1,0,0,A PSYCHIC-type attack. Has a one-in-three chance of lowering the target's SPECIAL rating.
+Psywave,Psychic,15,-1,80,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A PSYCHIC-type attack of varying intensity. It occasionally inflicts heavy damage.
+Quick Attack,Normal,30,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,1,0,"An attack that always strikes first. If both Pokémon use this, the one with higher SPEED attacks first."
+Rage,Normal,20,20,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A non-stop attack move. The user's ATTACK power increases every time it sustains damage.
+Razor Leaf,Grass,25,55,95,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A GRASS-type attack that sends sharp-edged leaves at the target. Likely to get a critical hit.
+Razor Wind,Normal,10,80,75,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A two-turn attack with the wind attack in the second turn. Learned by many FLYING-type Pokémon.
+Recover,Normal,20,-1,100,Status,null,0,enemy,1,1,1,1,self,0,null,0,0,0.5,Restores HP by 1/2 of the user's maximum HP. Few Pokémon learn this technique on their own.
+Reflect,Psychic,20,-1,100,Status,null,0,enemy,1,1,1,1,self,0,null,0,0,0,Reduces damage from physical attacks by about half. A special PSYCHIC-type technique.
+Rest,Psychic,10,-1,100,Status,Sleep,1,enemy,1,1,1,1,self,0,null,0,0,1,The user takes a nap to fully restore its HP and recover from any status abnormalities.
+Roar,Normal,20,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A terrifying roar that drives wild Pokémon away. It is useful only in the wild.
+Rock Slide,Rock,10,75,90,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A ROCK-type attack that hits the target with an avalanche of rocks and boulders.
+Rock Throw,Rock,15,50,65,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A ROCK-type attack. As the name implies, a huge boulder is dropped on the target."
+Rolling Kick,Fighting,15,60,85,Physical,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A sharp FIGHTING-type attack. Has a one-in-three chance of making the target flinch if it connects.
+Sand-Attack,Normal,15,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0.3,Accuracy,-1,0,0,An attack in which sand is used to blind the target and reduce its attack accuracy.
+Scratch,Normal,35,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Sharp claws are used to inflict damage on the target.
+Screech,Normal,40,-1,85,Status,null,0,enemy,1,1,1,1,enemy,1,Defense,-2,0,0,A move that makes a horrible noise. It sharply reduces the target's DEFENSE.
+Seismic Toss,Fighting,20,-1,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A FIGHTING-type attack. Throws the target with enough force to flip the world upside down.
+Self-Destruct,Normal,5,130,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-1000,"The user explodes, inflicting damage on the enemy, then faints. Useless against GHOST-type."
+Shadow Ball,Ghost,15,80,100,Special,null,0,enemy,1,1,1,1,enemy,0.2,Special Defense,-1,0,0,Deals damage and has a 20% chance of lowering the target's Special Defense by one stage.
+Shadow Sneak,Ghost,30,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,1,0,The user extends its shadow and attacks the foe from behind. This move always goes first.
+Sharpen,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Attack,1,0,0,Raises the user's ATTACK power. The edges of the Pokémon are made harder for more impact.
+Sing,Normal,15,-1,55,Status,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special NORMAL-type technique. A soothing melody lulls the target to sleep.
+Skull Bash,Normal,15,100,100,Physical,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"In the first turn, the attacker tucks in its head. The next turn, it head-butts at full steam."
+Sky Attack,Flying,5,140,90,Physical,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"The strongest FLYING-type attack. Energy is stored in the first turn, then fired the next turn."
+Slam,Normal,20,80,75,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack move. The attacker uses an appendage (e.g. tail) to slam the target hard.
+Slash,Normal,20,70,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. It has a high probability of a critical hit for inflicting double the damage.
+Sleep Powder,Grass,15,-1,75,Status,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,Induces sleep. A Pokémon will stay asleep for several turns if an item isn't used to wake it.
+Sludge,Poison,20,65,100,Special,Poison,0.5,enemy,1,1,1,1,enemy,0,null,0,0,0,A POISON-type attack. Has a fifty-fifty chance of poisoning the target.
+Smog,Poison,20,20,70,Special,Poison,0.5,enemy,1,1,1,1,enemy,0,null,0,0,0,Smog is spewed as a cloud. Has a fifty-fifty chance of poisoning the target.
+Smokescreen,Normal,20,-1,100,Status,null,0,enemy,1,1,1,1,enemy,1,Accuracy,-1,0,0,Creates an obscuring cloud of smoke that reduces the enemy's accuracy.
+Soft-Boiled,Normal,10,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,Restores HP by 1/2 of the user's maximum HP. May also be used in the field.
+Solar Beam,Grass,10,120,100,Special,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"The strongest GRASS-type attack. Energy is absorbed in the first turn, then fired the next turn."
+Sonic Boom,Normal,20,-1,90,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. It inflicts a set amount of damage regardless of the target's type.
+Spike Cannon,Normal,15,20,100,Physical,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,A physical attack consisting of two to five consecutive hits. Highly accurate.
+Splash,Water,40,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move that involves only flopping and SPLASHing around in front of the opponent. It has no effect.
+Spore,Grass,15,-1,100,Status,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"Special spores are scattered from mushrooms. If the opponent inhales the spores, it will fall asleep."
+Stomp,Normal,20,65,100,Physical,Flinch,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-three chance of making the target flinch if it connects.
+Strength,Normal,15,80,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A very powerful NORMAL-type attack. Also used for moving obstacles like boulders.
+String Shot,Bug,40,-1,95,Status,null,0,enemy,1,1,1,1,enemy,1,Speed,-1,0,0,Strings are sprayed out and wrapped around the target to reduce its SPEED.
+Struggle,Normal,10,50,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,Used only if the user runs totally out of PP. The user is hit with 1/4 of the damage it inflicts.
+Stun Spore,Grass,30,-1,75,Status,Paralysis,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A special move that causes paralysis. When paralyzed, the victim has a one-in-four chance of immobility."
+Submission,Fighting,25,80,80,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-0.25,The strongest FIGHTING attack. One quarter of the damage it inflicts comes back to hurt the attacker.
+Substitute,Normal,10,-1,100,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,Uses 1/4 of the user's maximum HP to create a substitute that takes the opponent's attacks.
+Super Fang,Normal,10,-1,90,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"If it hits, this attack cuts the target's HP in half. Learned by Pokémon with developed fangs."
+Supersonic,Normal,20,-1,55,Status,Confusion,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special NORMAL-type technique. Supersonic sound waves are used to confuse the target.
+Surf,Water,15,95,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A WATER-type attack. The power of this technique is strong and highly accurate.
+Swift,Normal,20,60,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A NORMAL-type attack. It is highly accurate, so it can be counted on to inflict damage."
+Swords Dance,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Attack,2,0,0,A special move that greatly boosts the user's ATTACK power. Can normally be used up to three times.
+Tackle,Normal,35,35,95,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Many Pokémon know this attack right from the start.
+Tail Whip,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,enemy,1,Defense,-1,0,0,"A technique that lowers the target's DEFENSE. Useful against tough, armored Pokémon."
+Take Down,Normal,20,90,85,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-0.25,A charging attack. One quarter of the damage it inflicts comes back to hurt the attacker.
+Teleport,Psychic,20,-1,100,Status,null,0,self,1,1,1,1,enemy,0,null,0,0,0,A special technique for instantly escaping from wild Pokémon. Useful in the wild only.
+Thrash,Normal,20,90,100,Physical,Confusion,1,self,1,1,5,2,enemy,0,null,0,0,0,"An attack that lasts two to three turns. Afterwards, the attacker becomes confused."
+Thunder,Electric,10,120,70,Special,Paralysis,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,The strongest of all ELECTRIC-type attacks. Has a one-in-ten chance of paralyzing the target.
+Thunder Punch,Electric,15,75,100,Physical,Paralysis,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special ELECTRIC-type attack. Has a one-in-ten chance of paralyzing the target.
+Thunder Shock,Electric,30,40,100,Special,Paralysis,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,An ELECTRIC-type attack. Has a one-in-ten chance of paralyzing the target.
+Thunder Wave,Electric,20,-1,100,Status,Paralysis,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A special move that causes paralysis. When paralyzed, the victim has a one-in-four chance of immobility."
+Thunderbolt,Electric,15,95,100,Special,Paralysis,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,An ELECTRIC-type attack. Has a one-in-ten chance of paralyzing the target.
+Toxic,Poison,10,-1,85,Status,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A technique that badly poisons the target. The amount of damage from the poison increases every turn.
+Transform,Normal,10,-1,100,Status,null,0,self,1,1,1,1,enemy,0,null,0,0,0,"Transforms the user into a copy of the target, including the type. All moves have only five PP each."
+Tri Attack,Normal,10,80,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. A triangular field of energy is created and launched at the target.
+Twineedle,Bug,40,25,100,Physical,Poison,0.2,enemy,2,2,1,1,enemy,0,null,0,0,0,An attack that strikes twice. The target may occasionally become poisoned.
+Vice Grip,Normal,30,55,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack used only by Pokémon with pincers. The target is gripped and injured.
+Vine Whip,Grass,10,35,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A GRASS-type attack. The Pokémon uses its cruel whips to strike the opponent.
+Water Gun,Water,25,40,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A WATER-type attack. Stronger than BUBBLE. Many WATER-type Pokémon learn this move.
+Waterfall,Water,15,80,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A WATER-type attack. The target is hit with a blow packing the power of fish traveling up waterfalls.
+Whirlwind,Normal,20,-1,85,Status,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,Generates a powerful wind that blows away wild Pokémon. Useful in the wild only.
+Wing Attack,Flying,35,35,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A FLYING-type attack. The attacking Pokémon spreads its wings and charges at the target.
+Withdraw,Water,40,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Defense,1,0,0,"Used mainly by Pokémon with shells. By withdrawing into the shell, DEFENSE is increased."
+Wrap,Normal,20,15,85,Physical,null,0,enemy,1,1,5,2,enemy,0,null,0,0,0,Traps and squeezes the target over two to five turns. The target cannot move while under attack.
+X-Scissor,Bug,15,80,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,The user slashes at the foe by crossing its scythes or claws as if they were a pair of scissors.
