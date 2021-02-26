@@ -220,12 +220,9 @@ RectTransform:
   - {fileID: 1581915310}
   - {fileID: 6398116694724334201}
   - {fileID: 456948494}
-<<<<<<< Updated upstream
   - {fileID: 1414801378}
   - {fileID: 563169329}
-=======
   - {fileID: 1092187549}
->>>>>>> Stashed changes
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3958,6 +3955,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3585835957746705857, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3585835957746705857, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -3976,6 +3978,11 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -416488339
       objectReference: {fileID: 0}
+    - target: {fileID: 3585835957746705857, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5575576220928370512, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
       propertyPath: m_Name
@@ -3986,10 +3993,15 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5575576220928370512, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8740941942004996123, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8740941942004996123, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
