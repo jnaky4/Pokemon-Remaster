@@ -104,26 +104,8 @@ namespace Pokemon
          **********************************************************************************************************************************************/
         void Start()
         {
-            //COMMENT THIS SHIT OUT LEVI
-
-            /*Pokemon.all_base_stats = load_CSV("BASE_STATS");
-            Moves.all_moves = load_CSV("MOVES");
-            Type.type_attack = load_CSV("TYPE_ATTACK");
-            Type.type_defend = load_CSV("TYPE_DEFEND");
-            Learnset.all_learnset = load_CSV("LEARNSET");
-            Pokedex.all_pokedex = load_CSV("POKEMON");
-            Type.load_type();
-            Moves.load_moves();
-            */
-
-            //END COMMENTING OUT LEVI
-
             PlayerAttackAnim = new SpriteAnimator(AttackSprites, playerAttackSprite, 0.07f);
             EnemyAttackAnim = new SpriteAnimator(AttackSprites, enemyAttackSprite, 0.07f);
-
-            Debug.Log(GameController.opponentPokemon[0].current_attack);
-            Debug.Log(GameController.opponentPokemon[0].currentMoves[0].base_power);
-            Debug.Log(GameController.playerPokemon[0].current_defense);
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
@@ -151,7 +133,7 @@ namespace Pokemon
                 }
                 else
                 {
-                    Debug.Log("End Animation now");
+                    //Debug.Log("End Animation now");
                     PlayerAttackAnim.EndAnimation();
                     playerAttack = false;
                 }
@@ -171,7 +153,7 @@ namespace Pokemon
                 }
                 else
                 {
-                    Debug.Log("End Animation now");
+                    //Debug.Log("End Animation now");
                     EnemyAttackAnim.EndAnimation();
                     enemyAttack = false;
                 }
@@ -224,8 +206,14 @@ namespace Pokemon
             GameObject playerGO = Instantiate(playerPrefab);
             playerUnit = playerGO.GetComponent<Unit>();
 
-
-            playerUnit.pokemon = GameController.playerPokemon[0];
+            for (int i = 0; i < 5; i++)
+            {
+                if (GameController.playerPokemon[i].current_hp > 0)
+                {
+                    playerUnit.pokemon = GameController.playerPokemon[i];
+                    break;
+                }
+            }
 
             PlayerBattle playerTemp = new PlayerBattle();
 
@@ -399,7 +387,6 @@ namespace Pokemon
                 else
                 {
                     state = BattleState.ENEMYTURN;
-                    Debug.Log(enemyUnit.pokemon.attack_stage.ToString());
                     EnemyTurn();
                 }
             }

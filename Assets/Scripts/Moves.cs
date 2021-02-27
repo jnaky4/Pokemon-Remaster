@@ -106,7 +106,17 @@ namespace Pokemon
         //grab any move from dictionary
         public static Moves get_move(string move)
         {
-            return Moves.move_dictionary[move];
+            Moves move_reference = Moves.move_dictionary[move];
+            Moves new_move = new Moves(move_reference.name, move_reference.move_type,
+                move_reference.maxpp, move_reference.base_power, move_reference.accuracy,
+                move_reference.category, move_reference.status, move_reference.status_chance,
+                move_reference.status_target, move_reference.max_per_turn, move_reference.min_per_turn,
+                move_reference.max_turns, move_reference.min_turns, move_reference.target,
+                move_reference.chance_stat_change, move_reference.current_stat_change,
+                move_reference.stat_change_amount, move_reference.priority, move_reference.heal,
+                move_reference.description);
+
+            return new_move;
 
         }
 

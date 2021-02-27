@@ -214,13 +214,13 @@ namespace Pokemon
         public int base_speed;
 
         public int current_hp;
-        public int current_attack;
-        public int current_defense;
-        public int current_sp_attack;
-        public int current_sp_defense;
-        public int current_speed;
-        public int current_accuracy = 1;
-        public int current_evasion = 1;
+        public double current_attack;
+        public double current_defense;
+        public double current_sp_attack;
+        public double current_sp_defense;
+        public double current_speed;
+        public double current_accuracy = 1;
+        public double current_evasion = 1;
 
         //This means the maximum at this level
         public int max_hp;
