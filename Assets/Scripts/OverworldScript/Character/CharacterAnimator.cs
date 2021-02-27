@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterAnimator : MonoBehaviour
 {
+    public int defaultPos;
+
     [SerializeField] List<Sprite> walkDownSprites;
     [SerializeField] List<Sprite> walkUpSprites;
     [SerializeField] List<Sprite> walkRightSprites;
@@ -34,7 +36,26 @@ public class CharacterAnimator : MonoBehaviour
         walkRightAnim = new SpriteAnimator(walkRightSprites, spriteRenderer);
         walkLeftAnim = new SpriteAnimator(walkLeftSprites, spriteRenderer);
 
-        currentAnim = walkDownAnim;
+
+        switch (defaultPos)
+        {
+            case 1:
+                currentAnim = walkUpAnim;
+                break;
+            case 2:
+                currentAnim = walkRightAnim;
+                break;
+            case 3:
+                currentAnim = walkDownAnim;
+                break;
+            case 4:
+                currentAnim = walkLeftAnim;
+                break;
+            default:
+                currentAnim = walkDownAnim;
+                break;
+        }
+
     }
 
     private void Update()

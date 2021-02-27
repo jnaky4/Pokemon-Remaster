@@ -176,6 +176,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &37502028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37502025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c5afebb1bf6437d8dace1e225fa1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!114 &37502031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,6 +201,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c75b34cd8d8874899b293d6f7c6855f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultPos: 0
   walkDownSprites:
   - {fileID: 1601290094503169242, guid: da16ed6144fd2274b8d4d932024e95d0, type: 3}
   - {fileID: 1809485295395325965, guid: da16ed6144fd2274b8d4d932024e95d0, type: 3}
@@ -199,7 +213,7 @@ MonoBehaviour:
   - {fileID: 8500729523461599132, guid: da16ed6144fd2274b8d4d932024e95d0, type: 3}
   - {fileID: 4806194107809583475, guid: da16ed6144fd2274b8d4d932024e95d0, type: 3}
   walkRightSprites:
-  - {fileID: 8656016258390066667, guid: c5139976fd74b4b28967b23ee05aca2f, type: 3}
+  - {fileID: -7896389896845348564, guid: c5139976fd74b4b28967b23ee05aca2f, type: 3}
   - {fileID: 2491304746118915209, guid: c5139976fd74b4b28967b23ee05aca2f, type: 3}
   - {fileID: -7896389896845348564, guid: c5139976fd74b4b28967b23ee05aca2f, type: 3}
   - {fileID: 4744094077232374292, guid: c5139976fd74b4b28967b23ee05aca2f, type: 3}
@@ -999,6 +1013,8 @@ GameObject:
   - component: {fileID: 124844443}
   - component: {fileID: 124844447}
   - component: {fileID: 124844446}
+  - component: {fileID: 124844449}
+  - component: {fileID: 124844448}
   m_Layer: 10
   m_Name: Larry
   m_TagString: Untagged
@@ -1018,6 +1034,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc62e3eb59dc4d39a4e068e4f213a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movementPattern:
+  - {x: -2, y: 0}
+  - {x: 0, y: -2}
+  - {x: 2, y: 0}
+  - {x: 0, y: 2}
+  timeBetweenPattern: 3
   dialogBox: {fileID: 1634417689}
   dialogText: {fileID: 1750630757}
   dialog: What a lovely day it is today!
@@ -1135,6 +1157,52 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &124844448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124844442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75b34cd8d8874899b293d6f7c6855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultPos: 0
+  walkDownSprites:
+  - {fileID: -7907197248746673111, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: 6031818253168084267, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -3636911758792174652, guid: b0e3f147205594aea9ef450f5a2ad104, type: 3}
+  - {fileID: 4702783254870044904, guid: b0e3f147205594aea9ef450f5a2ad104, type: 3}
+  walkUpSprites:
+  - {fileID: -4193346747713282080, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: 7973195403300105327, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -4193346747713282080, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: 2351855844183717270, guid: b0e3f147205594aea9ef450f5a2ad104, type: 3}
+  walkRightSprites:
+  - {fileID: -283585365543846498, guid: b0e3f147205594aea9ef450f5a2ad104, type: 3}
+  - {fileID: -7229363660928664752, guid: b0e3f147205594aea9ef450f5a2ad104, type: 3}
+  - {fileID: -283585365543846498, guid: b0e3f147205594aea9ef450f5a2ad104, type: 3}
+  - {fileID: 4088708083633878128, guid: b0e3f147205594aea9ef450f5a2ad104, type: 3}
+  walkLeftSprites:
+  - {fileID: -901845969934671557, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -1858215091516763897, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -901845969934671557, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -3300779513187778567, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+--- !u!114 &124844449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124844442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c5afebb1bf6437d8dace1e225fa1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &194545383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,6 +1213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 194545384}
   - component: {fileID: 194545385}
+  - component: {fileID: 194545386}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1182,6 +1251,33 @@ MonoBehaviour:
   overworldCam: {fileID: 1925116576}
   eventSystem: {fileID: 898752953}
   test: {fileID: 0}
+--- !u!114 &194545386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194545383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05df976a15e8c4b71bd4110857086633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  solidObjectsLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  grassLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  boundary:
+    serializedVersion: 2
+    m_Bits: 4096
+  fovLayer:
+    serializedVersion: 2
+    m_Bits: 8192
 --- !u!1 &194772738
 GameObject:
   m_ObjectHideFlags: 0
@@ -90297,8 +90393,11 @@ GameObject:
   - component: {fileID: 1961365875}
   - component: {fileID: 1961365874}
   - component: {fileID: 1961365876}
+  - component: {fileID: 1961365879}
+  - component: {fileID: 1961365881}
+  - component: {fileID: 1961365880}
   m_Layer: 10
-  m_Name: Bug Catcher Garret
+  m_Name: Bug Catcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90432,6 +90531,64 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961365879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961365873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc62e3eb59dc4d39a4e068e4f213a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementPattern: []
+  timeBetweenPattern: 3
+  dialogBox: {fileID: 1634417689}
+  dialogText: {fileID: 1750630757}
+  dialog: I am a bug catcher
+  dialogActive: 0
+--- !u!114 &1961365880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961365873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c75b34cd8d8874899b293d6f7c6855f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultPos: 4
+  walkDownSprites:
+  - {fileID: -7782175599425342667, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: 8683736808348692552, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -7782175599425342667, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -2732500681091930178, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  walkUpSprites:
+  - {fileID: -5088798585810267428, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  walkRightSprites:
+  - {fileID: -4251579990473993799, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  walkLeftSprites:
+  - {fileID: -4251579990473993799, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -95372612892325350, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: -4251579990473993799, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+  - {fileID: 59563647126617362, guid: f456b42b8e7ed13468d971f7d234614c, type: 3}
+--- !u!114 &1961365881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961365873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3c5afebb1bf6437d8dace1e225fa1d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
 --- !u!1 &1968914791
 GameObject:
   m_ObjectHideFlags: 0
@@ -113691,7 +113848,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7389597823947240995, guid: fddeef3e1184340ffbf48c9ddb8ea5d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fddeef3e1184340ffbf48c9ddb8ea5d9, type: 3}
 --- !u!1001 &8253830089681304121
 PrefabInstance:

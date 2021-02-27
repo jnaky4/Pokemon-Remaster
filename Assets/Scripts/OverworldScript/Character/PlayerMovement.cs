@@ -7,48 +7,26 @@ namespace Pokemon
 {
     public class PlayerMovement : MonoBehaviour
     {
-        //public float moveSpeed = 5f;
         public float moveSpeed;
-        public LayerMask solidObjectsLayer;
-        public LayerMask interactableLayer;
-        public LayerMask grassLayer;
         public VectorValue startingPosition;
-        public LayerMask boundary;
-        public LayerMask FovLayer;
         public string location = "Route 1";
-        //Dictionary<string, int> badges_completed = new Dictionary<string, int>(){};
         public GameObject dialogBox;
 
-        //public Rigidbody2D rb;
-        //public Animator animator;
-        private CharacterAnimator animator;
+        private Character character;
+       
 
-        private bool isMoving;
-        private bool inCombat = false;
         Vector2 movement;
 
         private void Awake()
-        {
-            /*DontDestroyOnLoad(transform.gameObject);
-            Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
-            Moves.all_moves = BattleSystem.load_CSV("MOVES");
-            Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK");
-            Type.type_defend = BattleSystem.load_CSV("TYPE_DEFEND");
-            Learnset.all_learnset = BattleSystem.load_CSV("LEARNSET");
-            Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON");
-            Route.all_routes = BattleSystem.load_CSV("ROUTES");
-            Type.load_type();
-            Moves.load_moves();*/
-
-            //animator = GetComponent<Animator>();
-            animator = GetComponent<CharacterAnimator>();
+        { 
+            character = GetComponent<Character>();
             transform.position = startingPosition.initialValue;
         }
 
         // Update is called once per frame
         void Update()
         {
-            if (!isMoving)
+            if (!character.IsMoving)
             {
                 // Input
                 movement.x = Input.GetAxisRaw("Horizontal");
@@ -58,25 +36,14 @@ namespace Pokemon
                 if (movement.x != 0) movement.y = 0;
 
                 //find the next target position when a player attempts to move
-                if (movement != Vector2.zero)
+                if (movement != Vector2.zero && !GameController.inCombat)
                 {
-                    //animator.SetFloat("Horizontal", movement.x);
-                    //animator.SetFloat("Vertical", movement.y);
-                    animator.MoveX = movement.x;
-                    animator.MoveY = movement.y;
-
-                    var targetPos = transform.position;
-                    targetPos.x += movement.x;
-                    targetPos.y += movement.y;
-
                     //makes sure an area is walkable before allowing a player move
-                    if (IsWalkable(targetPos) && !dialogBox.activeInHierarchy && !GameController.inCombat)
-                        StartCoroutine(Move(targetPos));
+                    StartCoroutine(character.Move(movement, OnMoveOver));
                 }
             }
 
-            //animator.SetBool("IsMoving", isMoving);
-            animator.IsMoving = isMoving;
+            character.HandleUpdate();
 
             if (Input.GetKeyDown(KeyCode.Z))
                 Interact();
@@ -84,42 +51,16 @@ namespace Pokemon
 
         void Interact()
         {
-            //var faceDir = new Vector3(animator.GetFloat("Horizontal"), animator.GetFloat("Vertical"));
-            var faceDir = new Vector3(animator.MoveX, animator.MoveY);
+            var faceDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
             var interactPos = transform.position + faceDir;
 
-            //Debug.DrawLine(transform.position, interactPos, Color.green, 0.5f);
-            var collider = Physics2D.OverlapCircle(interactPos, 0.3f, interactableLayer);
+            var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameplayLayers.i.InteractLayer);
             if (collider != null)
             {
                 collider.GetComponent<Interactable>()?.Interact();
             }
         }
 
-        IEnumerator Move(Vector3 targetPos)
-        {
-            isMoving = true;
-
-            while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-                yield return null;
-            }
-            transform.position = targetPos;
-
-            isMoving = false;
-
-            OnMoveOver();
-        }
-
-        private bool IsWalkable(Vector3 targetPos)
-        {
-            if (Physics2D.OverlapCircle(targetPos, 0.125f, solidObjectsLayer | interactableLayer) != null)
-            {
-                return false;
-            }
-            return true;
-        }
 
         private void OnMoveOver()
         {
@@ -129,12 +70,13 @@ namespace Pokemon
 
         private void CheckForEncounters()
         {
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, grassLayer) != null)
+            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null)
             {
                 if (Random.Range(1, 101) <= 10)
                 {
                     //new code
-                    animator.IsMoving = false;
+                    character.Animator.IsMoving = false;
+
 
                     Dictionary<string, Route> route1_dic = Route.get_route(location);
                     string terrain = "Grass";
@@ -152,7 +94,7 @@ namespace Pokemon
 
         private void CheckIfInTrainerView()
         {
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, FovLayer) != null)
+            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer) != null)
             {
                 Debug.Log("In Trainer's View");
             }
@@ -160,7 +102,6 @@ namespace Pokemon
 
         //Gets all available pokemon to spawn from dictionary, Current # gym badges, list of specific Gyms Beaten
         Pokemon generate_wild_pokemon(Dictionary<string, Route> route, string terrain, Dictionary<string, int> Gyms_beaten, int badges)
-
         {
             //dictionary of gyms beaten
             double sum_probability = 0;
@@ -251,11 +192,5 @@ namespace Pokemon
             Pokemon temp_pokemon2 = new Pokemon(80, 69, "Hyper Beam", "Flamethrower", "Psychic", "Recover");
             return temp_pokemon2;
         }
-
-        /*private void FixedUpdate()
-        {
-            // Movement
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-        }*/
     }
 }
