@@ -97,19 +97,18 @@ namespace Pokemon
 
         private void CheckIfInTrainerView()
         {
+            string trainer = "Jake";
+
             if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer) != null)
             {
                 Debug.Log("In Trainer's View");
                 Dictionary<string, Route> route1_dic = Route.get_route(location);
                 Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers("Route 1");
-                Debug.Log(route_trainers.Count);
-                Debug.Log(route_trainers["Willy"].trainer_team[0].currentMoves[0].name);
-
-                Debug.Log(route_trainers["Willy"].trainer_team[1].name);
+               
                 for (int i = 0; i < 6; i++)
                 {
-                    if (route_trainers["Willy"].trainer_team[i] != null)
-                        GameController.opponentPokemon[i] = route_trainers["Willy"].trainer_team[i];
+                    if (route_trainers[trainer].trainer_team[i] != null)
+                        GameController.opponentPokemon[i] = route_trainers[trainer].trainer_team[i];
                     else
                         break;
                 }
