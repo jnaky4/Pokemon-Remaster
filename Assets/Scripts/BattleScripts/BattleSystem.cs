@@ -765,7 +765,7 @@ namespace Pokemon
                     bool endBattle = true;
                     foreach (var p in GameController.playerPokemon)
                     {
-                        if (p.current_hp >= 0)
+                        if (p.current_hp > 0)
                         {
                             endBattle = false;
                             break;
