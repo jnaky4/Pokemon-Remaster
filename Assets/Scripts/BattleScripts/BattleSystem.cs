@@ -763,9 +763,9 @@ namespace Pokemon
                 if (isDead)
                 {
                     bool endBattle = true;
-                    foreach (var p in GameController.playerPokemon)
+                    for(int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++)
                     {
-                        if (p.current_hp >= 0)
+                        if (GameController.playerPokemon[j].current_hp > 0)
                         {
                             endBattle = false;
                             break;
