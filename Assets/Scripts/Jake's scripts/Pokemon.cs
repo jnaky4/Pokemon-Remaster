@@ -55,30 +55,17 @@ namespace Pokemon
     public class Pokemon
     {
         //create pokemon with specific moves, chains the 2 arg constructor
-        public Pokemon(int dexNum, int level, string move1, string move2, string move3, string move4): this(dexNum, level, move1, move2, move3)
-        {
-            this.currentMoves[3] = Moves.get_move(move4);
-        }
-
-        public Pokemon(int dexNum, int level, string move1, string move2, string move3) : this(dexNum, level, move1, move2)
-        {
-            this.currentMoves[2] = Moves.get_move(move3);
-        }
-        public Pokemon(int dexNum, int level, string move1, string move2) : this(dexNum, level, move1)
-        {
-            this.currentMoves[1] = Moves.get_move(move2);
-        }
-        public Pokemon(int dexNum, int level, string move1) : this(dexNum, level)
-        {
-            this.currentMoves[0] = Moves.get_move(move1);
-        }
-            //create pokemon with no moves
-        public Pokemon(int dexNum, int level)
+        public Pokemon(int dexNum, int level, string move1 = null, string move2 = null, string move3 = null, string move4 = null)
         {
             this.level = level;
             this.dexnum = dexNum;
 
-            //creates Pokedex Object for this pokemon
+            //check if null before using get_move, otherwise set to null
+            this.currentMoves[0] = move1 != null ? Moves.get_move(move1) : null;
+            this.currentMoves[1] = move2 != null ? Moves.get_move(move2) : null;
+            this.currentMoves[2] = move3 != null ? Moves.get_move(move3) : null;
+            this.currentMoves[3] = move4 != null ? Moves.get_move(move4) : null;
+
             this.pokedex_entry = new Pokedex(dexNum);
 
             //grab name from pokedex
@@ -90,11 +77,9 @@ namespace Pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);
 
             //gets type for this pokemon from pokedex and creates type object
-            //TODO need to turn back to type object
             this.type1 = Type.get_type(this.pokedex_entry.get_type1());
             if (this.pokedex_entry.get_type2() != "-")
             {
-                //TODO need to turn back to type object
                 this.type2 = Type.get_type(this.pokedex_entry.get_type2());
             }
             else
@@ -102,7 +87,6 @@ namespace Pokemon
                 this.type2 = null;
             }
             get_image_path();
-
         }
 
         public static Dictionary<int, string> dictionary_pokemon = new Dictionary<int, string> {
