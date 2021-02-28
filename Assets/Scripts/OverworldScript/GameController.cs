@@ -13,6 +13,9 @@ namespace Pokemon
         public GameObject player;
         public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
 
+        //Game Level Cap
+        public static int level_cap = 0;
+
         //combat data
         public static Pokemon[] opponentPokemon = new Pokemon[6];
         public static bool isCatchable = true;
@@ -39,6 +42,7 @@ namespace Pokemon
             Learnset.all_learnset = BattleSystem.load_CSV("LEARNSET");
             Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON");
             Route.all_routes = BattleSystem.load_CSV("ROUTES");
+            Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
             Type.load_type();
             Moves.load_moves();
 
@@ -70,6 +74,10 @@ namespace Pokemon
                 //player.SetActive(true);
                 endCombat = false;
             }
+        }
+        public static void update_level_cap()
+        {
+            level_cap = ((badges_completed.Count * 10) + 10);
         }
 
     }
