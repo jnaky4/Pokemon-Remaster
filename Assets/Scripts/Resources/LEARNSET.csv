@@ -664,24 +664,24 @@ dexnum,lvl,move,type
 91,1,Clamp,Water
 91,1,Withdraw,Water
 91,50,Spike Cannon,Normal
-92,1,Shadow Sneak,Ghost
 92,1,Confuse Ray,Ghost
 92,1,Lick,Ghost
 92,1,Night Shade,Ghost
+92,25,Shadow Sneak,Ghost
 92,27,Hypnosis,Psychic
 92,29,Shadow Ball,Ghost
 92,35,Dream Eater,Psychic
-93,1,Shadow Sneak,Ghost
 93,1,Confuse Ray,Ghost
 93,1,Lick,Ghost
 93,1,Night Shade,Ghost
+93,25,Shadow Sneak,Ghost
 93,29,Hypnosis,Psychic
 93,33,Shadow Ball,Ghost
 93,38,Dream Eater,Psychic
-94,1,Shadow Sneak,Ghost
 94,1,Confuse Ray,Ghost
 94,1,Lick,Ghost
 94,1,Night Shade,Ghost
+94,25,Shadow Sneak,Ghost
 94,29,Hypnosis,Psychic
 94,33,Shadow Ball,Ghost
 94,38,Dream Eater,Psychic
@@ -712,10 +712,10 @@ dexnum,lvl,move,type
 97,43,Meditate,Psychic
 98,1,Leer,Normal
 98,1,Bubble,Water
+98,5,Crabhammer,Water
 98,20,Vice Grip,Normal
 98,25,Guillotine,Normal
 98,30,Stomp,Normal
-98,35,Crabhammer,Water
 98,40,Harden,Normal
 99,1,Leer,Normal
 99,1,Vice Grip,Normal
@@ -767,7 +767,7 @@ dexnum,lvl,move,type
 105,41,Thrash,Normal
 105,48,Bonemerang,Ground
 105,55,Rage,Normal
-106,1,Double Kick,Fighting
+106,1, ,Fighting
 106,1,Meditate,Psychic
 106,33,Rolling Kick,Fighting
 106,38,Jump Kick,Fighting
