@@ -1,0 +1,3039 @@
+Pokemon#,Level/TM/HM,Move_Name,Type
+1,HM01,Cut,Normal
+2,HM01,Cut,Normal
+3,HM01,Cut,Normal
+4,HM01,Cut,Normal
+5,HM01,Cut,Normal
+6,HM01,Cut,Normal
+15,HM01,Cut,Normal
+27,HM01,Cut,Normal
+28,HM01,Cut,Normal
+43,HM01,Cut,Normal
+44,HM01,Cut,Normal
+45,HM01,Cut,Normal
+46,HM01,Cut,Normal
+47,HM01,Cut,Normal
+69,HM01,Cut,Normal
+70,HM01,Cut,Normal
+71,HM01,Cut,Normal
+72,HM01,Cut,Normal
+73,HM01,Cut,Normal
+83,HM01,Cut,Normal
+98,HM01,Cut,Normal
+99,HM01,Cut,Normal
+108,HM01,Cut,Normal
+114,HM01,Cut,Normal
+123,HM01,Cut,Normal
+127,HM01,Cut,Normal
+151,HM01,Cut,Normal
+50,HM01Y,Cut,Normal
+51,HM01Y,Cut,Normal
+141,HM01Y,Cut,Normal
+16,HM02,Fly,Flying
+17,HM02,Fly,Flying
+18,HM02,Fly,Flying
+21,HM02,Fly,Flying
+22,HM02,Fly,Flying
+83,HM02,Fly,Flying
+84,HM02,Fly,Flying
+85,HM02,Fly,Flying
+142,HM02,Fly,Flying
+144,HM02,Fly,Flying
+145,HM02,Fly,Flying
+146,HM02,Fly,Flying
+151,HM02,Fly,Flying
+6,HM02Y,Fly,Flying
+7,HM03,Surf,Water
+8,HM03,Surf,Water
+9,HM03,Surf,Water
+31,HM03,Surf,Water
+34,HM03,Surf,Water
+54,HM03,Surf,Water
+55,HM03,Surf,Water
+60,HM03,Surf,Water
+61,HM03,Surf,Water
+62,HM03,Surf,Water
+72,HM03,Surf,Water
+73,HM03,Surf,Water
+79,HM03,Surf,Water
+80,HM03,Surf,Water
+86,HM03,Surf,Water
+87,HM03,Surf,Water
+90,HM03,Surf,Water
+91,HM03,Surf,Water
+98,HM03,Surf,Water
+99,HM03,Surf,Water
+108,HM03,Surf,Water
+112,HM03,Surf,Water
+115,HM03,Surf,Water
+116,HM03,Surf,Water
+117,HM03,Surf,Water
+118,HM03,Surf,Water
+119,HM03,Surf,Water
+120,HM03,Surf,Water
+121,HM03,Surf,Water
+130,HM03,Surf,Water
+131,HM03,Surf,Water
+134,HM03,Surf,Water
+138,HM03,Surf,Water
+139,HM03,Surf,Water
+140,HM03,Surf,Water
+141,HM03,Surf,Water
+143,HM03,Surf,Water
+147,HM03,Surf,Water
+148,HM03,Surf,Water
+149,HM03,Surf,Water
+151,HM03,Surf,Water
+4,HM04,Strength,Normal
+5,HM04,Strength,Normal
+6,HM04,Strength,Normal
+7,HM04,Strength,Normal
+8,HM04,Strength,Normal
+9,HM04,Strength,Normal
+24,HM04,Strength,Normal
+24,HM04,Strength,Normal
+27,HM04,Strength,Normal
+28,HM04,Strength,Normal
+31,HM04,Strength,Normal
+34,HM04,Strength,Normal
+35,HM04,Strength,Normal
+36,HM04,Strength,Normal
+39,HM04,Strength,Normal
+40,HM04,Strength,Normal
+54,HM04,Strength,Normal
+55,HM04,Strength,Normal
+56,HM04,Strength,Normal
+57,HM04,Strength,Normal
+61,HM04,Strength,Normal
+62,HM04,Strength,Normal
+66,HM04,Strength,Normal
+67,HM04,Strength,Normal
+68,HM04,Strength,Normal
+74,HM04,Strength,Normal
+75,HM04,Strength,Normal
+76,HM04,Strength,Normal
+79,HM04,Strength,Normal
+80,HM04,Strength,Normal
+86,HM04,Strength,Normal
+87,HM04,Strength,Normal
+94,HM04,Strength,Normal
+95,HM04,Strength,Normal
+98,HM04,Strength,Normal
+99,HM04,Strength,Normal
+103,HM04,Strength,Normal
+104,HM04,Strength,Normal
+105,HM04,Strength,Normal
+106,HM04,Strength,Normal
+107,HM04,Strength,Normal
+108,HM04,Strength,Normal
+111,HM04,Strength,Normal
+112,HM04,Strength,Normal
+113,HM04,Strength,Normal
+115,HM04,Strength,Normal
+125,HM04,Strength,Normal
+126,HM04,Strength,Normal
+127,HM04,Strength,Normal
+128,HM04,Strength,Normal
+130,HM04,Strength,Normal
+131,HM04,Strength,Normal
+143,HM04,Strength,Normal
+149,HM04,Strength,Normal
+150,HM04,Strength,Normal
+151,HM04,Strength,Normal
+25,HM05,Flash,Normal
+26,HM05,Flash,Normal
+35,HM05,Flash,Normal
+36,HM05,Flash,Normal
+39,HM05,Flash,Normal
+40,HM05,Flash,Normal
+63,HM05,Flash,Normal
+64,HM05,Flash,Normal
+65,HM05,Flash,Normal
+79,HM05,Flash,Normal
+80,HM05,Flash,Normal
+81,HM05,Flash,Normal
+82,HM05,Flash,Normal
+96,HM05,Flash,Normal
+97,HM05,Flash,Normal
+100,HM05,Flash,Normal
+101,HM05,Flash,Normal
+113,HM05,Flash,Normal
+120,HM05,Flash,Normal
+121,HM05,Flash,Normal
+122,HM05,Flash,Normal
+125,HM05,Flash,Normal
+135,HM05,Flash,Normal
+137,HM05,Flash,Normal
+145,HM05,Flash,Normal
+150,HM05,Flash,Normal
+151,HM05,Flash,Normal
+12,HM05Y,Flash,Normal
+48,HM05Y,Flash,Normal
+49,HM05Y,Flash,Normal
+4,TM01,Mega Punch,Normal
+5,TM01,Mega Punch,Normal
+6,TM01,Mega Punch,Normal
+7,TM01,Mega Punch,Normal
+8,TM01,Mega Punch,Normal
+9,TM01,Mega Punch,Normal
+25,TM01,Mega Punch,Normal
+26,TM01,Mega Punch,Normal
+31,TM01,Mega Punch,Normal
+34,TM01,Mega Punch,Normal
+35,TM01,Mega Punch,Normal
+36,TM01,Mega Punch,Normal
+39,TM01,Mega Punch,Normal
+40,TM01,Mega Punch,Normal
+54,TM01,Mega Punch,Normal
+55,TM01,Mega Punch,Normal
+56,TM01,Mega Punch,Normal
+57,TM01,Mega Punch,Normal
+61,TM01,Mega Punch,Normal
+62,TM01,Mega Punch,Normal
+63,TM01,Mega Punch,Normal
+64,TM01,Mega Punch,Normal
+65,TM01,Mega Punch,Normal
+66,TM01,Mega Punch,Normal
+67,TM01,Mega Punch,Normal
+68,TM01,Mega Punch,Normal
+74,TM01,Mega Punch,Normal
+75,TM01,Mega Punch,Normal
+76,TM01,Mega Punch,Normal
+80,TM01,Mega Punch,Normal
+94,TM01,Mega Punch,Normal
+96,TM01,Mega Punch,Normal
+97,TM01,Mega Punch,Normal
+104,TM01,Mega Punch,Normal
+105,TM01,Mega Punch,Normal
+106,TM01,Mega Punch,Normal
+107,TM01,Mega Punch,Normal
+108,TM01,Mega Punch,Normal
+112,TM01,Mega Punch,Normal
+113,TM01,Mega Punch,Normal
+115,TM01,Mega Punch,Normal
+122,TM01,Mega Punch,Normal
+124,TM01,Mega Punch,Normal
+125,TM01,Mega Punch,Normal
+126,TM01,Mega Punch,Normal
+143,TM01,Mega Punch,Normal
+150,TM01,Mega Punch,Normal
+151,TM01,Mega Punch,Normal
+12,TM02,Razor Wind,Normal
+16,TM02,Razor Wind,Normal
+17,TM02,Razor Wind,Normal
+18,TM02,Razor Wind,Normal
+21,TM02,Razor Wind,Normal
+22,TM02,Razor Wind,Normal
+41,TM02,Razor Wind,Normal
+42,TM02,Razor Wind,Normal
+49,TM02,Razor Wind,Normal
+83,TM02,Razor Wind,Normal
+141,TM02,Razor Wind,Normal
+142,TM02,Razor Wind,Normal
+144,TM02,Razor Wind,Normal
+145,TM02,Razor Wind,Normal
+146,TM02,Razor Wind,Normal
+149,TM02,Razor Wind,Normal
+151,TM02,Razor Wind,Normal
+1,TM03,Swords Dance,Normal
+2,TM03,Swords Dance,Normal
+3,TM03,Swords Dance,Normal
+4,TM03,Swords Dance,Normal
+5,TM03,Swords Dance,Normal
+6,TM03,Swords Dance,Normal
+15,TM03,Swords Dance,Normal
+27,TM03,Swords Dance,Normal
+28,TM03,Swords Dance,Normal
+43,TM03,Swords Dance,Normal
+44,TM03,Swords Dance,Normal
+45,TM03,Swords Dance,Normal
+46,TM03,Swords Dance,Normal
+47,TM03,Swords Dance,Normal
+69,TM03,Swords Dance,Normal
+70,TM03,Swords Dance,Normal
+71,TM03,Swords Dance,Normal
+72,TM03,Swords Dance,Normal
+73,TM03,Swords Dance,Normal
+83,TM03,Swords Dance,Normal
+98,TM03,Swords Dance,Normal
+99,TM03,Swords Dance,Normal
+108,TM03,Swords Dance,Normal
+114,TM03,Swords Dance,Normal
+123,TM03,Swords Dance,Normal
+127,TM03,Swords Dance,Normal
+141,TM03,Swords Dance,Normal
+151,TM03,Swords Dance,Normal
+12,TM04,Whirlwind,Normal
+16,TM04,Whirlwind,Normal
+17,TM04,Whirlwind,Normal
+18,TM04,Whirlwind,Normal
+21,TM04,Whirlwind,Normal
+22,TM04,Whirlwind,Normal
+41,TM04,Whirlwind,Normal
+42,TM04,Whirlwind,Normal
+49,TM04,Whirlwind,Normal
+83,TM04,Whirlwind,Normal
+84,TM04,Whirlwind,Normal
+85,TM04,Whirlwind,Normal
+142,TM04,Whirlwind,Normal
+144,TM04,Whirlwind,Normal
+145,TM04,Whirlwind,Normal
+146,TM04,Whirlwind,Normal
+151,TM04,Whirlwind,Normal
+4,TM05,Mega Kick,Normal
+5,TM05,Mega Kick,Normal
+6,TM05,Mega Kick,Normal
+7,TM05,Mega Kick,Normal
+8,TM05,Mega Kick,Normal
+9,TM05,Mega Kick,Normal
+25,TM05,Mega Kick,Normal
+26,TM05,Mega Kick,Normal
+31,TM05,Mega Kick,Normal
+34,TM05,Mega Kick,Normal
+35,TM05,Mega Kick,Normal
+36,TM05,Mega Kick,Normal
+39,TM05,Mega Kick,Normal
+40,TM05,Mega Kick,Normal
+54,TM05,Mega Kick,Normal
+55,TM05,Mega Kick,Normal
+56,TM05,Mega Kick,Normal
+57,TM05,Mega Kick,Normal
+61,TM05,Mega Kick,Normal
+62,TM05,Mega Kick,Normal
+63,TM05,Mega Kick,Normal
+64,TM05,Mega Kick,Normal
+65,TM05,Mega Kick,Normal
+66,TM05,Mega Kick,Normal
+67,TM05,Mega Kick,Normal
+68,TM05,Mega Kick,Normal
+76,TM05,Mega Kick,Normal
+80,TM05,Mega Kick,Normal
+94,TM05,Mega Kick,Normal
+96,TM05,Mega Kick,Normal
+97,TM05,Mega Kick,Normal
+104,TM05,Mega Kick,Normal
+105,TM05,Mega Kick,Normal
+106,TM05,Mega Kick,Normal
+107,TM05,Mega Kick,Normal
+108,TM05,Mega Kick,Normal
+112,TM05,Mega Kick,Normal
+113,TM05,Mega Kick,Normal
+115,TM05,Mega Kick,Normal
+122,TM05,Mega Kick,Normal
+124,TM05,Mega Kick,Normal
+125,TM05,Mega Kick,Normal
+126,TM05,Mega Kick,Normal
+141,TM05,Mega Kick,Normal
+143,TM05,Mega Kick,Normal
+150,TM05,Mega Kick,Normal
+151,TM05,Mega Kick,Normal
+1,TM06,Toxic,Poison
+2,TM06,Toxic,Poison
+3,TM06,Toxic,Poison
+4,TM06,Toxic,Poison
+5,TM06,Toxic,Poison
+6,TM06,Toxic,Poison
+7,TM06,Toxic,Poison
+8,TM06,Toxic,Poison
+9,TM06,Toxic,Poison
+12,TM06,Toxic,Poison
+15,TM06,Toxic,Poison
+16,TM06,Toxic,Poison
+17,TM06,Toxic,Poison
+18,TM06,Toxic,Poison
+19,TM06,Toxic,Poison
+20,TM06,Toxic,Poison
+21,TM06,Toxic,Poison
+22,TM06,Toxic,Poison
+23,TM06,Toxic,Poison
+24,TM06,Toxic,Poison
+25,TM06,Toxic,Poison
+26,TM06,Toxic,Poison
+27,TM06,Toxic,Poison
+28,TM06,Toxic,Poison
+29,TM06,Toxic,Poison
+30,TM06,Toxic,Poison
+31,TM06,Toxic,Poison
+32,TM06,Toxic,Poison
+33,TM06,Toxic,Poison
+34,TM06,Toxic,Poison
+35,TM06,Toxic,Poison
+36,TM06,Toxic,Poison
+37,TM06,Toxic,Poison
+38,TM06,Toxic,Poison
+39,TM06,Toxic,Poison
+40,TM06,Toxic,Poison
+41,TM06,Toxic,Poison
+42,TM06,Toxic,Poison
+43,TM06,Toxic,Poison
+44,TM06,Toxic,Poison
+45,TM06,Toxic,Poison
+46,TM06,Toxic,Poison
+47,TM06,Toxic,Poison
+48,TM06,Toxic,Poison
+49,TM06,Toxic,Poison
+50,TM06,Toxic,Poison
+51,TM06,Toxic,Poison
+52,TM06,Toxic,Poison
+53,TM06,Toxic,Poison
+54,TM06,Toxic,Poison
+55,TM06,Toxic,Poison
+56,TM06,Toxic,Poison
+57,TM06,Toxic,Poison
+58,TM06,Toxic,Poison
+59,TM06,Toxic,Poison
+60,TM06,Toxic,Poison
+61,TM06,Toxic,Poison
+62,TM06,Toxic,Poison
+63,TM06,Toxic,Poison
+64,TM06,Toxic,Poison
+65,TM06,Toxic,Poison
+66,TM06,Toxic,Poison
+67,TM06,Toxic,Poison
+68,TM06,Toxic,Poison
+69,TM06,Toxic,Poison
+70,TM06,Toxic,Poison
+71,TM06,Toxic,Poison
+72,TM06,Toxic,Poison
+73,TM06,Toxic,Poison
+74,TM06,Toxic,Poison
+75,TM06,Toxic,Poison
+76,TM06,Toxic,Poison
+77,TM06,Toxic,Poison
+78,TM06,Toxic,Poison
+79,TM06,Toxic,Poison
+80,TM06,Toxic,Poison
+81,TM06,Toxic,Poison
+82,TM06,Toxic,Poison
+83,TM06,Toxic,Poison
+84,TM06,Toxic,Poison
+85,TM06,Toxic,Poison
+86,TM06,Toxic,Poison
+87,TM06,Toxic,Poison
+88,TM06,Toxic,Poison
+89,TM06,Toxic,Poison
+90,TM06,Toxic,Poison
+91,TM06,Toxic,Poison
+92,TM06,Toxic,Poison
+93,TM06,Toxic,Poison
+94,TM06,Toxic,Poison
+95,TM06,Toxic,Poison
+96,TM06,Toxic,Poison
+97,TM06,Toxic,Poison
+98,TM06,Toxic,Poison
+99,TM06,Toxic,Poison
+100,TM06,Toxic,Poison
+101,TM06,Toxic,Poison
+102,TM06,Toxic,Poison
+103,TM06,Toxic,Poison
+104,TM06,Toxic,Poison
+105,TM06,Toxic,Poison
+106,TM06,Toxic,Poison
+107,TM06,Toxic,Poison
+108,TM06,Toxic,Poison
+109,TM06,Toxic,Poison
+110,TM06,Toxic,Poison
+111,TM06,Toxic,Poison
+112,TM06,Toxic,Poison
+113,TM06,Toxic,Poison
+114,TM06,Toxic,Poison
+115,TM06,Toxic,Poison
+116,TM06,Toxic,Poison
+117,TM06,Toxic,Poison
+118,TM06,Toxic,Poison
+119,TM06,Toxic,Poison
+120,TM06,Toxic,Poison
+121,TM06,Toxic,Poison
+122,TM06,Toxic,Poison
+123,TM06,Toxic,Poison
+124,TM06,Toxic,Poison
+125,TM06,Toxic,Poison
+126,TM06,Toxic,Poison
+127,TM06,Toxic,Poison
+128,TM06,Toxic,Poison
+130,TM06,Toxic,Poison
+131,TM06,Toxic,Poison
+133,TM06,Toxic,Poison
+134,TM06,Toxic,Poison
+135,TM06,Toxic,Poison
+136,TM06,Toxic,Poison
+137,TM06,Toxic,Poison
+138,TM06,Toxic,Poison
+139,TM06,Toxic,Poison
+140,TM06,Toxic,Poison
+141,TM06,Toxic,Poison
+142,TM06,Toxic,Poison
+143,TM06,Toxic,Poison
+144,TM06,Toxic,Poison
+145,TM06,Toxic,Poison
+146,TM06,Toxic,Poison
+147,TM06,Toxic,Poison
+148,TM06,Toxic,Poison
+149,TM06,Toxic,Poison
+150,TM06,Toxic,Poison
+151,TM06,Toxic,Poison
+30,TM07,Horn Drill,Normal
+31,TM07,Horn Drill,Normal
+34,TM07,Horn Drill,Normal
+77,TM07,Horn Drill,Normal
+78,TM07,Horn Drill,Normal
+86,TM07,Horn Drill,Normal
+87,TM07,Horn Drill,Normal
+111,TM07,Horn Drill,Normal
+112,TM07,Horn Drill,Normal
+118,TM07,Horn Drill,Normal
+119,TM07,Horn Drill,Normal
+128,TM07,Horn Drill,Normal
+131,TM07,Horn Drill,Normal
+139,TM07,Horn Drill,Normal
+148,TM07,Horn Drill,Normal
+149,TM07,Horn Drill,Normal
+151,TM07,Horn Drill,Normal
+1,TM08,Body Slam,Normal
+2,TM08,Body Slam,Normal
+3,TM08,Body Slam,Normal
+4,TM08,Body Slam,Normal
+5,TM08,Body Slam,Normal
+6,TM08,Body Slam,Normal
+7,TM08,Body Slam,Normal
+8,TM08,Body Slam,Normal
+9,TM08,Body Slam,Normal
+19,TM08,Body Slam,Normal
+20,TM08,Body Slam,Normal
+23,TM08,Body Slam,Normal
+24,TM08,Body Slam,Normal
+25,TM08,Body Slam,Normal
+26,TM08,Body Slam,Normal
+27,TM08,Body Slam,Normal
+28,TM08,Body Slam,Normal
+29,TM08,Body Slam,Normal
+30,TM08,Body Slam,Normal
+31,TM08,Body Slam,Normal
+32,TM08,Body Slam,Normal
+33,TM08,Body Slam,Normal
+34,TM08,Body Slam,Normal
+35,TM08,Body Slam,Normal
+36,TM08,Body Slam,Normal
+37,TM08,Body Slam,Normal
+38,TM08,Body Slam,Normal
+39,TM08,Body Slam,Normal
+40,TM08,Body Slam,Normal
+45,TM08,Body Slam,Normal
+46,TM08,Body Slam,Normal
+47,TM08,Body Slam,Normal
+50,TM08,Body Slam,Normal
+51,TM08,Body Slam,Normal
+52,TM08,Body Slam,Normal
+53,TM08,Body Slam,Normal
+54,TM08,Body Slam,Normal
+55,TM08,Body Slam,Normal
+56,TM08,Body Slam,Normal
+57,TM08,Body Slam,Normal
+58,TM08,Body Slam,Normal
+59,TM08,Body Slam,Normal
+60,TM08,Body Slam,Normal
+61,TM08,Body Slam,Normal
+62,TM08,Body Slam,Normal
+63,TM08,Body Slam,Normal
+64,TM08,Body Slam,Normal
+65,TM08,Body Slam,Normal
+66,TM08,Body Slam,Normal
+67,TM08,Body Slam,Normal
+68,TM08,Body Slam,Normal
+71,TM08,Body Slam,Normal
+74,TM08,Body Slam,Normal
+75,TM08,Body Slam,Normal
+76,TM08,Body Slam,Normal
+77,TM08,Body Slam,Normal
+78,TM08,Body Slam,Normal
+79,TM08,Body Slam,Normal
+80,TM08,Body Slam,Normal
+83,TM08,Body Slam,Normal
+84,TM08,Body Slam,Normal
+85,TM08,Body Slam,Normal
+86,TM08,Body Slam,Normal
+87,TM08,Body Slam,Normal
+88,TM08,Body Slam,Normal
+89,TM08,Body Slam,Normal
+94,TM08,Body Slam,Normal
+95,TM08,Body Slam,Normal
+96,TM08,Body Slam,Normal
+97,TM08,Body Slam,Normal
+98,TM08,Body Slam,Normal
+99,TM08,Body Slam,Normal
+104,TM08,Body Slam,Normal
+105,TM08,Body Slam,Normal
+106,TM08,Body Slam,Normal
+107,TM08,Body Slam,Normal
+108,TM08,Body Slam,Normal
+111,TM08,Body Slam,Normal
+112,TM08,Body Slam,Normal
+113,TM08,Body Slam,Normal
+114,TM08,Body Slam,Normal
+115,TM08,Body Slam,Normal
+122,TM08,Body Slam,Normal
+124,TM08,Body Slam,Normal
+125,TM08,Body Slam,Normal
+126,TM08,Body Slam,Normal
+127,TM08,Body Slam,Normal
+128,TM08,Body Slam,Normal
+130,TM08,Body Slam,Normal
+131,TM08,Body Slam,Normal
+133,TM08,Body Slam,Normal
+134,TM08,Body Slam,Normal
+135,TM08,Body Slam,Normal
+136,TM08,Body Slam,Normal
+138,TM08,Body Slam,Normal
+139,TM08,Body Slam,Normal
+140,TM08,Body Slam,Normal
+141,TM08,Body Slam,Normal
+143,TM08,Body Slam,Normal
+147,TM08,Body Slam,Normal
+148,TM08,Body Slam,Normal
+149,TM08,Body Slam,Normal
+150,TM08,Body Slam,Normal
+151,TM08,Body Slam,Normal
+1,TM09,Take Down,Poison
+2,TM09,Take Down,Poison
+3,TM09,Take Down,Normal
+4,TM09,Take Down,Normal
+5,TM09,Take Down,Normal
+6,TM09,Take Down,Normal
+7,TM09,Take Down,Normal
+8,TM09,Take Down,Normal
+9,TM09,Take Down,Normal
+12,TM09,Take Down,Normal
+15,TM09,Take Down,Normal
+16,TM09,Take Down,Normal
+17,TM09,Take Down,Normal
+18,TM09,Take Down,Normal
+19,TM09,Take Down,Normal
+20,TM09,Take Down,Normal
+21,TM09,Take Down,Normal
+22,TM09,Take Down,Normal
+23,TM09,Take Down,Normal
+24,TM09,Take Down,Normal
+25,TM09,Take Down,Normal
+26,TM09,Take Down,Normal
+27,TM09,Take Down,Normal
+28,TM09,Take Down,Normal
+29,TM09,Take Down,Normal
+30,TM09,Take Down,Normal
+31,TM09,Take Down,Normal
+32,TM09,Take Down,Normal
+33,TM09,Take Down,Normal
+34,TM09,Take Down,Normal
+35,TM09,Take Down,Normal
+36,TM09,Take Down,Normal
+37,TM09,Take Down,Normal
+38,TM09,Take Down,Normal
+39,TM09,Take Down,Normal
+40,TM09,Take Down,Normal
+41,TM09,Take Down,Normal
+42,TM09,Take Down,Normal
+43,TM09,Take Down,Normal
+44,TM09,Take Down,Normal
+45,TM09,Take Down,Normal
+46,TM09,Take Down,Normal
+47,TM09,Take Down,Normal
+48,TM09,Take Down,Normal
+49,TM09,Take Down,Normal
+50,TM09,Take Down,Normal
+51,TM09,Take Down,Normal
+52,TM09,Take Down,Normal
+53,TM09,Take Down,Normal
+54,TM09,Take Down,Normal
+55,TM09,Take Down,Normal
+56,TM09,Take Down,Normal
+57,TM09,Take Down,Normal
+58,TM09,Take Down,Normal
+59,TM09,Take Down,Normal
+60,TM09,Take Down,Normal
+61,TM09,Take Down,Normal
+62,TM09,Take Down,Normal
+63,TM09,Take Down,Normal
+64,TM09,Take Down,Normal
+65,TM09,Take Down,Normal
+66,TM09,Take Down,Normal
+67,TM09,Take Down,Normal
+68,TM09,Take Down,Normal
+69,TM09,Take Down,Normal
+70,TM09,Take Down,Normal
+71,TM09,Take Down,Normal
+72,TM09,Take Down,Normal
+73,TM09,Take Down,Normal
+74,TM09,Take Down,Normal
+75,TM09,Take Down,Normal
+76,TM09,Take Down,Normal
+77,TM09,Take Down,Normal
+78,TM09,Take Down,Normal
+79,TM09,Take Down,Normal
+80,TM09,Take Down,Normal
+81,TM09,Take Down,Normal
+82,TM09,Take Down,Normal
+83,TM09,Take Down,Normal
+84,TM09,Take Down,Normal
+85,TM09,Take Down,Normal
+86,TM09,Take Down,Normal
+87,TM09,Take Down,Normal
+90,TM09,Take Down,Normal
+91,TM09,Take Down,Normal
+94,TM09,Take Down,Normal
+95,TM09,Take Down,Normal
+96,TM09,Take Down,Normal
+97,TM09,Take Down,Normal
+98,TM09,Take Down,Normal
+99,TM09,Take Down,Normal
+100,TM09,Take Down,Normal
+101,TM09,Take Down,Normal
+102,TM09,Take Down,Normal
+103,TM09,Take Down,Normal
+104,TM09,Take Down,Normal
+105,TM09,Take Down,Normal
+106,TM09,Take Down,Normal
+107,TM09,Take Down,Normal
+108,TM09,Take Down,Normal
+111,TM09,Take Down,Normal
+112,TM09,Take Down,Normal
+113,TM09,Take Down,Normal
+114,TM09,Take Down,Normal
+115,TM09,Take Down,Normal
+116,TM09,Take Down,Normal
+117,TM09,Take Down,Normal
+118,TM09,Take Down,Normal
+119,TM09,Take Down,Normal
+120,TM09,Take Down,Normal
+121,TM09,Take Down,Normal
+122,TM09,Take Down,Normal
+123,TM09,Take Down,Normal
+124,TM09,Take Down,Normal
+125,TM09,Take Down,Normal
+126,TM09,Take Down,Normal
+127,TM09,Take Down,Normal
+128,TM09,Take Down,Normal
+130,TM09,Take Down,Normal
+131,TM09,Take Down,Normal
+133,TM09,Take Down,Normal
+134,TM09,Take Down,Normal
+135,TM09,Take Down,Normal
+136,TM09,Take Down,Normal
+137,TM09,Take Down,Normal
+138,TM09,Take Down,Normal
+139,TM09,Take Down,Normal
+140,TM09,Take Down,Normal
+141,TM09,Take Down,Normal
+142,TM09,Take Down,Normal
+143,TM09,Take Down,Normal
+144,TM09,Take Down,Normal
+145,TM09,Take Down,Normal
+146,TM09,Take Down,Normal
+147,TM09,Take Down,Normal
+148,TM09,Take Down,Normal
+149,TM09,Take Down,Normal
+150,TM09,Take Down,Normal
+151,TM09,Take Down,Normal
+1,TM10,Double-Edge,Normal
+2,TM10,Double-Edge,Normal
+3,TM10,Double-Edge,Normal
+4,TM10,Double-Edge,Normal
+5,TM10,Double-Edge,Normal
+6,TM10,Double-Edge,Normal
+7,TM10,Double-Edge,Normal
+8,TM10,Double-Edge,Normal
+9,TM10,Double-Edge,Normal
+12,TM10,Double-Edge,Normal
+15,TM10,Double-Edge,Normal
+16,TM10,Double-Edge,Normal
+17,TM10,Double-Edge,Normal
+18,TM10,Double-Edge,Normal
+19,TM10,Double-Edge,Normal
+20,TM10,Double-Edge,Normal
+21,TM10,Double-Edge,Normal
+22,TM10,Double-Edge,Normal
+23,TM10,Double-Edge,Normal
+24,TM10,Double-Edge,Normal
+25,TM10,Double-Edge,Normal
+26,TM10,Double-Edge,Normal
+27,TM10,Double-Edge,Normal
+28,TM10,Double-Edge,Normal
+29,TM10,Double-Edge,Normal
+30,TM10,Double-Edge,Normal
+31,TM10,Double-Edge,Normal
+32,TM10,Double-Edge,Normal
+33,TM10,Double-Edge,Normal
+34,TM10,Double-Edge,Normal
+35,TM10,Double-Edge,Normal
+36,TM10,Double-Edge,Normal
+37,TM10,Double-Edge,Normal
+38,TM10,Double-Edge,Normal
+39,TM10,Double-Edge,Normal
+40,TM10,Double-Edge,Normal
+41,TM10,Double-Edge,Normal
+42,TM10,Double-Edge,Normal
+43,TM10,Double-Edge,Normal
+44,TM10,Double-Edge,Normal
+45,TM10,Double-Edge,Normal
+46,TM10,Double-Edge,Normal
+47,TM10,Double-Edge,Normal
+48,TM10,Double-Edge,Normal
+49,TM10,Double-Edge,Normal
+50,TM10,Double-Edge,Normal
+51,TM10,Double-Edge,Normal
+52,TM10,Double-Edge,Normal
+53,TM10,Double-Edge,Normal
+54,TM10,Double-Edge,Normal
+55,TM10,Double-Edge,Normal
+56,TM10,Double-Edge,Normal
+57,TM10,Double-Edge,Normal
+58,TM10,Double-Edge,Normal
+59,TM10,Double-Edge,Normal
+60,TM10,Double-Edge,Normal
+61,TM10,Double-Edge,Normal
+62,TM10,Double-Edge,Normal
+63,TM10,Double-Edge,Normal
+64,TM10,Double-Edge,Normal
+65,TM10,Double-Edge,Normal
+66,TM10,Double-Edge,Normal
+67,TM10,Double-Edge,Normal
+68,TM10,Double-Edge,Normal
+69,TM10,Double-Edge,Normal
+70,TM10,Double-Edge,Normal
+71,TM10,Double-Edge,Normal
+72,TM10,Double-Edge,Normal
+73,TM10,Double-Edge,Normal
+74,TM10,Double-Edge,Normal
+75,TM10,Double-Edge,Normal
+76,TM10,Double-Edge,Normal
+77,TM10,Double-Edge,Normal
+78,TM10,Double-Edge,Normal
+79,TM10,Double-Edge,Normal
+80,TM10,Double-Edge,Normal
+81,TM10,Double-Edge,Normal
+82,TM10,Double-Edge,Normal
+83,TM10,Double-Edge,Normal
+84,TM10,Double-Edge,Normal
+85,TM10,Double-Edge,Normal
+86,TM10,Double-Edge,Normal
+87,TM10,Double-Edge,Normal
+90,TM10,Double-Edge,Normal
+91,TM10,Double-Edge,Normal
+94,TM10,Double-Edge,Normal
+95,TM10,Double-Edge,Normal
+96,TM10,Double-Edge,Normal
+97,TM10,Double-Edge,Normal
+98,TM10,Double-Edge,Normal
+99,TM10,Double-Edge,Normal
+102,TM10,Double-Edge,Normal
+103,TM10,Double-Edge,Normal
+104,TM10,Double-Edge,Normal
+105,TM10,Double-Edge,Normal
+106,TM10,Double-Edge,Normal
+107,TM10,Double-Edge,Normal
+108,TM10,Double-Edge,Normal
+111,TM10,Double-Edge,Normal
+112,TM10,Double-Edge,Normal
+113,TM10,Double-Edge,Normal
+114,TM10,Double-Edge,Normal
+115,TM10,Double-Edge,Normal
+116,TM10,Double-Edge,Normal
+117,TM10,Double-Edge,Normal
+118,TM10,Double-Edge,Normal
+119,TM10,Double-Edge,Normal
+120,TM10,Double-Edge,Normal
+121,TM10,Double-Edge,Normal
+122,TM10,Double-Edge,Normal
+123,TM10,Double-Edge,Normal
+124,TM10,Double-Edge,Normal
+125,TM10,Double-Edge,Normal
+126,TM10,Double-Edge,Normal
+127,TM10,Double-Edge,Normal
+128,TM10,Double-Edge,Normal
+130,TM10,Double-Edge,Normal
+131,TM10,Double-Edge,Normal
+133,TM10,Double-Edge,Normal
+134,TM10,Double-Edge,Normal
+135,TM10,Double-Edge,Normal
+136,TM10,Double-Edge,Normal
+137,TM10,Double-Edge,Normal
+138,TM10,Double-Edge,Normal
+139,TM10,Double-Edge,Normal
+140,TM10,Double-Edge,Normal
+141,TM10,Double-Edge,Normal
+142,TM10,Double-Edge,Normal
+143,TM10,Double-Edge,Normal
+144,TM10,Double-Edge,Normal
+145,TM10,Double-Edge,Normal
+146,TM10,Double-Edge,Normal
+147,TM10,Double-Edge,Normal
+148,TM10,Double-Edge,Normal
+149,TM10,Double-Edge,Normal
+150,TM10,Double-Edge,Normal
+151,TM10,Double-Edge,Normal
+7,TM11,BubbleBeam,Water
+8,TM11,BubbleBeam,Water
+9,TM11,BubbleBeam,Water
+19,TM11,BubbleBeam,Water
+20,TM11,BubbleBeam,Water
+30,TM11,BubbleBeam,Water
+31,TM11,BubbleBeam,Water
+34,TM11,BubbleBeam,Water
+35,TM11,BubbleBeam,Water
+36,TM11,BubbleBeam,Water
+39,TM11,BubbleBeam,Water
+40,TM11,BubbleBeam,Water
+52,TM11,BubbleBeam,Water
+53,TM11,BubbleBeam,Water
+54,TM11,BubbleBeam,Water
+55,TM11,BubbleBeam,Water
+60,TM11,BubbleBeam,Water
+61,TM11,BubbleBeam,Water
+62,TM11,BubbleBeam,Water
+72,TM11,BubbleBeam,Water
+73,TM11,BubbleBeam,Water
+79,TM11,BubbleBeam,Water
+80,TM11,BubbleBeam,Water
+86,TM11,BubbleBeam,Water
+87,TM11,BubbleBeam,Water
+90,TM11,BubbleBeam,Water
+91,TM11,BubbleBeam,Water
+98,TM11,BubbleBeam,Water
+99,TM11,BubbleBeam,Water
+104,TM11,BubbleBeam,Water
+105,TM11,BubbleBeam,Water
+108,TM11,BubbleBeam,Water
+112,TM11,BubbleBeam,Water
+113,TM11,BubbleBeam,Water
+115,TM11,BubbleBeam,Water
+116,TM11,BubbleBeam,Water
+117,TM11,BubbleBeam,Water
+118,TM11,BubbleBeam,Water
+119,TM11,BubbleBeam,Water
+120,TM11,BubbleBeam,Water
+121,TM11,BubbleBeam,Water
+124,TM11,BubbleBeam,Water
+130,TM11,BubbleBeam,Water
+131,TM11,BubbleBeam,Water
+134,TM11,BubbleBeam,Water
+138,TM11,BubbleBeam,Water
+139,TM11,BubbleBeam,Water
+140,TM11,BubbleBeam,Water
+141,TM11,BubbleBeam,Water
+143,TM11,BubbleBeam,Water
+144,TM11,BubbleBeam,Water
+147,TM11,BubbleBeam,Water
+148,TM11,BubbleBeam,Water
+149,TM11,BubbleBeam,Water
+150,TM11,BubbleBeam,Water
+151,TM11,BubbleBeam,Water
+7,TM12,Water Gun,Water
+8,TM12,Water Gun,Water
+9,TM12,Water Gun,Water
+19,TM12,Water Gun,Water
+20,TM12,Water Gun,Water
+30,TM12,Water Gun,Water
+31,TM12,Water Gun,Water
+34,TM12,Water Gun,Water
+35,TM12,Water Gun,Water
+36,TM12,Water Gun,Water
+39,TM12,Water Gun,Water
+40,TM12,Water Gun,Water
+52,TM12,Water Gun,Water
+53,TM12,Water Gun,Water
+54,TM12,Water Gun,Water
+55,TM12,Water Gun,Water
+60,TM12,Water Gun,Water
+61,TM12,Water Gun,Water
+62,TM12,Water Gun,Water
+72,TM12,Water Gun,Water
+73,TM12,Water Gun,Water
+79,TM12,Water Gun,Water
+80,TM12,Water Gun,Water
+86,TM12,Water Gun,Water
+87,TM12,Water Gun,Water
+90,TM12,Water Gun,Water
+91,TM12,Water Gun,Water
+98,TM12,Water Gun,Water
+99,TM12,Water Gun,Water
+104,TM12,Water Gun,Water
+105,TM12,Water Gun,Water
+108,TM12,Water Gun,Water
+112,TM12,Water Gun,Water
+113,TM12,Water Gun,Water
+115,TM12,Water Gun,Water
+116,TM12,Water Gun,Water
+117,TM12,Water Gun,Water
+118,TM12,Water Gun,Water
+119,TM12,Water Gun,Water
+120,TM12,Water Gun,Water
+121,TM12,Water Gun,Water
+124,TM12,Water Gun,Water
+130,TM12,Water Gun,Water
+131,TM12,Water Gun,Water
+134,TM12,Water Gun,Water
+138,TM12,Water Gun,Water
+139,TM12,Water Gun,Water
+140,TM12,Water Gun,Water
+141,TM12,Water Gun,Water
+143,TM12,Water Gun,Water
+144,TM12,Water Gun,Water
+147,TM12,Water Gun,Water
+148,TM12,Water Gun,Water
+149,TM12,Water Gun,Water
+150,TM12,Water Gun,Water
+151,TM12,Water Gun,Water
+7,TM13,Ice Beam,Ice
+8,TM13,Ice Beam,Ice
+9,TM13,Ice Beam,Ice
+20,TM13,Ice Beam,Ice
+30,TM13,Ice Beam,Ice
+31,TM13,Ice Beam,Ice
+34,TM13,Ice Beam,Ice
+35,TM13,Ice Beam,Ice
+36,TM13,Ice Beam,Ice
+39,TM13,Ice Beam,Ice
+40,TM13,Ice Beam,Ice
+54,TM13,Ice Beam,Ice
+55,TM13,Ice Beam,Ice
+60,TM13,Ice Beam,Ice
+61,TM13,Ice Beam,Ice
+62,TM13,Ice Beam,Ice
+72,TM13,Ice Beam,Ice
+73,TM13,Ice Beam,Ice
+79,TM13,Ice Beam,Ice
+80,TM13,Ice Beam,Ice
+86,TM13,Ice Beam,Ice
+87,TM13,Ice Beam,Ice
+90,TM13,Ice Beam,Ice
+91,TM13,Ice Beam,Ice
+98,TM13,Ice Beam,Ice
+99,TM13,Ice Beam,Ice
+104,TM13,Ice Beam,Ice
+105,TM13,Ice Beam,Ice
+108,TM13,Ice Beam,Ice
+112,TM13,Ice Beam,Ice
+113,TM13,Ice Beam,Ice
+115,TM13,Ice Beam,Ice
+116,TM13,Ice Beam,Ice
+117,TM13,Ice Beam,Ice
+118,TM13,Ice Beam,Ice
+119,TM13,Ice Beam,Ice
+120,TM13,Ice Beam,Ice
+121,TM13,Ice Beam,Ice
+124,TM13,Ice Beam,Ice
+128,TM13,Ice Beam,Ice
+130,TM13,Ice Beam,Ice
+131,TM13,Ice Beam,Ice
+134,TM13,Ice Beam,Ice
+137,TM13,Ice Beam,Ice
+138,TM13,Ice Beam,Ice
+139,TM13,Ice Beam,Ice
+140,TM13,Ice Beam,Ice
+141,TM13,Ice Beam,Ice
+143,TM13,Ice Beam,Ice
+144,TM13,Ice Beam,Ice
+147,TM13,Ice Beam,Ice
+148,TM13,Ice Beam,Ice
+149,TM13,Ice Beam,Ice
+150,TM13,Ice Beam,Ice
+151,TM13,Ice Beam,Ice
+7,TM14,Blizzard,Ice
+8,TM14,Blizzard,Ice
+9,TM14,Blizzard,Ice
+19,TM14,Blizzard,Ice
+20,TM14,Blizzard,Ice
+29,TM14,Blizzard,Ice
+30,TM14,Blizzard,Ice
+31,TM14,Blizzard,Ice
+32,TM14,Blizzard,Ice
+33,TM14,Blizzard,Ice
+34,TM14,Blizzard,Ice
+35,TM14,Blizzard,Ice
+36,TM14,Blizzard,Ice
+39,TM14,Blizzard,Ice
+40,TM14,Blizzard,Ice
+54,TM14,Blizzard,Ice
+55,TM14,Blizzard,Ice
+60,TM14,Blizzard,Ice
+61,TM14,Blizzard,Ice
+62,TM14,Blizzard,Ice
+72,TM14,Blizzard,Ice
+73,TM14,Blizzard,Ice
+79,TM14,Blizzard,Ice
+80,TM14,Blizzard,Ice
+86,TM14,Blizzard,Ice
+87,TM14,Blizzard,Ice
+90,TM14,Blizzard,Ice
+91,TM14,Blizzard,Ice
+98,TM14,Blizzard,Ice
+99,TM14,Blizzard,Ice
+104,TM14,Blizzard,Ice
+105,TM14,Blizzard,Ice
+108,TM14,Blizzard,Ice
+112,TM14,Blizzard,Ice
+113,TM14,Blizzard,Ice
+115,TM14,Blizzard,Ice
+116,TM14,Blizzard,Ice
+117,TM14,Blizzard,Ice
+118,TM14,Blizzard,Ice
+119,TM14,Blizzard,Ice
+120,TM14,Blizzard,Ice
+121,TM14,Blizzard,Ice
+124,TM14,Blizzard,Ice
+128,TM14,Blizzard,Ice
+130,TM14,Blizzard,Ice
+131,TM14,Blizzard,Ice
+134,TM14,Blizzard,Ice
+137,TM14,Blizzard,Ice
+138,TM14,Blizzard,Ice
+139,TM14,Blizzard,Ice
+140,TM14,Blizzard,Ice
+141,TM14,Blizzard,Ice
+143,TM14,Blizzard,Ice
+144,TM14,Blizzard,Ice
+147,TM14,Blizzard,Ice
+148,TM14,Blizzard,Ice
+149,TM14,Blizzard,Ice
+150,TM14,Blizzard,Ice
+151,TM14,Blizzard,Ice
+3,TM15,Hyper Beam,Normal
+6,TM15,Hyper Beam,Normal
+9,TM15,Hyper Beam,Normal
+12,TM15,Hyper Beam,Normal
+15,TM15,Hyper Beam,Normal
+18,TM15,Hyper Beam,Normal
+20,TM15,Hyper Beam,Normal
+22,TM15,Hyper Beam,Normal
+24,TM15,Hyper Beam,Normal
+26,TM15,Hyper Beam,Normal
+28,TM15,Hyper Beam,Normal
+31,TM15,Hyper Beam,Normal
+34,TM15,Hyper Beam,Normal
+36,TM15,Hyper Beam,Normal
+38,TM15,Hyper Beam,Normal
+40,TM15,Hyper Beam,Normal
+42,TM15,Hyper Beam,Normal
+45,TM15,Hyper Beam,Normal
+47,TM15,Hyper Beam,Normal
+49,TM15,Hyper Beam,Normal
+51,TM15,Hyper Beam,Normal
+53,TM15,Hyper Beam,Normal
+55,TM15,Hyper Beam,Normal
+57,TM15,Hyper Beam,Normal
+59,TM15,Hyper Beam,Normal
+65,TM15,Hyper Beam,Normal
+68,TM15,Hyper Beam,Normal
+71,TM15,Hyper Beam,Normal
+73,TM15,Hyper Beam,Normal
+76,TM15,Hyper Beam,Normal
+78,TM15,Hyper Beam,Normal
+80,TM15,Hyper Beam,Normal
+82,TM15,Hyper Beam,Normal
+85,TM15,Hyper Beam,Normal
+87,TM15,Hyper Beam,Normal
+89,TM15,Hyper Beam,Normal
+91,TM15,Hyper Beam,Normal
+94,TM15,Hyper Beam,Normal
+97,TM15,Hyper Beam,Normal
+99,TM15,Hyper Beam,Normal
+101,TM15,Hyper Beam,Normal
+103,TM15,Hyper Beam,Normal
+105,TM15,Hyper Beam,Normal
+108,TM15,Hyper Beam,Normal
+110,TM15,Hyper Beam,Normal
+112,TM15,Hyper Beam,Normal
+113,TM15,Hyper Beam,Normal
+114,TM15,Hyper Beam,Normal
+115,TM15,Hyper Beam,Normal
+117,TM15,Hyper Beam,Normal
+119,TM15,Hyper Beam,Normal
+121,TM15,Hyper Beam,Normal
+122,TM15,Hyper Beam,Normal
+123,TM15,Hyper Beam,Normal
+124,TM15,Hyper Beam,Normal
+125,TM15,Hyper Beam,Normal
+126,TM15,Hyper Beam,Normal
+127,TM15,Hyper Beam,Normal
+128,TM15,Hyper Beam,Normal
+130,TM15,Hyper Beam,Normal
+131,TM15,Hyper Beam,Normal
+134,TM15,Hyper Beam,Normal
+135,TM15,Hyper Beam,Normal
+136,TM15,Hyper Beam,Normal
+137,TM15,Hyper Beam,Normal
+139,TM15,Hyper Beam,Normal
+141,TM15,Hyper Beam,Normal
+142,TM15,Hyper Beam,Normal
+143,TM15,Hyper Beam,Normal
+144,TM15,Hyper Beam,Normal
+145,TM15,Hyper Beam,Normal
+146,TM15,Hyper Beam,Normal
+149,TM15,Hyper Beam,Normal
+150,TM15,Hyper Beam,Normal
+151,TM15,Hyper Beam,Normal
+25,TM16,Pay Day,Normal
+26,TM16,Pay Day,Normal
+31,TM16,Pay Day,Normal
+34,TM16,Pay Day,Normal
+52,TM16,Pay Day,Normal
+53,TM16,Pay Day,Normal
+54,TM16,Pay Day,Normal
+55,TM16,Pay Day,Normal
+56,TM16,Pay Day,Normal
+57,TM16,Pay Day,Normal
+79,TM16,Pay Day,Normal
+80,TM16,Pay Day,Normal
+86,TM16,Pay Day,Normal
+87,TM16,Pay Day,Normal
+112,TM16,Pay Day,Normal
+143,TM16,Pay Day,Normal
+151,TM16,Pay Day,Normal
+150,TM16RB,Pay Day,Normal
+4,TM17,Submission,Fighting
+5,TM17,Submission,Fighting
+6,TM17,Submission,Fighting
+7,TM17,Submission,Fighting
+8,TM17,Submission,Fighting
+9,TM17,Submission,Fighting
+25,TM17,Submission,Fighting
+26,TM17,Submission,Fighting
+27,TM17,Submission,Fighting
+28,TM17,Submission,Fighting
+31,TM17,Submission,Fighting
+34,TM17,Submission,Fighting
+35,TM17,Submission,Fighting
+36,TM17,Submission,Fighting
+39,TM17,Submission,Fighting
+40,TM17,Submission,Fighting
+54,TM17,Submission,Fighting
+55,TM17,Submission,Fighting
+56,TM17,Submission,Fighting
+57,TM17,Submission,Fighting
+61,TM17,Submission,Fighting
+62,TM17,Submission,Fighting
+63,TM17,Submission,Fighting
+64,TM17,Submission,Fighting
+65,TM17,Submission,Fighting
+66,TM17,Submission,Fighting
+67,TM17,Submission,Fighting
+68,TM17,Submission,Fighting
+74,TM17,Submission,Fighting
+75,TM17,Submission,Fighting
+76,TM17,Submission,Fighting
+80,TM17,Submission,Fighting
+94,TM17,Submission,Fighting
+96,TM17,Submission,Fighting
+97,TM17,Submission,Fighting
+104,TM17,Submission,Fighting
+105,TM17,Submission,Fighting
+106,TM17,Submission,Fighting
+107,TM17,Submission,Fighting
+108,TM17,Submission,Fighting
+112,TM17,Submission,Fighting
+113,TM17,Submission,Fighting
+115,TM17,Submission,Fighting
+122,TM17,Submission,Fighting
+124,TM17,Submission,Fighting
+125,TM17,Submission,Fighting
+126,TM17,Submission,Fighting
+127,TM17,Submission,Fighting
+139,TM17,Submission,Fighting
+141,TM17,Submission,Fighting
+143,TM17,Submission,Fighting
+150,TM17,Submission,Fighting
+151,TM17,Submission,Fighting
+4,TM18,Counter,Fighting
+5,TM18,Counter,Fighting
+6,TM18,Counter,Fighting
+7,TM18,Counter,Fighting
+8,TM18,Counter,Fighting
+9,TM18,Counter,Fighting
+31,TM18,Counter,Fighting
+34,TM18,Counter,Fighting
+35,TM18,Counter,Fighting
+36,TM18,Counter,Fighting
+39,TM18,Counter,Fighting
+40,TM18,Counter,Fighting
+54,TM18,Counter,Fighting
+55,TM18,Counter,Fighting
+56,TM18,Counter,Fighting
+57,TM18,Counter,Fighting
+61,TM18,Counter,Fighting
+62,TM18,Counter,Fighting
+63,TM18,Counter,Fighting
+64,TM18,Counter,Fighting
+65,TM18,Counter,Fighting
+66,TM18,Counter,Fighting
+67,TM18,Counter,Fighting
+68,TM18,Counter,Fighting
+74,TM18,Counter,Fighting
+75,TM18,Counter,Fighting
+76,TM18,Counter,Fighting
+80,TM18,Counter,Fighting
+94,TM18,Counter,Fighting
+96,TM18,Counter,Fighting
+97,TM18,Counter,Fighting
+104,TM18,Counter,Fighting
+105,TM18,Counter,Fighting
+106,TM18,Counter,Fighting
+107,TM18,Counter,Fighting
+108,TM18,Counter,Fighting
+112,TM18,Counter,Fighting
+113,TM18,Counter,Fighting
+115,TM18,Counter,Fighting
+122,TM18,Counter,Fighting
+124,TM18,Counter,Fighting
+125,TM18,Counter,Fighting
+126,TM18,Counter,Fighting
+143,TM18,Counter,Fighting
+150,TM18,Counter,Fighting
+151,TM18,Counter,Fighting
+4,TM19,Seismic Toss,Fighting
+5,TM19,Seismic Toss,Fighting
+6,TM19,Seismic Toss,Fighting
+7,TM19,Seismic Toss,Fighting
+8,TM19,Seismic Toss,Fighting
+9,TM19,Seismic Toss,Fighting
+25,TM19,Seismic Toss,Fighting
+26,TM19,Seismic Toss,Fighting
+27,TM19,Seismic Toss,Fighting
+28,TM19,Seismic Toss,Fighting
+31,TM19,Seismic Toss,Fighting
+34,TM19,Seismic Toss,Fighting
+35,TM19,Seismic Toss,Fighting
+36,TM19,Seismic Toss,Fighting
+39,TM19,Seismic Toss,Fighting
+40,TM19,Seismic Toss,Fighting
+54,TM19,Seismic Toss,Fighting
+55,TM19,Seismic Toss,Fighting
+56,TM19,Seismic Toss,Fighting
+57,TM19,Seismic Toss,Fighting
+61,TM19,Seismic Toss,Fighting
+62,TM19,Seismic Toss,Fighting
+63,TM19,Seismic Toss,Fighting
+64,TM19,Seismic Toss,Fighting
+65,TM19,Seismic Toss,Fighting
+66,TM19,Seismic Toss,Fighting
+67,TM19,Seismic Toss,Fighting
+68,TM19,Seismic Toss,Fighting
+74,TM19,Seismic Toss,Fighting
+75,TM19,Seismic Toss,Fighting
+76,TM19,Seismic Toss,Fighting
+80,TM19,Seismic Toss,Fighting
+94,TM19,Seismic Toss,Fighting
+96,TM19,Seismic Toss,Fighting
+97,TM19,Seismic Toss,Fighting
+104,TM19,Seismic Toss,Fighting
+105,TM19,Seismic Toss,Fighting
+106,TM19,Seismic Toss,Fighting
+107,TM19,Seismic Toss,Fighting
+108,TM19,Seismic Toss,Fighting
+112,TM19,Seismic Toss,Fighting
+113,TM19,Seismic Toss,Fighting
+115,TM19,Seismic Toss,Fighting
+122,TM19,Seismic Toss,Fighting
+124,TM19,Seismic Toss,Fighting
+125,TM19,Seismic Toss,Fighting
+126,TM19,Seismic Toss,Fighting
+127,TM19,Seismic Toss,Fighting
+139,TM19,Seismic Toss,Fighting
+141,TM19,Seismic Toss,Fighting
+143,TM19,Seismic Toss,Fighting
+150,TM19,Seismic Toss,Fighting
+151,TM19,Seismic Toss,Fighting
+1,TM20,Rage,Normal
+2,TM20,Rage,Normal
+3,TM20,Rage,Normal
+4,TM20,Rage,Normal
+5,TM20,Rage,Normal
+6,TM20,Rage,Normal
+7,TM20,Rage,Normal
+8,TM20,Rage,Normal
+9,TM20,Rage,Normal
+12,TM20,Rage,Normal
+15,TM20,Rage,Normal
+16,TM20,Rage,Normal
+17,TM20,Rage,Normal
+18,TM20,Rage,Normal
+19,TM20,Rage,Normal
+20,TM20,Rage,Normal
+21,TM20,Rage,Normal
+22,TM20,Rage,Normal
+23,TM20,Rage,Normal
+24,TM20,Rage,Normal
+25,TM20,Rage,Normal
+26,TM20,Rage,Normal
+27,TM20,Rage,Normal
+28,TM20,Rage,Normal
+29,TM20,Rage,Normal
+30,TM20,Rage,Normal
+31,TM20,Rage,Normal
+32,TM20,Rage,Normal
+33,TM20,Rage,Normal
+34,TM20,Rage,Normal
+35,TM20,Rage,Normal
+36,TM20,Rage,Normal
+37,TM20,Rage,Normal
+38,TM20,Rage,Normal
+39,TM20,Rage,Normal
+40,TM20,Rage,Normal
+41,TM20,Rage,Normal
+42,TM20,Rage,Normal
+43,TM20,Rage,Normal
+44,TM20,Rage,Normal
+45,TM20,Rage,Normal
+46,TM20,Rage,Normal
+47,TM20,Rage,Normal
+48,TM20,Rage,Normal
+49,TM20,Rage,Normal
+50,TM20,Rage,Normal
+51,TM20,Rage,Normal
+52,TM20,Rage,Normal
+53,TM20,Rage,Normal
+54,TM20,Rage,Normal
+55,TM20,Rage,Normal
+56,TM20,Rage,Normal
+57,TM20,Rage,Normal
+58,TM20,Rage,Normal
+59,TM20,Rage,Normal
+60,TM20,Rage,Normal
+61,TM20,Rage,Normal
+62,TM20,Rage,Normal
+63,TM20,Rage,Normal
+64,TM20,Rage,Normal
+65,TM20,Rage,Normal
+66,TM20,Rage,Normal
+67,TM20,Rage,Normal
+68,TM20,Rage,Normal
+69,TM20,Rage,Normal
+70,TM20,Rage,Normal
+71,TM20,Rage,Normal
+72,TM20,Rage,Normal
+73,TM20,Rage,Normal
+74,TM20,Rage,Normal
+75,TM20,Rage,Normal
+76,TM20,Rage,Normal
+77,TM20,Rage,Normal
+78,TM20,Rage,Normal
+79,TM20,Rage,Normal
+80,TM20,Rage,Normal
+81,TM20,Rage,Normal
+82,TM20,Rage,Normal
+83,TM20,Rage,Normal
+84,TM20,Rage,Normal
+85,TM20,Rage,Normal
+86,TM20,Rage,Normal
+87,TM20,Rage,Normal
+88,TM20,Rage,Normal
+89,TM20,Rage,Normal
+90,TM20,Rage,Normal
+91,TM20,Rage,Normal
+92,TM20,Rage,Normal
+93,TM20,Rage,Normal
+94,TM20,Rage,Normal
+95,TM20,Rage,Normal
+96,TM20,Rage,Normal
+97,TM20,Rage,Normal
+98,TM20,Rage,Normal
+99,TM20,Rage,Normal
+100,TM20,Rage,Normal
+101,TM20,Rage,Normal
+102,TM20,Rage,Normal
+103,TM20,Rage,Normal
+104,TM20,Rage,Normal
+105,TM20,Rage,Normal
+106,TM20,Rage,Normal
+107,TM20,Rage,Normal
+108,TM20,Rage,Normal
+109,TM20,Rage,Normal
+110,TM20,Rage,Normal
+111,TM20,Rage,Normal
+112,TM20,Rage,Normal
+113,TM20,Rage,Normal
+114,TM20,Rage,Normal
+115,TM20,Rage,Normal
+116,TM20,Rage,Normal
+117,TM20,Rage,Normal
+118,TM20,Rage,Normal
+119,TM20,Rage,Normal
+120,TM20,Rage,Normal
+121,TM20,Rage,Normal
+122,TM20,Rage,Normal
+123,TM20,Rage,Normal
+124,TM20,Rage,Normal
+125,TM20,Rage,Normal
+126,TM20,Rage,Normal
+127,TM20,Rage,Normal
+128,TM20,Rage,Normal
+130,TM20,Rage,Normal
+131,TM20,Rage,Normal
+133,TM20,Rage,Normal
+134,TM20,Rage,Normal
+135,TM20,Rage,Normal
+136,TM20,Rage,Normal
+137,TM20,Rage,Normal
+138,TM20,Rage,Normal
+139,TM20,Rage,Normal
+140,TM20,Rage,Normal
+141,TM20,Rage,Normal
+142,TM20,Rage,Normal
+143,TM20,Rage,Normal
+144,TM20,Rage,Normal
+145,TM20,Rage,Normal
+146,TM20,Rage,Normal
+147,TM20,Rage,Normal
+148,TM20,Rage,Normal
+149,TM20,Rage,Normal
+150,TM20,Rage,Normal
+151,TM20,Rage,Normal
+1,TM21,Mega Drain,Grass
+2,TM21,Mega Drain,Grass
+3,TM21,Mega Drain,Grass
+12,TM21,Mega Drain,Grass
+15,TM21,Mega Drain,Grass
+23,TM21,Mega Drain,Grass
+24,TM21,Mega Drain,Grass
+41,TM21,Mega Drain,Grass
+42,TM21,Mega Drain,Grass
+43,TM21,Mega Drain,Grass
+44,TM21,Mega Drain,Grass
+45,TM21,Mega Drain,Grass
+46,TM21,Mega Drain,Grass
+47,TM21,Mega Drain,Grass
+48,TM21,Mega Drain,Grass
+49,TM21,Mega Drain,Grass
+69,TM21,Mega Drain,Grass
+70,TM21,Mega Drain,Grass
+71,TM21,Mega Drain,Grass
+72,TM21,Mega Drain,Grass
+73,TM21,Mega Drain,Grass
+88,TM21,Mega Drain,Grass
+89,TM21,Mega Drain,Grass
+92,TM21,Mega Drain,Grass
+93,TM21,Mega Drain,Grass
+94,TM21,Mega Drain,Grass
+103,TM21,Mega Drain,Grass
+114,TM21,Mega Drain,Grass
+151,TM21,Mega Drain,Grass
+1,TM22,Solar Beam,Grass
+2,TM22,Solar Beam,Grass
+3,TM22,SolarBeam,Grass
+12,TM22,SolarBeam,Grass
+35,TM22,SolarBeam,Grass
+36,TM22,SolarBeam,Grass
+39,TM22,SolarBeam,Grass
+40,TM22,SolarBeam,Grass
+43,TM22,SolarBeam,Grass
+44,TM22,SolarBeam,Grass
+45,TM22,SolarBeam,Grass
+46,TM22,SolarBeam,Grass
+47,TM22,SolarBeam,Grass
+48,TM22,SolarBeam,Grass
+49,TM22,SolarBeam,Grass
+69,TM22,SolarBeam,Grass
+70,TM22,SolarBeam,Grass
+71,TM22,SolarBeam,Grass
+103,TM22,SolarBeam,Grass
+113,TM22,SolarBeam,Grass
+114,TM22,SolarBeam,Grass
+122,TM22,SolarBeam,Grass
+131,TM22,SolarBeam,Grass
+143,TM22,SolarBeam,Grass
+150,TM22,SolarBeam,Grass
+151,TM22,SolarBeam,Grass
+4,TM23,Dragon Rage,Dragon
+5,TM23,Dragon Rage,Dragon
+6,TM23,Dragon Rage,Dragon
+58,TM23,Dragon Rage,Dragon
+59,TM23,Dragon Rage,Dragon
+130,TM23,Dragon Rage,Dragon
+131,TM23,Dragon Rage,Dragon
+142,TM23,Dragon Rage,Dragon
+147,TM23,Dragon Rage,Dragon
+148,TM23,Dragon Rage,Dragon
+149,TM23,Dragon Rage,Dragon
+151,TM23,Dragon Rage,Dragon
+19,TM24,Thunderbolt,Electric
+20,TM24,Thunderbolt,Electric
+25,TM24,Thunderbolt,Electric
+26,TM24,Thunderbolt,Electric
+29,TM24,Thunderbolt,Electric
+30,TM24,Thunderbolt,Electric
+31,TM24,Thunderbolt,Electric
+32,TM24,Thunderbolt,Electric
+33,TM24,Thunderbolt,Electric
+34,TM24,Thunderbolt,Electric
+35,TM24,Thunderbolt,Electric
+36,TM24,Thunderbolt,Electric
+39,TM24,Thunderbolt,Electric
+40,TM24,Thunderbolt,Electric
+52,TM24,Thunderbolt,Electric
+53,TM24,Thunderbolt,Electric
+56,TM24,Thunderbolt,Electric
+57,TM24,Thunderbolt,Electric
+81,TM24,Thunderbolt,Electric
+82,TM24,Thunderbolt,Electric
+88,TM24,Thunderbolt,Electric
+89,TM24,Thunderbolt,Electric
+92,TM24,Thunderbolt,Electric
+93,TM24,Thunderbolt,Electric
+94,TM24,Thunderbolt,Electric
+100,TM24,Thunderbolt,Electric
+101,TM24,Thunderbolt,Electric
+108,TM24,Thunderbolt,Electric
+109,TM24,Thunderbolt,Electric
+110,TM24,Thunderbolt,Electric
+111,TM24,Thunderbolt,Electric
+112,TM24,Thunderbolt,Electric
+113,TM24,Thunderbolt,Electric
+115,TM24,Thunderbolt,Electric
+120,TM24,Thunderbolt,Electric
+121,TM24,Thunderbolt,Electric
+122,TM24,Thunderbolt,Electric
+125,TM24,Thunderbolt,Electric
+128,TM24,Thunderbolt,Electric
+130,TM24,Thunderbolt,Electric
+131,TM24,Thunderbolt,Electric
+135,TM24,Thunderbolt,Electric
+137,TM24,Thunderbolt,Electric
+143,TM24,Thunderbolt,Electric
+145,TM24,Thunderbolt,Electric
+147,TM24,Thunderbolt,Electric
+148,TM24,Thunderbolt,Electric
+149,TM24,Thunderbolt,Electric
+150,TM24,Thunderbolt,Electric
+151,TM24,Thunderbolt,Electric
+19,TM25,Thunder,Electric
+20,TM25,Thunder,Electric
+25,TM25,Thunder,Electric
+26,TM25,Thunder,Electric
+29,TM25,Thunder,Electric
+30,TM25,Thunder,Electric
+31,TM25,Thunder,Electric
+32,TM25,Thunder,Electric
+33,TM25,Thunder,Electric
+34,TM25,Thunder,Electric
+35,TM25,Thunder,Electric
+36,TM25,Thunder,Electric
+39,TM25,Thunder,Electric
+40,TM25,Thunder,Electric
+52,TM25,Thunder,Electric
+53,TM25,Thunder,Electric
+56,TM25,Thunder,Electric
+57,TM25,Thunder,Electric
+81,TM25,Thunder,Electric
+82,TM25,Thunder,Electric
+88,TM25,Thunder,Electric
+89,TM25,Thunder,Electric
+92,TM25,Thunder,Electric
+93,TM25,Thunder,Electric
+94,TM25,Thunder,Electric
+100,TM25,Thunder,Electric
+101,TM25,Thunder,Electric
+108,TM25,Thunder,Electric
+109,TM25,Thunder,Electric
+110,TM25,Thunder,Electric
+111,TM25,Thunder,Electric
+112,TM25,Thunder,Electric
+113,TM25,Thunder,Electric
+115,TM25,Thunder,Electric
+120,TM25,Thunder,Electric
+121,TM25,Thunder,Electric
+122,TM25,Thunder,Electric
+125,TM25,Thunder,Electric
+128,TM25,Thunder,Electric
+130,TM25,Thunder,Electric
+131,TM25,Thunder,Electric
+135,TM25,Thunder,Electric
+137,TM25,Thunder,Electric
+143,TM25,Thunder,Electric
+145,TM25,Thunder,Electric
+147,TM25,Thunder,Electric
+148,TM25,Thunder,Electric
+149,TM25,Thunder,Electric
+150,TM25,Thunder,Electric
+151,TM25,Thunder,Electric
+6,TM26,Earthquake,Ground
+9,TM26,Earthquake,Ground
+23,TM26,Earthquake,Ground
+24,TM26,Earthquake,Ground
+27,TM26,Earthquake,Ground
+28,TM26,Earthquake,Ground
+31,TM26,Earthquake,Ground
+34,TM26,Earthquake,Ground
+50,TM26,Earthquake,Ground
+51,TM26,Earthquake,Ground
+61,TM26,Earthquake,Ground
+62,TM26,Earthquake,Ground
+66,TM26,Earthquake,Ground
+67,TM26,Earthquake,Ground
+68,TM26,Earthquake,Ground
+74,TM26,Earthquake,Ground
+75,TM26,Earthquake,Ground
+76,TM26,Earthquake,Ground
+79,TM26,Earthquake,Ground
+80,TM26,Earthquake,Ground
+95,TM26,Earthquake,Ground
+104,TM26,Earthquake,Ground
+105,TM26,Earthquake,Ground
+108,TM26,Earthquake,Ground
+111,TM26,Earthquake,Ground
+112,TM26,Earthquake,Ground
+115,TM26,Earthquake,Ground
+128,TM26,Earthquake,Ground
+143,TM26,Earthquake,Ground
+151,TM26,Earthquake,Ground
+6,TM27,Fissure,Ground
+9,TM27,Fissure,Ground
+23,TM27,Fissure,Ground
+24,TM27,Fissure,Ground
+27,TM27,Fissure,Ground
+28,TM27,Fissure,Ground
+31,TM27,Fissure,Ground
+34,TM27,Fissure,Ground
+50,TM27,Fissure,Ground
+51,TM27,Fissure,Ground
+61,TM27,Fissure,Ground
+62,TM27,Fissure,Ground
+66,TM27,Fissure,Ground
+67,TM27,Fissure,Ground
+68,TM27,Fissure,Ground
+74,TM27,Fissure,Ground
+75,TM27,Fissure,Ground
+76,TM27,Fissure,Ground
+79,TM27,Fissure,Ground
+80,TM27,Fissure,Ground
+95,TM27,Fissure,Ground
+104,TM27,Fissure,Ground
+105,TM27,Fissure,Ground
+108,TM27,Fissure,Ground
+111,TM27,Fissure,Ground
+112,TM27,Fissure,Ground
+115,TM27,Fissure,Ground
+128,TM27,Fissure,Ground
+143,TM27,Fissure,Ground
+151,TM27,Fissure,Ground
+4,TM28,Dig,Ground
+5,TM28,Dig,Ground
+6,TM28,Dig,Ground
+7,TM28,Dig,Ground
+8,TM28,Dig,Ground
+9,TM28,Dig,Ground
+19,TM28,Dig,Ground
+20,TM28,Dig,Ground
+23,TM28,Dig,Ground
+24,TM28,Dig,Ground
+27,TM28,Dig,Ground
+28,TM28,Dig,Ground
+37,TM28,Dig,Ground
+38,TM28,Dig,Ground
+46,TM28,Dig,Ground
+47,TM28,Dig,Ground
+50,TM28,Dig,Ground
+51,TM28,Dig,Ground
+54,TM28,Dig,Ground
+55,TM28,Dig,Ground
+56,TM28,Dig,Ground
+57,TM28,Dig,Ground
+58,TM28,Dig,Ground
+59,TM28,Dig,Ground
+64,TM28,Dig,Ground
+65,TM28,Dig,Ground
+66,TM28,Dig,Ground
+67,TM28,Dig,Ground
+68,TM28,Dig,Ground
+74,TM28,Dig,Ground
+75,TM28,Dig,Ground
+76,TM28,Dig,Ground
+79,TM28,Dig,Ground
+80,TM28,Dig,Ground
+95,TM28,Dig,Ground
+104,TM28,Dig,Ground
+105,TM28,Dig,Ground
+111,TM28,Dig,Ground
+112,TM28,Dig,Ground
+151,TM28,Dig,Ground
+12,TM29,Psychic,Psychic
+35,TM29,Psychic,Psychic
+36,TM29,Psychic,Psychic
+39,TM29,Psychic,Psychic
+40,TM29,Psychic,Psychic
+48,TM29,Psychic,Psychic
+49,TM29,Psychic,Psychic
+60,TM29,Psychic,Psychic
+61,TM29,Psychic,Psychic
+62,TM29,Psychic,Psychic
+63,TM29,Psychic,Psychic
+64,TM29,Psychic,Psychic
+65,TM29,Psychic,Psychic
+79,TM29,Psychic,Psychic
+80,TM29,Psychic,Psychic
+92,TM29,Psychic,Psychic
+93,TM29,Psychic,Psychic
+94,TM29,Psychic,Psychic
+96,TM29,Psychic,Psychic
+97,TM29,Psychic,Psychic
+102,TM29,Psychic,Psychic
+103,TM29,Psychic,Psychic
+113,TM29,Psychic,Psychic
+120,TM29,Psychic,Psychic
+121,TM29,Psychic,Psychic
+122,TM29,Psychic,Psychic
+124,TM29,Psychic,Psychic
+125,TM29,Psychic,Psychic
+126,TM29,Psychic,Psychic
+131,TM29,Psychic,Psychic
+137,TM29,Psychic,Psychic
+143,TM29,Psychic,Psychic
+150,TM29,Psychic,Psychic
+151,TM29,Psychic,Psychic
+12,TM30,Teleport,Psychic
+35,TM30,Teleport,Psychic
+36,TM30,Teleport,Psychic
+39,TM30,Teleport,Psychic
+40,TM30,Teleport,Psychic
+49,TM30,Teleport,Psychic
+59,TM30,Teleport,Psychic
+63,TM30,Teleport,Psychic
+64,TM30,Teleport,Psychic
+65,TM30,Teleport,Psychic
+79,TM30,Teleport,Psychic
+80,TM30,Teleport,Psychic
+81,TM30,Teleport,Psychic
+82,TM30,Teleport,Psychic
+90,TM30,Teleport,Psychic
+91,TM30,Teleport,Psychic
+96,TM30,Teleport,Psychic
+97,TM30,Teleport,Psychic
+100,TM30,Teleport,Psychic
+101,TM30,Teleport,Psychic
+102,TM30,Teleport,Psychic
+103,TM30,Teleport,Psychic
+113,TM30,Teleport,Psychic
+120,TM30,Teleport,Psychic
+121,TM30,Teleport,Psychic
+122,TM30,Teleport,Psychic
+124,TM30,Teleport,Psychic
+125,TM30,Teleport,Psychic
+126,TM30,Teleport,Psychic
+137,TM30,Teleport,Psychic
+150,TM30,Teleport,Psychic
+151,TM30,Teleport,Psychic
+1,TM31,Mimic,Normal
+2,TM31,Mimic,Normal
+3,TM31,Mimic,Normal
+4,TM31,Mimic,Normal
+5,TM31,Mimic,Normal
+6,TM31,Mimic,Normal
+7,TM31,Mimic,Normal
+8,TM31,Mimic,Normal
+9,TM31,Mimic,Normal
+12,TM31,Mimic,Normal
+15,TM31,Mimic,Normal
+16,TM31,Mimic,Normal
+17,TM31,Mimic,Normal
+18,TM31,Mimic,Normal
+19,TM31,Mimic,Normal
+20,TM31,Mimic,Normal
+21,TM31,Mimic,Normal
+22,TM31,Mimic,Normal
+23,TM31,Mimic,Normal
+24,TM31,Mimic,Normal
+25,TM31,Mimic,Normal
+26,TM31,Mimic,Normal
+27,TM31,Mimic,Normal
+28,TM31,Mimic,Normal
+29,TM31,Mimic,Normal
+30,TM31,Mimic,Normal
+31,TM31,Mimic,Normal
+32,TM31,Mimic,Normal
+33,TM31,Mimic,Normal
+34,TM31,Mimic,Normal
+35,TM31,Mimic,Normal
+36,TM31,Mimic,Normal
+37,TM31,Mimic,Normal
+38,TM31,Mimic,Normal
+39,TM31,Mimic,Normal
+40,TM31,Mimic,Normal
+41,TM31,Mimic,Normal
+42,TM31,Mimic,Normal
+43,TM31,Mimic,Normal
+44,TM31,Mimic,Normal
+45,TM31,Mimic,Normal
+46,TM31,Mimic,Normal
+47,TM31,Mimic,Normal
+48,TM31,Mimic,Normal
+49,TM31,Mimic,Normal
+50,TM31,Mimic,Normal
+51,TM31,Mimic,Normal
+52,TM31,Mimic,Normal
+53,TM31,Mimic,Normal
+54,TM31,Mimic,Normal
+55,TM31,Mimic,Normal
+56,TM31,Mimic,Normal
+57,TM31,Mimic,Normal
+58,TM31,Mimic,Normal
+59,TM31,Mimic,Normal
+60,TM31,Mimic,Normal
+61,TM31,Mimic,Normal
+62,TM31,Mimic,Normal
+63,TM31,Mimic,Normal
+64,TM31,Mimic,Normal
+65,TM31,Mimic,Normal
+66,TM31,Mimic,Normal
+67,TM31,Mimic,Normal
+68,TM31,Mimic,Normal
+69,TM31,Mimic,Normal
+70,TM31,Mimic,Normal
+71,TM31,Mimic,Normal
+72,TM31,Mimic,Normal
+73,TM31,Mimic,Normal
+74,TM31,Mimic,Normal
+75,TM31,Mimic,Normal
+76,TM31,Mimic,Normal
+77,TM31,Mimic,Normal
+78,TM31,Mimic,Normal
+79,TM31,Mimic,Normal
+80,TM31,Mimic,Normal
+81,TM31,Mimic,Normal
+82,TM31,Mimic,Normal
+83,TM31,Mimic,Normal
+84,TM31,Mimic,Normal
+85,TM31,Mimic,Normal
+86,TM31,Mimic,Normal
+87,TM31,Mimic,Normal
+88,TM31,Mimic,Normal
+89,TM31,Mimic,Normal
+90,TM31,Mimic,Normal
+91,TM31,Mimic,Normal
+92,TM31,Mimic,Normal
+93,TM31,Mimic,Normal
+94,TM31,Mimic,Normal
+95,TM31,Mimic,Normal
+96,TM31,Mimic,Normal
+97,TM31,Mimic,Normal
+98,TM31,Mimic,Normal
+99,TM31,Mimic,Normal
+100,TM31,Mimic,Normal
+101,TM31,Mimic,Normal
+102,TM31,Mimic,Normal
+103,TM31,Mimic,Normal
+104,TM31,Mimic,Normal
+105,TM31,Mimic,Normal
+106,TM31,Mimic,Normal
+107,TM31,Mimic,Normal
+108,TM31,Mimic,Normal
+109,TM31,Mimic,Normal
+110,TM31,Mimic,Normal
+111,TM31,Mimic,Normal
+112,TM31,Mimic,Normal
+113,TM31,Mimic,Normal
+114,TM31,Mimic,Normal
+115,TM31,Mimic,Normal
+116,TM31,Mimic,Normal
+117,TM31,Mimic,Normal
+118,TM31,Mimic,Normal
+119,TM31,Mimic,Normal
+120,TM31,Mimic,Normal
+121,TM31,Mimic,Normal
+122,TM31,Mimic,Normal
+123,TM31,Mimic,Normal
+124,TM31,Mimic,Normal
+125,TM31,Mimic,Normal
+126,TM31,Mimic,Normal
+127,TM31,Mimic,Normal
+128,TM31,Mimic,Normal
+130,TM31,Mimic,Normal
+131,TM31,Mimic,Normal
+133,TM31,Mimic,Normal
+134,TM31,Mimic,Normal
+135,TM31,Mimic,Normal
+136,TM31,Mimic,Normal
+137,TM31,Mimic,Normal
+138,TM31,Mimic,Normal
+139,TM31,Mimic,Normal
+140,TM31,Mimic,Normal
+141,TM31,Mimic,Normal
+142,TM31,Mimic,Normal
+143,TM31,Mimic,Normal
+144,TM31,Mimic,Normal
+145,TM31,Mimic,Normal
+146,TM31,Mimic,Normal
+147,TM31,Mimic,Normal
+148,TM31,Mimic,Normal
+149,TM31,Mimic,Normal
+150,TM31,Mimic,Normal
+151,TM31,Mimic,Normal
+1,TM32,Double Team,Normal
+2,TM32,Double Team,Normal
+3,TM32,Double Team,Normal
+4,TM32,Double Team,Normal
+5,TM32,Double Team,Normal
+6,TM32,Double Team,Normal
+7,TM32,Double Team,Normal
+8,TM32,Double Team,Normal
+9,TM32,Double Team,Normal
+12,TM32,Double Team,Normal
+15,TM32,Double Team,Normal
+16,TM32,Double Team,Normal
+17,TM32,Double Team,Normal
+18,TM32,Double Team,Normal
+19,TM32,Double Team,Normal
+20,TM32,Double Team,Normal
+21,TM32,Double Team,Normal
+22,TM32,Double Team,Normal
+23,TM32,Double Team,Normal
+24,TM32,Double Team,Normal
+25,TM32,Double Team,Normal
+26,TM32,Double Team,Normal
+27,TM32,Double Team,Normal
+28,TM32,Double Team,Normal
+29,TM32,Double Team,Normal
+30,TM32,Double Team,Normal
+31,TM32,Double Team,Normal
+32,TM32,Double Team,Normal
+33,TM32,Double Team,Normal
+34,TM32,Double Team,Normal
+35,TM32,Double Team,Normal
+36,TM32,Double Team,Normal
+37,TM32,Double Team,Normal
+38,TM32,Double Team,Normal
+39,TM32,Double Team,Normal
+40,TM32,Double Team,Normal
+41,TM32,Double Team,Normal
+42,TM32,Double Team,Normal
+43,TM32,Double Team,Normal
+44,TM32,Double Team,Normal
+45,TM32,Double Team,Normal
+46,TM32,Double Team,Normal
+47,TM32,Double Team,Normal
+48,TM32,Double Team,Normal
+49,TM32,Double Team,Normal
+50,TM32,Double Team,Normal
+51,TM32,Double Team,Normal
+52,TM32,Double Team,Normal
+53,TM32,Double Team,Normal
+54,TM32,Double Team,Normal
+55,TM32,Double Team,Normal
+56,TM32,Double Team,Normal
+57,TM32,Double Team,Normal
+58,TM32,Double Team,Normal
+59,TM32,Double Team,Normal
+60,TM32,Double Team,Normal
+61,TM32,Double Team,Normal
+62,TM32,Double Team,Normal
+63,TM32,Double Team,Normal
+64,TM32,Double Team,Normal
+65,TM32,Double Team,Normal
+66,TM32,Double Team,Normal
+67,TM32,Double Team,Normal
+68,TM32,Double Team,Normal
+69,TM32,Double Team,Normal
+70,TM32,Double Team,Normal
+71,TM32,Double Team,Normal
+72,TM32,Double Team,Normal
+73,TM32,Double Team,Normal
+74,TM32,Double Team,Normal
+75,TM32,Double Team,Normal
+76,TM32,Double Team,Normal
+77,TM32,Double Team,Normal
+78,TM32,Double Team,Normal
+79,TM32,Double Team,Normal
+80,TM32,Double Team,Normal
+81,TM32,Double Team,Normal
+82,TM32,Double Team,Normal
+83,TM32,Double Team,Normal
+84,TM32,Double Team,Normal
+85,TM32,Double Team,Normal
+86,TM32,Double Team,Normal
+87,TM32,Double Team,Normal
+88,TM32,Double Team,Normal
+89,TM32,Double Team,Normal
+90,TM32,Double Team,Normal
+91,TM32,Double Team,Normal
+92,TM32,Double Team,Normal
+93,TM32,Double Team,Normal
+94,TM32,Double Team,Normal
+95,TM32,Double Team,Normal
+96,TM32,Double Team,Normal
+97,TM32,Double Team,Normal
+98,TM32,Double Team,Normal
+99,TM32,Double Team,Normal
+100,TM32,Double Team,Normal
+101,TM32,Double Team,Normal
+102,TM32,Double Team,Normal
+103,TM32,Double Team,Normal
+104,TM32,Double Team,Normal
+105,TM32,Double Team,Normal
+106,TM32,Double Team,Normal
+107,TM32,Double Team,Normal
+108,TM32,Double Team,Normal
+109,TM32,Double Team,Normal
+110,TM32,Double Team,Normal
+111,TM32,Double Team,Normal
+112,TM32,Double Team,Normal
+113,TM32,Double Team,Normal
+114,TM32,Double Team,Normal
+115,TM32,Double Team,Normal
+116,TM32,Double Team,Normal
+117,TM32,Double Team,Normal
+118,TM32,Double Team,Normal
+119,TM32,Double Team,Normal
+120,TM32,Double Team,Normal
+121,TM32,Double Team,Normal
+122,TM32,Double Team,Normal
+123,TM32,Double Team,Normal
+124,TM32,Double Team,Normal
+125,TM32,Double Team,Normal
+126,TM32,Double Team,Normal
+127,TM32,Double Team,Normal
+128,TM32,Double Team,Normal
+130,TM32,Double Team,Normal
+131,TM32,Double Team,Normal
+133,TM32,Double Team,Normal
+134,TM32,Double Team,Normal
+135,TM32,Double Team,Normal
+136,TM32,Double Team,Normal
+137,TM32,Double Team,Normal
+138,TM32,Double Team,Normal
+139,TM32,Double Team,Normal
+140,TM32,Double Team,Normal
+141,TM32,Double Team,Normal
+142,TM32,Double Team,Normal
+143,TM32,Double Team,Normal
+144,TM32,Double Team,Normal
+145,TM32,Double Team,Normal
+146,TM32,Double Team,Normal
+147,TM32,Double Team,Normal
+148,TM32,Double Team,Normal
+149,TM32,Double Team,Normal
+150,TM32,Double Team,Normal
+151,TM32,Double Team,Normal
+1,TM33,Reflect,Psychic
+2,TM33,Reflect,Psychic
+3,TM33,Reflect,Psychic
+4,TM33,Reflect,Psychic
+5,TM33,Reflect,Psychic
+6,TM33,Reflect,Psychic
+7,TM33,Reflect,Psychic
+8,TM33,Reflect,Psychic
+9,TM33,Reflect,Psychic
+12,TM33,Reflect,Psychic
+15,TM33,Reflect,Psychic
+16,TM33,Reflect,Psychic
+17,TM33,Reflect,Psychic
+18,TM33,Reflect,Psychic
+25,TM33,Reflect,Psychic
+26,TM33,Reflect,Psychic
+29,TM33,Reflect,Psychic
+30,TM33,Reflect,Psychic
+31,TM33,Reflect,Psychic
+32,TM33,Reflect,Psychic
+33,TM33,Reflect,Psychic
+34,TM33,Reflect,Psychic
+35,TM33,Reflect,Psychic
+36,TM33,Reflect,Psychic
+37,TM33,Reflect,Psychic
+38,TM33,Reflect,Psychic
+39,TM33,Reflect,Psychic
+40,TM33,Reflect,Psychic
+43,TM33,Reflect,Psychic
+44,TM33,Reflect,Psychic
+45,TM33,Reflect,Psychic
+46,TM33,Reflect,Psychic
+47,TM33,Reflect,Psychic
+48,TM33,Reflect,Psychic
+49,TM33,Reflect,Psychic
+58,TM33,Reflect,Psychic
+59,TM33,Reflect,Psychic
+63,TM33,Reflect,Psychic
+64,TM33,Reflect,Psychic
+65,TM33,Reflect,Psychic
+69,TM33,Reflect,Psychic
+70,TM33,Reflect,Psychic
+71,TM33,Reflect,Psychic
+72,TM33,Reflect,Psychic
+73,TM33,Reflect,Psychic
+77,TM33,Reflect,Psychic
+78,TM33,Reflect,Psychic
+79,TM33,Reflect,Psychic
+80,TM33,Reflect,Psychic
+81,TM33,Reflect,Psychic
+82,TM33,Reflect,Psychic
+83,TM33,Reflect,Psychic
+84,TM33,Reflect,Psychic
+85,TM33,Reflect,Psychic
+90,TM33,Reflect,Psychic
+91,TM33,Reflect,Psychic
+96,TM33,Reflect,Psychic
+97,TM33,Reflect,Psychic
+100,TM33,Reflect,Psychic
+101,TM33,Reflect,Psychic
+102,TM33,Reflect,Psychic
+103,TM33,Reflect,Psychic
+113,TM33,Reflect,Psychic
+120,TM33,Reflect,Psychic
+121,TM33,Reflect,Psychic
+122,TM33,Reflect,Psychic
+124,TM33,Reflect,Psychic
+125,TM33,Reflect,Psychic
+130,TM33,Reflect,Psychic
+131,TM33,Reflect,Psychic
+133,TM33,Reflect,Psychic
+134,TM33,Reflect,Psychic
+135,TM33,Reflect,Psychic
+136,TM33,Reflect,Psychic
+137,TM33,Reflect,Psychic
+138,TM33,Reflect,Psychic
+139,TM33,Reflect,Psychic
+140,TM33,Reflect,Psychic
+141,TM33,Reflect,Psychic
+142,TM33,Reflect,Psychic
+143,TM33,Reflect,Psychic
+144,TM33,Reflect,Psychic
+145,TM33,Reflect,Psychic
+146,TM33,Reflect,Psychic
+147,TM33,Reflect,Psychic
+148,TM33,Reflect,Psychic
+149,TM33,Reflect,Psychic
+150,TM33,Reflect,Psychic
+151,TM33,Reflect,Psychic
+1,TM34,Bide,Normal
+2,TM34,Bide,Normal
+3,TM34,Bide,Normal
+4,TM34,Bide,Normal
+5,TM34,Bide,Normal
+6,TM34,Bide,Normal
+7,TM34,Bide,Normal
+8,TM34,Bide,Normal
+9,TM34,Bide,Normal
+12,TM34,Bide,Normal
+15,TM34,Bide,Normal
+16,TM34,Bide,Normal
+17,TM34,Bide,Normal
+18,TM34,Bide,Normal
+19,TM34,Bide,Normal
+20,TM34,Bide,Normal
+21,TM34,Bide,Normal
+22,TM34,Bide,Normal
+23,TM34,Bide,Normal
+24,TM34,Bide,Normal
+25,TM34,Bide,Normal
+26,TM34,Bide,Normal
+27,TM34,Bide,Normal
+28,TM34,Bide,Normal
+29,TM34,Bide,Normal
+30,TM34,Bide,Normal
+31,TM34,Bide,Normal
+32,TM34,Bide,Normal
+33,TM34,Bide,Normal
+34,TM34,Bide,Normal
+35,TM34,Bide,Normal
+36,TM34,Bide,Normal
+37,TM34,Bide,Normal
+38,TM34,Bide,Normal
+39,TM34,Bide,Normal
+40,TM34,Bide,Normal
+41,TM34,Bide,Normal
+42,TM34,Bide,Normal
+43,TM34,Bide,Normal
+44,TM34,Bide,Normal
+45,TM34,Bide,Normal
+46,TM34,Bide,Normal
+47,TM34,Bide,Normal
+48,TM34,Bide,Normal
+49,TM34,Bide,Normal
+50,TM34,Bide,Normal
+51,TM34,Bide,Normal
+52,TM34,Bide,Normal
+53,TM34,Bide,Normal
+54,TM34,Bide,Normal
+55,TM34,Bide,Normal
+56,TM34,Bide,Normal
+57,TM34,Bide,Normal
+58,TM34,Bide,Normal
+59,TM34,Bide,Normal
+60,TM34,Bide,Normal
+61,TM34,Bide,Normal
+62,TM34,Bide,Normal
+63,TM34,Bide,Normal
+64,TM34,Bide,Normal
+65,TM34,Bide,Normal
+66,TM34,Bide,Normal
+67,TM34,Bide,Normal
+68,TM34,Bide,Normal
+69,TM34,Bide,Normal
+70,TM34,Bide,Normal
+71,TM34,Bide,Normal
+72,TM34,Bide,Normal
+73,TM34,Bide,Normal
+74,TM34,Bide,Normal
+75,TM34,Bide,Normal
+76,TM34,Bide,Normal
+77,TM34,Bide,Normal
+78,TM34,Bide,Normal
+79,TM34,Bide,Normal
+80,TM34,Bide,Normal
+81,TM34,Bide,Normal
+82,TM34,Bide,Normal
+83,TM34,Bide,Normal
+84,TM34,Bide,Normal
+85,TM34,Bide,Normal
+86,TM34,Bide,Normal
+87,TM34,Bide,Normal
+88,TM34,Bide,Normal
+89,TM34,Bide,Normal
+90,TM34,Bide,Normal
+91,TM34,Bide,Normal
+92,TM34,Bide,Normal
+93,TM34,Bide,Normal
+94,TM34,Bide,Normal
+95,TM34,Bide,Normal
+96,TM34,Bide,Normal
+97,TM34,Bide,Normal
+98,TM34,Bide,Normal
+99,TM34,Bide,Normal
+100,TM34,Bide,Normal
+101,TM34,Bide,Normal
+102,TM34,Bide,Normal
+103,TM34,Bide,Normal
+104,TM34,Bide,Normal
+105,TM34,Bide,Normal
+106,TM34,Bide,Normal
+107,TM34,Bide,Normal
+108,TM34,Bide,Normal
+109,TM34,Bide,Normal
+110,TM34,Bide,Normal
+111,TM34,Bide,Normal
+112,TM34,Bide,Normal
+113,TM34,Bide,Normal
+114,TM34,Bide,Normal
+115,TM34,Bide,Normal
+116,TM34,Bide,Normal
+117,TM34,Bide,Normal
+118,TM34,Bide,Normal
+119,TM34,Bide,Normal
+120,TM34,Bide,Normal
+121,TM34,Bide,Normal
+122,TM34,Bide,Normal
+123,TM34,Bide,Normal
+124,TM34,Bide,Normal
+125,TM34,Bide,Normal
+126,TM34,Bide,Normal
+127,TM34,Bide,Normal
+128,TM34,Bide,Normal
+130,TM34,Bide,Normal
+131,TM34,Bide,Normal
+133,TM34,Bide,Normal
+134,TM34,Bide,Normal
+135,TM34,Bide,Normal
+136,TM34,Bide,Normal
+137,TM34,Bide,Normal
+138,TM34,Bide,Normal
+139,TM34,Bide,Normal
+140,TM34,Bide,Normal
+141,TM34,Bide,Normal
+142,TM34,Bide,Normal
+143,TM34,Bide,Normal
+144,TM34,Bide,Normal
+145,TM34,Bide,Normal
+146,TM34,Bide,Normal
+147,TM34,Bide,Normal
+148,TM34,Bide,Normal
+149,TM34,Bide,Normal
+150,TM34,Bide,Normal
+151,TM34,Bide,Normal
+35,TM35,Metronome,Normal
+36,TM35,Metronome,Normal
+56,TM35,Metronome,Normal
+57,TM35,Metronome,Normal
+61,TM35,Metronome,Normal
+62,TM35,Metronome,Normal
+63,TM35,Metronome,Normal
+64,TM35,Metronome,Normal
+65,TM35,Metronome,Normal
+66,TM35,Metronome,Normal
+67,TM35,Metronome,Normal
+68,TM35,Metronome,Normal
+74,TM35,Metronome,Normal
+75,TM35,Metronome,Normal
+76,TM35,Metronome,Normal
+94,TM35,Metronome,Normal
+96,TM35,Metronome,Normal
+97,TM35,Metronome,Normal
+106,TM35,Metronome,Normal
+107,TM35,Metronome,Normal
+113,TM35,Metronome,Normal
+122,TM35,Metronome,Normal
+124,TM35,Metronome,Normal
+125,TM35,Metronome,Normal
+126,TM35,Metronome,Normal
+143,TM35,Metronome,Normal
+150,TM35,Metronome,Normal
+151,TM35,Metronome,Normal
+74,TM36,Selfdestruct,Normal
+75,TM36,Selfdestruct,Normal
+76,TM36,Selfdestruct,Normal
+88,TM36,Selfdestruct,Normal
+89,TM36,Selfdestruct,Normal
+90,TM36,Selfdestruct,Normal
+91,TM36,Selfdestruct,Normal
+92,TM36,Selfdestruct,Normal
+93,TM36,Selfdestruct,Normal
+94,TM36,Selfdestruct,Normal
+95,TM36,Selfdestruct,Normal
+100,TM36,Selfdestruct,Normal
+101,TM36,Selfdestruct,Normal
+102,TM36,Selfdestruct,Normal
+103,TM36,Selfdestruct,Normal
+109,TM36,Selfdestruct,Normal
+110,TM36,Selfdestruct,Normal
+143,TM36,Selfdestruct,Normal
+150,TM36,Selfdestruct,Normal
+151,TM36,Selfdestruct,Normal
+102,TM37,Egg Bomb,Normal
+103,TM37,Egg Bomb,Normal
+113,TM37,Egg Bomb,Normal
+151,TM37,Egg Bomb,Normal
+4,TM38,Fire Blast,Fire
+5,TM38,Fire Blast,Fire
+6,TM38,Fire Blast,Fire
+31,TM38,Fire Blast,Fire
+34,TM38,Fire Blast,Fire
+35,TM38,Fire Blast,Fire
+36,TM38,Fire Blast,Fire
+37,TM38,Fire Blast,Fire
+38,TM38,Fire Blast,Fire
+39,TM38,Fire Blast,Fire
+40,TM38,Fire Blast,Fire
+58,TM38,Fire Blast,Fire
+59,TM38,Fire Blast,Fire
+66,TM38,Fire Blast,Fire
+67,TM38,Fire Blast,Fire
+68,TM38,Fire Blast,Fire
+74,TM38,Fire Blast,Fire
+75,TM38,Fire Blast,Fire
+76,TM38,Fire Blast,Fire
+77,TM38,Fire Blast,Fire
+78,TM38,Fire Blast,Fire
+79,TM38,Fire Blast,Fire
+80,TM38,Fire Blast,Fire
+88,TM38,Fire Blast,Fire
+89,TM38,Fire Blast,Fire
+104,TM38,Fire Blast,Fire
+105,TM38,Fire Blast,Fire
+108,TM38,Fire Blast,Fire
+109,TM38,Fire Blast,Fire
+110,TM38,Fire Blast,Fire
+111,TM38,Fire Blast,Fire
+112,TM38,Fire Blast,Fire
+113,TM38,Fire Blast,Fire
+115,TM38,Fire Blast,Fire
+126,TM38,Fire Blast,Fire
+128,TM38,Fire Blast,Fire
+130,TM38,Fire Blast,Fire
+136,TM38,Fire Blast,Fire
+142,TM38,Fire Blast,Fire
+143,TM38,Fire Blast,Fire
+146,TM38,Fire Blast,Fire
+147,TM38,Fire Blast,Fire
+148,TM38,Fire Blast,Fire
+149,TM38,Fire Blast,Fire
+150,TM38,Fire Blast,Fire
+151,TM38,Fire Blast,Fire
+4,TM39,Swift,Normal
+5,TM39,Swift,Normal
+6,TM39,Swift,Normal
+12,TM39,Swift,Normal
+15,TM39,Swift,Normal
+16,TM39,Swift,Normal
+17,TM39,Swift,Normal
+18,TM39,Swift,Normal
+19,TM39,Swift,Normal
+20,TM39,Swift,Normal
+21,TM39,Swift,Normal
+22,TM39,Swift,Normal
+25,TM39,Swift,Normal
+26,TM39,Swift,Normal
+27,TM39,Swift,Normal
+28,TM39,Swift,Normal
+37,TM39,Swift,Normal
+38,TM39,Swift,Normal
+41,TM39,Swift,Normal
+42,TM39,Swift,Normal
+49,TM39,Swift,Normal
+52,TM39,Swift,Normal
+53,TM39,Swift,Normal
+54,TM39,Swift,Normal
+55,TM39,Swift,Normal
+56,TM39,Swift,Normal
+57,TM39,Swift,Normal
+58,TM39,Swift,Normal
+59,TM39,Swift,Normal
+77,TM39,Swift,Normal
+78,TM39,Swift,Normal
+79,TM39,Swift,Normal
+80,TM39,Swift,Normal
+81,TM39,Swift,Normal
+82,TM39,Swift,Normal
+83,TM39,Swift,Normal
+90,TM39,Swift,Normal
+91,TM39,Swift,Normal
+100,TM39,Swift,Normal
+101,TM39,Swift,Normal
+106,TM39,Swift,Normal
+107,TM39,Swift,Normal
+116,TM39,Swift,Normal
+117,TM39,Swift,Normal
+118,TM39,Swift,Normal
+119,TM39,Swift,Normal
+120,TM39,Swift,Normal
+121,TM39,Swift,Normal
+123,TM39,Swift,Normal
+125,TM39,Swift,Normal
+133,TM39,Swift,Normal
+134,TM39,Swift,Normal
+135,TM39,Swift,Normal
+136,TM39,Swift,Normal
+137,TM39,Swift,Normal
+142,TM39,Swift,Normal
+144,TM39,Swift,Normal
+145,TM39,Swift,Normal
+146,TM39,Swift,Normal
+147,TM39,Swift,Normal
+148,TM39,Swift,Normal
+149,TM39,Swift,Normal
+151,TM39,Swift,Normal
+4,TM40,Skull Bash,Normal
+5,TM40,Skull Bash,Normal
+6,TM40,Skull Bash,Normal
+7,TM40,Skull Bash,Normal
+8,TM40,Skull Bash,Normal
+9,TM40,Skull Bash,Normal
+15,TM40,Skull Bash,Normal
+19,TM40,Skull Bash,Normal
+20,TM40,Skull Bash,Normal
+23,TM40,Skull Bash,Normal
+24,TM40,Skull Bash,Normal
+25,TM40,Skull Bash,Normal
+26,TM40,Skull Bash,Normal
+27,TM40,Skull Bash,Normal
+28,TM40,Skull Bash,Normal
+29,TM40,Skull Bash,Normal
+30,TM40,Skull Bash,Normal
+31,TM40,Skull Bash,Normal
+32,TM40,Skull Bash,Normal
+33,TM40,Skull Bash,Normal
+34,TM40,Skull Bash,Normal
+35,TM40,Skull Bash,Normal
+36,TM40,Skull Bash,Normal
+37,TM40,Skull Bash,Normal
+38,TM40,Skull Bash,Normal
+39,TM40,Skull Bash,Normal
+40,TM40,Skull Bash,Normal
+46,TM40,Skull Bash,Normal
+47,TM40,Skull Bash,Normal
+52,TM40,Skull Bash,Normal
+53,TM40,Skull Bash,Normal
+54,TM40,Skull Bash,Normal
+55,TM40,Skull Bash,Normal
+56,TM40,Skull Bash,Normal
+57,TM40,Skull Bash,Normal
+58,TM40,Skull Bash,Normal
+59,TM40,Skull Bash,Normal
+60,TM40,Skull Bash,Normal
+61,TM40,Skull Bash,Normal
+62,TM40,Skull Bash,Normal
+63,TM40,Skull Bash,Normal
+64,TM40,Skull Bash,Normal
+65,TM40,Skull Bash,Normal
+66,TM40,Skull Bash,Normal
+67,TM40,Skull Bash,Normal
+68,TM40,Skull Bash,Normal
+72,TM40,Skull Bash,Normal
+73,TM40,Skull Bash,Normal
+77,TM40,Skull Bash,Normal
+78,TM40,Skull Bash,Normal
+79,TM40,Skull Bash,Normal
+80,TM40,Skull Bash,Normal
+83,TM40,Skull Bash,Normal
+84,TM40,Skull Bash,Normal
+85,TM40,Skull Bash,Normal
+86,TM40,Skull Bash,Normal
+87,TM40,Skull Bash,Normal
+94,TM40,Skull Bash,Normal
+95,TM40,Skull Bash,Normal
+96,TM40,Skull Bash,Normal
+97,TM40,Skull Bash,Normal
+101,TM40,Skull Bash,Normal
+104,TM40,Skull Bash,Normal
+105,TM40,Skull Bash,Normal
+106,TM40,Skull Bash,Normal
+107,TM40,Skull Bash,Normal
+108,TM40,Skull Bash,Normal
+111,TM40,Skull Bash,Normal
+112,TM40,Skull Bash,Normal
+113,TM40,Skull Bash,Normal
+114,TM40,Skull Bash,Normal
+115,TM40,Skull Bash,Normal
+116,TM40,Skull Bash,Normal
+117,TM40,Skull Bash,Normal
+118,TM40,Skull Bash,Normal
+119,TM40,Skull Bash,Normal
+120,TM40,Skull Bash,Normal
+121,TM40,Skull Bash,Normal
+122,TM40,Skull Bash,Normal
+123,TM40,Skull Bash,Normal
+124,TM40,Skull Bash,Normal
+125,TM40,Skull Bash,Normal
+126,TM40,Skull Bash,Normal
+128,TM40,Skull Bash,Normal
+130,TM40,Skull Bash,Normal
+131,TM40,Skull Bash,Normal
+133,TM40,Skull Bash,Normal
+134,TM40,Skull Bash,Normal
+135,TM40,Skull Bash,Normal
+136,TM40,Skull Bash,Normal
+137,TM40,Skull Bash,Normal
+139,TM40,Skull Bash,Normal
+141,TM40,Skull Bash,Normal
+143,TM40,Skull Bash,Normal
+147,TM40,Skull Bash,Normal
+148,TM40,Skull Bash,Normal
+149,TM40,Skull Bash,Normal
+150,TM40,Skull Bash,Normal
+151,TM40,Skull Bash,Normal
+113,TM41,Softboiled,Normal
+151,TM41,Softboiled,Normal
+92,TM42,Dream Eater,Psychic
+93,TM42,Dream Eater,Psychic
+94,TM42,Dream Eater,Psychic
+96,TM42,Dream Eater,Psychic
+97,TM42,Dream Eater,Psychic
+151,TM42,Dream Eater,Psychic
+16,TM43,Sky Attack,Flying
+17,TM43,Sky Attack,Flying
+18,TM43,Sky Attack,Flying
+21,TM43,Sky Attack,Flying
+22,TM43,Sky Attack,Flying
+84,TM43,Sky Attack,Flying
+85,TM43,Sky Attack,Flying
+142,TM43,Sky Attack,Flying
+144,TM43,Sky Attack,Flying
+145,TM43,Sky Attack,Flying
+146,TM43,Sky Attack,Flying
+151,TM43,Sky Attack,Flying
+1,TM44,Rest,Psychic
+2,TM44,Rest,Psychic
+3,TM44,Rest,Psychic
+4,TM44,Rest,Psychic
+5,TM44,Rest,Psychic
+6,TM44,Rest,Psychic
+7,TM44,Rest,Psychic
+8,TM44,Rest,Psychic
+9,TM44,Rest,Psychic
+12,TM44,Rest,Psychic
+15,TM44,Rest,Psychic
+16,TM44,Rest,Psychic
+17,TM44,Rest,Psychic
+18,TM44,Rest,Psychic
+19,TM44,Rest,Psychic
+20,TM44,Rest,Psychic
+21,TM44,Rest,Psychic
+22,TM44,Rest,Psychic
+23,TM44,Rest,Psychic
+24,TM44,Rest,Psychic
+25,TM44,Rest,Psychic
+26,TM44,Rest,Psychic
+27,TM44,Rest,Psychic
+28,TM44,Rest,Psychic
+29,TM44,Rest,Psychic
+30,TM44,Rest,Psychic
+31,TM44,Rest,Psychic
+32,TM44,Rest,Psychic
+33,TM44,Rest,Psychic
+34,TM44,Rest,Psychic
+35,TM44,Rest,Psychic
+36,TM44,Rest,Psychic
+37,TM44,Rest,Psychic
+38,TM44,Rest,Psychic
+39,TM44,Rest,Psychic
+40,TM44,Rest,Psychic
+41,TM44,Rest,Psychic
+42,TM44,Rest,Psychic
+43,TM44,Rest,Psychic
+44,TM44,Rest,Psychic
+45,TM44,Rest,Psychic
+46,TM44,Rest,Psychic
+47,TM44,Rest,Psychic
+48,TM44,Rest,Psychic
+49,TM44,Rest,Psychic
+50,TM44,Rest,Psychic
+51,TM44,Rest,Psychic
+52,TM44,Rest,Psychic
+53,TM44,Rest,Psychic
+54,TM44,Rest,Psychic
+55,TM44,Rest,Psychic
+56,TM44,Rest,Psychic
+57,TM44,Rest,Psychic
+58,TM44,Rest,Psychic
+59,TM44,Rest,Psychic
+60,TM44,Rest,Psychic
+61,TM44,Rest,Psychic
+62,TM44,Rest,Psychic
+63,TM44,Rest,Psychic
+64,TM44,Rest,Psychic
+65,TM44,Rest,Psychic
+66,TM44,Rest,Psychic
+67,TM44,Rest,Psychic
+68,TM44,Rest,Psychic
+69,TM44,Rest,Psychic
+70,TM44,Rest,Psychic
+71,TM44,Rest,Psychic
+72,TM44,Rest,Psychic
+73,TM44,Rest,Psychic
+74,TM44,Rest,Psychic
+75,TM44,Rest,Psychic
+76,TM44,Rest,Psychic
+77,TM44,Rest,Psychic
+78,TM44,Rest,Psychic
+79,TM44,Rest,Psychic
+80,TM44,Rest,Psychic
+81,TM44,Rest,Psychic
+82,TM44,Rest,Psychic
+83,TM44,Rest,Psychic
+84,TM44,Rest,Psychic
+85,TM44,Rest,Psychic
+86,TM44,Rest,Psychic
+87,TM44,Rest,Psychic
+88,TM44,Rest,Psychic
+89,TM44,Rest,Psychic
+90,TM44,Rest,Psychic
+91,TM44,Rest,Psychic
+92,TM44,Rest,Psychic
+93,TM44,Rest,Psychic
+94,TM44,Rest,Psychic
+95,TM44,Rest,Psychic
+96,TM44,Rest,Psychic
+97,TM44,Rest,Psychic
+98,TM44,Rest,Psychic
+99,TM44,Rest,Psychic
+100,TM44,Rest,Psychic
+101,TM44,Rest,Psychic
+102,TM44,Rest,Psychic
+103,TM44,Rest,Psychic
+104,TM44,Rest,Psychic
+105,TM44,Rest,Psychic
+106,TM44,Rest,Psychic
+107,TM44,Rest,Psychic
+108,TM44,Rest,Psychic
+109,TM44,Rest,Psychic
+110,TM44,Rest,Psychic
+111,TM44,Rest,Psychic
+112,TM44,Rest,Psychic
+113,TM44,Rest,Psychic
+114,TM44,Rest,Psychic
+115,TM44,Rest,Psychic
+116,TM44,Rest,Psychic
+117,TM44,Rest,Psychic
+118,TM44,Rest,Psychic
+119,TM44,Rest,Psychic
+120,TM44,Rest,Psychic
+121,TM44,Rest,Psychic
+122,TM44,Rest,Psychic
+123,TM44,Rest,Psychic
+124,TM44,Rest,Psychic
+125,TM44,Rest,Psychic
+126,TM44,Rest,Psychic
+127,TM44,Rest,Psychic
+128,TM44,Rest,Psychic
+130,TM44,Rest,Psychic
+131,TM44,Rest,Psychic
+133,TM44,Rest,Psychic
+134,TM44,Rest,Psychic
+135,TM44,Rest,Psychic
+136,TM44,Rest,Psychic
+137,TM44,Rest,Psychic
+138,TM44,Rest,Psychic
+139,TM44,Rest,Psychic
+140,TM44,Rest,Psychic
+141,TM44,Rest,Psychic
+142,TM44,Rest,Psychic
+143,TM44,Rest,Psychic
+144,TM44,Rest,Psychic
+145,TM44,Rest,Psychic
+146,TM44,Rest,Psychic
+147,TM44,Rest,Psychic
+148,TM44,Rest,Psychic
+149,TM44,Rest,Psychic
+150,TM44,Rest,Psychic
+151,TM44,Rest,Psychic
+25,TM45,Thunder Wave,Electric
+26,TM45,Thunder Wave,Electric
+35,TM45,Thunder Wave,Electric
+36,TM45,Thunder Wave,Electric
+39,TM45,Thunder Wave,Electric
+40,TM45,Thunder Wave,Electric
+63,TM45,Thunder Wave,Electric
+64,TM45,Thunder Wave,Electric
+65,TM45,Thunder Wave,Electric
+79,TM45,Thunder Wave,Electric
+80,TM45,Thunder Wave,Electric
+81,TM45,Thunder Wave,Electric
+82,TM45,Thunder Wave,Electric
+96,TM45,Thunder Wave,Electric
+97,TM45,Thunder Wave,Electric
+100,TM45,Thunder Wave,Electric
+101,TM45,Thunder Wave,Electric
+113,TM45,Thunder Wave,Electric
+120,TM45,Thunder Wave,Electric
+121,TM45,Thunder Wave,Electric
+122,TM45,Thunder Wave,Electric
+125,TM45,Thunder Wave,Electric
+135,TM45,Thunder Wave,Electric
+137,TM45,Thunder Wave,Electric
+145,TM45,Thunder Wave,Electric
+147,TM45,Thunder Wave,Electric
+148,TM45,Thunder Wave,Electric
+149,TM45,Thunder Wave,Electric
+150,TM45,Thunder Wave,Electric
+151,TM45,Thunder Wave,Electric
+12,TM46,Psywave,Psychic
+35,TM46,Psywave,Psychic
+36,TM46,Psywave,Psychic
+39,TM46,Psywave,Psychic
+40,TM46,Psywave,Psychic
+48,TM46,Psywave,Psychic
+49,TM46,Psywave,Psychic
+60,TM46,Psywave,Psychic
+61,TM46,Psywave,Psychic
+62,TM46,Psywave,Psychic
+63,TM46,Psywave,Psychic
+64,TM46,Psywave,Psychic
+65,TM46,Psywave,Psychic
+79,TM46,Psywave,Psychic
+80,TM46,Psywave,Psychic
+92,TM46,Psywave,Psychic
+93,TM46,Psywave,Psychic
+94,TM46,Psywave,Psychic
+96,TM46,Psywave,Psychic
+97,TM46,Psywave,Psychic
+102,TM46,Psywave,Psychic
+103,TM46,Psywave,Psychic
+113,TM46,Psywave,Psychic
+120,TM46,Psywave,Psychic
+121,TM46,Psywave,Psychic
+122,TM46,Psywave,Psychic
+124,TM46,Psywave,Psychic
+125,TM46,Psywave,Psychic
+126,TM46,Psywave,Psychic
+131,TM46,Psywave,Psychic
+137,TM46,Psywave,Psychic
+143,TM46,Psywave,Psychic
+150,TM46,Psywave,Psychic
+151,TM46,Psywave,Psychic
+74,TM47,Explosion,Normal
+75,TM47,Explosion,Normal
+76,TM47,Explosion,Normal
+88,TM47,Explosion,Normal
+89,TM47,Explosion,Normal
+90,TM47,Explosion,Normal
+91,TM47,Explosion,Normal
+92,TM47,Explosion,Normal
+93,TM47,Explosion,Normal
+94,TM47,Explosion,Normal
+95,TM47,Explosion,Normal
+100,TM47,Explosion,Normal
+101,TM47,Explosion,Normal
+102,TM47,Explosion,Normal
+103,TM47,Explosion,Normal
+109,TM47,Explosion,Normal
+110,TM47,Explosion,Normal
+151,TM47,Explosion,Normal
+23,TM48,Rock Slide,Rock
+24,TM48,Rock Slide,Rock
+27,TM48,Rock Slide,Rock
+28,TM48,Rock Slide,Rock
+31,TM48,Rock Slide,Rock
+34,TM48,Rock Slide,Rock
+50,TM48,Rock Slide,Rock
+51,TM48,Rock Slide,Rock
+56,TM48,Rock Slide,Rock
+57,TM48,Rock Slide,Rock
+66,TM48,Rock Slide,Rock
+67,TM48,Rock Slide,Rock
+68,TM48,Rock Slide,Rock
+74,TM48,Rock Slide,Rock
+75,TM48,Rock Slide,Rock
+76,TM48,Rock Slide,Rock
+95,TM48,Rock Slide,Rock
+111,TM48,Rock Slide,Rock
+112,TM48,Rock Slide,Rock
+115,TM48,Rock Slide,Rock
+143,TM48,Rock Slide,Rock
+151,TM48,Rock Slide,Rock
+35,TM49,Tri Attack,Normal
+36,TM49,Tri Attack,Normal
+39,TM49,Tri Attack,Normal
+40,TM49,Tri Attack,Normal
+63,TM49,Tri Attack,Normal
+64,TM49,Tri Attack,Normal
+65,TM49,Tri Attack,Normal
+79,TM49,Tri Attack,Normal
+80,TM49,Tri Attack,Normal
+84,TM49,Tri Attack,Normal
+85,TM49,Tri Attack,Normal
+90,TM49,Tri Attack,Normal
+91,TM49,Tri Attack,Normal
+96,TM49,Tri Attack,Normal
+97,TM49,Tri Attack,Normal
+113,TM49,Tri Attack,Normal
+120,TM49,Tri Attack,Normal
+121,TM49,Tri Attack,Normal
+137,TM49,Tri Attack,Normal
+150,TM49,Tri Attack,Normal
+151,TM49,Tri Attack,Normal
+1,TM50,Substitute,Normal
+2,TM50,Substitute,Normal
+3,TM50,Substitute,Normal
+4,TM50,Substitute,Normal
+5,TM50,Substitute,Normal
+6,TM50,Substitute,Normal
+7,TM50,Substitute,Normal
+8,TM50,Substitute,Normal
+9,TM50,Substitute,Normal
+12,TM50,Substitute,Normal
+15,TM50,Substitute,Normal
+16,TM50,Substitute,Normal
+17,TM50,Substitute,Normal
+18,TM50,Substitute,Normal
+19,TM50,Substitute,Normal
+20,TM50,Substitute,Normal
+21,TM50,Substitute,Normal
+22,TM50,Substitute,Normal
+23,TM50,Substitute,Normal
+24,TM50,Substitute,Normal
+25,TM50,Substitute,Normal
+26,TM50,Substitute,Normal
+27,TM50,Substitute,Normal
+28,TM50,Substitute,Normal
+29,TM50,Substitute,Normal
+30,TM50,Substitute,Normal
+31,TM50,Substitute,Normal
+32,TM50,Substitute,Normal
+33,TM50,Substitute,Normal
+34,TM50,Substitute,Normal
+35,TM50,Substitute,Normal
+36,TM50,Substitute,Normal
+37,TM50,Substitute,Normal
+38,TM50,Substitute,Normal
+39,TM50,Substitute,Normal
+40,TM50,Substitute,Normal
+41,TM50,Substitute,Normal
+42,TM50,Substitute,Normal
+43,TM50,Substitute,Normal
+44,TM50,Substitute,Normal
+45,TM50,Substitute,Normal
+46,TM50,Substitute,Normal
+47,TM50,Substitute,Normal
+48,TM50,Substitute,Normal
+49,TM50,Substitute,Normal
+50,TM50,Substitute,Normal
+51,TM50,Substitute,Normal
+52,TM50,Substitute,Normal
+53,TM50,Substitute,Normal
+54,TM50,Substitute,Normal
+55,TM50,Substitute,Normal
+56,TM50,Substitute,Normal
+57,TM50,Substitute,Normal
+58,TM50,Substitute,Normal
+59,TM50,Substitute,Normal
+60,TM50,Substitute,Normal
+61,TM50,Substitute,Normal
+62,TM50,Substitute,Normal
+63,TM50,Substitute,Normal
+64,TM50,Substitute,Normal
+65,TM50,Substitute,Normal
+66,TM50,Substitute,Normal
+67,TM50,Substitute,Normal
+68,TM50,Substitute,Normal
+69,TM50,Substitute,Normal
+70,TM50,Substitute,Normal
+71,TM50,Substitute,Normal
+72,TM50,Substitute,Normal
+73,TM50,Substitute,Normal
+74,TM50,Substitute,Normal
+75,TM50,Substitute,Normal
+76,TM50,Substitute,Normal
+77,TM50,Substitute,Normal
+78,TM50,Substitute,Normal
+79,TM50,Substitute,Normal
+80,TM50,Substitute,Normal
+81,TM50,Substitute,Normal
+82,TM50,Substitute,Normal
+83,TM50,Substitute,Normal
+84,TM50,Substitute,Normal
+85,TM50,Substitute,Normal
+86,TM50,Substitute,Normal
+87,TM50,Substitute,Normal
+88,TM50,Substitute,Normal
+89,TM50,Substitute,Normal
+90,TM50,Substitute,Normal
+91,TM50,Substitute,Normal
+92,TM50,Substitute,Normal
+93,TM50,Substitute,Normal
+94,TM50,Substitute,Normal
+95,TM50,Substitute,Normal
+96,TM50,Substitute,Normal
+97,TM50,Substitute,Normal
+98,TM50,Substitute,Normal
+99,TM50,Substitute,Normal
+100,TM50,Substitute,Normal
+101,TM50,Substitute,Normal
+102,TM50,Substitute,Normal
+103,TM50,Substitute,Normal
+104,TM50,Substitute,Normal
+105,TM50,Substitute,Normal
+106,TM50,Substitute,Normal
+107,TM50,Substitute,Normal
+108,TM50,Substitute,Normal
+109,TM50,Substitute,Normal
+110,TM50,Substitute,Normal
+111,TM50,Substitute,Normal
+112,TM50,Substitute,Normal
+113,TM50,Substitute,Normal
+114,TM50,Substitute,Normal
+115,TM50,Substitute,Normal
+116,TM50,Substitute,Normal
+117,TM50,Substitute,Normal
+118,TM50,Substitute,Normal
+119,TM50,Substitute,Normal
+120,TM50,Substitute,Normal
+121,TM50,Substitute,Normal
+122,TM50,Substitute,Normal
+123,TM50,Substitute,Normal
+124,TM50,Substitute,Normal
+125,TM50,Substitute,Normal
+126,TM50,Substitute,Normal
+127,TM50,Substitute,Normal
+128,TM50,Substitute,Normal
+130,TM50,Substitute,Normal
+131,TM50,Substitute,Normal
+133,TM50,Substitute,Normal
+134,TM50,Substitute,Normal
+135,TM50,Substitute,Normal
+136,TM50,Substitute,Normal
+137,TM50,Substitute,Normal
+138,TM50,Substitute,Normal
+139,TM50,Substitute,Normal
+140,TM50,Substitute,Normal
+141,TM50,Substitute,Normal
+142,TM50,Substitute,Normal
+143,TM50,Substitute,Normal
+144,TM50,Substitute,Normal
+145,TM50,Substitute,Normal
+146,TM50,Substitute,Normal
+147,TM50,Substitute,Normal
+148,TM50,Substitute,Normal
+149,TM50,Substitute,Normal
+150,TM50,Substitute,Normal
+151,TM50,Substitute,Normal
