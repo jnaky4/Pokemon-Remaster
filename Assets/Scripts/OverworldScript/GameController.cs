@@ -45,6 +45,7 @@ namespace Pokemon
             Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
             Type.load_type();
             Moves.load_moves();
+            update_level_cap();
 
             //Debug.Log("CSV's have been loaded");
 

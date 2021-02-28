@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ namespace Pokemon
 {
     public class PlayerMovement : MonoBehaviour
     {
+        //public event Action OnEnterTrainersView;
+
         public float moveSpeed;
         public VectorValue startingPosition;
         public string location = "Route 1";
@@ -72,7 +75,7 @@ namespace Pokemon
         {
             if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null)
             {
-                if (Random.Range(1, 101) <= 10)
+                if (UnityEngine.Random.Range(1, 101) <= 10)
                 {
                     //new code
                     character.Animator.IsMoving = false;
@@ -97,6 +100,21 @@ namespace Pokemon
             if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer) != null)
             {
                 Debug.Log("In Trainer's View");
+                Dictionary<string, Route> route1_dic = Route.get_route(location);
+                Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers("Route 1");
+                Debug.Log(route_trainers.Count);
+                Debug.Log(route_trainers["Willy"].trainer_team[0].currentMoves[0].name);
+
+                Debug.Log(route_trainers["Willy"].trainer_team[1].name);
+                for (int i = 0; i < 6; i++)
+                {
+                    if (route_trainers["Willy"].trainer_team[i] != null)
+                        GameController.opponentPokemon[i] = route_trainers["Willy"].trainer_team[i];
+                    else
+                        break;
+                }
+                GameController.triggerCombat = true;
+                //OnEnterTrainersView?.Invoke();
             }
         }
 
