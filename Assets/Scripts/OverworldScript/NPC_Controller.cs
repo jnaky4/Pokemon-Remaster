@@ -7,11 +7,13 @@ public class NPC_Controller : MonoBehaviour, Interactable
 {
     [SerializeField] List<Vector2> movementPattern;
     [SerializeField] float timeBetweenPattern;
+    [SerializeField] Dialog dialog;
 
     Character character;
-    public GameObject dialogBox;
-    public Text dialogText;
-    public string dialog;
+    //public GameObject dialogBox;
+    //public Text dialogText;
+    //public string dialog;
+
     public bool dialogActive;
 
     NPCState state;
@@ -27,21 +29,22 @@ public class NPC_Controller : MonoBehaviour, Interactable
     {
         if (state == NPCState.Idle)
         {
-            if (dialogBox.activeInHierarchy)
+            /*if (dialogBox.activeInHierarchy)
                 dialogBox.SetActive(false);
             else
             {
                 dialogBox.SetActive(true);
-                dialogText.text = dialog;
-            }
+                //dialogText.text = dialog;
+            }*/
+            StartCoroutine(DialogController.Instance.ShowDialog(dialog));
         }
         //StartCoroutine(character.Move(new Vector2(-10, 0)));
     }
 
     private void Update()
     {
-        if (dialogBox.activeInHierarchy)
-            return;
+        /*if (dialogBox.activeInHierarchy)
+            return;*/
 
         if (state == NPCState.Idle)
         {
