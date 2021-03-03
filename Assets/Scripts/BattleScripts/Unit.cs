@@ -22,7 +22,7 @@ namespace Pokemon
             pokemon.currentMoves[numMove].current_pp--;
         }
 
-        public void SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit)
+        public void SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit, double type1Defend, double type2Defend)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace Pokemon
                     if (move.current_stat_change.CompareTo("null") == 0)
                     {
                         damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2;
-                        damage = damage * (critical * stab * random * pokemon.type * pokemon.burn);
+                        damage = damage * (critical * stab * random * type1Defend * type2Defend * pokemon.burn);
                     }
                     else
                     {
