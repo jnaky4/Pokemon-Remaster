@@ -8,6 +8,7 @@ public class NPC_Controller : MonoBehaviour, Interactable
     [SerializeField] List<Vector2> movementPattern;
     [SerializeField] float timeBetweenPattern;
     [SerializeField] Dialog dialog;
+    [SerializeField] string name;
 
     Character character;
     //public GameObject dialogBox;

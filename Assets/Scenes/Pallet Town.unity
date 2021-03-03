@@ -1044,6 +1044,7 @@ MonoBehaviour:
     lines:
     - You can talk to people with Z!
     - Wait, I guess you already knew that.
+  name: Larry
   dialogActive: 0
 --- !u!212 &124844444
 SpriteRenderer:
@@ -90415,8 +90416,9 @@ GameObject:
   - component: {fileID: 1961365879}
   - component: {fileID: 1961365881}
   - component: {fileID: 1961365880}
+  - component: {fileID: 1961365876}
   m_Layer: 10
-  m_Name: Bug Catcher
+  m_Name: Bug Catcher Willy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90469,6 +90471,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1961365876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961365873}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f29c3406559e24fd59b78f369934b159, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - Hey! You have a Pokemon? Let's Battle 'em!
+  exclamation: {fileID: 258166588}
 --- !u!212 &1961365877
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -90553,6 +90571,7 @@ MonoBehaviour:
   timeBetweenPattern: 3
   dialog:
     lines: []
+  name: Willy
   dialogActive: 0
 --- !u!114 &1961365880
 MonoBehaviour:

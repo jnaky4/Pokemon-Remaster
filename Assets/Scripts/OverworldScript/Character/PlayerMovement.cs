@@ -8,7 +8,7 @@ namespace Pokemon
 {
     public class PlayerMovement : MonoBehaviour
     {
-        //public event Action OnEnterTrainersView;
+        public event Action OnEnterTrainersView;
 
         public float moveSpeed;
         public VectorValue startingPosition;
@@ -75,9 +75,11 @@ namespace Pokemon
 
         private void CheckForEncounters()
         {
+            // int spawnRate = 10
+            int spawnRate = 101;
             if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
             {
-                if (UnityEngine.Random.Range(1, 101) <= 10)
+                if (UnityEngine.Random.Range(1, 101) <= spawnRate)
                 {
                     //new code
                     character.Animator.IsMoving = false;
@@ -100,10 +102,17 @@ namespace Pokemon
         private void CheckIfInTrainerView()
         {
             string trainer = "Willy";
+            var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer);
 
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
+            if (collider != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 Debug.Log("In Trainer's View");
+
+                var trainerInfo = collider.GetComponentInParent<TrainerController>();
+                trainerInfo.TriggerTrainerBattle(transform.position);
+
+                Debug.Log("Post method call");
+
                 Dictionary<string, Route> route1_dic = Route.get_route(location);
                 Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers("Route 1");
                
@@ -115,7 +124,7 @@ namespace Pokemon
                         break;
                 }
                 GameController.triggerCombat = true;
-                //OnEnterTrainersView?.Invoke();
+
             }
         }
 
