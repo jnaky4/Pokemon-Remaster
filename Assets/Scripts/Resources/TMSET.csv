@@ -1,4 +1,4 @@
-Pokemon#,Level/TM/HM,Move_Name,Type
+DexNum,TM_HM,Move_Name,Type
 1,HM01,Cut,Normal
 2,HM01,Cut,Normal
 3,HM01,Cut,Normal
@@ -90,7 +90,6 @@ Pokemon#,Level/TM/HM,Move_Name,Type
 7,HM04,Strength,Normal
 8,HM04,Strength,Normal
 9,HM04,Strength,Normal
-24,HM04,Strength,Normal
 24,HM04,Strength,Normal
 27,HM04,Strength,Normal
 28,HM04,Strength,Normal
@@ -869,62 +868,62 @@ Pokemon#,Level/TM/HM,Move_Name,Type
 149,TM10,Double-Edge,Normal
 150,TM10,Double-Edge,Normal
 151,TM10,Double-Edge,Normal
-7,TM11,BubbleBeam,Water
-8,TM11,BubbleBeam,Water
-9,TM11,BubbleBeam,Water
-19,TM11,BubbleBeam,Water
-20,TM11,BubbleBeam,Water
-30,TM11,BubbleBeam,Water
-31,TM11,BubbleBeam,Water
-34,TM11,BubbleBeam,Water
-35,TM11,BubbleBeam,Water
-36,TM11,BubbleBeam,Water
-39,TM11,BubbleBeam,Water
-40,TM11,BubbleBeam,Water
-52,TM11,BubbleBeam,Water
-53,TM11,BubbleBeam,Water
-54,TM11,BubbleBeam,Water
-55,TM11,BubbleBeam,Water
-60,TM11,BubbleBeam,Water
-61,TM11,BubbleBeam,Water
-62,TM11,BubbleBeam,Water
-72,TM11,BubbleBeam,Water
-73,TM11,BubbleBeam,Water
-79,TM11,BubbleBeam,Water
-80,TM11,BubbleBeam,Water
-86,TM11,BubbleBeam,Water
-87,TM11,BubbleBeam,Water
-90,TM11,BubbleBeam,Water
-91,TM11,BubbleBeam,Water
-98,TM11,BubbleBeam,Water
-99,TM11,BubbleBeam,Water
-104,TM11,BubbleBeam,Water
-105,TM11,BubbleBeam,Water
-108,TM11,BubbleBeam,Water
-112,TM11,BubbleBeam,Water
-113,TM11,BubbleBeam,Water
-115,TM11,BubbleBeam,Water
-116,TM11,BubbleBeam,Water
-117,TM11,BubbleBeam,Water
-118,TM11,BubbleBeam,Water
-119,TM11,BubbleBeam,Water
-120,TM11,BubbleBeam,Water
-121,TM11,BubbleBeam,Water
-124,TM11,BubbleBeam,Water
-130,TM11,BubbleBeam,Water
-131,TM11,BubbleBeam,Water
-134,TM11,BubbleBeam,Water
-138,TM11,BubbleBeam,Water
-139,TM11,BubbleBeam,Water
-140,TM11,BubbleBeam,Water
-141,TM11,BubbleBeam,Water
-143,TM11,BubbleBeam,Water
-144,TM11,BubbleBeam,Water
-147,TM11,BubbleBeam,Water
-148,TM11,BubbleBeam,Water
-149,TM11,BubbleBeam,Water
-150,TM11,BubbleBeam,Water
-151,TM11,BubbleBeam,Water
+7,TM11,Bubble Beam,Water
+8,TM11,Bubble Beam,Water
+9,TM11,Bubble Beam,Water
+19,TM11,Bubble Beam,Water
+20,TM11,Bubble Beam,Water
+30,TM11,Bubble Beam,Water
+31,TM11,Bubble Beam,Water
+34,TM11,Bubble Beam,Water
+35,TM11,Bubble Beam,Water
+36,TM11,Bubble Beam,Water
+39,TM11,Bubble Beam,Water
+40,TM11,Bubble Beam,Water
+52,TM11,Bubble Beam,Water
+53,TM11,Bubble Beam,Water
+54,TM11,Bubble Beam,Water
+55,TM11,Bubble Beam,Water
+60,TM11,Bubble Beam,Water
+61,TM11,Bubble Beam,Water
+62,TM11,Bubble Beam,Water
+72,TM11,Bubble Beam,Water
+73,TM11,Bubble Beam,Water
+79,TM11,Bubble Beam,Water
+80,TM11,Bubble Beam,Water
+86,TM11,Bubble Beam,Water
+87,TM11,Bubble Beam,Water
+90,TM11,Bubble Beam,Water
+91,TM11,Bubble Beam,Water
+98,TM11,Bubble Beam,Water
+99,TM11,Bubble Beam,Water
+104,TM11,Bubble Beam,Water
+105,TM11,Bubble Beam,Water
+108,TM11,Bubble Beam,Water
+112,TM11,Bubble Beam,Water
+113,TM11,Bubble Beam,Water
+115,TM11,Bubble Beam,Water
+116,TM11,Bubble Beam,Water
+117,TM11,Bubble Beam,Water
+118,TM11,Bubble Beam,Water
+119,TM11,Bubble Beam,Water
+120,TM11,Bubble Beam,Water
+121,TM11,Bubble Beam,Water
+124,TM11,Bubble Beam,Water
+130,TM11,Bubble Beam,Water
+131,TM11,Bubble Beam,Water
+134,TM11,Bubble Beam,Water
+138,TM11,Bubble Beam,Water
+139,TM11,Bubble Beam,Water
+140,TM11,Bubble Beam,Water
+141,TM11,Bubble Beam,Water
+143,TM11,Bubble Beam,Water
+144,TM11,Bubble Beam,Water
+147,TM11,Bubble Beam,Water
+148,TM11,Bubble Beam,Water
+149,TM11,Bubble Beam,Water
+150,TM11,Bubble Beam,Water
+151,TM11,Bubble Beam,Water
 7,TM12,Water Gun,Water
 8,TM12,Water Gun,Water
 9,TM12,Water Gun,Water
@@ -1516,30 +1515,30 @@ Pokemon#,Level/TM/HM,Move_Name,Type
 151,TM21,Mega Drain,Grass
 1,TM22,Solar Beam,Grass
 2,TM22,Solar Beam,Grass
-3,TM22,SolarBeam,Grass
-12,TM22,SolarBeam,Grass
-35,TM22,SolarBeam,Grass
-36,TM22,SolarBeam,Grass
-39,TM22,SolarBeam,Grass
-40,TM22,SolarBeam,Grass
-43,TM22,SolarBeam,Grass
-44,TM22,SolarBeam,Grass
-45,TM22,SolarBeam,Grass
-46,TM22,SolarBeam,Grass
-47,TM22,SolarBeam,Grass
-48,TM22,SolarBeam,Grass
-49,TM22,SolarBeam,Grass
-69,TM22,SolarBeam,Grass
-70,TM22,SolarBeam,Grass
-71,TM22,SolarBeam,Grass
-103,TM22,SolarBeam,Grass
-113,TM22,SolarBeam,Grass
-114,TM22,SolarBeam,Grass
-122,TM22,SolarBeam,Grass
-131,TM22,SolarBeam,Grass
-143,TM22,SolarBeam,Grass
-150,TM22,SolarBeam,Grass
-151,TM22,SolarBeam,Grass
+3,TM22,Solar Beam,Grass
+12,TM22,Solar Beam,Grass
+35,TM22,Solar Beam,Grass
+36,TM22,Solar Beam,Grass
+39,TM22,Solar Beam,Grass
+40,TM22,Solar Beam,Grass
+43,TM22,Solar Beam,Grass
+44,TM22,Solar Beam,Grass
+45,TM22,Solar Beam,Grass
+46,TM22,Solar Beam,Grass
+47,TM22,Solar Beam,Grass
+48,TM22,Solar Beam,Grass
+49,TM22,Solar Beam,Grass
+69,TM22,Solar Beam,Grass
+70,TM22,Solar Beam,Grass
+71,TM22,Solar Beam,Grass
+103,TM22,Solar Beam,Grass
+113,TM22,Solar Beam,Grass
+114,TM22,Solar Beam,Grass
+122,TM22,Solar Beam,Grass
+131,TM22,Solar Beam,Grass
+143,TM22,Solar Beam,Grass
+150,TM22,Solar Beam,Grass
+151,TM22,Solar Beam,Grass
 4,TM23,Dragon Rage,Dragon
 5,TM23,Dragon Rage,Dragon
 6,TM23,Dragon Rage,Dragon
@@ -2370,26 +2369,26 @@ Pokemon#,Level/TM/HM,Move_Name,Type
 143,TM35,Metronome,Normal
 150,TM35,Metronome,Normal
 151,TM35,Metronome,Normal
-74,TM36,Selfdestruct,Normal
-75,TM36,Selfdestruct,Normal
-76,TM36,Selfdestruct,Normal
-88,TM36,Selfdestruct,Normal
-89,TM36,Selfdestruct,Normal
-90,TM36,Selfdestruct,Normal
-91,TM36,Selfdestruct,Normal
-92,TM36,Selfdestruct,Normal
-93,TM36,Selfdestruct,Normal
-94,TM36,Selfdestruct,Normal
-95,TM36,Selfdestruct,Normal
-100,TM36,Selfdestruct,Normal
-101,TM36,Selfdestruct,Normal
-102,TM36,Selfdestruct,Normal
-103,TM36,Selfdestruct,Normal
-109,TM36,Selfdestruct,Normal
-110,TM36,Selfdestruct,Normal
-143,TM36,Selfdestruct,Normal
-150,TM36,Selfdestruct,Normal
-151,TM36,Selfdestruct,Normal
+74,TM36,Self-Destruct,Normal
+75,TM36,Self-Destruct,Normal
+76,TM36,Self-Destruct,Normal
+88,TM36,Self-Destruct,Normal
+89,TM36,Self-Destruct,Normal
+90,TM36,Self-Destruct,Normal
+91,TM36,Self-Destruct,Normal
+92,TM36,Self-Destruct,Normal
+93,TM36,Self-Destruct,Normal
+94,TM36,Self-Destruct,Normal
+95,TM36,Self-Destruct,Normal
+100,TM36,Self-Destruct,Normal
+101,TM36,Self-Destruct,Normal
+102,TM36,Self-Destruct,Normal
+103,TM36,Self-Destruct,Normal
+109,TM36,Self-Destruct,Normal
+110,TM36,Self-Destruct,Normal
+143,TM36,Self-Destruct,Normal
+150,TM36,Self-Destruct,Normal
+151,TM36,Self-Destruct,Normal
 102,TM37,Egg Bomb,Normal
 103,TM37,Egg Bomb,Normal
 113,TM37,Egg Bomb,Normal
