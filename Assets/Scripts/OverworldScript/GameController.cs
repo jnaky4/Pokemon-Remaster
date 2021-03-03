@@ -43,6 +43,7 @@ namespace Pokemon
             Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON");
             Route.all_routes = BattleSystem.load_CSV("ROUTES");
             Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
+            TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
             Type.load_type();
             Moves.load_moves();
             update_level_cap();

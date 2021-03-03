@@ -75,6 +75,7 @@ namespace Pokemon
             calculate_stats();
             //get learnset added to learnset_dictionary for this pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);
+            this.TM_Set = TMSet.get_TMSet(this.dexnum);
 
             //gets type for this pokemon from pokedex and creates type object
             this.type1 = Type.get_type(this.pokedex_entry.get_type1());
@@ -172,7 +173,7 @@ namespace Pokemon
     };
         //gets loaded in once, have to call load_base_stats before creating new pokemon
         public static List<Dictionary<string, object>> all_base_stats = new List<Dictionary<string, object>>();
-
+        public Dictionary<string, Moves> TM_Set = new Dictionary<string, Moves>();
 
 
         public string name;
@@ -183,6 +184,7 @@ namespace Pokemon
         public Type type1;
         public Type type2 = null;
         public List<Learnset> learnset = new List<Learnset>();
+
 
         public string image1;
         public string image2;
