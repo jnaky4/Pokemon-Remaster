@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 
 namespace Pokemon
 {
+    public enum GameState { Roam, Dialog, Battle}
     public class GameController : MonoBehaviour
     {
+        public static GameState state = GameState.Roam;
+
         //player data
         public static Pokemon[] playerPokemon = new Pokemon[6];
         public static bool inCombat = false;
@@ -53,10 +56,30 @@ namespace Pokemon
             playerPokemon[0] = new Pokemon(4, 5, "Wing Attack", "Flamethrower", "Growl", "Slash");
             playerPokemon[1] = new Pokemon(7, 5, "Water Gun", "Hydro Pump", "Growl", "Slash");
             playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Slash");
+
+            DialogController.Instance.OnShowDialog += () =>
+            {
+                state = GameState.Dialog;
+            };
+
+            DialogController.Instance.OnCloseDialog += () =>
+            {
+                if (state == GameState.Dialog)
+                {
+                    state = GameState.Roam;
+                }
+            };
         }
 
         private void Update()
         {
+            if (state == GameState.Dialog)
+            {
+                DialogController.Instance.HandleUpdate();
+            }
+            /*if (state == GameState.Roam)
+                PlayerMovement.Instance.HandleUpdate();*/
+
             if (triggerCombat == true)
             {
                 //overworldCam.SetActive(false);

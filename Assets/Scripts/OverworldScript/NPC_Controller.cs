@@ -7,11 +7,13 @@ public class NPC_Controller : MonoBehaviour, Interactable
 {
     [SerializeField] List<Vector2> movementPattern;
     [SerializeField] float timeBetweenPattern;
+    [SerializeField] Dialog dialog;
 
     Character character;
-    public GameObject dialogBox;
-    public Text dialogText;
-    public string dialog;
+    //public GameObject dialogBox;
+    //public Text dialogText;
+    //public string dialog;
+
     public bool dialogActive;
 
     NPCState state;
@@ -23,26 +25,32 @@ public class NPC_Controller : MonoBehaviour, Interactable
         character = GetComponent<Character>();
     }
 
-    public void Interact()
+    public void Interact(Transform initial)
     {
         if (state == NPCState.Idle)
         {
-            if (dialogBox.activeInHierarchy)
+            /*if (dialogBox.activeInHierarchy)
                 dialogBox.SetActive(false);
             else
             {
                 dialogBox.SetActive(true);
-                dialogText.text = dialog;
-            }
+                //dialogText.text = dialog;
+            }*/
+            state = NPCState.Dialog;
+            character.LookTowards(initial.position);
+
+            StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
+            {
+                idleTimer = 0f;
+                state = NPCState.Idle;
+
+            }));
         }
         //StartCoroutine(character.Move(new Vector2(-10, 0)));
     }
 
     private void Update()
     {
-        if (dialogBox.activeInHierarchy)
-            return;
-
         if (state == NPCState.Idle)
         {
             idleTimer += Time.deltaTime;
@@ -60,11 +68,15 @@ public class NPC_Controller : MonoBehaviour, Interactable
     {
         state = NPCState.Walking;
 
+        var oldPosition = transform.position;
+
         yield return character.Move(movementPattern[currentPattern]);
-        currentPattern = (currentPattern + 1) % movementPattern.Count;
+
+        if (transform.position != oldPosition)
+            currentPattern = (currentPattern + 1) % movementPattern.Count;
 
         state = NPCState.Idle;
     }
 
-    public enum NPCState { Idle, Walking}
+    public enum NPCState { Idle, Walking, Dialog}
 }

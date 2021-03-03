@@ -16,7 +16,9 @@ namespace Pokemon
         public GameObject dialogBox;
 
         private Character character;
-       
+
+        //public static DialogController Instance { get; private set; }
+
 
         Vector2 movement;
 
@@ -39,7 +41,7 @@ namespace Pokemon
                 if (movement.x != 0) movement.y = 0;
 
                 //find the next target position when a player attempts to move
-                if (movement != Vector2.zero && !GameController.inCombat)
+                if (movement != Vector2.zero && !GameController.inCombat && GameController.state == GameState.Roam)
                 {
                     //makes sure an area is walkable before allowing a player move
                     StartCoroutine(character.Move(movement, OnMoveOver));
@@ -60,7 +62,7 @@ namespace Pokemon
             var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameplayLayers.i.InteractLayer);
             if (collider != null)
             {
-                collider.GetComponent<Interactable>()?.Interact();
+                collider.GetComponent<Interactable>()?.Interact(transform);
             }
         }
 
@@ -73,7 +75,7 @@ namespace Pokemon
 
         private void CheckForEncounters()
         {
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null)
+            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 if (UnityEngine.Random.Range(1, 101) <= 10)
                 {
@@ -97,9 +99,9 @@ namespace Pokemon
 
         private void CheckIfInTrainerView()
         {
-            string trainer = "Jake";
+            string trainer = "Willy";
 
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer) != null)
+            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 Debug.Log("In Trainer's View");
                 Dictionary<string, Route> route1_dic = Route.get_route(location);

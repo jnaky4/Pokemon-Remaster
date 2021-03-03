@@ -1040,9 +1040,10 @@ MonoBehaviour:
   - {x: 2, y: 0}
   - {x: 0, y: 2}
   timeBetweenPattern: 3
-  dialogBox: {fileID: 1634417689}
-  dialogText: {fileID: 1750630757}
-  dialog: What a lovely day it is today!
+  dialog:
+    lines:
+    - You can talk to people with Z!
+    - Wait, I guess you already knew that.
   dialogActive: 0
 --- !u!212 &124844444
 SpriteRenderer:
@@ -1214,6 +1215,7 @@ GameObject:
   - component: {fileID: 194545384}
   - component: {fileID: 194545385}
   - component: {fileID: 194545386}
+  - component: {fileID: 194545387}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1278,6 +1280,24 @@ MonoBehaviour:
   fovLayer:
     serializedVersion: 2
     m_Bits: 8192
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+--- !u!114 &194545387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194545383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fada3d31e398c43cd94867ed4965500e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogBox: {fileID: 1634417689}
+  dialogText: {fileID: 1750630757}
+  lettersPerSecond: 45
 --- !u!1 &194772738
 GameObject:
   m_ObjectHideFlags: 0
@@ -90531,9 +90551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementPattern: []
   timeBetweenPattern: 3
-  dialogBox: {fileID: 1634417689}
-  dialogText: {fileID: 1750630757}
-  dialog: I am a bug catcher
+  dialog:
+    lines: []
   dialogActive: 0
 --- !u!114 &1961365880
 MonoBehaviour:
@@ -113747,6 +113766,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389597823947240992, guid: fddeef3e1184340ffbf48c9ddb8ea5d9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7389597823947240992, guid: fddeef3e1184340ffbf48c9ddb8ea5d9,
         type: 3}
