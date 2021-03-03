@@ -21,14 +21,21 @@ public class DialogController : MonoBehaviour
     }
 
     Dialog dialog;
+    Action onDialogFinished;
     int currentLine = 0;
     bool isTyping;
 
-    public IEnumerator ShowDialog(Dialog dialog)
+    public bool IsShowing { get; private set; }
+
+    public IEnumerator ShowDialog(Dialog dialog, Action onFinished = null)
     {
         yield return new WaitForEndOfFrame();
 
         OnShowDialog?.Invoke();
+
+        IsShowing = true;
+        this.dialog = dialog;
+        onDialogFinished = onFinished;
 
         this.dialog = dialog;
         dialogBox.SetActive(true);
@@ -47,7 +54,9 @@ public class DialogController : MonoBehaviour
             else
             {
                 currentLine = 0;
+                IsShowing = false;
                 dialogBox.SetActive(false);
+                onDialogFinished?.Invoke();
                 OnCloseDialog?.Invoke();
             }
         }

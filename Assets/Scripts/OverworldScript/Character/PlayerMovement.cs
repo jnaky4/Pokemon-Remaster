@@ -16,7 +16,9 @@ namespace Pokemon
         public GameObject dialogBox;
 
         private Character character;
-       
+
+        //public static DialogController Instance { get; private set; }
+
 
         Vector2 movement;
 
@@ -39,7 +41,7 @@ namespace Pokemon
                 if (movement.x != 0) movement.y = 0;
 
                 //find the next target position when a player attempts to move
-                if (movement != Vector2.zero && !GameController.inCombat)
+                if (movement != Vector2.zero && !GameController.inCombat && GameController.state == GameState.Roam)
                 {
                     //makes sure an area is walkable before allowing a player move
                     StartCoroutine(character.Move(movement, OnMoveOver));
@@ -60,7 +62,7 @@ namespace Pokemon
             var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameplayLayers.i.InteractLayer);
             if (collider != null)
             {
-                collider.GetComponent<Interactable>()?.Interact();
+                collider.GetComponent<Interactable>()?.Interact(transform);
             }
         }
 

@@ -8,7 +8,7 @@ namespace Pokemon
     public enum GameState { Roam, Dialog}
     public class GameController : MonoBehaviour
     {
-        GameState state;
+        public static GameState state = GameState.Roam;
 
         //player data
         public static Pokemon[] playerPokemon = new Pokemon[6];
@@ -77,6 +77,8 @@ namespace Pokemon
             {
                 DialogController.Instance.HandleUpdate();
             }
+            /*if (state == GameState.Roam)
+                PlayerMovement.Instance.HandleUpdate();*/
 
             if (triggerCombat == true)
             {

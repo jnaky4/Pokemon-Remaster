@@ -1044,8 +1044,6 @@ MonoBehaviour:
     lines:
     - You can talk to people with Z!
     - Wait, I guess you already knew that.
-  dialogBox: {fileID: 1634417689}
-  dialogText: {fileID: 1750630757}
   dialogActive: 0
 --- !u!212 &124844444
 SpriteRenderer:
@@ -1282,6 +1280,9 @@ MonoBehaviour:
   fovLayer:
     serializedVersion: 2
     m_Bits: 8192
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!114 &194545387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90552,8 +90553,6 @@ MonoBehaviour:
   timeBetweenPattern: 3
   dialog:
     lines: []
-  dialogBox: {fileID: 1634417689}
-  dialogText: {fileID: 1750630757}
   dialogActive: 0
 --- !u!114 &1961365880
 MonoBehaviour:
@@ -113767,6 +113766,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7389597823947240992, guid: fddeef3e1184340ffbf48c9ddb8ea5d9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7389597823947240992, guid: fddeef3e1184340ffbf48c9ddb8ea5d9,
         type: 3}
