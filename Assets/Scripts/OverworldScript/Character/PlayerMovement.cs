@@ -75,7 +75,7 @@ namespace Pokemon
 
         private void CheckForEncounters()
         {
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null)
+            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 if (UnityEngine.Random.Range(1, 101) <= 10)
                 {
@@ -99,9 +99,9 @@ namespace Pokemon
 
         private void CheckIfInTrainerView()
         {
-            string trainer = "Jake";
+            string trainer = "Willy";
 
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer) != null)
+            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 Debug.Log("In Trainer's View");
                 Dictionary<string, Route> route1_dic = Route.get_route(location);
