@@ -1297,6 +1297,8 @@ namespace Pokemon
 
         public void GetAttackSprites(string attack)
         {
+            attack = attack.Replace(" ", "_");
+
             var path = Directory.GetCurrentDirectory();
 
             if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -1304,30 +1306,35 @@ namespace Pokemon
             else
                 path +=  "\\Assets\\Sprites\\Attack_Animations\\" + attack;
 
+            if (!Directory.Exists(path))
+            {
+                path = Directory.GetCurrentDirectory();
+
+                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                    path += "/Assets/Sprites/Attack_Animations/" + "Bite";
+                else
+                    path += "\\Assets\\Sprites\\Attack_Animations\\" + "Bite";
+            }
+
             string[] files = Directory.GetFiles(path, "*.png");
+            
+            Debug.Log(playerUnit.pokemon.currentMoves[2].name);
 
-                /*foreach (var file in files)
-                {
-                    AttackSprites;
-                }*/
+            AttackSprites.Clear();
+            AttackSprites.Add(null);
+            for (int i = 0; i < files.Length - 1; i++)
+            {
+                Texture2D SpriteTexture = new Texture2D(2, 2);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(files[i]);
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
-                Debug.Log(playerUnit.pokemon.currentMoves[2].name);
+                AttackSprites.Add(NewSprite);
+            }
+            AttackSprites.TrimExcess();
 
-                AttackSprites.Clear();
-                AttackSprites.Add(null);
-                for (int i = 0; i < files.Length - 1; i++)
-                {
-                    Texture2D SpriteTexture = new Texture2D(2, 2);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(files[i]);
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-
-                    AttackSprites.Add(NewSprite);
-                }
-                AttackSprites.TrimExcess();
-
-            Debug.Log(path);
+    Debug.Log(path);
         }
     }
 }
