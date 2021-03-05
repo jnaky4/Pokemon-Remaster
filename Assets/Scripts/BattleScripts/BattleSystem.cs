@@ -57,7 +57,7 @@ namespace Pokemon
         //The HUDs (the shit that shows our current hp and stuff like that
 
         public Text dialogueText;
-        //The dailogue text to let us know what is happening
+        //The dialog text to let us know what is happening
 
         public BattleState state;
         //The current state of the battle
@@ -101,7 +101,7 @@ namespace Pokemon
         public GameObject poke6;
         public Button backPoke;
 
-        bool endBattle = false;
+        bool breakOutOfDecision = false;
 
         /**********************************************************************************************************************************************
          * FUNCTIONS
@@ -254,15 +254,21 @@ namespace Pokemon
             enemyUnit = enemyGO.GetComponent<Unit>();
             enemyUnit.pokemon = GameController.opponentPokemon[0];
 
-            dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
-
             playerHUD.SetHUD(playerUnit, true, player, GameController.playerPokemon);
             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
             SetPlayerSprite(playerUnit, playerSprite);
             SetOpponentSprite(enemyUnit, enemySprite);
 
-
-            yield return new WaitForSeconds(2);
+            if (GameController.isCatchable)
+            {
+                dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
+                yield return new WaitForSeconds(2);
+            }
+            else
+            {
+                dialogueText.text = "Enemy Bug Catcher Joey sends out " + enemyUnit.pokemon.name + "!";
+                yield return new WaitForSeconds(2);
+            }
 
             state = BattleState.PLAYERTURN;
             PlayerTurn();
@@ -314,12 +320,13 @@ namespace Pokemon
                 state = BattleState.PLAYERTURN;
                 if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                 else yield return StartCoroutine(PlayerAttack(playerMove));
-                if (endBattle)
+/*                if (breakOutOfDecision)
                 {
-                    StartCoroutine(EndBattle());
-                    yield break;
-                }
-                if(!endBattle)
+                    yield return StartCoroutine(SeeIfEndBattle());
+                    PlayerTurn();
+                    //yield break;
+                }*/
+                if(!breakOutOfDecision)
                 {
                     state = BattleState.ENEMYTURN;
                     yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
@@ -329,12 +336,13 @@ namespace Pokemon
             {
                 state = BattleState.ENEMYTURN;
                 yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
-                if (endBattle)
+/*                if (breakOutOfDecision)
                 {
-                    StartCoroutine(EndBattle());
-                    yield break;
-                }
-                if (!endBattle)
+                    yield return StartCoroutine(SeeIfEndBattle());
+                    PlayerTurn();
+                    //yield break;
+                }*/
+                if (!breakOutOfDecision)
                 {
                     state = BattleState.PLAYERTURN;
                     if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
@@ -347,12 +355,13 @@ namespace Pokemon
                 {
                     state = BattleState.ENEMYTURN;
                     yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
-                    if (endBattle)
+/*                    if (breakOutOfDecision)
                     {
-                        StartCoroutine(EndBattle());
-                        yield break;
-                    }
-                    if (!endBattle)
+                        yield return StartCoroutine(SeeIfEndBattle());
+                        PlayerTurn();
+                        //yield break;
+                    }*/
+                    if (!breakOutOfDecision)
                     {
                         state = BattleState.PLAYERTURN;
                         if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
@@ -364,12 +373,13 @@ namespace Pokemon
                     state = BattleState.PLAYERTURN;
                     if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                     else yield return StartCoroutine(PlayerAttack(playerMove));
-                    if (endBattle)
+/*                    if (breakOutOfDecision)
                     {
-                        StartCoroutine(EndBattle());
-                        yield break;
-                    }
-                    if (!endBattle)
+                        yield return StartCoroutine(SeeIfEndBattle());
+                        PlayerTurn();
+                        //yield break;
+                    }*/
+                    if (!breakOutOfDecision)
                     {
                         state = BattleState.ENEMYTURN;
                         yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
@@ -383,12 +393,13 @@ namespace Pokemon
                         state = BattleState.PLAYERTURN;
                         if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                         else yield return StartCoroutine(PlayerAttack(playerMove));
-                        if (endBattle)
+/*                        if (breakOutOfDecision)
                         {
-                            StartCoroutine(EndBattle());
-                            yield break;
-                        }
-                        if (!endBattle)
+                            yield return StartCoroutine(SeeIfEndBattle());
+                            PlayerTurn();
+                            //yield break;
+                        }*/
+                        if (!breakOutOfDecision)
                         {
                             state = BattleState.ENEMYTURN;
                             yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
@@ -398,12 +409,13 @@ namespace Pokemon
                     {
                         state = BattleState.ENEMYTURN;
                         yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
-                        if (endBattle)
+/*                        if (breakOutOfDecision)
                         {
-                            StartCoroutine(EndBattle());
-                            yield break;
-                        }
-                        if (!endBattle)
+                            yield return StartCoroutine(SeeIfEndBattle());
+                            PlayerTurn();
+                            //yield break;
+                        }*/
+                        if (!breakOutOfDecision)
                         {
                             state = BattleState.PLAYERTURN;
                             if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
@@ -412,9 +424,11 @@ namespace Pokemon
                     }
                 }
             }
-            if (endBattle)
+            if (breakOutOfDecision)
             {
-                EndBattle();
+                yield return SeeIfEndBattle();
+                PlayerTurn();
+                yield break;
             }
             PlayerTurn();
             yield break;
@@ -440,10 +454,78 @@ namespace Pokemon
                 }
                 while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
             }
+            enemyMoveName = enemyMove.name;
             state = BattleState.CHANGEPOKEMON;
             yield return StartCoroutine(SwitchPokemon(pokemon));
             state = BattleState.ENEMYTURN;
             yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+            if (breakOutOfDecision)
+            {
+                StartCoroutine(SeeIfEndBattle());
+            }
+            PlayerTurn();
+            yield break;
+        }
+
+        IEnumerator DecisionCatch(int ballNum)
+        {
+            SetDownButtons();
+            ClosePokemonMenu();
+            CloseMovesMenu();
+            CloseBallsMenu();
+            if (!GameController.isCatchable)
+            {
+                SetDownButtons();
+                dialogueText.text = "You can't catch other trainer's Pokemon!";
+                yield return new WaitForSeconds(2);
+                PlayerTurn();
+                yield break;
+            }
+
+            int moveNum = 0;
+            bool struggle = EnemyStruggle();
+            Moves enemyMove;
+            System.Random rnd = new System.Random();
+            if (struggle) enemyMove = enemyUnit.pokemon.struggle;
+            else
+            {
+                do
+                {
+                    moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
+                    enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
+                }
+                while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
+            }
+            enemyMoveName = enemyMove.name;
+            state = BattleState.CHANGEPOKEMON;
+            yield return StartCoroutine(CatchPokemon(ballNum));
+            state = BattleState.ENEMYTURN;
+            yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+            if (breakOutOfDecision)
+            {
+                bool isEnd = true;
+                for (int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++)
+                {
+                    state = BattleState.LOST;
+                    if (GameController.playerPokemon[j].current_hp > 0)
+                    {
+                        isEnd = false;
+                        break;
+                    }
+                }
+                yield return StartCoroutine(EndBattle());
+                if (isEnd) yield return StartCoroutine(EndBattle());
+                for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+                {
+                    if (GameController.opponentPokemon[j].current_hp > 0)
+                    {
+                        state = BattleState.WON;
+                        isEnd = false;
+                        break;
+                    }
+                }
+                if (isEnd) yield return StartCoroutine(EndBattle());
+            }
             PlayerTurn();
             yield break;
         }
@@ -630,18 +712,47 @@ namespace Pokemon
                 }
                 yield return new WaitForSeconds(2);
 
-
                 if (isDead)
                 {
-                    state = BattleState.WON;
-                    StartCoroutine(EndBattle());
-                    yield break;
+                    breakOutOfDecision = true;
+                    bool won = true;
+                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+                    {
+                        if (GameController.opponentPokemon[j].current_hp > 0)
+                        {
+                            won = false;
+                            break;
+                        }
+                    }
+                    if (won)
+                    {
+                        state = BattleState.WON;
+                        dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                        yield return new WaitForSeconds(2);
+                        yield break;
+                    }
+                    else
+                    {
+                        state = BattleState.CHANGEPOKEMON;
+                        dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                        yield return new WaitForSeconds(2);
+                        for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+                        {
+                            if (GameController.opponentPokemon[j].current_hp > 0)
+                            {
+                                enemyUnit.pokemon = GameController.opponentPokemon[j];
+                                dialogueText.text = "They sent out a " + enemyUnit.pokemon.name + "!";
+                                yield return new WaitForSeconds(2);
+                                enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
+                                SetOpponentSprite(enemyUnit, enemySprite);
+                                break;
+                            }
+                        }
+                        PlayerTurn();
+                        yield break;
+                    }
                 }
-                else
-                {
-                    state = BattleState.ENEMYTURN;
-                    yield break;
-                }
+
             }
             else
             {
@@ -686,39 +797,44 @@ namespace Pokemon
             playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
             yield return new WaitForSeconds(2);
 
-            if (isPlayerDead)
+            if (isDead)
             {
-                endBattle = true;
-                for (int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++)
+                bool won = true;
+                for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
                 {
-                    if (GameController.playerPokemon[j].current_hp > 0)
+                    if (GameController.opponentPokemon[j].current_hp > 0)
                     {
-                        endBattle = false;
+                        won = false;
                         break;
                     }
                 }
-                if (endBattle)
+                if (won)
                 {
-                    state = BattleState.LOST;
-                    StartCoroutine(EndBattle());
+                    state = BattleState.WON;
+                    dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                    yield return new WaitForSeconds(2);
                     yield break;
                 }
                 else
                 {
                     state = BattleState.CHANGEPOKEMON;
-                    dialogueText.text = playerUnit.pokemon.name + " faints!";
+                    dialogueText.text = enemyUnit.pokemon.name + " faints!";
                     yield return new WaitForSeconds(2);
-                    SwitchPokemonAfterDeath();
+                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+                    {
+                        if (GameController.opponentPokemon[j].current_hp > 0)
+                        {
+                            enemyUnit.pokemon = GameController.opponentPokemon[j];
+                            dialogueText.text = "They sent out a " + enemyUnit.pokemon.name + "!";
+                            yield return new WaitForSeconds(2);
+                            enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
+                            SetOpponentSprite(enemyUnit, enemySprite);
+                            break;
+                        }
+                    }
                     yield break;
                 }
             }
-
-            if (isDead)
-            {
-                state = BattleState.WON;
-                StartCoroutine(EndBattle());
-            }
-
             yield break;
         }
 
@@ -934,6 +1050,7 @@ namespace Pokemon
 
         IEnumerator EnemyAttack(Moves move, int moveNum)
         {
+            SetDownButtons();
             System.Random rnd = new System.Random();
             bool crit = CriticalHit(enemyUnit);
             int num = rnd.Next(1, 100);
@@ -971,19 +1088,18 @@ namespace Pokemon
 
                 if (isDead)
                 {
-                    endBattle = true;
+                    breakOutOfDecision = true;
                     for(int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++)
                     {
                         if (GameController.playerPokemon[j].current_hp > 0)
                         {
-                            endBattle = false;
+                            breakOutOfDecision = false;
                             break;
                         }
                     }
-                    if (endBattle)
+                    if (breakOutOfDecision)
                     {
                         state = BattleState.LOST;
-                        StartCoroutine(EndBattle());
                         yield break;
                     }
                     else
@@ -1005,9 +1121,42 @@ namespace Pokemon
             yield break;
         }
 
+        IEnumerator SeeIfEndBattle()
+        {
+            bool isEnd = true;
+            for (int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++)
+            {
+                if (GameController.playerPokemon[j].current_hp > 0)
+                {
+                    isEnd = false;
+                    break;
+                }
+            }
+            if (isEnd)
+            {
+                state = BattleState.LOST;
+                yield return StartCoroutine(EndBattle());
+                yield break;
+            }
+            isEnd = true;
+            for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+            {
+                if (GameController.opponentPokemon[j].current_hp > 0)
+                {
+                    isEnd = false;
+                    break;
+                }
+            }
+            if (isEnd)
+            {
+                state = BattleState.WON;
+                yield return StartCoroutine(EndBattle());
+                yield break;
+            }
+        }
         IEnumerator EndBattle()
         {
-            endBattle = true;
+            breakOutOfDecision = true;
             SetDownButtons();
             if (state == BattleState.WON)
             {
@@ -1069,9 +1218,9 @@ namespace Pokemon
         {
             state = BattleState.PLAYERTURN;
             dialogueText.text = "Choose an action";
-            SetUpButtons();
             playerHUD.SetPokemon(GameController.playerPokemon);
             playerHUD.SetMoves(playerUnit);
+            SetUpButtons();
         }
 /*        void EnemyTurn()
         {
@@ -1274,25 +1423,25 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            CatchPokemon(1);
+            StartCoroutine(DecisionCatch(1));
         }
         public void GreatBall()
         {
             CloseBallsMenu();
             SetDownButtons();
-            CatchPokemon(2);
+            StartCoroutine(DecisionCatch(2));
         }
         public void UltraBall()
         {
             CloseBallsMenu();
             SetDownButtons();
-            CatchPokemon(3);
+            StartCoroutine(DecisionCatch(3));
         }
         public void MasterBall()
         {
             CloseBallsMenu();
             SetDownButtons();
-            CatchPokemon(4);
+            StartCoroutine(DecisionCatch(4));
         }
 
         public void GetAttackSprites(string attack)
@@ -1317,7 +1466,7 @@ namespace Pokemon
             }
 
             string[] files = Directory.GetFiles(path, "*.png");
-            
+
             Debug.Log(playerUnit.pokemon.currentMoves[2].name);
 
             AttackSprites.Clear();
