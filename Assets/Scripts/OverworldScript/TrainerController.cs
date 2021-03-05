@@ -7,6 +7,7 @@ public class TrainerController : MonoBehaviour
 {
     [SerializeField] Dialog dialog;
     [SerializeField] GameObject exclamation;
+    [SerializeField] string trainerName;
 
     Character character;
 
@@ -33,7 +34,12 @@ public class TrainerController : MonoBehaviour
          {
              Debug.Log("Starting Trainer Battle");
          });
-      
+
+    }
+
+    public string getName()
+    {
+        return trainerName;
     }
 
     public void test()

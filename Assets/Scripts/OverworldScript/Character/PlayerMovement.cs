@@ -102,20 +102,17 @@ namespace Pokemon
 
         private void CheckIfInTrainerView()
         {
-            string trainer = "Willy";
+            string trainer;
             var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer);
 
             if (collider != null && !GameController.triggerCombat && !GameController.inCombat)
             {
-                Debug.Log("In Trainer's View");
-
                 var trainerInfo = collider.GetComponentInParent<TrainerController>();
                 trainerInfo.TriggerTrainerBattle(transform.position);
+                trainer = trainerInfo.getName();
 
-                Debug.Log("Post method call");
-
-                Dictionary<string, Route> route1_dic = Route.get_route(location);
-                Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers("Route 1");
+                //Dictionary<string, Route> route1_dic = Route.get_route(location);
+                Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(location);
                
                 for (int i = 0; i < 6; i++)
                 {
