@@ -278,6 +278,7 @@ namespace Pokemon
 
         IEnumerator Decision(int playerMoveNum)
         {
+            breakOutOfDecision = false;
             SetDownButtons();
             ClosePokemonMenu();
             CloseMovesMenu();
@@ -364,15 +365,13 @@ namespace Pokemon
                     if (!breakOutOfDecision)
                     {
                         state = BattleState.PLAYERTURN;
-                        if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
-                        else yield return StartCoroutine(PlayerAttack(playerMove));
+                        yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                     }
                 }
                 else if (enemyUnit.pokemon.current_speed < playerUnit.pokemon.current_speed)
                 {
                     state = BattleState.PLAYERTURN;
-                    if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
-                    else yield return StartCoroutine(PlayerAttack(playerMove));
+                    yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
 /*                    if (breakOutOfDecision)
                     {
                         yield return StartCoroutine(SeeIfEndBattle());
@@ -391,8 +390,7 @@ namespace Pokemon
                     if (num == 1)
                     {
                         state = BattleState.PLAYERTURN;
-                        if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
-                        else yield return StartCoroutine(PlayerAttack(playerMove));
+                        yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
 /*                        if (breakOutOfDecision)
                         {
                             yield return StartCoroutine(SeeIfEndBattle());
@@ -418,8 +416,7 @@ namespace Pokemon
                         if (!breakOutOfDecision)
                         {
                             state = BattleState.PLAYERTURN;
-                            if (playerMoveNum != -1) yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
-                            else yield return StartCoroutine(PlayerAttack(playerMove));
+                            yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                         }
                     }
                 }
@@ -687,10 +684,11 @@ namespace Pokemon
             {
                 if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
                 double super = DoDamage(playerUnit, enemyUnit, attack, crit);
-                playerUnit.DoPP(moveNum);
+                if (moveNum != -1) playerUnit.DoPP(moveNum);
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                 playerInitialAttack = true;
+                yield return new WaitForSeconds(0.97f);
                 if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + attack.current_stat_change + " fell!";
                 else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + attack.current_stat_change + " rose!";
                 else
@@ -1058,13 +1056,13 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             if (num <= move.accuracy * enemyUnit.pokemon.current_accuracy * playerUnit.pokemon.current_evasion)
             {
+                enemyInitialAttack = true;
                 if (move.current_stat_change.CompareTo("null") != 0) enemyUnit.SetStages(move, playerUnit);
                 double super = DoDamage(enemyUnit, playerUnit, move, crit);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
                 Debug.Log(enemyUnit.damage.ToString());
                 if (moveNum != -1) enemyUnit.DoPP(moveNum);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                enemyInitialAttack = true;
                 if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("enemy") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + move.current_stat_change + " fell!";
                 else if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("self") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + move.current_stat_change + " rose!";
                 else
