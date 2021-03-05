@@ -782,6 +782,12 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
             playerInitialAttack = true;
+            while (!endofanimation)
+            {
+                yield return null;
+            }
+            endofanimation = false;
+
             yield return new WaitForSeconds(2);
             double super = DoDamage(playerUnit, enemyUnit, attack, false);
             bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
@@ -1072,7 +1078,14 @@ namespace Pokemon
                 Debug.Log(enemyUnit.damage.ToString());
                 if (moveNum != -1) enemyUnit.DoPP(moveNum);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
+
                 enemyInitialAttack = true;
+                while (!endofanimation)
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+
                 if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("enemy") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + move.current_stat_change + " fell!";
                 else if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("self") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + move.current_stat_change + " rose!";
                 else
