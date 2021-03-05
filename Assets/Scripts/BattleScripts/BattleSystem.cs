@@ -688,17 +688,19 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             if (num <= (attack.accuracy*playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion))
             {
-                if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
-                double super = DoDamage(playerUnit, enemyUnit, attack, crit);
-                playerUnit.DoPP(moveNum);
-                bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
-                enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                 playerInitialAttack = true;
                 while (!endofanimation)
                 {
                     yield return null;
                 }
                 endofanimation = false;
+
+                if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
+                double super = DoDamage(playerUnit, enemyUnit, attack, crit);
+                playerUnit.DoPP(moveNum);
+                bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+                enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
+
                 if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + attack.current_stat_change + " fell!";
                 else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + attack.current_stat_change + " rose!";
                 else
@@ -1072,19 +1074,19 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             if (num <= move.accuracy * enemyUnit.pokemon.current_accuracy * playerUnit.pokemon.current_evasion)
             {
-                if (move.current_stat_change.CompareTo("null") != 0) enemyUnit.SetStages(move, playerUnit);
-                double super = DoDamage(enemyUnit, playerUnit, move, crit);
-                bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
-                Debug.Log(enemyUnit.damage.ToString());
-                if (moveNum != -1) enemyUnit.DoPP(moveNum);
-                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-
                 enemyInitialAttack = true;
                 while (!endofanimation)
                 {
                     yield return null;
                 }
                 endofanimation = false;
+
+                if (move.current_stat_change.CompareTo("null") != 0) enemyUnit.SetStages(move, playerUnit);
+                double super = DoDamage(enemyUnit, playerUnit, move, crit);
+                bool isDead = playerUnit.TakeDamage(enemyUnit.damage);
+                Debug.Log(enemyUnit.damage.ToString());
+                if (moveNum != -1) enemyUnit.DoPP(moveNum);
+                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
 
                 if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("enemy") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + move.current_stat_change + " fell!";
                 else if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("self") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + move.current_stat_change + " rose!";
