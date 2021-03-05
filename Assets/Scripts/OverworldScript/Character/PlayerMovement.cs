@@ -91,6 +91,7 @@ namespace Pokemon
 
                     Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, GameController.badges_completed, GameController.badges_completed.Count);
                     GameController.opponentPokemon[0] = wild_spawn;
+                    GameController.isCatchable = true;
                     GameController.triggerCombat = true;
 
                     //overworldCam.SetActive(false);
@@ -123,6 +124,7 @@ namespace Pokemon
                     else
                         break;
                 }
+                GameController.isCatchable = false;
                 GameController.triggerCombat = true;
 
             }
