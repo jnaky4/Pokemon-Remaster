@@ -36,6 +36,7 @@ namespace Pokemon
         SpriteAnimator EnemyAttackAnim;
         bool playerAttack;
         bool playerInitialAttack;
+        bool endofanimation;
         bool enemyAttack;
         bool enemyInitialAttack;
         string playerMoveName;
@@ -141,6 +142,7 @@ namespace Pokemon
                     //Debug.Log("End Animation now");
                     PlayerAttackAnim.EndAnimation();
                     playerAttack = false;
+                    endofanimation = true;
                 }
             }
 
@@ -162,6 +164,7 @@ namespace Pokemon
                     //Debug.Log("End Animation now");
                     EnemyAttackAnim.EndAnimation();
                     enemyAttack = false;
+                    endofanimation = true;
                 }
             }
         }
@@ -691,6 +694,11 @@ namespace Pokemon
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                 playerInitialAttack = true;
+                while (!endofanimation)
+                {
+                    yield return null;
+                }
+                endofanimation = false;
                 if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + attack.current_stat_change + " fell!";
                 else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + attack.current_stat_change + " rose!";
                 else
