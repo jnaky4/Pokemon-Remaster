@@ -38,6 +38,8 @@ namespace Pokemon
         bool playerInitialAttack;
         bool enemyAttack;
         bool enemyInitialAttack;
+        string playerMoveName;
+        string enemyMoveName;
         //all of this stuff is for animation
 
         Unit playerUnit;
@@ -123,7 +125,7 @@ namespace Pokemon
 
             if (playerInitialAttack == true)
             {
-                GetAttackSprites("Ember");
+                GetAttackSprites(playerMoveName);
                 PlayerAttackAnim.Start();
                 playerInitialAttack = false;
                 playerAttack = true;
@@ -144,6 +146,7 @@ namespace Pokemon
 
             if (enemyInitialAttack == true)
             {
+                GetAttackSprites(enemyMoveName);
                 EnemyAttackAnim.Start();
                 enemyInitialAttack = false;
                 enemyAttack = true;
@@ -269,20 +272,20 @@ namespace Pokemon
 
         IEnumerator Decision(int playerMoveNum)
         {
-            Debug.Log("decision1");
             SetDownButtons();
             ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
 
-            Debug.Log("decision2");
-
-            if (playerUnit.pokemon.currentMoves[playerMoveNum].current_pp == 0)
+            if (playerMoveNum != -1)
             {
-                dialogueText.text = "No remaining PP for " + playerUnit.pokemon.currentMoves[playerMoveNum].name + "!";
-                yield return new WaitForSeconds(2);
-                PlayerTurn();
-                yield break;
+                if (playerUnit.pokemon.currentMoves[playerMoveNum].current_pp == 0)
+                {
+                    dialogueText.text = "No remaining PP for " + playerUnit.pokemon.currentMoves[playerMoveNum].name + "!";
+                    yield return new WaitForSeconds(2);
+                    PlayerTurn();
+                    yield break;
+                }
             }
             int moveNum = 0;
             bool struggle = EnemyStruggle();
@@ -304,6 +307,8 @@ namespace Pokemon
             CloseMovesMenu();
             CloseBallsMenu();
             SetDownButtons();
+            playerMoveName = playerMove.name;
+            enemyMoveName = enemyMove.name;
             if (playerMove.priority > enemyMove.priority)
             {
                 state = BattleState.PLAYERTURN;
@@ -591,8 +596,6 @@ namespace Pokemon
             CloseBallsMenu();
             SetDownButtons();
 
-            playerInitialAttack = true;
-
             bool crit = CriticalHit(playerUnit);
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
@@ -605,7 +608,7 @@ namespace Pokemon
                 playerUnit.DoPP(moveNum);
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
-
+                playerInitialAttack = true;
                 if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + attack.current_stat_change + " fell!";
                 else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + attack.current_stat_change + " rose!";
                 else
@@ -659,6 +662,7 @@ namespace Pokemon
             dialogueText.text = playerUnit.pokemon + " has no remaining available moves.";
             yield return new WaitForSeconds(2);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
+            playerInitialAttack = true;
             yield return new WaitForSeconds(2);
             double super = DoDamage(playerUnit, enemyUnit, attack, false);
             bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
@@ -916,8 +920,6 @@ namespace Pokemon
             int i;
             bool struggle = false;
 
-            enemyInitialAttack = true;
-
             for (i = 0; i < enemyUnit.pokemon.currentMoves.Count(s => s != null); i++)
             {
                 if (enemyUnit.pokemon.currentMoves[i].current_pp != 0)
@@ -945,7 +947,7 @@ namespace Pokemon
                 Debug.Log(enemyUnit.damage.ToString());
                 if (moveNum != -1) enemyUnit.DoPP(moveNum);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-
+                enemyInitialAttack = true;
                 if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("enemy") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + move.current_stat_change + " fell!";
                 else if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("self") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + move.current_stat_change + " rose!";
                 else
@@ -1301,7 +1303,7 @@ namespace Pokemon
                 path += "/Assets/Sprites/Attack_Animations/" + attack;
             else
                 path +=  "\\Assets\\Sprites\\Attack_Animations\\" + attack;
-               
+
             string[] files = Directory.GetFiles(path, "*.png");
 
                 /*foreach (var file in files)
@@ -1320,7 +1322,7 @@ namespace Pokemon
                     fileData = File.ReadAllBytes(files[i]);
                     SpriteTexture.LoadImage(fileData);
                     Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                 
+
                     AttackSprites.Add(NewSprite);
                 }
                 AttackSprites.TrimExcess();
