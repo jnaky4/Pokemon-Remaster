@@ -30,7 +30,8 @@ namespace Pokemon
 
         //IDK what these are but they need to stay
 
-        [SerializeField] List<Sprite> AttackSprites;
+        //[SerializeField] List<Sprite> AttackSprites;
+        List<Sprite> AttackSprites = new List<Sprite>();
         SpriteAnimator PlayerAttackAnim;
         SpriteAnimator EnemyAttackAnim;
         bool playerAttack;
@@ -120,8 +121,9 @@ namespace Pokemon
         private void Update()
         {
 
-            /*if (playerInitialAttack == true)
+            if (playerInitialAttack == true)
             {
+                GetAttackSprites("Ember");
                 PlayerAttackAnim.Start();
                 playerInitialAttack = false;
                 playerAttack = true;
@@ -158,7 +160,7 @@ namespace Pokemon
                     EnemyAttackAnim.EndAnimation();
                     enemyAttack = false;
                 }
-            }*/
+            }
         }
 
         public static List<Dictionary<string, object>> load_CSV(string name)
@@ -1289,6 +1291,41 @@ namespace Pokemon
             CloseBallsMenu();
             SetDownButtons();
             CatchPokemon(4);
+        }
+
+        public void GetAttackSprites(string attack)
+        {
+            var path = Directory.GetCurrentDirectory();
+
+            if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                path += "/Assets/Sprites/Attack_Animations/" + attack;
+            else
+                path +=  "\\Assets\\Sprites\\Attack_Animations\\" + attack;
+               
+            string[] files = Directory.GetFiles(path, "*.png");
+
+                /*foreach (var file in files)
+                {
+                    AttackSprites;
+                }*/
+
+                Debug.Log(playerUnit.pokemon.currentMoves[2].name);
+
+                AttackSprites.Clear();
+                AttackSprites.Add(null);
+                for (int i = 0; i < files.Length - 1; i++)
+                {
+                    Texture2D SpriteTexture = new Texture2D(2, 2);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(files[i]);
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                 
+                    AttackSprites.Add(NewSprite);
+                }
+                AttackSprites.TrimExcess();
+
+            Debug.Log(path);
         }
     }
 }

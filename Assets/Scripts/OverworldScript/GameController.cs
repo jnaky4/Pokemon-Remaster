@@ -56,7 +56,10 @@ namespace Pokemon
             playerPokemon[0] = new Pokemon(4, 5, "Wing Attack", "Flamethrower", "Growl", "Slash");
             playerPokemon[1] = new Pokemon(7, 5, "Water Gun", "Hydro Pump", "Growl", "Slash");
             playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Slash");
+        }
 
+        private void Start()
+        {
             DialogController.Instance.OnShowDialog += () =>
             {
                 state = GameState.Dialog;
