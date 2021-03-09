@@ -59,7 +59,7 @@ public class SoundPlayer : MonoBehaviour
     private void Update()
     {
         //testing, if you click left button on mouse, change song
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             //Not needed, but tell a song to stop
             FindObjectOfType<SoundPlayer>().StopSong();
