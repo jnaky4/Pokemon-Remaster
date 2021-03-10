@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Pokemon
 {
-    public enum GameState { Roam, Dialog, Battle}
+    public enum GameState { Roam, Dialog, Battle, Cutscene}
     public class GameController : MonoBehaviour
     {
         public static GameState state = GameState.Roam;

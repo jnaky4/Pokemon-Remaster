@@ -30,11 +30,31 @@ public class TrainerController : MonoBehaviour
 
         yield return character.Move(moveVec);
 
-        DialogController.Instance.ShowDialog(dialog, () =>
+        yield return StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
          {
              Debug.Log("Starting Trainer Battle");
-         });
+         }));
+        startCombat();
+    }
 
+    public void startCombat()
+    {
+        Debug.Log("Engaging thrusters");
+        //trainer = trainerInfo.getName();
+
+        //Dictionary<string, Route> route1_dic = Route.get_route(location);
+        Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(GameController.location);
+
+        for (int i = 0; i < 6; i++)
+        {
+            if (route_trainers[trainerName].trainer_team[i] != null)
+                GameController.opponentPokemon[i] = route_trainers[trainerName].trainer_team[i];
+            else
+                break;
+        }
+        GameController.isCatchable = false;
+
+        GameController.triggerCombat = true;
     }
 
     public string getName()

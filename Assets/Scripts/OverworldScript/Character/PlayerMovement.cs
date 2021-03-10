@@ -9,13 +9,13 @@ namespace Pokemon
     public class PlayerMovement : MonoBehaviour
     {
         //normal spawnrate
-        int spawnRate = 10;
+        //int spawnRate = 10;
 
         //uncomment this for high spawn rate
         //int spawnrate = 101;
 
         //uncomment this for no spawn rate
-        //int spawnRate = 0;
+        int spawnRate = 0;
 
         public event Action OnEnterTrainersView;
 
@@ -111,14 +111,15 @@ namespace Pokemon
 
         private void CheckIfInTrainerView()
         {
-            string trainer;
+            //string trainer;
             var collider = Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.FovLayer);
 
             if (collider != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 var trainerInfo = collider.GetComponentInParent<TrainerController>();
-                //StartCoroutine(trainerInfo.TriggerTrainerBattle(transform.position));
-                trainer = trainerInfo.getName();
+                GameController.state = GameState.Cutscene;
+                StartCoroutine(trainerInfo.TriggerTrainerBattle(transform.position));
+                /*trainer = trainerInfo.getName();
 
                 //Dictionary<string, Route> route1_dic = Route.get_route(location);
                 Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(location);
@@ -130,8 +131,9 @@ namespace Pokemon
                     else
                         break;
                 }
-                GameController.isCatchable = false;
-                GameController.triggerCombat = true;
+                GameController.isCatchable = false;*/
+
+                //GameController.triggerCombat = true;
 
             }
         }

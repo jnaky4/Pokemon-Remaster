@@ -90641,7 +90641,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -416488339
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -4251579990473993799, guid: f456b42b8e7ed13468d971f7d234614c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -90662,7 +90662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1961365873}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.5, y: 8.8, z: 0}
+  m_LocalPosition: {x: 5.5, y: 18.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1752919917}
@@ -90685,7 +90685,8 @@ MonoBehaviour:
   movementPattern: []
   timeBetweenPattern: 3
   dialog:
-    lines: []
+    lines:
+    - Hey! You have a Pokemon? Let's Battle 'em!
   name: Willy
   dialogActive: 0
 --- !u!114 &1961365880
