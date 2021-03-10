@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
-public class Vcam_Shift : MonoBehaviour
+namespace Pokemon
 {
-    GameObject startCam;
-    GameObject nextCam;
-    public string startString;
-    public string endString;
-
-    public void Start()
+    public class Vcam_Shift : MonoBehaviour
     {
-        startCam = GameObject.Find(startString);
-        nextCam = GameObject.Find(endString);
-    }
+        GameObject startCam;
+        GameObject nextCam;
+        public string startString;
+        public string endString;
+        public string newLocation;
 
-    public void OnTriggerEnter2D(Collider2D other)
-    { 
-
-        if (other.CompareTag("Player") && !other.isTrigger)
+        public void Start()
         {
-            nextCam.SetActive(true);
-            startCam.SetActive(false);
+            startCam = GameObject.Find(startString);
+            nextCam = GameObject.Find(endString);
+        }
+
+        public void OnTriggerEnter2D(Collider2D other)
+        {
+
+            if (other.CompareTag("Player") && !other.isTrigger)
+            {
+                nextCam.SetActive(true);
+                startCam.SetActive(false);
+                GameController.location = newLocation;
+            }
         }
     }
 }

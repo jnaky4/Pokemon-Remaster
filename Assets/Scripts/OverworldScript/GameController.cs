@@ -15,6 +15,7 @@ namespace Pokemon
         public static bool inCombat = false;
         public GameObject player;
         public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
+        public static string location = "Pallet Town";
 
         //Game Level Cap
         public static int level_cap = 0;

@@ -8,6 +8,15 @@ namespace Pokemon
 {
     public class PlayerMovement : MonoBehaviour
     {
+        //normal spawnrate
+        int spawnRate = 10;
+
+        //uncomment this for high spawn rate
+        //int spawnrate = 101;
+
+        //uncomment this for no spawn rate
+        //int spawnRate = 0;
+
         public event Action OnEnterTrainersView;
 
         public float moveSpeed;
@@ -76,7 +85,7 @@ namespace Pokemon
         private void CheckForEncounters()
         {
             // int spawnRate = 10
-            int spawnRate = 101;
+            //int spawnRate = 10;
             if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 if (UnityEngine.Random.Range(1, 101) <= spawnRate)
@@ -108,7 +117,7 @@ namespace Pokemon
             if (collider != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 var trainerInfo = collider.GetComponentInParent<TrainerController>();
-                trainerInfo.TriggerTrainerBattle(transform.position);
+                //StartCoroutine(trainerInfo.TriggerTrainerBattle(transform.position));
                 trainer = trainerInfo.getName();
 
                 //Dictionary<string, Route> route1_dic = Route.get_route(location);
