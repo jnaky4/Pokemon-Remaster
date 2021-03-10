@@ -1461,13 +1461,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Soundtrack:
-  - name: City_Pallet_Town
+  - name: Pallet Town
     clip: {fileID: 8300000, guid: 8dd7949434f42a44e8b5bc7586337df4, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 1
-  - name: Route_1
+  - name: Route 1
     clip: {fileID: 8300000, guid: ed0c18414f3b45441b3563c631acf882, type: 3}
     volume: 1
     pitch: 1
@@ -86738,6 +86738,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startString: CM vcam2
   endString: CM route1Vcam
+  newLocation: Route 1
 --- !u!114 &1750630757 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4637347877824294040, guid: 2dd5b123ef0ea4921ae26f67fc5ed81c,
@@ -90922,6 +90923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startString: CM route1Vcam
   endString: CM vcam2
+  newLocation: Pallet Town
 --- !u!1 &2014617881
 GameObject:
   m_ObjectHideFlags: 0
