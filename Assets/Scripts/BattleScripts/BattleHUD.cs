@@ -7,8 +7,12 @@ using UnityEngine.UI;
 
 namespace Pokemon
 {
+    /// <summary>
+    /// This file deals with HUD elements
+    /// </summary>
     public class BattleHUD : MonoBehaviour
     {
+        #region Declaration of variables
         public Text yourName;
         public Text level;
         public Slider hpSlider;
@@ -30,7 +34,16 @@ namespace Pokemon
         public Text pokemon4;
         public Text pokemon5;
         public Text pokemon6;
-
+        #endregion
+        #region Functions
+        /// <summary>
+        /// Sets the HUD with pokemon name, level, hp, moves, the types of balls the player has, and the pokemon the player has.
+        /// Player hud.
+        /// </summary>
+        /// <param name="unit">The unit we want to set all of this shit is.</param>
+        /// <param name="isPlayer">if set to <c>true</c> [is player].</param>
+        /// <param name="player">The player object.</param>
+        /// <param name="playerPokemon">The player's pokemon array.</param>
         public void SetHUD(Unit unit, bool isPlayer, PlayerBattle player, Pokemon[] playerPokemon)
         {
             yourName.text = unit.pokemon.name;
@@ -42,8 +55,12 @@ namespace Pokemon
             if (isPlayer) SetBalls(player);
             if (isPlayer) SetPokemon(playerPokemon);
             hpSlider.interactable = false;
-            //hpSlider.colors.disabledColor = Color.black;
         }
+        /// <summary>
+        /// Sets the HUD with just name, level, and hp.
+        /// This gets called to update enemy hud.
+        /// </summary>
+        /// <param name="unit">The unit we want to update.</param>
         public void SetHUD(Unit unit)
         {
             yourName.text = unit.pokemon.name;
@@ -53,16 +70,29 @@ namespace Pokemon
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
         }
 
+        /// <summary>
+        /// Sets the enemy hp.
+        /// </summary>
+        /// <param name="hp">The hp.</param>
         public void SetHP(int hp)
         {
             hpSlider.value = hp;
         }
 
+        /// <summary>
+        /// Sets the player hp.
+        /// </summary>
+        /// <param name="hp">The hp.</param>
+        /// <param name="unit">The unit.</param>
         public void SetHP(int hp, Unit unit)
         {
             hpSlider.value = hp;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
         }
+        /// <summary>
+        /// Sets the moves of your player's pokemon.
+        /// </summary>
+        /// <param name="unit">The unit we want to set.</param>
         public void SetMoves(Unit unit)
         {
             if (unit.pokemon.currentMoves[0] != null) moves1.text = unit.pokemon.currentMoves[0].name + " " + unit.pokemon.currentMoves[0].current_pp + "/" + unit.pokemon.currentMoves[0].maxpp;
@@ -71,6 +101,10 @@ namespace Pokemon
             if (unit.pokemon.currentMoves[3] != null) moves4.text = unit.pokemon.currentMoves[3].name + " " + unit.pokemon.currentMoves[3].current_pp + "/" + unit.pokemon.currentMoves[3].maxpp;
         }
 
+        /// <summary>
+        /// Sets the balls of the player.
+        /// </summary>
+        /// <param name="player">The player whose balls we want to set.</param>
         public void SetBalls(PlayerBattle player)
         {
             if (player.pokeBalls) pokeBalls.text = "Poke balls (" + player.numPokeBalls + ")";
@@ -79,6 +113,10 @@ namespace Pokemon
             if (player.masterBalls) masterBalls.text = "Master balls (" + player.numMasterBalls + ")";
         }
 
+        /// <summary>
+        /// Sets the pokemon in the pokemon menu.
+        /// </summary>
+        /// <param name="pokemons">The array of pokemon to update in the pokemon menu.</param>
         public void SetPokemon(Pokemon[] pokemons)
         {
             if (pokemons[0] != null) pokemon1.text = pokemons[0].name + ", Level " + pokemons[0].level + ", HP: " + pokemons[0].current_hp + "/" + pokemons[0].max_hp;
@@ -88,6 +126,13 @@ namespace Pokemon
             if (pokemons[4] != null) pokemon5.text = pokemons[4].name + ", Level " + pokemons[4].level + ", HP: " + pokemons[4].current_hp + "/" + pokemons[4].max_hp;
             if (pokemons[5] != null) pokemon6.text = pokemons[5].name + ", Level " + pokemons[5].level + ", HP: " + pokemons[5].current_hp + "/" + pokemons[5].max_hp;
         }
+
+        /// <summary>
+        /// Sets the active pokemon.
+        /// </summary>
+        /// <param name="pokemons">The pokemon array.</param>
+        /// <param name="num">The number of pokemon we want to make active.</param>
+        /// <param name="unit">The unit of whose pokemon we are dealing with.</param>
         public void SetActivePokemon(Pokemon[] pokemons, int num, Unit unit)
         {
             unit.pokemon = pokemons[num];
@@ -95,5 +140,6 @@ namespace Pokemon
             SetHUD(unit);
             SetPokemon(pokemons);
         }
+        #endregion
     }
 }
