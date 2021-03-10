@@ -104,6 +104,8 @@ namespace Pokemon
         public Button backPoke;
 
         bool breakOutOfDecision = false;
+        bool didYouCatchIt = false;
+        bool didYouSwitch = false;
         #endregion
 
         /**********************************************************************************************************************************************
@@ -380,7 +382,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="pokemon">The Pokemon you are switching to. It is 0th indexed from the top of the screen</param>
         /// <returns>Nothing</returns>
-        IEnumerator DecisionSwitch(int pokemon)
+        IEnumerator DecisionSwitch()
         {
             SetDownButtons();
             ClosePokemonMenu();
@@ -402,8 +404,6 @@ namespace Pokemon
                 while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
             }
             enemyMoveName = enemyMove.name;
-            state = BattleState.CHANGEPOKEMON;
-            yield return StartCoroutine(SwitchPokemon(pokemon));
             state = BattleState.ENEMYTURN;
             yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
             if (breakOutOfDecision)
@@ -419,7 +419,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="ballNum">The number indicating what ball was used. 1 is for Pokeball, 2 for Great, 3 for Ultra, 4 for Master.</param>
         /// <returns>Nothing</returns>
-        IEnumerator DecisionCatch(int ballNum)
+        IEnumerator DecisionCatch()
         {
             SetDownButtons();
             ClosePokemonMenu();
@@ -449,8 +449,6 @@ namespace Pokemon
                 while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
             }
             enemyMoveName = enemyMove.name;
-            state = BattleState.CHANGEPOKEMON;
-            yield return StartCoroutine(CatchPokemon(ballNum));
             state = BattleState.ENEMYTURN;
             yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
             if (breakOutOfDecision)
@@ -770,6 +768,7 @@ namespace Pokemon
         /// <returns>Nothing.</returns>
         IEnumerator CatchPokemon(int typeOfPokeball)
         {
+            SetDownButtons();
             if (!GameController.isCatchable) //If you are playing a trainer, you can't catch their Pokemon.
             {
                 dialogueText.text = "You can't catch other trainer's Pokemon!";
@@ -843,7 +842,7 @@ namespace Pokemon
             {
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
-                PlayerTurn();
+                StartCoroutine(DecisionCatch());
                 yield break;
             }
             randomNumber2 = rnd.Next(256);
@@ -852,6 +851,7 @@ namespace Pokemon
             if (f >= randomNumber2) //If you actually caught them
             {
                 state = BattleState.CAUGHTPOKEMON;
+                didYouCatchIt = true;
                 StartCoroutine(EndBattle());
                 yield break;
             }
@@ -860,7 +860,7 @@ namespace Pokemon
                 int d = (GameController.catchRate * 100) / numShakes;
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
-                PlayerTurn();
+                StartCoroutine(DecisionCatch());
                 yield break;
             }
         }
@@ -937,6 +937,8 @@ namespace Pokemon
 
             state = BattleState.ENEMYTURN;
             backPoke.interactable = true;
+
+            StartCoroutine(DecisionSwitch());
         }
         /// <summary>
         /// Function that is called after one of your Pokemon dies.
@@ -1309,7 +1311,7 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(DecisionSwitch(0));
+            StartCoroutine(SwitchPokemon(0));
         }
 
         /// <summary>
@@ -1319,7 +1321,7 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(DecisionSwitch(1));
+            StartCoroutine(SwitchPokemon(1));
         }
 
         /// <summary>
@@ -1329,7 +1331,7 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(DecisionSwitch(2));
+            StartCoroutine(SwitchPokemon(2));
         }
 
         /// <summary>
@@ -1339,7 +1341,7 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(DecisionSwitch(3));
+            StartCoroutine(SwitchPokemon(3));
         }
 
         /// <summary>
@@ -1349,7 +1351,7 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(DecisionSwitch(4));
+            StartCoroutine(SwitchPokemon(4));
         }
 
         /// <summary>
@@ -1359,7 +1361,7 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(DecisionSwitch(5));
+            StartCoroutine(SwitchPokemon(5));
         }
 
         /// <summary>
@@ -1454,7 +1456,7 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(DecisionCatch(1));
+            StartCoroutine(CatchPokemon(1));
         }
         /// <summary>
         /// Greats the ball.
@@ -1463,7 +1465,7 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(DecisionCatch(2));
+            StartCoroutine(CatchPokemon(2));
         }
         /// <summary>
         /// Ultras the ball.
@@ -1472,7 +1474,7 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(DecisionCatch(3));
+            StartCoroutine(CatchPokemon(3));
         }
         /// <summary>
         /// Masters the ball.
@@ -1481,7 +1483,7 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(DecisionCatch(4));
+            StartCoroutine(CatchPokemon(4));
         }
 
         #endregion
