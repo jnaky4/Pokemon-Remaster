@@ -80,6 +80,23 @@ namespace Pokemon
                         break;
                 }
             }
+            if (GameController.startCombatMusic == true)
+            {
+                FindObjectOfType<SoundPlayer>().StopSong();
+
+                if (GameController.isCatchable == true)
+                    FindObjectOfType<SoundPlayer>().Play_New_Song("Battle Wild");
+                else
+                    FindObjectOfType<SoundPlayer>().Play_New_Song("Battle Trainer");
+
+                GameController.startCombatMusic = false;
+            }
+            if (GameController.endCombatMusic == true)
+            {
+                FindObjectOfType<SoundPlayer>().StopSong();
+                FindObjectOfType<SoundPlayer>().Play_New_Song(prevLocation);
+                GameController.endCombatMusic = false;
+            }
             if (Input.GetKeyDown("space"))
             {
                 if (song_playing)

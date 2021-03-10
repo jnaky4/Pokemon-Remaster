@@ -33,6 +33,8 @@ namespace Pokemon
         //triggers
         public static bool triggerCombat = false;
         public static bool endCombat = false;
+        public static bool startCombatMusic = false;
+        public static bool endCombatMusic = false;
 
         // Start is called before the first frame update
         void Awake ()
@@ -93,6 +95,7 @@ namespace Pokemon
                 SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
                 overworldCam.SetActive(false);
                 triggerCombat = false;
+                startCombatMusic = true;
             }
             if (endCombat == true)
             {
@@ -101,6 +104,7 @@ namespace Pokemon
                 eventSystem.SetActive(true);
                 overworldCam.SetActive(true);
                 //player.SetActive(true);
+                endCombatMusic = true;
                 endCombat = false;
             }
         }
