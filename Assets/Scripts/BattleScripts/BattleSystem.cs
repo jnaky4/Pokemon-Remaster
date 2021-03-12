@@ -1633,7 +1633,13 @@ namespace Pokemon
         public void SetBackground()
         {
             Texture2D SpriteTexture = new Texture2D(2, 2);
-            byte[] fileData = File.ReadAllBytes(Directory.GetCurrentDirectory() + "\\Images\\Backgrounds\\" + GameController.location + ".png");
+            string path;
+            if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                path = "/Images/Backgrounds/";
+            else
+                path = "\\Images\\Backgrounds\\";
+
+            byte[] fileData = File.ReadAllBytes(Directory.GetCurrentDirectory() + path + GameController.location + ".png");
             SpriteTexture.LoadImage(fileData);
             Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
