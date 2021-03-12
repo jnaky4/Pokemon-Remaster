@@ -485,6 +485,16 @@ namespace Pokemon
             }
             enemyMoveName = enemyMove.name;
             if (moveNum >= 0) enemyUnit.DoPP(moveNum);
+
+            if (enemyContinuingAttack != 0) enemyContinuingAttack--;
+            else if (enemyMove.max_turns > 1)
+            {
+                enemyContinuingAttack = rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
+                enemyMoveStorage = enemyMove;
+            }
+
+            int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
+
             state = BattleState.ENEMYTURN;
             for (int k = 0; k < numTimesEnemy; k++)
             {
@@ -536,6 +546,14 @@ namespace Pokemon
             enemyMoveName = enemyMove.name;
             state = BattleState.ENEMYTURN;
             if (moveNum >= 0) enemyUnit.DoPP(moveNum);
+            if (enemyContinuingAttack != 0) enemyContinuingAttack--;
+            else if (enemyMove.max_turns > 1)
+            {
+                enemyContinuingAttack = rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
+                enemyMoveStorage = enemyMove;
+            }
+
+            int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
             for (int k = 0; k < numTimesEnemy; k++)
             {
                 yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
