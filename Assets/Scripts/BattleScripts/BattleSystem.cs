@@ -758,6 +758,7 @@ namespace Pokemon
         void PlayerTurn()
         {
             endAttack = false;
+            breakOutOfDecision = false;
             state = BattleState.PLAYERTURN;
             dialogueText.text = "Choose an action";
             playerHUD.SetPokemon(GameController.playerPokemon);
