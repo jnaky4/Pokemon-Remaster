@@ -87,6 +87,14 @@ namespace Pokemon
                     Debug.Log(ex.ToString());
                 }
                 if (damage < 0) damage = 0; //If somehow you have negative damage, now you dont.
+                if (move.heal > 0)
+                {
+                    this.TakeDamage(-damage * move.heal);
+                }
+                if (move.heal < 0)
+                {
+                    this.TakeDamage(damage * -move.heal);
+                }
             }
 
         }
