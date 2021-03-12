@@ -105,6 +105,7 @@ namespace Pokemon
         public Button backPoke;
 
         bool breakOutOfDecision = false;
+        bool endAttack = false;
         int playerContinuingAttack = 0;
         int enemyContinuingAttack = 0;
         Moves playerMoveStorage;
@@ -756,6 +757,7 @@ namespace Pokemon
         /// </summary>
         void PlayerTurn()
         {
+            endAttack = false;
             state = BattleState.PLAYERTURN;
             dialogueText.text = "Choose an action";
             playerHUD.SetPokemon(GameController.playerPokemon);
@@ -863,7 +865,8 @@ namespace Pokemon
             {
                 dialogueText.text = "Your attack missed!";
                 yield return new WaitForSeconds(2);
-                state = BattleState.ENEMYTURN;
+                //state = BattleState.ENEMYTURN;
+                endAttack = true;
                 yield break;
             }
             yield break;
@@ -1166,6 +1169,7 @@ namespace Pokemon
             {
                 dialogueText.text = "The move failed!";
                 yield return new WaitForSeconds(2);
+                endAttack = true;
                 yield break;
             }
             yield break;
