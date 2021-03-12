@@ -1485,6 +1485,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: Encounter Trainer
+    clip: {fileID: 8300000, guid: 9673779e556901040ba0485e108303d2, type: 3}
+    volume: 0.1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
   Effectstrack: []
   SongPlaying:
     name: 
@@ -90602,6 +90608,7 @@ MonoBehaviour:
     - Hey! You have a Pokemon? Let's Battle 'em!
   exclamation: {fileID: 258166588}
   trainerName: Willy
+  isBeaten: 0
 --- !u!212 &1961365877
 SpriteRenderer:
   m_ObjectHideFlags: 0

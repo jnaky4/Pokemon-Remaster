@@ -80,6 +80,13 @@ namespace Pokemon
                         break;
                 }
             }
+            if (GameController.state == GameState.TrainerEncounter)
+            {
+                FindObjectOfType<SoundPlayer>().StopSong();
+
+                FindObjectOfType<SoundPlayer>().Play_New_Song("Encounter Trainer");
+                //FindObjectOfType<SoundPlayer>().T
+            }
             if (GameController.startCombatMusic == true)
             {
                 FindObjectOfType<SoundPlayer>().StopSong();

@@ -117,24 +117,13 @@ namespace Pokemon
             if (collider != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 var trainerInfo = collider.GetComponentInParent<TrainerController>();
-                GameController.state = GameState.Cutscene;
-                StartCoroutine(trainerInfo.TriggerTrainerBattle(transform.position));
-                /*trainer = trainerInfo.getName();
 
-                //Dictionary<string, Route> route1_dic = Route.get_route(location);
-                Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(location);
-               
-                for (int i = 0; i < 6; i++)
+                if (trainerInfo.isBeaten == false)
                 {
-                    if (route_trainers[trainer].trainer_team[i] != null)
-                        GameController.opponentPokemon[i] = route_trainers[trainer].trainer_team[i];
-                    else
-                        break;
+                    GameController.state = GameState.TrainerEncounter;
+                    character.Animator.IsMoving = false;
+                    StartCoroutine(trainerInfo.TriggerTrainerBattle(transform.position));
                 }
-                GameController.isCatchable = false;*/
-
-                //GameController.triggerCombat = true;
-
             }
         }
 

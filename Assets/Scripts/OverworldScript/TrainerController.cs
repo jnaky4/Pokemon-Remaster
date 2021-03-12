@@ -11,6 +11,8 @@ public class TrainerController : MonoBehaviour
 
     Character character;
 
+    public bool isBeaten = false;
+
     private void Awake()
     {
         character = GetComponent<Character>();
@@ -18,23 +20,27 @@ public class TrainerController : MonoBehaviour
 
     public IEnumerator TriggerTrainerBattle(/*PlayerMovement player*/ Vector3 playerPos)
     {
-        Debug.Log("Starting Trainer Battle");
-        exclamation.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        exclamation.SetActive(false);
+        if (isBeaten == false)
+        {
+            Debug.Log("Starting Trainer Battle");
+            exclamation.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            exclamation.SetActive(false);
 
-        //var diff = player.transform.position - transform.position;
-        var diff = playerPos - transform.position;
-        var moveVec = diff - diff.normalized;
-        moveVec = new Vector2(Mathf.Round(moveVec.x), Mathf.Round(moveVec.y));
+            //var diff = player.transform.position - transform.position;
+            var diff = playerPos - transform.position;
+            var moveVec = diff - diff.normalized;
+            moveVec = new Vector2(Mathf.Round(moveVec.x), Mathf.Round(moveVec.y));
 
-        yield return character.Move(moveVec);
+            yield return character.Move(moveVec);
 
-        yield return StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
-         {
-             Debug.Log("Starting Trainer Battle");
-         }));
-        startCombat();
+            yield return StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
+             {
+                 Debug.Log("Starting Trainer Battle");
+                 startCombat();
+             }));
+        }
+        //startCombat();
     }
 
     public void startCombat()
@@ -55,6 +61,7 @@ public class TrainerController : MonoBehaviour
         GameController.isCatchable = false;
 
         GameController.triggerCombat = true;
+        isBeaten = true;
     }
 
     public string getName()
