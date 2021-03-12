@@ -328,7 +328,7 @@ namespace Pokemon
             int numTimesPlayer = rnd.Next(playerMove.min_per_turn, playerMove.max_per_turn + 1);
             int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
 
-            if (playerMoveNum >= 0) playerUnit.DoPP(moveNum);
+            if (playerMoveNum >= 0) playerUnit.DoPP(playerMoveNum);
             if (moveNum >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
 
             if (playerMove.priority > enemyMove.priority)
@@ -484,8 +484,13 @@ namespace Pokemon
                 while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
             }
             enemyMoveName = enemyMove.name;
+            if (moveNum >= 0) enemyUnit.DoPP(moveNum);
             state = BattleState.ENEMYTURN;
-            yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+            for (int k = 0; k < numTimesEnemy; k++)
+            {
+                yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                if (breakOutOfDecision) break;
+            }
             if (breakOutOfDecision)
             {
                 StartCoroutine(SeeIfEndBattle());
@@ -530,7 +535,12 @@ namespace Pokemon
             }
             enemyMoveName = enemyMove.name;
             state = BattleState.ENEMYTURN;
-            yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+            if (moveNum >= 0) enemyUnit.DoPP(moveNum);
+            for (int k = 0; k < numTimesEnemy; k++)
+            {
+                yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                if (breakOutOfDecision) break;
+            }
             if (breakOutOfDecision)
             {
                 bool isEnd = true;
