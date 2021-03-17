@@ -106,6 +106,7 @@ namespace Pokemon
 
         bool breakOutOfDecision = false;
         bool endAttack = false;
+        bool deadPokemon = false;
         int playerContinuingAttack = 0;
         int enemyContinuingAttack = 0;
         Moves playerMoveStorage;
@@ -360,7 +361,7 @@ namespace Pokemon
                     yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
                     if (breakOutOfDecision) break;
                 }
-                if (!breakOutOfDecision)
+                if (!breakOutOfDecision && !deadPokemon)
                 {
                     state = BattleState.PLAYERTURN;
                     for (int k = 0; k < numTimesPlayer; k++)
@@ -380,7 +381,7 @@ namespace Pokemon
                         yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
                         if (breakOutOfDecision) break;
                     }
-                    if (!breakOutOfDecision)
+                    if (!breakOutOfDecision && !deadPokemon)
                     {
                         state = BattleState.PLAYERTURN;
                         for (int k = 0; k < numTimesPlayer; k++)
@@ -437,7 +438,7 @@ namespace Pokemon
                             yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
                             if (breakOutOfDecision) break;
                         }
-                        if (!breakOutOfDecision)
+                        if (!breakOutOfDecision && !deadPokemon)
                         {
                             state = BattleState.PLAYERTURN;
                             for (int k = 0; k < numTimesPlayer; k++)
@@ -449,6 +450,11 @@ namespace Pokemon
                     }
                 }
             }
+            if (deadPokemon)
+            {
+                yield return SwitchPokemonAfterDeath();
+            }
+
             if (breakOutOfDecision)
             {
                 yield return SeeIfEndBattle();
@@ -757,13 +763,23 @@ namespace Pokemon
         /// </summary>
         void PlayerTurn()
         {
+
             endAttack = false;
+            deadPokemon = false;
             breakOutOfDecision = false;
-            state = BattleState.PLAYERTURN;
-            dialogueText.text = "Choose an action";
-            playerHUD.SetPokemon(GameController.playerPokemon);
-            playerHUD.SetMoves(playerUnit);
-            SetUpButtons();
+            if (playerUnit.pokemon.current_hp == 0)
+            {
+                state = BattleState.CHANGEPOKEMON;
+                SwitchPokemonAfterDeath();
+            }
+            else
+            {
+                state = BattleState.PLAYERTURN;
+                dialogueText.text = "Choose an action";
+                playerHUD.SetPokemon(GameController.playerPokemon);
+                playerHUD.SetMoves(playerUnit);
+                SetUpButtons();
+            }
         }
 
         /// <summary>
@@ -988,79 +1004,91 @@ namespace Pokemon
                 dialogueText.text = "That Pokemon has no HP remaining!";
                 yield return new WaitForSeconds(2);
                 if (state != BattleState.CHANGEPOKEMON) PlayerTurn();
-                else SwitchPokemonAfterDeath();
+                else yield return SwitchPokemonAfterDeath();
                 yield break;
             }
-            if (activePokemon == num) //If you try to swap out the current active Pokemon.
+            else if (activePokemon == num) //If you try to swap out the current active Pokemon.
             {
                 dialogueText.text = "You already have that Pokemon out!";
                 yield return new WaitForSeconds(2);
                 if (state != BattleState.CHANGEPOKEMON) PlayerTurn();
-                else SwitchPokemonAfterDeath();
+                else yield return SwitchPokemonAfterDeath();
                 yield break;
             }
-
-            playerContinuingAttack = 0;
-
-            dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
-            playerUnit.pokemon.reset_stages();
-            GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
-            yield return new WaitForSeconds(2);
-            playerUnit.pokemon = GameController.playerPokemon[num];
-            activePokemon = num;
-
-            playerHUD.SetActivePokemon(GameController.playerPokemon, num, playerUnit);
-            SetPlayerSprite(playerUnit, playerSprite);
-            dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
-            yield return new WaitForSeconds(2);
-
-            //Sets the moves buttons up.
-            if (playerUnit.pokemon.currentMoves[0] == null)
-            {
-                b5GO.SetActive(false);
-            }
             else
             {
-                b5GO.SetActive(true);
-            }
-            if (playerUnit.pokemon.currentMoves[1] == null)
-            {
-                b6GO.SetActive(false);
-            }
-            else
-            {
-                b6GO.SetActive(true);
-            }
-            if (playerUnit.pokemon.currentMoves[2] == null)
-            {
-                b7GO.SetActive(false);
-            }
-            else
-            {
-                b7GO.SetActive(true);
-            }
-            if (playerUnit.pokemon.currentMoves[3] == null)
-            {
-                b8GO.SetActive(false);
-            }
-            else
-            {
-                b8GO.SetActive(true);
-            }
+                playerContinuingAttack = 0;
 
-            state = BattleState.ENEMYTURN;
-            backPoke.interactable = true;
+                dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
+                playerUnit.pokemon.reset_stages();
+                GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
+                yield return new WaitForSeconds(2);
+                playerUnit.pokemon = GameController.playerPokemon[num];
+                activePokemon = num;
 
-            StartCoroutine(DecisionSwitch());
+                playerHUD.SetActivePokemon(GameController.playerPokemon, num, playerUnit);
+                SetPlayerSprite(playerUnit, playerSprite);
+                dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
+                yield return new WaitForSeconds(2);
+
+                //Sets the moves buttons up.
+                if (playerUnit.pokemon.currentMoves[0] == null)
+                {
+                    b5GO.SetActive(false);
+                }
+                else
+                {
+                    b5GO.SetActive(true);
+                }
+                if (playerUnit.pokemon.currentMoves[1] == null)
+                {
+                    b6GO.SetActive(false);
+                }
+                else
+                {
+                    b6GO.SetActive(true);
+                }
+                if (playerUnit.pokemon.currentMoves[2] == null)
+                {
+                    b7GO.SetActive(false);
+                }
+                else
+                {
+                    b7GO.SetActive(true);
+                }
+                if (playerUnit.pokemon.currentMoves[3] == null)
+                {
+                    b8GO.SetActive(false);
+                }
+                else
+                {
+                    b8GO.SetActive(true);
+                }
+                if (state == BattleState.CHANGEPOKEMON)
+                {
+                    state = BattleState.PLAYERTURN;
+                    PlayerTurn();
+                }
+                else
+                {
+                    state = BattleState.ENEMYTURN;
+                    backPoke.interactable = true;
+
+                    StartCoroutine(DecisionSwitch());
+                }
+            }
+            yield break;
         }
         /// <summary>
         /// Function that is called after one of your Pokemon dies.
         /// </summary>
-        void SwitchPokemonAfterDeath()
+        IEnumerator SwitchPokemonAfterDeath()
         {
+            state = BattleState.CHANGEPOKEMON;
             playerHUD.SetPokemon(GameController.playerPokemon);
             backPoke.interactable = false;
             OpenPokemonMenu();
+            yield break;
         }
         #endregion
         #region Enemy attack functions
@@ -1158,10 +1186,11 @@ namespace Pokemon
                     }
                     else //If you have other Pokemon.
                     {
+                        deadPokemon = true;
                         state = BattleState.CHANGEPOKEMON;
                         dialogueText.text = playerUnit.pokemon.name + " faints!";
                         yield return new WaitForSeconds(2);
-                        SwitchPokemonAfterDeath();
+                        yield return SwitchPokemonAfterDeath();
                         yield break;
                     }
                 }
