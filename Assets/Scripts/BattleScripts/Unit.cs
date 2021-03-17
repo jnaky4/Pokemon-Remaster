@@ -71,7 +71,7 @@ namespace Pokemon
 
                 try
                 {
-                    if (move.current_stat_change.CompareTo("null") == 0) //If this does actual attacking.
+                    if (move.base_power > 0) //If this does actual attacking.
                     {
                         damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2; //Basic attacking
                         damage = damage * (critical * stab * random * type1Defend * type2Defend * pokemon.burn); //Extra multipliers. Burn is just 1 at the moment.
