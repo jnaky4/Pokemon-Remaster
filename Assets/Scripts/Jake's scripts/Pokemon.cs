@@ -232,6 +232,12 @@ namespace Pokemon
         public Moves struggle = Moves.get_move("Struggle");
         public int currentEXP;
 
+        public double lvl_speed;
+        public int base_lvl_exp;
+        public int current_exp;
+        public int next_lvl_exp;
+        public bool time_to_evolve;
+
         public void reset_stages()
         {
             critical_stage = 0;
@@ -254,16 +260,7 @@ namespace Pokemon
             this.base_sp_defense = int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["Sp. Def"].ToString());
             this.base_speed = int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["Speed"].ToString());
 
-
-            //iv is set to 30
-            //ev set for +20 for each stat
-            //510 total ev / 4 = 127.5 / 6 = 21.25, each pokemon should have +21.25 to each stat when using all evs
-            this.max_hp = (((((this.base_hp + this.iv) * 2) + 20) * this.level) / 100) + this.level + 10;
-            this.max_attack = (((((this.base_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.max_defense = (((((this.base_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.max_sp_attack = (((((this.base_sp_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.max_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.max_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            update_current_stats();
 
             this.current_hp = max_hp;
             this.current_attack = max_attack;
@@ -309,6 +306,127 @@ namespace Pokemon
             }
             //Debug.Log(image1);
             //Debug.Log(image2);
+        }
+
+        public void set_exp()
+        {
+            //leveling is multiplier * level^3 up to level 50
+            if (this.level <= 50)
+            {
+                this.base_lvl_exp = (int)(this.lvl_speed * Math.Pow(this.level, 3));
+                this.next_lvl_exp = (int)(this.lvl_speed * Math.Pow(this.level + 1, 3));
+
+                if (this.current_exp == 0 || this.current_exp < this.base_lvl_exp)
+                {
+                    this.current_exp = this.base_lvl_exp;
+                }
+            }
+
+            //after level 50, next level is 7500 exp from 51 to 100
+            else
+            {
+                this.base_lvl_exp = (int)(this.lvl_speed * Math.Pow(50, 3)) + (7500 * (this.level - 50));
+                this.next_lvl_exp = (int)(this.lvl_speed * Math.Pow(50, 3)) + (7500 * (this.level + 1 - 50));
+                if (this.current_exp == 0)
+                {
+                    this.current_exp = this.base_lvl_exp;
+                }
+            }
+
+        }
+
+        public void update_current_stats()
+        {
+            //iv is set to 30 
+            //ev set for +20 for each stat
+            //510 total ev / 4 = 127.5 / 6 = 21.25, each pokemon should have +21.25 to each stat when using all evs
+            this.current_hp = (((((this.base_hp + this.iv) * 2) + 20) * this.level) / 100) + this.level + 10;
+            this.current_attack = (((((this.base_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.current_defense = (((((this.base_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.current_sp_attack = (((((this.base_sp_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.current_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.current_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
+        }
+
+        public Moves check_learnset()
+        {
+            foreach (Learnset move in this.learnset)
+            {
+                if (this.level == move.level)
+                {
+                    return move.move;
+                }
+            }
+
+
+            return null;
+        }
+
+
+        public bool check_evolve()
+        {
+            if (this.pokedex_entry.evolve_level != -1)
+            {
+                if (this.level >= this.pokedex_entry.evolve_level)
+                {
+                    return true;
+                }
+            }
+            return false;
+
+        }
+
+
+        //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
+        public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used, double trainer_wild_multipllier = 1)
+        {
+            //EXP = (a * t * e * b * L) / (7 * s)
+            //a is wild or trainer pokemon: 1 or 1.5
+            //t is trainer_pokemon or traded, always 1 for game
+            //e is if lucky egg, always 1
+            //b is enemy_base_exp
+            //L is enemy_level
+            int exp_gained = (int)(trainer_wild_multipllier * 1 * 1 * enemy_base_exp * enemy_level) / (7 * num_player_pokemon_used);
+            this.current_exp += exp_gained;
+
+            Debug.Log("base exp " + this.base_lvl_exp);
+            Debug.Log("current exp " + this.current_exp);
+            Debug.Log("next level exp " + this.next_lvl_exp);
+
+            if (this.current_exp >= this.next_lvl_exp)
+            {
+                Debug.Log("Pokemon Leveled!");
+                this.level += 1;
+
+                //update stats
+                this.update_current_stats();
+
+
+                //check if learnable move
+                Moves temp_new_move = this.check_learnset();
+                if (temp_new_move != null)
+                {
+                    Debug.Log("Your pokemon learned a new move! " + temp_new_move.name);
+
+                }
+
+                //check evolve
+                this.time_to_evolve = this.check_evolve();
+                if (this.time_to_evolve)
+                {
+                    Debug.Log("Your Pokemon is ready to evolve!");
+                }
+
+                //update exp
+                this.set_exp();
+                Debug.Log("New base EXP " + this.base_lvl_exp);
+                Debug.Log("Current EXP " + this.current_exp);
+                Debug.Log("New Next levl EXP " + this.next_lvl_exp);
+
+            }
+
+            return exp_gained;
+
         }
     }
 }

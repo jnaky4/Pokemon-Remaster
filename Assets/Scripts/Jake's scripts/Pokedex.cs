@@ -24,6 +24,7 @@ namespace Pokemon
         public string category;
         public string image1;
         public string image2;
+        public int base_exp;
 
         public Pokedex(int dexnum)
         {
@@ -50,17 +51,17 @@ namespace Pokemon
             this.weight = double.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Weight"].ToString());
             this.description = Pokedex.all_pokedex[this.dexnum - 1]["Description"].ToString();
             this.category = Pokedex.all_pokedex[this.dexnum - 1]["Category"].ToString();
+            this.base_exp = int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Base_Exp"].ToString());
 
-            
 
-/*            this.type1 = pokedex[dexnum][2];
-            this.type2 = pokedex[dexnum][3];
-            this.stage = pokedex[dexnum][4];
-            this.gender_ratio = pokedex[dexnum][5];
-            this.height = Convert.ToDouble(pokedex[dexnum][6]);
-            this.weight = Convert.ToDouble(pokedex[dexnum][7]);
-            this.description = pokedex[dexnum][8];
-            this.category = pokedex[dexnum][9];*/
+            /*            this.type1 = pokedex[dexnum][2];
+                        this.type2 = pokedex[dexnum][3];
+                        this.stage = pokedex[dexnum][4];
+                        this.gender_ratio = pokedex[dexnum][5];
+                        this.height = Convert.ToDouble(pokedex[dexnum][6]);
+                        this.weight = Convert.ToDouble(pokedex[dexnum][7]);
+                        this.description = pokedex[dexnum][8];
+                        this.category = pokedex[dexnum][9];*/
             //this.image1 = pokedex[dexnum][10];
             //this.image2 = pokedex[dexnum][11];
         }
