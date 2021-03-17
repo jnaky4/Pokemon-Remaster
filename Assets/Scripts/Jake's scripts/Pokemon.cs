@@ -262,12 +262,12 @@ namespace Pokemon
 
             update_current_stats();
 
-            this.current_hp = max_hp;
-            this.current_attack = max_attack;
-            this.current_defense = max_defense;
-            this.current_sp_attack = max_sp_attack;
-            this.current_sp_defense = max_sp_defense;
-            this.current_speed = max_speed;
+            this.current_hp = this.max_hp;
+            this.current_attack = this.max_attack;
+            this.current_defense = this.max_defense;
+            this.current_sp_attack = this.max_sp_attack;
+            this.current_sp_defense = this.max_sp_defense;
+            this.current_speed = this.max_speed;
         }
 
         public void print_pokemon()
@@ -340,12 +340,12 @@ namespace Pokemon
             //iv is set to 30 
             //ev set for +20 for each stat
             //510 total ev / 4 = 127.5 / 6 = 21.25, each pokemon should have +21.25 to each stat when using all evs
-            this.current_hp = (((((this.base_hp + this.iv) * 2) + 20) * this.level) / 100) + this.level + 10;
-            this.current_attack = (((((this.base_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.current_defense = (((((this.base_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.current_sp_attack = (((((this.base_sp_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.current_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
-            this.current_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_hp = (((((this.base_hp + this.iv) * 2) + 20) * this.level) / 100) + this.level + 10;
+            this.max_attack = (((((this.base_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_defense = (((((this.base_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_sp_attack = (((((this.base_sp_attack + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_sp_defense = (((((this.base_sp_defense + this.iv) * 2) + 20) * this.level) / 100) + 5;
+            this.max_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
         }
 
         public Moves check_learnset()
