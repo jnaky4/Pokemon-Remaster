@@ -195,10 +195,12 @@ namespace Pokemon
             //GameObject pokeMenu = Instantiate(pokemonMenuUI);
 
             GameObject playerGO = Instantiate(playerPrefab);
+            //playerGO.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 20, Screen.height - 20, 10));
             playerUnit = playerGO.GetComponent<Unit>();
+            playerUnit.transform.localPosition = new Vector3(-50, -50, 0);
             Destroy(playerGO);
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < GameController.playerPokemon.Count(s => s != null); i++)
             {
                 if (GameController.playerPokemon[i].current_hp > 0)
                 {
@@ -737,13 +739,14 @@ namespace Pokemon
                 default:
                     break;
             }
+            Debug.Log(attack.base_power);
             if (attack.base_power > 0)
             {
                 if (GetCategoryOfMove(attack).CompareTo("Physical") == 0)
                 {
                     attacker.SetDamage(defender.pokemon.current_defense, attacker.pokemon.current_attack, attack.base_power, attack, crit, type1, type2);
                 }
-                else if (GetCategoryOfMove(attack).CompareTo("Special") == 0)
+                else
                 {
                     attacker.SetDamage(defender.pokemon.current_sp_defense, attacker.pokemon.current_sp_attack, attack.base_power, attack, crit, type1, type2);
                 }
@@ -809,16 +812,25 @@ namespace Pokemon
                 }
                 endofanimation = false;
 
-                if (attack.current_stat_change.CompareTo("nulal") != 0) playerUnit.SetStages(attack, enemyUnit);
+                if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
                 double super = DoDamage(playerUnit, enemyUnit, attack, crit);
+                Debug.Log(playerUnit.damage);
 
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
 
-                if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
-                else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
-                else //If this move is a damage dealing move.
+                if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
+                {
+                    dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
+                    yield return new WaitForSeconds(2);
+                }
+                else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0)
+                {
+                    dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
+                    yield return new WaitForSeconds(2);
+                }
+                if (attack.base_power != -1)//If this move is a damage dealing move.
                 {
                     if (crit)
                     {
@@ -1640,27 +1652,54 @@ namespace Pokemon
         #region Sprite functions
         void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
         {
-            Texture2D SpriteTexture = new Texture2D(2, 2);
+            float x = 0, y = 0;
+            if (GameController.location.CompareTo("Route 1") == 0)
+            {
+                x = 0.58f;
+                y = 0.33f;
+            }
+            Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData;
             fileData = File.ReadAllBytes(unit.pokemon.image1);
             SpriteTexture.LoadImage(fileData);
-            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0,0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+            //sprite.spriteSortPoint
 
             sprite.sprite = NewSprite;
+            Debug.Log(sprite.sprite.rect.position);
+            Debug.Log(sprite.transform.position);
+            //(-8.1, -1.3, 1000.0)
         }
         void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
         {
-            Texture2D SpriteTexture = new Texture2D(2, 2);
+            float x = 0, y = 0;
+            if (GameController.location.CompareTo("Route 1") == 0)
+            {
+                x = 2.80f;
+                y = 1.75f;
+            }
+            Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData;
             fileData = File.ReadAllBytes(unit.pokemon.image2);
             SpriteTexture.LoadImage(fileData);
-            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
 
             sprite.sprite = NewSprite;
         }
 
         public void SetBackground()
         {
+            float x = 0, y = 0;
+            /*if (GameController.location.CompareTo("Route 1") == 0)
+            {
+                x = 0;
+                y = 0;
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 10;
+                y = 10;
+            }*/
             Texture2D SpriteTexture = new Texture2D(2, 2);
             string path;
             if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -1670,7 +1709,7 @@ namespace Pokemon
 
             byte[] fileData = File.ReadAllBytes(Directory.GetCurrentDirectory() + path + GameController.location + ".png");
             SpriteTexture.LoadImage(fileData);
-            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
 
             background.sprite = NewSprite;
         }
