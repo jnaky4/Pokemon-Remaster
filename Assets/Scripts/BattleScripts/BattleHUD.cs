@@ -23,6 +23,11 @@ namespace Pokemon
         public Text moves3;
         public Text moves4;
 
+        public SpriteRenderer move1type;
+        public Image move2type;
+        public Image move3type;
+        public Image move4type;
+
         public Text pokeBalls;
         public Text greatBalls;
         public Text ultraBalls;
@@ -95,16 +100,122 @@ namespace Pokemon
         /// <param name="unit">The unit we want to set.</param>
         public void SetMoves(Unit unit)
         {
-            if (unit.pokemon.currentMoves[0] != null) moves1.text = unit.pokemon.currentMoves[0].name + " " + unit.pokemon.currentMoves[0].current_pp + "/" + unit.pokemon.currentMoves[0].maxpp;
-            if (unit.pokemon.currentMoves[1] != null) moves2.text = unit.pokemon.currentMoves[1].name + " " + unit.pokemon.currentMoves[1].current_pp + "/" + unit.pokemon.currentMoves[1].maxpp;
-            if (unit.pokemon.currentMoves[2] != null) moves3.text = unit.pokemon.currentMoves[2].name + " " + unit.pokemon.currentMoves[2].current_pp + "/" + unit.pokemon.currentMoves[2].maxpp;
-            if (unit.pokemon.currentMoves[3] != null) moves4.text = unit.pokemon.currentMoves[3].name + " " + unit.pokemon.currentMoves[3].current_pp + "/" + unit.pokemon.currentMoves[3].maxpp;
-        }
+            if (unit.pokemon.currentMoves[0] != null)
+            {
+                moves1.text = unit.pokemon.currentMoves[0].name + " " + unit.pokemon.currentMoves[0].current_pp + "/" + unit.pokemon.currentMoves[0].maxpp;
+                var path = Directory.GetCurrentDirectory();
+                try
+                {
+                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                    {
+                        Texture2D SpriteTexture = new Texture2D(0, 0);
+                        byte[] fileData;
+                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[0].move_type.type + ".png");
+                        SpriteTexture.LoadImage(fileData);
+                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, 30, 30), new Vector2(0, 0));
+                        move1type.sprite = NewSprite;
+                    }
+                    else
+                    {
+                        Texture2D SpriteTexture = new Texture2D(0, 0);
+                        byte[] fileData;
+                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[0].move_type.type + ".png");
+                        SpriteTexture.LoadImage(fileData);
+                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(-63, 0, 100, 100), new Vector2(0, 0));
+                        move1type.sprite = NewSprite;
+                    }
+                }
+                catch (FileNotFoundException)
+                {
+                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                    {
+                        Texture2D SpriteTexture = new Texture2D(0, 0);
+                        byte[] fileData;
+                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type Normal.png");
+                        SpriteTexture.LoadImage(fileData);
+                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, 100, 100), new Vector2(0, 0));
+                        move1type.sprite = NewSprite;
+                    }
+                    else
+                    {
+                        Texture2D SpriteTexture = new Texture2D(0, 0);
+                        byte[] fileData;
+                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type Normal.png");
+                        SpriteTexture.LoadImage(fileData);
+                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(-63, 0, 100, 100), new Vector2(0, 0));
+                        move1type.sprite = NewSprite;
+                    }
+                }
 
-        /// <summary>
-        /// Sets the balls of the player.
-        /// </summary>
-        /// <param name="player">The player whose balls we want to set.</param>
+                /*            if (unit.pokemon.currentMoves[1] != null)
+                            {
+                                moves2.text = unit.pokemon.currentMoves[1].name + " " + unit.pokemon.currentMoves[1].current_pp + "/" + unit.pokemon.currentMoves[1].maxpp;
+                                var path = Directory.GetCurrentDirectory();
+                                try
+                                {
+                                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                                    {
+                                        //Debug.Log("Does something happen here?");
+                                        move2type = path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png";
+                                    }
+                                    else
+                                    {
+                                        move2type = path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png";
+                                    }
+                                }
+                                catch (FileNotFoundException)
+                                {
+                                    move2type = path + "\\Images\\Menu Icons\\" + "Type Normal.png";
+                                }
+                            }
+                            if (unit.pokemon.currentMoves[2] != null)
+                            {
+                                moves3.text = unit.pokemon.currentMoves[2].name + " " + unit.pokemon.currentMoves[2].current_pp + "/" + unit.pokemon.currentMoves[2].maxpp;
+                                var path = Directory.GetCurrentDirectory();
+                                try
+                                {
+                                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                                    {
+                                        //Debug.Log("Does something happen here?");
+                                        move3type = path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png";
+                                    }
+                                    else
+                                    {
+                                        move3type = path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png";
+                                    }
+                                }
+                                catch (FileNotFoundException)
+                                {
+                                    move3type = path + "\\Images\\Menu Icons\\" + "Type Normal.png";
+                                }
+                            }
+                            if (unit.pokemon.currentMoves[3] != null)
+                            {
+                                moves4.text = unit.pokemon.currentMoves[3].name + " " + unit.pokemon.currentMoves[3].current_pp + "/" + unit.pokemon.currentMoves[3].maxpp;
+                                var path = Directory.GetCurrentDirectory();
+                                try
+                                {
+                                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                                    {
+                                        //Debug.Log("Does something happen here?");
+                                        move4type = path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[3].move_type.type + ".png";
+                                    }
+                                    else
+                                    {
+                                        move4type = path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[3].move_type.type + ".png";
+                                    }
+                                }
+                                catch (FileNotFoundException)
+                                {
+                                    move4type = path + "\\Images\\Menu Icons\\" + "Type Normal.png";
+                                }
+                            }*/
+            }
+        }
+            /// <summary>
+            /// Sets the balls of the player.
+            /// </summary>
+            /// <param name="player">The player whose balls we want to set.</param>
         public void SetBalls(PlayerBattle player)
         {
             if (player.pokeBalls) pokeBalls.text = "Poke balls (" + player.numPokeBalls + ")";

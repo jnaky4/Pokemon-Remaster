@@ -1660,7 +1660,7 @@ namespace Pokemon
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
             {
-                x = -0.55f;
+                x = -0.85f;
                 y = 0.80f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
@@ -1772,9 +1772,8 @@ namespace Pokemon
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && !isPlayer)
             {
-
-                x = -0.675f;
-                y = 0.72f;
+                x = -0.95f;
+                y = 0.75f;
             }
             for (int i = 0; i < files.Length - 1; i++)
             {
