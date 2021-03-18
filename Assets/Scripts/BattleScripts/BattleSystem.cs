@@ -1660,8 +1660,8 @@ namespace Pokemon
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
             {
-                x = 0.45f;
-                y = 0.50f;
+                x = -0.55f;
+                y = 0.80f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData;
@@ -1681,12 +1681,12 @@ namespace Pokemon
             if (GameController.location.CompareTo("Route 1") == 0)
             {
                 x = 0f;
-                y = 0f;
+                y = 0.20f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
             {
-                x = 0f;
-                y = 0f;
+                x = -0.60f;
+                y = 0.75f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData;
@@ -1756,15 +1756,25 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 2.70f;
-                y = 1.50f;
+                x = 2.80f;
+                y = 1.65f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
 
                 x = 0.40f;
                 y = 0.40f;
-                Debug.Log(x + " " + y);
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
+            {
+                x = 2.25f;
+                y = 2.25f;
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0 && !isPlayer)
+            {
+
+                x = -0.675f;
+                y = 0.72f;
             }
             for (int i = 0; i < files.Length - 1; i++)
             {
@@ -1777,9 +1787,6 @@ namespace Pokemon
                 AttackSprites.Add(NewSprite);
             }
             AttackSprites.TrimExcess();
-            Debug.Log(enemyAttackSprite.transform.position.x + " " + enemyAttackSprite.transform.position.y);
-
-            Debug.Log(path);
         }
         #endregion
         #region Jake's functions
