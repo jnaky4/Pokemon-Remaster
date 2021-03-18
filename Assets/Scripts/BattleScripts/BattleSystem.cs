@@ -1716,6 +1716,8 @@ namespace Pokemon
 
         public void GetAttackSprites(string attack)
         {
+            bool isPlayer = false;
+            if (state == BattleState.PLAYERTURN) isPlayer = true;
             attack = attack.Replace(" ", "_");
 
             var path = Directory.GetCurrentDirectory();
@@ -1737,21 +1739,35 @@ namespace Pokemon
 
             string[] files = Directory.GetFiles(path, "*.png");
 
-            Debug.Log(playerUnit.pokemon.currentMoves[2].name);
+            //Debug.Log(playerUnit.pokemon.currentMoves[2].name);
 
             AttackSprites.Clear();
             AttackSprites.Add(null);
+            float x = 0, y = 0;
+            if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
+            {
+                x = 2.70f;
+                y = 1.50f;
+            }
+            if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
+            {
+
+                x = 0.40f;
+                y = 0.40f;
+                Debug.Log(x + " " + y);
+            }
             for (int i = 0; i < files.Length - 1; i++)
             {
-                Texture2D SpriteTexture = new Texture2D(2, 2);
+                Texture2D SpriteTexture = new Texture2D(0, 0);
                 byte[] fileData;
                 fileData = File.ReadAllBytes(files[i]);
                 SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0,0, SpriteTexture.width, SpriteTexture.height), new Vector2(x,y));
 
                 AttackSprites.Add(NewSprite);
             }
             AttackSprites.TrimExcess();
+            Debug.Log(enemyAttackSprite.transform.position.x + " " + enemyAttackSprite.transform.position.y);
 
             Debug.Log(path);
         }

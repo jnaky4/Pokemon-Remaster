@@ -12,7 +12,7 @@ namespace Pokemon
         int spawnRate = 10;
 
         //uncomment this for high spawn rate
-        //int spawnrate = 101;
+        //int spawnRate = 101;
 
         //uncomment this for no spawn rate
         //int spawnRate = 0;
@@ -32,7 +32,7 @@ namespace Pokemon
         Vector2 movement;
 
         private void Awake()
-        { 
+        {
             character = GetComponent<Character>();
             transform.position = startingPosition.initialValue;
         }
