@@ -1658,6 +1658,11 @@ namespace Pokemon
                 x = 0.58f;
                 y = 0.33f;
             }
+            if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 0.45f;
+                y = 0.50f;
+            }
             Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData;
             fileData = File.ReadAllBytes(unit.pokemon.image1);
@@ -1675,8 +1680,13 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
             {
-                x = 2.80f;
-                y = 1.75f;
+                x = 0f;
+                y = 0f;
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 0f;
+                y = 0f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData;
