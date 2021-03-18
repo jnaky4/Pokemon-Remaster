@@ -1700,16 +1700,6 @@ namespace Pokemon
         public void SetBackground()
         {
             float x = 0, y = 0;
-            /*if (GameController.location.CompareTo("Route 1") == 0)
-            {
-                x = 0;
-                y = 0;
-            }
-            if (GameController.location.CompareTo("Pallet Town") == 0)
-            {
-                x = 10;
-                y = 10;
-            }*/
             Texture2D SpriteTexture = new Texture2D(2, 2);
             string path;
             if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -1773,7 +1763,7 @@ namespace Pokemon
             if (GameController.location.CompareTo("Pallet Town") == 0 && !isPlayer)
             {
                 x = -0.95f;
-                y = 0.75f;
+                y = 0.775f;
             }
             for (int i = 0; i < files.Length - 1; i++)
             {
