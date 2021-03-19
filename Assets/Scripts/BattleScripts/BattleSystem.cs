@@ -70,10 +70,10 @@ namespace Pokemon
 
         public static bool attackMenuOpen = false;
         public GameObject attackMenuUI;
-        public Button attack1Button;
-        public Button attack2Button;
-        public Button attack3Button;
-        public Button attack4Button;
+        public static Button attack1Button;
+        public static Button attack2Button;
+        public static Button attack3Button;
+        public static Button attack4Button;
 
         public Button pokemon1Button;
         public Button pokemon2Button;
@@ -88,14 +88,14 @@ namespace Pokemon
         public Button balls2Button;
         public Button balls3Button;
         public Button balls4Button;
-        public GameObject b1GO;
-        public GameObject b2GO;
-        public GameObject b3GO;
-        public GameObject b4GO;
-        public GameObject b5GO;
-        public GameObject b6GO;
-        public GameObject b7GO;
-        public GameObject b8GO;
+        public GameObject ball1;
+        public GameObject ball2;
+        public GameObject ball3;
+        public GameObject ball4;
+        public GameObject move1;
+        public GameObject move2;
+        public GameObject move3;
+        public GameObject move4;
         public GameObject poke1;
         public GameObject poke2;
         public GameObject poke3;
@@ -223,14 +223,14 @@ namespace Pokemon
 
             player = playerTemp;
 
-            if (!player.pokeBalls) b1GO.SetActive(false);
-            if (!player.greatBalls) b2GO.SetActive(false);
-            if (!player.ultraBalls) b3GO.SetActive(false);
-            if (!player.masterBalls) b4GO.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[0].name, "default") == 0) b5GO.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[1].name, "default") == 0) b6GO.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[2].name, "default") == 0) b7GO.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[3].name, "default") == 0) b8GO.SetActive(false);
+            if (!player.pokeBalls) ball1.SetActive(false);
+            if (!player.greatBalls) ball2.SetActive(false);
+            if (!player.ultraBalls) ball3.SetActive(false);
+            if (!player.masterBalls) ball4.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[0].name, "default") == 0) move1.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[1].name, "default") == 0) move2.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[2].name, "default") == 0) move3.SetActive(false);
+            if (String.Compare(playerUnit.pokemon.currentMoves[3].name, "default") == 0) move4.SetActive(false);
 
             if (GameController.playerPokemon[1] == null) poke2.SetActive(false);
             if (GameController.playerPokemon[2] == null) poke3.SetActive(false);
@@ -1046,35 +1046,35 @@ namespace Pokemon
                 //Sets the moves buttons up.
                 if (playerUnit.pokemon.currentMoves[0] == null)
                 {
-                    b5GO.SetActive(false);
+                    move1.SetActive(false);
                 }
                 else
                 {
-                    b5GO.SetActive(true);
+                    move1.SetActive(true);
                 }
                 if (playerUnit.pokemon.currentMoves[1] == null)
                 {
-                    b6GO.SetActive(false);
+                    move2.SetActive(false);
                 }
                 else
                 {
-                    b6GO.SetActive(true);
+                    move2.SetActive(true);
                 }
                 if (playerUnit.pokemon.currentMoves[2] == null)
                 {
-                    b7GO.SetActive(false);
+                    move3.SetActive(false);
                 }
                 else
                 {
-                    b7GO.SetActive(true);
+                    move3.SetActive(true);
                 }
                 if (playerUnit.pokemon.currentMoves[3] == null)
                 {
-                    b8GO.SetActive(false);
+                    move4.SetActive(false);
                 }
                 else
                 {
-                    b8GO.SetActive(true);
+                    move4.SetActive(true);
                 }
                 if (state == BattleState.CHANGEPOKEMON)
                 {
