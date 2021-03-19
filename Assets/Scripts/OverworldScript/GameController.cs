@@ -35,6 +35,7 @@ namespace Pokemon
         public static bool endCombat = false;
         public static bool startCombatMusic = false;
         public static bool endCombatMusic = false;
+        public static string music = "Pallet Town";
 
         // Start is called before the first frame update
         void Awake ()
@@ -97,7 +98,8 @@ namespace Pokemon
                 SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
                 overworldCam.SetActive(false);
                 triggerCombat = false;
-                startCombatMusic = true;
+                //music = "Battle Wild Begin";
+                //startCombatMusic = true;
             }
             if (endCombat == true)
             {
@@ -106,7 +108,8 @@ namespace Pokemon
                 eventSystem.SetActive(true);
                 overworldCam.SetActive(true);
                 //player.SetActive(true);
-                endCombatMusic = true;
+                //endCombatMusic = true;
+                music = location;
                 endCombat = false;
             }
         }

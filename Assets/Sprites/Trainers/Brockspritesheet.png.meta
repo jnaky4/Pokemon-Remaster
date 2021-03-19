@@ -1,7 +1,43 @@
 fileFormatVersion: 2
 guid: b8d3031f4d58b4598ae0219fb321dc19
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7953096670909868813
+    second: Brockspritesheet_0
+  - first:
+      213: 319059362355685990
+    second: Brockspritesheet_1
+  - first:
+      213: 1647919839033867768
+    second: Brockspritesheet_2
+  - first:
+      213: 8545668345844169350
+    second: Brockspritesheet_3
+  - first:
+      213: 8037639964125636634
+    second: Brockspritesheet_4
+  - first:
+      213: 1186936454062144601
+    second: Brockspritesheet_5
+  - first:
+      213: 1796130227823651847
+    second: Brockspritesheet_6
+  - first:
+      213: -8440429151238253962
+    second: Brockspritesheet_7
+  - first:
+      213: -6510945644057669716
+    second: Brockspritesheet_8
+  - first:
+      213: -7120503552074745475
+    second: Brockspritesheet_9
+  - first:
+      213: -8868683230707950817
+    second: Brockspritesheet_10
+  - first:
+      213: -4797863891109893462
+    second: Brockspritesheet_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -113,7 +149,259 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Brockspritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 115
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0bacede8431f5e60800000000000000
+      internalID: 7953096670909868813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 114
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66a2973bcc68d6400800000000000000
+      internalID: 319059362355685990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 114
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fdbeefcc569ed610800000000000000
+      internalID: 1647919839033867768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 78
+        width: 17
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a775a6510589670800000000000000
+      internalID: 8545668345844169350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 77
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a18213e46fe6b8f60800000000000000
+      internalID: 8037639964125636634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 78
+        width: 17
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95cf5539a68d87010800000000000000
+      internalID: 1186936454062144601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 44
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c25c70de22de810800000000000000
+      internalID: 1796130227823651847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 43
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672979008629dda80800000000000000
+      internalID: -8440429151238253962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 43
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cafc016ee6974a5a0800000000000000
+      internalID: -6510945644057669716
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 8
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d797da4deb3ee2d90800000000000000
+      internalID: -7120503552074745475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 7
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1b5038079b1ce480800000000000000
+      internalID: -8868683230707950817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Brockspritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 8
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaaa8b116309a6db0800000000000000
+      internalID: -4797863891109893462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -60,8 +60,25 @@ public class TrainerController : MonoBehaviour
         }
         GameController.isCatchable = false;
 
+        GameController.music = "Battle Trainer Begin";
         GameController.triggerCombat = true;
+
+        //fix this later this is a dirty fix
         isBeaten = true;
+        reward();
+    }
+
+    //badges
+    /*public static Dictionary<string, int> badges_completed = new Dictionary<string, int>()
+                {{"Rock",1},{"Water",1},{"Electric",1},{"Grass",1},{"Poison",1},{"Psychic",1},{"Fire",1},{"Ground",1}
+                };*/
+
+    public void reward()
+    {
+        if (name == "Brock")
+        {
+            GameController.badges_completed.Add("Rock", 1);
+        }
     }
 
     public string getName()
