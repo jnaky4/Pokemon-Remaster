@@ -28,6 +28,13 @@ namespace Pokemon
         public Button move3Button;
         public Button move4Button;
 
+        public Image pokemon1Image;
+        public Image pokemon2Image;
+        public Image pokemon3Image;
+        public Image pokemon4Image;
+        public Image pokemon5Image;
+        public Image pokemon6Image;
+
         public Image move1type;
         public Image move2type;
         public Image move3type;
@@ -402,12 +409,68 @@ namespace Pokemon
         /// <param name="pokemons">The array of pokemon to update in the pokemon menu.</param>
         public void SetPokemon(Pokemon[] pokemons)
         {
-            if (pokemons[0] != null) pokemon1.text = pokemons[0].name + ", Level " + pokemons[0].level + ", HP: " + pokemons[0].current_hp + "/" + pokemons[0].max_hp;
-            if (pokemons[1] != null) pokemon2.text = pokemons[1].name + ", Level " + pokemons[1].level + ", HP: " + pokemons[1].current_hp + "/" + pokemons[1].max_hp;
-            if (pokemons[2] != null) pokemon3.text = pokemons[2].name + ", Level " + pokemons[2].level + ", HP: " + pokemons[2].current_hp + "/" + pokemons[2].max_hp;
-            if (pokemons[3] != null) pokemon4.text = pokemons[3].name + ", Level " + pokemons[3].level + ", HP: " + pokemons[3].current_hp + "/" + pokemons[3].max_hp;
-            if (pokemons[4] != null) pokemon5.text = pokemons[4].name + ", Level " + pokemons[4].level + ", HP: " + pokemons[4].current_hp + "/" + pokemons[4].max_hp;
-            if (pokemons[5] != null) pokemon6.text = pokemons[5].name + ", Level " + pokemons[5].level + ", HP: " + pokemons[5].current_hp + "/" + pokemons[5].max_hp;
+            if (pokemons[0] != null)
+            {
+                pokemon1.text = " " + pokemons[0].name + ", Level " + pokemons[0].level + ", HP: " + pokemons[0].current_hp + "/" + pokemons[0].max_hp;
+
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(pokemons[0].image1);
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                pokemon1Image.sprite = NewSprite;
+            }
+            if (pokemons[1] != null)
+            {
+                pokemon2.text = " " + pokemons[1].name + ", Level " + pokemons[1].level + ", HP: " + pokemons[1].current_hp + "/" + pokemons[1].max_hp;
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(pokemons[1].image1);
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                pokemon2Image.sprite = NewSprite;
+            }
+            if (pokemons[2] != null)
+            {
+                pokemon3.text = " " + pokemons[2].name + ", Level " + pokemons[2].level + ", HP: " + pokemons[2].current_hp + "/" + pokemons[2].max_hp;
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(pokemons[2].image1);
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                pokemon3Image.sprite = NewSprite;
+            }
+            if (pokemons[3] != null)
+            {
+                pokemon4.text = " " + pokemons[3].name + ", Level " + pokemons[3].level + ", HP: " + pokemons[3].current_hp + "/" + pokemons[3].max_hp;
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(pokemons[3].image1);
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                pokemon4Image.sprite = NewSprite;
+            }
+            if (pokemons[4] != null)
+            {
+                pokemon5.text = " " + pokemons[4].name + ", Level " + pokemons[4].level + ", HP: " + pokemons[4].current_hp + "/" + pokemons[4].max_hp;
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(pokemons[4].image1);
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                pokemon5Image.sprite = NewSprite;
+
+            }
+            if (pokemons[5] != null)
+            {
+                pokemon6.text = " " + pokemons[5].name + ", Level " + pokemons[5].level + ", HP: " + pokemons[5].current_hp + "/" + pokemons[5].max_hp;
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(pokemons[5].image1);
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                pokemon6Image.sprite = NewSprite;
+            }
         }
 
         /// <summary>
