@@ -212,14 +212,14 @@ namespace Pokemon
             PlayerBattle playerTemp = new PlayerBattle();
 
             playerTemp.myName = "Red";
-            playerTemp.pokeBalls = true;
-            playerTemp.numPokeBalls = 11;
-            playerTemp.greatBalls = true;
-            playerTemp.numGreatBalls = 0;
-            playerTemp.ultraBalls = true;
-            playerTemp.numUltraBalls = 0;
-            playerTemp.masterBalls = true;
-            playerTemp.numMasterBalls = 10;
+            //playerTemp.pokeBalls = true;
+            //playerTemp.numPokeBalls = 11;
+            //playerTemp.greatBalls = true;
+            //playerTemp.numGreatBalls = 0;
+            //playerTemp.ultraBalls = true;
+            //playerTemp.numUltraBalls = 0;
+            //playerTemp.masterBalls = true;
+            //playerTemp.numMasterBalls = 10;
 
             player = playerTemp;
 
@@ -781,6 +781,7 @@ namespace Pokemon
                 dialogueText.text = "Choose an action";
                 playerHUD.SetPokemon(GameController.playerPokemon);
                 playerHUD.SetMoves(playerUnit);
+                playerHUD.SetBalls(player);
                 SetUpButtons();
             }
         }
@@ -1656,12 +1657,12 @@ namespace Pokemon
             if (GameController.location.CompareTo("Route 1") == 0)
             {
                 x = 0.58f;
-                y = 0.33f;
+                y = 0.20f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
             {
-                x = -0.85f;
-                y = 0.80f;
+                x = 0.00f;
+                y = 0.50f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData;
@@ -1680,13 +1681,13 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
             {
-                x = 0f;
-                y = 0.20f;
+                x = 0.10f;
+                y = 0.40f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
             {
-                x = -0.60f;
-                y = 0.75f;
+                x = 0.00f;
+                y = 0.35f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData;
@@ -1757,8 +1758,8 @@ namespace Pokemon
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
             {
-                x = 2.25f;
-                y = 2.25f;
+                x = 2.00f;
+                y = 1.75f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && !isPlayer)
             {
