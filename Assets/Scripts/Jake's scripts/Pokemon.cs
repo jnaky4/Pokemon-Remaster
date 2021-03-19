@@ -188,6 +188,7 @@ namespace Pokemon
 
         public string image1;
         public string image2;
+
         public string shiny_image;
 
         public int iv = 30;
@@ -232,10 +233,12 @@ namespace Pokemon
         public Moves struggle = Moves.get_move("Struggle");
         public int currentEXP;
 
+        //EXP
         public double lvl_speed;
         public int base_lvl_exp;
         public int current_exp;
         public int next_lvl_exp;
+
         public bool time_to_evolve;
 
         public void reset_stages()
@@ -378,7 +381,7 @@ namespace Pokemon
 
 
         //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
-        public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used, double trainer_wild_multipllier = 1)
+        public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
         {
             //EXP = (a * t * e * b * L) / (7 * s)
             //a is wild or trainer pokemon: 1 or 1.5

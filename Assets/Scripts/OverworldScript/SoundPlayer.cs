@@ -6,6 +6,11 @@ namespace Pokemon
 {
     public class SoundPlayer : MonoBehaviour
     {
+
+
+
+
+        
         // Start is called before the first frame update
         public static SoundPlayer Instance = null;
         public Sound[] Soundtrack;
@@ -13,7 +18,7 @@ namespace Pokemon
         public Sound SongPlaying;
         public Sound EffectPlaying;
 
-        private string currentMusic = "Pallet Town";
+        private string prevLocation = "Pallet Town";
 
         bool song_playing;
 
@@ -62,19 +67,11 @@ namespace Pokemon
 
         private void Update()
         {
-            if (currentMusic != GameController.music)
+            if (prevLocation != GameController.location)
             {
-                currentMusic = GameController.music;
-                Debug.Log("Pausing Song: " + FindObjectOfType<SoundPlayer>().SongPlaying.name);
+                prevLocation = GameController.location;
                 FindObjectOfType<SoundPlayer>().StopSong();
-                if (GameController.music == "Battle Wild Begin")
-                    Play_Two_Songs(GameController.music, "Battle Wild");
-                else if (GameController.music == "Battle Trainer Begin")
-                    Play_Two_Songs(GameController.music, "Battle Trainer");
-                else
-                    FindObjectOfType<SoundPlayer>().Play_New_Song(GameController.music);
 
-                /*
                 switch (GameController.location)
                 {
                     case "Route 1":
@@ -86,9 +83,8 @@ namespace Pokemon
                     default:
                         FindObjectOfType<SoundPlayer>().Play_New_Song("Pallet Town");
                         break;
-                }*/
+                }
             }
-            /*
             if (GameController.state == GameState.TrainerEncounter)
             {
                 FindObjectOfType<SoundPlayer>().StopSong();
@@ -110,9 +106,9 @@ namespace Pokemon
             if (GameController.endCombatMusic == true)
             {
                 FindObjectOfType<SoundPlayer>().StopSong();
-                FindObjectOfType<SoundPlayer>().Play_New_Song(currentMusic);
+                FindObjectOfType<SoundPlayer>().Play_New_Song(prevLocation);
                 GameController.endCombatMusic = false;
-            }*/
+            }
             if (Input.GetKeyDown("space"))
             {
                 if (song_playing)
@@ -133,29 +129,6 @@ namespace Pokemon
             }
 
             SongPlaying.source.Play();
-            song_playing = true;
-        }
-        public void Play_Two_Songs(string name1, string name2)
-        {
-
-            SongPlaying = Array.Find(Soundtrack, Sound => Sound.name == name1);
-
-            if (SongPlaying == null)
-            {
-                Debug.LogWarning("Sound: " + name + " not found");
-                return;
-            }
-
-            SongPlaying.source.loop = false;
-            double duration = (double)SongPlaying.clip.samples / SongPlaying.clip.frequency;
-            SongPlaying.source.Play();
-
-            SongPlaying = Array.Find(Soundtrack, Sound => Sound.name == name2);
-
-            SongPlaying.source.loop = true;
-
-            SongPlaying.source.PlayScheduled(AudioSettings.dspTime + duration - 0.5);
-
             song_playing = true;
         }
         public void Play_Current_Song()
