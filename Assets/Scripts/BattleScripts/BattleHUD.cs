@@ -327,7 +327,7 @@ namespace Pokemon
                     color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
                     break;
                 case "Fire":
-                    color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
+                    color = new Color(255f / 255f, 152f / 255f, 56f / 255f, 1);
                     break;
                 case "Water":
                     color = new Color(58f / 255f, 176f / 255f, 232f / 255f, 1);
