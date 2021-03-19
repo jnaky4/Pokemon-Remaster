@@ -9,10 +9,10 @@ namespace Pokemon
     public class PlayerMovement : MonoBehaviour
     {
         //normal spawnrate
-        //int spawnRate = 10;
+        int spawnRate = 10;
 
         //uncomment this for high spawn rate
-        int spawnRate = 101;
+        //int spawnRate = 101;
 
         //uncomment this for no spawn rate
         //int spawnRate = 0;
@@ -100,6 +100,7 @@ namespace Pokemon
 
                     Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, GameController.badges_completed, GameController.badges_completed.Count);
                     GameController.opponentPokemon[0] = wild_spawn;
+                    GameController.music = "Battle Wild Begin";
                     GameController.isCatchable = true;
                     GameController.triggerCombat = true;
 
@@ -121,6 +122,7 @@ namespace Pokemon
                 if (trainerInfo.isBeaten == false)
                 {
                     GameController.state = GameState.TrainerEncounter;
+                    GameController.music = "Encounter Trainer";
                     character.Animator.IsMoving = false;
                     StartCoroutine(trainerInfo.TriggerTrainerBattle(transform.position));
                 }

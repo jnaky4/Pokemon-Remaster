@@ -27,6 +27,7 @@ namespace Pokemon
                 nextCam.SetActive(true);
                 startCam.SetActive(false);
                 GameController.location = newLocation;
+                GameController.music = newLocation;
             }
         }
     }
