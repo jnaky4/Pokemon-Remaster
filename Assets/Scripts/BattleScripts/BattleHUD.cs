@@ -138,6 +138,7 @@ namespace Pokemon
                     }
                     ColorBlock c = move1Button.GetComponent<Button>().colors;
                     c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                    c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
                     move1Button.GetComponent<Button>().colors = c;
                 }
                 catch (FileNotFoundException)
@@ -162,6 +163,7 @@ namespace Pokemon
                     }
                     ColorBlock c = move1Button.GetComponent<Button>().colors;
                     c.normalColor = GetColorOfMove("Normal");
+                    c.highlightedColor = GetDarkColorOfMove("Normal");
                     move1Button.GetComponent<Button>().colors = c;
                 }
             }
@@ -189,8 +191,9 @@ namespace Pokemon
                         Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
                         move2type.sprite = NewSprite;
                     }
-                    ColorBlock c = move1Button.GetComponent<Button>().colors;
+                    ColorBlock c = move2Button.GetComponent<Button>().colors;
                     c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                    c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
                     move2Button.GetComponent<Button>().colors = c;
                 }
                 catch (FileNotFoundException)
@@ -213,8 +216,9 @@ namespace Pokemon
                         Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
                         move2type.sprite = NewSprite;
                     }
-                    ColorBlock c = move1Button.GetComponent<Button>().colors;
+                    ColorBlock c = move2Button.GetComponent<Button>().colors;
                     c.normalColor = GetColorOfMove("Normal");
+                    c.highlightedColor = GetDarkColorOfMove("Normal");
                     move2Button.GetComponent<Button>().colors = c;
                 }
             }
@@ -242,8 +246,9 @@ namespace Pokemon
                         Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
                         move3type.sprite = NewSprite;
                     }
-                    ColorBlock c = move1Button.GetComponent<Button>().colors;
+                    ColorBlock c = move3Button.GetComponent<Button>().colors;
                     c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                    c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
                     move3Button.GetComponent<Button>().colors = c;
                 }
                 catch (FileNotFoundException)
@@ -266,8 +271,9 @@ namespace Pokemon
                         Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
                         move3type.sprite = NewSprite;
                     }
-                    ColorBlock c = move1Button.GetComponent<Button>().colors;
+                    ColorBlock c = move3Button.GetComponent<Button>().colors;
                     c.normalColor = GetColorOfMove("Normal");
+                    c.highlightedColor = GetDarkColorOfMove("Normal");
                     move3Button.GetComponent<Button>().colors = c;
                 }
             }
@@ -295,8 +301,9 @@ namespace Pokemon
                         Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
                         move4type.sprite = NewSprite;
                     }
-                    ColorBlock c = move1Button.GetComponent<Button>().colors;
+                    ColorBlock c = move4Button.GetComponent<Button>().colors;
                     c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                    c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
                     move4Button.GetComponent<Button>().colors = c;
                 }
                 catch (FileNotFoundException)
@@ -319,8 +326,9 @@ namespace Pokemon
                         Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
                         move4type.sprite = NewSprite;
                     }
-                    ColorBlock c = move1Button.GetComponent<Button>().colors;
+                    ColorBlock c = move4Button.GetComponent<Button>().colors;
                     c.normalColor = GetColorOfMove("Normal");
+                    c.highlightedColor = GetDarkColorOfMove("Normal");
                     move4Button.GetComponent<Button>().colors = c;
                 }
             }
@@ -386,6 +394,71 @@ namespace Pokemon
                     break;
                 default:
                     color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+            }
+            return color;
+        }
+        private Color GetDarkColorOfMove(string type)
+        {
+            Color color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+            switch (type)
+            {
+                case "Normal":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+                case "Fire":
+                    color = new Color(156f / 255f, 83f / 255f, 31f / 255f, 1);
+                    break;
+                case "Water":
+                    color = new Color(68f / 255f, 94f / 255f, 156f / 255f, 1);
+                    break;
+                case "Electric":
+                    color = new Color(161f / 255f, 135f / 255f, 31f / 255f, 1);
+                    break;
+                case "Grass":
+                    color = new Color(78f / 255f, 130f / 255f, 52f / 255f, 1);
+                    break;
+                case "Ice":
+                    color = new Color(99f / 255f, 141f / 255f, 141f / 255f, 1);
+                    break;
+                case "Fighting":
+                    color = new Color(125f / 255f, 31f / 255f, 26f / 255f, 1);
+                    break;
+                case "Poison":
+                    color = new Color(104f / 255f, 42f / 255f, 104f / 255f, 1);
+                    break;
+                case "Ground":
+                    color = new Color(146f / 255f, 125f / 255f, 68f / 255f, 1);
+                    break;
+                case "Flying":
+                    color = new Color(109f / 255f, 94f / 255f, 156f / 255f, 1);
+                    break;
+                case "Psychic":
+                    color = new Color(255f / 255f, 136f / 255f, 130f / 255f, 1);
+                    break;
+                case "Bug":
+                    color = new Color(109f / 255f, 120f / 255f, 21f / 255f, 1);
+                    break;
+                case "Rock":
+                    color = new Color(120f / 255f, 104f / 255f, 36f / 255f, 1);
+                    break;
+                case "Ghost":
+                    color = new Color(73f / 255f, 57f / 255f, 99f / 255f, 1);
+                    break;
+                case "Dragon":
+                    color = new Color(73f / 255f, 36f / 255f, 161f / 255f, 1);
+                    break;
+                case "Dark":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+                case "Steel":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+                case "Fairy":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+                default:
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
                     break;
             }
             return color;
