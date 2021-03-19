@@ -15,28 +15,28 @@ public class PlayerBattle : MonoBehaviour
     /// <summary>
     /// The poke balls
     /// </summary>
-    public bool pokeBalls = false;
+    public bool pokeBalls = true;
     /// <summary>
     /// The great balls
     /// </summary>
-    public bool greatBalls = false;
+    public bool greatBalls = true;
     /// <summary>
     /// The ultra balls
     /// </summary>
-    public bool ultraBalls = false;
+    public bool ultraBalls = true;
     /// <summary>
     /// The master balls
     /// </summary>
-    public bool masterBalls = false;
+    public bool masterBalls = true;
 
     /// <summary>
     /// The number poke balls
     /// </summary>
-    public int numPokeBalls = 0;
+    public int numPokeBalls = 10;
     /// <summary>
     /// The number great balls
     /// </summary>
-    public int numGreatBalls = 0;
+    public int numGreatBalls = 9;
     /// <summary>
     /// The number ultra balls
     /// </summary>
