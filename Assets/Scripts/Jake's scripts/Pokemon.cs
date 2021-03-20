@@ -337,7 +337,7 @@ namespace Pokemon
 
         public void update_current_stats()
         {
-            //iv is set to 30 
+            //iv is set to 30
             //ev set for +20 for each stat
             //510 total ev / 4 = 127.5 / 6 = 21.25, each pokemon should have +21.25 to each stat when using all evs
             this.max_hp = (((((this.base_hp + this.iv) * 2) + 20) * this.level) / 100) + this.level + 10;
