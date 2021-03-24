@@ -256,7 +256,7 @@ namespace Pokemon
             }
             else
             {
-                dialogueText.text = "Bug Catcher Joey sends out " + enemyUnit.pokemon.name + "!";
+                dialogueText.text = GameController.opponentName + " sends out " + enemyUnit.pokemon.name + "!";
             }
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
@@ -345,7 +345,7 @@ namespace Pokemon
                     if (breakOutOfDecision) break;
                 }
 
-                if(!breakOutOfDecision)
+                if(state != BattleState.CHANGEPOKEMON)
                 {
                     state = BattleState.ENEMYTURN;
                     for (int k = 0; k < numTimesEnemy; k++)
@@ -401,7 +401,7 @@ namespace Pokemon
                         yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                         if (breakOutOfDecision) break;
                     }
-                    if (!breakOutOfDecision)
+                    if (state != BattleState.CHANGEPOKEMON)
                     {
                         state = BattleState.ENEMYTURN;
                         for (int k = 0; k < numTimesEnemy; k++)
@@ -422,7 +422,7 @@ namespace Pokemon
                             yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                             if (breakOutOfDecision) break;
                         }
-                        if (!breakOutOfDecision)
+                        if (state != BattleState.CHANGEPOKEMON)
                         {
                             state = BattleState.ENEMYTURN;
                             for (int k = 0; k < numTimesEnemy; k++)
@@ -880,12 +880,11 @@ namespace Pokemon
                     {
                         state = BattleState.CHANGEPOKEMON;
                         int exp = 0;
-                        Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
+                        dialogueText.text = enemyUnit.pokemon.name + " faints!";
                         if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
                         else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
                         yield return new WaitForSeconds(2);
                         dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
-                        Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
                         yield return new WaitForSeconds(2);
                         for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
                         {
@@ -899,8 +898,8 @@ namespace Pokemon
                                 break;
                             }
                         }
-                        PlayerTurn();
                         yield break;
+                        PlayerTurn();
                     }
                 }
             }
