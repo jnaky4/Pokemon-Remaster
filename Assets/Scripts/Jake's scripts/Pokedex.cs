@@ -24,6 +24,7 @@ namespace Pokemon
         public string category;
         public string image1;
         public string image2;
+        public double leveling_speed;
         public int base_exp;
 
         public Pokedex(int dexnum)
@@ -51,6 +52,7 @@ namespace Pokemon
             this.weight = double.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Weight"].ToString());
             this.description = Pokedex.all_pokedex[this.dexnum - 1]["Description"].ToString();
             this.category = Pokedex.all_pokedex[this.dexnum - 1]["Category"].ToString();
+            this.leveling_speed = double.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Leveling_Speed"].ToString());
             this.base_exp = int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Base_Exp"].ToString());
 
 
