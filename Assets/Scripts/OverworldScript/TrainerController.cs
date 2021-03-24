@@ -60,7 +60,14 @@ public class TrainerController : MonoBehaviour
         }
         GameController.isCatchable = false;
 
-        GameController.music = "Battle Trainer Begin";
+        if (name == "Brock")
+        {
+            GameController.music = "Battle Gym Begin";
+        }
+        else
+        {
+            GameController.music = "Battle Trainer Begin";
+        }
         GameController.triggerCombat = true;
 
         //fix this later this is a dirty fix

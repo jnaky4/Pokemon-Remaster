@@ -1503,6 +1503,18 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: Battle Gym Begin
+    clip: {fileID: 8300000, guid: a32f66d20fd72e849a8849d266222e8d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Battle Gym
+    clip: {fileID: 8300000, guid: bd5750be519ce46b18002af69997c42f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
   Effectstrack: []
   SongPlaying:
     name: 

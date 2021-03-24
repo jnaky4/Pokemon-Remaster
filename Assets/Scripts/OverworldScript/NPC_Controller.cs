@@ -42,13 +42,19 @@ namespace Pokemon
                 }*/
                 state = NPCState.Dialog;
                 character.LookTowards(initial.position);
+                var isTrainer = GetComponent<TrainerController>();
+                if (isTrainer != null && isTrainer.name != "Brock")
+                {
+                    if (isTrainer.isBeaten == false)
+                        GameController.music = "Encounter Trainer";
+                }
 
                 StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
                 {
                     idleTimer = 0f;
                     state = NPCState.Idle;
 
-                    var isTrainer = GetComponent<TrainerController>();
+                    //var isTrainer = GetComponent<TrainerController>();
 
                     if (isTrainer != null)
                     {
