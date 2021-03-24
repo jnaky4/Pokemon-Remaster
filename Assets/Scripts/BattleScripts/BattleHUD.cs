@@ -366,7 +366,7 @@ namespace Pokemon
         {
             if (unit.pokemon.currentMoves[0] != null)
             {
-                forget1.text = unit.pokemon.currentMoves[0].name;
+                forget1.text = unit.pokemon.currentMoves[0].name + " ";
                 var path = Directory.GetCurrentDirectory();
 
                 if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -394,7 +394,7 @@ namespace Pokemon
             }
             if (unit.pokemon.currentMoves[1] != null)
             {
-                forget2.text = unit.pokemon.currentMoves[1].name;
+                forget2.text = unit.pokemon.currentMoves[1].name + " ";
                 var path2 = Directory.GetCurrentDirectory();
 
                 if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -423,7 +423,7 @@ namespace Pokemon
             }
             if (unit.pokemon.currentMoves[2] != null)
             {
-                forget3.text = unit.pokemon.currentMoves[2].name;
+                forget3.text = unit.pokemon.currentMoves[2].name + " ";
                 var path3 = Directory.GetCurrentDirectory();
 
                 if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -452,7 +452,7 @@ namespace Pokemon
             }
             if (unit.pokemon.currentMoves[3] != null)
             {
-                forget4.text = unit.pokemon.currentMoves[3].name ;
+                forget4.text = unit.pokemon.currentMoves[3].name + " ";
                 var path4 = Directory.GetCurrentDirectory();
 
                 if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -480,7 +480,7 @@ namespace Pokemon
 
             }
 
-            forget5.text = unit.pokemon.learned_move.name;
+            forget5.text = unit.pokemon.learned_move.name + " ";
             var path5 = Directory.GetCurrentDirectory();
             if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
             {

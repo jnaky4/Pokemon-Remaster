@@ -1909,7 +1909,7 @@ namespace Pokemon
             forgetMenuUI.SetActive(false);
             if (move == 5)
             {
-                dialogueText.text = poke.name + " won't learn " + poke.learned_move.name + " and learned " + poke.learned_move.name + "!";
+                dialogueText.text = poke.name + " won't learn " + poke.learned_move.name + "!";
                 yield return new WaitForSeconds(2);
             }
             else if (move == 1)
