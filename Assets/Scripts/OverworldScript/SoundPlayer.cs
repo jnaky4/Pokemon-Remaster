@@ -71,6 +71,8 @@ namespace Pokemon
                     Play_Two_Songs(GameController.music, "Battle Wild");
                 else if (GameController.music == "Battle Trainer Begin")
                     Play_Two_Songs(GameController.music, "Battle Trainer");
+                else if (GameController.music == "Battle Gym Begin")
+                    Play_Two_Songs(GameController.music, "Battle Gym");
                 else
                     FindObjectOfType<SoundPlayer>().Play_New_Song(GameController.music);
 

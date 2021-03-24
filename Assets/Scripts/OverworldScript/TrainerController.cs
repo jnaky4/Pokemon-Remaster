@@ -60,7 +60,21 @@ public class TrainerController : MonoBehaviour
         }
         GameController.isCatchable = false;
 
-        GameController.music = "Battle Trainer Begin";
+        if (name == "Brock")
+        {
+            GameController.music = "Battle Gym Begin";
+        }
+        else
+        {
+            GameController.music = "Battle Trainer Begin";
+        }
+
+        if (route_trainers[trainerName].type != route_trainers[trainerName].name)
+            GameController.opponentName = route_trainers[trainerName].type + " " + route_trainers[trainerName].name;
+        else
+            GameController.opponentName = "Gym Leader " + route_trainers[trainerName].name;
+
+        Debug.Log("You are challenged by " + GameController.opponentName);
         GameController.triggerCombat = true;
 
         //fix this later this is a dirty fix
