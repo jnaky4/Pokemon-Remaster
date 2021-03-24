@@ -55,7 +55,7 @@ namespace Pokemon
     public class Pokemon
     {
         //create pokemon with specific moves, chains the 2 arg constructor
-        public Pokemon(int dexNum, int level, string move1 = null, string move2 = null, string move3 = null, string move4 = null)
+        public Pokemon(int dexNum, int level, string move1 = null, string move2 = null, string move3 = null, string move4 = null, int current_exp = 0)
         {
             this.level = level;
             this.dexnum = dexNum;
@@ -70,9 +70,12 @@ namespace Pokemon
 
             //grab name from pokedex
             this.name = pokedex_entry.name;
+            this.current_exp = current_exp;
 
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats();
+            set_exp();
+
             //get learnset added to learnset_dictionary for this pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);
             this.TM_Set = TMSet.get_TMSet(this.dexnum);
@@ -237,6 +240,7 @@ namespace Pokemon
         public int current_exp;
         public int next_lvl_exp;
         public bool time_to_evolve;
+
 
         public void reset_stages()
         {
