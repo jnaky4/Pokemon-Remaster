@@ -24,6 +24,24 @@ namespace Pokemon
         public Text moves3;
         public Text moves4;
 
+        public Text forget1;
+        public Text forget2;
+        public Text forget3;
+        public Text forget4;
+        public Text forget5;
+
+        public Image forget1type;
+        public Image forget2type;
+        public Image forget3type;
+        public Image forget4type;
+        public Image forget5type;
+
+        public Button forget1Button;
+        public Button forget2Button;
+        public Button forget3Button;
+        public Button forget4Button;
+        public Button forget5Button;
+
         public Button move1Button;
         public Button move2Button;
         public Button move3Button;
@@ -344,6 +362,150 @@ namespace Pokemon
                 }
             }
         }
+        public void SetForgetMoves(Unit unit)
+        {
+            if (unit.pokemon.currentMoves[0] != null)
+            {
+                forget1.text = unit.pokemon.currentMoves[0].name;
+                var path = Directory.GetCurrentDirectory();
+
+                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                {
+                    Texture2D SpriteTexture = new Texture2D(0, 0);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[0].move_type.type + ".png");
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                    forget1type.sprite = NewSprite;
+                }
+                else
+                {
+                    Texture2D SpriteTexture = new Texture2D(0, 0);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[0].move_type.type + ".png");
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                    forget1type.sprite = NewSprite;
+                }
+                ColorBlock c = forget1Button.GetComponent<Button>().colors;
+                c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                forget1Button.GetComponent<Button>().colors = c;
+            }
+            if (unit.pokemon.currentMoves[1] != null)
+            {
+                forget2.text = unit.pokemon.currentMoves[1].name;
+                var path2 = Directory.GetCurrentDirectory();
+
+                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                {
+                    Texture2D SpriteTexture = new Texture2D(0, 0);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(path2 + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png");
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                forget2type.sprite = NewSprite;
+                }
+                else
+                {
+                    Texture2D SpriteTexture = new Texture2D(15, 15);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(path2 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png");
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                forget2type.sprite = NewSprite;
+                }
+                ColorBlock c2 = forget2Button.GetComponent<Button>().colors;
+                c2.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                c2.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                forget2Button.GetComponent<Button>().colors = c2;
+
+            }
+            if (unit.pokemon.currentMoves[2] != null)
+            {
+                forget3.text = unit.pokemon.currentMoves[2].name;
+                var path3 = Directory.GetCurrentDirectory();
+
+                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                {
+                    Texture2D SpriteTexture = new Texture2D(0, 0);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(path3 + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png");
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                    forget3type.sprite = NewSprite;
+                }
+                else
+                {
+                    Texture2D SpriteTexture = new Texture2D(15, 15);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(path3 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png");
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                    forget3type.sprite = NewSprite;
+                }
+                ColorBlock c3 = forget3Button.GetComponent<Button>().colors;
+                c3.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                c3.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                forget3Button.GetComponent<Button>().colors = c3;
+
+            }
+            if (unit.pokemon.currentMoves[3] != null)
+            {
+                forget4.text = unit.pokemon.currentMoves[3].name ;
+                var path4 = Directory.GetCurrentDirectory();
+
+                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+                {
+                    Texture2D SpriteTexture = new Texture2D(0, 0);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(path4 + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[3].move_type.type + ".png");
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                    forget4type.sprite = NewSprite;
+                }
+                else
+                {
+                    Texture2D SpriteTexture = new Texture2D(15, 15);
+                    byte[] fileData;
+                    fileData = File.ReadAllBytes(path4 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[3].move_type.type + ".png");
+                    SpriteTexture.LoadImage(fileData);
+                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                    forget4type.sprite = NewSprite;
+                }
+                ColorBlock c4 = forget4Button.GetComponent<Button>().colors;
+                c4.normalColor = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                c4.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                forget4Button.GetComponent<Button>().colors = c4;
+
+            }
+
+            forget5.text = unit.pokemon.learned_move.name;
+            var path5 = Directory.GetCurrentDirectory();
+            if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+            {
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(path5 + "/Images/Menu Icons/" + "Type " + unit.pokemon.learned_move.move_type.type + ".png");
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                forget5type.sprite = NewSprite;
+            }
+            else
+            {
+                Texture2D SpriteTexture = new Texture2D(15, 15);
+                byte[] fileData;
+                fileData = File.ReadAllBytes(path5 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.learned_move.move_type.type + ".png");
+                SpriteTexture.LoadImage(fileData);
+                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                forget5type.sprite = NewSprite;
+            }
+            ColorBlock c5 = forget5Button.GetComponent<Button>().colors;
+            c5.normalColor = GetColorOfMove(unit.pokemon.learned_move.move_type.type);
+            c5.highlightedColor = GetDarkColorOfMove(unit.pokemon.learned_move.move_type.type);
+            forget5Button.GetComponent<Button>().colors = c5;
+        }
+
         private Color GetColorOfMove(string type)
         {
             Color color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);

@@ -75,6 +75,14 @@ namespace Pokemon
         public static Button attack3Button;
         public static Button attack4Button;
 
+        public static bool forgetMenuOpen = false;
+        public GameObject forgetMenuUI;
+        public static Button forget1Button;
+        public static Button forget2Button;
+        public static Button forget3Button;
+        public static Button forget4Button;
+        public static Button forget5Button;
+
         public Button pokemon1Button;
         public Button pokemon2Button;
         public Button pokemon3Button;
@@ -129,6 +137,7 @@ namespace Pokemon
             pokeMenuUI.SetActive(false);
             attackMenuUI.SetActive(false);
             ballsMenuUI.SetActive(false);
+            forgetMenuUI.SetActive(false);
             SetDownButtons();
             StartCoroutine(SetupBattle());
             SetBackground();
@@ -228,9 +237,9 @@ namespace Pokemon
             if (!player.ultraBalls) ball3.SetActive(false);
             if (!player.masterBalls) ball4.SetActive(false);
             if (String.Compare(playerUnit.pokemon.currentMoves[0].name, "default") == 0) move1.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[1].name, "default") == 0) move2.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[2].name, "default") == 0) move3.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[3].name, "default") == 0) move4.SetActive(false);
+            if (playerUnit.pokemon.currentMoves[1] == null) move2.SetActive(false);
+            if (playerUnit.pokemon.currentMoves[2] == null) move3.SetActive(false);
+            if (playerUnit.pokemon.currentMoves[3] == null) move4.SetActive(false);
 
             if (GameController.playerPokemon[1] == null) poke2.SetActive(false);
             if (GameController.playerPokemon[2] == null) poke3.SetActive(false);
@@ -875,7 +884,7 @@ namespace Pokemon
                         dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
                         if (playerUnit.pokemon.gained_a_level)
                         {
-                            StartCoroutine(LevelUp(playerUnit.pokemon));
+                            yield return StartCoroutine(LevelUp(playerUnit.pokemon));
                         }
                         //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
                         yield return new WaitForSeconds(2);
@@ -894,7 +903,7 @@ namespace Pokemon
                         yield return new WaitForSeconds(2);
                         if (playerUnit.pokemon.gained_a_level)
                         {
-                            StartCoroutine(LevelUp(playerUnit.pokemon));
+                            yield return StartCoroutine(LevelUp(playerUnit.pokemon));
                         }
 
                         for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
@@ -1673,6 +1682,27 @@ namespace Pokemon
             StartCoroutine(CatchPokemon(4));
         }
 
+        public void Forget1()
+        {
+            StartCoroutine(ForgetMove(1, playerUnit.pokemon));
+        }
+        public void Forget2()
+        {
+            StartCoroutine(ForgetMove(2, playerUnit.pokemon));
+        }
+        public void Forget3()
+        {
+            StartCoroutine(ForgetMove(3, playerUnit.pokemon));
+        }
+        public void Forget4()
+        {
+            StartCoroutine(ForgetMove(4, playerUnit.pokemon));
+        }
+        public void Forget5()
+        {
+            StartCoroutine(ForgetMove(5, playerUnit.pokemon));
+        }
+
         #endregion
         #region Sprite functions
         void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
@@ -1849,6 +1879,65 @@ namespace Pokemon
             dialogueText.text = poke.name + " is now level " + poke.level + "!";
             playerHUD.SetHUD(playerUnit, true, player, GameController.playerPokemon);
             yield return new WaitForSeconds(2);
+            if (poke.learned_new_move == true)
+            {
+                if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 4)
+                {
+                    dialogueText.text = poke.name + " is trying to learn " + poke.learned_move.name + "!";
+                    yield return new WaitForSeconds(2);
+                    dialogueText.text = "But they can only learn four moves. Forget which move?";
+                    forgetMenuUI.SetActive(true);
+                    forgetMenuOpen = true;
+                    playerHUD.SetForgetMoves(playerUnit);
+                    while (forgetMenuOpen)
+                    {
+                        yield return null;
+                    }
+                }
+                else
+                {
+                    dialogueText.text = poke.name + " learned " + poke.learned_move.name + "!";
+                    yield return new WaitForSeconds(2);
+                    if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 3) poke.currentMoves[3] = poke.learned_move;
+                    else if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 2) poke.currentMoves[2] = poke.learned_move;
+                    else poke.currentMoves[1] = poke.learned_move;
+                }
+            }
+        }
+        public IEnumerator ForgetMove(int move, Pokemon poke)
+        {
+            forgetMenuUI.SetActive(false);
+            if (move == 5)
+            {
+                dialogueText.text = poke.name + " won't learn " + poke.learned_move.name + " and learned " + poke.learned_move.name + "!";
+                yield return new WaitForSeconds(2);
+            }
+            else if (move == 1)
+            {
+                dialogueText.text = poke.name + " forgot " + poke.currentMoves[0].name + " and learned " + poke.learned_move.name + "!";
+                poke.currentMoves[0] = poke.learned_move;
+                yield return new WaitForSeconds(2);
+            }
+            else if (move == 2)
+            {
+                dialogueText.text = poke.name + " forgot " + poke.currentMoves[1].name + " and learned " + poke.learned_move.name + "!";
+                poke.currentMoves[1] = poke.learned_move;
+                yield return new WaitForSeconds(2);
+            }
+            else if (move == 3)
+            {
+                dialogueText.text = poke.name + " forgot " + poke.currentMoves[2].name + " and learned " + poke.learned_move.name + "!";
+                poke.currentMoves[2] = poke.learned_move;
+                yield return new WaitForSeconds(2);
+            }
+            else if (move == 4)
+            {
+                dialogueText.text = poke.name + " forgot " + poke.currentMoves[3].name + " and learned " + poke.learned_move.name + "!";
+                poke.currentMoves[3] = poke.learned_move;
+                yield return new WaitForSeconds(2);
+            }
+            forgetMenuOpen = false;
+            poke.learned_new_move = false;
         }
         #endregion
     }
