@@ -256,6 +256,8 @@ namespace Pokemon
         public int next_lvl_exp;
         public bool time_to_evolve;
 
+        public bool learned_new_move;
+        public Moves learned_move;
 
         public void reset_stages()
         {
@@ -376,10 +378,12 @@ namespace Pokemon
 
         public Moves check_learnset()
         {
+            this.learned_move = null;
             foreach (Learnset move in this.learnset)
             {
                 if (this.level == move.level)
                 {
+                    this.learned_move = move.move;
                     return move.move;
                 }
             }
@@ -406,6 +410,7 @@ namespace Pokemon
         //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
         public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
         {
+            this.learned_new_move = false;
             //EXP = (a * t * e * b * L) / (7 * s)
             //a is wild or trainer pokemon: 1 or 1.5
             //t is trainer_pokemon or traded, always 1 for game
@@ -433,7 +438,7 @@ namespace Pokemon
                 if (temp_new_move != null)
                 {
                     Debug.Log("Your pokemon learned a new move! " + temp_new_move.name);
-
+                    this.learned_new_move = true;
                 }
 
                 //check evolve
