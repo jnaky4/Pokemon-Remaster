@@ -62,7 +62,7 @@ namespace Pokemon
             playerPokemon[0] = new Pokemon(7, 5, "Water Gun", "Bubble", "Growl", "Slash");
             playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
             playerPokemon[3]  = new Pokemon(25, 5, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
-
+            playerPokemon[0].current_exp = 145;
         }
 
         private void Start()
