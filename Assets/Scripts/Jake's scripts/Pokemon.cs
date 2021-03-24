@@ -258,7 +258,7 @@ namespace Pokemon
 
         public bool learned_new_move;
         public Moves learned_move;
-        public bool gained_exp;
+        public bool gained_a_level;
 
         public void reset_stages()
         {
@@ -431,7 +431,7 @@ namespace Pokemon
             {
                 Debug.Log("Pokemon Leveled!");
                 this.level += 1;
-                this.gained_exp = true;
+                this.gained_a_level = true;
 
                 //update stats
                 this.update_current_stats();
