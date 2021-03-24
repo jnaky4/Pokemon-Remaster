@@ -887,7 +887,6 @@ namespace Pokemon
                         dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
                         Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
                         yield return new WaitForSeconds(2);
-
                         for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
                         {
                             if (GameController.opponentPokemon[j].current_hp > 0)
@@ -1054,6 +1053,7 @@ namespace Pokemon
                 activePokemon = num;
 
                 playerHUD.SetActivePokemon(GameController.playerPokemon, num, playerUnit);
+                playerHUD.SetEXP(playerUnit.pokemon);
                 SetPlayerSprite(playerUnit, playerSprite);
                 dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
                 yield return new WaitForSeconds(2);

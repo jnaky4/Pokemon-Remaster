@@ -102,6 +102,8 @@ namespace Pokemon
         }
         public void SetEXP(Pokemon poke)
         {
+            expSlider.maxValue = poke.next_lvl_exp;
+            expSlider.minValue = poke.base_lvl_exp;
             expSlider.value = poke.current_exp;
         }
 
