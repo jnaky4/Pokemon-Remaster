@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pokemon;
 
 public class Character : MonoBehaviour
 {
@@ -24,7 +25,13 @@ public class Character : MonoBehaviour
         targetPos.y += moveVec.y;
 
         if (!IsPathClear(targetPos))
+        {
+            var isPlayer = GetComponent<PlayerMovement>();
+            if (isPlayer != null)
+                GameController.soundFX = "Collision";
+
             yield break;
+        }
 
         IsMoving = true;
 

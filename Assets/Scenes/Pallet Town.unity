@@ -1515,7 +1515,19 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
-  Effectstrack: []
+  Effectstrack:
+  - name: Button Press
+    clip: {fileID: 8300000, guid: 15c7c07226aa04ca7b852eec3b08847a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Collision
+    clip: {fileID: 8300000, guid: 55a4665abd02949e79f02a67fce6ac9d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   SongPlaying:
     name: 
     clip: {fileID: 0}

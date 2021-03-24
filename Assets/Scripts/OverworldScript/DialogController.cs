@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Pokemon;
 
 public class DialogController : MonoBehaviour
 {
@@ -46,6 +47,7 @@ public class DialogController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z) && !isTyping)
         {
+            GameController.soundFX = "Button Press";
             ++currentLine;
             if (currentLine < dialog.Lines.Count)
             {
