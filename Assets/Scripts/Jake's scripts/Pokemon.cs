@@ -79,7 +79,7 @@ namespace Pokemon
 
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats();
-            
+
 
             //get learnset added to learnset_dictionary for this pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);

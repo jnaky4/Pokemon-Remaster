@@ -345,7 +345,7 @@ namespace Pokemon
                     if (breakOutOfDecision) break;
                 }
 
-                if(state != BattleState.CHANGEPOKEMON)
+                if(state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
                 {
                     state = BattleState.ENEMYTURN;
                     for (int k = 0; k < numTimesEnemy; k++)
@@ -401,7 +401,7 @@ namespace Pokemon
                         yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                         if (breakOutOfDecision) break;
                     }
-                    if (state != BattleState.CHANGEPOKEMON)
+                    if (state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
                     {
                         state = BattleState.ENEMYTURN;
                         for (int k = 0; k < numTimesEnemy; k++)
@@ -422,7 +422,7 @@ namespace Pokemon
                             yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
                             if (breakOutOfDecision) break;
                         }
-                        if (state != BattleState.CHANGEPOKEMON)
+                        if (state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
                         {
                             state = BattleState.ENEMYTURN;
                             for (int k = 0; k < numTimesEnemy; k++)
@@ -865,6 +865,7 @@ namespace Pokemon
                     if (won) //If you won
                     {
                         state = BattleState.WON;
+
                         dialogueText.text = enemyUnit.pokemon.name + " faints!";
                         int exp = 0;
                         //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
@@ -872,6 +873,10 @@ namespace Pokemon
                         else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
                         yield return new WaitForSeconds(2);
                         dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
+                        if (playerUnit.pokemon.gained_a_level)
+                        {
+                            StartCoroutine(LevelUp(playerUnit.pokemon));
+                        }
                         //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
                         yield return new WaitForSeconds(2);
                         yield break;
@@ -879,6 +884,7 @@ namespace Pokemon
                     else //If you didn't win, they bring out a new Pokemon
                     {
                         state = BattleState.CHANGEPOKEMON;
+
                         int exp = 0;
                         dialogueText.text = enemyUnit.pokemon.name + " faints!";
                         if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
@@ -886,6 +892,11 @@ namespace Pokemon
                         yield return new WaitForSeconds(2);
                         dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
                         yield return new WaitForSeconds(2);
+                        if (playerUnit.pokemon.gained_a_level)
+                        {
+                            StartCoroutine(LevelUp(playerUnit.pokemon));
+                        }
+
                         for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
                         {
                             if (GameController.opponentPokemon[j].current_hp > 0)
@@ -898,8 +909,8 @@ namespace Pokemon
                                 break;
                             }
                         }
-                        yield break;
                         PlayerTurn();
+                        yield break;
                     }
                 }
             }
@@ -1834,7 +1845,9 @@ namespace Pokemon
         #region leveling up
         public IEnumerator LevelUp(Pokemon poke)
         {
+            poke.gained_a_level = false;
             dialogueText.text = poke.name + " is now level " + poke.level + "!";
+            playerHUD.SetHUD(playerUnit, true, player, GameController.playerPokemon);
             yield return new WaitForSeconds(2);
         }
         #endregion
