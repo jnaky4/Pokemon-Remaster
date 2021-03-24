@@ -12,10 +12,10 @@ namespace Pokemon
         //int spawnRate = 10;
 
         //uncomment this for high spawn rate
-        int spawnRate = 101;
+        //int spawnRate = 101;
 
         //uncomment this for no spawn rate
-        //int spawnRate = 0;
+        int spawnRate = 0;
 
         public event Action OnEnterTrainersView;
 
