@@ -16,6 +16,7 @@ namespace Pokemon
         public Text yourName;
         public Text level;
         public Slider hpSlider;
+        public Slider expSlider;
         public Text currentHP;
 
         public Text moves1;
@@ -68,9 +69,13 @@ namespace Pokemon
             hpSlider.maxValue = unit.pokemon.max_hp;
             hpSlider.value = unit.pokemon.current_hp;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
+            expSlider.maxValue = unit.pokemon.next_lvl_exp;
+            expSlider.minValue = unit.pokemon.base_lvl_exp;
+            expSlider.value = unit.pokemon.current_exp;
             if (isPlayer) SetMoves(unit);
             if (isPlayer) SetBalls(player);
             if (isPlayer) SetPokemon(playerPokemon);
+            //if (isPlayer) SetEXP(unit.pokemon);
             hpSlider.interactable = false;
         }
         /// <summary>
@@ -94,6 +99,10 @@ namespace Pokemon
         public void SetHP(int hp)
         {
             hpSlider.value = hp;
+        }
+        public void SetEXP(Pokemon poke)
+        {
+            expSlider.value = poke.current_exp;
         }
 
         /// <summary>

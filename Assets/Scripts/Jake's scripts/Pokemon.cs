@@ -67,14 +67,17 @@ namespace Pokemon
             this.currentMoves[3] = move4 != null ? Moves.get_move(move4) : null;
 
             this.pokedex_entry = new Pokedex(dexNum);
-
             //grab name from pokedex
             this.name = pokedex_entry.name;
+
+            //set exp for new pokemon, default 0,
             this.current_exp = current_exp;
+            //sets: base_level_exp, current_exp if current_exp above is 0, next_level_exp
+            set_exp();
 
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats();
-            set_exp();
+            
 
             //get learnset added to learnset_dictionary for this pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);
@@ -178,23 +181,32 @@ namespace Pokemon
         public static List<Dictionary<string, object>> all_base_stats = new List<Dictionary<string, object>>();
         public Dictionary<string, Moves> TM_Set = new Dictionary<string, Moves>();
 
-
+        //basic pokemon info
         public string name;
         public int dexnum;
         public int level;
+
+        //Pokex Object of Pokemon
         public Pokedex pokedex_entry;
 
+        //each pokemon has up to 2 types
         public Type type1;
         public Type type2 = null;
+
+        //list of learnable moves
         public List<Learnset> learnset = new List<Learnset>();
 
+        //list of current moves the pokemon has
+        public Moves[] currentMoves = new Moves[4];
+        public Moves struggle = Moves.get_move("Struggle");
 
+        //images of pokemon
         public string image1;
         public string image2;
         public string shiny_image;
 
+        //used for caculating max stats
         public int iv = 30;
-
         public int base_hp;
         public int base_attack;
         public int base_defense;
@@ -202,6 +214,7 @@ namespace Pokemon
         public int base_sp_defense;
         public int base_speed;
 
+        //current stats for the pokemon
         public int current_hp;
         public double current_attack;
         public double current_defense;
@@ -211,7 +224,7 @@ namespace Pokemon
         public double current_accuracy = 1;
         public double current_evasion = 1;
 
-        //This means the maximum at this level
+        //This means the maximum at this level, or full health
         public int max_hp;
         public int max_attack;
         public int max_defense;
@@ -219,6 +232,8 @@ namespace Pokemon
         public int max_sp_defense;
         public int max_speed;
 
+
+        //stages range from -6 to 6, used during damage calculation
         public int critical_stage = 0;
         public int attack_stage = 0;
         public int defense_stage = 0;
@@ -228,13 +243,11 @@ namespace Pokemon
         public int accuracy_stage = 0;
         public int evasion_stage = 0;
 
+
         public int type = 1;
         public int burn = 1;
 
-        public Moves[] currentMoves = new Moves[4];
-        public Moves struggle = Moves.get_move("Struggle");
-        public int currentEXP;
-
+        //used to calculate exp and evolution
         public double lvl_speed;
         public int base_lvl_exp;
         public int current_exp;
@@ -382,7 +395,7 @@ namespace Pokemon
 
 
         //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
-        public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used, double trainer_wild_multipllier = 1)
+        public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
         {
             //EXP = (a * t * e * b * L) / (7 * s)
             //a is wild or trainer pokemon: 1 or 1.5

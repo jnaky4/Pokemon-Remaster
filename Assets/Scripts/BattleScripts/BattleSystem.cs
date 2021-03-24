@@ -456,7 +456,6 @@ namespace Pokemon
             {
                 yield return SwitchPokemonAfterDeath();
             }
-
             if (breakOutOfDecision)
             {
                 yield return SeeIfEndBattle();
@@ -766,7 +765,6 @@ namespace Pokemon
         /// </summary>
         void PlayerTurn()
         {
-
             endAttack = false;
             deadPokemon = false;
             breakOutOfDecision = false;
@@ -782,7 +780,9 @@ namespace Pokemon
                 playerHUD.SetPokemon(GameController.playerPokemon);
                 playerHUD.SetMoves(playerUnit);
                 playerHUD.SetBalls(player);
+                playerHUD.SetEXP(playerUnit.pokemon);
                 SetUpButtons();
+                Debug.Log(playerUnit.pokemon.current_exp);
             }
         }
 
@@ -866,6 +866,13 @@ namespace Pokemon
                     {
                         state = BattleState.WON;
                         dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                        int exp = 0;
+                        Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
+                        if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
+                        else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
+                        yield return new WaitForSeconds(2);
+                        dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
+                        Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
                         yield return new WaitForSeconds(2);
                         yield break;
                     }
