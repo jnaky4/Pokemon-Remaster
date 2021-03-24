@@ -1765,7 +1765,6 @@ namespace Pokemon
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-
                 x = 0.40f;
                 y = 0.40f;
             }
@@ -1830,6 +1829,13 @@ namespace Pokemon
             {
                 Debug.Log(move.Key);
             }
+        }
+        #endregion
+        #region leveling up
+        public IEnumerator LevelUp(Pokemon poke)
+        {
+            dialogueText.text = poke.name + " is now level " + poke.level + "!";
+            yield return new WaitForSeconds(2);
         }
         #endregion
     }
