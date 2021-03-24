@@ -258,6 +258,7 @@ namespace Pokemon
 
         public bool learned_new_move;
         public Moves learned_move;
+        public bool gained_exp;
 
         public void reset_stages()
         {
@@ -334,19 +335,19 @@ namespace Pokemon
             //leveling is multiplier * level^3 up to level 50
             if (this.level <= 50)
             {
-                Debug.Log("Pokemon is Under lvl 50");
+                //Debug.Log("Pokemon is Under lvl 50");
                 this.base_lvl_exp = (int)(this.lvl_speed * Math.Pow(this.level, 3));
                 this.next_lvl_exp = (int)(this.lvl_speed * Math.Pow(this.level + 1, 3));
-                Debug.Log("SET_EXP() base_lvl_exp: " + this.base_lvl_exp);
-                Debug.Log("SET_EXP() next_lvl_exp: " + this.next_lvl_exp);
+                //Debug.Log("SET_EXP() base_lvl_exp: " + this.base_lvl_exp);
+                //Debug.Log("SET_EXP() next_lvl_exp: " + this.next_lvl_exp);
 
-                Debug.Log("BEFORE SET_EXP() current_lvl_exp " + this.current_exp);
+                //Debug.Log("BEFORE SET_EXP() current_lvl_exp " + this.current_exp);
                 if (this.current_exp == 0 || this.current_exp < this.base_lvl_exp)
                 {
 
                     this.current_exp = this.base_lvl_exp;
                 }
-                Debug.Log("AFTER SET_EXP() current_lvl_exp " + this.current_exp);
+                //Debug.Log("AFTER SET_EXP() current_lvl_exp " + this.current_exp);
 
             }
 
@@ -378,6 +379,7 @@ namespace Pokemon
 
         public Moves check_learnset()
         {
+
             this.learned_move = null;
             foreach (Learnset move in this.learnset)
             {
@@ -410,6 +412,7 @@ namespace Pokemon
         //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
         public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
         {
+            this.gained_exp = false;
             this.learned_new_move = false;
             //EXP = (a * t * e * b * L) / (7 * s)
             //a is wild or trainer pokemon: 1 or 1.5
@@ -428,6 +431,7 @@ namespace Pokemon
             {
                 Debug.Log("Pokemon Leveled!");
                 this.level += 1;
+                this.gained_exp = true;
 
                 //update stats
                 this.update_current_stats();
