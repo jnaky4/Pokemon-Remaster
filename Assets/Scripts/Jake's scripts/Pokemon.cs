@@ -71,7 +71,9 @@ namespace Pokemon
             this.name = pokedex_entry.name;
 
             //set exp for new pokemon, default 0,
+            this.lvl_speed = pokedex_entry.leveling_speed;
             this.current_exp = current_exp;
+            Debug.Log("Argurment Current EXP: " + this.current_exp);
             //sets: base_level_exp, current_exp if current_exp above is 0, next_level_exp
             set_exp();
 
@@ -330,13 +332,20 @@ namespace Pokemon
             //leveling is multiplier * level^3 up to level 50
             if (this.level <= 50)
             {
+                Debug.Log("Pokemon is Under lvl 50");
                 this.base_lvl_exp = (int)(this.lvl_speed * Math.Pow(this.level, 3));
                 this.next_lvl_exp = (int)(this.lvl_speed * Math.Pow(this.level + 1, 3));
+                Debug.Log("SET_EXP() base_lvl_exp: " + this.base_lvl_exp);
+                Debug.Log("SET_EXP() next_lvl_exp: " + this.next_lvl_exp);
 
+                Debug.Log("BEFORE SET_EXP() current_lvl_exp " + this.current_exp);
                 if (this.current_exp == 0 || this.current_exp < this.base_lvl_exp)
                 {
+
                     this.current_exp = this.base_lvl_exp;
                 }
+                Debug.Log("AFTER SET_EXP() current_lvl_exp " + this.current_exp);
+
             }
 
             //after level 50, next level is 7500 exp from 51 to 100
@@ -344,7 +353,7 @@ namespace Pokemon
             {
                 this.base_lvl_exp = (int)(this.lvl_speed * Math.Pow(50, 3)) + (7500 * (this.level - 50));
                 this.next_lvl_exp = (int)(this.lvl_speed * Math.Pow(50, 3)) + (7500 * (this.level + 1 - 50));
-                if (this.current_exp == 0)
+                if (this.current_exp == 0 || this.current_exp < this.base_lvl_exp)
                 {
                     this.current_exp = this.base_lvl_exp;
                 }
@@ -406,10 +415,10 @@ namespace Pokemon
             int exp_gained = (int)(trainer_wild_multipllier * 1 * 1 * enemy_base_exp * enemy_level) / (7 * num_player_pokemon_used);
             this.current_exp += exp_gained;
 
-            Debug.Log("base exp " + this.base_lvl_exp);
+/*            Debug.Log("base exp " + this.base_lvl_exp);
             Debug.Log("current exp " + this.current_exp);
             Debug.Log("next level exp " + this.next_lvl_exp);
-
+*/
             if (this.current_exp >= this.next_lvl_exp)
             {
                 Debug.Log("Pokemon Leveled!");
@@ -436,9 +445,9 @@ namespace Pokemon
 
                 //update exp
                 this.set_exp();
-                Debug.Log("New base EXP " + this.base_lvl_exp);
+/*                Debug.Log("New base EXP " + this.base_lvl_exp);
                 Debug.Log("Current EXP " + this.current_exp);
-                Debug.Log("New Next levl EXP " + this.next_lvl_exp);
+                Debug.Log("New Next levl EXP " + this.next_lvl_exp);*/
 
             }
 
