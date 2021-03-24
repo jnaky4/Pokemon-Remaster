@@ -37,6 +37,7 @@ namespace Pokemon
         public static bool startCombatMusic = false;
         public static bool endCombatMusic = false;
         public static string music = "Pallet Town";
+        public static string soundFX = null;
 
         // Start is called before the first frame update
         void Awake ()

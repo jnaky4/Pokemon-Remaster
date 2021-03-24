@@ -65,7 +65,7 @@ namespace Pokemon
             if (currentMusic != GameController.music)
             {
                 currentMusic = GameController.music;
-                Debug.Log("Pausing Song: " + FindObjectOfType<SoundPlayer>().SongPlaying.name);
+
                 FindObjectOfType<SoundPlayer>().StopSong();
                 if (GameController.music == "Battle Wild Begin")
                     Play_Two_Songs(GameController.music, "Battle Wild");
@@ -75,46 +75,14 @@ namespace Pokemon
                     Play_Two_Songs(GameController.music, "Battle Gym");
                 else
                     FindObjectOfType<SoundPlayer>().Play_New_Song(GameController.music);
-
-                /*
-                switch (GameController.location)
-                {
-                    case "Route 1":
-                        FindObjectOfType<SoundPlayer>().Play_New_Song("Route 1");
-                        break;
-                    case "Pallet Town":
-                        FindObjectOfType<SoundPlayer>().Play_New_Song("Pallet Town");
-                        break;
-                    default:
-                        FindObjectOfType<SoundPlayer>().Play_New_Song("Pallet Town");
-                        break;
-                }*/
             }
-            /*
-            if (GameController.state == GameState.TrainerEncounter)
-            {
-                FindObjectOfType<SoundPlayer>().StopSong();
 
-                FindObjectOfType<SoundPlayer>().Play_New_Song("Encounter Trainer");
-                //FindObjectOfType<SoundPlayer>().T
+            if (GameController.soundFX != null)
+            {
+                PlayEffect(GameController.soundFX);
+                GameController.soundFX = null;
             }
-            if (GameController.startCombatMusic == true)
-            {
-                FindObjectOfType<SoundPlayer>().StopSong();
 
-                if (GameController.isCatchable == true)
-                    FindObjectOfType<SoundPlayer>().Play_New_Song("Battle Wild");
-                else
-                    FindObjectOfType<SoundPlayer>().Play_New_Song("Battle Trainer");
-
-                GameController.startCombatMusic = false;
-            }
-            if (GameController.endCombatMusic == true)
-            {
-                FindObjectOfType<SoundPlayer>().StopSong();
-                FindObjectOfType<SoundPlayer>().Play_New_Song(currentMusic);
-                GameController.endCombatMusic = false;
-            }*/
             if (Input.GetKeyDown("space"))
             {
                 if (song_playing)
