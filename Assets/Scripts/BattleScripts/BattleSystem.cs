@@ -1118,7 +1118,7 @@ namespace Pokemon
                 else
                 {
                     state = BattleState.ENEMYTURN;
-                    backPoke.interactable = true;
+                    //backPoke.interactable = true;
 
                     StartCoroutine(DecisionSwitch());
                 }
@@ -1132,7 +1132,7 @@ namespace Pokemon
         {
             state = BattleState.CHANGEPOKEMON;
             playerHUD.SetPokemon(GameController.playerPokemon);
-            backPoke.interactable = false;
+            SetDownButtons();
             OpenPokemonMenu();
             yield break;
         }
@@ -1398,9 +1398,13 @@ namespace Pokemon
         public void OnPokemonButton()
         {
             if (state != BattleState.PLAYERTURN) return;
-            attackMenuUI.SetActive(false);
-            OpenPokemonMenu();
-            SetDownButtons();
+            if (poekmonMenuOpen) ClosePokemonMenu();
+            else
+            {
+                attackMenuUI.SetActive(false);
+                OpenPokemonMenu();
+            }
+
         }
 
         /// <summary>
@@ -1481,7 +1485,7 @@ namespace Pokemon
             poekmonMenuOpen = true;
             CloseBallsMenu();
             CloseMovesMenu();
-            SetDownButtons();
+            //SetDownButtons();
         }
         /// <summary>
         /// Closes the pokemon menu.
