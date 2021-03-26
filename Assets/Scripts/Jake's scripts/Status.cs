@@ -6,38 +6,38 @@ using UnityEngine;
  *  self_damage 1/8 .125 of max hp
  *  current_damage_physical * 1/2      .5
  *  ignore_type fire
- *  persistance true
+ *  persistence true
  *  applies after both players attacked that turn
- *  
+ *
  * no early pokemon have freeze abilities
- * Freeze: 
+ * Freeze:
  * unable_to_attack: 100% chance
  * fire moves thaw freeze
  * removal_chance: 20% chance beginning of turn
  * ignore_type ice
- * persistance true
- * 
- * 
+ * persistence true
+ *
+ *
  * Paralysis:
  * current speed * 1/2
  * unable_to_attack: 25% chance
  * ignore_type electric
- * persistance true
- * 
+ * persistence true
+ *
  * Poison:
  * self_damage 1/8 .125 of max hp
  * ignore_type poison
- * persistance true
- * Overworld affect: Damage 
- * 
- * 
+ * persistence true
+ * Overworld affect: Damage
+ *
+ *
  * Sleep:
  *  unable_to_attack: 100%
  *  max_duration: 3 turns
  *  min_duration: 1
  *  persistance true
  *  removal_chance
- *  
+ *
  * Confusion:
  *  max_duration: 4
  *  min_duration: 2
@@ -45,14 +45,14 @@ using UnityEngine;
  *  persistance: false
  *  unable_to_attack: 33% .33
  *  self_damage: .175
- * 
- *  
- * NOT HANDLED: 
- *  Poison in Overworld, 
- *  when status is applied during fight ie, 
- *  beginning of turn/end of turn, 
+ *
+ *
+ * NOT HANDLED:
+ *  Poison in Overworld,
+ *  when status is applied during fight ie,
+ *  beginning of turn/end of turn,
  *  Special Cases for specific moves
- * 
+ *
 */
 namespace Pokemon
 {
@@ -116,7 +116,88 @@ namespace Pokemon
             return all_status_effects[name];
         }
 
+        public bool SeeIfStatus(Moves move)
+        {
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(1, 100);
+            double chance = move.status_chance * 100;
+            if (num <= chance) return true;
+            return false;
+        }
 
+        public void BurnSelf(Unit unit)
+        {
+            unit.TakeDamage(unit.damage * (.125));
+        }
+        public static void ParalyzeSpeedReduce(Unit unit)
+        {
+            unit.pokemon.current_speed *= .5;
+        }
+        public static bool SeeIfParalyzed(Pokemon poke)
+        {
+            int check = 0;
+            foreach (Status s in poke.statuses)
+            {
+                if (s.name.Equals("Paralysis")) check = 1;
+            }
+            if (check == 0) return false;
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(1, 100);
+            if (num <= 25) return true;
+            return false;
+        }
+
+        public static bool SeeIfPersistanceIsAlreadyHere(Pokemon poke)
+        {
+            foreach (Status s in poke.statuses)
+            {
+                if (s.persistance)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void SeeIfStatusEffect(Moves move, Unit unit)
+        {
+            switch (move.status.name)
+            {
+                case "Burn":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (Status.SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        try
+                        {
+                            if (unit.pokemon.type1.Equals("Fire") || unit.pokemon.type2.Equals("Fire")) break;
+                        }
+                        finally
+                        {
+                            unit.pokemon.statuses.Add(Status.get_status("Burn"));
+                        }
+                    }
+                    break;
+
+                case "Paralysis":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (Status.SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        try
+                        {
+                            if (unit.pokemon.type1.Equals("Electric") || unit.pokemon.type2.Equals("Electric")) break;
+                        }
+                        finally
+                        {
+                            unit.pokemon.statuses.Add(Status.get_status("Paralysis"));
+                            ParalyzeSpeedReduce(unit);
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
 
 
     }

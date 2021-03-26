@@ -359,7 +359,7 @@ namespace Pokemon
                     state = BattleState.ENEMYTURN;
                     for (int k = 0; k < numTimesEnemy; k++)
                     {
-                        yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                        yield return StartCoroutine(EnemyAttack(enemyMove));
                         if (breakOutOfDecision) break;
                     }
                 }
@@ -369,7 +369,7 @@ namespace Pokemon
                 state = BattleState.ENEMYTURN;
                 for (int k = 0; k < numTimesEnemy; k++)
                 {
-                    yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                    yield return StartCoroutine(EnemyAttack(enemyMove));
                     if (breakOutOfDecision) break;
                 }
                 if (!breakOutOfDecision && !deadPokemon)
@@ -389,7 +389,7 @@ namespace Pokemon
                     state = BattleState.ENEMYTURN;
                     for (int k = 0; k < numTimesEnemy; k++)
                     {
-                        yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                        yield return StartCoroutine(EnemyAttack(enemyMove));
                         if (breakOutOfDecision) break;
                     }
                     if (!breakOutOfDecision && !deadPokemon)
@@ -415,7 +415,7 @@ namespace Pokemon
                         state = BattleState.ENEMYTURN;
                         for (int k = 0; k < numTimesEnemy; k++)
                         {
-                            yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                            yield return StartCoroutine(EnemyAttack(enemyMove));
                             if (breakOutOfDecision) break;
                         }
                     }
@@ -436,7 +436,7 @@ namespace Pokemon
                             state = BattleState.ENEMYTURN;
                             for (int k = 0; k < numTimesEnemy; k++)
                             {
-                                yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                                yield return StartCoroutine(EnemyAttack(enemyMove));
                                 if (breakOutOfDecision) break;
                             }
                         }
@@ -446,7 +446,7 @@ namespace Pokemon
                         state = BattleState.ENEMYTURN;
                         for (int k = 0; k < numTimesEnemy; k++)
                         {
-                            yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                            yield return StartCoroutine(EnemyAttack(enemyMove));
                             if (breakOutOfDecision) break;
                         }
                         if (!breakOutOfDecision && !deadPokemon)
@@ -515,7 +515,7 @@ namespace Pokemon
             state = BattleState.ENEMYTURN;
             for (int k = 0; k < numTimesEnemy; k++)
             {
-                yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                yield return StartCoroutine(EnemyAttack(enemyMove));
                 if (breakOutOfDecision) break;
             }
             if (breakOutOfDecision)
@@ -573,7 +573,7 @@ namespace Pokemon
             int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
             for (int k = 0; k < numTimesEnemy; k++)
             {
-                yield return StartCoroutine(EnemyAttack(enemyMove, moveNum));
+                yield return StartCoroutine(EnemyAttack(enemyMove));
                 if (breakOutOfDecision) break;
             }
             if (breakOutOfDecision)
@@ -637,6 +637,7 @@ namespace Pokemon
             }
             return false;
         }
+
 
         /// <summary>
         /// Gets the category of move.
@@ -808,6 +809,14 @@ namespace Pokemon
             CloseBallsMenu();
             SetDownButtons();
 
+            if (Status.SeeIfParalyzed(playerUnit.pokemon))
+            {
+                dialogueText.text = playerUnit.pokemon.name + " is paralyzed!";
+                yield return new WaitForSeconds(2);
+                endAttack = true;
+                yield break;
+            }
+
             bool crit = CriticalHit(playerUnit);
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
@@ -823,12 +832,14 @@ namespace Pokemon
                 endofanimation = false;
 
                 if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
+                if (!attack.status.Equals("null")) Status.SeeIfStatusEffect(attack, enemyUnit);
                 double super = DoDamage(playerUnit, enemyUnit, attack, crit);
                 Debug.Log(playerUnit.damage);
 
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
+                enemyHUD.SetStatus(enemyUnit.pokemon);
 
                 if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
                 {
@@ -856,72 +867,18 @@ namespace Pokemon
                         dialogueText.text = "It's not very effective...";
                     }
                     else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
-                }
-                yield return new WaitForSeconds(2);
-
-                if (isDead) //Determines what to do if the opponent's Pokemon died.
-                {
-                    breakOutOfDecision = true;
-                    bool won = true;
-                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++) //Determines if you win or not by seeing if the other trainer has other useable pokemon.
+                    yield return new WaitForSeconds(2);
+                    if (playerUnit.pokemon.statuses.Contains(Status.get_status("Burn")))
                     {
-                        if (GameController.opponentPokemon[j].current_hp > 0)
-                        {
-                            won = false;
-                            break;
-                        }
-                    }
-                    if (won) //If you won
-                    {
-                        state = BattleState.WON;
-
-                        dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                        int exp = 0;
-                        //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
-                        if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
-                        else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
+                        playerUnit.BurnSelf();
+                        playerHUD.SetHP(playerUnit.pokemon.current_hp);
+                        dialogueText.text = playerUnit.pokemon.name + " got burned!";
                         yield return new WaitForSeconds(2);
-                        dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
-                        if (playerUnit.pokemon.gained_a_level)
-                        {
-                            yield return StartCoroutine(LevelUp(playerUnit.pokemon));
-                        }
-                        //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
-                        yield return new WaitForSeconds(2);
-                        yield break;
-                    }
-                    else //If you didn't win, they bring out a new Pokemon
-                    {
-                        state = BattleState.CHANGEPOKEMON;
-
-                        int exp = 0;
-                        dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                        if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
-                        else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
-                        yield return new WaitForSeconds(2);
-                        dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
-                        yield return new WaitForSeconds(2);
-                        if (playerUnit.pokemon.gained_a_level)
-                        {
-                            yield return StartCoroutine(LevelUp(playerUnit.pokemon));
-                        }
-
-                        for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
-                        {
-                            if (GameController.opponentPokemon[j].current_hp > 0)
-                            {
-                                enemyUnit.pokemon = GameController.opponentPokemon[j];
-                                dialogueText.text = "They sent out a " + enemyUnit.pokemon.name + "!";
-                                yield return new WaitForSeconds(2);
-                                enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
-                                SetOpponentSprite(enemyUnit, enemySprite);
-                                break;
-                            }
-                        }
-                        PlayerTurn();
-                        yield break;
+                        yield return StartCoroutine(EnemyKillsYou(true));
                     }
                 }
+
+                yield return StartCoroutine(YouKilledThem(isDead));
             }
             else //If your attack missed
             {
@@ -932,6 +889,73 @@ namespace Pokemon
                 yield break;
             }
             yield break;
+        }
+
+        public IEnumerator YouKilledThem(bool isDead)
+        {
+            if (isDead) //Determines what to do if the opponent's Pokemon died.
+            {
+                breakOutOfDecision = true;
+                bool won = true;
+                for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++) //Determines if you win or not by seeing if the other trainer has other useable pokemon.
+                {
+                    if (GameController.opponentPokemon[j].current_hp > 0)
+                    {
+                        won = false;
+                        break;
+                    }
+                }
+                if (won) //If you won
+                {
+                    state = BattleState.WON;
+
+                    dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                    int exp = 0;
+                    //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
+                    if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
+                    else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
+                    yield return new WaitForSeconds(2);
+                    dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
+                    if (playerUnit.pokemon.gained_a_level)
+                    {
+                        yield return StartCoroutine(LevelUp(playerUnit.pokemon));
+                    }
+                    //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
+                    yield return new WaitForSeconds(2);
+                    yield break;
+                }
+                else //If you didn't win, they bring out a new Pokemon
+                {
+                    state = BattleState.CHANGEPOKEMON;
+
+                    int exp = 0;
+                    dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                    if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
+                    else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
+                    yield return new WaitForSeconds(2);
+                    dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
+                    yield return new WaitForSeconds(2);
+                    if (playerUnit.pokemon.gained_a_level)
+                    {
+                        yield return StartCoroutine(LevelUp(playerUnit.pokemon));
+                    }
+
+                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+                    {
+                        if (GameController.opponentPokemon[j].current_hp > 0)
+                        {
+                            enemyUnit.pokemon = GameController.opponentPokemon[j];
+                            dialogueText.text = "They sent out a " + enemyUnit.pokemon.name + "!";
+                            yield return new WaitForSeconds(2);
+                            enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
+                            SetOpponentSprite(enemyUnit, enemySprite);
+                            break;
+                        }
+                    }
+                    PlayerTurn();
+                    yield break;
+                }
+            }
         }
 
         /// <summary>
@@ -1030,6 +1054,10 @@ namespace Pokemon
             else //If they broke free again.
             {
                 int d = (GameController.catchRate * 100) / numShakes;
+                if (d < 10) { }//no shakes
+                else if (d < 30) { }//one shake
+                else if (d < 70) { }//two shakes
+                else { }//three shakes
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
                 StartCoroutine(DecisionCatch());
@@ -1166,11 +1194,19 @@ namespace Pokemon
         /// There is no reason this can't be done for the player functions, I just haven't gotten around to it yet and that is very low on my priority list.
         /// </summary>
         /// <param name="move">The attack the enemy Pokemon chose.</param>
-        /// <param name="moveNum">The index of the move in the enemy Pokemon's move array, or -1 if it is struggle.</param>
         /// <returns>Nothing.</returns>
-        IEnumerator EnemyAttack(Moves move, int moveNum)
+        IEnumerator EnemyAttack(Moves move)
         {
             SetDownButtons();
+
+            if (Status.SeeIfParalyzed(enemyUnit.pokemon))
+            {
+                dialogueText.text = enemyUnit.pokemon.name + " is paralyzed!";
+                yield return new WaitForSeconds(2);
+                endAttack = true;
+                yield break;
+            }
+
             System.Random rnd = new System.Random();
             bool crit = CriticalHit(enemyUnit);
             int num = rnd.Next(1, 100);
@@ -1186,6 +1222,7 @@ namespace Pokemon
                 endofanimation = false;
 
                 if (move.current_stat_change.CompareTo("null") != 0) enemyUnit.SetStages(move, playerUnit);
+                if (!move.status.Equals("null")) Status.SeeIfStatusEffect(move, playerUnit);
                 double super = DoDamage(enemyUnit, playerUnit, move, crit);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage); //Forgot to comment this earlier, but this is where the damage actually gets applied.
                 //Debug.Log(enemyUnit.damage.ToString());
@@ -1214,32 +1251,16 @@ namespace Pokemon
                 }
                 yield return new WaitForSeconds(2);
 
-                if (isDead) //If your Pokemon died.
+                if (enemyUnit.pokemon.statuses.Contains(Status.get_status("Burn")))
                 {
-                    breakOutOfDecision = true;
-                    for(int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++) //See if you have any other usable Pokemon.
-                    {
-                        if (GameController.playerPokemon[j].current_hp > 0)
-                        {
-                            breakOutOfDecision = false;
-                            break;
-                        }
-                    }
-                    if (breakOutOfDecision) //If you lost the battle.
-                    {
-                        state = BattleState.LOST;
-                        yield break;
-                    }
-                    else //If you have other Pokemon.
-                    {
-                        deadPokemon = true;
-                        state = BattleState.CHANGEPOKEMON;
-                        dialogueText.text = playerUnit.pokemon.name + " faints!";
-                        yield return new WaitForSeconds(2);
-                        yield return SwitchPokemonAfterDeath();
-                        yield break;
-                    }
+                    enemyUnit.BurnSelf();
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
+                    dialogueText.text = enemyUnit.pokemon.name + " got burned!";
+                    yield return StartCoroutine(YouKilledThem(true));
+                    yield return new WaitForSeconds(2);
                 }
+                yield return StartCoroutine(EnemyKillsYou(isDead));
+
             }
             else //If the enemy pokemon misses.
             {
@@ -1250,6 +1271,36 @@ namespace Pokemon
             }
             yield break;
         }
+        public IEnumerator EnemyKillsYou(bool isDead)
+        {
+            if (isDead) //If your Pokemon died.
+            {
+                breakOutOfDecision = true;
+                for (int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++) //See if you have any other usable Pokemon.
+                {
+                    if (GameController.playerPokemon[j].current_hp > 0)
+                    {
+                        breakOutOfDecision = false;
+                        break;
+                    }
+                }
+                if (breakOutOfDecision) //If you lost the battle.
+                {
+                    state = BattleState.LOST;
+                    yield break;
+                }
+                else //If you have other Pokemon.
+                {
+                    deadPokemon = true;
+                    state = BattleState.CHANGEPOKEMON;
+                    dialogueText.text = playerUnit.pokemon.name + " faints!";
+                    yield return new WaitForSeconds(2);
+                    yield return SwitchPokemonAfterDeath();
+                    yield break;
+                }
+            }
+        }
+
         #endregion
         #region End of Battle functions
         /// <summary>
@@ -1346,7 +1397,7 @@ namespace Pokemon
                     GameController.playerPokemon[i].current_defense = GameController.playerPokemon[i].max_defense;
                     GameController.playerPokemon[i].current_sp_attack = GameController.playerPokemon[i].max_sp_attack;
                     GameController.playerPokemon[i].current_sp_defense = GameController.playerPokemon[i].max_sp_defense;
-                    GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed;
+                    if (!Status.SeeIfParalyzed(GameController.playerPokemon[i])) GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed;
                     GameController.playerPokemon[i].current_accuracy = 1;
                     GameController.playerPokemon[i].current_evasion = 1;
                 }
@@ -1883,7 +1934,7 @@ namespace Pokemon
             dialogueText.text = poke.name + " is now level " + poke.level + "!";
             playerHUD.SetHUD(playerUnit, true, player, GameController.playerPokemon);
             yield return new WaitForSeconds(2);
-            if (poke.learned_new_move == true)
+            if (poke.learned_new_move)
             {
                 if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 4)
                 {
