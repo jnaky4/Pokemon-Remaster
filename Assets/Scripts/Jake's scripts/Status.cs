@@ -61,19 +61,31 @@ namespace Pokemon
 
         static Dictionary<string, Status> all_status_effects = new Dictionary<string, Status>()
         {
-
-            //name, persistance, ignoretype, self_dmg%, unable attack%, affect_stat, affect_stat_multiplier, removal_chance, min_duration, max_duration
-            {"Burn",  new Status("Burn", true, "Fire", .25, 0, "Physical", .25, 0, -1, -1)},
-            {"Freeze",  new Status("Freeze", true, "Ice", 0, 1.0, "null", 0, .2, -1, -1)},
-            {"Sleep",  new Status("Sleep", true, "null", 0, 1.0, "null", 0, 0, 3, 1)},
-            {"Paralysis", new Status("Paralysis", true, "Electric", 0, .25, "Speed", .5, 0, -1, -1) },
-            {"Poison", new Status("Poison", true, "Poison", .125, 0, "null", 0, 0, -1, -1) },
-            {"Confusion", new Status("Confusion", false, "null", .175, .33, "null", 0, 0, 5, 2) },
-            {"Flinch", new Status("Flinch", false, "null", 0, 1.0, "null", 0, 0, 1, 1) },
+            /*
+             * name: name of status effect
+             * persist: t/f if status effect persist outside of combat
+             * ignore_type: ignores applying effect to pokemon if type1 or type2 matches
+             * self_damage: (0 to 1) % damage at end of turn to self based on max_hp
+             * unable_to_attack_chance: (0 to 1) % chance  to be able to attack that turn
+             * affect_stat: specific effect the status effects
+             * affect_stat_multiplier: (0 to 1) mutiplier on stat
+             * removal_chance: (0 to 1) chance per turn to remove status at beginning of turn
+             * min_duration: (1 to 5):  -1 means always persist
+             * max_duration: (1 to 5):  -1 means always persist
+             */
+            //                          name            persist ig_type     s_dmg%  u_atk%  afct_st     afct_st_mul rmv_ch  min_dur max_dur
+            {"Burn",  new Status(       "Burn",         true,   "Fire",     .125,   0,      "Attack",   .5,         0,      -1,     -1)},
+            {"Freeze",  new Status(     "Freeze",       true,   "Ice",      0,      1.0,    "null",     1,          .2,     -1,     -1)},
+            {"Sleep",  new Status(      "Sleep",        true,   "null",     0,      1.0,    "null",     1,          0,      3,      1)},
+            {"Paralysis", new Status(   "Paralysis",    true,   "Electric", 0,      .25,    "Speed",    .5,         0,      -1,     -1)},
+            {"Poison", new Status(      "Poison",       true,   "Poison",   .125,   0,      "null",     1,          0,      -1,     -1)},
+            {"Flinch", new Status(      "Flinch",       false,  "null",     0,      1.0,    "null",     1,          0,      1,      1)},
+            {"Confusion", new Status(   "Confusion",    false,  "null",     .175,   .33,    "null",     1,          0,      5,      2)},
             //for csv, does nothing
-            {"null", new Status("null", false, "null", 0, 0, "null", 0, 0, -1, -1) }
+            {"null", new Status(        "null",         false,  "null",     0,      0,      "null",     1,          0,      -1,     -1) }
 
         };
+
         public string name;
         //if the move persist outside battle/switched out
         public bool persistance;
