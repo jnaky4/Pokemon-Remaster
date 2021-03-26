@@ -116,7 +116,7 @@ namespace Pokemon
             return all_status_effects[name];
         }
 
-        public bool SeeIfBurn(Moves move)
+        public bool SeeIfStatus(Moves move)
         {
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
@@ -129,6 +129,76 @@ namespace Pokemon
         {
             unit.TakeDamage(unit.damage * (.125));
         }
+        public static void ParalyzeSpeedReduce(Unit unit)
+        {
+            unit.pokemon.current_speed *= .5;
+        }
+        public static bool SeeIfParalyzed(Pokemon poke)
+        {
+            int check = 0;
+            foreach (Status s in poke.statuses)
+            {
+                if (s.name.Equals("Paralysis")) check = 1;
+            }
+            if (check == 0) return false;
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(1, 100);
+            if (num <= 25) return true;
+            return false;
+        }
+
+        public static bool SeeIfPersistanceIsAlreadyHere(Pokemon poke)
+        {
+            foreach (Status s in poke.statuses)
+            {
+                if (s.persistance)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static void SeeIfStatusEffect(Moves move, Unit unit)
+        {
+            switch (move.status.name)
+            {
+                case "Burn":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (Status.SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        try
+                        {
+                            if (unit.pokemon.type1.Equals("Fire") || unit.pokemon.type2.Equals("Fire")) break;
+                        }
+                        finally
+                        {
+                            unit.pokemon.statuses.Add(Status.get_status("Burn"));
+                        }
+                    }
+                    break;
+
+                case "Paralysis":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (Status.SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        try
+                        {
+                            if (unit.pokemon.type1.Equals("Electric") || unit.pokemon.type2.Equals("Electric")) break;
+                        }
+                        finally
+                        {
+                            unit.pokemon.statuses.Add(Status.get_status("Paralysis"));
+                            ParalyzeSpeedReduce(unit);
+                        }
+                    }
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
 
     }
 }
