@@ -79,7 +79,7 @@ namespace Pokemon
 
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats();
-            
+
 
             //get learnset added to learnset_dictionary for this pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);
@@ -413,7 +413,6 @@ namespace Pokemon
         public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
         {
             this.gained_a_level = false;
-            this.learned_new_move = false;
             //EXP = (a * t * e * b * L) / (7 * s)
             //a is wild or trainer pokemon: 1 or 1.5
             //t is trainer_pokemon or traded, always 1 for game
