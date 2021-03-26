@@ -260,6 +260,8 @@ namespace Pokemon
         public Moves learned_move;
         public bool gained_a_level;
 
+        public ArrayList statuses = new ArrayList();
+
         public void reset_stages()
         {
             critical_stage = 0;

@@ -68,13 +68,17 @@ namespace Pokemon
                 System.Random rnd = new System.Random();
                 double num = rnd.Next(85, 100);
                 random = num / 100; //Random number for the random element.
-
+                double burn = 1;
+                if (pokemon.statuses.Contains(Status.get_status("Burn")))
+                {
+                    burn = Status.get_status("Burn").affect_stat_mulitplier;
+                }
                 try
                 {
                     if (move.base_power > 0) //If this does actual attacking.
                     {
                         damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2; //Basic attacking
-                        damage = damage * (critical * stab * random * type1Defend * type2Defend * pokemon.burn); //Extra multipliers. Burn is just 1 at the moment.
+                        damage *= (critical * stab * random * type1Defend * type2Defend * burn); //Extra multipliers.
                     }
                     else
                     {
@@ -230,6 +234,11 @@ namespace Pokemon
                         break;
                 }
             }
+        }
+
+        public void BurnSelf()
+        {
+            TakeDamage(pokemon.max_hp * (.125));
         }
     }
 }

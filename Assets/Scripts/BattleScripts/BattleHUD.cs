@@ -133,6 +133,37 @@ namespace Pokemon
             expSlider.value = poke.current_exp;
         }
 
+        public void SetStatus(Pokemon poke)
+        {
+            if (poke.statuses.Count > 0)
+            {
+                Status s = (Status)poke.statuses[0];
+                Color c = level.color;
+                c = GetColorOfStatus(s.name);
+                level.color = c;
+                level.text = s.name;
+            }
+            else
+            {
+                level.color = GetColorOfStatus("null");
+                level.text = "Level " + poke.level;
+            }
+        }
+
+        private Color GetColorOfStatus(string name)
+        {
+            Color color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);
+            switch (name)
+            {
+                case "Burn":
+                    color = new Color(255f / 255f, 152f / 255f, 56f / 255f, 1);
+                    break;
+                default:
+                    break;
+            }
+            return color;
+        }
+
         /// <summary>
         /// Sets the player hp.
         /// </summary>
