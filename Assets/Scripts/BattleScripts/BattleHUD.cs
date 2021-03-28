@@ -158,8 +158,11 @@ namespace Pokemon
                 case "Burn":
                     color = new Color(255f / 255f, 152f / 255f, 56f / 255f, 1);
                     break;
-                case "Paralysed":
+                case "Paralysis":
                     color = new Color(246f / 255f, 216f / 255f, 48f / 255f, 1);
+                    break;
+                case "Poison":
+                    color = new Color(188f / 255f, 82f / 255f, 232f / 255f, 1);
                     break;
                 default:
                     break;

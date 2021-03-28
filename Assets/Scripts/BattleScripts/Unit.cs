@@ -111,6 +111,7 @@ namespace Pokemon
         public bool TakeDamage(double dmg)
         {
             pokemon.current_hp -= (int)dmg;
+            if (pokemon.current_hp > pokemon.max_hp) pokemon.current_hp = pokemon.max_hp;
             if (pokemon.current_hp < 0) pokemon.current_hp = 0;
             if (pokemon.current_hp <= 0) return true;
             else return false;
@@ -237,6 +238,10 @@ namespace Pokemon
         }
 
         public void BurnSelf()
+        {
+            TakeDamage(pokemon.max_hp * (.125));
+        }
+        public void PoisonSelf()
         {
             TakeDamage(pokemon.max_hp * (.125));
         }

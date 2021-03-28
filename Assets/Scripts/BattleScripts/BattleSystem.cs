@@ -1,12 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEngine.EventSystems;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, CHANGEPOKEMON }
 
@@ -299,7 +297,7 @@ namespace Pokemon
             }
             int moveNum = -1;
             bool struggle = false;
-            if (enemyContinuingAttack == 0) struggle = EnemyStruggle();
+            if (enemyContinuingAttack == 0) struggle = Utility.EnemyStruggle(enemyUnit);
             Moves enemyMove, playerMove;
             System.Random rnd = new System.Random();
             if (playerMoveNum == -2) playerMove = playerMoveStorage;
@@ -479,7 +477,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="pokemon">The Pokemon you are switching to. It is 0th indexed from the top of the screen</param>
         /// <returns>Nothing</returns>
-        IEnumerator DecisionSwitch()
+        IEnumerator DecisionYouDontAttack()
         {
             SetDownButtons();
             ClosePokemonMenu();
@@ -487,7 +485,7 @@ namespace Pokemon
             CloseBallsMenu();
 
             int moveNum = 0;
-            bool struggle = EnemyStruggle();
+            bool struggle = Utility.EnemyStruggle(enemyUnit);
             Moves enemyMove;
             System.Random rnd = new System.Random();
             if (struggle) enemyMove = enemyUnit.pokemon.struggle;
@@ -524,247 +522,6 @@ namespace Pokemon
             }
             PlayerTurn();
             yield break;
-        }
-
-        /// <summary>
-        /// Handles what happens when the player tries to catch enemy pokemon.
-        /// </summary>
-        /// <param name="ballNum">The number indicating what ball was used. 1 is for Pokeball, 2 for Great, 3 for Ultra, 4 for Master.</param>
-        /// <returns>Nothing</returns>
-        IEnumerator DecisionCatch()
-        {
-            SetDownButtons();
-            ClosePokemonMenu();
-            CloseMovesMenu();
-            CloseBallsMenu();
-            if (!GameController.isCatchable)
-            {
-                SetDownButtons();
-                dialogueText.text = "You can't catch other trainer's Pokemon!";
-                yield return new WaitForSeconds(2);
-                PlayerTurn();
-                yield break;
-            }
-
-            int moveNum = 0;
-            bool struggle = EnemyStruggle();
-            Moves enemyMove;
-            System.Random rnd = new System.Random();
-            if (struggle) enemyMove = enemyUnit.pokemon.struggle;
-            else
-            {
-                do
-                {
-                    moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
-                    enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
-                }
-                while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
-            }
-            enemyMoveName = enemyMove.name;
-            state = BattleState.ENEMYTURN;
-            if (moveNum >= 0) enemyUnit.DoPP(moveNum);
-            if (enemyContinuingAttack != 0) enemyContinuingAttack--;
-            else if (enemyMove.max_turns > 1)
-            {
-                enemyContinuingAttack = rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
-                enemyMoveStorage = enemyMove;
-            }
-
-            int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
-            for (int k = 0; k < numTimesEnemy; k++)
-            {
-                yield return StartCoroutine(EnemyAttack(enemyMove));
-                if (breakOutOfDecision) break;
-            }
-            if (breakOutOfDecision)
-            {
-                bool isEnd = true;
-                for (int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++)
-                {
-                    state = BattleState.LOST;
-                    if (GameController.playerPokemon[j].current_hp > 0)
-                    {
-                        isEnd = false;
-                        break;
-                    }
-                }
-                yield return StartCoroutine(EndBattle());
-                if (isEnd) yield return StartCoroutine(EndBattle());
-                for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
-                {
-                    if (GameController.opponentPokemon[j].current_hp > 0)
-                    {
-                        state = BattleState.WON;
-                        isEnd = false;
-                        break;
-                    }
-                }
-                if (isEnd) yield return StartCoroutine(EndBattle());
-            }
-            PlayerTurn();
-            yield break;
-        }
-        #endregion
-        #region Utility functions for doing damage
-        /// <summary>
-        /// Determines if a hit is a critical or not.
-        /// </summary>
-        /// <param name="unit">The unit that we are checking for. We need this to access the .pokemon, then the .critical_stage to determine how likely a crit is.</param>
-        /// <returns>Returns true if the hit becomes a crit, false otherwise.</returns>
-        public bool CriticalHit(Unit unit)
-        {
-            System.Random rnd = new System.Random();
-            int num = rnd.Next(1,100);
-            if (unit.pokemon.critical_stage == 0)
-            {
-                if (num <= 6) return true;
-            }
-            if (unit.pokemon.critical_stage == 1)
-            {
-                if (num <= 13) return true;
-            }
-            if (unit.pokemon.critical_stage == 2)
-            {
-                if (num <= 25) return true;
-            }
-            if (unit.pokemon.critical_stage == 3)
-            {
-                if (num <= 33) return true;
-            }
-            if (unit.pokemon.critical_stage == 4)
-            {
-                if (num <= 50) return true;
-            }
-            return false;
-        }
-
-
-        /// <summary>
-        /// Gets the category of move.
-        /// </summary>
-        /// <param name="move">The move we want the category of.</param>
-        /// <returns>The string of what category the move is.</returns>
-        public string GetCategoryOfMove(Moves move)
-        {
-            return move.category;
-        }
-
-        /// <summary>
-        /// Calculates how much damage is done based on the types of the attacker and defender
-        /// </summary>
-        /// <param name="attacker">The attacker unit.</param>
-        /// <param name="defender">The defender unit.</param>
-        /// <param name="attack">The move we want to use.</param>
-        /// <param name="crit">A bool that lets us know if the attack is a crit or not.</param>
-        /// <returns>This returns the type1 advantage of the defender multiplied by the type2 advantage of the defender.</returns>
-        public double DoDamage(Unit attacker, Unit defender, Moves attack, bool crit)
-        {
-            double type1 = 1;
-            double type2 = 1;
-
-            switch (attack.move_type.type)
-            {
-                case "Normal":
-                    type1 = defender.pokemon.type1.defend_normal;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_normal;
-                    break;
-                case "Fire":
-                    type1 = defender.pokemon.type1.defend_fire;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_fire;
-                    break;
-                case "Water":
-                    type1 = defender.pokemon.type1.defend_water;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_water;
-                    break;
-                case "Electric":
-                    type1 = defender.pokemon.type1.defend_electric;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_electric;
-                    break;
-                case "Grass":
-                    type1 = defender.pokemon.type1.defend_grass;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_grass;
-                    break;
-                case "Ice":
-                    type1 = defender.pokemon.type1.defend_ice;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_ice;
-                    break;
-                case "Fighting":
-                    type1 = defender.pokemon.type1.defend_fighting;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_fighting;
-                    break;
-                case "Poison":
-                    type1 = defender.pokemon.type1.defend_poison;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_poison;
-                    break;
-                case "Ground":
-                    type1 = defender.pokemon.type1.defend_ground;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_ground;
-                    break;
-                case "Flying":
-                    type1 = defender.pokemon.type1.defend_flying;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_flying;
-                    break;
-                case "Psychic":
-                    type1 = defender.pokemon.type1.defend_psychic;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_psychic;
-                    break;
-                case "Bug":
-                    type1 = defender.pokemon.type1.defend_bug;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_bug;
-                    break;
-                case "Rock":
-                    type1 = defender.pokemon.type1.defend_rock;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_rock;
-                    break;
-                case "Ghost":
-                    type1 = defender.pokemon.type1.defend_ghost;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_ghost;
-                    break;
-                case "Dragon":
-                    type1 = defender.pokemon.type1.defend_dragon;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_dragon;
-                    break;
-                case "Dark":
-                    break;
-                case "Steel":
-                    break;
-                case "Fairy":
-                    break;
-                default:
-                    break;
-            }
-            Debug.Log(attack.base_power);
-            if (attack.base_power > 0)
-            {
-                if (GetCategoryOfMove(attack).CompareTo("Physical") == 0)
-                {
-                    attacker.SetDamage(defender.pokemon.current_defense, attacker.pokemon.current_attack, attack.base_power, attack, crit, type1, type2);
-                }
-                else
-                {
-                    attacker.SetDamage(defender.pokemon.current_sp_defense, attacker.pokemon.current_sp_attack, attack.base_power, attack, crit, type1, type2);
-                }
-            }
-            else
-            {
-                attacker.SetDamage(1, 0, 0, attack, crit, 1, 1);
-            }
-            return type1 * type2;
         }
         #endregion
         #region Player attack functions
@@ -817,7 +574,7 @@ namespace Pokemon
                 yield break;
             }
 
-            bool crit = CriticalHit(playerUnit);
+            bool crit = Utility.CriticalHit(playerUnit);
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
@@ -833,7 +590,7 @@ namespace Pokemon
 
                 if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
                 if (!attack.status.Equals("null")) Status.SeeIfStatusEffect(attack, enemyUnit);
-                double super = DoDamage(playerUnit, enemyUnit, attack, crit);
+                double super = Utility.DoDamage(playerUnit, enemyUnit, attack, crit);
                 Debug.Log(playerUnit.damage);
 
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
@@ -875,6 +632,14 @@ namespace Pokemon
                         dialogueText.text = playerUnit.pokemon.name + " got burned!";
                         yield return new WaitForSeconds(2);
                         yield return StartCoroutine(EnemyKillsYou(true));
+                    }
+                    if (Status.SeeIfPoisoned(playerUnit.pokemon))
+                    {
+                        playerUnit.PoisonSelf();
+                        playerHUD.SetHP(playerUnit.pokemon.current_hp);
+                        dialogueText.text = playerUnit.pokemon.name + " is poisoned!";
+                        yield return StartCoroutine(EnemyKillsYou(true));
+                        yield return new WaitForSeconds(2);
                     }
                 }
 
@@ -1039,7 +804,7 @@ namespace Pokemon
             {
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
-                StartCoroutine(DecisionCatch());
+                StartCoroutine(DecisionYouDontAttack());
                 yield break;
             }
             randomNumber2 = rnd.Next(256);
@@ -1060,7 +825,7 @@ namespace Pokemon
                 else { }//three shakes
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
-                StartCoroutine(DecisionCatch());
+                StartCoroutine(DecisionYouDontAttack());
                 yield break;
             }
         }
@@ -1148,7 +913,7 @@ namespace Pokemon
                     state = BattleState.ENEMYTURN;
                     //backPoke.interactable = true;
 
-                    StartCoroutine(DecisionSwitch());
+                    StartCoroutine(DecisionYouDontAttack());
                 }
             }
             yield break;
@@ -1166,27 +931,6 @@ namespace Pokemon
         }
         #endregion
         #region Enemy attack functions
-
-        /// <summary>
-        /// Determines if the enemy Pokemon has any remaining moves or if it has to use struggle.
-        /// </summary>
-        /// <returns>True if they have to struggle, false otherwise.</returns>
-        bool EnemyStruggle()
-        {
-            int i;
-            bool struggle = false;
-
-            for (i = 0; i < enemyUnit.pokemon.currentMoves.Count(s => s != null); i++)
-            {
-                if (enemyUnit.pokemon.currentMoves[i].current_pp != 0)
-                {
-                    struggle = false;
-                    break;
-                }
-                struggle = true;
-            }
-            return struggle;
-        }
 
         /// <summary>
         /// The enemy version of player attack.
@@ -1208,7 +952,7 @@ namespace Pokemon
             }
 
             System.Random rnd = new System.Random();
-            bool crit = CriticalHit(enemyUnit);
+            bool crit = Utility.CriticalHit(enemyUnit);
             int num = rnd.Next(1, 100);
             dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + move.name + "!";
             yield return new WaitForSeconds(2);
@@ -1223,7 +967,7 @@ namespace Pokemon
 
                 if (move.current_stat_change.CompareTo("null") != 0) enemyUnit.SetStages(move, playerUnit);
                 if (!move.status.Equals("null")) Status.SeeIfStatusEffect(move, playerUnit);
-                double super = DoDamage(enemyUnit, playerUnit, move, crit);
+                double super = Utility.DoDamage(enemyUnit, playerUnit, move, crit);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage); //Forgot to comment this earlier, but this is where the damage actually gets applied.
                 //Debug.Log(enemyUnit.damage.ToString());
 
@@ -1259,6 +1003,16 @@ namespace Pokemon
                     yield return StartCoroutine(YouKilledThem(true));
                     yield return new WaitForSeconds(2);
                 }
+
+                if (Status.SeeIfPoisoned(enemyUnit.pokemon))
+                {
+                    enemyUnit.PoisonSelf();
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
+                    dialogueText.text = enemyUnit.pokemon.name + " is poisoned!";
+                    yield return StartCoroutine(YouKilledThem(true));
+                    yield return new WaitForSeconds(2);
+                }
+
                 yield return StartCoroutine(EnemyKillsYou(isDead));
 
             }
@@ -1340,7 +1094,6 @@ namespace Pokemon
             {
                 state = BattleState.WON;
                 yield return StartCoroutine(EndBattle());
-                yield break;
             }
         }
         /// <summary>
@@ -1398,6 +1151,7 @@ namespace Pokemon
                     GameController.playerPokemon[i].current_sp_attack = GameController.playerPokemon[i].max_sp_attack;
                     GameController.playerPokemon[i].current_sp_defense = GameController.playerPokemon[i].max_sp_defense;
                     if (!Status.SeeIfParalyzed(GameController.playerPokemon[i])) GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed;
+                    else GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed * 0.5;
                     GameController.playerPokemon[i].current_accuracy = 1;
                     GameController.playerPokemon[i].current_evasion = 1;
                 }
@@ -1488,7 +1242,7 @@ namespace Pokemon
                 CloseMovesMenu();
                 ClosePokemonMenu();
                 SetDownButtons();
-                dialogueText.text = "Don't run away pussy.";
+                dialogueText.text = "You hear Prof Oak say \"Don't run away.\"";
                 yield return new WaitForSeconds(2);
                 PlayerTurn();
                 yield break;
@@ -1774,16 +1528,10 @@ namespace Pokemon
                 y = 0.50f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
-            byte[] fileData;
-            fileData = File.ReadAllBytes(unit.pokemon.image1);
+            byte[] fileData = File.ReadAllBytes(unit.pokemon.image1);
             SpriteTexture.LoadImage(fileData);
-            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0,0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
-            //sprite.spriteSortPoint
 
-            sprite.sprite = NewSprite;
-            Debug.Log(sprite.sprite.rect.position);
-            Debug.Log(sprite.transform.position);
-            //(-8.1, -1.3, 1000.0)
+            sprite.sprite = Sprite.Create(SpriteTexture, new Rect(0,0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
         }
         void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
         {
@@ -1799,17 +1547,13 @@ namespace Pokemon
                 y = 0.35f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
-            byte[] fileData;
-            fileData = File.ReadAllBytes(unit.pokemon.image2);
+            byte[] fileData = File.ReadAllBytes(unit.pokemon.image2);
             SpriteTexture.LoadImage(fileData);
-            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
-
-            sprite.sprite = NewSprite;
+            sprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
         }
 
         public void SetBackground()
         {
-            float x = 0, y = 0;
             Texture2D SpriteTexture = new Texture2D(2, 2);
             string path;
             if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -1819,9 +1563,7 @@ namespace Pokemon
 
             byte[] fileData = File.ReadAllBytes(Directory.GetCurrentDirectory() + path + GameController.location + ".png");
             SpriteTexture.LoadImage(fileData);
-            Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
-
-            background.sprite = NewSprite;
+            background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
         }
 
         public void GetAttackSprites(string attack)
@@ -1877,8 +1619,7 @@ namespace Pokemon
             for (int i = 0; i < files.Length - 1; i++)
             {
                 Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(files[i]);
+                byte[] fileData = File.ReadAllBytes(files[i]);
                 SpriteTexture.LoadImage(fileData);
                 Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0,0, SpriteTexture.width, SpriteTexture.height), new Vector2(x,y));
 
@@ -1890,8 +1631,7 @@ namespace Pokemon
         #region Jake's functions
         public static List<Dictionary<string, object>> load_CSV(string name)
         {
-            List<Dictionary<string, object>> data = CSVReader.Read(name);
-            return data;
+            return CSVReader.Read(name);
         }
 
 

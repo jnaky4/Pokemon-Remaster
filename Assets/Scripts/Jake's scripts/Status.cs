@@ -73,7 +73,7 @@ namespace Pokemon
              * min_duration: (1 to 5):  -1 means always persist
              * max_duration: (1 to 5):  -1 means always persist
              */
-            //                          name            persist ig_type     s_dmg%  u_atk%  afct_st     afct_st_mul rmv_ch  min_dur max_dur
+            //                          name            persist ig_type     s_dmg%  u_atk%  afct_st     afct_st_mul rmv_ch  max_dur min_dur
             {"Burn",  new Status(       "Burn",         true,   "Fire",     .125,   0,      "Attack",   .5,         0,      -1,     -1)},
             {"Freeze",  new Status(     "Freeze",       true,   "Ice",      0,      1.0,    "null",     1,          .2,     -1,     -1)},
             {"Sleep",  new Status(      "Sleep",        true,   "null",     0,      1.0,    "null",     1,          0,      3,      1)},
@@ -125,10 +125,6 @@ namespace Pokemon
             return false;
         }
 
-        public void BurnSelf(Unit unit)
-        {
-            unit.TakeDamage(unit.damage * (.125));
-        }
         public static void ParalyzeSpeedReduce(Unit unit)
         {
             unit.pokemon.current_speed *= .5;
@@ -144,6 +140,14 @@ namespace Pokemon
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
             if (num <= 25) return true;
+            return false;
+        }
+        public static bool SeeIfPoisoned(Pokemon poke)
+        {
+            foreach(Status s in poke.statuses)
+            {
+                if (s.name.Equals("Poison")) return true;
+            }
             return false;
         }
 
@@ -166,14 +170,14 @@ namespace Pokemon
                 case "Burn":
                     if (move.status.SeeIfStatus(move))
                     {
-                        if (Status.SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
                             if (unit.pokemon.type1.Equals("Fire") || unit.pokemon.type2.Equals("Fire")) break;
                         }
                         finally
                         {
-                            unit.pokemon.statuses.Add(Status.get_status("Burn"));
+                            unit.pokemon.statuses.Add(get_status("Burn"));
                         }
                     }
                     break;
@@ -181,15 +185,30 @@ namespace Pokemon
                 case "Paralysis":
                     if (move.status.SeeIfStatus(move))
                     {
-                        if (Status.SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
                             if (unit.pokemon.type1.Equals("Electric") || unit.pokemon.type2.Equals("Electric")) break;
                         }
                         finally
                         {
-                            unit.pokemon.statuses.Add(Status.get_status("Paralysis"));
+                            unit.pokemon.statuses.Add(get_status("Paralysis"));
                             ParalyzeSpeedReduce(unit);
+                        }
+                    }
+                    break;
+
+                case "Poison":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        try
+                        {
+                            if (unit.pokemon.type1.Equals("Poison") || unit.pokemon.type2.Equals("Poison")) break;
+                        }
+                        finally
+                        {
+                            unit.pokemon.statuses.Add(get_status("Poison"));
                         }
                     }
                     break;
