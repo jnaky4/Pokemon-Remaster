@@ -348,7 +348,7 @@ namespace Pokemon
 
                 for (int k = 0; k < numTimesPlayer; k++)
                 {
-                    yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
+                    yield return StartCoroutine(PlayerAttack(playerMove));
                     if (breakOutOfDecision) break;
                 }
 
@@ -375,7 +375,7 @@ namespace Pokemon
                     state = BattleState.PLAYERTURN;
                     for (int k = 0; k < numTimesPlayer; k++)
                     {
-                        yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
+                        yield return StartCoroutine(PlayerAttack(playerMove));
                         if (breakOutOfDecision) break;
                     }
                 }
@@ -395,7 +395,7 @@ namespace Pokemon
                         state = BattleState.PLAYERTURN;
                         for (int k = 0; k < numTimesPlayer; k++)
                         {
-                            yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
+                            yield return StartCoroutine(PlayerAttack(playerMove));
                             if (breakOutOfDecision) break;
                         }
                     }
@@ -405,7 +405,7 @@ namespace Pokemon
                     state = BattleState.PLAYERTURN;
                     for (int k = 0; k < numTimesPlayer; k++)
                     {
-                        yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
+                        yield return StartCoroutine(PlayerAttack(playerMove));
                         if (breakOutOfDecision) break;
                     }
                     if (state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
@@ -426,7 +426,7 @@ namespace Pokemon
                         state = BattleState.PLAYERTURN;
                         for (int k = 0; k < numTimesPlayer; k++)
                         {
-                            yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
+                            yield return StartCoroutine(PlayerAttack(playerMove));
                             if (breakOutOfDecision) break;
                         }
                         if (state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
@@ -452,7 +452,7 @@ namespace Pokemon
                             state = BattleState.PLAYERTURN;
                             for (int k = 0; k < numTimesPlayer; k++)
                             {
-                                yield return StartCoroutine(PlayerAttack(playerMove, playerMoveNum));
+                                yield return StartCoroutine(PlayerAttack(playerMove));
                                 if (breakOutOfDecision) break;
                             }
                         }
@@ -557,9 +557,8 @@ namespace Pokemon
         /// Determines if the Player's attack hits or not, and then does all of the damage calculations and crits and all that.
         /// </summary>
         /// <param name="attack">The move we are attacking with.</param>
-        /// <param name="moveNum">The move number based on the Pokemon's own move array. This is used for doing PP.</param>
         /// <returns>Nothing</returns>
-        IEnumerator PlayerAttack(Moves attack, int moveNum)
+        IEnumerator PlayerAttack(Moves attack)
         {
             ClosePokemonMenu();
             CloseMovesMenu();
@@ -578,7 +577,7 @@ namespace Pokemon
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.75f);
             if (num <= (attack.accuracy*playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion)) //If the attack hits
             {
                 playerInitialAttack = true;
@@ -955,7 +954,7 @@ namespace Pokemon
             bool crit = Utility.CriticalHit(enemyUnit);
             int num = rnd.Next(1, 100);
             dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + move.name + "!";
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(0.75f);
             if (num <= move.accuracy * enemyUnit.pokemon.current_accuracy * playerUnit.pokemon.current_evasion) //If the move hits
             {
                 enemyInitialAttack = true;
@@ -1571,31 +1570,7 @@ namespace Pokemon
             bool isPlayer = false;
             if (state == BattleState.PLAYERTURN) isPlayer = true;
             attack = attack.Replace(" ", "_");
-            string path;
-
-            /*
-            var path = Directory.GetCurrentDirectory();
-
-            if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                path += "/Assets/Sprites/Attack_Animations/" + attack;
-            else
-                path +=  "\\Assets\\Sprites\\Attack_Animations\\" + attack;
-
-            if (!Directory.Exists(path))
-            {
-                path = Directory.GetCurrentDirectory();
-
-                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    path += "/Assets/Sprites/Attack_Animations/" + "Bite";
-                else
-                    path += "\\Assets\\Sprites\\Attack_Animations\\" + "Bite";
-            }*/
-
-            path = "Attack_Animations/" + attack;
-
-            //string[] files = Directory.GetFiles(path, "*.png");
-
-            //Debug.Log(playerUnit.pokemon.currentMoves[2].name);
+            string path = "Attack_Animations/" + attack;
 
             AttackSprites.Clear();
             AttackSprites.Add(null);
@@ -1631,20 +1606,12 @@ namespace Pokemon
 
             foreach (var sprite in sprites)
             {
-                AttackSprites.Add(sprite);
+                Sprite s = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
+                //sprite.pivot.x = x;
+                //sprite.pivot.y = y;
+                AttackSprites.Add(s);
             }
 
-            /*
-            for (int i = 0; i < files.Length - 1; i++)
-            {
-                Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData = File.ReadAllBytes(files[i]);
-                SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0,0, SpriteTexture.width, SpriteTexture.height), new Vector2(x,y));
-                //Sprite NewSprite = Resources.Load<Sprite>(path);
-
-                AttackSprites.Add(NewSprite);
-            }*/
             AttackSprites.TrimExcess();
         }
         #endregion
