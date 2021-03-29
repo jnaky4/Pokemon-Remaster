@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 /*
  * Burn:
  *  self_damage 1/8 .125 of max hp
@@ -144,7 +142,7 @@ namespace Pokemon
         }
         public static bool SeeIfPoisoned(Pokemon poke)
         {
-            foreach(Status s in poke.statuses)
+            foreach (Status s in poke.statuses)
             {
                 if (s.name.Equals("Poison")) return true;
             }

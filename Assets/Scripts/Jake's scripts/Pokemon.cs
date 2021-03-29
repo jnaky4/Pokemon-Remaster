@@ -2,9 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
-using Microsoft.VisualBasic.FileIO;
 
 
 /*
@@ -272,7 +270,7 @@ namespace Pokemon
             speed_stage = 0;
             accuracy_stage = 0;
             evasion_stage = 0;
-    }
+        }
 
         public void calculate_stats()
         {
@@ -299,7 +297,7 @@ namespace Pokemon
             //Console.WriteLine(this.name + " type1 and type2" + ((this.type1) + (this.type1)));
 
             Console.WriteLine(this.name + "s type1 is: " + this.type1);
-            if(this.type2 != null)
+            if (this.type2 != null)
             {
                 Console.WriteLine(this.name + "s type2 is: " + this.type2);
             }
@@ -424,10 +422,10 @@ namespace Pokemon
             int exp_gained = (int)(trainer_wild_multipllier * 1 * 1 * enemy_base_exp * enemy_level) / (7 * num_player_pokemon_used);
             this.current_exp += exp_gained;
 
-/*            Debug.Log("base exp " + this.base_lvl_exp);
-            Debug.Log("current exp " + this.current_exp);
-            Debug.Log("next level exp " + this.next_lvl_exp);
-*/
+            /*            Debug.Log("base exp " + this.base_lvl_exp);
+                        Debug.Log("current exp " + this.current_exp);
+                        Debug.Log("next level exp " + this.next_lvl_exp);
+            */
             if (this.current_exp >= this.next_lvl_exp)
             {
                 Debug.Log("Pokemon Leveled!");
@@ -455,9 +453,9 @@ namespace Pokemon
 
                 //update exp
                 this.set_exp();
-/*                Debug.Log("New base EXP " + this.base_lvl_exp);
-                Debug.Log("Current EXP " + this.current_exp);
-                Debug.Log("New Next levl EXP " + this.next_lvl_exp);*/
+                /*                Debug.Log("New base EXP " + this.base_lvl_exp);
+                                Debug.Log("Current EXP " + this.current_exp);
+                                Debug.Log("New Next levl EXP " + this.next_lvl_exp);*/
 
             }
 

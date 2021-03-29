@@ -111,7 +111,6 @@ namespace Pokemon
         public Button backPoke;
 
         bool breakOutOfDecision = false;
-        bool endAttack = false;
         bool deadPokemon = false;
         int playerContinuingAttack = 0;
         int enemyContinuingAttack = 0;
@@ -352,7 +351,7 @@ namespace Pokemon
                     if (breakOutOfDecision) break;
                 }
 
-                if(state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
+                if (state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
                 {
                     state = BattleState.ENEMYTURN;
                     for (int k = 0; k < numTimesEnemy; k++)
@@ -532,7 +531,6 @@ namespace Pokemon
         /// </summary>
         void PlayerTurn()
         {
-            endAttack = false;
             deadPokemon = false;
             breakOutOfDecision = false;
             if (playerUnit.pokemon.current_hp == 0)
@@ -569,7 +567,6 @@ namespace Pokemon
             {
                 dialogueText.text = playerUnit.pokemon.name + " is paralyzed!";
                 yield return new WaitForSeconds(2);
-                endAttack = true;
                 yield break;
             }
 
@@ -578,7 +575,7 @@ namespace Pokemon
             int num = rnd.Next(1, 100);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(0.75f);
-            if (num <= (attack.accuracy*playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion)) //If the attack hits
+            if (num <= (attack.accuracy * playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion)) //If the attack hits
             {
                 playerInitialAttack = true;
                 while (!endofanimation)
@@ -648,11 +645,8 @@ namespace Pokemon
             {
                 dialogueText.text = "Your attack missed!";
                 yield return new WaitForSeconds(2);
-                //state = BattleState.ENEMYTURN;
-                endAttack = true;
                 yield break;
             }
-            yield break;
         }
 
         public IEnumerator YouKilledThem(bool isDead)
@@ -946,7 +940,6 @@ namespace Pokemon
             {
                 dialogueText.text = enemyUnit.pokemon.name + " is paralyzed!";
                 yield return new WaitForSeconds(2);
-                endAttack = true;
                 yield break;
             }
 
@@ -1019,7 +1012,6 @@ namespace Pokemon
             {
                 dialogueText.text = "The move failed!";
                 yield return new WaitForSeconds(2);
-                endAttack = true;
                 yield break;
             }
             yield break;
@@ -1118,7 +1110,7 @@ namespace Pokemon
             else if (state == BattleState.CAUGHTPOKEMON) //If you were successful in catching the pokemon
             {
                 dialogueText.text = "You caught a " + enemyUnit.pokemon.name + "!";
-                for(var p = 0; p < 6; p++)
+                for (var p = 0; p < 6; p++)
                 {
                     if (GameController.playerPokemon[p] == null) //Right now, if you have 6 or more pokemon, the game just throws it away. Otherwise it gets added to
                     {                                            //the end of your pokemon array. TO DO: Need to fix that.
@@ -1530,7 +1522,7 @@ namespace Pokemon
             byte[] fileData = File.ReadAllBytes(unit.pokemon.image1);
             SpriteTexture.LoadImage(fileData);
 
-            sprite.sprite = Sprite.Create(SpriteTexture, new Rect(0,0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+            sprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
         }
         void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
         {
@@ -1609,11 +1601,8 @@ namespace Pokemon
             foreach (var sprite in sprites)
             {
                 Sprite s = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
-                //sprite.pivot.x = x;
-                //sprite.pivot.y = y;
                 AttackSprites.Add(s);
             }
-
             AttackSprites.TrimExcess();
         }
         #endregion
@@ -1621,39 +1610,6 @@ namespace Pokemon
         public static List<Dictionary<string, object>> load_CSV(string name)
         {
             return CSVReader.Read(name);
-        }
-
-
-        public void print_pokemon()
-        {/*
-
-            for (int i = 1; i < 152; i++)
-            {
-                Pokemon TestPokemon = new Pokemon(i, 50, "Flamethrower", "Earthquake", "Wing Attack", "Slash");
-                              Debug.Log("Name " + TestPokemon.name);
-                                Debug.Log("Base Attack " + TestPokemon.base_attack + " Current Attack " + TestPokemon.max_attack);
-                                Debug.Log("Type1: " + TestPokemon.type1.type);
-                                if (TestPokemon.type2 != null)
-                                {
-                                    Debug.Log("Type2: " + TestPokemon.type2.type);
-                                }
-
-                foreach (Learnset learned in TestPokemon.learnset)
-                {
-                    Debug.Log(learned.ToString());
-                    Debug.Log("PP " + learned.get_move().pp);
-                    Debug.Log("TYPE " + learned.get_move().move_type.type);
-
-                }
-
-            }*/
-        }
-        public void print_moves()
-        {
-            foreach (KeyValuePair<string, Moves> move in Moves.move_dictionary)
-            {
-                Debug.Log(move.Key);
-            }
         }
         #endregion
         #region leveling up

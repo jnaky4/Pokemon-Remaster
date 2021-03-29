@@ -1,8 +1,7 @@
+using Pokemon;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Pokemon;
 
 public class Character : MonoBehaviour
 {

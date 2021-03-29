@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Pokemon
 {
@@ -10,7 +9,7 @@ namespace Pokemon
         [SerializeField] List<Vector2> movementPattern;
         [SerializeField] float timeBetweenPattern;
         [SerializeField] Dialog dialog;
-        [SerializeField] string name;
+        [SerializeField] new string name;
         //[SerializeField] string type;
 
         Character character;

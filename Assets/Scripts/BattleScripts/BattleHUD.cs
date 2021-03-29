@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -449,7 +446,7 @@ namespace Pokemon
                     fileData = File.ReadAllBytes(path2 + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png");
                     SpriteTexture.LoadImage(fileData);
                     Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                forget2type.sprite = NewSprite;
+                    forget2type.sprite = NewSprite;
                 }
                 else
                 {
@@ -458,7 +455,7 @@ namespace Pokemon
                     fileData = File.ReadAllBytes(path2 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png");
                     SpriteTexture.LoadImage(fileData);
                     Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                forget2type.sprite = NewSprite;
+                    forget2type.sprite = NewSprite;
                 }
                 ColorBlock c2 = forget2Button.GetComponent<Button>().colors;
                 c2.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
@@ -682,10 +679,10 @@ namespace Pokemon
             return color;
         }
 
-            /// <summary>
-            /// Sets the balls of the player.
-            /// </summary>
-            /// <param name="player">The player whose balls we want to set.</param>
+        /// <summary>
+        /// Sets the balls of the player.
+        /// </summary>
+        /// <param name="player">The player whose balls we want to set.</param>
         public void SetBalls(PlayerBattle player)
         {
             if (player.pokeBalls) pokeBalls.text = "Poke balls (" + player.numPokeBalls + ")";

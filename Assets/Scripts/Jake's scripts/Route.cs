@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 
 namespace Pokemon
 {
@@ -27,8 +26,8 @@ namespace Pokemon
         //public Dictionary<string, Route> spawns = new Dictionary<string, Route>();
 
 
-        public Route(string name,int dexnum,string pokemon_name,double spawn_chance,
-            int level_min,int level_max,int cap,string gym_available,int badges,string terrain)
+        public Route(string name, int dexnum, string pokemon_name, double spawn_chance,
+            int level_min, int level_max, int cap, string gym_available, int badges, string terrain)
         {
             this.route_name = name;
             this.dexnum = dexnum;
@@ -68,7 +67,7 @@ namespace Pokemon
                     spawns.Add(temp.dexnum.ToString(), temp);
                 }
             }
-                
+
             return spawns;
         }
 
@@ -86,7 +85,7 @@ namespace Pokemon
 
             }
             Debug.Log(this.route_background);
-        
+
         }
     }
 }
