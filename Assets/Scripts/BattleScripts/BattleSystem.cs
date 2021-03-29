@@ -1571,7 +1571,9 @@ namespace Pokemon
             bool isPlayer = false;
             if (state == BattleState.PLAYERTURN) isPlayer = true;
             attack = attack.Replace(" ", "_");
+            string path;
 
+            /*
             var path = Directory.GetCurrentDirectory();
 
             if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
@@ -1587,9 +1589,11 @@ namespace Pokemon
                     path += "/Assets/Sprites/Attack_Animations/" + "Bite";
                 else
                     path += "\\Assets\\Sprites\\Attack_Animations\\" + "Bite";
-            }
+            }*/
 
-            string[] files = Directory.GetFiles(path, "*.png");
+            path = "Attack_Animations/" + attack;
+
+            //string[] files = Directory.GetFiles(path, "*.png");
 
             //Debug.Log(playerUnit.pokemon.currentMoves[2].name);
 
@@ -1616,15 +1620,31 @@ namespace Pokemon
                 x = -0.95f;
                 y = 0.775f;
             }
+
+            var sprites = Resources.LoadAll<Sprite>(path);
+
+            if (sprites.Length == 0)
+            {
+                path = "Attack_Animations/Tackle";
+                sprites = Resources.LoadAll<Sprite>(path);
+            }
+
+            foreach (var sprite in sprites)
+            {
+                AttackSprites.Add(sprite);
+            }
+
+            /*
             for (int i = 0; i < files.Length - 1; i++)
             {
                 Texture2D SpriteTexture = new Texture2D(0, 0);
                 byte[] fileData = File.ReadAllBytes(files[i]);
                 SpriteTexture.LoadImage(fileData);
                 Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0,0, SpriteTexture.width, SpriteTexture.height), new Vector2(x,y));
+                //Sprite NewSprite = Resources.Load<Sprite>(path);
 
                 AttackSprites.Add(NewSprite);
-            }
+            }*/
             AttackSprites.TrimExcess();
         }
         #endregion
