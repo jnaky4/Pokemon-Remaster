@@ -1607,11 +1607,8 @@ namespace Pokemon
             foreach (var sprite in sprites)
             {
                 Sprite s = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
-                //sprite.pivot.x = x;
-                //sprite.pivot.y = y;
                 AttackSprites.Add(s);
             }
-
             AttackSprites.TrimExcess();
         }
         #endregion
@@ -1619,39 +1616,6 @@ namespace Pokemon
         public static List<Dictionary<string, object>> load_CSV(string name)
         {
             return CSVReader.Read(name);
-        }
-
-
-        public void print_pokemon()
-        {/*
-
-            for (int i = 1; i < 152; i++)
-            {
-                Pokemon TestPokemon = new Pokemon(i, 50, "Flamethrower", "Earthquake", "Wing Attack", "Slash");
-                              Debug.Log("Name " + TestPokemon.name);
-                                Debug.Log("Base Attack " + TestPokemon.base_attack + " Current Attack " + TestPokemon.max_attack);
-                                Debug.Log("Type1: " + TestPokemon.type1.type);
-                                if (TestPokemon.type2 != null)
-                                {
-                                    Debug.Log("Type2: " + TestPokemon.type2.type);
-                                }
-
-                foreach (Learnset learned in TestPokemon.learnset)
-                {
-                    Debug.Log(learned.ToString());
-                    Debug.Log("PP " + learned.get_move().pp);
-                    Debug.Log("TYPE " + learned.get_move().move_type.type);
-
-                }
-
-            }*/
-        }
-        public void print_moves()
-        {
-            foreach (KeyValuePair<string, Moves> move in Moves.move_dictionary)
-            {
-                Debug.Log(move.Key);
-            }
         }
         #endregion
         #region leveling up
