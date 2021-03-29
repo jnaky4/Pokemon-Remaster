@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Pokemon
 {
@@ -17,8 +15,6 @@ namespace Pokemon
         //uncomment this for no spawn rate
         //int spawnRate = 0;
 
-        public event Action OnEnterTrainersView;
-
         public float moveSpeed;
         public VectorValue startingPosition;
         public string location = "Route 1";
@@ -27,7 +23,6 @@ namespace Pokemon
         private Character character;
 
         //public static DialogController Instance { get; private set; }
-
 
         Vector2 movement;
 

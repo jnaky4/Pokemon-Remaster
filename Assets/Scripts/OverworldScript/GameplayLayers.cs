@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameplayLayers : MonoBehaviour
@@ -15,7 +13,7 @@ public class GameplayLayers : MonoBehaviour
 
     private void Awake()
     {
-        i = this;        
+        i = this;
     }
 
     public LayerMask SolidLayer

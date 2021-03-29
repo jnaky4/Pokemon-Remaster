@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 //using Microsoft.VisualBasic.FileIO;
 
 namespace Pokemon
@@ -8,7 +6,7 @@ namespace Pokemon
     public class Pokedex
     {
         public static string[][] pokedex = new string[152][];
-        public static Dictionary<int,Pokedex> pokedex_dictionary = new Dictionary<int, Pokedex>();
+        public static Dictionary<int, Pokedex> pokedex_dictionary = new Dictionary<int, Pokedex>();
         public static List<Dictionary<string, object>> all_pokedex = new List<Dictionary<string, object>>();
 
         public int dexnum;

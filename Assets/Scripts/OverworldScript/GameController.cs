@@ -1,11 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Pokemon
 {
-    public enum GameState { Roam, Dialog, Battle, TrainerEncounter}
+    public enum GameState { Roam, Dialog, Battle, TrainerEncounter }
     public class GameController : MonoBehaviour
     {
         public static GameState state = GameState.Roam;
@@ -40,7 +39,7 @@ namespace Pokemon
         public static string soundFX = null;
 
         // Start is called before the first frame update
-        void Awake ()
+        void Awake()
         {
             DontDestroyOnLoad(transform.gameObject);
 
@@ -62,7 +61,7 @@ namespace Pokemon
             playerPokemon[0] = new Pokemon(4, 5, "Fury Attack", "Glare", "Tail Whip", "Quick Attack");
             playerPokemon[1] = new Pokemon(7, 5, "Water Gun", "Bubble", "Growl", "Slash", 145);
             playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
-            playerPokemon[3]  = new Pokemon(25, 5, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            playerPokemon[3] = new Pokemon(25, 5, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
         }
 
         private void Start()

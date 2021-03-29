@@ -1,6 +1,6 @@
+using Pokemon;
 using System.Collections;
 using System.Collections.Generic;
-using Pokemon;
 using UnityEngine;
 
 public class TrainerController : MonoBehaviour

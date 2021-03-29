@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 
-namespace Pokemon { 
-    
+namespace Pokemon
+{
+
     public class Main : MonoBehaviour
     {
 
@@ -34,23 +32,23 @@ namespace Pokemon {
         // Update is called once per frame
         void Update()
         {
-            
+
         }
 
         List<Dictionary<string, object>> load_CSV(string name)
         {
             List<Dictionary<string, object>> data = CSVReader.Read(name);
-            
-/*            for (var i = 0; i < data.Count; i++)
-            {
-                Debug.Log("Name " + data[i]["Name"] + " " +
-                       "Type " + data[i]["Type"] + " " +
-                       "PP " + data[i]["PP"] + " " +
-                       "Base Power " + data[i]["Att."] + " " +
-                       "Accuracy " + data[i]["Acc."] + " " +
-                       "Effect " + data[i]["Effect"]
-                       );
-            }*/
+
+            /*            for (var i = 0; i < data.Count; i++)
+                        {
+                            Debug.Log("Name " + data[i]["Name"] + " " +
+                                   "Type " + data[i]["Type"] + " " +
+                                   "PP " + data[i]["PP"] + " " +
+                                   "Base Power " + data[i]["Att."] + " " +
+                                   "Accuracy " + data[i]["Acc."] + " " +
+                                   "Effect " + data[i]["Effect"]
+                                   );
+                        }*/
             return data;
         }
 
@@ -60,27 +58,27 @@ namespace Pokemon {
             for (int i = 1; i < 152; i++)
             {
                 Pokemon TestPokemon = new Pokemon(i, 50, "Flamethrower", "Earthquake", "Wing Attack", "Slash");
-/*                Debug.Log("Name " + TestPokemon.name);
-                Debug.Log("Base Attack " + TestPokemon.base_attack + " Current Attack " + TestPokemon.current_attack);
-                Debug.Log("Type1: " + TestPokemon.type1.type);
-                if (TestPokemon.type2 != null)
-                {
-                    Debug.Log("Type2: " + TestPokemon.type2.type);
-                }*/
-                
-                foreach(Learnset learned in TestPokemon.learnset)
+                /*                Debug.Log("Name " + TestPokemon.name);
+                                Debug.Log("Base Attack " + TestPokemon.base_attack + " Current Attack " + TestPokemon.current_attack);
+                                Debug.Log("Type1: " + TestPokemon.type1.type);
+                                if (TestPokemon.type2 != null)
+                                {
+                                    Debug.Log("Type2: " + TestPokemon.type2.type);
+                                }*/
+
+                foreach (Learnset learned in TestPokemon.learnset)
                 {
                     Debug.Log(learned.ToString());
-/*                    Debug.Log("PP " + learned.Get_move().pp);
-                    Debug.Log("TYPE " + learned.Get_move().move_type.type);*/
+                    /*                    Debug.Log("PP " + learned.Get_move().pp);
+                                        Debug.Log("TYPE " + learned.Get_move().move_type.type);*/
 
                 }
-                    
+
             }
         }
         public void print_moves()
         {
-            foreach(KeyValuePair<string, Moves> move in Moves.move_dictionary)
+            foreach (KeyValuePair<string, Moves> move in Moves.move_dictionary)
             {
                 Debug.Log(move.Key);
             }

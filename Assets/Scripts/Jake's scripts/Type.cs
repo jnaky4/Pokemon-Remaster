@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Pokemon
 {
@@ -129,40 +127,40 @@ namespace Pokemon
                 string temp_type_str = type_defend[i]["Defending"].ToString();
 
 
-                double attack_fire =        double.Parse(type_attack[i]["Fire"].ToString());
-                double attack_water =       double.Parse(type_attack[i]["Water"].ToString());
-                double attack_grass =       double.Parse(type_attack[i]["Grass"].ToString());
-                double attack_electric =    double.Parse(type_attack[i]["Electric"].ToString());
-                double attack_ice =         double.Parse(type_attack[i]["Ice"].ToString());
-                double attack_fighting =    double.Parse(type_attack[i]["Fighting"].ToString());
-                double attack_poison =      double.Parse(type_attack[i]["Poison"].ToString());
-                double attack_ground =      double.Parse(type_attack[i]["Ground"].ToString());
-                double attack_flying =      double.Parse(type_attack[i]["Flying"].ToString());
-                double attack_psychic =     double.Parse(type_attack[i]["Psychic"].ToString());
-                double attack_bug =         double.Parse(type_attack[i]["Bug"].ToString());
-                double attack_rock =        double.Parse(type_attack[i]["Rock"].ToString());
-                double attack_ghost =       double.Parse(type_attack[i]["Ghost"].ToString());
-                double attack_dragon =      double.Parse(type_attack[i]["Dragon"].ToString());
-                double attack_normal =      double.Parse(type_attack[i]["Normal"].ToString());
+                double attack_fire = double.Parse(type_attack[i]["Fire"].ToString());
+                double attack_water = double.Parse(type_attack[i]["Water"].ToString());
+                double attack_grass = double.Parse(type_attack[i]["Grass"].ToString());
+                double attack_electric = double.Parse(type_attack[i]["Electric"].ToString());
+                double attack_ice = double.Parse(type_attack[i]["Ice"].ToString());
+                double attack_fighting = double.Parse(type_attack[i]["Fighting"].ToString());
+                double attack_poison = double.Parse(type_attack[i]["Poison"].ToString());
+                double attack_ground = double.Parse(type_attack[i]["Ground"].ToString());
+                double attack_flying = double.Parse(type_attack[i]["Flying"].ToString());
+                double attack_psychic = double.Parse(type_attack[i]["Psychic"].ToString());
+                double attack_bug = double.Parse(type_attack[i]["Bug"].ToString());
+                double attack_rock = double.Parse(type_attack[i]["Rock"].ToString());
+                double attack_ghost = double.Parse(type_attack[i]["Ghost"].ToString());
+                double attack_dragon = double.Parse(type_attack[i]["Dragon"].ToString());
+                double attack_normal = double.Parse(type_attack[i]["Normal"].ToString());
 
 
 
 
-                double defend_fire =        double.Parse(type_defend[i]["Fire"].ToString());
-                double defend_water =       double.Parse(type_defend[i]["Water"].ToString());
-                double defend_grass =       double.Parse(type_defend[i]["Grass"].ToString());
-                double defend_electric =    double.Parse(type_defend[i]["Electric"].ToString());
-                double defend_ice =         double.Parse(type_defend[i]["Ice"].ToString());
-                double defend_fighting =    double.Parse(type_defend[i]["Fighting"].ToString());
-                double defend_poison =      double.Parse(type_defend[i]["Poison"].ToString());
-                double defend_ground =      double.Parse(type_defend[i]["Ground"].ToString());
-                double defend_flying =      double.Parse(type_defend[i]["Flying"].ToString());
-                double defend_psychic =     double.Parse(type_defend[i]["Psychic"].ToString());
-                double defend_bug =         double.Parse(type_defend[i]["Bug"].ToString());
-                double defend_rock =        double.Parse(type_defend[i]["Rock"].ToString());
-                double defend_ghost =       double.Parse(type_defend[i]["Ghost"].ToString());
-                double defend_dragon =      double.Parse(type_defend[i]["Dragon"].ToString());
-                double defend_normal =      double.Parse(type_defend[i]["Normal"].ToString());
+                double defend_fire = double.Parse(type_defend[i]["Fire"].ToString());
+                double defend_water = double.Parse(type_defend[i]["Water"].ToString());
+                double defend_grass = double.Parse(type_defend[i]["Grass"].ToString());
+                double defend_electric = double.Parse(type_defend[i]["Electric"].ToString());
+                double defend_ice = double.Parse(type_defend[i]["Ice"].ToString());
+                double defend_fighting = double.Parse(type_defend[i]["Fighting"].ToString());
+                double defend_poison = double.Parse(type_defend[i]["Poison"].ToString());
+                double defend_ground = double.Parse(type_defend[i]["Ground"].ToString());
+                double defend_flying = double.Parse(type_defend[i]["Flying"].ToString());
+                double defend_psychic = double.Parse(type_defend[i]["Psychic"].ToString());
+                double defend_bug = double.Parse(type_defend[i]["Bug"].ToString());
+                double defend_rock = double.Parse(type_defend[i]["Rock"].ToString());
+                double defend_ghost = double.Parse(type_defend[i]["Ghost"].ToString());
+                double defend_dragon = double.Parse(type_defend[i]["Dragon"].ToString());
+                double defend_normal = double.Parse(type_defend[i]["Normal"].ToString());
 
                 Type temp_type = new Type
                     (

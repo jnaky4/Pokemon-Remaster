@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Pokemon
 {
@@ -72,82 +67,100 @@ namespace Pokemon
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_normal;
                     break;
+
                 case "Fire":
                     type1 = defender.pokemon.type1.defend_fire;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_fire;
                     break;
+
                 case "Water":
                     type1 = defender.pokemon.type1.defend_water;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_water;
                     break;
+
                 case "Electric":
                     type1 = defender.pokemon.type1.defend_electric;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_electric;
                     break;
+
                 case "Grass":
                     type1 = defender.pokemon.type1.defend_grass;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_grass;
                     break;
+
                 case "Ice":
                     type1 = defender.pokemon.type1.defend_ice;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_ice;
                     break;
+
                 case "Fighting":
                     type1 = defender.pokemon.type1.defend_fighting;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_fighting;
                     break;
+
                 case "Poison":
                     type1 = defender.pokemon.type1.defend_poison;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_poison;
                     break;
+
                 case "Ground":
                     type1 = defender.pokemon.type1.defend_ground;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_ground;
                     break;
+
                 case "Flying":
                     type1 = defender.pokemon.type1.defend_flying;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_flying;
                     break;
+
                 case "Psychic":
                     type1 = defender.pokemon.type1.defend_psychic;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_psychic;
                     break;
+
                 case "Bug":
                     type1 = defender.pokemon.type1.defend_bug;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_bug;
                     break;
+
                 case "Rock":
                     type1 = defender.pokemon.type1.defend_rock;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_rock;
                     break;
+
                 case "Ghost":
                     type1 = defender.pokemon.type1.defend_ghost;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_ghost;
                     break;
+
                 case "Dragon":
                     type1 = defender.pokemon.type1.defend_dragon;
                     if (defender.pokemon.type2 is null) type2 = 1;
                     else type2 = defender.pokemon.type2.defend_dragon;
                     break;
+
                 case "Dark":
                     break;
+
                 case "Steel":
                     break;
+
                 case "Fairy":
                     break;
+
                 default:
                     break;
             }
@@ -170,7 +183,6 @@ namespace Pokemon
             return type1 * type2;
         }
 
-
         /// <summary>
         /// Determines if the enemy Pokemon has any remaining moves or if it has to use struggle.
         /// </summary>
@@ -191,8 +203,6 @@ namespace Pokemon
             }
             return struggle;
         }
-
-
     }
 }
 
@@ -201,7 +211,6 @@ namespace Pokemon
 
         public void print_pokemon()
         {
-
             for (int i = 1; i < 152; i++)
             {
                 Pokemon TestPokemon = new Pokemon(i, 50, "Flamethrower", "Earthquake", "Wing Attack", "Slash");
@@ -218,9 +227,7 @@ namespace Pokemon
                     Debug.Log(learned.ToString());
                     Debug.Log("PP " + learned.get_move().pp);
                     Debug.Log("TYPE " + learned.get_move().move_type.type);
-
                 }
-
             }
         }
         public void print_moves()
@@ -234,4 +241,3 @@ namespace Pokemon
  *
  *
  */
-
