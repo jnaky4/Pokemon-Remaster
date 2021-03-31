@@ -243,6 +243,7 @@ namespace Pokemon
         public int accuracy_stage = 0;
         public int evasion_stage = 0;
 
+        public int sleep = 0;
 
         public int type = 1;
         public int burn = 1;

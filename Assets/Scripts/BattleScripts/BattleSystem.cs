@@ -569,6 +569,19 @@ namespace Pokemon
                 yield return new WaitForSeconds(2);
                 yield break;
             }
+            if (Status.SeeIfSleep(playerUnit.pokemon))
+            {
+                dialogueText.text = playerUnit.pokemon.name + " is asleep!";
+                Status.ReduceSleep(playerUnit);
+                yield return new WaitForSeconds(2);
+                yield break;
+            }
+            if (Status.SeeIfFreeze(playerUnit.pokemon))
+            {
+                dialogueText.text = playerUnit.pokemon.name + " is frozen!";
+                yield return new WaitForSeconds(2);
+                yield break;
+            }
 
             bool crit = Utility.CriticalHit(playerUnit);
             System.Random rnd = new System.Random();
@@ -939,6 +952,13 @@ namespace Pokemon
             if (Status.SeeIfParalyzed(enemyUnit.pokemon))
             {
                 dialogueText.text = enemyUnit.pokemon.name + " is paralyzed!";
+                yield return new WaitForSeconds(2);
+                yield break;
+            }
+            if (Status.SeeIfSleep(enemyUnit.pokemon))
+            {
+                dialogueText.text = enemyUnit.pokemon.name + " is asleep!";
+                Status.ReduceSleep(enemyUnit);
                 yield return new WaitForSeconds(2);
                 yield break;
             }

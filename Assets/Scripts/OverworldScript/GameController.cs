@@ -38,6 +38,9 @@ namespace Pokemon
         public static string music = "Pallet Town";
         public static string soundFX = null;
 
+        //rnd
+        public static System.Random _rnd = new System.Random();
+
         // Start is called before the first frame update
         void Awake()
         {
@@ -58,10 +61,10 @@ namespace Pokemon
 
             //Debug.Log("CSV's have been loaded");
 
-            playerPokemon[0] = new Pokemon(4, 5, "Fury Attack", "Glare", "Tail Whip", "Quick Attack");
+            playerPokemon[0] = new Pokemon(4, 5, "Fury Attack", "Flamethrower", "Tail Whip", "Quick Attack", 145);
             playerPokemon[1] = new Pokemon(7, 5, "Water Gun", "Bubble", "Growl", "Slash", 145);
-            playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
-            playerPokemon[3] = new Pokemon(25, 5, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf", 145);
+            playerPokemon[3] = new Pokemon(25, 5, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl", 145);
         }
 
         private void Start()

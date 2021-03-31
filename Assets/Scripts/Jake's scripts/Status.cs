@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 /*
  * Burn:
  *  self_damage 1/8 .125 of max hp
@@ -7,27 +8,25 @@
  *  persistence true
  *  applies after both players attacked that turn
  *
- * no early pokemon have freeze abilities
+ **no early pokemon have freeze abilities**
  * Freeze:
- * unable_to_attack: 100% chance
- * fire moves thaw freeze
- * removal_chance: 20% chance beginning of turn
- * ignore_type ice
- * persistence true
- *
+ *  unable_to_attack: 100% chance
+ *  fire moves thaw freeze
+ *  removal_chance: 20% chance beginning of turn
+ *  ignore_type ice
+ *  persistence true
  *
  * Paralysis:
- * current speed * 1/2
- * unable_to_attack: 25% chance
- * ignore_type electric
- * persistence true
+ *  current speed * 1/2
+ *  unable_to_attack: 25% chance
+ *  ignore_type electric
+ *  persistence true
  *
  * Poison:
- * self_damage 1/8 .125 of max hp
- * ignore_type poison
- * persistence true
- * Overworld affect: Damage
- *
+ *  self_damage 1/8 .125 of max hp
+ *  ignore_type poison
+ *  persistence true
+ *  Overworld affect: Damage
  *
  * Sleep:
  *  unable_to_attack: 100%
@@ -127,6 +126,16 @@ namespace Pokemon
         {
             unit.pokemon.current_speed *= .5;
         }
+        public static void ReduceSleep(Unit unit)
+        {
+            unit.pokemon.sleep--;
+            if (unit.pokemon.sleep == 0)
+            {
+                unit.pokemon.statuses.Remove(get_status("Sleep"));
+                //BattleSystem.dialogueText.text = unit.pokemon.name + " woke up!";
+            }
+        }
+
         public static bool SeeIfParalyzed(Pokemon poke)
         {
             int check = 0;
@@ -147,6 +156,32 @@ namespace Pokemon
                 if (s.name.Equals("Poison")) return true;
             }
             return false;
+        }
+        public static bool SeeIfSleep(Pokemon poke)
+        {
+            foreach (Status s in poke.statuses)
+            {
+                if (s.name.Equals("Sleep")) return true;
+            }
+            return false;
+        }
+        public static bool SeeIfFreeze(Pokemon poke)
+        {
+            int check = 0;
+            foreach (Status s in poke.statuses)
+            {
+                if (s.name.Equals("Freeze")) check = 1;
+            }
+            if (check == 0) return false;
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(1, 100);
+            if (num > 20) return true;
+            else
+            {
+                poke.statuses.Remove("Freeze");
+                //BattleSystem.dialogueText.text = poke.name + " unfroze!";
+                return false;
+            }
         }
 
         public static bool SeeIfPersistanceIsAlreadyHere(Pokemon poke)
@@ -171,7 +206,12 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Fire") || unit.pokemon.type2.Equals("Fire")) break;
+                            if (unit.pokemon.type1.Equals("Fire")) break;
+                            if (unit.pokemon.type2.Equals("Fire")) break;
+                        }
+                        catch (NullReferenceException ex)
+                        {
+                            throw;
                         }
                         finally
                         {
@@ -186,7 +226,12 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Electric") || unit.pokemon.type2.Equals("Electric")) break;
+                            if (unit.pokemon.type1.Equals("Electric")) break;
+                            if (unit.pokemon.type2.Equals("Electric")) break;
+                        }
+                        catch (NullReferenceException ex)
+                        {
+                            throw;
                         }
                         finally
                         {
@@ -202,11 +247,45 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Poison") || unit.pokemon.type2.Equals("Poison")) break;
+                            if (unit.pokemon.type1.Equals("Poison")) break;
+                            if (unit.pokemon.type2.Equals("Poison")) break;
+                        }
+                        catch (NullReferenceException ex)
+                        {
+                            throw;
                         }
                         finally
                         {
                             unit.pokemon.statuses.Add(get_status("Poison"));
+                        }
+                    }
+                    break;
+
+                case "Sleep":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        unit.pokemon.statuses.Add(get_status("Sleep"));
+                        unit.pokemon.sleep = GameController._rnd.Next(1, 4);
+                    }
+                    break;
+
+                case "Freeze":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        try
+                        {
+                            if (unit.pokemon.type1.Equals("Ice")) break;
+                            if (unit.pokemon.type2.Equals("Ice")) break;
+                        }
+                        catch (NullReferenceException ex)
+                        {
+                            throw;
+                        }
+                        finally
+                        {
+                            unit.pokemon.statuses.Add(get_status("Freeze"));
                         }
                     }
                     break;
