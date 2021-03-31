@@ -303,8 +303,14 @@ namespace Pokemon
             else if (playerMoveNum != -1) playerMove = playerUnit.pokemon.currentMoves[playerMoveNum];
             else playerMove = playerUnit.pokemon.struggle;
 
-            if (enemyContinuingAttack != 0) enemyMove = enemyMoveStorage;
-            else if (struggle) enemyMove = enemyUnit.pokemon.struggle;
+            if (enemyContinuingAttack != 0)
+            {
+                enemyMove = enemyMoveStorage;
+            }
+            else if (struggle)
+            {
+                enemyMove = enemyUnit.pokemon.struggle;
+            }
             else
             {
                 do
@@ -474,7 +480,6 @@ namespace Pokemon
         /// <summary>
         /// Handles getting attacked when switching out Pokemon
         /// </summary>
-        /// <param name="pokemon">The Pokemon you are switching to. It is 0th indexed from the top of the screen</param>
         /// <returns>Nothing</returns>
         IEnumerator DecisionYouDontAttack()
         {
@@ -540,7 +545,7 @@ namespace Pokemon
             }
             else
             {
-                state = BattleState.PLAYERTURN;
+                //state = BattleState.PLAYERTURN;
                 dialogueText.text = "Choose an action";
                 playerHUD.SetPokemon(GameController.playerPokemon);
                 playerHUD.SetMoves(playerUnit);
