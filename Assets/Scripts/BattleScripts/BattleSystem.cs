@@ -1586,7 +1586,12 @@ namespace Pokemon
         void SetOpponentTrainerSprite(SpriteRenderer spriteRenderer)
         {
             string type = GameController.opponentType;
-            string path = "Final_NPC/" + type;
+            string path;
+
+            if (type != "Gym Leader")
+                path = "Final_NPC/" + type;
+            else
+                path = "GymLeaders/" + GameController.opponentName;
 
             var sprite = Resources.Load<Sprite>(path);
 

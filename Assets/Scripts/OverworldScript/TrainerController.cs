@@ -75,7 +75,10 @@ public class TrainerController : MonoBehaviour
             GameController.opponentName = route_trainers[trainerName].name;
         }
         else
-            GameController.opponentName = "Gym Leader " + route_trainers[trainerName].name;
+        {
+            GameController.opponentType = "Gym Leader";
+            GameController.opponentName = route_trainers[trainerName].name;
+        }
 
         Debug.Log("You are challenged by " + GameController.opponentName);
         GameController.triggerCombat = true;
