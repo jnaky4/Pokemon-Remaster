@@ -79,9 +79,7 @@ namespace Pokemon
 
         private void CheckForEncounters()
         {
-            // int spawnRate = 10
-            //int spawnRate = 10;
-            if (Physics2D.OverlapCircle(transform.position, 0.2f, GameplayLayers.i.GrassLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
+            if (Physics2D.OverlapCircle(transform.position, 0.1f, GameplayLayers.i.GrassLayer) != null && !GameController.triggerCombat && !GameController.inCombat)
             {
                 if (UnityEngine.Random.Range(1, 101) <= spawnRate)
                 {
