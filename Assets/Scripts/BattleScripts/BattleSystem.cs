@@ -252,20 +252,23 @@ namespace Pokemon
             playerHUD.SetHUD(playerUnit, true, player, GameController.playerPokemon);
             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
 
-            if (!GameController.isCatchable)
-                SetOpponentTrainerSprite(enemySprite);
             SetPlayerSprite(playerUnit, playerSprite);
-            //SetOpponentSprite(enemyUnit, enemySprite);
+            //
 
             SetBackground();
 
             if (GameController.isCatchable)
             {
                 dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
+                SetOpponentSprite(enemyUnit, enemySprite);
             }
             else
             {
-                dialogueText.text = GameController.opponentName + " sends out " + enemyUnit.pokemon.name + "!";
+                SetOpponentTrainerSprite(enemySprite);
+                dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " wants to battle!";
+                yield return new WaitForSeconds(2);
+                SetOpponentSprite(enemyUnit, enemySprite);
+                dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sends out " + enemyUnit.pokemon.name + "!";
             }
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
@@ -555,6 +558,8 @@ namespace Pokemon
                 playerHUD.SetMoves(playerUnit);
                 playerHUD.SetBalls(player);
                 playerHUD.SetEXP(playerUnit.pokemon);
+                enemyHUD.SetStatus(enemyUnit.pokemon);
+                playerHUD.SetStatus(playerUnit.pokemon);
                 SetUpButtons();
                 Debug.Log(playerUnit.pokemon.current_exp);
             }
@@ -1561,7 +1566,20 @@ namespace Pokemon
             Debug.Log("NPC type: " + type);
 
             var sprite = Resources.Load<Sprite>(path);
-            spriteRenderer.sprite = sprite;
+
+            float x = 0, y = 0;
+            if (GameController.location.CompareTo("Route 1") == 0)
+            {
+                x = 0.00f;
+                y = 0.20f;
+            }
+            /*if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }*/
+            Sprite s = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
+            spriteRenderer.sprite = s;
         }
 
         void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
