@@ -24,6 +24,7 @@ namespace Pokemon
         public static bool isCatchable = true;
         public static int catchRate = 0;
         public static string opponentName;
+        public static string opponentType;
 
         //overworld data
         public GameObject overworldCam;

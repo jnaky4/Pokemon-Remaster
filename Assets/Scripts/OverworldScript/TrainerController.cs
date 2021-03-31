@@ -70,7 +70,10 @@ public class TrainerController : MonoBehaviour
         }
 
         if (route_trainers[trainerName].type != route_trainers[trainerName].name)
-            GameController.opponentName = route_trainers[trainerName].type + " " + route_trainers[trainerName].name;
+        {
+            GameController.opponentType = route_trainers[trainerName].type;
+            GameController.opponentName = route_trainers[trainerName].name;
+        }
         else
             GameController.opponentName = "Gym Leader " + route_trainers[trainerName].name;
 
