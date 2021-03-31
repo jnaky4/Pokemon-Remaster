@@ -7,25 +7,25 @@
  *  persistence true
  *  applies after both players attacked that turn
  *
- * no early pokemon have freeze abilities
+ **no early pokemon have freeze abilities**
  * Freeze:
- * unable_to_attack: 100% chance
- * fire moves thaw freeze
- * removal_chance: 20% chance beginning of turn
- * ignore_type ice
- * persistence true
+ *  unable_to_attack: 100% chance
+ *  fire moves thaw freeze
+ *  removal_chance: 20% chance beginning of turn
+ *  ignore_type ice
+ *  persistence true
  *
  * Paralysis:
- * current speed * 1/2
- * unable_to_attack: 25% chance
- * ignore_type electric
- * persistence true
+ *  current speed * 1/2
+ *  unable_to_attack: 25% chance
+ *  ignore_type electric
+ *  persistence true
  *
  * Poison:
- * self_damage 1/8 .125 of max hp
- * ignore_type poison
- * persistence true
- * Overworld affect: Damage
+ *  self_damage 1/8 .125 of max hp
+ *  ignore_type poison
+ *  persistence true
+ *  Overworld affect: Damage
  *
  * Sleep:
  *  unable_to_attack: 100%
