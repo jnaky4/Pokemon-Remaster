@@ -252,7 +252,8 @@ namespace Pokemon
             playerHUD.SetHUD(playerUnit, true, player, GameController.playerPokemon);
             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
 
-            SetPlayerSprite(playerUnit, playerSprite);
+            SetPlayerTrainerSprite(playerSprite);
+            //SetPlayerSprite(playerUnit, playerSprite);
             //
 
             SetBackground();
@@ -1537,6 +1538,14 @@ namespace Pokemon
             StartCoroutine(ForgetMove(5, playerUnit.pokemon));
         }
 
+        void SetPlayerTrainerSprite(SpriteRenderer spriteRenderer)
+        {
+            string path = "Player_Rival/Player1";
+            var sprite = Resources.Load<Sprite>(path);
+
+            spriteRenderer.sprite = sprite;
+        }
+
         #endregion
         #region Sprite functions
         void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
@@ -1563,7 +1572,6 @@ namespace Pokemon
         {
             string type = GameController.opponentType;
             string path = "Final_NPC/" + type;
-            Debug.Log("NPC type: " + type);
 
             var sprite = Resources.Load<Sprite>(path);
 
