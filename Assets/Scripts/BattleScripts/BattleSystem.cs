@@ -57,7 +57,7 @@ namespace Pokemon
         public BattleHUD enemyHUD;
         //The HUDs (the shit that shows our current hp and stuff like that
 
-        public static Text dialogueText;
+        public Text dialogueText;
         //The dialog text to let us know what is happening
 
         public BattleState state;

@@ -15,7 +15,6 @@
  * ignore_type ice
  * persistence true
  *
- *
  * Paralysis:
  * current speed * 1/2
  * unable_to_attack: 25% chance
@@ -27,7 +26,6 @@
  * ignore_type poison
  * persistence true
  * Overworld affect: Damage
- *
  *
  * Sleep:
  *  unable_to_attack: 100%
@@ -133,7 +131,7 @@ namespace Pokemon
             if (unit.pokemon.sleep == 0)
             {
                 unit.pokemon.statuses.Remove(get_status("Sleep"));
-                BattleSystem.dialogueText.text = unit.pokemon.name + " woke up!";
+                //BattleSystem.dialogueText.text = unit.pokemon.name + " woke up!";
             }
         }
 
@@ -180,7 +178,7 @@ namespace Pokemon
             else
             {
                 poke.statuses.Remove("Freeze");
-                BattleSystem.dialogueText.text = poke.name + " unfroze!";
+                //BattleSystem.dialogueText.text = poke.name + " unfroze!";
                 return false;
             }
         }
