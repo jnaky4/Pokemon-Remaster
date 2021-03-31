@@ -1566,6 +1566,7 @@ namespace Pokemon
             SpriteTexture.LoadImage(fileData);
 
             sprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+            GameController.soundFX = unit.pokemon.dexnum.ToString();
         }
 
         void SetOpponentTrainerSprite(SpriteRenderer spriteRenderer)
