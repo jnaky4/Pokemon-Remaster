@@ -211,7 +211,7 @@ namespace Pokemon
                         }
                         catch (NullReferenceException ex)
                         {
-                            throw;
+                            //throw;
                         }
                         finally
                         {
@@ -231,7 +231,7 @@ namespace Pokemon
                         }
                         catch (NullReferenceException ex)
                         {
-                            throw;
+                            //throw;
                         }
                         finally
                         {
@@ -252,7 +252,7 @@ namespace Pokemon
                         }
                         catch (NullReferenceException ex)
                         {
-                            throw;
+                            //throw;
                         }
                         finally
                         {
@@ -281,7 +281,7 @@ namespace Pokemon
                         }
                         catch (NullReferenceException ex)
                         {
-                            throw;
+                            //throw;
                         }
                         finally
                         {
@@ -294,7 +294,5 @@ namespace Pokemon
                     break;
             }
         }
-
-
     }
 }

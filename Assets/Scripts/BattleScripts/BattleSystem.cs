@@ -464,6 +464,7 @@ namespace Pokemon
                     }
                 }
             }
+            state = BattleState.PLAYERTURN;
             if (deadPokemon)
             {
                 yield return SwitchPokemonAfterDeath();
