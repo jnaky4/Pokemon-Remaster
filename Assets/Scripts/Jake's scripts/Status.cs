@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 /*
  * Burn:
  *  self_damage 1/8 .125 of max hp
@@ -208,6 +209,10 @@ namespace Pokemon
                             if (unit.pokemon.type1.Equals("Fire")) break;
                             if (unit.pokemon.type2.Equals("Fire")) break;
                         }
+                        catch (NullReferenceException ex)
+                        {
+                            throw;
+                        }
                         finally
                         {
                             unit.pokemon.statuses.Add(get_status("Burn"));
@@ -223,6 +228,10 @@ namespace Pokemon
                         {
                             if (unit.pokemon.type1.Equals("Electric")) break;
                             if (unit.pokemon.type2.Equals("Electric")) break;
+                        }
+                        catch (NullReferenceException ex)
+                        {
+                            throw;
                         }
                         finally
                         {
@@ -240,6 +249,10 @@ namespace Pokemon
                         {
                             if (unit.pokemon.type1.Equals("Poison")) break;
                             if (unit.pokemon.type2.Equals("Poison")) break;
+                        }
+                        catch (NullReferenceException ex)
+                        {
+                            throw;
                         }
                         finally
                         {
@@ -265,6 +278,10 @@ namespace Pokemon
                         {
                             if (unit.pokemon.type1.Equals("Ice")) break;
                             if (unit.pokemon.type2.Equals("Ice")) break;
+                        }
+                        catch (NullReferenceException ex)
+                        {
+                            throw;
                         }
                         finally
                         {
