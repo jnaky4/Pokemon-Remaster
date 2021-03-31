@@ -142,9 +142,13 @@ namespace Pokemon
             }
             else
             {
-                level.color = GetColorOfStatus("null");
-                level.text = "Level " + poke.level;
+                ResetStatus(poke);
             }
+        }
+        public void ResetStatus(Pokemon poke)
+        {
+            level.color = GetColorOfStatus("null");
+            level.text = "Level " + poke.level;
         }
 
         private Color GetColorOfStatus(string name)
@@ -161,7 +165,14 @@ namespace Pokemon
                 case "Poison":
                     color = new Color(188f / 255f, 82f / 255f, 232f / 255f, 1);
                     break;
+                case "Sleep":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+                case "Freeze":
+                    color = new Color(98f / 255f, 204f / 255f, 212f / 255f, 1);
+                    break;
                 default:
+                    color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);
                     break;
             }
             return color;

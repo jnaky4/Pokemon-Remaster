@@ -127,6 +127,16 @@ namespace Pokemon
         {
             unit.pokemon.current_speed *= .5;
         }
+        public static void ReduceSleep(Unit unit)
+        {
+            unit.pokemon.sleep--;
+            if (unit.pokemon.sleep == 0)
+            {
+                unit.pokemon.statuses.Remove(get_status("Sleep"));
+                BattleSystem.dialogueText.text = unit.pokemon.name + " woke up!";
+            }
+        }
+
         public static bool SeeIfParalyzed(Pokemon poke)
         {
             int check = 0;
@@ -147,6 +157,32 @@ namespace Pokemon
                 if (s.name.Equals("Poison")) return true;
             }
             return false;
+        }
+        public static bool SeeIfSleep(Pokemon poke)
+        {
+            foreach (Status s in poke.statuses)
+            {
+                if (s.name.Equals("Sleep")) return true;
+            }
+            return false;
+        }
+        public static bool SeeIfFreeze(Pokemon poke)
+        {
+            int check = 0;
+            foreach (Status s in poke.statuses)
+            {
+                if (s.name.Equals("Freeze")) check = 1;
+            }
+            if (check == 0) return false;
+            System.Random rnd = new System.Random();
+            int num = rnd.Next(1, 100);
+            if (num > 20) return true;
+            else
+            {
+                poke.statuses.Remove("Freeze");
+                BattleSystem.dialogueText.text = poke.name + " unfroze!";
+                return false;
+            }
         }
 
         public static bool SeeIfPersistanceIsAlreadyHere(Pokemon poke)
@@ -171,7 +207,8 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Fire") || unit.pokemon.type2.Equals("Fire")) break;
+                            if (unit.pokemon.type1.Equals("Fire")) break;
+                            if (unit.pokemon.type2.Equals("Fire")) break;
                         }
                         finally
                         {
@@ -186,7 +223,8 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Electric") || unit.pokemon.type2.Equals("Electric")) break;
+                            if (unit.pokemon.type1.Equals("Electric")) break;
+                            if (unit.pokemon.type2.Equals("Electric")) break;
                         }
                         finally
                         {
@@ -202,11 +240,37 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Poison") || unit.pokemon.type2.Equals("Poison")) break;
+                            if (unit.pokemon.type1.Equals("Poison")) break;
+                            if (unit.pokemon.type2.Equals("Poison")) break;
                         }
                         finally
                         {
                             unit.pokemon.statuses.Add(get_status("Poison"));
+                        }
+                    }
+                    break;
+
+                case "Sleep":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        unit.pokemon.statuses.Add(get_status("Sleep"));
+                        unit.pokemon.sleep = GameController._rnd.Next(1, 4);
+                    }
+                    break;
+
+                case "Freeze":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
+                        try
+                        {
+                            if (unit.pokemon.type1.Equals("Ice")) break;
+                            if (unit.pokemon.type2.Equals("Ice")) break;
+                        }
+                        finally
+                        {
+                            unit.pokemon.statuses.Add(get_status("Freeze"));
                         }
                     }
                     break;
