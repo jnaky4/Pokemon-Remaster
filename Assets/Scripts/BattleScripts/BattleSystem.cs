@@ -253,8 +253,6 @@ namespace Pokemon
             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
 
             SetPlayerTrainerSprite(playerSprite);
-            //SetPlayerSprite(playerUnit, playerSprite);
-            //
 
             SetBackground();
 
@@ -271,6 +269,9 @@ namespace Pokemon
                 SetOpponentSprite(enemyUnit, enemySprite);
                 dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sends out " + enemyUnit.pokemon.name + "!";
             }
+            yield return new WaitForSeconds(2);
+            dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
+            SetPlayerSprite(playerUnit, playerSprite);
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
             PlayerTurn();
@@ -1538,16 +1539,29 @@ namespace Pokemon
             StartCoroutine(ForgetMove(5, playerUnit.pokemon));
         }
 
+        #endregion
+        #region Sprite functions
         void SetPlayerTrainerSprite(SpriteRenderer spriteRenderer)
         {
             string path = "Player_Rival/Player1";
             var sprite = Resources.Load<Sprite>(path);
 
-            spriteRenderer.sprite = sprite;
-        }
+            float x = 0, y = 0;
+            if (GameController.location.CompareTo("Route 1") == 0)
+            {
+                x = 0.30f;
+                y = 0.25f;
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 0.20f;
+                y = 0.30f;
+            }
+            Sprite s = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
+            spriteRenderer.sprite = s;
 
-        #endregion
-        #region Sprite functions
+            spriteRenderer.sprite = s;
+        }
         void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
         {
             float x = 0, y = 0;
