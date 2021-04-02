@@ -74,16 +74,16 @@ namespace Pokemon
         public void get_background_path()
         {
             var path = Directory.GetCurrentDirectory();
-            if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-            {
+           /* if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
+            {*/
                 //Debug.Log("Does something happen here?");
                 this.route_background = path + "/Images/Backgrounds/" + (this.route_background).ToString();
-            }
+            /*}
             else
             {
                 this.route_background = path + "\\Images\\Backgrounds\\" + (this.route_background).ToString();
 
-            }
+            }*/
             Debug.Log(this.route_background);
 
         }

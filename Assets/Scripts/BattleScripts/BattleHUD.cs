@@ -194,252 +194,77 @@ namespace Pokemon
         /// <param name="unit">The unit we want to set.</param>
         public void SetMoves(Unit unit)
         {
+            var path = "Assets/Resources/Images/Menu Icons/Type ";
             if (unit.pokemon.currentMoves[0] != null)
             {
                 moves1.text = unit.pokemon.currentMoves[0].name + " " + unit.pokemon.currentMoves[0].current_pp + "/" + unit.pokemon.currentMoves[0].maxpp + " ";
-                var path = Directory.GetCurrentDirectory();
-                try
-                {
-                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[0].move_type.type + ".png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move1type.sprite = NewSprite;
-                    }
-                    else
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[0].move_type.type + ".png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move1type.sprite = NewSprite;
-                    }
-                    ColorBlock c = move1Button.GetComponent<Button>().colors;
-                    c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
-                    c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
-                    move1Button.GetComponent<Button>().colors = c;
-                }
-                catch (FileNotFoundException)
-                {
-                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type Normal.png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move1type.sprite = NewSprite;
-                    }
-                    else
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type Normal.png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move1type.sprite = NewSprite;
-                    }
-                    ColorBlock c = move1Button.GetComponent<Button>().colors;
-                    c.normalColor = GetColorOfMove("Normal");
-                    c.highlightedColor = GetDarkColorOfMove("Normal");
-                    move1Button.GetComponent<Button>().colors = c;
-                }
+
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData = File.ReadAllBytes(path + unit.pokemon.currentMoves[0].move_type.type + ".png");
+                SpriteTexture.LoadImage(fileData);
+                move1type.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+
+                ColorBlock c = move1Button.GetComponent<Button>().colors;
+                c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                move1Button.GetComponent<Button>().colors = c;
             }
             if (unit.pokemon.currentMoves[1] != null)
             {
                 moves2.text = unit.pokemon.currentMoves[1].name + " " + unit.pokemon.currentMoves[1].current_pp + "/" + unit.pokemon.currentMoves[1].maxpp + " ";
-                var path = Directory.GetCurrentDirectory();
-                try
-                {
-                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move2type.sprite = NewSprite;
-                    }
-                    else
-                    {
-                        Texture2D SpriteTexture = new Texture2D(15, 15);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move2type.sprite = NewSprite;
-                    }
-                    ColorBlock c = move2Button.GetComponent<Button>().colors;
-                    c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
-                    c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
-                    move2Button.GetComponent<Button>().colors = c;
-                }
-                catch (FileNotFoundException)
-                {
-                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type Normal.png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move2type.sprite = NewSprite;
-                    }
-                    else
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type Normal.png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move2type.sprite = NewSprite;
-                    }
-                    ColorBlock c = move2Button.GetComponent<Button>().colors;
-                    c.normalColor = GetColorOfMove("Normal");
-                    c.highlightedColor = GetDarkColorOfMove("Normal");
-                    move2Button.GetComponent<Button>().colors = c;
-                }
+
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData = File.ReadAllBytes(path + unit.pokemon.currentMoves[1].move_type.type + ".png");
+                SpriteTexture.LoadImage(fileData);
+                move2type.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+
+                ColorBlock c = move2Button.GetComponent<Button>().colors;
+                c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                move2Button.GetComponent<Button>().colors = c;
             }
             if (unit.pokemon.currentMoves[2] != null)
             {
                 moves3.text = unit.pokemon.currentMoves[2].name + " " + unit.pokemon.currentMoves[2].current_pp + "/" + unit.pokemon.currentMoves[2].maxpp + " ";
-                var path = Directory.GetCurrentDirectory();
-                try
-                {
-                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move3type.sprite = NewSprite;
-                    }
-                    else
-                    {
-                        Texture2D SpriteTexture = new Texture2D(15, 15);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move3type.sprite = NewSprite;
-                    }
-                    ColorBlock c = move3Button.GetComponent<Button>().colors;
-                    c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
-                    c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
-                    move3Button.GetComponent<Button>().colors = c;
-                }
-                catch (FileNotFoundException)
-                {
-                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type Normal.png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move3type.sprite = NewSprite;
-                    }
-                    else
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type Normal.png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move3type.sprite = NewSprite;
-                    }
-                    ColorBlock c = move3Button.GetComponent<Button>().colors;
-                    c.normalColor = GetColorOfMove("Normal");
-                    c.highlightedColor = GetDarkColorOfMove("Normal");
-                    move3Button.GetComponent<Button>().colors = c;
-                }
+
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData = File.ReadAllBytes(path + unit.pokemon.currentMoves[2].move_type.type + ".png");
+                SpriteTexture.LoadImage(fileData);
+                move3type.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+
+                ColorBlock c = move3Button.GetComponent<Button>().colors;
+                c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                move3Button.GetComponent<Button>().colors = c;
+
             }
             if (unit.pokemon.currentMoves[3] != null)
             {
                 moves4.text = unit.pokemon.currentMoves[3].name + " " + unit.pokemon.currentMoves[3].current_pp + "/" + unit.pokemon.currentMoves[3].maxpp + " ";
-                var path = Directory.GetCurrentDirectory();
-                try
-                {
-                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[3].move_type.type + ".png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move4type.sprite = NewSprite;
-                    }
-                    else
-                    {
-                        Texture2D SpriteTexture = new Texture2D(15, 15);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[3].move_type.type + ".png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move4type.sprite = NewSprite;
-                    }
-                    ColorBlock c = move4Button.GetComponent<Button>().colors;
-                    c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
-                    c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
-                    move4Button.GetComponent<Button>().colors = c;
-                }
-                catch (FileNotFoundException)
-                {
-                    if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type Normal.png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move4type.sprite = NewSprite;
-                    }
-                    else
-                    {
-                        Texture2D SpriteTexture = new Texture2D(0, 0);
-                        byte[] fileData;
-                        fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type Normal.png");
-                        SpriteTexture.LoadImage(fileData);
-                        Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                        move4type.sprite = NewSprite;
-                    }
-                    ColorBlock c = move4Button.GetComponent<Button>().colors;
-                    c.normalColor = GetColorOfMove("Normal");
-                    c.highlightedColor = GetDarkColorOfMove("Normal");
-                    move4Button.GetComponent<Button>().colors = c;
-                }
+
+                Texture2D SpriteTexture = new Texture2D(0, 0);
+                byte[] fileData = File.ReadAllBytes(path + unit.pokemon.currentMoves[3].move_type.type + ".png");
+                SpriteTexture.LoadImage(fileData);
+                move4type.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+
+                ColorBlock c = move4Button.GetComponent<Button>().colors;
+                c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                move4Button.GetComponent<Button>().colors = c;
             }
         }
         public void SetForgetMoves(Unit unit)
         {
+            var path = "Assets/Resources/Images/Menu Icons/Type ";
             if (unit.pokemon.currentMoves[0] != null)
             {
                 forget1.text = unit.pokemon.currentMoves[0].name + " ";
-                var path = Directory.GetCurrentDirectory();
 
-                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                {
-                    Texture2D SpriteTexture = new Texture2D(0, 0);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(path + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[0].move_type.type + ".png");
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                    forget1type.sprite = NewSprite;
-                }
-                else
-                {
-                    Texture2D SpriteTexture = new Texture2D(0, 0);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(path + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[0].move_type.type + ".png");
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                    forget1type.sprite = NewSprite;
-                }
+                Texture2D SpriteTexture2 = new Texture2D(0, 0);
+                byte[] fileData2 = File.ReadAllBytes(path + unit.pokemon.currentMoves[0].move_type.type + ".png");
+                SpriteTexture2.LoadImage(fileData2);
+                forget1type.sprite = Sprite.Create(SpriteTexture2, new Rect(0, 0, SpriteTexture2.width, SpriteTexture2.height), new Vector2(0, 0));
+
                 ColorBlock c = forget1Button.GetComponent<Button>().colors;
                 c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
                 c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
@@ -448,26 +273,12 @@ namespace Pokemon
             if (unit.pokemon.currentMoves[1] != null)
             {
                 forget2.text = unit.pokemon.currentMoves[1].name + " ";
-                var path2 = Directory.GetCurrentDirectory();
 
-                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                {
-                    Texture2D SpriteTexture = new Texture2D(0, 0);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(path2 + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png");
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                    forget2type.sprite = NewSprite;
-                }
-                else
-                {
-                    Texture2D SpriteTexture = new Texture2D(15, 15);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(path2 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[1].move_type.type + ".png");
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                    forget2type.sprite = NewSprite;
-                }
+                Texture2D SpriteTexture2 = new Texture2D(0, 0);
+                byte[] fileData2 = File.ReadAllBytes(path + unit.pokemon.currentMoves[1].move_type.type + ".png");
+                SpriteTexture2.LoadImage(fileData2);
+                forget2type.sprite = Sprite.Create(SpriteTexture2, new Rect(0, 0, SpriteTexture2.width, SpriteTexture2.height), new Vector2(0, 0));
+
                 ColorBlock c2 = forget2Button.GetComponent<Button>().colors;
                 c2.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
                 c2.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
@@ -477,26 +288,12 @@ namespace Pokemon
             if (unit.pokemon.currentMoves[2] != null)
             {
                 forget3.text = unit.pokemon.currentMoves[2].name + " ";
-                var path3 = Directory.GetCurrentDirectory();
 
-                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                {
-                    Texture2D SpriteTexture = new Texture2D(0, 0);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(path3 + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png");
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                    forget3type.sprite = NewSprite;
-                }
-                else
-                {
-                    Texture2D SpriteTexture = new Texture2D(15, 15);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(path3 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png");
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                    forget3type.sprite = NewSprite;
-                }
+                Texture2D SpriteTexture2 = new Texture2D(0, 0);
+                byte[] fileData2 = File.ReadAllBytes(path + "Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[2].move_type.type + ".png");
+                SpriteTexture2.LoadImage(fileData2);
+                forget3type.sprite = Sprite.Create(SpriteTexture2, new Rect(0, 0, SpriteTexture2.width, SpriteTexture2.height), new Vector2(0, 0));
+
                 ColorBlock c3 = forget3Button.GetComponent<Button>().colors;
                 c3.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
                 c3.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
@@ -506,26 +303,12 @@ namespace Pokemon
             if (unit.pokemon.currentMoves[3] != null)
             {
                 forget4.text = unit.pokemon.currentMoves[3].name + " ";
-                var path4 = Directory.GetCurrentDirectory();
 
-                if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-                {
-                    Texture2D SpriteTexture = new Texture2D(0, 0);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(path4 + "/Images/Menu Icons/" + "Type " + unit.pokemon.currentMoves[3].move_type.type + ".png");
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                    forget4type.sprite = NewSprite;
-                }
-                else
-                {
-                    Texture2D SpriteTexture = new Texture2D(15, 15);
-                    byte[] fileData;
-                    fileData = File.ReadAllBytes(path4 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.currentMoves[3].move_type.type + ".png");
-                    SpriteTexture.LoadImage(fileData);
-                    Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                    forget4type.sprite = NewSprite;
-                }
+                Texture2D SpriteTexture2 = new Texture2D(0, 0);
+                byte[] fileData2 = File.ReadAllBytes(path + unit.pokemon.currentMoves[3].move_type.type + ".png");
+                SpriteTexture2.LoadImage(fileData2);
+                forget4type.sprite = Sprite.Create(SpriteTexture2, new Rect(0, 0, SpriteTexture2.width, SpriteTexture2.height), new Vector2(0, 0));
+
                 ColorBlock c4 = forget4Button.GetComponent<Button>().colors;
                 c4.normalColor = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
                 c4.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
@@ -534,25 +317,12 @@ namespace Pokemon
             }
 
             forget5.text = unit.pokemon.learned_move.name + " ";
-            var path5 = Directory.GetCurrentDirectory();
-            if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-            {
-                Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(path5 + "/Images/Menu Icons/" + "Type " + unit.pokemon.learned_move.move_type.type + ".png");
-                SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                forget5type.sprite = NewSprite;
-            }
-            else
-            {
-                Texture2D SpriteTexture = new Texture2D(15, 15);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(path5 + "\\Images\\Menu Icons\\" + "Type " + unit.pokemon.learned_move.move_type.type + ".png");
-                SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                forget5type.sprite = NewSprite;
-            }
+
+            Texture2D SpriteTexture = new Texture2D(0, 0);
+            byte[] fileData = File.ReadAllBytes(path + unit.pokemon.learned_move.move_type.type + ".png");
+            SpriteTexture.LoadImage(fileData);
+            forget5type.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+
             ColorBlock c5 = forget5Button.GetComponent<Button>().colors;
             c5.normalColor = GetColorOfMove(unit.pokemon.learned_move.move_type.type);
             c5.highlightedColor = GetDarkColorOfMove(unit.pokemon.learned_move.move_type.type);
@@ -713,11 +483,9 @@ namespace Pokemon
                 pokemon1.text = "" + pokemons[0].name + ", Level " + pokemons[0].level + "\nHP: " + pokemons[0].current_hp + "/" + pokemons[0].max_hp;
 
                 Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(pokemons[0].image1);
+                byte[] fileData = File.ReadAllBytes(pokemons[0].image1);
                 SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                pokemon1Image.sprite = NewSprite;
+                pokemon1Image.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
                 ColorBlock c = poke1.GetComponent<Button>().colors;
                 c.normalColor = GetColorOfMove(pokemons[0].type1.type);
@@ -729,11 +497,9 @@ namespace Pokemon
             {
                 pokemon2.text = "" + pokemons[1].name + ", Level " + pokemons[1].level + "\nHP: " + pokemons[1].current_hp + "/" + pokemons[1].max_hp;
                 Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(pokemons[1].image1);
+                byte[] fileData = File.ReadAllBytes(pokemons[1].image1);
                 SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                pokemon2Image.sprite = NewSprite;
+                pokemon2Image.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
                 ColorBlock c = poke2.GetComponent<Button>().colors;
                 c.normalColor = GetColorOfMove(pokemons[1].type1.type);
@@ -744,11 +510,9 @@ namespace Pokemon
             {
                 pokemon3.text = "" + pokemons[2].name + ", Level " + pokemons[2].level + "\nHP: " + pokemons[2].current_hp + "/" + pokemons[2].max_hp;
                 Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(pokemons[2].image1);
+                byte[] fileData = File.ReadAllBytes(pokemons[2].image1);
                 SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                pokemon3Image.sprite = NewSprite;
+                pokemon3Image.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
                 ColorBlock c = poke3.GetComponent<Button>().colors;
                 c.normalColor = GetColorOfMove(pokemons[2].type1.type);
@@ -759,11 +523,9 @@ namespace Pokemon
             {
                 pokemon4.text = "" + pokemons[3].name + ", Level " + pokemons[3].level + "\nHP: " + pokemons[3].current_hp + "/" + pokemons[3].max_hp;
                 Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(pokemons[3].image1);
+                byte[] fileData = File.ReadAllBytes(pokemons[3].image1);
                 SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                pokemon4Image.sprite = NewSprite;
+                pokemon4Image.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
                 ColorBlock c = poke4.GetComponent<Button>().colors;
                 c.normalColor = GetColorOfMove(pokemons[3].type1.type);
@@ -774,11 +536,9 @@ namespace Pokemon
             {
                 pokemon5.text = "" + pokemons[4].name + ", Level " + pokemons[4].level + "\nHP: " + pokemons[4].current_hp + "/" + pokemons[4].max_hp;
                 Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(pokemons[4].image1);
+                byte[] fileData = File.ReadAllBytes(pokemons[4].image1);
                 SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                pokemon5Image.sprite = NewSprite;
+                pokemon5Image.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
                 ColorBlock c = poke5.GetComponent<Button>().colors;
                 c.normalColor = GetColorOfMove(pokemons[4].type1.type);
@@ -790,11 +550,9 @@ namespace Pokemon
             {
                 pokemon6.text = "" + pokemons[5].name + ", Level " + pokemons[5].level + "\nHP: " + pokemons[5].current_hp + "/" + pokemons[5].max_hp;
                 Texture2D SpriteTexture = new Texture2D(0, 0);
-                byte[] fileData;
-                fileData = File.ReadAllBytes(pokemons[5].image1);
+                byte[] fileData = File.ReadAllBytes(pokemons[5].image1);
                 SpriteTexture.LoadImage(fileData);
-                Sprite NewSprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-                pokemon6Image.sprite = NewSprite;
+                pokemon6Image.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
 
                 ColorBlock c = poke6.GetComponent<Button>().colors;
                 c.normalColor = GetColorOfMove(pokemons[5].type1.type);
