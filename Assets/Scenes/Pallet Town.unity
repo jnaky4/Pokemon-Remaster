@@ -88431,6 +88431,7 @@ MonoBehaviour:
   startString: CM vcam2
   endString: CM route1Vcam
   newLocation: Route 1
+  originCam: {fileID: 0}
 --- !u!1 &1714840951
 GameObject:
   m_ObjectHideFlags: 0
@@ -92268,7 +92269,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925116576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.5, y: 16.988739, z: -10}
+  m_LocalPosition: {x: 3.5, y: 2.8, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92598,7 +92599,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 6.137003, y: -0.6356816}
+  m_Offset: {x: 6.137003, y: -0.6467476}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -92609,7 +92610,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 28.028934, y: 22.970913}
+  m_Size: {x: 28.028934, y: 22.993046}
   m_EdgeRadius: 0
 --- !u!66 &1990126228
 CompositeCollider2D:
@@ -92632,19 +92633,19 @@ CompositeCollider2D:
   - m_Collider: {fileID: 1990126227}
     m_ColliderPaths:
     - - X: 201514411
-        Y: -121211376
+        Y: -121432704
       - X: 201514411
         Y: 108497752
       - X: -78774640
         Y: 108497459
       - X: -78774347
-        Y: -121211376
+        Y: -121432704
   m_CompositePaths:
     m_Paths:
-    - - {x: 20.151411, y: -12.121138}
+    - - {x: 20.151411, y: -12.1432705}
       - {x: 20.151411, y: 10.849775}
       - {x: -7.8774643, y: 10.849717}
-      - {x: -7.8774056, y: -12.121138}
+      - {x: -7.8774056, y: -12.1432705}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!4 &1990126229
@@ -92697,6 +92698,7 @@ MonoBehaviour:
   startString: CM route1Vcam
   endString: CM vcam2
   newLocation: Pallet Town
+  originCam: {fileID: 0}
 --- !u!1 &2014617881
 GameObject:
   m_ObjectHideFlags: 0
@@ -115522,7 +115524,7 @@ PrefabInstance:
     - target: {fileID: 4954978704781150901, guid: 522a0f793a7d548d5bf1607a453804ab,
         type: 3}
       propertyPath: playerPosition.y
-      value: -5.2
+      value: -6.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 522a0f793a7d548d5bf1607a453804ab, type: 3}
@@ -115873,7 +115875,7 @@ PrefabInstance:
     - target: {fileID: 8253830089586189132, guid: a198f1684d43149d5827bc9ad5f6f491,
         type: 3}
       propertyPath: m_Priority
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8253830089586189133, guid: a198f1684d43149d5827bc9ad5f6f491,
         type: 3}

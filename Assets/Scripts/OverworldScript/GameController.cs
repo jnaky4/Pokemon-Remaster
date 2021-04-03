@@ -42,9 +42,26 @@ namespace Pokemon
         //rnd
         public static System.Random _rnd = new System.Random();
 
+        private static GameController Instance = null;
+
         // Start is called before the first frame update
         void Awake()
         {
+
+            // If there is not already an instance of SoundManager, set it to this.
+            if (Instance == null)
+            {
+                Instance = this;
+
+            }
+            //If an instance already exists, destroy whatever this object is to enforce the singleton.
+            else if (Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+
+            }
+
             DontDestroyOnLoad(transform.gameObject);
 
             Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
@@ -56,6 +73,7 @@ namespace Pokemon
             Route.all_routes = BattleSystem.load_CSV("ROUTES");
             Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
             TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
+            Debug.Log("Types have been loaded");
             Type.load_type();
             Moves.load_moves();
             update_level_cap();
