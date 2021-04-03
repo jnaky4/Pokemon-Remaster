@@ -533,6 +533,7 @@ namespace Pokemon
             {
                 StartCoroutine(SeeIfEndBattle());
             }
+            state = BattleState.PLAYERTURN;
             PlayerTurn();
             yield break;
         }
