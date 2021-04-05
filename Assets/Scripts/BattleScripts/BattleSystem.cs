@@ -1558,10 +1558,7 @@ namespace Pokemon
                 x = 0.20f;
                 y = 0.30f;
             }
-            Sprite s = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
-            spriteRenderer.sprite = s;
-
-            spriteRenderer.sprite = s;
+            spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
         }
         void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
         {
@@ -1607,8 +1604,7 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }*/
-            Sprite s = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
-            spriteRenderer.sprite = s;
+            spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
         }
 
         void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
