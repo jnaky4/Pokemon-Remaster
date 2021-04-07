@@ -16,7 +16,7 @@ namespace Pokemon
         /**********************************************************************************************************************************************
          * VARIABLES
          **********************************************************************************************************************************************/
-
+        public int runAwayNum = 1;
         public int activePokemon = 0;
 
         public GameObject playerPrefab;
@@ -1297,12 +1297,38 @@ namespace Pokemon
             }
             else
             {
-                state = BattleState.RUNAWAY;
                 CloseBallsMenu();
                 CloseMovesMenu();
                 ClosePokemonMenu();
                 SetDownButtons();
-                StartCoroutine(EndBattle());
+                double a = playerUnit.pokemon.current_speed;
+                double b = a / 4;
+                b %= 256;
+                if (b == 0)
+                {
+                    state = BattleState.RUNAWAY;
+                    StartCoroutine(EndBattle());
+                }
+                double f = (((a * 32) / b) + 30) * runAwayNum;
+                runAwayNum++;
+                if (f > 255)
+                {
+                    state = BattleState.RUNAWAY;
+                    StartCoroutine(EndBattle());
+                }
+                else
+                {
+                    int r = GameController._rnd.Next(256);
+                    if (r < f)
+                    {
+                        state = BattleState.RUNAWAY;
+                        StartCoroutine(EndBattle());
+                    }
+                    else
+                    {
+                        StartCoroutine(FailRunAway());
+                    }
+                }
             }
         }
 
@@ -1558,6 +1584,13 @@ namespace Pokemon
         public void Forget5()
         {
             StartCoroutine(ForgetMove(5, playerUnit.pokemon));
+        }
+
+        public IEnumerator FailRunAway()
+        {
+            dialogueText.text = "Can't Escape!";
+            yield return new WaitForSeconds(2);
+            StartCoroutine(DecisionYouDontAttack());
         }
 
         #endregion
