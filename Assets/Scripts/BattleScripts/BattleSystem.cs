@@ -199,7 +199,7 @@ namespace Pokemon
         {
 
             //GameObject pokeMenu = Instantiate(pokemonMenuUI);
-
+            player = new PlayerBattle();
             GameObject playerGO = Instantiate(playerPrefab);
             //playerGO.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width - 20, Screen.height - 20, 10));
             playerUnit = playerGO.GetComponent<Unit>();
@@ -215,19 +215,15 @@ namespace Pokemon
                 }
             }
 
-            PlayerBattle playerTemp = new PlayerBattle();
-
-            playerTemp.myName = "Red";
-            //playerTemp.pokeBalls = true;
-            //playerTemp.numPokeBalls = 11;
-            //playerTemp.greatBalls = true;
-            //playerTemp.numGreatBalls = 0;
-            //playerTemp.ultraBalls = true;
-            //playerTemp.numUltraBalls = 0;
-            //playerTemp.masterBalls = true;
-            //playerTemp.numMasterBalls = 10;
-
-            player = playerTemp;
+            player.myName = GameController.player.name;
+            player.pokeBalls = GameController.player.displayPokeBalls;
+            player.numPokeBalls = GameController.player.pokeBalls;
+            player.greatBalls = GameController.player.displayGreatBalls;
+            player.numGreatBalls = GameController.player.greatBalls;
+            player.ultraBalls = GameController.player.displayUltraBalls;
+            player.numUltraBalls = GameController.player.ultraBalls;
+            player.masterBalls = GameController.player.displayMasterBalls;
+            player.numMasterBalls = GameController.player.masterBalls;
 
             if (!player.pokeBalls) ball1.SetActive(false);
             if (!player.greatBalls) ball2.SetActive(false);
@@ -1190,6 +1186,10 @@ namespace Pokemon
                     else GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed * 0.5;
                     GameController.playerPokemon[i].current_accuracy = 1;
                     GameController.playerPokemon[i].current_evasion = 1;
+                    GameController.player.pokeBalls = player.numPokeBalls;
+                    GameController.player.greatBalls = player.numGreatBalls;
+                    GameController.player.ultraBalls = player.numUltraBalls;
+                    GameController.player.masterBalls = player.numMasterBalls;
                 }
             }
             GameController.endCombat = true; //Something for levi.

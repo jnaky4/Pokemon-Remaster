@@ -6,16 +6,16 @@ namespace Pokemon
 {
     public class PlayerData : MonoBehaviour
     {
-        public static string name = "Red";
+        public string name = "Red";
 
-        public static int pokeBalls = 10;
-        public static int greatBalls = 10;
-        public static int ultraBalls = 0;
-        public static int masterBalls = 0;
+        public int pokeBalls = 10;
+        public int greatBalls = 10;
+        public int ultraBalls = 0;
+        public int masterBalls = 0;
 
-        public static bool displayPokeBalls = true;
-        public static bool displayGreatBalls = true;
-        public static bool displayUltraBalls = false;
-        public static bool displayMasterBalls = false;
+        public bool displayPokeBalls = true;
+        public bool displayGreatBalls = true;
+        public bool displayUltraBalls = false;
+        public bool displayMasterBalls = false;
     }
 }
