@@ -22,6 +22,7 @@ namespace Pokemon
 
         //combat data
         public static Pokemon[] opponentPokemon = new Pokemon[6];
+        public static string endText = "Good fight!";
         public static bool isCatchable = true;
         public static int catchRate = 0;
         public static string opponentName;

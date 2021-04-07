@@ -50,7 +50,7 @@ public class TrainerController : MonoBehaviour
 
         //Dictionary<string, Route> route1_dic = Route.get_route(location);
         Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(GameController.location);
-
+        GameController.endText = route_trainers[trainerName].exit_dialogue;
         for (int i = 0; i < 6; i++)
         {
             if (route_trainers[trainerName].trainer_team[i] != null)

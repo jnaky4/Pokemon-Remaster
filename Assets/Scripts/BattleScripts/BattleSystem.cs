@@ -733,7 +733,7 @@ namespace Pokemon
                         if (GameController.opponentPokemon[j].current_hp > 0)
                         {
                             enemyUnit.pokemon = GameController.opponentPokemon[j];
-                            dialogueText.text = "They sent out a " + enemyUnit.pokemon.name + "!";
+                            dialogueText.text = GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
                             yield return new WaitForSeconds(2);
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
                             SetOpponentSprite(enemyUnit, enemySprite);
@@ -1138,7 +1138,13 @@ namespace Pokemon
             SetDownButtons();
             if (state == BattleState.WON) //If you won
             {
-                dialogueText.text = player.myName + " won!";
+                if (GameController.isCatchable) dialogueText.text = player.myName + " won!";
+                else
+                {
+                    dialogueText.text = player.myName + " defeated " + GameController.opponentName + "!";
+                    yield return new WaitForSeconds(2);
+                    dialogueText.text = GameController.endText;
+                }
             }
             else if (state == BattleState.LOST) //If you lost
             {
