@@ -6,8 +6,8 @@ public class PlayerData : MonoBehaviour
 {
     public static string name = "Red";
 
-    public static int pokeballs = 10;
-    public static int greatballs = 10;
+    public static int pokeBalls = 10;
+    public static int greatBalls = 10;
     public static int ultraBalls = 0;
     public static int masterBalls = 0;
 
