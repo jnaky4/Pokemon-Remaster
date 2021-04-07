@@ -3330,6 +3330,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4750897}
     m_Modifications:
+    - target: {fileID: 4706491088850223463, guid: 23b3bbc46de4b7241baf0e4ed4578c15,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706491088850223463, guid: 23b3bbc46de4b7241baf0e4ed4578c15,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706491088850223463, guid: 23b3bbc46de4b7241baf0e4ed4578c15,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6252194028320962407, guid: 23b3bbc46de4b7241baf0e4ed4578c15,
         type: 3}
       propertyPath: m_Sprite
@@ -3393,12 +3408,12 @@ PrefabInstance:
     - target: {fileID: 8005153498504540667, guid: 23b3bbc46de4b7241baf0e4ed4578c15,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 13.499998
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8005153498504540667, guid: 23b3bbc46de4b7241baf0e4ed4578c15,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 13.499998
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8005153498504540667, guid: 23b3bbc46de4b7241baf0e4ed4578c15,
         type: 3}
@@ -6878,6 +6893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31e97c2226ef8234a80dad3db334f0ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  runAwayNum: 1
   activePokemon: 0
   playerPrefab: {fileID: 644132775}
   enemyPrefab: {fileID: 1855794858}
@@ -7906,6 +7922,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4750897}
     m_Modifications:
+    - target: {fileID: 70795228849659781, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 70795228849659781, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 70795228849659781, guid: 3470d4591a44ec54baa62f32b6f4be44,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1288749839520438828, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
       propertyPath: m_Sprite
@@ -7974,12 +8005,12 @@ PrefabInstance:
     - target: {fileID: 8740941942004996123, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 13.499998
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8740941942004996123, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 13.499998
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8740941942004996123, guid: 3470d4591a44ec54baa62f32b6f4be44,
         type: 3}
