@@ -92,7 +92,7 @@ Pay Day,Normal,20,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A move
 Peck,Flying,35,35,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A standard FLYING-type attack. It is favored by Pokémon that have beaks and/or horns.
 Petal Dance,Grass,20,70,100,Physical,Confusion,1,self,1,1,3,2,enemy,0,null,0,0,0,"A dance-like attack that lasts two to three turns. Afterwards, the attacker becomes confused."
 Pin Missile,Bug,20,14,85,Physical,null,0,enemy,5,2,1,1,enemy,0,null,0,0,0,An attack that fires many needle-like projectiles from the body. Strikes several times.
-Poison Gas,Poison,40,-1,55,Status,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A poisonous cloud of gas is forcefully expelled to poison the target.
+Poison Gas,Poison,40,-1,100,Status,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A poisonous cloud of gas is forcefully expelled to poison the target.
 Poison Powder,Poison,35,-1,75,Status,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,"A technique that poisons the target. If poisoned, the victim loses HP steadily."
 Poison Sting,Poison,35,15,100,Physical,Poison,0.2,enemy,1,1,1,1,enemy,0,null,0,0,0,A POISON-type attack. Has a one-in- five chance of leaving the target with the lingering effects of poison.
 Pound,Normal,35,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Slightly stronger than TACKLE. Many Pokémon know this move.
