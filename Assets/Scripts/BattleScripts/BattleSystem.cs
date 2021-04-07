@@ -763,7 +763,7 @@ namespace Pokemon
             }
             System.Random rnd = new System.Random();
 
-            int randomNumber = 0, catchRate = 1, randomNumber2, f, numShakes = 0;
+            int randomNumber = 0, catchRate = GameController.catchRate, randomNumber2, f, numShakes = 0;
             if (typeOfPokeball == 1) //If you have a Poke Ball
             {
                 if (player.numPokeBalls == 0)
