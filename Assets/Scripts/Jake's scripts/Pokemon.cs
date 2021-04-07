@@ -413,6 +413,9 @@ namespace Pokemon
         //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
         public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
         {
+            //if pokemon is at the level cap, do nothing
+            if (this.level >= GameController.level_cap) return 0;
+
             this.gained_a_level = false;
             //EXP = (a * t * e * b * L) / (7 * s)
             //a is wild or trainer pokemon: 1 or 1.5
