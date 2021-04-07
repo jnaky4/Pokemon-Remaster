@@ -17,5 +17,7 @@ namespace Pokemon
         public bool displayGreatBalls = true;
         public bool displayUltraBalls = false;
         public bool displayMasterBalls = false;
+
+        public int money = 0;
     }
 }

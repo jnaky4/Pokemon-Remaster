@@ -225,6 +225,7 @@ namespace Pokemon
             player.masterBalls = GameController.player.displayMasterBalls;
             player.numMasterBalls = GameController.player.masterBalls;
 
+
             if (!player.pokeBalls) ball1.SetActive(false);
             if (!player.greatBalls) ball2.SetActive(false);
             if (!player.ultraBalls) ball3.SetActive(false);
@@ -733,7 +734,7 @@ namespace Pokemon
                         if (GameController.opponentPokemon[j].current_hp > 0)
                         {
                             enemyUnit.pokemon = GameController.opponentPokemon[j];
-                            dialogueText.text = GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
+                            dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
                             yield return new WaitForSeconds(2);
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
                             SetOpponentSprite(enemyUnit, enemySprite);
@@ -1141,9 +1142,14 @@ namespace Pokemon
                 if (GameController.isCatchable) dialogueText.text = player.myName + " won!";
                 else
                 {
-                    dialogueText.text = player.myName + " defeated " + GameController.opponentName + "!";
+                    SetPlayerTrainerSprite(playerSprite);
+                    SetOpponentTrainerSprite(enemySprite);
+                    dialogueText.text = player.myName + " defeated " + GameController.opponentType + " " + GameController.opponentName + "!";
                     yield return new WaitForSeconds(2);
-                    dialogueText.text = GameController.endText;
+                    dialogueText.text = "\"" + GameController.endText + "\"";
+                    yield return new WaitForSeconds(2);
+                    dialogueText.text = player.myName + " got ¥" + GameController.winMoney + " for winning!";
+                    GameController.player.money += GameController.winMoney;
                 }
             }
             else if (state == BattleState.LOST) //If you lost
