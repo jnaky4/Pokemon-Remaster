@@ -16,7 +16,7 @@ namespace Pokemon
         /**********************************************************************************************************************************************
          * VARIABLES
          **********************************************************************************************************************************************/
-
+        public int runAwayNum = 1;
         public int activePokemon = 0;
 
         public GameObject playerPrefab;
@@ -224,6 +224,7 @@ namespace Pokemon
             player.numUltraBalls = GameController.player.ultraBalls;
             player.masterBalls = GameController.player.displayMasterBalls;
             player.numMasterBalls = GameController.player.masterBalls;
+
 
             if (!player.pokeBalls) ball1.SetActive(false);
             if (!player.greatBalls) ball2.SetActive(false);
@@ -733,7 +734,7 @@ namespace Pokemon
                         if (GameController.opponentPokemon[j].current_hp > 0)
                         {
                             enemyUnit.pokemon = GameController.opponentPokemon[j];
-                            dialogueText.text = GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
+                            dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
                             yield return new WaitForSeconds(2);
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
                             SetOpponentSprite(enemyUnit, enemySprite);
@@ -1141,9 +1142,14 @@ namespace Pokemon
                 if (GameController.isCatchable) dialogueText.text = player.myName + " won!";
                 else
                 {
-                    dialogueText.text = player.myName + " defeated " + GameController.opponentName + "!";
+                    SetPlayerTrainerSprite(playerSprite);
+                    SetOpponentTrainerSprite(enemySprite);
+                    dialogueText.text = player.myName + " defeated " + GameController.opponentType + " " + GameController.opponentName + "!";
                     yield return new WaitForSeconds(2);
-                    dialogueText.text = GameController.endText;
+                    dialogueText.text = "\"" + GameController.endText + "\"";
+                    yield return new WaitForSeconds(2);
+                    dialogueText.text = player.myName + " got ¥" + GameController.winMoney + " for winning!";
+                    GameController.player.money += GameController.winMoney;
                 }
             }
             else if (state == BattleState.LOST) //If you lost
@@ -1291,12 +1297,38 @@ namespace Pokemon
             }
             else
             {
-                state = BattleState.RUNAWAY;
                 CloseBallsMenu();
                 CloseMovesMenu();
                 ClosePokemonMenu();
                 SetDownButtons();
-                StartCoroutine(EndBattle());
+                double a = playerUnit.pokemon.current_speed;
+                double b = a / 4;
+                b %= 256;
+                if (b == 0)
+                {
+                    state = BattleState.RUNAWAY;
+                    StartCoroutine(EndBattle());
+                }
+                double f = (((a * 32) / b) + 30) * runAwayNum;
+                runAwayNum++;
+                if (f > 255)
+                {
+                    state = BattleState.RUNAWAY;
+                    StartCoroutine(EndBattle());
+                }
+                else
+                {
+                    int r = GameController._rnd.Next(256);
+                    if (r < f)
+                    {
+                        state = BattleState.RUNAWAY;
+                        StartCoroutine(EndBattle());
+                    }
+                    else
+                    {
+                        StartCoroutine(FailRunAway());
+                    }
+                }
             }
         }
 
@@ -1552,6 +1584,13 @@ namespace Pokemon
         public void Forget5()
         {
             StartCoroutine(ForgetMove(5, playerUnit.pokemon));
+        }
+
+        public IEnumerator FailRunAway()
+        {
+            dialogueText.text = "Can't Escape!";
+            yield return new WaitForSeconds(2);
+            StartCoroutine(DecisionYouDontAttack());
         }
 
         #endregion

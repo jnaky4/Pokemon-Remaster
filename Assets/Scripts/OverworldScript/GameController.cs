@@ -18,7 +18,7 @@ namespace Pokemon
         public static string location = "Pallet Town";
 
         //Game Level Cap
-        public static int level_cap = 0;
+        public static int level_cap = 10;
 
         //combat data
         public static Pokemon[] opponentPokemon = new Pokemon[6];
@@ -27,6 +27,7 @@ namespace Pokemon
         public static int catchRate = 0;
         public static string opponentName;
         public static string opponentType;
+        public static int winMoney;
 
         //overworld data
         public GameObject overworldCam;
