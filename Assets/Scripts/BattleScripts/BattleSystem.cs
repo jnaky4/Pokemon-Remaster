@@ -656,16 +656,20 @@ namespace Pokemon
                         playerUnit.BurnSelf();
                         playerHUD.SetHP(playerUnit.pokemon.current_hp);
                         dialogueText.text = playerUnit.pokemon.name + " got burned!";
+                        if (playerUnit.pokemon.current_hp <= 0) isDead = true;
+                        else isDead = false;
                         yield return new WaitForSeconds(2);
-                        yield return StartCoroutine(EnemyKillsYou(true));
+                        yield return StartCoroutine(EnemyKillsYou(isDead));
                     }
                     if (Status.SeeIfPoisoned(playerUnit.pokemon))
                     {
                         playerUnit.PoisonSelf();
                         playerHUD.SetHP(playerUnit.pokemon.current_hp);
                         dialogueText.text = playerUnit.pokemon.name + " is poisoned!";
-                        yield return StartCoroutine(EnemyKillsYou(true));
+                        if (playerUnit.pokemon.current_hp <= 0) isDead = true;
+                        else isDead = false;
                         yield return new WaitForSeconds(2);
+                        yield return StartCoroutine(EnemyKillsYou(isDead));
                     }
                 }
 
@@ -1029,8 +1033,10 @@ namespace Pokemon
                     enemyUnit.BurnSelf();
                     enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                     dialogueText.text = enemyUnit.pokemon.name + " got burned!";
-                    yield return StartCoroutine(YouKilledThem(true));
+                    if (enemyUnit.pokemon.current_hp <= 0) isDead = true;
+                    else isDead = false;
                     yield return new WaitForSeconds(2);
+                    yield return StartCoroutine(YouKilledThem(isDead));
                 }
 
                 if (Status.SeeIfPoisoned(enemyUnit.pokemon))
@@ -1038,8 +1044,10 @@ namespace Pokemon
                     enemyUnit.PoisonSelf();
                     enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                     dialogueText.text = enemyUnit.pokemon.name + " is poisoned!";
-                    yield return StartCoroutine(YouKilledThem(true));
+                    if (enemyUnit.pokemon.current_hp <= 0) isDead = true;
+                    else isDead = false;
                     yield return new WaitForSeconds(2);
+                    yield return StartCoroutine(YouKilledThem(isDead));
                 }
 
                 yield return StartCoroutine(EnemyKillsYou(isDead));
@@ -1650,13 +1658,13 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 2.80f;
-                y = 1.65f;
+                x = 2.25f;
+                y = 2.00f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-                x = 0.40f;
-                y = 0.40f;
+                x = 0.15f;
+                y = 0.30f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
             {
