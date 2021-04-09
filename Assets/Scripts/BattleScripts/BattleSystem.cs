@@ -116,6 +116,9 @@ namespace Pokemon
         int enemyContinuingAttack = 0;
         Moves playerMoveStorage;
         Moves enemyMoveStorage;
+
+        int phasePlayerSprite = 0; //0 means no phasing, 1 means phase out, 2 means phase in
+        int phaseOpponentSprite = 0;
         #endregion
 
         /**********************************************************************************************************************************************
@@ -146,6 +149,28 @@ namespace Pokemon
         /// </summary>
         private void Update()
         {
+            if (phasePlayerSprite == 1)
+            {
+                StartCoroutine(PhaseOut(playerSprite, 0.20));
+                phasePlayerSprite = 0;
+            }
+
+            if (phasePlayerSprite == 2)
+            {
+                StartCoroutine(PhaseIn(playerSprite, 0.20));
+                phasePlayerSprite = 0;
+            }
+            if (phaseOpponentSprite == 1)
+            {
+                StartCoroutine(PhaseOut(enemySprite, 0.20));
+                phaseOpponentSprite = 0;
+            }
+            if (phaseOpponentSprite == 2)
+            {
+                StartCoroutine(PhaseIn(enemySprite, 0.20));
+                phaseOpponentSprite = 0;
+            }
+
 
             if (playerInitialAttack == true)
             {
@@ -250,7 +275,7 @@ namespace Pokemon
             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
 
             SetPlayerTrainerSprite(playerSprite);
-
+            phasePlayerSprite = 1;
             SetBackground();
 
             if (GameController.isCatchable)
@@ -261,14 +286,17 @@ namespace Pokemon
             else
             {
                 SetOpponentTrainerSprite(enemySprite);
+                phaseOpponentSprite = 1;
                 dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " wants to battle!";
                 yield return new WaitForSeconds(2);
                 SetOpponentSprite(enemyUnit, enemySprite);
+                phaseOpponentSprite = 2;
                 dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sends out " + enemyUnit.pokemon.name + "!";
             }
             yield return new WaitForSeconds(2);
             dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
             SetPlayerSprite(playerUnit, playerSprite);
+            phasePlayerSprite = 2;
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
             PlayerTurn();
@@ -617,6 +645,7 @@ namespace Pokemon
                 Debug.Log(playerUnit.damage);
 
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+                StartCoroutine(Blink(enemySprite, 0.25));
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                 enemyHUD.SetStatus(enemyUnit.pokemon);
@@ -651,6 +680,7 @@ namespace Pokemon
                     if (playerUnit.pokemon.statuses.Contains(Status.get_status("Burn")))
                     {
                         playerUnit.BurnSelf();
+                        StartCoroutine(Blink(playerSprite, 0.25));
                         playerHUD.SetHP(playerUnit.pokemon.current_hp);
                         dialogueText.text = playerUnit.pokemon.name + " got burned!";
                         if (playerUnit.pokemon.current_hp <= 0) isDead = true;
@@ -661,6 +691,7 @@ namespace Pokemon
                     if (Status.SeeIfPoisoned(playerUnit.pokemon))
                     {
                         playerUnit.PoisonSelf();
+                        StartCoroutine(Blink(playerSprite, 0.25));
                         playerHUD.SetHP(playerUnit.pokemon.current_hp);
                         dialogueText.text = playerUnit.pokemon.name + " is poisoned!";
                         if (playerUnit.pokemon.current_hp <= 0) isDead = true;
@@ -694,10 +725,10 @@ namespace Pokemon
                         break;
                     }
                 }
+                phaseOpponentSprite = 1;
                 if (won) //If you won
                 {
                     state = BattleState.WON;
-
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
                     int exp = 0;
                     //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
@@ -728,7 +759,6 @@ namespace Pokemon
                     {
                         yield return StartCoroutine(LevelUp(playerUnit.pokemon));
                     }
-
                     for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
                     {
                         if (GameController.opponentPokemon[j].current_hp > 0)
@@ -738,6 +768,7 @@ namespace Pokemon
                             yield return new WaitForSeconds(2);
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
                             SetOpponentSprite(enemyUnit, enemySprite);
+                            phaseOpponentSprite = 2;
                             break;
                         }
                     }
@@ -880,7 +911,7 @@ namespace Pokemon
             else
             {
                 playerContinuingAttack = 0;
-
+                phasePlayerSprite = 1;
                 dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
                 playerUnit.pokemon.reset_stages();
                 GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
@@ -891,6 +922,7 @@ namespace Pokemon
                 playerHUD.SetActivePokemon(GameController.playerPokemon, num, playerUnit);
                 playerHUD.SetEXP(playerUnit.pokemon);
                 SetPlayerSprite(playerUnit, playerSprite);
+                phasePlayerSprite = 2;
                 dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
                 yield return new WaitForSeconds(2);
 
@@ -999,6 +1031,7 @@ namespace Pokemon
                 if (!move.status.Equals("null")) Status.SeeIfStatusEffect(move, playerUnit);
                 double super = Utility.DoDamage(enemyUnit, playerUnit, move, crit);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage); //Forgot to comment this earlier, but this is where the damage actually gets applied.
+                StartCoroutine(Blink(playerSprite, 0.25));
                 //Debug.Log(enemyUnit.damage.ToString());
 
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
@@ -1028,6 +1061,7 @@ namespace Pokemon
                 if (enemyUnit.pokemon.statuses.Contains(Status.get_status("Burn")))
                 {
                     enemyUnit.BurnSelf();
+                    StartCoroutine(Blink(enemySprite, 0.25));
                     enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                     dialogueText.text = enemyUnit.pokemon.name + " got burned!";
                     if (enemyUnit.pokemon.current_hp <= 0) isDead = true;
@@ -1039,6 +1073,7 @@ namespace Pokemon
                 if (Status.SeeIfPoisoned(enemyUnit.pokemon))
                 {
                     enemyUnit.PoisonSelf();
+                    StartCoroutine(Blink(enemySprite, 0.25));
                     enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                     dialogueText.text = enemyUnit.pokemon.name + " is poisoned!";
                     if (enemyUnit.pokemon.current_hp <= 0) isDead = true;
@@ -1142,8 +1177,13 @@ namespace Pokemon
                 if (GameController.isCatchable) dialogueText.text = player.myName + " won!";
                 else
                 {
+                    phasePlayerSprite = 1;
+
+                    yield return new WaitForSeconds(2);
                     SetPlayerTrainerSprite(playerSprite);
                     SetOpponentTrainerSprite(enemySprite);
+                    phasePlayerSprite = 2;
+                    phaseOpponentSprite = 2;
                     dialogueText.text = player.myName + " defeated " + GameController.opponentType + " " + GameController.opponentName + "!";
                     yield return new WaitForSeconds(2);
                     dialogueText.text = "\"" + GameController.endText + "\"";
@@ -1612,6 +1652,8 @@ namespace Pokemon
                 y = 0.30f;
             }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
+            //spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, Mathf.SmoothStep(255, 0, 2.0f));
+
         }
         void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
         {
@@ -1631,6 +1673,7 @@ namespace Pokemon
             SpriteTexture.LoadImage(fileData);
 
             sprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+
             GameController.soundFX = unit.pokemon.dexnum.ToString();
         }
 
@@ -1736,6 +1779,45 @@ namespace Pokemon
                 AttackSprites.Add(s);
             }
             AttackSprites.TrimExcess();
+        }
+
+        public IEnumerator PhaseOut(SpriteRenderer sprite, double time)
+        {
+            var x = time / 128;
+            for (int i = 255; i >= 0; i -= 2)
+            {
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, (float)i / 255f);
+                yield return new WaitForSeconds((float)x);
+            }
+        }
+        public IEnumerator PhaseIn(SpriteRenderer sprite, double time)
+        {
+            var x = time / 128;
+            for (int i = 0; i < 256; i += 2)
+            {
+                sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, (float)i / 255f);
+                yield return new WaitForSeconds((float)x);
+            }
+        }
+
+        public IEnumerator Blink(SpriteRenderer sprite, double time)
+        {
+            var x = time / 2;
+            bool visible = true;
+            for (int i = 0; i < 4; i++)
+            {
+                if (visible)
+                {
+                    sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
+                    visible = false;
+                }
+                else
+                {
+                    sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
+                    visible = true;
+                }
+                yield return new WaitForSeconds((float)x);
+            }
         }
         #endregion
         #region Jake's functions

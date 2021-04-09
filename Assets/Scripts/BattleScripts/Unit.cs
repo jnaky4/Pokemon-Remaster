@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Pokemon
@@ -112,6 +113,7 @@ namespace Pokemon
             pokemon.current_hp -= (int)dmg;
             if (pokemon.current_hp > pokemon.max_hp) pokemon.current_hp = pokemon.max_hp;
             if (pokemon.current_hp < 0) pokemon.current_hp = 0;
+
             if (pokemon.current_hp <= 0) return true;
             else return false;
         }

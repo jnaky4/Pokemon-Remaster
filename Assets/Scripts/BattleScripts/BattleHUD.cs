@@ -1,3 +1,4 @@
+using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -188,6 +189,8 @@ namespace Pokemon
             hpSlider.value = hp;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
         }
+
+
         /// <summary>
         /// Sets the moves of your player's pokemon.
         /// </summary>
