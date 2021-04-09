@@ -31,6 +31,7 @@ namespace Pokemon
 
         //overworld data
         public GameObject overworldCam;
+        //GameObject overworldCam;
         public GameObject eventSystem;
         public Camera test;
 
@@ -64,6 +65,9 @@ namespace Pokemon
                 return;
 
             }
+
+            //overworldCam = GameObject.Find("Main Camera");
+            //overworldCam = GameObject.FindGameObjectWithTag("OverworldCam");
 
             DontDestroyOnLoad(transform.gameObject);
 
@@ -122,7 +126,9 @@ namespace Pokemon
                 inCombat = true;
                 eventSystem.SetActive(false);
                 SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
-                overworldCam.SetActive(false);
+
+                if (overworldCam != null)
+                    overworldCam.SetActive(false);
                 triggerCombat = false;
                 //music = "Battle Wild Begin";
                 //startCombatMusic = true;
