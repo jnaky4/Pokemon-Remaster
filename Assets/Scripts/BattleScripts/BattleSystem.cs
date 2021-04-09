@@ -1703,23 +1703,23 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 2.25f;
-                y = 2.00f;
+                x = 1.24f;
+                y = 1.125f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-                x = 0.15f;
-                y = 0.30f;
+                x = 0.30f;
+                y = 0.40f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
             {
-                x = 2.00f;
-                y = 1.75f;
+                x = 1.24f;
+                y = 1.175f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && !isPlayer)
             {
-                x = -0.95f;
-                y = 0.775f;
+                x = -0.25f;
+                y = 0.65f;
             }
 
             var sprites = Resources.LoadAll<Sprite>(path);
