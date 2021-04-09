@@ -152,6 +152,7 @@ namespace Pokemon
             if (phasePlayerSprite == 1)
             {
                 StartCoroutine(PhaseOut(playerSprite, 0.20));
+                //StartCoroutine(SlideInLeft(playerSprite));
                 phasePlayerSprite = 0;
             }
 
@@ -585,7 +586,7 @@ namespace Pokemon
                 playerHUD.SetPokemon(GameController.playerPokemon);
                 playerHUD.SetMoves(playerUnit);
                 playerHUD.SetBalls(player);
-                playerHUD.SetEXP(playerUnit.pokemon);
+                //playerHUD.SetEXP(playerUnit.pokemon);
                 enemyHUD.SetStatus(enemyUnit.pokemon);
                 playerHUD.SetStatus(playerUnit.pokemon);
                 SetUpButtons();
@@ -647,7 +648,7 @@ namespace Pokemon
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
                 StartCoroutine(Blink(enemySprite, 0.25));
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
-                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
+                //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                 enemyHUD.SetStatus(enemyUnit.pokemon);
 
                 if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
@@ -717,7 +718,7 @@ namespace Pokemon
             {
                 breakOutOfDecision = true;
                 bool won = true;
-                for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++) //Determines if you win or not by seeing if the other trainer has other useable pokemon.
+                for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++) //Determines if you win or not by seeing if the other trainer has other usable pokemon.
                 {
                     if (GameController.opponentPokemon[j].current_hp > 0)
                     {
@@ -736,6 +737,7 @@ namespace Pokemon
                     else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
                     yield return new WaitForSeconds(2);
                     dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
+                    playerHUD.SetEXP(playerUnit.pokemon, exp);
                     if (playerUnit.pokemon.gained_a_level)
                     {
                         yield return StartCoroutine(LevelUp(playerUnit.pokemon));
@@ -754,6 +756,7 @@ namespace Pokemon
                     else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
                     yield return new WaitForSeconds(2);
                     dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
+                    playerHUD.SetEXP(playerUnit.pokemon, exp);
                     yield return new WaitForSeconds(2);
                     if (playerUnit.pokemon.gained_a_level)
                     {
@@ -1035,7 +1038,7 @@ namespace Pokemon
                 //Debug.Log(enemyUnit.damage.ToString());
 
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
+                //enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
 
                 if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("enemy") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + move.current_stat_change + " fell!";
                 else if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("self") == 0) dialogueText.text = "Enemy " + enemyUnit.pokemon.name + "'s " + move.current_stat_change + " rose!";
@@ -1817,6 +1820,18 @@ namespace Pokemon
                     visible = true;
                 }
                 yield return new WaitForSeconds((float)x);
+            }
+        }
+
+        public IEnumerator SlideInLeft(SpriteRenderer sprite)
+        {
+            int numberOfSteps = 10;
+            float finalX = sprite.sprite.pivot.x;
+            float finalY = sprite.sprite.pivot.y;
+            for (float i = 0; i < finalX; i += finalX / numberOfSteps)
+            {
+                sprite.sprite = Sprite.Create(sprite.sprite.texture, sprite.sprite.rect, new Vector2(i, finalY));
+                yield return new WaitForSeconds(2 / numberOfSteps);
             }
         }
         #endregion

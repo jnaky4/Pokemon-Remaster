@@ -76,8 +76,33 @@ namespace Pokemon
         public Button poke5;
         public Button poke6;
 
+        bool updateHp = false;
+        bool updateXP = false;
+        int tempHP;
+        int tempXP;
+
         #endregion
         #region Functions
+        private void Update()
+        {
+            if ((int)hpSlider.value == tempHP) updateHp = false;
+            if (updateHp)
+            {
+                hpSlider.value = (int)hpSlider.value - 1;
+                if ((int)hpSlider.value == tempHP)
+                {
+                    updateHp = false;
+                    tempHP = 0;
+                }
+            }
+            if (expSlider.value == tempXP) updateXP = false;
+            if (updateXP)
+            {
+                expSlider.value++;
+                if (expSlider.value == tempXP) updateXP = false;
+            }
+        }
+
         /// <summary>
         /// Sets the HUD with pokemon name, level, hp, moves, the types of balls the player has, and the pokemon the player has.
         /// Player hud.
@@ -122,7 +147,15 @@ namespace Pokemon
         /// <param name="hp">The hp.</param>
         public void SetHP(int hp)
         {
-            hpSlider.value = hp;
+            tempHP = hp;
+            if (hp != hpSlider.value) updateHp = true;
+        }
+        public void SetEXP(Pokemon poke, int xp)
+        {
+            tempXP = poke.current_exp;
+            expSlider.maxValue = poke.next_lvl_exp;
+            expSlider.minValue = poke.base_lvl_exp;
+            updateXP = true;
         }
         public void SetEXP(Pokemon poke)
         {
@@ -186,7 +219,8 @@ namespace Pokemon
         /// <param name="unit">The unit.</param>
         public void SetHP(int hp, Unit unit)
         {
-            hpSlider.value = hp;
+            tempHP = hp;
+            if (hp != hpSlider.value) updateHp = true;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
         }
 
