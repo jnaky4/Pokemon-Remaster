@@ -31,6 +31,7 @@ namespace Pokemon
 
         //overworld data
         public GameObject overworldCam;
+        //GameObject overworldCam;
         public GameObject eventSystem;
         public Camera test;
 
@@ -65,6 +66,9 @@ namespace Pokemon
 
             }
 
+            //overworldCam = GameObject.Find("Main Camera");
+            //overworldCam = GameObject.FindGameObjectWithTag("OverworldCam");
+
             DontDestroyOnLoad(transform.gameObject);
 
             Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
@@ -83,11 +87,11 @@ namespace Pokemon
 
             //Debug.Log("CSV's have been loaded");
 
-            playerPokemon[0] = new Pokemon(4, 10, "Fury Attack", "Ember", "Tail Whip", "Quick Attack");
-            playerPokemon[1] = new Pokemon(7, 10, "Water Gun", "Bubble", "Splash", "Crabhammer");
-            playerPokemon[2] = new Pokemon(1, 10, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
-            playerPokemon[3] = new Pokemon(25, 10, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
-            playerPokemon[4] = new Pokemon(12, 10, "Sleep Powder", "Poison Powder", "Stun Spore", "Confusion");
+            playerPokemon[0] = new Pokemon(4, 5, "Fury Attack", "Flamethrower", "Tail Whip", "Quick Attack");
+            playerPokemon[1] = new Pokemon(7, 5, "Water Gun", "Bubble", "Splash", "Crabhammer");
+            playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
+            playerPokemon[3] = new Pokemon(25, 5, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            playerPokemon[4] = new Pokemon(12, 5, "Sleep Powder", "Poison Powder", "Stun Spore", "Confusion");
         }
 
         private void Start()
@@ -122,7 +126,9 @@ namespace Pokemon
                 inCombat = true;
                 eventSystem.SetActive(false);
                 SceneManager.LoadScene("BattleScene", LoadSceneMode.Additive);
-                overworldCam.SetActive(false);
+
+                if (overworldCam != null)
+                    overworldCam.SetActive(false);
                 triggerCombat = false;
                 //music = "Battle Wild Begin";
                 //startCombatMusic = true;
