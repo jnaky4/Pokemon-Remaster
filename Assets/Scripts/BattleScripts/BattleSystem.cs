@@ -43,6 +43,8 @@ namespace Pokemon
         private bool endofanimation;
         private bool enemyAttack;
         private bool enemyInitialAttack;
+        private bool beginCatch;
+        private bool playCatch;
         private string playerMoveName;
         private string enemyMoveName;
         //all of this stuff is for animation
@@ -179,6 +181,27 @@ namespace Pokemon
             {
                 StartCoroutine(PhaseIn(enemySprite, 0.20));
                 phaseOpponentSprite = 0;
+            }
+
+            if (beginCatch == true)
+            {
+                PlayerAttackAnim.Start();
+                beginCatch = false;
+                playCatch = true;
+            }
+            if (playCatch == true)
+            {
+                if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
+                {
+                    PlayerAttackAnim.HandleUpdate();
+                }
+                else
+                {
+                    //Debug.Log("End Animation now");
+                    PlayerAttackAnim.EndAnimation();
+                    playCatch = false;
+                    endofanimation = true;
+                }
             }
 
             if (playerInitialAttack == true)
@@ -895,6 +918,8 @@ namespace Pokemon
                 }
                 player.numMasterBalls--;
                 state = BattleState.CAUGHTPOKEMON;
+                PokeballShakes(3);
+                yield return new WaitForSeconds(1.5f);
                 StartCoroutine(EndBattle());
                 yield break;
             }
@@ -902,19 +927,31 @@ namespace Pokemon
             if ((Status.SeeIfSleep(enemyUnit.pokemon) || Status.SeeIfFreeze(enemyUnit.pokemon)) && randomNumber < 25)
             {
                 state = BattleState.CAUGHTPOKEMON;
+                PokeballShakes(3);
+                yield return new WaitForSeconds(1.5f);
                 StartCoroutine(EndBattle());
                 yield break;
             }
             if ((Status.SeeIfParalyzed(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon)) && randomNumber < 12)
             {
                 state = BattleState.CAUGHTPOKEMON;
+                PokeballShakes(3);
+                yield return new WaitForSeconds(1.5f);
                 StartCoroutine(EndBattle());
                 yield break;
             }
-            int catchRateModifier = 0;
-            if (Status.SeeIfSleep(enemyUnit.pokemon) || Status.SeeIfFreeze(enemyUnit.pokemon)) catchRateModifier = 25;
-            else if (Status.SeeIfParalyzed(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon)) catchRateModifier = 12;
-            if (randomNumber > GameController.catchRate - catchRateModifier) //If they broke free
+            int catchRateModifier = 0, s = 0;
+            if (Status.SeeIfSleep(enemyUnit.pokemon) || Status.SeeIfFreeze(enemyUnit.pokemon))
+            {
+                catchRateModifier = 25;
+                s = 10;
+            }
+            else if (Status.SeeIfParalyzed(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon))
+            {
+                catchRateModifier = 12;
+                s = 5;
+            }
+            if (randomNumber < GameController.catchRate - catchRateModifier) //If they broke free
             {
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
@@ -927,16 +964,31 @@ namespace Pokemon
             if (f >= randomNumber2) //If you actually caught them
             {
                 state = BattleState.CAUGHTPOKEMON;
+                PokeballShakes(3);
+                yield return new WaitForSeconds(1.5f);
                 StartCoroutine(EndBattle());
                 yield break;
             }
             else //If they broke free again.
             {
-                int d = (GameController.catchRate * 100) / numShakes;
-                if (d < 10) { }//no shakes
-                else if (d < 30) { }//one shake
-                else if (d < 70) { }//two shakes
-                else { }//three shakes
+                int d = ((GameController.catchRate * 100) / numShakes) + s;
+                if (d < 10)
+                {
+                    PokeballShakes(0);
+                }//no shakes
+                else if (d < 30)
+                {
+                    PokeballShakes(1);
+                }//one shake
+                else if (d < 70)
+                {
+                    PokeballShakes(2);
+                }//two shakes
+                else
+                {
+                    PokeballShakes(3);
+                }//three shakes
+                yield return new WaitForSeconds(1.5f);
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
                 StartCoroutine(DecisionYouDontAttack());
@@ -1849,6 +1901,39 @@ namespace Pokemon
             byte[] fileData = File.ReadAllBytes(path + GameController.location + ".png");
             SpriteTexture.LoadImage(fileData);
             background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+        }
+
+        public void PokeballShakes(int shakes)
+        {
+            Debug.Log("Shakes: " + shakes.ToString());
+            string pathLeft = "Attack_Animations/Pokeball_Left";
+            string pathRight = "Attack_Animations/Pokeball_Right";
+            AttackSprites.Clear();
+            AttackSprites.Add(null);
+            var sprites = Resources.LoadAll<Sprite>(pathLeft);
+            
+            if (shakes == 0)
+            {
+                pathLeft += "/Pokeball_Left_000";
+                var sprite = Resources.Load<Sprite>(pathLeft);
+                AttackSprites.Add(sprite);
+            }
+            if (shakes >= 1)
+            {
+                AttackSprites.AddRange(sprites);
+            }
+            if (shakes >= 2)
+            {
+                var spritesRight = Resources.LoadAll<Sprite>(pathRight);
+                AttackSprites.AddRange(spritesRight);
+            }
+            if (shakes >= 3)
+            {
+                AttackSprites.AddRange(sprites);
+            }
+
+            AttackSprites.TrimExcess();
+            beginCatch = true;
         }
 
         public void GetAttackSprites(string attack)
