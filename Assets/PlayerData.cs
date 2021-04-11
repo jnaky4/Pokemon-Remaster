@@ -10,13 +10,13 @@ namespace Pokemon
 
         public int pokeBalls = 10;
         public int greatBalls = 10;
-        public int ultraBalls = 0;
-        public int masterBalls = 0;
+        public int ultraBalls = 10;
+        public int masterBalls = 10;
 
         public bool displayPokeBalls = true;
         public bool displayGreatBalls = true;
-        public bool displayUltraBalls = false;
-        public bool displayMasterBalls = false;
+        public bool displayUltraBalls = true;
+        public bool displayMasterBalls = true;
 
         public int money = 0;
     }

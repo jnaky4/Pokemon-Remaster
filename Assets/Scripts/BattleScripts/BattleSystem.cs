@@ -188,6 +188,7 @@ namespace Pokemon
                 PlayerAttackAnim.Start();
                 beginCatch = false;
                 playCatch = true;
+                MakeSpriteInvisible(enemySprite);
             }
             if (playCatch == true)
             {
@@ -201,6 +202,8 @@ namespace Pokemon
                     PlayerAttackAnim.EndAnimation();
                     playCatch = false;
                     endofanimation = true;
+                    if (state == BattleState.CAUGHTPOKEMON) { DisplayPokeball(); }
+                    else MakeSpriteVisible(enemySprite);
                 }
             }
 
@@ -306,24 +309,25 @@ namespace Pokemon
             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
 
             SetPlayerTrainerSprite(playerSprite);
-            phasePlayerSprite = 1;
             SetBackground();
 
             if (GameController.isCatchable)
             {
                 dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
                 SetOpponentSprite(enemyUnit, enemySprite);
+                yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
             }
             else
             {
                 SetOpponentTrainerSprite(enemySprite);
-                phaseOpponentSprite = 1;
                 dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " wants to battle!";
-                yield return new WaitForSeconds(2);
+                yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
+                phaseOpponentSprite = 1;
                 SetOpponentSprite(enemyUnit, enemySprite);
                 phaseOpponentSprite = 2;
                 dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sends out " + enemyUnit.pokemon.name + "!";
             }
+            phasePlayerSprite = 1;
             yield return new WaitForSeconds(2);
             dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
             SetPlayerSprite(playerUnit, playerSprite);
@@ -863,7 +867,7 @@ namespace Pokemon
                 yield break;
             }
             System.Random rnd = new System.Random();
-
+            dialogueText.text = "";
             int randomNumber = 0, catchRate = GameController.catchRate, randomNumber2, f, numShakes = 0;
             if (typeOfPokeball == 1) //If you have a Poke Ball
             {
@@ -919,7 +923,8 @@ namespace Pokemon
                 player.numMasterBalls--;
                 state = BattleState.CAUGHTPOKEMON;
                 PokeballShakes(3);
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
+                DisplayPokeball();
                 StartCoroutine(EndBattle());
                 yield break;
             }
@@ -928,7 +933,8 @@ namespace Pokemon
             {
                 state = BattleState.CAUGHTPOKEMON;
                 PokeballShakes(3);
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
+                DisplayPokeball();
                 StartCoroutine(EndBattle());
                 yield break;
             }
@@ -936,7 +942,8 @@ namespace Pokemon
             {
                 state = BattleState.CAUGHTPOKEMON;
                 PokeballShakes(3);
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
+                DisplayPokeball();
                 StartCoroutine(EndBattle());
                 yield break;
             }
@@ -954,7 +961,7 @@ namespace Pokemon
             if (randomNumber < GameController.catchRate - catchRateModifier) //If they broke free
             {
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
-                yield return new WaitForSeconds(2);
+                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 StartCoroutine(DecisionYouDontAttack());
                 yield break;
             }
@@ -965,7 +972,8 @@ namespace Pokemon
             {
                 state = BattleState.CAUGHTPOKEMON;
                 PokeballShakes(3);
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
+                DisplayPokeball();
                 StartCoroutine(EndBattle());
                 yield break;
             }
@@ -975,20 +983,24 @@ namespace Pokemon
                 if (d < 10)
                 {
                     PokeballShakes(0);
+                    yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 }//no shakes
                 else if (d < 30)
                 {
                     PokeballShakes(1);
+                    yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 }//one shake
                 else if (d < 70)
                 {
                     PokeballShakes(2);
+                    yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 }//two shakes
                 else
                 {
                     PokeballShakes(3);
+                    yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 }//three shakes
-                yield return new WaitForSeconds(1.5f);
+
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
                 StartCoroutine(DecisionYouDontAttack());
@@ -1338,7 +1350,7 @@ namespace Pokemon
                     dialogueText.text = player.myName + " defeated " + GameController.opponentType + " " + GameController.opponentName + "!";
                     yield return new WaitForSeconds(2);
                     dialogueText.text = "\"" + GameController.endText + "\"";
-                    yield return new WaitForSeconds(2);
+                    yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
                     dialogueText.text = player.myName + " got ?" + GameController.winMoney + " for winning!";
                     GameController.player.money += GameController.winMoney;
                 }
@@ -1353,6 +1365,7 @@ namespace Pokemon
             }
             else if (state == BattleState.CAUGHTPOKEMON) //If you were successful in catching the pokemon
             {
+                DisplayPokeball();
                 GameController.music = "Battle Victory Wild";
                 dialogueText.text = "You caught a " + enemyUnit.pokemon.name + "!";
                 for (var p = 0; p < 6; p++)
@@ -1368,7 +1381,7 @@ namespace Pokemon
             {
                 dialogueText.text = "What the fuck just happened";
             }
-            yield return new WaitForSeconds(2);
+            yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
             GameController.playerPokemon[activePokemon] = playerUnit.pokemon; //Places your active pokemon back in the array - this is so its stats gets updated.
             for (int i = 0; i < 5; i++) //Resets the stages and attacks of all of your pokemon.
             {
@@ -1903,6 +1916,27 @@ namespace Pokemon
             background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
         }
 
+        public void DisplayPokeball()
+        {
+            float x = 0, y = 0;
+            if (GameController.location.CompareTo("Route 1") == 0)
+            {
+                x = 0.10f;
+                y = 0.40f;
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
+
+            Texture2D SpriteTexture = new Texture2D(0, 0);
+            byte[] fileData = File.ReadAllBytes("Assets/Resources/Attack_Animations/Pokeball_Left/Pokeball_Left_000.png");
+            SpriteTexture.LoadImage(fileData);
+            enemySprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+            enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1);
+        }
+
         public void PokeballShakes(int shakes)
         {
             Debug.Log("Shakes: " + shakes.ToString());
@@ -1911,25 +1945,52 @@ namespace Pokemon
             AttackSprites.Clear();
             AttackSprites.Add(null);
             var sprites = Resources.LoadAll<Sprite>(pathLeft);
-            
+            float x = 0, y = 0;
+            if (GameController.location.CompareTo("Route 1") == 0)
+            {
+                x = 1.24f;
+                y = 1.125f;
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
+
             if (shakes == 0)
             {
                 pathLeft += "/Pokeball_Left_000";
                 var sprite = Resources.Load<Sprite>(pathLeft);
-                AttackSprites.Add(sprite);
+                Sprite p = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
+                AttackSprites.Add(p);
             }
             if (shakes >= 1)
             {
-                AttackSprites.AddRange(sprites);
+                foreach (var s in sprites)
+                {
+                    Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
+                    AttackSprites.Add(p);
+                }
+                //AttackSprites.AddRange(sprites);
             }
             if (shakes >= 2)
             {
                 var spritesRight = Resources.LoadAll<Sprite>(pathRight);
-                AttackSprites.AddRange(spritesRight);
+                foreach (var s in spritesRight)
+                {
+                    Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
+                    AttackSprites.Add(p);
+                }
+                //AttackSprites.AddRange(spritesRight);
             }
             if (shakes >= 3)
             {
-                AttackSprites.AddRange(sprites);
+                foreach (var s in sprites)
+                {
+                    Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
+                    AttackSprites.Add(p);
+                }
+                //AttackSprites.AddRange(sprites);
             }
 
             AttackSprites.TrimExcess();
@@ -2027,6 +2088,16 @@ namespace Pokemon
                 yield return new WaitForSeconds((float)x);
                 StopShake(pos);
             }
+        }
+
+        public void MakeSpriteInvisible(SpriteRenderer sprite)
+        {
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
+        }
+
+        public void MakeSpriteVisible(SpriteRenderer sprite)
+        {
+            sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 1);
         }
 
         public void ShakeCamera(Vector3 pos)
