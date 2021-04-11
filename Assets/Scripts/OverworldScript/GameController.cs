@@ -14,7 +14,7 @@ namespace Pokemon
         public static PlayerData player = new PlayerData();
         public static bool inCombat = false;
         //public GameObject player;
-        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
+        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Ground", 1 } };
         public static string location = "Pallet Town";
 
         //Game Level Cap
@@ -80,18 +80,18 @@ namespace Pokemon
             Route.all_routes = BattleSystem.load_CSV("ROUTES");
             Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
             TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
-            Debug.Log("Types have been loaded");
             Type.load_type();
             Moves.load_moves();
             update_level_cap();
+            
 
             //Debug.Log("CSV's have been loaded");
 
-            playerPokemon[0] = new Pokemon(4, 5, "Fury Attack", "Flamethrower", "Tail Whip", "Quick Attack");
-            playerPokemon[1] = new Pokemon(7, 5, "Water Gun", "Bubble", "Splash", "Crabhammer");
-            playerPokemon[2] = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
-            playerPokemon[3] = new Pokemon(25, 5, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
-            playerPokemon[4] = new Pokemon(12, 5, "Sleep Powder", "Poison Powder", "Stun Spore", "Confusion");
+            playerPokemon[0] = new Pokemon(4, 18, "Fury Attack", "Ember", "Tail Whip", "Quick Attack");
+            playerPokemon[1] = new Pokemon(7, 18, "Water Gun", "Bubble", "Splash", "Crabhammer");
+            playerPokemon[2] = new Pokemon(1, 18, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
+            playerPokemon[3] = new Pokemon(25, 18, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            playerPokemon[4] = new Pokemon(12, 18, "Sleep Powder", "Poison Powder", "Stun Spore", "Confusion");
         }
 
         private void Start()

@@ -758,8 +758,8 @@ namespace Pokemon
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
                     int exp = 0;
                     //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
-                    if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
-                    else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
+                    if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, 1);
+                    else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, 1.5);
                     yield return new WaitForSeconds(2);
                     dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
                     playerHUD.SetEXP(playerUnit.pokemon, exp);
@@ -777,8 +777,8 @@ namespace Pokemon
 
                     int exp = 0;
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                    if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1);
-                    else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.base_lvl_exp, 1, 1.5);
+                    if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, 1);
+                    else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, 1.5);
                     yield return new WaitForSeconds(2);
                     dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
                     playerHUD.SetEXP(playerUnit.pokemon, exp);
