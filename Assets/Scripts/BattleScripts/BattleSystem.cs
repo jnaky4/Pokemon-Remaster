@@ -757,9 +757,14 @@ namespace Pokemon
                     state = BattleState.WON;
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
                     int exp = 0;
+                    double exp_multiplier;
                     //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
-                    if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, 1);
-                    else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, 1.5);
+                    //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
+                    exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
+                    string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
+                    Debug.Log(test);
+                    exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
+
                     yield return new WaitForSeconds(2);
                     dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
                     playerHUD.SetEXP(playerUnit.pokemon, exp);
@@ -776,9 +781,14 @@ namespace Pokemon
                     state = BattleState.CHANGEPOKEMON;
 
                     int exp = 0;
+                    double exp_multiplier;
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                    if (GameController.isCatchable) exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, 1);
-                    else exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, 1.5);
+
+                    //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
+                    exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
+                    exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
+/*                    string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
+                    Debug.Log(test);*/
                     yield return new WaitForSeconds(2);
                     dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
                     playerHUD.SetEXP(playerUnit.pokemon, exp);

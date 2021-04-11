@@ -428,12 +428,13 @@ namespace Pokemon
             //b is enemy_base_exp
             //L is enemy_level
             int exp_gained = (int)(trainer_wild_multipllier * 1 * 1 * enemy_base_exp * enemy_level) / (7 * num_player_pokemon_used);
+            Debug.Log(this.name + " gained " + exp_gained + "!");
             this.current_exp += exp_gained;
 
-            /*            Debug.Log("base exp " + this.base_lvl_exp);
-                        Debug.Log("current exp " + this.current_exp);
-                        Debug.Log("next level exp " + this.next_lvl_exp);
-            */
+            Debug.Log("base exp " + this.base_lvl_exp);
+            Debug.Log("current exp " + this.current_exp);
+            Debug.Log("next level exp " + this.next_lvl_exp);
+
             if (this.current_exp >= this.next_lvl_exp)
             {
                 Debug.Log("Pokemon Leveled!");
