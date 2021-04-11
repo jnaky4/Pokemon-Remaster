@@ -1231,9 +1231,17 @@ namespace Pokemon
             SetDownButtons();
             if (state == BattleState.WON) //If you won
             {
-                if (GameController.isCatchable) dialogueText.text = player.myName + " won!";
+                if (GameController.isCatchable)
+                {
+                    GameController.music = "Battle Victory Wild";
+                    dialogueText.text = player.myName + " won!";
+                }
                 else
                 {
+                    if (GameController.opponentName == "Brock")
+                        GameController.music = "Battle Victory Gym";
+                    else
+                        GameController.music = "Battle Victory Trainer";
                     phasePlayerSprite = 1;
 
                     yield return new WaitForSeconds(2);
@@ -1245,7 +1253,7 @@ namespace Pokemon
                     yield return new WaitForSeconds(2);
                     dialogueText.text = "\"" + GameController.endText + "\"";
                     yield return new WaitForSeconds(2);
-                    dialogueText.text = player.myName + " got ¥" + GameController.winMoney + " for winning!";
+                    dialogueText.text = player.myName + " got ?" + GameController.winMoney + " for winning!";
                     GameController.player.money += GameController.winMoney;
                 }
             }
@@ -1259,6 +1267,7 @@ namespace Pokemon
             }
             else if (state == BattleState.CAUGHTPOKEMON) //If you were successful in catching the pokemon
             {
+                GameController.music = "Battle Victory Wild";
                 dialogueText.text = "You caught a " + enemyUnit.pokemon.name + "!";
                 for (var p = 0; p < 6; p++)
                 {
