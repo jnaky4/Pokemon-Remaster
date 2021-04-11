@@ -1620,6 +1620,24 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 1
+  - name: Battle Victory Wild
+    clip: {fileID: 8300000, guid: 5b0b9a6a5fa7b80449dd1b97014faac5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Battle Victory Trainer
+    clip: {fileID: 8300000, guid: 5b0b9a6a5fa7b80449dd1b97014faac5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
+  - name: Battle Victory Gym
+    clip: {fileID: 8300000, guid: 39a142142da3e4d47b19d0131aa20157, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 1
   Effectstrack:
   - name: Button Press
     clip: {fileID: 8300000, guid: bf79c29dd74c44b449e1d89d2938fed6, type: 3}
@@ -2535,6 +2553,1206 @@ MonoBehaviour:
     loop: 0
   - name: 151
     clip: {fileID: 8300000, guid: 1cfe0d2dd3c464b949fecd3ecec2c214, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Absorb
+    clip: {fileID: 8300000, guid: 024d0ac5a103041579a4e2c8f5e6d98f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Absorb1
+    clip: {fileID: 8300000, guid: faefed02e1e5b4560ba5ab0e621af283, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Absorb2
+    clip: {fileID: 8300000, guid: 555ade36a3d704a19a72c36f7bfa3a15, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Acid
+    clip: {fileID: 8300000, guid: 4c6de7e09b5db410d8b9ef91b01438c8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: AcidArmor
+    clip: {fileID: 8300000, guid: e276e9092047e4cc9890c872fba394d6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Agility
+    clip: {fileID: 8300000, guid: ec8c5e36e32fd4f3da4087a6de30561d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Amnesia
+    clip: {fileID: 8300000, guid: e7843ff5d38224fd0bed1c9c3797b86e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: AuroraBeam
+    clip: {fileID: 8300000, guid: cd0dab11383b44eb399fc924ae375935, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: AuroraBeam1
+    clip: {fileID: 8300000, guid: 74db424a0903d443f95da2673d98915b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: AuroraBeam2
+    clip: {fileID: 8300000, guid: 1925d699b50ad4eac82fb4fdbaddc3b4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: AuroraBeam3
+    clip: {fileID: 8300000, guid: 9d6a8d3eff2b74f0f95d0529184cc6a3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: AuroraBeam4
+    clip: {fileID: 8300000, guid: 77ff536d87c2940b1bc0fa1bc1795ba4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Barrage
+    clip: {fileID: 8300000, guid: 5041df64382324eb18c0aef8cdbc3d31, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Barrage1
+    clip: {fileID: 8300000, guid: 1a171aad16e8c40bcaafd5829387c929, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Barrage2
+    clip: {fileID: 8300000, guid: fc333cb4c60ce42f0ba019f75e34929b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BarrageDirect
+    clip: {fileID: 8300000, guid: 23f798a19b0ce447c8e770488785c32f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Barrier
+    clip: {fileID: 8300000, guid: 6040a42e365ee4babb0096c4ecff3769, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BarrierDelay
+    clip: {fileID: 8300000, guid: 3097328b14c624f8d8715c5fe4a0a317, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BarrierSingle
+    clip: {fileID: 8300000, guid: 04eade85467a44798931ea171726c242, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Bide
+    clip: {fileID: 8300000, guid: 5c8ef4f2cc4924c418dbf4833a7c28ee, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Bind
+    clip: {fileID: 8300000, guid: df299ce04faf54fc09740950a12d3882, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Bite
+    clip: {fileID: 8300000, guid: 0f713544f9dae4163b84e514e4f093dc, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Blizzard
+    clip: {fileID: 8300000, guid: bf0e3efa465b2495abec6f23fb32ba30, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Blizzard1
+    clip: {fileID: 8300000, guid: f96f38d2a915745cc87cc975d84fc4b0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Blizzard2
+    clip: {fileID: 8300000, guid: 62aae96587eed41b4bee5abec0c4e00d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BlizzardDirect
+    clip: {fileID: 8300000, guid: ec205735e9b824d578495ab9e5674947, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BodySlam
+    clip: {fileID: 8300000, guid: 9f8f3dbbd779b48bf93771c3ae4097e3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BoneClub
+    clip: {fileID: 8300000, guid: 9361063ff0a8444f48316aab77603400, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Bonemerang
+    clip: {fileID: 8300000, guid: 3a5504ddc26ca446ebfcba5e3348e7fc, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Bonemerang1
+    clip: {fileID: 8300000, guid: 2bdf6144a844b46ed8aa05497627d60c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Bonemerang2
+    clip: {fileID: 8300000, guid: 94b95a23bbd8e4b7cb3e51b5926d38f9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Bubble
+    clip: {fileID: 8300000, guid: 409c21e959c1f477e9cb4c4df0b45abd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BubbleBeam
+    clip: {fileID: 8300000, guid: 925594f25c24748bf933ddb0da7f0dee, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BubbleBeam1
+    clip: {fileID: 8300000, guid: cda0f5b04fab54d178806228ed8ed041, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BubbleBeam2
+    clip: {fileID: 8300000, guid: a817b0696821e4183a0f913c0d662972, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BubbleBeam3
+    clip: {fileID: 8300000, guid: b312b2ac424c94905ad9fcca55d9a7e5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: BubbleBeamDirect
+    clip: {fileID: 8300000, guid: f6ab67ee390e74298ab97b8649a1a702, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Clamp
+    clip: {fileID: 8300000, guid: b666dd0c42491446da58de855bd9acdc, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: CometPunch
+    clip: {fileID: 8300000, guid: 8e9c1bdb9b2544f17985037131ac2989, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: CometPunchDelay
+    clip: {fileID: 8300000, guid: c904baba882ef4c32b3852615bbf5255, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: CometPunchSingle
+    clip: {fileID: 8300000, guid: 27b659a9301d24c87ad702e235fb4fcd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Confused
+    clip: {fileID: 8300000, guid: b04b2f1bbebcd4325baa132c302009e8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Confused2
+    clip: {fileID: 8300000, guid: 235baaa2364974e4dac3b5134fee2b38, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: ConfuseRay
+    clip: {fileID: 8300000, guid: 6a100ec9903254b18a7602b43e6c6415, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Confusion
+    clip: {fileID: 8300000, guid: d03a2715de617422fa85f2a69bce12f9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Constrict
+    clip: {fileID: 8300000, guid: b451239b228104a48a3433d5a0da30b2, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Conversion
+    clip: {fileID: 8300000, guid: 743ea0b9ebce8448a834e2ceecbba8a6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Conversion1
+    clip: {fileID: 8300000, guid: e2ef7327da70d431797391dad1f59184, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Conversion2
+    clip: {fileID: 8300000, guid: a353e733ab74043138318badee59f46f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Counter
+    clip: {fileID: 8300000, guid: 3ea1dbced7599423ea306f8c63fcfc07, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Cut
+    clip: {fileID: 8300000, guid: 6bb1011dfa4ac4a4295577971adf37fa, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DefenseCurl
+    clip: {fileID: 8300000, guid: b7c12be3b209b4a85bfea7b0b086a8b5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Dig
+    clip: {fileID: 8300000, guid: babcc105e94f544d8bf255cb8f91f15f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Disable
+    clip: {fileID: 8300000, guid: de4267419206d41139b4fefda96945a6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DizzyPunch
+    clip: {fileID: 8300000, guid: 6bcd80257b25f4a36abd79cac2240150, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DizzyPunch1Single
+    clip: {fileID: 8300000, guid: b5cf25fefb76f4f21997532f3500f55d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DizzyPunch2
+    clip: {fileID: 8300000, guid: 41aa89a45621e461399b24e17bc2a09b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DoubleEdge
+    clip: {fileID: 8300000, guid: 9dfe24e00396c488ca4a317e4895b592, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DoubleKick
+    clip: {fileID: 8300000, guid: 19fed9880b4544b9f926f6c426d4ebd9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DoubleSlap
+    clip: {fileID: 8300000, guid: 42deeb729892a4d168bc8ac5c7f71c2a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DoubleTeam
+    clip: {fileID: 8300000, guid: 8de45e00ce2c346b4900dcd379f4ceb5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DoubleTeamFull
+    clip: {fileID: 8300000, guid: e82b110e5593e4678951e2f9dddf6847, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DoubleTeamShield
+    clip: {fileID: 8300000, guid: 78b4d835d2f394fc89a425ca4b78cbc1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DragonRage
+    clip: {fileID: 8300000, guid: 4dfac50663cad439e9862725063492f8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DragonRage1
+    clip: {fileID: 8300000, guid: 20a5b2017c1f14618ae1a665aa1233dc, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DragonRage2
+    clip: {fileID: 8300000, guid: b226f65e3592a4b1f9b8dd8958141388, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DragonRageDirecte
+    clip: {fileID: 8300000, guid: 0ee09e13e29e142e9899a888ea2348f4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DreamEater
+    clip: {fileID: 8300000, guid: a1169be964b9b4a07b2aff8efb3ad5dd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: DrillPeck
+    clip: {fileID: 8300000, guid: 53f5b8649bd144ea4beb2ef21168b848, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Earthquake
+    clip: {fileID: 8300000, guid: 41b4f34c7e3d54db49a0808a59fc514c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Earthquake1
+    clip: {fileID: 8300000, guid: 737fd2ed5a9d445ca9936c8f0003658e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Earthquake2
+    clip: {fileID: 8300000, guid: d64a280dae7a04115ae92b312bdd1aed, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: EarthquakeDirect
+    clip: {fileID: 8300000, guid: 07eb9fae991b54858b58439798c89511, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: EggBomb
+    clip: {fileID: 8300000, guid: 0c72dcf76751b454ea882bfd2ea04f48, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: EggBomb1
+    clip: {fileID: 8300000, guid: c0696023b22244e40b7b683bfaef310e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: EggBomb2
+    clip: {fileID: 8300000, guid: a3cd9cd9c6c644e1f873a12896d866ae, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: EggBomb3
+    clip: {fileID: 8300000, guid: fa58946c5f8e54a96868cfc758737646, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Ember
+    clip: {fileID: 8300000, guid: 2677ae32487434d5ebcb94b62e9e7aa4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 871f2f8b21eaa40329da7fd328b461e4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Explosion1
+    clip: {fileID: 8300000, guid: 115c948a7db11449ab61b17f67ca43cb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Explosion2
+    clip: {fileID: 8300000, guid: 058222c118089417c8274c93a9d60dd6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Explosion3
+    clip: {fileID: 8300000, guid: d9f6d1436433d4beb957c0843a08ef2e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FireBlast
+    clip: {fileID: 8300000, guid: 2e0679452112a4361828673845dbbdb6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FireBlast1
+    clip: {fileID: 8300000, guid: 59461906bf26f4d1fab02d5ff58532e0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FireBlast2
+    clip: {fileID: 8300000, guid: df383948babdd4e04a05662b8e5d0fe0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FirePunch
+    clip: {fileID: 8300000, guid: b3beaacedcee74027a949e6fa1e5b549, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FireSpin
+    clip: {fileID: 8300000, guid: f7eb98a77551c4c149c86f1be8a8b92c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FireSpin1
+    clip: {fileID: 8300000, guid: 9df10c12fb45a4bb1a439f65ef1f3721, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FireSpin2
+    clip: {fileID: 8300000, guid: eecc2139df4184268b808afad130696d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Fissure
+    clip: {fileID: 8300000, guid: 7c66ac432a17b4474b3cb4ac20d3d20c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Fissure1
+    clip: {fileID: 8300000, guid: d7f4830076fb242b4a3106cda9ac1c30, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Fissure2
+    clip: {fileID: 8300000, guid: a950f1c65f5db4904acc0b3a52bfaa8d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Flamethrower
+    clip: {fileID: 8300000, guid: c5522d46495d646c3b6f6d2581e63844, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Flash
+    clip: {fileID: 8300000, guid: 2ffa2789aa27b48a2a998e9c5cbfac09, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FlyHit
+    clip: {fileID: 8300000, guid: 9d0cfe4322e1542508156a7bf094d2e9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FlyUp
+    clip: {fileID: 8300000, guid: 0311e4e996ac24126bc0adcc6ea45ef9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FlyUp1
+    clip: {fileID: 8300000, guid: 68eed28fecaa04cd48411ae80ed3ff3d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FlyUp2
+    clip: {fileID: 8300000, guid: 1f743b62b9f5440b0904d28f847b6fdf, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FocusEnergy
+    clip: {fileID: 8300000, guid: 40ec3b1f1ac444dfb905bf2542e2fc96, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FuryAttack
+    clip: {fileID: 8300000, guid: d743af7ecb96c4133881efc031699eba, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: FurySwipes
+    clip: {fileID: 8300000, guid: cfd7588d274b04c298d9ef4f7901d262, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Glare
+    clip: {fileID: 8300000, guid: 5ca0efcc98908489aa69de331edc2ba9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Growth
+    clip: {fileID: 8300000, guid: b505c47c0a407406c92f79cb9b3bc515, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Guillotine
+    clip: {fileID: 8300000, guid: 7e3d9f0d02929446e99b2ea8aa0ca77c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Gust
+    clip: {fileID: 8300000, guid: 6b4c3cec579734f00971c9092f8ef8da, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: GustSingle
+    clip: {fileID: 8300000, guid: f529cdf2d15f943c9a208d1920559cb5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Harden
+    clip: {fileID: 8300000, guid: 9a723b1e50049460699ecbcd62b93af5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Haze
+    clip: {fileID: 8300000, guid: f7969a4becf0d49678b03e03a8d23277, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Headbutt
+    clip: {fileID: 8300000, guid: d936f32f189bd497483fca0846336ad2, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HighJumpKick
+    clip: {fileID: 8300000, guid: be21f5e40ee614636bbf4c86e2cf9045, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HornAttack
+    clip: {fileID: 8300000, guid: 1a8a6ff7a33014738a7b97c36d3a546b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HornDrill
+    clip: {fileID: 8300000, guid: 33c91392bdfe04327885a563cf3b1e67, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HydroPump
+    clip: {fileID: 8300000, guid: 7140eaa998c464405b03022d09c9d2d8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HydroPump1
+    clip: {fileID: 8300000, guid: 23e5c871890e648188aeb1ee893d6e4f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HydroPump2
+    clip: {fileID: 8300000, guid: 71c1bff4ecedb43ed89cf85344105844, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HydroPump3
+    clip: {fileID: 8300000, guid: d36d49e8320d4411bbca763c651c2c52, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HydroPumpDirect
+    clip: {fileID: 8300000, guid: e0004275f0c774363b5c3742dd75ad85, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HydroPumpSingle
+    clip: {fileID: 8300000, guid: 0255229639b9e4e40b27c59cbfb54700, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperBeam
+    clip: {fileID: 8300000, guid: 385db8ed611124b06917572a5c404054, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperBeam1
+    clip: {fileID: 8300000, guid: 432b67758916b45928b9eee34f373f62, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperBeam2
+    clip: {fileID: 8300000, guid: 1bfb7eb2631aa44b699b27e4f6c261db, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperBeam3
+    clip: {fileID: 8300000, guid: fc9c3f20184a2430482c03d1563023ec, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperBeamLaser
+    clip: {fileID: 8300000, guid: 7b637a4834fe74734af119289518866c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperBeamLaserDirect
+    clip: {fileID: 8300000, guid: 5d804b1a7bc964acda86efb207559268, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperFang
+    clip: {fileID: 8300000, guid: 6bf922cf22d59409a998f1b1821649da, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperFang1
+    clip: {fileID: 8300000, guid: 9e81680f17ad9433c8e02fee4df97c64, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: HyperFang2
+    clip: {fileID: 8300000, guid: 3f960cb6074f640968074492e7eda1b0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Hypnosis
+    clip: {fileID: 8300000, guid: b3a7fdb418978497da2fb50aa1232851, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: IceBeam
+    clip: {fileID: 8300000, guid: d3d224a3b69d44c8ebe2a4626d4383ab, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: IceBeam1
+    clip: {fileID: 8300000, guid: a56d9683a294e49849f9df9e02ab5250, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: IceBeam2
+    clip: {fileID: 8300000, guid: f0e72c0f968a0485a9b59b7670895c44, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: IceBeam3
+    clip: {fileID: 8300000, guid: fa2916feb941c497eb0fe637de562a6e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: IcePunch
+    clip: {fileID: 8300000, guid: 66b348705266b4557aa9e9fc30ffbff1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: IMHIT_Damage
+    clip: {fileID: 8300000, guid: 5102af4298e8846c188782f685c1543f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: IMHIT_Super_Effective
+    clip: {fileID: 8300000, guid: af45a34c669ee48c18955ea4d3c7b58a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: IMHIT_Not_Very_Effective
+    clip: {fileID: 8300000, guid: 6c1d0ebf578104d379a123cc170dbf42, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: JumpKick
+    clip: {fileID: 8300000, guid: ff64fb1803dda4d2eaea17ac70e363d4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: KarateChop
+    clip: {fileID: 8300000, guid: f1ee849bd79f5463896aa2b9a248af49, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: KarateChopWHit
+    clip: {fileID: 8300000, guid: 73c50e4bccd5846bea8df3d7d1ee364d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Kinesis
+    clip: {fileID: 8300000, guid: bd27a31ac983f4783a1c4f29e2e7842b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LeechLife
+    clip: {fileID: 8300000, guid: 9780e4bb331644180ab577befa418d58, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LeechLife1
+    clip: {fileID: 8300000, guid: 955dee6e0322b4d1ab4d37197a02f79a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LeechLife2
+    clip: {fileID: 8300000, guid: 825e9b272574a4e49a95c25df8454433, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LeechSeed
+    clip: {fileID: 8300000, guid: 2a5ebae23ce294600ba9306230ec3057, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Leer
+    clip: {fileID: 8300000, guid: 203c7646964c849d7bce3940eeedb696, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Lick
+    clip: {fileID: 8300000, guid: f1b5072ced11049f2bfb2d4aa99d2080, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Lick1
+    clip: {fileID: 8300000, guid: 4ee5d82e92d8f4ee492e0cf27207b1b8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Lick2
+    clip: {fileID: 8300000, guid: 50fa911b0df884768a19c3b263724953, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Lick3
+    clip: {fileID: 8300000, guid: 08e60c30d9043498293e5fec2ce018c5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LightScreen
+    clip: {fileID: 8300000, guid: 6f195d498ee594d39b10a4b4f0ddf6f7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LightScreenDelay
+    clip: {fileID: 8300000, guid: 3aa39c4e822ad417bad09552dee902a3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LightScreenSingle
+    clip: {fileID: 8300000, guid: 134a0a6ab32b946a1a6ee4415ab3d580, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LovelyKiss
+    clip: {fileID: 8300000, guid: 73a3d68c2352d455ca84a1ba5270e512, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: LowKick
+    clip: {fileID: 8300000, guid: 8f6c25a8dde124eae8c8a4cfd8c70884, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Meditate
+    clip: {fileID: 8300000, guid: d2123239bc96b4394942e5cd222b53c3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MegaDrain
+    clip: {fileID: 8300000, guid: c29b853816a4b4b00a2098a59d6c4fb9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MegaDrain1
+    clip: {fileID: 8300000, guid: 4d739d5f187fa470c82d3054aa77d9a7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MegaDrain2
+    clip: {fileID: 8300000, guid: b2d9f483787e04695bdb063a9f66fc49, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MegaKick
+    clip: {fileID: 8300000, guid: 1ebbf6af7075640ac827aa44c4f6114d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MegaPunch
+    clip: {fileID: 8300000, guid: cbd69ec2a7441409da761e4dada23798, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Metronome
+    clip: {fileID: 8300000, guid: fc1e8f4cb404b4ce6a5407bb72413dc6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: MetronomeSingle
+    clip: {fileID: 8300000, guid: 7792461bfa19d4fb2810d357ace3fa3e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mimic1
+    clip: {fileID: 8300000, guid: 2db440b312b554b6680f4195555f157b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mimic2
+    clip: {fileID: 8300000, guid: 83dbcfe4f255346b1be84ac68687f6c5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Minimize
+    clip: {fileID: 8300000, guid: f3e6cbcbd8fbd44928072b17921107c7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mist
+    clip: {fileID: 8300000, guid: 76da4586a21534b0084d35e64d933535, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mist1
+    clip: {fileID: 8300000, guid: 074381873e2c146bfa98cc68f7feb19d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mist2
+    clip: {fileID: 8300000, guid: 2f0158492be0a4cc18059b26d4836244, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Mist3
+    clip: {fileID: 8300000, guid: d2cfec02237e943ff94e1603cc5c4bd9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Night Shade
+    clip: {fileID: 8300000, guid: 36bbc83aa24be4674abaaa87f2857f5c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Pay Day
+    clip: {fileID: 8300000, guid: 9dcde2c318a4b4904a20d84977f818ac, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Pay Day 1
+    clip: {fileID: 8300000, guid: 82923abaf80af47fa941f509521e7c26, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Pay Day 2
+    clip: {fileID: 8300000, guid: 69dcf6ddb576747168589de77686c4e1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Peck
+    clip: {fileID: 8300000, guid: eb194718d30a243e480346e5410fb5f1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Petal Dance
+    clip: {fileID: 8300000, guid: ae07a5af8b9a7498d84e1c772f00ccb8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Poisoned
+    clip: {fileID: 8300000, guid: c75941babbb124d53aa44e160bbcb0e6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Poison Gas
+    clip: {fileID: 8300000, guid: b1b8d20a3d7a443378d14492c583270d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Poison Gas
+    clip: {fileID: 8300000, guid: b1b8d20a3d7a443378d14492c583270d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Poison Powder
+    clip: {fileID: 8300000, guid: 7863620ce8cfa47d1a3d08469f84c592, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Poison Sting
+    clip: {fileID: 8300000, guid: b51a2f29e10594dc89d1650e2c1c1fac, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Pound
+    clip: {fileID: 8300000, guid: c39556bcf30a7440c9d103869f264953, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psybeam Loop
+    clip: {fileID: 8300000, guid: c3886263c9baa4b1f92bf59efe03e1d8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psybeam
+    clip: {fileID: 8300000, guid: 0fb06c704870c4d48a9834725a289cd0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psybeam1
+    clip: {fileID: 8300000, guid: ab7f9ac3caaee4d7d8052103b2beaf27, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psybeam2
+    clip: {fileID: 8300000, guid: e8684bb7924364621b03c6022f074711, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psybeam3
+    clip: {fileID: 8300000, guid: 39aa687c9e000489e8c0e4a4243c1578, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: PsybeamDirect
+    clip: {fileID: 8300000, guid: 9e048617b87bf4c2f96d62c0808e2782, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psychic
+    clip: {fileID: 8300000, guid: 89ed122798ca24f4385fe4d5e09b7d31, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psychic1
+    clip: {fileID: 8300000, guid: 9d88af570cbb74f5e907fc46ae890e8e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psychic2
+    clip: {fileID: 8300000, guid: 95bf0eae584b442fba729819177b2f2c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psychic3
+    clip: {fileID: 8300000, guid: 976a6c16bd84e41dc81ef9827250cf68, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psywave
+    clip: {fileID: 8300000, guid: 8ef3c6bad8e7e46ddbc14d1c60cc776e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psywave1
+    clip: {fileID: 8300000, guid: 787d5aeacb5a34bfb9c222115873adb7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psywave2
+    clip: {fileID: 8300000, guid: a109a65bfc8d94efb91dd25bb1b6bcbc, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Psywave3
+    clip: {fileID: 8300000, guid: 87a639f9261234e7c830d5e9b9dc9698, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Quick Attack
+    clip: {fileID: 8300000, guid: fb0ea84589d3f41f08b19218549a0711, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Rage
+    clip: {fileID: 8300000, guid: 750fec0d2aa374cc08be720f72033d1a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Razor Leaf
+    clip: {fileID: 8300000, guid: 8e9c3bdc0f75146ccbef8f25da98a3e4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Razor Leaf 1
+    clip: {fileID: 8300000, guid: 8e9c3bdc0f75146ccbef8f25da98a3e4, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Razor Leaf 2
+    clip: {fileID: 8300000, guid: 27766445b7757419d96224720cc7364a, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -115599,6 +116817,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7987777557439685110, guid: 8f61269f89222495785e855ebe6ce6eb,
+        type: 3}
+      propertyPath: m_TagString
+      value: DialogUI
+      objectReference: {fileID: 0}
     - target: {fileID: 7987777557603509537, guid: 8f61269f89222495785e855ebe6ce6eb,
         type: 3}
       propertyPath: m_Name

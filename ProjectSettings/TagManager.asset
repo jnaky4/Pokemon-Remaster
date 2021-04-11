@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - OverworldCam
+  - DialogUI
   layers:
   - Default
   - TransparentFX
