@@ -3757,6 +3757,768 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Razor Leaf 2
+    clip: {fileID: 8300000, guid: 27766445b7757419d96224720cc7364a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Razor Wind
+    clip: {fileID: 8300000, guid: ff1320bd535f0478caa773825f728111, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Recover
+    clip: {fileID: 8300000, guid: 1e0d069965f9149969c8fa7aa361cb15, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Recover1
+    clip: {fileID: 8300000, guid: 700eda28b9819455792a82df52e14ec3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Recover2
+    clip: {fileID: 8300000, guid: ad94aeff57801458c91fd21045b0a619, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: RecoverDirect
+    clip: {fileID: 8300000, guid: 20eee6558b00048cf8c678cf1a317544, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Reflect
+    clip: {fileID: 8300000, guid: 3ca469b7a93da445888eef11c7e85f4d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: ReflectDelay
+    clip: {fileID: 8300000, guid: c503c009206e2453b8905e6e1e48c776, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: ReflectSingle
+    clip: {fileID: 8300000, guid: 81571dfde94b444618dec8c93a169137, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Rest
+    clip: {fileID: 8300000, guid: 71731cde0bfbe4e52b41f907ce25012f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Rock Slide
+    clip: {fileID: 8300000, guid: c3231bbf4a4c24251ba41d17ffc18566, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Rock Slide1
+    clip: {fileID: 8300000, guid: 119dc21e2996a4f86986e4faa565b8b3, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Rock Slide2
+    clip: {fileID: 8300000, guid: a169c05af779a4b958c476c20b3fa003, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Rock Slide3
+    clip: {fileID: 8300000, guid: 9cb5ef84e6d26430a83f553caf5ab65c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Rock Throw
+    clip: {fileID: 8300000, guid: 36d127dabd2cd4e0596f7f8c63a6b8f2, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Rolling Kick
+    clip: {fileID: 8300000, guid: 0b966a6f660e44fc1907db7901299b20, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sand Attack
+    clip: {fileID: 8300000, guid: b660ed4ded7de45f09cb6e0777a20d53, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Scratch
+    clip: {fileID: 8300000, guid: 3fba06defa8424da590e8488f29f100e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Screech(Loop)
+    clip: {fileID: 8300000, guid: 935b458c20d8942fa8095d0431e4b1f6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Screech
+    clip: {fileID: 8300000, guid: 821f5949a52904b1e97e2d00bca07d6a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Seismic Toss
+    clip: {fileID: 8300000, guid: 307ab31b2d60b49fca57a1631fe265cd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Self  Destruct
+    clip: {fileID: 8300000, guid: 8b1c6a930c83a4e268d81632416d1fee, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Self  Destruct1
+    clip: {fileID: 8300000, guid: 46023b869d2304b9ea2a60445701ce57, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Self  Destruct2
+    clip: {fileID: 8300000, guid: dde6cb5d4549941f09c7f4fbd0956615, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Self  Destruct3
+    clip: {fileID: 8300000, guid: a5d2a0b658e98493487d6f05de0a5605, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sharpen
+    clip: {fileID: 8300000, guid: 8482d8eafb5294b3bad729d2e3adf9a0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sharpen1
+    clip: {fileID: 8300000, guid: de5e477e1d846444fa32682ba0abb6ab, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sharpen2
+    clip: {fileID: 8300000, guid: 003aa2d2ec3a74be9968177086ef8efd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sing
+    clip: {fileID: 8300000, guid: e1aca16e65b36412481244912b2c34d1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Skull Bash
+    clip: {fileID: 8300000, guid: c36843a8ee8194df992f7a5e62f688e5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sky Attack
+    clip: {fileID: 8300000, guid: dbbcc1db9e2c24c9d8915cdfc013f92b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Slam
+    clip: {fileID: 8300000, guid: 92c3964e2340e4ee397dd640b1235c1b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Slash
+    clip: {fileID: 8300000, guid: 6e4d35703902343a5b1eab4fb1f26011, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sleeping
+    clip: {fileID: 8300000, guid: c46d8e3aa1cf04e5a9bc8b6641696404, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sleep Powder
+    clip: {fileID: 8300000, guid: 176d6cc6db9d14f0396c0ed4a4813de9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sludge
+    clip: {fileID: 8300000, guid: e7ab520b6392945fd9bbf8c9d825a6c7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sludge1
+    clip: {fileID: 8300000, guid: 995a8cee11840449c808098c0c64d1ef, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sludge2
+    clip: {fileID: 8300000, guid: 7dd50ca424c8d4cc19a7d178f8fc0124, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sludge3
+    clip: {fileID: 8300000, guid: 7173558180671431ab86690a1d7115a7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Smog
+    clip: {fileID: 8300000, guid: 860478805c21a4af8807e5e56174a750, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Smoke Screen
+    clip: {fileID: 8300000, guid: 438178d369a5e4a52ab2296edbdef799, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Softboiled
+    clip: {fileID: 8300000, guid: e78049dd68aff4822b8edfe63b24c6ff, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Softboiled1
+    clip: {fileID: 8300000, guid: ec6b2e8952215483b80f84b7b56a64b5, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Softboiled2
+    clip: {fileID: 8300000, guid: 8e96115e5a9af450d9c9f2cf25c6dd11, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Softboiled3
+    clip: {fileID: 8300000, guid: ab68fe6703cb3411d95667a6d9278c25, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Solar Beam
+    clip: {fileID: 8300000, guid: 2fb90758f74ea45fc8906871215415fa, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Solar Beam1
+    clip: {fileID: 8300000, guid: 2fb90758f74ea45fc8906871215415fa, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Solar Beam2
+    clip: {fileID: 8300000, guid: 98030a531fbec4b358734d42bcea0334, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Solar Beam3
+    clip: {fileID: 8300000, guid: 16a8ff5bd987c43ee943890498f7130e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sonic Boom
+    clip: {fileID: 8300000, guid: fae504940969543d3b02b1ae06f3e16a, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sonic Boom1
+    clip: {fileID: 8300000, guid: 53ee0a62d34264acb86ddda66ae6932e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Sonic Boom2Single
+    clip: {fileID: 8300000, guid: ad9760d5302e54f4ab60d1f7eee1034b, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Spike Cannon
+    clip: {fileID: 8300000, guid: 4618b2babdc3f4c24b2c85b50948630e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Splash
+    clip: {fileID: 8300000, guid: 4800611926b3c40bab38ac29b42f7684, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Spore
+    clip: {fileID: 8300000, guid: 4c38180b70f454bd1a9fadf386a98bca, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Stomp
+    clip: {fileID: 8300000, guid: 384b488a8627b4cb390a3fcb2b6aa25e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Strength
+    clip: {fileID: 8300000, guid: 0953e291a331b4c7f89a86ba9339bbcb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: String Shot
+    clip: {fileID: 8300000, guid: a40395d8a2d62499d94851f748b6e553, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Struggle
+    clip: {fileID: 8300000, guid: 5a1806f942dd14544a3a6ed68962a233, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Stun Spore
+    clip: {fileID: 8300000, guid: 29e4b96bbcac64ce99a5a33cb233970f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Submission
+    clip: {fileID: 8300000, guid: d9f752695d5f14cc4a07e323a58b49e2, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Substitute
+    clip: {fileID: 8300000, guid: 43e11a34a6b5b45a7b2e8f2699a573ad, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Substitute1
+    clip: {fileID: 8300000, guid: 5444f90135c89442b9a98f2810a48aca, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Substitute2
+    clip: {fileID: 8300000, guid: 88a0a539275dc47b391331967a85608d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Substitute3
+    clip: {fileID: 8300000, guid: cab5859e5986d471dac9092e86c16b06, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Super Fang
+    clip: {fileID: 8300000, guid: e19d50d6276df41259780a53feeac031, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Supersonic
+    clip: {fileID: 8300000, guid: c71fc1d1ae005404fb265bd053b3d7d0, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Supersonic2
+    clip: {fileID: 8300000, guid: aacd10dd30d2242dba524c2e30839106, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Surf
+    clip: {fileID: 8300000, guid: 1b86cc564557749febb433485dadfa37, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: SurfDirect
+    clip: {fileID: 8300000, guid: 02b578df9a204491b8216a94c3ebbd89, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swift
+    clip: {fileID: 8300000, guid: 730a2a49260bf4a1f9036672abcf1c5d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swift1
+    clip: {fileID: 8300000, guid: 34760882b9b274a43bf510bb9b6498b1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swift2
+    clip: {fileID: 8300000, guid: d7442530b84a24947b3fd58308ac2d17, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swords Dance
+    clip: {fileID: 8300000, guid: e1948855aa8cb4c988dd351466fa3207, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Swords Dance Single
+    clip: {fileID: 8300000, guid: 54bce92232d044f8d8fa013b53227fd8, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Tackle
+    clip: {fileID: 8300000, guid: 225af1c3e51d3418f89e23d9f99a9c33, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Tail Whip
+    clip: {fileID: 8300000, guid: d7befe8cd4bd34372bafeb2ca9680756, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Tail Whip Single
+    clip: {fileID: 8300000, guid: 30d140169d2114335abc25a2342e573d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Take Down
+    clip: {fileID: 8300000, guid: 07430429aa1114c5abb85f504439166c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Teleport
+    clip: {fileID: 8300000, guid: bbd05f5b937fb42db832a3ad8802b38e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thrash
+    clip: {fileID: 8300000, guid: 5a10a040c1f5042719b8211ba4875164, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder
+    clip: {fileID: 8300000, guid: c0b0a0612cba644e8af28f040345aeeb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder1
+    clip: {fileID: 8300000, guid: 52b144fe7ca3f46b4ac781b19af394c1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder2
+    clip: {fileID: 8300000, guid: 5dd05c09f8c424fd881cf7d2c7769daa, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder3
+    clip: {fileID: 8300000, guid: ea339c32569b945458cd6a2d3f25de1c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunderbolt
+    clip: {fileID: 8300000, guid: 528e9397c7fe84497b8ef5c58c4a0895, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunderbolt1
+    clip: {fileID: 8300000, guid: 9126bb275aa9445ba963675168f10184, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunderbolt2
+    clip: {fileID: 8300000, guid: 1ab6f857db7df4a128d009f35f08017d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunderbolt3
+    clip: {fileID: 8300000, guid: cd7743fbcf43f496582eac2456b4d6b9, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Punch
+    clip: {fileID: 8300000, guid: 74b3da0f316da4f4b819606bbc009a29, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Shock
+    clip: {fileID: 8300000, guid: 89decfe1e8af44d3488e38d0a7f5d3a7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Shock1
+    clip: {fileID: 8300000, guid: d42311b25a63f448e96143ed5f295cc6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Shock1
+    clip: {fileID: 8300000, guid: d42311b25a63f448e96143ed5f295cc6, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Shock2
+    clip: {fileID: 8300000, guid: cf899f2a7c789496ca1f9e9c15478939, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Shock3
+    clip: {fileID: 8300000, guid: fdbe091b8a2ab43ec84a787dd2a43057, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Wave
+    clip: {fileID: 8300000, guid: 0c3301d9b7f144acf90f82ed316feceb, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Wave1
+    clip: {fileID: 8300000, guid: e2c46587264a74d4e8eb04db890ac052, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Wave2
+    clip: {fileID: 8300000, guid: fc7cb5af686e04beba287f8db9cff75e, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Wave3
+    clip: {fileID: 8300000, guid: cb395f44e279e45dca1a0b041ee612ca, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Thunder Wave Direct
+    clip: {fileID: 8300000, guid: 24396996c20ac4d5c884770e64aa4931, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Toxic
+    clip: {fileID: 8300000, guid: 2cec7f9d87e1b4a50835ec327eecb357, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Toxic1
+    clip: {fileID: 8300000, guid: 0e2fa31ae841343a7a56e3549a075834, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Toxic2
+    clip: {fileID: 8300000, guid: 2a6a1ed65afa545f38984e7fcfe7d836, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Toxic3
+    clip: {fileID: 8300000, guid: 237b5f277bfb948b997f627a650c2fcd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Transform
+    clip: {fileID: 8300000, guid: 1b86816bc56ba46f09688c6cfa4c0868, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Tri Attack
+    clip: {fileID: 8300000, guid: 5112123e53d844d78a94396758604ccd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Tri Attack 1
+    clip: {fileID: 8300000, guid: 6f9606f4ad26c4808b006c427d0cbd59, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Tri Attack 2
+    clip: {fileID: 8300000, guid: 46eab270583ce4a398e2bdac81ffe695, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Twineedle
+    clip: {fileID: 8300000, guid: 6bc5d5cb2c5d540ec8c8d063902df631, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: TwineedleSingle
+    clip: {fileID: 8300000, guid: b3b34d2fbe501463fa2e2ede72e53584, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Vice Grip
+    clip: {fileID: 8300000, guid: 69f9b84fd87e342a8a8fa1c3764db0b1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Vine Whip
+    clip: {fileID: 8300000, guid: 602e5638121af4c0f8b598f8c01b586d, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Waterfall
+    clip: {fileID: 8300000, guid: 6fe1256044ddb4852a3ce7f0d7af3049, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Waterfall1
+    clip: {fileID: 8300000, guid: 8ad249b3c25c649e5a468380ae45db23, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Waterfall23
+    clip: {fileID: 8300000, guid: 6280225fb96bd49f4bd5acd4a46d57da, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Water Gun
+    clip: {fileID: 8300000, guid: 38954f86b992e4186a6e565035de22ac, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Water Gun1
+    clip: {fileID: 8300000, guid: 2f4253b36994d4e249284029143b08dd, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Water Gun2
+    clip: {fileID: 8300000, guid: 711989d72b58a4bbb82a07c147e46866, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Whirlwind
+    clip: {fileID: 8300000, guid: 46048916770c940ecbb09580cf3f9be7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Wing Attack
+    clip: {fileID: 8300000, guid: c1d1d31f9e7df44788c50a08cf3cc7db, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Wing Attack Single
+    clip: {fileID: 8300000, guid: 6479db2ab8b164d6ba92c42b34f49289, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Withdraw
+    clip: {fileID: 8300000, guid: eeaa264ee1ab44b7182c5426ca45eab1, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Withdraw1
+    clip: {fileID: 8300000, guid: 05993acc7efce494c9cb5552cd62af00, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Withdraw2
+    clip: {fileID: 8300000, guid: cafab42e1ae164c6e80f3bda0909053f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: WithdrawDirect
+    clip: {fileID: 8300000, guid: adcebdbe793c940f9930f77e7f7570a7, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: Wrap
+    clip: {fileID: 8300000, guid: 77139f8fd97fd4f14b51defd336578fa, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
+  - name: WrapSingle
+    clip: {fileID: 8300000, guid: bd17ec3a4947d49a2b5dbd48b4671d59, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   SongPlaying:
     name: 
     clip: {fileID: 0}
