@@ -34,7 +34,7 @@ public class DialogController : MonoBehaviour
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
 
-        //Instance = this;
+        Instance = this;
     }
 
     Dialog dialog;
@@ -72,9 +72,11 @@ public class DialogController : MonoBehaviour
             else
             {
                 currentLine = 0;
+                Debug.Log("Dialog is done");
                 IsShowing = false;
                 dialogBox.SetActive(false);
                 onDialogFinished?.Invoke();
+
                 OnCloseDialog?.Invoke();
             }
         }
