@@ -43,6 +43,8 @@ namespace Pokemon
         private bool endofanimation;
         private bool enemyAttack;
         private bool enemyInitialAttack;
+        private bool beginCatch;
+        private bool playCatch;
         private string playerMoveName;
         private string enemyMoveName;
         //all of this stuff is for animation
@@ -179,6 +181,27 @@ namespace Pokemon
             {
                 StartCoroutine(PhaseIn(enemySprite, 0.20));
                 phaseOpponentSprite = 0;
+            }
+
+            if (beginCatch == true)
+            {
+                PlayerAttackAnim.Start();
+                beginCatch = false;
+                playCatch = true;
+            }
+            if (playCatch == true)
+            {
+                if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
+                {
+                    PlayerAttackAnim.HandleUpdate();
+                }
+                else
+                {
+                    //Debug.Log("End Animation now");
+                    PlayerAttackAnim.EndAnimation();
+                    playCatch = false;
+                    endofanimation = true;
+                }
             }
 
             if (playerInitialAttack == true)
@@ -1849,6 +1872,37 @@ namespace Pokemon
             byte[] fileData = File.ReadAllBytes(path + GameController.location + ".png");
             SpriteTexture.LoadImage(fileData);
             background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+        }
+
+        public void PokeballShakes(int shakes)
+        {
+            string pathLeft = "Attack_Animations/Pokeball_Left";
+            string pathRight = "Attack_Animations/Pokeball_Right";
+            AttackSprites.Clear();
+            AttackSprites.Add(null);
+            var sprites = Resources.LoadAll<Sprite>(pathLeft);
+
+            if (shakes == 0)
+            {
+                pathLeft += "/Pokeball_Left_000";
+                var sprite = Resources.Load<Sprite>(pathLeft);
+                AttackSprites.Add(sprite);
+            }
+            if (shakes >= 1)
+            {
+                AttackSprites = sprites.ToList();
+            }
+            if (shakes >= 2)
+            {
+                var spritesRight = Resources.LoadAll<Sprite>(pathRight);
+                AttackSprites.AddRange(spritesRight);
+            }
+            if (shakes >= 3)
+            {
+                AttackSprites.AddRange(sprites);
+            }
+
+            AttackSprites.TrimExcess();
         }
 
         public void GetAttackSprites(string attack)
