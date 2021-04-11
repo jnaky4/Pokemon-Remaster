@@ -80,6 +80,7 @@ namespace Pokemon
                     {
                         damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2; //Basic attacking
                         damage *= (critical * stab * random * type1Defend * type2Defend * burn); //Extra multipliers.
+                        if (damage == 0) damage = 1;
                     }
                     else
                     {

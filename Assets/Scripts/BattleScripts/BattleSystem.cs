@@ -684,9 +684,13 @@ namespace Pokemon
                     {
                         dialogueText.text = "It's super effective!";
                     }
-                    else if (super < 1)
+                    else if (super < 1 && super != 0)
                     {
                         dialogueText.text = "It's not very effective...";
+                    }
+                    else if (super == 0)
+                    {
+                        dialogueText.text = enemyUnit.pokemon.name + " is immune!";
                     }
                     else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                     yield return new WaitForSeconds(2);
