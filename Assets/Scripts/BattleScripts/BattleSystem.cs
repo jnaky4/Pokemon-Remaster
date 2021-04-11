@@ -692,6 +692,14 @@ namespace Pokemon
                     {
                         dialogueText.text = enemyUnit.pokemon.name + " is immune!";
                     }
+                    else if (attack.status.SeeIfStatus(attack) && enemyUnit.pokemon.statuses.Contains(attack.status.name))
+                    {
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " is already " + attack.status.adj;
+                    }
+                    else if (enemyUnit.pokemon.statuses.Contains(attack.status.name))
+                    {
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj;
+                    }
                     else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                     yield return new WaitForSeconds(2);
                     bool areYouDead = false;
@@ -702,7 +710,7 @@ namespace Pokemon
                         playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                         dialogueText.text = playerUnit.pokemon.name + " got burned!";
                         if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
-                        else isDead = false;
+                        else areYouDead = false;
                         yield return new WaitForSeconds(2);
                         yield return StartCoroutine(EnemyKillsYou(areYouDead));
                     }
@@ -713,7 +721,7 @@ namespace Pokemon
                         playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                         dialogueText.text = playerUnit.pokemon.name + " is poisoned!";
                         if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
-                        else isDead = false;
+                        else areYouDead = false;
                         yield return new WaitForSeconds(2);
                         yield return StartCoroutine(EnemyKillsYou(areYouDead));
                     }
@@ -1073,24 +1081,36 @@ namespace Pokemon
                     {
                         dialogueText.text = "It's super effective!";
                     }
-                    else if (super < 1)
+                    else if (super < 1 && super != 0)
                     {
                         dialogueText.text = "It's not very effective...";
+                    }
+                    else if (move.status.SeeIfStatus(move) && playerUnit.pokemon.statuses.Contains(move.status.name))
+                    {
+                        dialogueText.text = "Your " + playerUnit.pokemon.name + " is already " + move.status.adj + "!";
+                    }
+                    else if (playerUnit.pokemon.statuses.Contains(move.status.name))
+                    {
+                        dialogueText.text = "Your " + playerUnit.pokemon.name + " became " + move.status.adj + "!";
+                    }
+                    else if (super == 0)
+                    {
+                        dialogueText.text = "Your " + playerUnit.pokemon.name + " is immune!";
                     }
                     else dialogueText.text = "Your " + playerUnit.pokemon.name + " took damage...";
                 }
                 yield return new WaitForSeconds(2);
-
+                bool isYouDead;
                 if (enemyUnit.pokemon.statuses.Contains(Status.get_status("Burn")))
                 {
                     enemyUnit.BurnSelf();
                     StartCoroutine(Blink(enemySprite, 0.25));
                     enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                     dialogueText.text = enemyUnit.pokemon.name + " got burned!";
-                    if (enemyUnit.pokemon.current_hp <= 0) isDead = true;
-                    else isDead = false;
+                    if (enemyUnit.pokemon.current_hp <= 0) isYouDead = true;
+                    else isYouDead = false;
                     yield return new WaitForSeconds(2);
-                    yield return StartCoroutine(YouKilledThem(isDead));
+                    yield return StartCoroutine(YouKilledThem(isYouDead));
                 }
 
                 if (Status.SeeIfPoisoned(enemyUnit.pokemon))
@@ -1099,10 +1119,10 @@ namespace Pokemon
                     StartCoroutine(Blink(enemySprite, 0.25));
                     enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                     dialogueText.text = enemyUnit.pokemon.name + " is poisoned!";
-                    if (enemyUnit.pokemon.current_hp <= 0) isDead = true;
-                    else isDead = false;
+                    if (enemyUnit.pokemon.current_hp <= 0) isYouDead = true;
+                    else isYouDead = false;
                     yield return new WaitForSeconds(2);
-                    yield return StartCoroutine(YouKilledThem(isDead));
+                    yield return StartCoroutine(YouKilledThem(isYouDead));
                 }
 
                 yield return StartCoroutine(EnemyKillsYou(isDead));

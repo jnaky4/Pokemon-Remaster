@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 /*
  * Burn:
  *  self_damage 1/8 .125 of max hp
@@ -51,12 +52,12 @@ using System.Collections.Generic;
  *  Special Cases for specific moves
  *
 */
+
 namespace Pokemon
 {
     public class Status
     {
-
-        static Dictionary<string, Status> all_status_effects = new Dictionary<string, Status>()
+        private static Dictionary<string, Status> all_status_effects = new Dictionary<string, Status>()
         {
             /*
              * name: name of status effect
@@ -70,22 +71,24 @@ namespace Pokemon
              * min_duration: (1 to 5):  -1 means always persist
              * max_duration: (1 to 5):  -1 means always persist
              */
-            //                          name            persist ig_type     s_dmg%  u_atk%  afct_st     afct_st_mul rmv_ch  max_dur min_dur
-            {"Burn",  new Status(       "Burn",         true,   "Fire",     .125,   0,      "Attack",   .5,         0,      -1,     -1)},
-            {"Freeze",  new Status(     "Freeze",       true,   "Ice",      0,      1.0,    "null",     1,          .2,     -1,     -1)},
-            {"Sleep",  new Status(      "Sleep",        true,   "null",     0,      1.0,    "null",     1,          0,      3,      1)},
-            {"Paralysis", new Status(   "Paralysis",    true,   "Electric", 0,      .25,    "Speed",    .5,         0,      -1,     -1)},
-            {"Poison", new Status(      "Poison",       true,   "Poison",   .125,   0,      "null",     1,          0,      -1,     -1)},
-            {"Flinch", new Status(      "Flinch",       false,  "null",     0,      1.0,    "null",     1,          0,      1,      1)},
-            {"Confusion", new Status(   "Confusion",    false,  "null",     .175,   .33,    "null",     1,          0,      5,      2)},
+            //                          name         adj            persist ig_type     s_dmg%  u_atk%  afct_st     afct_st_mul rmv_ch  max_dur min_dur
+            {"Burn",  new Status(       "Burn",      "burned",      true,   "Fire",     .125,   0,      "Attack",   .5,         0,      -1,     -1)},
+            {"Freeze",  new Status(     "Freeze",    "frozen",      true,   "Ice",      0,      1.0,    "null",     1,          .2,     -1,     -1)},
+            {"Sleep",  new Status(      "Sleep",     "asleep",      true,   "null",     0,      1.0,    "null",     1,          0,      3,      1)},
+            {"Paralysis", new Status(   "Paralysis", "paralyzed",   true,   "Electric", 0,      .25,    "Speed",    .5,         0,      -1,     -1)},
+            {"Poison", new Status(      "Poison",    "poisoned",    true,   "Poison",   .125,   0,      "null",     1,          0,      -1,     -1)},
+            {"Flinch", new Status(      "Flinch",    "flinched",    false,  "null",     0,      1.0,    "null",     1,          0,      1,      1)},
+            {"Confusion", new Status(   "Confusion", "confused",    false,     "null",     .175,   .33,    "null",     1,          0,      5,      2)},
             //for csv, does nothing
-            {"null", new Status(        "null",         false,  "null",     0,      0,      "null",     1,          0,      -1,     -1) }
-
+            {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1) }
         };
 
         public string name;
+        public string adj;
+
         //if the move persist outside battle/switched out
         public bool persistance;
+
         public string ignore_type;
         public double self_damage;
         public double unable_to_attack_chance;
@@ -95,9 +98,10 @@ namespace Pokemon
         public int max_duration;
         public int min_duration;
 
-        public Status(string name, bool persistance, string ignore_type, double self_damage, double unable_to_attack_chance, string affect_stat, double affect_stat_mulitplier, double removal_chance, int max_duration, int min_duration)
+        public Status(string name, string adj, bool persistance, string ignore_type, double self_damage, double unable_to_attack_chance, string affect_stat, double affect_stat_mulitplier, double removal_chance, int max_duration, int min_duration)
         {
             this.name = name;
+            this.adj = adj;
             this.persistance = persistance;
             this.ignore_type = ignore_type;
             this.self_damage = self_damage;
@@ -108,6 +112,7 @@ namespace Pokemon
             this.max_duration = max_duration;
             this.min_duration = min_duration;
         }
+
         public static Status get_status(string name)
         {
             return all_status_effects[name];
@@ -126,6 +131,7 @@ namespace Pokemon
         {
             unit.pokemon.current_speed *= .5;
         }
+
         public static void ReduceSleep(Unit unit)
         {
             unit.pokemon.sleep--;
@@ -149,6 +155,7 @@ namespace Pokemon
             if (num <= 25) return true;
             return false;
         }
+
         public static bool SeeIfPoisoned(Pokemon poke)
         {
             foreach (Status s in poke.statuses)
@@ -157,6 +164,7 @@ namespace Pokemon
             }
             return false;
         }
+
         public static bool SeeIfSleep(Pokemon poke)
         {
             foreach (Status s in poke.statuses)
@@ -165,6 +173,7 @@ namespace Pokemon
             }
             return false;
         }
+
         public static bool SeeIfFreeze(Pokemon poke)
         {
             int check = 0;
