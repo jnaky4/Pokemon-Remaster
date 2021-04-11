@@ -165,6 +165,15 @@ namespace Pokemon
             return false;
         }
 
+        public static bool SeeIfBurned(Pokemon poke)
+        {
+            foreach (Status s in poke.statuses)
+            {
+                if (s.name.Equals("Burn")) return true;
+            }
+            return false;
+        }
+
         public static bool SeeIfSleep(Pokemon poke)
         {
             foreach (Status s in poke.statuses)

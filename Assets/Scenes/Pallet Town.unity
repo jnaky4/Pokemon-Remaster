@@ -4522,14 +4522,14 @@ MonoBehaviour:
   SongPlaying:
     name: 
     clip: {fileID: 0}
-    volume: 1
+    volume: 0.4
     pitch: 1
     source: {fileID: 0}
     loop: 0
   EffectPlaying:
     name: 
     clip: {fileID: 0}
-    volume: 1
+    volume: 0.4
     pitch: 1
     source: {fileID: 0}
     loop: 0

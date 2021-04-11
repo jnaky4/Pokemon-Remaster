@@ -795,8 +795,8 @@ namespace Pokemon
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
                     exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
-/*                    string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
-                    Debug.Log(test);*/
+                    /*                    string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
+                                        Debug.Log(test);*/
                     yield return new WaitForSeconds(2);
                     dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
                     playerHUD.SetEXP(playerUnit.pokemon, exp);
@@ -899,9 +899,22 @@ namespace Pokemon
                 yield break;
             }
 
-            //if (/*pokemon is asleep or frozen and n is < 25 */) { }
-            //if (/*pokemon is paralyzed burned poisoned and n is < 12 */) { }
-            if (randomNumber < GameController.catchRate) //If they broke free
+            if ((Status.SeeIfSleep(enemyUnit.pokemon) || Status.SeeIfFreeze(enemyUnit.pokemon)) && randomNumber < 25)
+            {
+                state = BattleState.CAUGHTPOKEMON;
+                StartCoroutine(EndBattle());
+                yield break;
+            }
+            if ((Status.SeeIfParalyzed(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon)) && randomNumber < 12)
+            {
+                state = BattleState.CAUGHTPOKEMON;
+                StartCoroutine(EndBattle());
+                yield break;
+            }
+            int catchRateModifier = 0;
+            if (Status.SeeIfSleep(enemyUnit.pokemon) || Status.SeeIfFreeze(enemyUnit.pokemon)) catchRateModifier = 25;
+            else if (Status.SeeIfParalyzed(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon)) catchRateModifier = 12;
+            if (randomNumber > GameController.catchRate - catchRateModifier) //If they broke free
             {
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);

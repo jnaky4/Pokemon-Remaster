@@ -5,16 +5,20 @@ using UnityEngine.SceneManagement;
 namespace Pokemon
 {
     public enum GameState { Roam, Dialog, Battle, TrainerEncounter }
+
     public class GameController : MonoBehaviour
     {
         public static GameState state = GameState.Roam;
 
         //player data
         public static Pokemon[] playerPokemon = new Pokemon[6];
+
         public static PlayerData player = new PlayerData();
         public static bool inCombat = false;
+
         //public GameObject player;
         public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Ground", 1 } };
+
         public static string location = "Pallet Town";
 
         //Game Level Cap
@@ -22,6 +26,7 @@ namespace Pokemon
 
         //combat data
         public static Pokemon[] opponentPokemon = new Pokemon[6];
+
         public static string endText = "Good fight!";
         public static bool isCatchable = true;
         public static int catchRate = 0;
@@ -31,12 +36,15 @@ namespace Pokemon
 
         //overworld data
         public GameObject overworldCam;
+
         //GameObject overworldCam;
         public GameObject eventSystem;
+
         public Camera test;
 
         //triggers
         public static bool triggerCombat = false;
+
         public static bool endCombat = false;
         public static bool startCombatMusic = false;
         public static bool endCombatMusic = false;
@@ -49,21 +57,18 @@ namespace Pokemon
         private static GameController Instance = null;
 
         // Start is called before the first frame update
-        void Awake()
+        private void Awake()
         {
-
             // If there is not already an instance of SoundManager, set it to this.
             if (Instance == null)
             {
                 Instance = this;
-
             }
             //If an instance already exists, destroy whatever this object is to enforce the singleton.
             else if (Instance != this)
             {
                 Destroy(gameObject);
                 return;
-
             }
 
             //overworldCam = GameObject.Find("Main Camera");
@@ -83,7 +88,6 @@ namespace Pokemon
             Type.load_type();
             Moves.load_moves();
             update_level_cap();
-            
 
             //Debug.Log("CSV's have been loaded");
 
@@ -145,10 +149,10 @@ namespace Pokemon
                 endCombat = false;
             }
         }
+
         public static void update_level_cap()
         {
             level_cap = ((badges_completed.Count * 10) + 10);
         }
-
     }
 }
