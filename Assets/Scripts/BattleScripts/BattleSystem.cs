@@ -1911,7 +1911,7 @@ namespace Pokemon
             AttackSprites.Clear();
             AttackSprites.Add(null);
             var sprites = Resources.LoadAll<Sprite>(pathLeft);
-
+            
             if (shakes == 0)
             {
                 pathLeft += "/Pokeball_Left_000";
@@ -1920,7 +1920,7 @@ namespace Pokemon
             }
             if (shakes >= 1)
             {
-                AttackSprites = sprites.ToList();
+                AttackSprites.AddRange(sprites);
             }
             if (shakes >= 2)
             {
