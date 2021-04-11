@@ -116,6 +116,8 @@ namespace Pokemon
 
         private bool breakOutOfDecision = false;
         private bool deadPokemon = false;
+        private bool pWokeUp = false;
+        private bool eWokeUp = false;
         private int playerContinuingAttack = 0;
         private int enemyContinuingAttack = 0;
         private Moves playerMoveStorage;
@@ -617,6 +619,11 @@ namespace Pokemon
             CloseMovesMenu();
             CloseBallsMenu();
             SetDownButtons();
+            if (pWokeUp)
+            {
+                dialogueText.text = playerUnit.pokemon.name + " woke up!";
+                pWokeUp = false;
+            }
 
             if (Status.SeeIfParalyzed(playerUnit.pokemon))
             {
@@ -628,6 +635,7 @@ namespace Pokemon
             {
                 dialogueText.text = playerUnit.pokemon.name + " is asleep!";
                 Status.ReduceSleep(playerUnit);
+                if (playerUnit.pokemon.sleep == 0) pWokeUp = true;
                 yield return new WaitForSeconds(2);
                 yield break;
             }
@@ -1039,6 +1047,11 @@ namespace Pokemon
         private IEnumerator EnemyAttack(Moves move)
         {
             SetDownButtons();
+            if (eWokeUp)
+            {
+                dialogueText.text = enemyUnit.pokemon.name + " woke up!";
+                eWokeUp = false;
+            }
 
             if (Status.SeeIfParalyzed(enemyUnit.pokemon))
             {
@@ -1050,6 +1063,13 @@ namespace Pokemon
             {
                 dialogueText.text = enemyUnit.pokemon.name + " is asleep!";
                 Status.ReduceSleep(enemyUnit);
+                if (enemyUnit.pokemon.sleep == 0) eWokeUp = true;
+                yield return new WaitForSeconds(2);
+                yield break;
+            }
+            if (Status.SeeIfFreeze(enemyUnit.pokemon))
+            {
+                dialogueText.text = enemyUnit.pokemon.name + " is frozen!";
                 yield return new WaitForSeconds(2);
                 yield break;
             }
@@ -1229,6 +1249,7 @@ namespace Pokemon
         {
             breakOutOfDecision = true;
             SetDownButtons();
+            GameController.update_level_cap();
             if (state == BattleState.WON) //If you won
             {
                 if (GameController.isCatchable)

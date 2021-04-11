@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class TrainerController : MonoBehaviour
 {
-    [SerializeField] Dialog dialog;
-    [SerializeField] GameObject exclamation;
-    [SerializeField] string trainerName;
+    [SerializeField] private Dialog dialog;
+    [SerializeField] private GameObject exclamation;
+    [SerializeField] private string trainerName;
 
-    Character character;
+    private Character character;
 
     public bool isBeaten = false;
 
@@ -51,7 +51,7 @@ public class TrainerController : MonoBehaviour
         //Dictionary<string, Route> route1_dic = Route.get_route(location);
         Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(GameController.location);
         GameController.endText = route_trainers[trainerName].exit_dialogue;
-        GameController.winMoney = route_trainers[trainerName].money_mult * (GameController.level_cap / 10) * 100;
+        GameController.winMoney = route_trainers[trainerName].money_mult * (GameController.level_cap / 10);
         for (int i = 0; i < 6; i++)
         {
             if (route_trainers[trainerName].trainer_team[i] != null)
