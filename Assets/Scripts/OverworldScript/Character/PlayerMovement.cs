@@ -10,7 +10,7 @@ namespace Pokemon
         //int spawnRate = 10;
 
         //uncomment this for high spawn rate
-        int spawnRate = 101;
+        private int spawnRate = 101;
 
         //uncomment this for no spawn rate
         //int spawnRate = 0;
@@ -24,7 +24,7 @@ namespace Pokemon
 
         //public static DialogController Instance { get; private set; }
 
-        Vector2 movement;
+        private Vector2 movement;
 
         private void Awake()
         {
@@ -33,7 +33,7 @@ namespace Pokemon
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (!character.IsMoving)
             {
@@ -58,7 +58,7 @@ namespace Pokemon
                 Interact();
         }
 
-        void Interact()
+        private void Interact()
         {
             var faceDir = new Vector3(character.Animator.MoveX, character.Animator.MoveY);
             var interactPos = transform.position + faceDir;
@@ -69,7 +69,6 @@ namespace Pokemon
                 collider.GetComponent<Interactable>()?.Interact(transform);
             }
         }
-
 
         private void OnMoveOver()
         {
@@ -85,7 +84,6 @@ namespace Pokemon
                 {
                     //new code
                     character.Animator.IsMoving = false;
-
 
                     Dictionary<string, Route> route1_dic = Route.get_route(location);
                     string terrain = "Grass";
@@ -123,19 +121,16 @@ namespace Pokemon
         }
 
         //Gets all available pokemon to spawn from dictionary, Current # gym badges, list of specific Gyms Beaten
-        Pokemon generate_wild_pokemon(Dictionary<string, Route> route, string terrain, Dictionary<string, int> Gyms_beaten, int badges)
+        private Pokemon generate_wild_pokemon(Dictionary<string, Route> route, string terrain, Dictionary<string, int> Gyms_beaten, int badges)
         {
             //dictionary of gyms beaten
             double sum_probability = 0;
             Dictionary<string, Route> possible_spawns = new Dictionary<string, Route>();
             List<Dictionary<string, Route>> final_list = new List<Dictionary<string, Route>>();
 
-
             //make a new dictionary of possible spawning pokemon
             foreach (KeyValuePair<string, Route> wild_spawn in route)
             {
-
-
                 if (
                     //required badges for pokemon spawn less than or equal to current player badges
                     (wild_spawn.Value.required_badges <= badges
@@ -152,12 +147,9 @@ namespace Pokemon
                     sum_probability += wild_spawn.Value.spawn_chance;
                     possible_spawns.Add(wild_spawn.Key, wild_spawn.Value);
                 }
-
             }
 
-
             //Debug.Log("Possible Spawns: " + possible_spawns.Count);
-
 
             //double temp = 0;
             //sum_probability: sum of chance of all pokemon that can spawn
@@ -171,7 +163,6 @@ namespace Pokemon
             //Debug.Log("Random: " + random);
             double cumulativeProbability = 0;
 
-
             /*
             cumulativeProbability += item.probability();
             if (p <= cumulativeProbability) {
@@ -180,16 +171,12 @@ namespace Pokemon
 
             foreach (KeyValuePair<string, Route> wild_spawn in possible_spawns)
             {
-
                 cumulativeProbability += wild_spawn.Value.spawn_chance;
                 if (random <= cumulativeProbability)
                 {
-
-
                     //level_min and level_max are negative values, ie take away this many levels from the level cap
                     int random_level = UnityEngine.Random.Range(wild_spawn.Value.level_min - 1, wild_spawn.Value.level_max) + 1;
                     //Debug.Log("Random Level: " + random_level);
-
 
                     // if level_cap > pokemon_cap
                     // pokemon_level = pokemon_cap
@@ -207,7 +194,6 @@ namespace Pokemon
 
                     return temp_pokemon;
                 }
-
             }
 
             //If no pokemon found to spawn? spawn a lvl 69 Slowbro

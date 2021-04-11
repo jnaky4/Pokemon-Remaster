@@ -1,4 +1,3 @@
-using System.Collections;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,96 +10,200 @@ namespace Pokemon
     public class BattleHUD : MonoBehaviour
     {
         #region Declaration of variables
-        public Text yourName;
-        public Text level;
-        public Slider hpSlider;
-        public Slider expSlider;
-        public Text currentHP;
 
+        public Text currentHP;
+        public Slider expSlider;
+        public Text forget1;
+        public Button forget1Button;
+        public Image forget1type;
+        public Text forget2;
+        public Button forget2Button;
+        public Image forget2type;
+        public Text forget3;
+        public Button forget3Button;
+        public Image forget3type;
+        public Text forget4;
+        public Button forget4Button;
+        public Image forget4type;
+        public Text forget5;
+        public Button forget5Button;
+        public Image forget5type;
+        public Text greatBalls;
+        public Slider hpSlider;
+        public Text level;
+        public Text masterBalls;
+        public Button move1Button;
+        public Image move1type;
+        public Button move2Button;
+        public Image move2type;
+        public Button move3Button;
+        public Image move3type;
+        public Button move4Button;
+        public Image move4type;
         public Text moves1;
         public Text moves2;
         public Text moves3;
         public Text moves4;
-
-        public Text forget1;
-        public Text forget2;
-        public Text forget3;
-        public Text forget4;
-        public Text forget5;
-
-        public Image forget1type;
-        public Image forget2type;
-        public Image forget3type;
-        public Image forget4type;
-        public Image forget5type;
-
-        public Button forget1Button;
-        public Button forget2Button;
-        public Button forget3Button;
-        public Button forget4Button;
-        public Button forget5Button;
-
-        public Button move1Button;
-        public Button move2Button;
-        public Button move3Button;
-        public Button move4Button;
-
-        public Image pokemon1Image;
-        public Image pokemon2Image;
-        public Image pokemon3Image;
-        public Image pokemon4Image;
-        public Image pokemon5Image;
-        public Image pokemon6Image;
-
-        public Image move1type;
-        public Image move2type;
-        public Image move3type;
-        public Image move4type;
-
-        public Text pokeBalls;
-        public Text greatBalls;
-        public Text ultraBalls;
-        public Text masterBalls;
-
-        public Text pokemon1;
-        public Text pokemon2;
-        public Text pokemon3;
-        public Text pokemon4;
-        public Text pokemon5;
-        public Text pokemon6;
-
         public Button poke1;
         public Button poke2;
         public Button poke3;
         public Button poke4;
         public Button poke5;
         public Button poke6;
+        public Text pokeBalls;
+        public Text pokemon1;
+        public Image pokemon1Image;
+        public Text pokemon2;
+        public Image pokemon2Image;
+        public Text pokemon3;
+        public Image pokemon3Image;
+        public Text pokemon4;
+        public Image pokemon4Image;
+        public Text pokemon5;
+        public Image pokemon5Image;
+        public Text pokemon6;
+        public Image pokemon6Image;
+        public Text ultraBalls;
+        public Text yourName;
+        private int tempHP;
+        private int tempXP;
+        private bool updateHp = false;
+        private bool updateXP = false;
 
-        bool updateHp = false;
-        bool updateXP = false;
-        int tempHP;
-        int tempXP;
+        #endregion Declaration of variables
 
-        #endregion
         #region Functions
-        private void Update()
+
+        public void ResetStatus(Pokemon poke)
         {
-            if ((int)hpSlider.value == tempHP) updateHp = false;
-            if (updateHp)
+            level.color = GetColorOfStatus("null");
+            level.text = "Level " + poke.level;
+        }
+
+        /// <summary>
+        /// Sets the active pokemon.
+        /// </summary>
+        /// <param name="pokemons">The pokemon array.</param>
+        /// <param name="num">The number of pokemon we want to make active.</param>
+        /// <param name="unit">The unit of whose pokemon we are dealing with.</param>
+        public void SetActivePokemon(Pokemon[] pokemons, int num, Unit unit)
+        {
+            unit.pokemon = pokemons[num];
+            SetMoves(unit);
+            SetHUD(unit);
+            SetPokemon(pokemons);
+        }
+
+        /// <summary>
+        /// Sets the balls of the player.
+        /// </summary>
+        /// <param name="player">The player whose balls we want to set.</param>
+        public void SetBalls(PlayerBattle player)
+        {
+            if (player.pokeBalls) pokeBalls.text = "Poke balls (" + player.numPokeBalls + ")";
+            if (player.greatBalls) greatBalls.text = "Great balls (" + player.numGreatBalls + ")";
+            if (player.ultraBalls) ultraBalls.text = "Ultra balls (" + player.numUltraBalls + ")";
+            if (player.masterBalls) masterBalls.text = "Master balls (" + player.numMasterBalls + ")";
+        }
+
+        public void SetEXP(Pokemon poke, int xp)
+        {
+            tempXP = poke.current_exp;
+            expSlider.maxValue = poke.next_lvl_exp;
+            expSlider.minValue = poke.base_lvl_exp;
+            updateXP = true;
+        }
+
+        public void SetEXP(Pokemon poke)
+        {
+            expSlider.maxValue = poke.next_lvl_exp;
+            expSlider.minValue = poke.base_lvl_exp;
+            expSlider.value = poke.current_exp;
+        }
+
+        public void SetForgetMoves(Unit unit)
+        {
+            var path = "Images/Menu Icons/Type ";
+            if (unit.pokemon.currentMoves[0] != null)
             {
-                hpSlider.value = (int)hpSlider.value - 1;
-                if ((int)hpSlider.value == tempHP)
-                {
-                    updateHp = false;
-                    tempHP = 0;
-                }
+                forget1.text = unit.pokemon.currentMoves[0].name + " ";
+
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type);
+                forget1type.sprite = sprite;
+
+                ColorBlock c = forget1Button.GetComponent<Button>().colors;
+                c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                forget1Button.GetComponent<Button>().colors = c;
             }
-            if (expSlider.value == tempXP) updateXP = false;
-            if (updateXP)
+            if (unit.pokemon.currentMoves[1] != null)
             {
-                expSlider.value++;
-                if (expSlider.value == tempXP) updateXP = false;
+                forget2.text = unit.pokemon.currentMoves[1].name + " ";
+
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type);
+                forget2type.sprite = sprite;
+
+                ColorBlock c2 = forget2Button.GetComponent<Button>().colors;
+                c2.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                c2.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                forget2Button.GetComponent<Button>().colors = c2;
             }
+            if (unit.pokemon.currentMoves[2] != null)
+            {
+                forget3.text = unit.pokemon.currentMoves[2].name + " ";
+
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type);
+                forget3type.sprite = sprite;
+
+                ColorBlock c3 = forget3Button.GetComponent<Button>().colors;
+                c3.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                c3.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                forget3Button.GetComponent<Button>().colors = c3;
+            }
+            if (unit.pokemon.currentMoves[3] != null)
+            {
+                forget4.text = unit.pokemon.currentMoves[3].name + " ";
+
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type);
+                forget4type.sprite = sprite;
+
+                ColorBlock c4 = forget4Button.GetComponent<Button>().colors;
+                c4.normalColor = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                c4.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                forget4Button.GetComponent<Button>().colors = c4;
+            }
+
+            forget5.text = unit.pokemon.learned_move.name + " ";
+
+            var s = Resources.Load<Sprite>(path + unit.pokemon.learned_move.move_type.type);
+            forget5type.sprite = s;
+
+            ColorBlock c5 = forget5Button.GetComponent<Button>().colors;
+            c5.normalColor = GetColorOfMove(unit.pokemon.learned_move.move_type.type);
+            c5.highlightedColor = GetDarkColorOfMove(unit.pokemon.learned_move.move_type.type);
+            forget5Button.GetComponent<Button>().colors = c5;
+        }
+
+        /// <summary>
+        /// Sets the enemy hp.
+        /// </summary>
+        /// <param name="hp">The hp.</param>
+        public void SetHP(int hp)
+        {
+            tempHP = hp;
+            if (hp != hpSlider.value) updateHp = true;
+        }
+
+        /// <summary>
+        /// Sets the player hp.
+        /// </summary>
+        /// <param name="hp">The hp.</param>
+        /// <param name="unit">The unit.</param>
+        public void SetHP(int hp, Unit unit)
+        {
+            tempHP = hp;
+            if (hp != hpSlider.value) updateHp = true;
+            currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
         }
 
         /// <summary>
@@ -118,6 +221,7 @@ namespace Pokemon
             hpSlider.maxValue = unit.pokemon.max_hp;
             hpSlider.value = unit.pokemon.current_hp;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
+            currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
             expSlider.maxValue = unit.pokemon.next_lvl_exp;
             expSlider.minValue = unit.pokemon.base_lvl_exp;
             expSlider.value = unit.pokemon.current_exp;
@@ -127,6 +231,7 @@ namespace Pokemon
             //if (isPlayer) SetEXP(unit.pokemon);
             hpSlider.interactable = false;
         }
+
         /// <summary>
         /// Sets the HUD with just name, level, and hp.
         /// This gets called to update enemy hud.
@@ -140,90 +245,6 @@ namespace Pokemon
             hpSlider.value = unit.pokemon.current_hp;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
         }
-
-        /// <summary>
-        /// Sets the enemy hp.
-        /// </summary>
-        /// <param name="hp">The hp.</param>
-        public void SetHP(int hp)
-        {
-            tempHP = hp;
-            if (hp != hpSlider.value) updateHp = true;
-        }
-        public void SetEXP(Pokemon poke, int xp)
-        {
-            tempXP = poke.current_exp;
-            expSlider.maxValue = poke.next_lvl_exp;
-            expSlider.minValue = poke.base_lvl_exp;
-            updateXP = true;
-        }
-        public void SetEXP(Pokemon poke)
-        {
-            expSlider.maxValue = poke.next_lvl_exp;
-            expSlider.minValue = poke.base_lvl_exp;
-            expSlider.value = poke.current_exp;
-        }
-
-        public void SetStatus(Pokemon poke)
-        {
-            if (poke.statuses.Count > 0)
-            {
-                Status s = (Status)poke.statuses[0];
-                Color c = level.color;
-                c = GetColorOfStatus(s.name);
-                level.color = c;
-                level.text = s.name;
-            }
-            else
-            {
-                ResetStatus(poke);
-            }
-        }
-        public void ResetStatus(Pokemon poke)
-        {
-            level.color = GetColorOfStatus("null");
-            level.text = "Level " + poke.level;
-        }
-
-        private Color GetColorOfStatus(string name)
-        {
-            Color color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);
-            switch (name)
-            {
-                case "Burn":
-                    color = new Color(255f / 255f, 152f / 255f, 56f / 255f, 1);
-                    break;
-                case "Paralysis":
-                    color = new Color(246f / 255f, 216f / 255f, 48f / 255f, 1);
-                    break;
-                case "Poison":
-                    color = new Color(188f / 255f, 82f / 255f, 232f / 255f, 1);
-                    break;
-                case "Sleep":
-                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
-                    break;
-                case "Freeze":
-                    color = new Color(98f / 255f, 204f / 255f, 212f / 255f, 1);
-                    break;
-                default:
-                    color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);
-                    break;
-            }
-            return color;
-        }
-
-        /// <summary>
-        /// Sets the player hp.
-        /// </summary>
-        /// <param name="hp">The hp.</param>
-        /// <param name="unit">The unit.</param>
-        public void SetHP(int hp, Unit unit)
-        {
-            tempHP = hp;
-            if (hp != hpSlider.value) updateHp = true;
-            currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
-        }
-
 
         /// <summary>
         /// Sets the moves of your player's pokemon.
@@ -267,7 +288,6 @@ namespace Pokemon
                 c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
                 c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
                 move3Button.GetComponent<Button>().colors = c;
-
             }
             if (unit.pokemon.currentMoves[3] != null)
             {
@@ -281,214 +301,6 @@ namespace Pokemon
                 c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
                 move4Button.GetComponent<Button>().colors = c;
             }
-        }
-        public void SetForgetMoves(Unit unit)
-        {
-            var path = "Images/Menu Icons/Type ";
-            if (unit.pokemon.currentMoves[0] != null)
-            {
-                forget1.text = unit.pokemon.currentMoves[0].name + " ";
-
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type);
-                forget1type.sprite = sprite;
-
-                ColorBlock c = forget1Button.GetComponent<Button>().colors;
-                c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
-                c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
-                forget1Button.GetComponent<Button>().colors = c;
-            }
-            if (unit.pokemon.currentMoves[1] != null)
-            {
-                forget2.text = unit.pokemon.currentMoves[1].name + " ";
-
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type);
-                forget2type.sprite = sprite;
-
-                ColorBlock c2 = forget2Button.GetComponent<Button>().colors;
-                c2.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
-                c2.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
-                forget2Button.GetComponent<Button>().colors = c2;
-
-            }
-            if (unit.pokemon.currentMoves[2] != null)
-            {
-                forget3.text = unit.pokemon.currentMoves[2].name + " ";
-
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type);
-                forget3type.sprite = sprite;
-
-                ColorBlock c3 = forget3Button.GetComponent<Button>().colors;
-                c3.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
-                c3.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
-                forget3Button.GetComponent<Button>().colors = c3;
-
-            }
-            if (unit.pokemon.currentMoves[3] != null)
-            {
-                forget4.text = unit.pokemon.currentMoves[3].name + " ";
-
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type);
-                forget4type.sprite = sprite;
-
-                ColorBlock c4 = forget4Button.GetComponent<Button>().colors;
-                c4.normalColor = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
-                c4.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
-                forget4Button.GetComponent<Button>().colors = c4;
-
-            }
-
-            forget5.text = unit.pokemon.learned_move.name + " ";
-
-            var s = Resources.Load<Sprite>(path + unit.pokemon.learned_move.move_type.type);
-            forget5type.sprite = s;
-
-            ColorBlock c5 = forget5Button.GetComponent<Button>().colors;
-            c5.normalColor = GetColorOfMove(unit.pokemon.learned_move.move_type.type);
-            c5.highlightedColor = GetDarkColorOfMove(unit.pokemon.learned_move.move_type.type);
-            forget5Button.GetComponent<Button>().colors = c5;
-        }
-
-        private Color GetColorOfMove(string type)
-        {
-            Color color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
-            switch (type)
-            {
-                case "Normal":
-                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
-                    break;
-                case "Fire":
-                    color = new Color(255f / 255f, 152f / 255f, 56f / 255f, 1);
-                    break;
-                case "Water":
-                    color = new Color(58f / 255f, 176f / 255f, 232f / 255f, 1);
-                    break;
-                case "Electric":
-                    color = new Color(246f / 255f, 216f / 255f, 48f / 255f, 1);
-                    break;
-                case "Grass":
-                    color = new Color(64f / 255f, 208f / 255f, 112f / 255f, 1);
-                    break;
-                case "Ice":
-                    color = new Color(98f / 255f, 204f / 255f, 212f / 255f, 1);
-                    break;
-                case "Fighting":
-                    color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
-                    break;
-                case "Poison":
-                    color = new Color(188f / 255f, 82f / 255f, 232f / 255f, 1);
-                    break;
-                case "Ground":
-                    color = new Color(232f / 255f, 130f / 255f, 68f / 255f, 1);
-                    break;
-                case "Flying":
-                    color = new Color(80f / 255f, 124f / 255f, 212f / 255f, 1);
-                    break;
-                case "Psychic":
-                    color = new Color(255f / 255f, 136f / 255f, 130f / 255f, 1);
-                    break;
-                case "Bug":
-                    color = new Color(153f / 255f, 204f / 255f, 51f / 255f, 1);
-                    break;
-                case "Rock":
-                    color = new Color(196f / 255f, 174f / 255f, 112f / 255f, 1);
-                    break;
-                case "Ghost":
-                    color = new Color(94f / 255f, 100f / 255f, 208f / 255f, 1);
-                    break;
-                case "Dragon":
-                    color = new Color(80f / 255f, 136f / 255f, 188f / 255f, 1);
-                    break;
-                case "Dark":
-                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
-                    break;
-                case "Steel":
-                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
-                    break;
-                case "Fairy":
-                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
-                    break;
-                default:
-                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
-                    break;
-            }
-            return color;
-        }
-        private Color GetDarkColorOfMove(string type)
-        {
-            Color color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
-            switch (type)
-            {
-                case "Normal":
-                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
-                    break;
-                case "Fire":
-                    color = new Color(156f / 255f, 83f / 255f, 31f / 255f, 1);
-                    break;
-                case "Water":
-                    color = new Color(68f / 255f, 94f / 255f, 156f / 255f, 1);
-                    break;
-                case "Electric":
-                    color = new Color(161f / 255f, 135f / 255f, 31f / 255f, 1);
-                    break;
-                case "Grass":
-                    color = new Color(78f / 255f, 130f / 255f, 52f / 255f, 1);
-                    break;
-                case "Ice":
-                    color = new Color(99f / 255f, 141f / 255f, 141f / 255f, 1);
-                    break;
-                case "Fighting":
-                    color = new Color(125f / 255f, 31f / 255f, 26f / 255f, 1);
-                    break;
-                case "Poison":
-                    color = new Color(104f / 255f, 42f / 255f, 104f / 255f, 1);
-                    break;
-                case "Ground":
-                    color = new Color(146f / 255f, 125f / 255f, 68f / 255f, 1);
-                    break;
-                case "Flying":
-                    color = new Color(109f / 255f, 94f / 255f, 156f / 255f, 1);
-                    break;
-                case "Psychic":
-                    color = new Color(255f / 255f, 136f / 255f, 130f / 255f, 1);
-                    break;
-                case "Bug":
-                    color = new Color(109f / 255f, 120f / 255f, 21f / 255f, 1);
-                    break;
-                case "Rock":
-                    color = new Color(120f / 255f, 104f / 255f, 36f / 255f, 1);
-                    break;
-                case "Ghost":
-                    color = new Color(73f / 255f, 57f / 255f, 99f / 255f, 1);
-                    break;
-                case "Dragon":
-                    color = new Color(73f / 255f, 36f / 255f, 161f / 255f, 1);
-                    break;
-                case "Dark":
-                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
-                    break;
-                case "Steel":
-                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
-                    break;
-                case "Fairy":
-                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
-                    break;
-                default:
-                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
-                    break;
-            }
-            return color;
-        }
-
-        /// <summary>
-        /// Sets the balls of the player.
-        /// </summary>
-        /// <param name="player">The player whose balls we want to set.</param>
-        public void SetBalls(PlayerBattle player)
-        {
-            if (player.pokeBalls) pokeBalls.text = "Poke balls (" + player.numPokeBalls + ")";
-            if (player.greatBalls) greatBalls.text = "Great balls (" + player.numGreatBalls + ")";
-            if (player.ultraBalls) ultraBalls.text = "Ultra balls (" + player.numUltraBalls + ")";
-            if (player.masterBalls) masterBalls.text = "Master balls (" + player.numMasterBalls + ")";
         }
 
         /// <summary>
@@ -510,7 +322,6 @@ namespace Pokemon
                 c.normalColor = GetColorOfMove(pokemons[0].type1.type);
                 c.highlightedColor = GetDarkColorOfMove(pokemons[0].type1.type);
                 poke1.GetComponent<Button>().colors = c;
-
             }
             if (pokemons[1] != null)
             {
@@ -563,7 +374,6 @@ namespace Pokemon
                 c.normalColor = GetColorOfMove(pokemons[4].type1.type);
                 c.highlightedColor = GetDarkColorOfMove(pokemons[4].type1.type);
                 poke5.GetComponent<Button>().colors = c;
-
             }
             if (pokemons[5] != null)
             {
@@ -580,19 +390,242 @@ namespace Pokemon
             }
         }
 
-        /// <summary>
-        /// Sets the active pokemon.
-        /// </summary>
-        /// <param name="pokemons">The pokemon array.</param>
-        /// <param name="num">The number of pokemon we want to make active.</param>
-        /// <param name="unit">The unit of whose pokemon we are dealing with.</param>
-        public void SetActivePokemon(Pokemon[] pokemons, int num, Unit unit)
+        public void SetStatus(Pokemon poke)
         {
-            unit.pokemon = pokemons[num];
-            SetMoves(unit);
-            SetHUD(unit);
-            SetPokemon(pokemons);
+            if (poke.statuses.Count > 0)
+            {
+                Status s = (Status)poke.statuses[0];
+                Color c = level.color;
+                c = GetColorOfStatus(s.name);
+                level.color = c;
+                level.text = s.name;
+            }
+            else
+            {
+                ResetStatus(poke);
+            }
         }
-        #endregion
+
+        private Color GetColorOfMove(string type)
+        {
+            Color color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
+            switch (type)
+            {
+                case "Normal":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Fire":
+                    color = new Color(255f / 255f, 152f / 255f, 56f / 255f, 1);
+                    break;
+
+                case "Water":
+                    color = new Color(58f / 255f, 176f / 255f, 232f / 255f, 1);
+                    break;
+
+                case "Electric":
+                    color = new Color(246f / 255f, 216f / 255f, 48f / 255f, 1);
+                    break;
+
+                case "Grass":
+                    color = new Color(64f / 255f, 208f / 255f, 112f / 255f, 1);
+                    break;
+
+                case "Ice":
+                    color = new Color(98f / 255f, 204f / 255f, 212f / 255f, 1);
+                    break;
+
+                case "Fighting":
+                    color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
+                    break;
+
+                case "Poison":
+                    color = new Color(188f / 255f, 82f / 255f, 232f / 255f, 1);
+                    break;
+
+                case "Ground":
+                    color = new Color(232f / 255f, 130f / 255f, 68f / 255f, 1);
+                    break;
+
+                case "Flying":
+                    color = new Color(80f / 255f, 124f / 255f, 212f / 255f, 1);
+                    break;
+
+                case "Psychic":
+                    color = new Color(255f / 255f, 136f / 255f, 130f / 255f, 1);
+                    break;
+
+                case "Bug":
+                    color = new Color(153f / 255f, 204f / 255f, 51f / 255f, 1);
+                    break;
+
+                case "Rock":
+                    color = new Color(196f / 255f, 174f / 255f, 112f / 255f, 1);
+                    break;
+
+                case "Ghost":
+                    color = new Color(94f / 255f, 100f / 255f, 208f / 255f, 1);
+                    break;
+
+                case "Dragon":
+                    color = new Color(80f / 255f, 136f / 255f, 188f / 255f, 1);
+                    break;
+
+                case "Dark":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Steel":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Fairy":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                default:
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+            }
+            return color;
+        }
+
+        private Color GetColorOfStatus(string name)
+        {
+            Color color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);
+            switch (name)
+            {
+                case "Burn":
+                    color = new Color(255f / 255f, 152f / 255f, 56f / 255f, 1);
+                    break;
+
+                case "Paralysis":
+                    color = new Color(246f / 255f, 216f / 255f, 48f / 255f, 1);
+                    break;
+
+                case "Poison":
+                    color = new Color(188f / 255f, 82f / 255f, 232f / 255f, 1);
+                    break;
+
+                case "Sleep":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Freeze":
+                    color = new Color(98f / 255f, 204f / 255f, 212f / 255f, 1);
+                    break;
+
+                default:
+                    color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);
+                    break;
+            }
+            return color;
+        }
+
+        private Color GetDarkColorOfMove(string type)
+        {
+            Color color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+            switch (type)
+            {
+                case "Normal":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+
+                case "Fire":
+                    color = new Color(156f / 255f, 83f / 255f, 31f / 255f, 1);
+                    break;
+
+                case "Water":
+                    color = new Color(68f / 255f, 94f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Electric":
+                    color = new Color(161f / 255f, 135f / 255f, 31f / 255f, 1);
+                    break;
+
+                case "Grass":
+                    color = new Color(78f / 255f, 130f / 255f, 52f / 255f, 1);
+                    break;
+
+                case "Ice":
+                    color = new Color(99f / 255f, 141f / 255f, 141f / 255f, 1);
+                    break;
+
+                case "Fighting":
+                    color = new Color(125f / 255f, 31f / 255f, 26f / 255f, 1);
+                    break;
+
+                case "Poison":
+                    color = new Color(104f / 255f, 42f / 255f, 104f / 255f, 1);
+                    break;
+
+                case "Ground":
+                    color = new Color(146f / 255f, 125f / 255f, 68f / 255f, 1);
+                    break;
+
+                case "Flying":
+                    color = new Color(109f / 255f, 94f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Psychic":
+                    color = new Color(161f / 255f, 57f / 255f, 89f / 255f, 1);
+                    break;
+
+                case "Bug":
+                    color = new Color(109f / 255f, 120f / 255f, 21f / 255f, 1);
+                    break;
+
+                case "Rock":
+                    color = new Color(120f / 255f, 104f / 255f, 36f / 255f, 1);
+                    break;
+
+                case "Ghost":
+                    color = new Color(73f / 255f, 57f / 255f, 99f / 255f, 1);
+                    break;
+
+                case "Dragon":
+                    color = new Color(73f / 255f, 36f / 255f, 161f / 255f, 1);
+                    break;
+
+                case "Dark":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+
+                case "Steel":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+
+                case "Fairy":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+
+                default:
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+            }
+            return color;
+        }
+
+        private void Update()
+        {
+            if ((int)hpSlider.value == tempHP) updateHp = false;
+            if (updateHp)
+            {
+                hpSlider.value = (int)hpSlider.value - 1;
+                if ((int)hpSlider.value == tempHP)
+                {
+                    updateHp = false;
+                    tempHP = 0;
+                }
+            }
+            if (expSlider.value == tempXP) updateXP = false;
+            if (updateXP)
+            {
+                expSlider.value++;
+                if (expSlider.value == tempXP) updateXP = false;
+            }
+        }
+
+        #endregion Functions
     }
 }

@@ -13,6 +13,7 @@ namespace Pokemon
     public class BattleSystem : MonoBehaviour
     {
         #region Declaration of variables
+
         /**********************************************************************************************************************************************
          * VARIABLES
          **********************************************************************************************************************************************/
@@ -28,23 +29,26 @@ namespace Pokemon
         public SpriteRenderer enemyAttackSprite;
         public Image background;
 
+        public Camera camera;
+
         //IDK what these are but they need to stay
 
         //[SerializeField] List<Sprite> AttackSprites;
-        List<Sprite> AttackSprites = new List<Sprite>();
-        SpriteAnimator PlayerAttackAnim;
-        SpriteAnimator EnemyAttackAnim;
-        bool playerAttack;
-        bool playerInitialAttack;
-        bool endofanimation;
-        bool enemyAttack;
-        bool enemyInitialAttack;
-        string playerMoveName;
-        string enemyMoveName;
+        private List<Sprite> AttackSprites = new List<Sprite>();
+
+        private SpriteAnimator PlayerAttackAnim;
+        private SpriteAnimator EnemyAttackAnim;
+        private bool playerAttack;
+        private bool playerInitialAttack;
+        private bool endofanimation;
+        private bool enemyAttack;
+        private bool enemyInitialAttack;
+        private string playerMoveName;
+        private string enemyMoveName;
         //all of this stuff is for animation
 
-        Unit playerUnit;
-        Unit enemyUnit;
+        private Unit playerUnit;
+        private Unit enemyUnit;
         //The Pokemon used in the fight
 
         public Button attackButton;
@@ -110,25 +114,28 @@ namespace Pokemon
         public GameObject poke6;
         public Button backPoke;
 
-        bool breakOutOfDecision = false;
-        bool deadPokemon = false;
-        int playerContinuingAttack = 0;
-        int enemyContinuingAttack = 0;
-        Moves playerMoveStorage;
-        Moves enemyMoveStorage;
+        private bool breakOutOfDecision = false;
+        private bool deadPokemon = false;
+        private int playerContinuingAttack = 0;
+        private int enemyContinuingAttack = 0;
+        private Moves playerMoveStorage;
+        private Moves enemyMoveStorage;
 
-        int phasePlayerSprite = 0; //0 means no phasing, 1 means phase out, 2 means phase in
-        int phaseOpponentSprite = 0;
-        #endregion
+        private int phasePlayerSprite = 0; //0 means no phasing, 1 means phase out, 2 means phase in
+        private int phaseOpponentSprite = 0;
+
+        #endregion Declaration of variables
 
         /**********************************************************************************************************************************************
          * FUNCTIONS
          **********************************************************************************************************************************************/
+
         #region Set up battle and update functions
+
         /// <summary>
         /// Starts the battle.
         /// </summary>
-        void Start()
+        private void Start()
         {
             PlayerAttackAnim = new SpriteAnimator(AttackSprites, playerAttackSprite, 0.07f);
             EnemyAttackAnim = new SpriteAnimator(AttackSprites, enemyAttackSprite, 0.07f);
@@ -171,7 +178,6 @@ namespace Pokemon
                 StartCoroutine(PhaseIn(enemySprite, 0.20));
                 phaseOpponentSprite = 0;
             }
-
 
             if (playerInitialAttack == true)
             {
@@ -217,13 +223,13 @@ namespace Pokemon
                 }
             }
         }
+
         /// <summary>
         /// Setups the battle.
         /// </summary>
         /// <returns>Returns nothing. IEnumerator is so we can have text and stop the function so the player can read the text. I won't be commenting this anymore</returns>
-        IEnumerator SetupBattle()
+        private IEnumerator SetupBattle()
         {
-
             //GameObject pokeMenu = Instantiate(pokemonMenuUI);
             player = new PlayerBattle();
             GameObject playerGO = Instantiate(playerPrefab);
@@ -250,7 +256,6 @@ namespace Pokemon
             player.numUltraBalls = GameController.player.ultraBalls;
             player.masterBalls = GameController.player.displayMasterBalls;
             player.numMasterBalls = GameController.player.masterBalls;
-
 
             if (!player.pokeBalls) ball1.SetActive(false);
             if (!player.greatBalls) ball2.SetActive(false);
@@ -301,17 +306,20 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
             PlayerTurn();
-
         }
+
         //This function sets up the battle state for us including the UI
-        #endregion
+
+        #endregion Set up battle and update functions
+
         #region Decision functions to see who goes first
+
         /// <summary>
         /// Decides who attacks first, based on priority of the move, then the speed of each pokemon, then random
         /// </summary>
         /// <param name="playerMoveNum">The player move number. -1 if struggle, -2 if continuing attack.</param>
         /// <returns>Nothing</returns>
-        IEnumerator Decision(int playerMoveNum)
+        private IEnumerator Decision(int playerMoveNum)
         {
             SetDownButtons();
             ClosePokemonMenu();
@@ -512,11 +520,12 @@ namespace Pokemon
             PlayerTurn();
             yield break;
         }
+
         /// <summary>
         /// Handles getting attacked when switching out Pokemon
         /// </summary>
         /// <returns>Nothing</returns>
-        IEnumerator DecisionYouDontAttack()
+        private IEnumerator DecisionYouDontAttack()
         {
             SetDownButtons();
             ClosePokemonMenu();
@@ -563,14 +572,17 @@ namespace Pokemon
             PlayerTurn();
             yield break;
         }
-        #endregion
+
+        #endregion Decision functions to see who goes first
+
         #region Player attack functions
+
         /// <summary>
         /// This function is what we go to before anything happens.
         /// It lets us know what the player chooses to do and will call the appropriate functions from there.
         /// When in doubt, call this function.
         /// </summary>
-        void PlayerTurn()
+        private void PlayerTurn()
         {
             deadPokemon = false;
             breakOutOfDecision = false;
@@ -599,7 +611,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="attack">The move we are attacking with.</param>
         /// <returns>Nothing</returns>
-        IEnumerator PlayerAttack(Moves attack)
+        private IEnumerator PlayerAttack(Moves attack)
         {
             ClosePokemonMenu();
             CloseMovesMenu();
@@ -678,27 +690,28 @@ namespace Pokemon
                     }
                     else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                     yield return new WaitForSeconds(2);
+                    bool areYouDead = false;
                     if (playerUnit.pokemon.statuses.Contains(Status.get_status("Burn")))
                     {
                         playerUnit.BurnSelf();
                         StartCoroutine(Blink(playerSprite, 0.25));
-                        playerHUD.SetHP(playerUnit.pokemon.current_hp);
+                        playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                         dialogueText.text = playerUnit.pokemon.name + " got burned!";
-                        if (playerUnit.pokemon.current_hp <= 0) isDead = true;
+                        if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
                         else isDead = false;
                         yield return new WaitForSeconds(2);
-                        yield return StartCoroutine(EnemyKillsYou(isDead));
+                        yield return StartCoroutine(EnemyKillsYou(areYouDead));
                     }
                     if (Status.SeeIfPoisoned(playerUnit.pokemon))
                     {
                         playerUnit.PoisonSelf();
                         StartCoroutine(Blink(playerSprite, 0.25));
-                        playerHUD.SetHP(playerUnit.pokemon.current_hp);
+                        playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                         dialogueText.text = playerUnit.pokemon.name + " is poisoned!";
-                        if (playerUnit.pokemon.current_hp <= 0) isDead = true;
+                        if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
                         else isDead = false;
                         yield return new WaitForSeconds(2);
-                        yield return StartCoroutine(EnemyKillsYou(isDead));
+                        yield return StartCoroutine(EnemyKillsYou(areYouDead));
                     }
                 }
 
@@ -786,7 +799,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="typeOfPokeball">The type of pokeball. 1 = Poke, 2 = Great, 3 = Ultra, 4 = Master</param>
         /// <returns>Nothing.</returns>
-        IEnumerator CatchPokemon(int typeOfPokeball)
+        private IEnumerator CatchPokemon(int typeOfPokeball)
         {
             SetDownButtons();
             if (!GameController.isCatchable) //If you are playing a trainer, you can't catch their Pokemon.
@@ -893,7 +906,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="num">The index of the player's Pokemon in the array in GameController.</param>
         /// <returns>Nothing.</returns>
-        IEnumerator SwitchPokemon(int num)
+        private IEnumerator SwitchPokemon(int num)
         {
             if (GameController.playerPokemon[num].current_hp <= 0) //If the Pokemon you selected has no health remaining.
             {
@@ -977,10 +990,11 @@ namespace Pokemon
             }
             yield break;
         }
+
         /// <summary>
         /// Function that is called after one of your Pokemon dies.
         /// </summary>
-        IEnumerator SwitchPokemonAfterDeath()
+        private IEnumerator SwitchPokemonAfterDeath()
         {
             state = BattleState.CHANGEPOKEMON;
             playerHUD.SetPokemon(GameController.playerPokemon);
@@ -988,7 +1002,9 @@ namespace Pokemon
             OpenPokemonMenu();
             yield break;
         }
-        #endregion
+
+        #endregion Player attack functions
+
         #region Enemy attack functions
 
         /// <summary>
@@ -998,7 +1014,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="move">The attack the enemy Pokemon chose.</param>
         /// <returns>Nothing.</returns>
-        IEnumerator EnemyAttack(Moves move)
+        private IEnumerator EnemyAttack(Moves move)
         {
             SetDownButtons();
 
@@ -1020,9 +1036,9 @@ namespace Pokemon
             bool crit = Utility.CriticalHit(enemyUnit);
             int num = rnd.Next(1, 100);
             dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + move.name + "!";
-            yield return new WaitForSeconds(0.75f);
             if (num <= move.accuracy * enemyUnit.pokemon.current_accuracy * playerUnit.pokemon.current_evasion) //If the move hits
             {
+                yield return new WaitForSeconds(0.75f);
                 enemyInitialAttack = true;
                 while (!endofanimation) //Animation shit, ask levi
                 {
@@ -1086,16 +1102,17 @@ namespace Pokemon
                 }
 
                 yield return StartCoroutine(EnemyKillsYou(isDead));
-
             }
             else //If the enemy pokemon misses.
             {
+                yield return new WaitForSeconds(2);
                 dialogueText.text = "The move failed!";
                 yield return new WaitForSeconds(2);
                 yield break;
             }
             yield break;
         }
+
         public IEnumerator EnemyKillsYou(bool isDead)
         {
             if (isDead) //If your Pokemon died.
@@ -1126,8 +1143,10 @@ namespace Pokemon
             }
         }
 
-        #endregion
+        #endregion Enemy attack functions
+
         #region End of Battle functions
+
         /// <summary>
         /// Sees if our battle is over.
         /// To be honest, I forgot why I had to split this out into its own function.
@@ -1135,7 +1154,7 @@ namespace Pokemon
         /// please keep this function so we don't have errors.
         /// </summary>
         /// <returns>Nothing</returns>
-        IEnumerator SeeIfEndBattle()
+        private IEnumerator SeeIfEndBattle()
         {
             bool isEnd = true;
             for (int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++)
@@ -1167,11 +1186,12 @@ namespace Pokemon
                 yield return StartCoroutine(EndBattle());
             }
         }
+
         /// <summary>
         /// Ends the battle.
         /// </summary>
         /// <returns>Nothing.</returns>
-        IEnumerator EndBattle()
+        private IEnumerator EndBattle()
         {
             breakOutOfDecision = true;
             SetDownButtons();
@@ -1253,8 +1273,11 @@ namespace Pokemon
             //SceneManager.UnloadSceneAsync("BattleScene");
             //SceneManager.LoadScene("Pallet Town");
         }
-        #endregion
+
+        #endregion End of Battle functions
+
         #region utility functions for the ui and picking options
+
         /// <summary>
         /// Called when [attack button] is pressed. Pulls up the attack menu.
         /// </summary>
@@ -1300,7 +1323,6 @@ namespace Pokemon
                 attackMenuUI.SetActive(false);
                 OpenPokemonMenu();
             }
-
         }
 
         /// <summary>
@@ -1409,6 +1431,7 @@ namespace Pokemon
             CloseMovesMenu();
             //SetDownButtons();
         }
+
         /// <summary>
         /// Closes the pokemon menu.
         /// </summary>
@@ -1517,6 +1540,7 @@ namespace Pokemon
             attackMenuUI.SetActive(false);
             attackMenuOpen = false;
         }
+
         /// <summary>
         /// Opens the balls menu.
         /// </summary>
@@ -1525,6 +1549,7 @@ namespace Pokemon
             ballsMenuUI.SetActive(true);
             ballsMenuOpen = true;
         }
+
         /// <summary>
         /// Closes the balls menu.
         /// </summary>
@@ -1543,6 +1568,7 @@ namespace Pokemon
             SetDownButtons();
             StartCoroutine(Decision(0));
         }
+
         /// <summary>
         /// Selects the second attack. bottom left.
         /// </summary>
@@ -1552,6 +1578,7 @@ namespace Pokemon
             SetDownButtons();
             StartCoroutine(Decision(1));
         }
+
         /// <summary>
         /// Selects the third attack. bottom right.
         /// </summary>
@@ -1561,6 +1588,7 @@ namespace Pokemon
             SetDownButtons();
             StartCoroutine(Decision(2));
         }
+
         /// <summary>
         /// Selects the fourth attack. Top right.
         /// </summary>
@@ -1580,6 +1608,7 @@ namespace Pokemon
             SetDownButtons();
             StartCoroutine(CatchPokemon(1));
         }
+
         /// <summary>
         /// Greats the ball.
         /// </summary>
@@ -1589,6 +1618,7 @@ namespace Pokemon
             SetDownButtons();
             StartCoroutine(CatchPokemon(2));
         }
+
         /// <summary>
         /// Ultras the ball.
         /// </summary>
@@ -1598,6 +1628,7 @@ namespace Pokemon
             SetDownButtons();
             StartCoroutine(CatchPokemon(3));
         }
+
         /// <summary>
         /// Masters the ball.
         /// </summary>
@@ -1612,18 +1643,22 @@ namespace Pokemon
         {
             StartCoroutine(ForgetMove(1, playerUnit.pokemon));
         }
+
         public void Forget2()
         {
             StartCoroutine(ForgetMove(2, playerUnit.pokemon));
         }
+
         public void Forget3()
         {
             StartCoroutine(ForgetMove(3, playerUnit.pokemon));
         }
+
         public void Forget4()
         {
             StartCoroutine(ForgetMove(4, playerUnit.pokemon));
         }
+
         public void Forget5()
         {
             StartCoroutine(ForgetMove(5, playerUnit.pokemon));
@@ -1636,9 +1671,11 @@ namespace Pokemon
             StartCoroutine(DecisionYouDontAttack());
         }
 
-        #endregion
+        #endregion utility functions for the ui and picking options
+
         #region Sprite functions
-        void SetPlayerTrainerSprite(SpriteRenderer spriteRenderer)
+
+        private void SetPlayerTrainerSprite(SpriteRenderer spriteRenderer)
         {
             string path = "Player_Rival/Player1";
             var sprite = Resources.Load<Sprite>(path);
@@ -1656,9 +1693,9 @@ namespace Pokemon
             }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
             //spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, Mathf.SmoothStep(255, 0, 2.0f));
-
         }
-        void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
+
+        private void SetPlayerSprite(Unit unit, SpriteRenderer sprite)
         {
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
@@ -1680,7 +1717,7 @@ namespace Pokemon
             GameController.soundFX = unit.pokemon.dexnum.ToString();
         }
 
-        void SetOpponentTrainerSprite(SpriteRenderer spriteRenderer)
+        private void SetOpponentTrainerSprite(SpriteRenderer spriteRenderer)
         {
             string type = GameController.opponentType;
             string path;
@@ -1706,7 +1743,7 @@ namespace Pokemon
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
         }
 
-        void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
+        private void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
         {
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
@@ -1793,6 +1830,7 @@ namespace Pokemon
                 yield return new WaitForSeconds((float)x);
             }
         }
+
         public IEnumerator PhaseIn(SpriteRenderer sprite, double time)
         {
             var x = time / 128;
@@ -1805,10 +1843,15 @@ namespace Pokemon
 
         public IEnumerator Blink(SpriteRenderer sprite, double time)
         {
-            var x = time / 2;
+            int numTimes = 2;
+            var x = time / numTimes;
             bool visible = true;
-            for (int i = 0; i < 4; i++)
+            var pos = camera.transform.position;
+
+            for (int i = 0; i < numTimes * 2; i++)
             {
+                if (i % 2 == 0) ShakeLeft(pos);
+                else ShakeRight(pos);
                 if (visible)
                 {
                     sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
@@ -1820,6 +1863,42 @@ namespace Pokemon
                     visible = true;
                 }
                 yield return new WaitForSeconds((float)x);
+                StopShake(pos);
+            }
+        }
+
+        public void ShakeCamera(Vector3 pos)
+        {
+            camera.transform.position = pos + UnityEngine.Random.insideUnitSphere * 0.5f;
+        }
+
+        public void StopShake(Vector3 pos)
+        {
+            camera.transform.position = pos;
+        }
+
+        public void ShakeRight(Vector3 pos)
+        {
+            camera.transform.position = pos + new Vector3(pos.x + 0.25f, 0) * 1;
+        }
+
+        public void ShakeLeft(Vector3 pos)
+        {
+            camera.transform.position = pos + new Vector3(pos.x - 0.25f, 0) * 1;
+        }
+
+        public void ShakeLeftRightRandom(Vector3 pos)
+        {
+            camera.transform.position = pos + new Vector3(UnityEngine.Random.insideUnitSphere.x, 0) * 1;
+        }
+
+        public void ShakeLeftRight(Vector3 pos)
+        {
+            var numTimes = 2;
+            for (int i = 0; i < numTimes * 2; i++)
+            {
+                if (i % 2 == 0) ShakeLeft(pos);
+                else ShakeRight(pos);
             }
         }
 
@@ -1834,14 +1913,20 @@ namespace Pokemon
                 yield return new WaitForSeconds(2 / numberOfSteps);
             }
         }
-        #endregion
+
+        #endregion Sprite functions
+
         #region Jake's functions
+
         public static List<Dictionary<string, object>> load_CSV(string name)
         {
             return CSVReader.Read(name);
         }
-        #endregion
+
+        #endregion Jake's functions
+
         #region leveling up
+
         public IEnumerator LevelUp(Pokemon poke)
         {
             poke.gained_a_level = false;
@@ -1873,6 +1958,7 @@ namespace Pokemon
                 }
             }
         }
+
         public IEnumerator ForgetMove(int move, Pokemon poke)
         {
             forgetMenuUI.SetActive(false);
@@ -1908,6 +1994,7 @@ namespace Pokemon
             forgetMenuOpen = false;
             poke.learned_new_move = false;
         }
-        #endregion
+
+        #endregion leveling up
     }
 }
