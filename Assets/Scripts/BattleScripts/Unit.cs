@@ -141,38 +141,38 @@ namespace Pokemon
                         enemy.pokemon.attack_stage += attack.stat_change_amount; //changes it by the amount the attack changes. It is typically 1.
                         if (enemy.pokemon.attack_stage > 6) enemy.pokemon.attack_stage = 6; //If you go above or below 6, set it to 6
                         if (enemy.pokemon.attack_stage < -6) enemy.pokemon.attack_stage = -6;
-                        enemy.pokemon.current_attack = (double)enemy.pokemon.max_attack * multipliers[enemy.pokemon.attack_stage + 6]; //Makes your current stat based on the multiplier at the stage you are at.
+                        enemy.pokemon.current_attack = (int)(enemy.pokemon.max_attack * multipliers[enemy.pokemon.attack_stage + 6]); //Makes your current stat based on the multiplier at the stage you are at.
                         break;
 
                     case "Defense":
                         enemy.pokemon.defense_stage += attack.stat_change_amount;
                         if (enemy.pokemon.defense_stage > 6) enemy.pokemon.defense_stage = 6;
                         if (enemy.pokemon.defense_stage < -6) enemy.pokemon.defense_stage = -6;
-                        enemy.pokemon.current_defense = enemy.pokemon.max_defense * multipliers[enemy.pokemon.defense_stage + 6];
+                        enemy.pokemon.current_defense = (int)(enemy.pokemon.max_defense * multipliers[enemy.pokemon.defense_stage + 6]);
                         Debug.Log("Index: " + (enemy.pokemon.defense_stage + 6) + " At Index: " + multipliers[enemy.pokemon.defense_stage + 6] + " Max: " + enemy.pokemon.max_defense +
                             " Current: " + enemy.pokemon.current_defense);
-                        if (enemy.pokemon.current_defense == (double)0) enemy.pokemon.current_defense = 0.001;
+                        if (enemy.pokemon.current_defense == (double)0) enemy.pokemon.current_defense = 1;
                         break;
 
                     case "Speed":
                         enemy.pokemon.speed_stage += attack.stat_change_amount;
                         if (enemy.pokemon.speed_stage > 6) enemy.pokemon.speed_stage = 6;
                         if (enemy.pokemon.speed_stage < -6) enemy.pokemon.speed_stage = -6;
-                        enemy.pokemon.current_speed = (double)enemy.pokemon.max_speed * multipliers[enemy.pokemon.speed_stage + 6];
+                        enemy.pokemon.current_speed = (int)((double)enemy.pokemon.max_speed * multipliers[enemy.pokemon.speed_stage + 6]);
                         break;
 
                     case "Special Attack":
                         enemy.pokemon.sp_attack_stage += attack.stat_change_amount;
                         if (enemy.pokemon.sp_attack_stage > 6) enemy.pokemon.sp_attack_stage = 6;
                         if (enemy.pokemon.sp_attack_stage < -6) enemy.pokemon.sp_attack_stage = -6;
-                        enemy.pokemon.current_sp_attack = (double)enemy.pokemon.max_sp_attack * multipliers[enemy.pokemon.sp_attack_stage + 6];
+                        enemy.pokemon.current_sp_attack = (int)(enemy.pokemon.max_sp_attack * multipliers[enemy.pokemon.sp_attack_stage + 6]);
                         break;
 
                     case "Special Defense":
                         enemy.pokemon.sp_defense_stage += attack.stat_change_amount;
                         if (enemy.pokemon.sp_defense_stage > 6) enemy.pokemon.sp_defense_stage = 6;
                         if (enemy.pokemon.sp_defense_stage < -6) enemy.pokemon.sp_defense_stage = -6;
-                        enemy.pokemon.current_sp_defense = (double)enemy.pokemon.max_sp_defense * multipliers[enemy.pokemon.sp_defense_stage + 6];
+                        enemy.pokemon.current_sp_defense = (int)(enemy.pokemon.max_sp_defense * multipliers[enemy.pokemon.sp_defense_stage + 6]);
                         break;
 
                     case "Critical": //I don't know why critical is different, but I don't want to change anything now.
@@ -183,14 +183,14 @@ namespace Pokemon
                         enemy.pokemon.evasion_stage += attack.stat_change_amount;
                         if (enemy.pokemon.evasion_stage > 6) enemy.pokemon.evasion_stage = 6;
                         if (enemy.pokemon.evasion_stage < -6) enemy.pokemon.evasion_stage = -6;
-                        enemy.pokemon.current_evasion = 1 * evasionMultipliers[enemy.pokemon.evasion_stage + 6];
+                        enemy.pokemon.current_evasion = (int)(1 * evasionMultipliers[enemy.pokemon.evasion_stage + 6]);
                         break;
 
                     case "Accuracy":
                         enemy.pokemon.sp_defense_stage += attack.stat_change_amount;
                         if (enemy.pokemon.sp_defense_stage > 6) enemy.pokemon.sp_defense_stage = 6;
                         if (enemy.pokemon.sp_defense_stage < -6) enemy.pokemon.sp_defense_stage = -6;
-                        enemy.pokemon.current_accuracy = 1 * accuracyMultipliers[enemy.pokemon.accuracy_stage + 6];
+                        enemy.pokemon.current_accuracy = (int)(1 * accuracyMultipliers[enemy.pokemon.accuracy_stage + 6]);
                         break;
 
                     default:
@@ -205,36 +205,36 @@ namespace Pokemon
                         pokemon.attack_stage += attack.stat_change_amount;
                         if (pokemon.attack_stage > 6) pokemon.attack_stage = 6;
                         if (pokemon.attack_stage < -6) pokemon.attack_stage = -6;
-                        pokemon.current_attack = (double)pokemon.max_attack * multipliers[pokemon.attack_stage + 6];
+                        pokemon.current_attack = (int)(pokemon.max_attack * multipliers[pokemon.attack_stage + 6]);
                         break;
 
                     case "Defense":
                         pokemon.defense_stage += attack.stat_change_amount;
                         if (pokemon.defense_stage > 6) pokemon.defense_stage = 6;
                         if (pokemon.defense_stage < -6) pokemon.defense_stage = -6;
-                        pokemon.current_defense = (double)pokemon.max_defense * multipliers[pokemon.defense_stage + 6];
-                        if (pokemon.current_defense == 0) pokemon.current_defense = 0.01;
+                        pokemon.current_defense = (int)(pokemon.max_defense * multipliers[pokemon.defense_stage + 6]);
+                        if (pokemon.current_defense == 0) pokemon.current_defense = 1;
                         break;
 
                     case "Speed":
                         pokemon.speed_stage += attack.stat_change_amount;
                         if (pokemon.speed_stage > 6) pokemon.speed_stage = 6;
                         if (pokemon.speed_stage < -6) pokemon.speed_stage = -6;
-                        pokemon.current_speed = (double)pokemon.max_speed * multipliers[pokemon.speed_stage + 6];
+                        pokemon.current_speed = (int)(pokemon.max_speed * multipliers[pokemon.speed_stage + 6]);
                         break;
 
                     case "Special Attack":
                         pokemon.sp_attack_stage += attack.stat_change_amount;
                         if (pokemon.sp_attack_stage > 6) pokemon.sp_attack_stage = 6;
                         if (pokemon.sp_attack_stage < -6) pokemon.sp_attack_stage = -6;
-                        pokemon.current_sp_attack = (double)pokemon.max_sp_attack * multipliers[pokemon.sp_attack_stage + 6];
+                        pokemon.current_sp_attack = (int)(pokemon.max_sp_attack * multipliers[pokemon.sp_attack_stage + 6]);
                         break;
 
                     case "Special Defense":
                         pokemon.sp_defense_stage += attack.stat_change_amount;
                         if (pokemon.sp_defense_stage > 6) pokemon.sp_defense_stage = 6;
                         if (pokemon.sp_defense_stage < -6) pokemon.sp_defense_stage = -6;
-                        pokemon.current_sp_defense = (double)pokemon.max_sp_defense * multipliers[pokemon.sp_defense_stage + 6];
+                        pokemon.current_sp_defense = (int)(pokemon.max_sp_defense * multipliers[pokemon.sp_defense_stage + 6]);
                         break;
 
                     case "Critical":
@@ -245,14 +245,14 @@ namespace Pokemon
                         pokemon.evasion_stage += attack.stat_change_amount;
                         if (pokemon.evasion_stage > 6) pokemon.evasion_stage = 6;
                         if (pokemon.evasion_stage < -6) pokemon.evasion_stage = -6;
-                        pokemon.current_evasion = 1 * evasionMultipliers[pokemon.evasion_stage + 6];
+                        pokemon.current_evasion = (int)(1 * evasionMultipliers[pokemon.evasion_stage + 6]);
                         break;
 
                     case "Accuracy":
                         pokemon.sp_defense_stage += attack.stat_change_amount;
                         if (pokemon.sp_defense_stage > 6) pokemon.sp_defense_stage = 6;
                         if (pokemon.sp_defense_stage < -6) pokemon.sp_defense_stage = -6;
-                        pokemon.current_accuracy = 1 * accuracyMultipliers[pokemon.accuracy_stage + 6];
+                        pokemon.current_accuracy = (int)(1 * accuracyMultipliers[pokemon.accuracy_stage + 6]);
                         break;
 
                     default:

@@ -53,7 +53,8 @@ namespace Pokemon
     public class Pokemon
     {
         //create pokemon with specific moves, chains the 2 arg constructor
-        public Pokemon(int dexNum, int level, string move1 = null, string move2 = null, string move3 = null, string move4 = null, int current_exp = 0)
+        public Pokemon(int dexNum, int level, string move1 = null, string move2 = null, string move3 = null, string move4 = null, 
+            int current_exp = 0, int current_hp = 0, int current_attack = 0, int current_special_attack = 0, int current_defense = 0, int current_special_defense = 0, int current_speed = 0, ArrayList statuses = null)
         {
 
             this.level = level;
@@ -72,12 +73,12 @@ namespace Pokemon
             //set exp for new pokemon, default 0,
             this.lvl_speed = pokedex_entry.leveling_speed;
             this.current_exp = current_exp;
-            Debug.Log("Argurment Current EXP: " + this.current_exp);
+            //Debug.Log("Argurment Current EXP: " + this.current_exp);
             //sets: base_level_exp, current_exp if current_exp above is 0, next_level_exp
             set_exp();
 
             //grabs base and current stats, calculated from base_stats for this pokemon
-            calculate_stats();
+            calculate_stats(current_hp, current_attack, current_special_attack, current_defense, current_special_defense, current_speed);
 
             if (current_exp == 0)
             {
@@ -221,13 +222,13 @@ namespace Pokemon
 
         //current stats for the pokemon
         public int current_hp;
-        public double current_attack;
-        public double current_defense;
-        public double current_sp_attack;
-        public double current_sp_defense;
-        public double current_speed;
-        public double current_accuracy = 1;
-        public double current_evasion = 1;
+        public int current_attack;
+        public int current_defense;
+        public int current_sp_attack;
+        public int current_sp_defense;
+        public int current_speed;
+        public int current_accuracy = 1;
+        public int current_evasion = 1;
 
         //This means the maximum at this level, or full health
         public int max_hp;
@@ -278,7 +279,7 @@ namespace Pokemon
             evasion_stage = 0;
         }
 
-        public void calculate_stats()
+        public void calculate_stats(int current_hp = 0, int current_attack = 0, int current_special_attack = 0, int current_defense = 0, int current_special_defense = 0, int current_speed = 0)
         {
             //var test = Pokemon.all_base_stats[this.dexnum - 1]["HP"];
             this.base_hp = int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["HP"].ToString());
@@ -288,14 +289,29 @@ namespace Pokemon
             this.base_sp_defense = int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["Sp. Def"].ToString());
             this.base_speed = int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["Speed"].ToString());
 
+            //sets all max_stats calculated from base stats & lvl
             update_current_stats();
 
-            this.current_hp = this.max_hp;
-            this.current_attack = this.max_attack;
-            this.current_defense = this.max_defense;
-            this.current_sp_attack = this.max_sp_attack;
-            this.current_sp_defense = this.max_sp_defense;
-            this.current_speed = this.max_speed;
+            //if pokemon wasnt passed hp, default is zero
+            if(current_hp == 0)
+            {
+                this.current_hp = this.max_hp;
+                this.current_attack = this.max_attack;
+                this.current_defense = this.max_defense;
+                this.current_sp_attack = this.max_sp_attack;
+                this.current_sp_defense = this.max_sp_defense;
+                this.current_speed = this.max_speed;
+            }
+            //pokemon may have evolved so we need to pass in its current stats
+            else
+            {
+                this.current_hp = current_hp;
+                this.current_attack = current_attack;
+                this.current_defense = current_defense;
+                this.current_sp_attack = current_special_attack;
+                this.current_sp_defense = current_special_defense;
+                this.current_speed = current_speed;
+            }
         }
 
         public void print_pokemon()
@@ -471,5 +487,26 @@ namespace Pokemon
             return exp_gained;
 
         }
+        public Pokemon ask_to_evolve()
+        {
+            if (time_to_evolve)
+            {
+                //ask player for input
+                return evolve_pokemon();
+            }
+            else
+            {
+                return this;
+            }
+
+        }
+        public Pokemon evolve_pokemon()
+        {
+            //level, moves, exp, current stats, status effects
+            return new Pokemon(this.dexnum + 1, this.level, this.currentMoves[0].name, this.currentMoves[1].name, this.currentMoves[2].name, this.currentMoves[4].name, this.current_exp, 
+                this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed, this.statuses);
+
+        }
     }
+
 }

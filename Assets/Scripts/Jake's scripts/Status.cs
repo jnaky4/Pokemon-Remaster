@@ -129,7 +129,7 @@ namespace Pokemon
 
         public static void ParalyzeSpeedReduce(Unit unit)
         {
-            unit.pokemon.current_speed *= .5;
+            unit.pokemon.current_speed = (int)(unit.pokemon.current_speed * .5);
         }
 
         public static void ReduceSleep(Unit unit)
