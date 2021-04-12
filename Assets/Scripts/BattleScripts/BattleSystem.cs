@@ -738,7 +738,7 @@ namespace Pokemon
                     else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                     yield return new WaitForSeconds(2);
                     bool areYouDead = false;
-                    if (playerUnit.pokemon.statuses.Contains(Status.get_status("Burn")))
+                    if (Status.SeeIfBurned(playerUnit.pokemon))
                     {
                         playerUnit.BurnSelf();
                         StartCoroutine(Blink(playerSprite, 0.25));
@@ -1208,7 +1208,7 @@ namespace Pokemon
                 }
                 yield return new WaitForSeconds(2);
                 bool isYouDead;
-                if (enemyUnit.pokemon.statuses.Contains(Status.get_status("Burn")))
+                if (Status.SeeIfBurned(enemyUnit.pokemon))
                 {
                     enemyUnit.BurnSelf();
                     StartCoroutine(Blink(enemySprite, 0.25));
