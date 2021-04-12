@@ -124,6 +124,7 @@ namespace Pokemon
         private bool deadPokemon = false;
         private bool pWokeUp = false;
         private bool eWokeUp = false;
+        private bool cancelAttack = false;
         private int playerContinuingAttack = 0;
         private int enemyContinuingAttack = 0;
         private Moves playerMoveStorage;
@@ -471,6 +472,11 @@ namespace Pokemon
                 for (int k = 0; k < numTimesPlayer; k++)
                 {
                     yield return StartCoroutine(PlayerAttack(playerMove));
+                    if (cancelAttack)
+                    {
+                        cancelAttack = false;
+                        break;
+                    }
                     if (breakOutOfDecision) break;
                 }
 
@@ -480,6 +486,11 @@ namespace Pokemon
                     for (int k = 0; k < numTimesEnemy; k++)
                     {
                         yield return StartCoroutine(EnemyAttack(enemyMove));
+                        if (cancelAttack)
+                        {
+                            cancelAttack = false;
+                            break;
+                        }
                         if (breakOutOfDecision) break;
                     }
                 }
@@ -490,6 +501,11 @@ namespace Pokemon
                 for (int k = 0; k < numTimesEnemy; k++)
                 {
                     yield return StartCoroutine(EnemyAttack(enemyMove));
+                    if (cancelAttack)
+                    {
+                        cancelAttack = false;
+                        break;
+                    }
                     if (breakOutOfDecision) break;
                 }
                 if (!breakOutOfDecision && !deadPokemon)
@@ -498,6 +514,11 @@ namespace Pokemon
                     for (int k = 0; k < numTimesPlayer; k++)
                     {
                         yield return StartCoroutine(PlayerAttack(playerMove));
+                        if (cancelAttack)
+                        {
+                            cancelAttack = false;
+                            break;
+                        }
                         if (breakOutOfDecision) break;
                     }
                 }
@@ -510,6 +531,11 @@ namespace Pokemon
                     for (int k = 0; k < numTimesEnemy; k++)
                     {
                         yield return StartCoroutine(EnemyAttack(enemyMove));
+                        if (cancelAttack)
+                        {
+                            cancelAttack = false;
+                            break;
+                        }
                         if (breakOutOfDecision) break;
                     }
                     if (!breakOutOfDecision && !deadPokemon)
@@ -518,6 +544,11 @@ namespace Pokemon
                         for (int k = 0; k < numTimesPlayer; k++)
                         {
                             yield return StartCoroutine(PlayerAttack(playerMove));
+                            if (cancelAttack)
+                            {
+                                cancelAttack = false;
+                                break;
+                            }
                             if (breakOutOfDecision) break;
                         }
                     }
@@ -528,6 +559,11 @@ namespace Pokemon
                     for (int k = 0; k < numTimesPlayer; k++)
                     {
                         yield return StartCoroutine(PlayerAttack(playerMove));
+                        if (cancelAttack)
+                        {
+                            cancelAttack = false;
+                            break;
+                        }
                         if (breakOutOfDecision) break;
                     }
                     if (state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
@@ -536,6 +572,11 @@ namespace Pokemon
                         for (int k = 0; k < numTimesEnemy; k++)
                         {
                             yield return StartCoroutine(EnemyAttack(enemyMove));
+                            if (cancelAttack)
+                            {
+                                cancelAttack = false;
+                                break;
+                            }
                             if (breakOutOfDecision) break;
                         }
                     }
@@ -549,6 +590,11 @@ namespace Pokemon
                         for (int k = 0; k < numTimesPlayer; k++)
                         {
                             yield return StartCoroutine(PlayerAttack(playerMove));
+                            if (cancelAttack)
+                            {
+                                cancelAttack = false;
+                                break;
+                            }
                             if (breakOutOfDecision) break;
                         }
                         if (state != BattleState.CHANGEPOKEMON && !breakOutOfDecision)
@@ -557,6 +603,11 @@ namespace Pokemon
                             for (int k = 0; k < numTimesEnemy; k++)
                             {
                                 yield return StartCoroutine(EnemyAttack(enemyMove));
+                                if (cancelAttack)
+                                {
+                                    cancelAttack = false;
+                                    break;
+                                }
                                 if (breakOutOfDecision) break;
                             }
                         }
@@ -567,6 +618,11 @@ namespace Pokemon
                         for (int k = 0; k < numTimesEnemy; k++)
                         {
                             yield return StartCoroutine(EnemyAttack(enemyMove));
+                            if (cancelAttack)
+                            {
+                                cancelAttack = false;
+                                break;
+                            }
                             if (breakOutOfDecision) break;
                         }
                         if (!breakOutOfDecision && !deadPokemon)
@@ -575,6 +631,11 @@ namespace Pokemon
                             for (int k = 0; k < numTimesPlayer; k++)
                             {
                                 yield return StartCoroutine(PlayerAttack(playerMove));
+                                if (cancelAttack)
+                                {
+                                    cancelAttack = false;
+                                    break;
+                                }
                                 if (breakOutOfDecision) break;
                             }
                         }
@@ -637,6 +698,11 @@ namespace Pokemon
             for (int k = 0; k < numTimesEnemy; k++)
             {
                 yield return StartCoroutine(EnemyAttack(enemyMove));
+                if (cancelAttack)
+                {
+                    cancelAttack = false;
+                    break;
+                }
                 if (breakOutOfDecision) break;
             }
             if (breakOutOfDecision)
@@ -707,7 +773,7 @@ namespace Pokemon
                     yield return null;
                 }
                 endofanimation = false;
-
+                cancelAttack = true;
                 dialogueText.text = playerUnit.pokemon.name + " is paralyzed!";
                 yield return new WaitForSeconds(2);
                 yield break;
@@ -719,7 +785,7 @@ namespace Pokemon
                 {
                     yield return null;
                 }
-
+                cancelAttack = true;
                 dialogueText.text = playerUnit.pokemon.name + " is asleep!";
                 Status.ReduceSleep(playerUnit);
                 if (playerUnit.pokemon.sleep == 0) pWokeUp = true;
@@ -729,6 +795,7 @@ namespace Pokemon
             if (Status.SeeIfFreeze(playerUnit.pokemon))
             {
                 dialogueText.text = playerUnit.pokemon.name + " is frozen!";
+                cancelAttack = true;
                 yield return new WaitForSeconds(2);
                 yield break;
             }
@@ -852,6 +919,7 @@ namespace Pokemon
             }
             else //If your attack missed
             {
+                cancelAttack = true;
                 dialogueText.text = "Your attack missed!";
                 yield return new WaitForSeconds(2);
                 yield break;
@@ -1227,6 +1295,7 @@ namespace Pokemon
                 endofanimation = false;
 
                 dialogueText.text = enemyUnit.pokemon.name + " is paralyzed!";
+                cancelAttack = true;
                 yield return new WaitForSeconds(2);
                 yield break;
             }
@@ -1240,6 +1309,7 @@ namespace Pokemon
                 endofanimation = false;
 
                 dialogueText.text = enemyUnit.pokemon.name + " is asleep!";
+                cancelAttack = true;
                 Status.ReduceSleep(enemyUnit);
                 if (enemyUnit.pokemon.sleep == 0) eWokeUp = true;
                 yield return new WaitForSeconds(2);
@@ -1248,6 +1318,7 @@ namespace Pokemon
             if (Status.SeeIfFreeze(enemyUnit.pokemon))
             {
                 dialogueText.text = enemyUnit.pokemon.name + " is frozen!";
+                cancelAttack = true;
                 yield return new WaitForSeconds(2);
                 yield break;
             }
@@ -1352,6 +1423,7 @@ namespace Pokemon
             }
             else //If the enemy pokemon misses.
             {
+                cancelAttack = true;
                 yield return new WaitForSeconds(2);
                 dialogueText.text = "The move failed!";
                 yield return new WaitForSeconds(2);
