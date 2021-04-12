@@ -4519,6 +4519,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Crabhammer
+    clip: {fileID: 8300000, guid: 29392cfc2949e40d28c0dad29bd303b2, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   SongPlaying:
     name: 
     clip: {fileID: 0}
