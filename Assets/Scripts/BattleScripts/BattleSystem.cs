@@ -98,6 +98,10 @@ namespace Pokemon
         public Button pokemon5Button;
         public Button pokemon6Button;
 
+        public GameObject yesno;
+        public Button yesButton;
+        public Button noButton;
+
         public static bool ballsMenuOpen = false;
         public GameObject ballsMenuUI;
         public Button balls1Button;
@@ -154,6 +158,7 @@ namespace Pokemon
             attackMenuUI.SetActive(false);
             ballsMenuUI.SetActive(false);
             forgetMenuUI.SetActive(false);
+            yesno.SetActive(false);
             SetDownButtons();
             StartCoroutine(SetupBattle());
             SetBackground();
@@ -1547,7 +1552,7 @@ namespace Pokemon
             {
                 dialogueText.text = player.myName + " lost! You blacked out!";
             }
-            else if (state == BattleState.RUNAWAY) //If you ran away. TO DO: Make it so you don't automatically run away.
+            else if (state == BattleState.RUNAWAY) //If you ran away.
             {
                 dialogueText.text = "Got away safely...";
             }
@@ -1994,6 +1999,18 @@ namespace Pokemon
             StartCoroutine(ForgetMove(5, playerUnit.pokemon));
         }
 
+        public void Yes()
+        {
+            playerUnit.pokemon.want_to_evolve = true;
+            yesno.SetActive(false);
+        }
+
+        public void No()
+        {
+            playerUnit.pokemon.want_to_evolve = false;
+            yesno.SetActive(false);
+        }
+
         public IEnumerator FailRunAway()
         {
             dialogueText.text = "Can't Escape!";
@@ -2423,6 +2440,27 @@ namespace Pokemon
                     if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 3) poke.currentMoves[3] = poke.learned_move;
                     else if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 2) poke.currentMoves[2] = poke.learned_move;
                     else poke.currentMoves[1] = poke.learned_move;
+                }
+            }
+            if (poke.time_to_evolve)
+            {
+                dialogueText.text = poke.name + " is trying to evolve!";
+                yield return new WaitForSeconds(2);
+                dialogueText.text = "Do you let them?";
+                yesno.SetActive(true);
+                while (yesno.activeSelf)
+                {
+                    yield return null;
+                }
+                poke.ask_to_evolve();
+                if (poke.want_to_evolve)
+                {
+                    dialogueText.text = "Your Pokemon evolved into a " + poke.name + "!!";
+                    poke.want_to_evolve = false;
+                }
+                else
+                {
+                    dialogueText.text = "Your Pokemon will wait on evolving for now.";
                 }
             }
         }

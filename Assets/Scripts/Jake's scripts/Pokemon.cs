@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-
 /*
 Pokemon Object
     A Pokemon will be derived from a pokemon object
@@ -37,7 +36,6 @@ Pokemon Object
         EXP100: 1600000  -> this is the amount of EXP to get to lvl 100
         currentEXP: 650245
 
-
         private static ArrayList currentMoves = new ArrayList { "Slash", "Flamethrower", "Wing Attack", "Earthquake" };
         Image pokemonImage { get; set; }
         private type type1 { get; set; }
@@ -53,11 +51,9 @@ namespace Pokemon
     public class Pokemon
     {
         //create pokemon with specific moves, chains the 2 arg constructor
-        public Pokemon(int dexNum, int level, string move1 = null, string move2 = null, string move3 = null, string move4 = null, 
+        public Pokemon(int dexNum, int level, string move1 = null, string move2 = null, string move3 = null, string move4 = null,
             int current_exp = 0, int current_hp = 0, int current_attack = 0, int current_special_attack = 0, int current_defense = 0, int current_special_defense = 0, int current_speed = 0, ArrayList statuses = null)
         {
-
-
             this.level = level;
             this.dexnum = dexNum;
 
@@ -77,7 +73,6 @@ namespace Pokemon
             //Debug.Log("Argurment Current EXP: " + this.current_exp);
             //sets: base_level_exp, current_exp if current_exp above is 0, next_level_exp
             set_exp();
-
 
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats(current_hp, current_attack, current_special_attack, current_defense, current_special_defense, current_speed);
@@ -188,12 +183,15 @@ namespace Pokemon
             {150 ,"Mewtwo"},
             {151 ,"Mew"}
     };
+
         //gets loaded in once, have to call load_base_stats before creating new pokemon
         public static List<Dictionary<string, object>> all_base_stats = new List<Dictionary<string, object>>();
+
         public Dictionary<string, Moves> TM_Set = new Dictionary<string, Moves>();
 
         //basic pokemon info
         public string name;
+
         public int dexnum;
         public int level;
 
@@ -202,6 +200,7 @@ namespace Pokemon
 
         //each pokemon has up to 2 types
         public Type type1;
+
         public Type type2 = null;
 
         //list of learnable moves
@@ -209,15 +208,18 @@ namespace Pokemon
 
         //list of current moves the pokemon has
         public Moves[] currentMoves = new Moves[4];
+
         public Moves struggle = Moves.get_move("Struggle");
 
         //images of pokemon
         public string image1;
+
         public string image2;
         public string shiny_image;
 
         //used for caculating max stats
         public int iv = 30;
+
         public int base_hp;
         public int base_attack;
         public int base_defense;
@@ -227,6 +229,7 @@ namespace Pokemon
 
         //current stats for the pokemon
         public int current_hp;
+
         public int current_attack;
         public int current_defense;
         public int current_sp_attack;
@@ -237,15 +240,16 @@ namespace Pokemon
 
         //This means the maximum at this level, or full health
         public int max_hp;
+
         public int max_attack;
         public int max_defense;
         public int max_sp_attack;
         public int max_sp_defense;
         public int max_speed;
 
-
         //stages range from -6 to 6, used during damage calculation
         public int critical_stage = 0;
+
         public int attack_stage = 0;
         public int defense_stage = 0;
         public int sp_attack_stage = 0;
@@ -261,10 +265,12 @@ namespace Pokemon
 
         //used to calculate exp and evolution
         public double lvl_speed;
+
         public int base_lvl_exp;
         public int current_exp;
         public int next_lvl_exp;
         public bool time_to_evolve;
+        public bool want_to_evolve;
 
         public bool learned_new_move;
         public Moves learned_move;
@@ -298,7 +304,7 @@ namespace Pokemon
             update_current_stats();
 
             //if pokemon wasnt passed hp, default is zero
-            if(current_hp == 0)
+            if (current_hp == 0)
             {
                 this.current_hp = this.max_hp;
                 this.current_attack = this.max_attack;
@@ -334,9 +340,8 @@ namespace Pokemon
             Console.WriteLine(this.name + "s attack2 is: " + this.currentMoves[1].name);
             Console.WriteLine(this.name + "s attack3 is: " + this.currentMoves[2].name);
             Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].name);
-
-
         }
+
         //loads an image of the pokemon when created
         public void get_image_path()
         {
@@ -345,14 +350,14 @@ namespace Pokemon
             /*if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
             {*/
             //Debug.Log("Does something happen here?");
-                this.image1 = path + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
-                this.image2 = path + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
-/*            }
-            else
-            {
-                this.image1 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
-                this.image2 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
-            }*/
+            this.image1 = path + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
+            this.image2 = path + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
+            /*            }
+                        else
+                        {
+                            this.image1 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
+                            this.image2 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
+                        }*/
             //Debug.Log(image1);
             //Debug.Log(image2);
         }
@@ -374,7 +379,6 @@ namespace Pokemon
                     this.current_exp = this.base_lvl_exp;
                 }
                 //Debug.Log("AFTER SET_EXP() current_lvl_exp " + this.current_exp);
-
             }
 
             //after level 50, next level is 7500 exp from 51 to 100
@@ -387,7 +391,6 @@ namespace Pokemon
                     this.current_exp = this.base_lvl_exp;
                 }
             }
-
         }
 
         public void update_current_stats()
@@ -405,7 +408,6 @@ namespace Pokemon
 
         public Moves check_learnset()
         {
-
             this.learned_move = null;
             foreach (Learnset move in this.learnset)
             {
@@ -416,10 +418,8 @@ namespace Pokemon
                 }
             }
 
-
             return null;
         }
-
 
         public bool check_evolve()
         {
@@ -431,9 +431,7 @@ namespace Pokemon
                 }
             }
             return false;
-
         }
-
 
         //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
         public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
@@ -465,7 +463,6 @@ namespace Pokemon
                 //update stats
                 this.update_current_stats();
 
-
                 //check if learnable move
                 Moves temp_new_move = this.check_learnset();
                 if (temp_new_move != null)
@@ -486,32 +483,30 @@ namespace Pokemon
                 /*                Debug.Log("New base EXP " + this.base_lvl_exp);
                                 Debug.Log("Current EXP " + this.current_exp);
                                 Debug.Log("New Next levl EXP " + this.next_lvl_exp);*/
-
             }
 
             return exp_gained;
-
         }
+
         public Pokemon ask_to_evolve()
         {
-            if (time_to_evolve)
+            if (want_to_evolve)
             {
                 //ask player for input
+                //this.want_to_evolve = false;
                 return evolve_pokemon();
             }
             else
             {
                 return this;
             }
-
         }
+
         public Pokemon evolve_pokemon()
         {
             //level, moves, exp, current stats, status effects
-            return new Pokemon(this.dexnum + 1, this.level, this.currentMoves[0].name, this.currentMoves[1].name, this.currentMoves[2].name, this.currentMoves[4].name, this.current_exp, 
+            return new Pokemon(this.dexnum + 1, this.level, this.currentMoves[0].name, this.currentMoves[1].name, this.currentMoves[2].name, this.currentMoves[4].name, this.current_exp,
                 this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed, this.statuses);
-
         }
     }
-
 }
