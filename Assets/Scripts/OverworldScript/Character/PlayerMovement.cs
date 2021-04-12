@@ -89,7 +89,7 @@ namespace Pokemon
                     string terrain = "Grass";
                     //list of spcific completed badges
 
-                    Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain, GameController.badges_completed, GameController.badges_completed.Count);
+                    Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain);
                     GameController.opponentPokemon[0] = wild_spawn;
                     GameController.music = "Battle Wild Begin";
                     GameController.isCatchable = true;
@@ -121,8 +121,10 @@ namespace Pokemon
         }
 
         //Gets all available pokemon to spawn from dictionary, Current # gym badges, list of specific Gyms Beaten
-        private Pokemon generate_wild_pokemon(Dictionary<string, Route> route, string terrain, Dictionary<string, int> Gyms_beaten, int badges)
+        private Pokemon generate_wild_pokemon(Dictionary<string, Route> route, string terrain)
         {
+            GameController.update_level_cap();
+            int num_badges = GameController.badges_completed.Count;
             //dictionary of gyms beaten
             double sum_probability = 0;
             Dictionary<string, Route> possible_spawns = new Dictionary<string, Route>();
@@ -133,12 +135,10 @@ namespace Pokemon
             {
                 if (
                     //required badges for pokemon spawn less than or equal to current player badges
-                    (wild_spawn.Value.required_badges <= badges
+                    (wild_spawn.Value.required_badges <= num_badges)
                     ||
                     //either they have the gym required, or the pokemon spawns at any
-                    (Gyms_beaten.ContainsKey(wild_spawn.Value.gym_available.ToString())
-                    ||
-                    wild_spawn.Value.gym_available.ToString() == "any"))
+                    (GameController.badges_completed.ContainsKey(wild_spawn.Value.gym_available.ToString()) || wild_spawn.Value.gym_available.ToString() == "any")
                     &&
                     //the pokemon spawns in the specified terrain
                     terrain == wild_spawn.Value.terrain
@@ -181,7 +181,7 @@ namespace Pokemon
                     // if level_cap > pokemon_cap
                     // pokemon_level = pokemon_cap
                     // add in random_level takeaway from cap
-                    int level_cap = ((badges * 10) + 10);
+                    int level_cap = GameController.level_cap;
 
                     if (level_cap > wild_spawn.Value.cap)
                     {

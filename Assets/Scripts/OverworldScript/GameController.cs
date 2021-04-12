@@ -17,7 +17,7 @@ namespace Pokemon
         public static bool inCombat = false;
 
         //public GameObject player;
-        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Ground", 1 } };
+        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Ground", 1 },{"Fire", 1 } };
 
         public static string location = "Pallet Town";
 
@@ -91,10 +91,10 @@ namespace Pokemon
 
             //Debug.Log("CSV's have been loaded");
 
-            playerPokemon[0] = new Pokemon(4, 18, "Poison Gas", "Ember", "Tail Whip", "Bite");
-            playerPokemon[1] = new Pokemon(7, 18, "Water Gun", "Bubble", "Splash", "Crabhammer");
-            playerPokemon[2] = new Pokemon(1, 18, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
-            playerPokemon[3] = new Pokemon(25, 18, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            playerPokemon[0] = new Pokemon(5, 18, "Poison Gas", "Ember", "Tail Whip", "Bite");
+            playerPokemon[1] = new Pokemon(8, 18, "Water Gun", "Bubble", "Splash", "Crabhammer");
+            playerPokemon[2] = new Pokemon(2, 18, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
+            playerPokemon[3] = new Pokemon(26, 18, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
             playerPokemon[4] = new Pokemon(12, 18, "Sleep Powder", "Poison Powder", "Stun Spore", "Confusion");
         }
 
