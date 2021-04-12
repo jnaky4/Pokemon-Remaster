@@ -852,7 +852,7 @@ namespace Pokemon
                     {
                         dialogueText.text = "It's super effective!";
                     }
-                    else if (super < 1 && super != 0)
+                    else if (super < 1 && super != 0 && !attack.status.SeeIfStatus(attack))
                     {
                         dialogueText.text = "It's not very effective...";
                     }
@@ -1367,7 +1367,7 @@ namespace Pokemon
                     {
                         dialogueText.text = "It's super effective!";
                     }
-                    else if (super < 1 && super != 0)
+                    else if (super < 1 && super != 0 && !move.status.SeeIfStatus(move))
                     {
                         dialogueText.text = "It's not very effective...";
                     }
@@ -1524,6 +1524,8 @@ namespace Pokemon
             GameController.update_level_cap();
             if (state == BattleState.WON) //If you won
             {
+                yield return StartCoroutine(Evolve(playerUnit.pokemon));
+
                 if (GameController.isCatchable)
                 {
                     GameController.music = "Battle Victory Wild";
@@ -2444,7 +2446,11 @@ namespace Pokemon
                     else poke.currentMoves[1] = poke.learned_move;
                 }
             }
-            if (poke.time_to_evolve)
+        }
+
+        public IEnumerator Evolve(Pokemon poke)
+        {
+            if (poke.time_to_evolve && poke.current_hp > 0)
             {
                 dialogueText.text = poke.name + " is trying to evolve!";
                 yield return new WaitForSeconds(2);
