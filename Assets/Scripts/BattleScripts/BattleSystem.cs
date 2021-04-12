@@ -215,7 +215,7 @@ namespace Pokemon
             {
                 PlayerAttackAnim.Start();
                 enemyInitialStatus = false;
-                enemyStatus= true;
+                enemyStatus = true;
             }
             if (enemyStatus == true)
             {
@@ -2043,9 +2043,36 @@ namespace Pokemon
             string path = "Attack_Animations/" + status;
             AttackSprites.Clear();
             AttackSprites.Add(null);
+            float x = 0, y = 0;
+            if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
+            {
+                x = 0.30f;
+                y = 0.40f;
+            }
+            if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
+            {
+                x = 1.24f;
+                y = 1.125f;
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
+            {
+                x = -0.25f;
+                y = 0.65f;
+            }
+            if (GameController.location.CompareTo("Pallet Town") == 0 && !isPlayer)
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
 
             var sprites = Resources.LoadAll<Sprite>(path);
-            AttackSprites.AddRange(sprites);
+            foreach (var sprite in sprites)
+            {
+                Sprite s = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
+                AttackSprites.Add(s);
+            }
+
+            //AttackSprites.AddRange(sprites);
             AttackSprites.TrimExcess();
 
             if (isPlayer)
