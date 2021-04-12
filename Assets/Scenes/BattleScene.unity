@@ -214,7 +214,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 101}
   m_LocalScale: {x: 0.022222225, y: 0.022222225, z: 0.022222225}
   m_Children:
-  - {fileID: 790710631}
   - {fileID: 1187142709}
   - {fileID: 837277166}
   - {fileID: 1635025313}
@@ -223,7 +222,7 @@ RectTransform:
   - {fileID: 563169329}
   - {fileID: 1092187549}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2052,7 +2051,7 @@ RectTransform:
   m_Children:
   - {fileID: 1149512577}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -4908,11 +4907,11 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790710630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 4.8000007, y: 4.8000007, z: 1}
   m_Children: []
-  m_Father: {fileID: 4750897}
+  m_Father: {fileID: 1622045321}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -5311,7 +5310,7 @@ RectTransform:
   m_Children:
   - {fileID: 1776350089}
   m_Father: {fileID: 4750897}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6003,7 +6002,7 @@ RectTransform:
   m_Children:
   - {fileID: 98133949}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7139,7 +7138,7 @@ RectTransform:
   m_Children:
   - {fileID: 629524540}
   m_Father: {fileID: 4750897}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7830,7 +7829,7 @@ RectTransform:
   m_Children:
   - {fileID: 1468214496}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9019,7 +9018,7 @@ RectTransform:
   - {fileID: 204469171}
   - {fileID: 1556178232}
   m_Father: {fileID: 4750897}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9076,60 +9075,160 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441ad06eed388fb47a0d84c0e4fa159c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yourName: {fileID: 117963324}
-  level: {fileID: 204469172}
-  hpSlider: {fileID: 992536387}
-  expSlider: {fileID: 1640025739}
   currentHP: {fileID: 268788843}
+  expSlider: {fileID: 1640025739}
+  forget1: {fileID: 1698735840}
+  forget1Button: {fileID: 675811873}
+  forget1type: {fileID: 690478703}
+  forget2: {fileID: 829028387}
+  forget2Button: {fileID: 892206266}
+  forget2type: {fileID: 1658147636}
+  forget3: {fileID: 1540714541}
+  forget3Button: {fileID: 513669189}
+  forget3type: {fileID: 2097596539}
+  forget4: {fileID: 1073549963}
+  forget4Button: {fileID: 756134836}
+  forget4type: {fileID: 304998429}
+  forget5: {fileID: 1879286488}
+  forget5Button: {fileID: 1431441339}
+  forget5type: {fileID: 1811286475}
+  greatBalls: {fileID: 1673206588}
+  hpSlider: {fileID: 992536387}
+  level: {fileID: 204469172}
+  masterBalls: {fileID: 1463842889}
+  move1Button: {fileID: 1215127395}
+  move1type: {fileID: 496202119}
+  move2Button: {fileID: 2086950924}
+  move2type: {fileID: 151008171}
+  move3Button: {fileID: 714292608}
+  move3type: {fileID: 1641177823}
+  move4Button: {fileID: 1957132885}
+  move4type: {fileID: 708819224}
   moves1: {fileID: 908963729}
   moves2: {fileID: 1030857809}
   moves3: {fileID: 1405235797}
   moves4: {fileID: 745533984}
-  forget1: {fileID: 1698735840}
-  forget2: {fileID: 829028387}
-  forget3: {fileID: 1540714541}
-  forget4: {fileID: 1073549963}
-  forget5: {fileID: 1879286488}
-  forget1type: {fileID: 690478703}
-  forget2type: {fileID: 1658147636}
-  forget3type: {fileID: 2097596539}
-  forget4type: {fileID: 304998429}
-  forget5type: {fileID: 1811286475}
-  forget1Button: {fileID: 675811873}
-  forget2Button: {fileID: 892206266}
-  forget3Button: {fileID: 513669189}
-  forget4Button: {fileID: 756134836}
-  forget5Button: {fileID: 1431441339}
-  move1Button: {fileID: 1215127395}
-  move2Button: {fileID: 2086950924}
-  move3Button: {fileID: 714292608}
-  move4Button: {fileID: 1957132885}
-  pokemon1Image: {fileID: 386034040}
-  pokemon2Image: {fileID: 1462070215}
-  pokemon3Image: {fileID: 1640955177}
-  pokemon4Image: {fileID: 775958618}
-  pokemon5Image: {fileID: 90688552}
-  pokemon6Image: {fileID: 1091199562}
-  move1type: {fileID: 496202119}
-  move2type: {fileID: 151008171}
-  move3type: {fileID: 1641177823}
-  move4type: {fileID: 708819224}
-  pokeBalls: {fileID: 944121297}
-  greatBalls: {fileID: 1673206588}
-  ultraBalls: {fileID: 1742276303}
-  masterBalls: {fileID: 1463842889}
-  pokemon1: {fileID: 1257711997}
-  pokemon2: {fileID: 334630463}
-  pokemon3: {fileID: 1632095872}
-  pokemon4: {fileID: 697412878}
-  pokemon5: {fileID: 1881530171}
-  pokemon6: {fileID: 366157864}
   poke1: {fileID: 929338213}
   poke2: {fileID: 858733088}
   poke3: {fileID: 43255955}
   poke4: {fileID: 512357008}
   poke5: {fileID: 1189065145}
   poke6: {fileID: 820113795}
+  pokeBalls: {fileID: 944121297}
+  pokemon1: {fileID: 1257711997}
+  pokemon1Image: {fileID: 386034040}
+  pokemon2: {fileID: 334630463}
+  pokemon2Image: {fileID: 1462070215}
+  pokemon3: {fileID: 1632095872}
+  pokemon3Image: {fileID: 1640955177}
+  pokemon4: {fileID: 697412878}
+  pokemon4Image: {fileID: 775958618}
+  pokemon5: {fileID: 1881530171}
+  pokemon5Image: {fileID: 90688552}
+  pokemon6: {fileID: 366157864}
+  pokemon6Image: {fileID: 1091199562}
+  ultraBalls: {fileID: 1742276303}
+  yourName: {fileID: 117963324}
+--- !u!1 &1622045320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1622045321}
+  - component: {fileID: 1622045324}
+  - component: {fileID: 1622045323}
+  - component: {fileID: 1622045322}
+  m_Layer: 5
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1622045321
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622045320}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 790710631}
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!114 &1622045322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622045320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!114 &1622045323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622045320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!223 &1622045324
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1622045320}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 1
+  m_Camera: {fileID: 18818881}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: -1
+  m_TargetDisplay: 0
 --- !u!1 &1632095870
 GameObject:
   m_ObjectHideFlags: 0
@@ -9244,7 +9343,7 @@ RectTransform:
   - {fileID: 734411452}
   - {fileID: 450295121}
   m_Father: {fileID: 4750897}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9263,60 +9362,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 441ad06eed388fb47a0d84c0e4fa159c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  yourName: {fileID: 121106043}
-  level: {fileID: 128745253}
-  hpSlider: {fileID: 2131004685}
-  expSlider: {fileID: 450295122}
   currentHP: {fileID: 238529977}
+  expSlider: {fileID: 450295122}
+  forget1: {fileID: 0}
+  forget1Button: {fileID: 0}
+  forget1type: {fileID: 0}
+  forget2: {fileID: 0}
+  forget2Button: {fileID: 0}
+  forget2type: {fileID: 0}
+  forget3: {fileID: 0}
+  forget3Button: {fileID: 0}
+  forget3type: {fileID: 0}
+  forget4: {fileID: 0}
+  forget4Button: {fileID: 0}
+  forget4type: {fileID: 0}
+  forget5: {fileID: 0}
+  forget5Button: {fileID: 0}
+  forget5type: {fileID: 0}
+  greatBalls: {fileID: 0}
+  hpSlider: {fileID: 2131004685}
+  level: {fileID: 128745253}
+  masterBalls: {fileID: 0}
+  move1Button: {fileID: 0}
+  move1type: {fileID: 0}
+  move2Button: {fileID: 0}
+  move2type: {fileID: 0}
+  move3Button: {fileID: 0}
+  move3type: {fileID: 0}
+  move4Button: {fileID: 0}
+  move4type: {fileID: 0}
   moves1: {fileID: 0}
   moves2: {fileID: 0}
   moves3: {fileID: 0}
   moves4: {fileID: 0}
-  forget1: {fileID: 0}
-  forget2: {fileID: 0}
-  forget3: {fileID: 0}
-  forget4: {fileID: 0}
-  forget5: {fileID: 0}
-  forget1type: {fileID: 0}
-  forget2type: {fileID: 0}
-  forget3type: {fileID: 0}
-  forget4type: {fileID: 0}
-  forget5type: {fileID: 0}
-  forget1Button: {fileID: 0}
-  forget2Button: {fileID: 0}
-  forget3Button: {fileID: 0}
-  forget4Button: {fileID: 0}
-  forget5Button: {fileID: 0}
-  move1Button: {fileID: 0}
-  move2Button: {fileID: 0}
-  move3Button: {fileID: 0}
-  move4Button: {fileID: 0}
-  pokemon1Image: {fileID: 0}
-  pokemon2Image: {fileID: 0}
-  pokemon3Image: {fileID: 0}
-  pokemon4Image: {fileID: 0}
-  pokemon5Image: {fileID: 0}
-  pokemon6Image: {fileID: 0}
-  move1type: {fileID: 0}
-  move2type: {fileID: 0}
-  move3type: {fileID: 0}
-  move4type: {fileID: 0}
-  pokeBalls: {fileID: 0}
-  greatBalls: {fileID: 0}
-  ultraBalls: {fileID: 0}
-  masterBalls: {fileID: 0}
-  pokemon1: {fileID: 0}
-  pokemon2: {fileID: 0}
-  pokemon3: {fileID: 0}
-  pokemon4: {fileID: 0}
-  pokemon5: {fileID: 0}
-  pokemon6: {fileID: 0}
   poke1: {fileID: 0}
   poke2: {fileID: 0}
   poke3: {fileID: 0}
   poke4: {fileID: 0}
   poke5: {fileID: 0}
   poke6: {fileID: 0}
+  pokeBalls: {fileID: 0}
+  pokemon1: {fileID: 0}
+  pokemon1Image: {fileID: 0}
+  pokemon2: {fileID: 0}
+  pokemon2Image: {fileID: 0}
+  pokemon3: {fileID: 0}
+  pokemon3Image: {fileID: 0}
+  pokemon4: {fileID: 0}
+  pokemon4Image: {fileID: 0}
+  pokemon5: {fileID: 0}
+  pokemon5Image: {fileID: 0}
+  pokemon6: {fileID: 0}
+  pokemon6Image: {fileID: 0}
+  ultraBalls: {fileID: 0}
+  yourName: {fileID: 121106043}
 --- !u!114 &1635025315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11086,7 +11185,7 @@ RectTransform:
   m_Children:
   - {fileID: 157712767}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}

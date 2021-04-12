@@ -695,6 +695,7 @@ namespace Pokemon
             if (pWokeUp)
             {
                 dialogueText.text = playerUnit.pokemon.name + " woke up!";
+                yield return new WaitForSeconds(2);
                 pWokeUp = false;
             }
 
@@ -752,7 +753,8 @@ namespace Pokemon
                 Debug.Log(playerUnit.damage);
 
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
-                StartCoroutine(Blink(enemySprite, 0.25));
+                if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
+                else StartCoroutine(Blink(enemySprite, 0.25));
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
                 //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                 enemyHUD.SetStatus(enemyUnit.pokemon);
@@ -788,11 +790,11 @@ namespace Pokemon
                     }
                     else if (attack.status.SeeIfStatus(attack) && enemyUnit.pokemon.statuses.Contains(attack.status.name))
                     {
-                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " is already " + attack.status.adj;
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " is already " + attack.status.adj + "!";
                     }
-                    else if (enemyUnit.pokemon.statuses.Contains(attack.status.name))
+                    else if (attack.status.SeeIfStatus(attack))
                     {
-                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj;
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj + "!";
                     }
                     else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                     yield return new WaitForSeconds(2);
@@ -834,7 +836,18 @@ namespace Pokemon
                         yield return StartCoroutine(EnemyKillsYou(areYouDead));
                     }
                 }
-
+                else
+                {
+                    if (attack.status.SeeIfStatus(attack) && enemyUnit.pokemon.statuses.Contains(attack.status.name))
+                    {
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " is already " + attack.status.adj;
+                    }
+                    else if (attack.status.SeeIfStatus(attack))
+                    {
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj;
+                    }
+                    yield return new WaitForSeconds(2);
+                }
                 yield return StartCoroutine(YouKilledThem(isDead));
             }
             else //If your attack missed
@@ -1200,6 +1213,7 @@ namespace Pokemon
             if (eWokeUp)
             {
                 dialogueText.text = enemyUnit.pokemon.name + " woke up!";
+                yield return new WaitForSeconds(2);
                 eWokeUp = false;
             }
 
@@ -1256,7 +1270,8 @@ namespace Pokemon
                 if (!move.status.Equals("null")) Status.SeeIfStatusEffect(move, playerUnit);
                 double super = Utility.DoDamage(enemyUnit, playerUnit, move, crit);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage); //Forgot to comment this earlier, but this is where the damage actually gets applied.
-                StartCoroutine(Blink(playerSprite, 0.25));
+                if (move.base_power <= 0) StartCoroutine(ShakeLeftRight());
+                else StartCoroutine(Blink(playerSprite, 0.25));
                 //Debug.Log(enemyUnit.damage.ToString());
 
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
@@ -1283,7 +1298,7 @@ namespace Pokemon
                     {
                         dialogueText.text = "Your " + playerUnit.pokemon.name + " is already " + move.status.adj + "!";
                     }
-                    else if (playerUnit.pokemon.statuses.Contains(move.status.name))
+                    else if (move.status.SeeIfStatus(move))
                     {
                         dialogueText.text = "Your " + playerUnit.pokemon.name + " became " + move.status.adj + "!";
                     }
@@ -2051,7 +2066,7 @@ namespace Pokemon
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-                x = 1.24f;
+                x = 1.30f;
                 y = 1.125f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
@@ -2153,7 +2168,7 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 1.24f;
+                x = 1.30f;
                 y = 1.125f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
@@ -2217,8 +2232,8 @@ namespace Pokemon
 
             for (int i = 0; i < numTimes * 2; i++)
             {
-                if (i % 2 == 0) ShakeLeft(pos);
-                else ShakeRight(pos);
+                //if (i % 2 == 0) ShakeLeft(pos);
+                //else ShakeRight(pos);
                 if (visible)
                 {
                     sprite.color = new Color(sprite.color.r, sprite.color.g, sprite.color.b, 0);
@@ -2269,14 +2284,18 @@ namespace Pokemon
             camera.transform.position = pos + new Vector3(UnityEngine.Random.insideUnitSphere.x, 0) * 1;
         }
 
-        public void ShakeLeftRight(Vector3 pos)
+        public IEnumerator ShakeLeftRight()
         {
+            var pos = camera.transform.position;
+            float x = 0.25f / 2f;
             var numTimes = 2;
             for (int i = 0; i < numTimes * 2; i++)
             {
                 if (i % 2 == 0) ShakeLeft(pos);
                 else ShakeRight(pos);
+                yield return new WaitForSeconds((float)x);
             }
+            StopShake(pos);
         }
 
         public IEnumerator SlideInLeft(SpriteRenderer sprite)
