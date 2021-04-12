@@ -54,7 +54,7 @@ namespace Pokemon
 
             character.HandleUpdate();
 
-            if (Input.GetKeyDown(KeyCode.Z))
+            if (Input.GetKeyDown(KeyCode.Z) && !GameController.inCombat)
                 Interact();
         }
 
