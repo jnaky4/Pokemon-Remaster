@@ -813,7 +813,8 @@ namespace Pokemon
             if (num <= (attack.accuracy * playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion)) //If the attack hits
             {
                 playerInitialAttack = true;
-                GameController.soundFX = attack.name;
+                if (attack.name == "Growl") GameController.soundFX = playerUnit.pokemon.dexnum.ToString();
+                else GameController.soundFX = attack.name;
                 while (!endofanimation)
                 {
                     yield return null;
@@ -1338,7 +1339,8 @@ namespace Pokemon
             {
                 yield return new WaitForSeconds(0.75f);
                 enemyInitialAttack = true;
-                GameController.soundFX = move.name;
+                if (move.name == "Growl") GameController.soundFX = enemyUnit.pokemon.dexnum.ToString();
+                else GameController.soundFX = move.name;
                 while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
