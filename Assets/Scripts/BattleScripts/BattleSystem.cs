@@ -773,6 +773,7 @@ namespace Pokemon
             if (Status.SeeIfParalyzed(playerUnit.pokemon))
             {
                 AnimateStatus("Paralysis", true);
+                GameController.soundFX = "Thunder Wave1";
                 while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
@@ -786,6 +787,7 @@ namespace Pokemon
             if (Status.SeeIfSleep(playerUnit.pokemon))
             {
                 AnimateStatus("Sleep", true);
+                GameController.soundFX = "Sleeping";
                 while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
@@ -877,6 +879,7 @@ namespace Pokemon
                     if (Status.SeeIfBurned(playerUnit.pokemon))
                     {
                         AnimateStatus("Burn", true);
+                        GameController.soundFX = "Ember";
                         while (!endofanimation) //Animation shit, ask levi
                         {
                             yield return null;
@@ -895,6 +898,7 @@ namespace Pokemon
                     if (Status.SeeIfPoisoned(playerUnit.pokemon))
                     {
                         AnimateStatus("Poison", true);
+                        GameController.soundFX = "Poisoned";
                         while (!endofanimation) //Animation shit, ask levi
                         {
                             yield return null;
@@ -1296,6 +1300,7 @@ namespace Pokemon
             if (Status.SeeIfParalyzed(enemyUnit.pokemon))
             {
                 AnimateStatus("Paralysis", false);
+                GameController.soundFX = "Thunder Wave1";
                 while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
@@ -1310,6 +1315,7 @@ namespace Pokemon
             if (Status.SeeIfSleep(enemyUnit.pokemon))
             {
                 AnimateStatus("Sleep", false);
+                GameController.soundFX = "Sleeping";
                 while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
@@ -1395,6 +1401,7 @@ namespace Pokemon
                 if (Status.SeeIfBurned(enemyUnit.pokemon))
                 {
                     AnimateStatus("Burn", false);
+                    GameController.soundFX = "Ember";
                     while (!endofanimation) //Animation shit, ask levi
                     {
                         yield return null;
@@ -1414,6 +1421,7 @@ namespace Pokemon
                 if (Status.SeeIfPoisoned(enemyUnit.pokemon))
                 {
                     AnimateStatus("Poison", false);
+                    GameController.soundFX = "Poisoned";
                     while (!endofanimation) //Animation shit, ask levi
                     {
                         yield return null;
