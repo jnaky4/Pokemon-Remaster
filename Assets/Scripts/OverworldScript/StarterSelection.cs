@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Pokemon
 {
@@ -8,6 +9,7 @@ namespace Pokemon
     {
         [SerializeField] Dialog dialog;
         [SerializeField] new string name;
+        [SerializeField] int dexNum;
         [SerializeField] GameObject buttons;
 
         public void Interact(Transform initial)
@@ -15,7 +17,14 @@ namespace Pokemon
             StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
             {
                 buttons.SetActive(true);
+                chooseStarter();
             }));
+        }
+
+        public void chooseStarter()
+        {
+            var starter = GetComponentInParent<StarterButtons>();
+            starter.name = name;
         }
     }
 }
