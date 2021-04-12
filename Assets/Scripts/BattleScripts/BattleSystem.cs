@@ -1501,7 +1501,7 @@ namespace Pokemon
                     GameController.playerPokemon[i].current_sp_attack = GameController.playerPokemon[i].max_sp_attack;
                     GameController.playerPokemon[i].current_sp_defense = GameController.playerPokemon[i].max_sp_defense;
                     if (!Status.SeeIfParalyzed(GameController.playerPokemon[i])) GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed;
-                    else GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed * 0.5;
+                    else GameController.playerPokemon[i].current_speed = (int)(GameController.playerPokemon[i].max_speed * 0.5);
                     GameController.playerPokemon[i].current_accuracy = 1;
                     GameController.playerPokemon[i].current_evasion = 1;
                     GameController.player.pokeBalls = player.numPokeBalls;
