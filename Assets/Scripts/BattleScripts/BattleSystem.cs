@@ -913,11 +913,11 @@ namespace Pokemon
                 {
                     if (attack.status.SeeIfStatus(attack) && enemyUnit.pokemon.statuses.Contains(attack.status.name))
                     {
-                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " is already " + attack.status.adj;
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " is already " + attack.status.adj + "!";
                     }
                     else if (attack.status.SeeIfStatus(attack))
                     {
-                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj;
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj + "!";
                     }
                     yield return new WaitForSeconds(2);
                 }
@@ -2154,7 +2154,7 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 0.30f;
+                x = 0.40f;
                 y = 0.40f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
@@ -2266,7 +2266,7 @@ namespace Pokemon
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-                x = 0.30f;
+                x = 0.40f;
                 y = 0.40f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
