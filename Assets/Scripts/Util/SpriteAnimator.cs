@@ -10,6 +10,8 @@ public class SpriteAnimator
     int currentFrame;
     float timer;
 
+
+    //previous was 0.16f
     public SpriteAnimator(List<Sprite> frames, SpriteRenderer spriteRenderer, float frameRate = 0.16f)
     {
         this.frames = frames;

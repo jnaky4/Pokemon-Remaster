@@ -141,8 +141,8 @@ namespace Pokemon
         /// </summary>
         private void Start()
         {
-            PlayerAttackAnim = new SpriteAnimator(AttackSprites, playerAttackSprite, 0.07f);
-            EnemyAttackAnim = new SpriteAnimator(AttackSprites, enemyAttackSprite, 0.07f);
+            PlayerAttackAnim = new SpriteAnimator(AttackSprites, playerAttackSprite, 0.04f);
+            EnemyAttackAnim = new SpriteAnimator(AttackSprites, enemyAttackSprite, 0.04f);
 
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
