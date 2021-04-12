@@ -91,7 +91,7 @@ namespace Pokemon
 
             //Debug.Log("CSV's have been loaded");
 
-            playerPokemon[0] = new Pokemon(4, 18, "Fury Attack", "Ember", "Tail Whip", "Quick Attack");
+            playerPokemon[0] = new Pokemon(4, 18, "Poison Gas", "Ember", "Tail Whip", "Quick Attack");
             playerPokemon[1] = new Pokemon(7, 18, "Water Gun", "Bubble", "Splash", "Crabhammer");
             playerPokemon[2] = new Pokemon(1, 18, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
             playerPokemon[3] = new Pokemon(25, 18, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");

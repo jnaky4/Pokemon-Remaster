@@ -40,9 +40,13 @@ namespace Pokemon
         private SpriteAnimator EnemyAttackAnim;
         private bool playerAttack;
         private bool playerInitialAttack;
+        private bool playerInitialStatus;
+        private bool playerStatus;
         private bool endofanimation;
         private bool enemyAttack;
         private bool enemyInitialAttack;
+        private bool enemyInitialStatus;
+        private bool enemyStatus;
         private bool beginCatch;
         private bool playCatch;
         private string playerMoveName;
@@ -204,6 +208,48 @@ namespace Pokemon
                     endofanimation = true;
                     if (state == BattleState.CAUGHTPOKEMON) { DisplayPokeball(); }
                     else MakeSpriteVisible(enemySprite);
+                }
+            }
+
+            if (enemyInitialStatus == true)
+            {
+                PlayerAttackAnim.Start();
+                enemyInitialStatus = false;
+                enemyStatus= true;
+            }
+            if (enemyStatus == true)
+            {
+                if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
+                {
+                    PlayerAttackAnim.HandleUpdate();
+                }
+                else
+                {
+                    //Debug.Log("End Animation now");
+                    PlayerAttackAnim.EndAnimation();
+                    enemyStatus = false;
+                    endofanimation = true;
+                }
+            }
+
+            if (playerInitialStatus == true)
+            {
+                EnemyAttackAnim.Start();
+                playerInitialStatus = false;
+                playerStatus = true;
+            }
+            if (playerStatus == true)
+            {
+                if (EnemyAttackAnim.CurrentFrame < EnemyAttackAnim.Frames.Count - 1)
+                {
+                    EnemyAttackAnim.HandleUpdate();
+                }
+                else
+                {
+                    //Debug.Log("End Animation now");
+                    EnemyAttackAnim.EndAnimation();
+                    playerStatus = false;
+                    endofanimation = true;
                 }
             }
 
@@ -654,12 +700,25 @@ namespace Pokemon
 
             if (Status.SeeIfParalyzed(playerUnit.pokemon))
             {
+                AnimateStatus("Paralysis", true);
+                while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+
                 dialogueText.text = playerUnit.pokemon.name + " is paralyzed!";
                 yield return new WaitForSeconds(2);
                 yield break;
             }
             if (Status.SeeIfSleep(playerUnit.pokemon))
             {
+                AnimateStatus("Sleep", true);
+                while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+
                 dialogueText.text = playerUnit.pokemon.name + " is asleep!";
                 Status.ReduceSleep(playerUnit);
                 if (playerUnit.pokemon.sleep == 0) pWokeUp = true;
@@ -740,6 +799,13 @@ namespace Pokemon
                     bool areYouDead = false;
                     if (Status.SeeIfBurned(playerUnit.pokemon))
                     {
+                        AnimateStatus("Burn", true);
+                        while (!endofanimation) //Animation shit, ask levi
+                        {
+                            yield return null;
+                        }
+                        endofanimation = false;
+
                         playerUnit.BurnSelf();
                         StartCoroutine(Blink(playerSprite, 0.25));
                         playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
@@ -751,6 +817,13 @@ namespace Pokemon
                     }
                     if (Status.SeeIfPoisoned(playerUnit.pokemon))
                     {
+                        AnimateStatus("Poison", true);
+                        while (!endofanimation) //Animation shit, ask levi
+                        {
+                            yield return null;
+                        }
+                        endofanimation = false;
+
                         playerUnit.PoisonSelf();
                         StartCoroutine(Blink(playerSprite, 0.25));
                         playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
@@ -1132,12 +1205,26 @@ namespace Pokemon
 
             if (Status.SeeIfParalyzed(enemyUnit.pokemon))
             {
+                AnimateStatus("Paralysis", false);
+                while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+
                 dialogueText.text = enemyUnit.pokemon.name + " is paralyzed!";
                 yield return new WaitForSeconds(2);
                 yield break;
             }
             if (Status.SeeIfSleep(enemyUnit.pokemon))
             {
+                AnimateStatus("Sleep", false);
+                while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+
                 dialogueText.text = enemyUnit.pokemon.name + " is asleep!";
                 Status.ReduceSleep(enemyUnit);
                 if (enemyUnit.pokemon.sleep == 0) eWokeUp = true;
@@ -1210,6 +1297,13 @@ namespace Pokemon
                 bool isYouDead;
                 if (Status.SeeIfBurned(enemyUnit.pokemon))
                 {
+                    AnimateStatus("Burn", false);
+                    while (!endofanimation) //Animation shit, ask levi
+                    {
+                        yield return null;
+                    }
+                    endofanimation = false;
+
                     enemyUnit.BurnSelf();
                     StartCoroutine(Blink(enemySprite, 0.25));
                     enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
@@ -1222,6 +1316,13 @@ namespace Pokemon
 
                 if (Status.SeeIfPoisoned(enemyUnit.pokemon))
                 {
+                    AnimateStatus("Poison", false);
+                    while (!endofanimation) //Animation shit, ask levi
+                    {
+                        yield return null;
+                    }
+                    endofanimation = false;
+
                     enemyUnit.PoisonSelf();
                     StartCoroutine(Blink(enemySprite, 0.25));
                     enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
@@ -1935,6 +2036,22 @@ namespace Pokemon
             SpriteTexture.LoadImage(fileData);
             enemySprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
             enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1);
+        }
+
+        public void AnimateStatus(string status, bool isPlayer)
+        {
+            string path = "Attack_Animations/" + status;
+            AttackSprites.Clear();
+            AttackSprites.Add(null);
+
+            var sprites = Resources.LoadAll<Sprite>(path);
+            AttackSprites.AddRange(sprites);
+            AttackSprites.TrimExcess();
+
+            if (isPlayer)
+                playerInitialStatus = true;
+            else
+                enemyInitialStatus = true;
         }
 
         public void PokeballShakes(int shakes)
