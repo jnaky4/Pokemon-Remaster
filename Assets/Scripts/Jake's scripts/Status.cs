@@ -224,8 +224,8 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Fire")) break;
-                            if (unit.pokemon.type2.Equals("Fire")) break;
+                            if (unit.pokemon.type1.type.Equals("Fire")) break;
+                            if (unit.pokemon.type2.type.Equals("Fire")) break;
                         }
                         catch (NullReferenceException ex)
                         {
@@ -244,8 +244,8 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Electric")) break;
-                            if (unit.pokemon.type2.Equals("Electric")) break;
+                            if (unit.pokemon.type1.type.Equals("Electric")) break;
+                            if (unit.pokemon.type2.type.Equals("Electric")) break;
                         }
                         catch (NullReferenceException ex)
                         {
@@ -265,8 +265,8 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Poison")) break;
-                            if (unit.pokemon.type2.Equals("Poison")) break;
+                            if (unit.pokemon.type1.type.Equals("Poison")) break;
+                            if (unit.pokemon.type2.type.Equals("Poison")) break;
                         }
                         catch (NullReferenceException ex)
                         {
@@ -294,8 +294,8 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.Equals("Ice")) break;
-                            if (unit.pokemon.type2.Equals("Ice")) break;
+                            if (unit.pokemon.type1.type.Equals("Ice")) break;
+                            if (unit.pokemon.type2.type.Equals("Ice")) break;
                         }
                         catch (NullReferenceException ex)
                         {
