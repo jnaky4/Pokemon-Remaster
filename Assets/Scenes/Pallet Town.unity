@@ -2581,7 +2581,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: AcidArmor
+  - name: Acid Armor
     clip: {fileID: 8300000, guid: e276e9092047e4cc9890c872fba394d6, type: 3}
     volume: 1
     pitch: 1
@@ -2599,31 +2599,31 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: AuroraBeam
+  - name: Aurora Beam
     clip: {fileID: 8300000, guid: cd0dab11383b44eb399fc924ae375935, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: AuroraBeam1
+  - name: Aurora Beam1
     clip: {fileID: 8300000, guid: 74db424a0903d443f95da2673d98915b, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: AuroraBeam2
+  - name: Aurora Beam2
     clip: {fileID: 8300000, guid: 1925d699b50ad4eac82fb4fdbaddc3b4, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: AuroraBeam3
+  - name: Aurora Beam3
     clip: {fileID: 8300000, guid: 9d6a8d3eff2b74f0f95d0529184cc6a3, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: AuroraBeam4
+  - name: Aurora Beam4
     clip: {fileID: 8300000, guid: 77ff536d87c2940b1bc0fa1bc1795ba4, type: 3}
     volume: 1
     pitch: 1
@@ -2647,7 +2647,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BarrageDirect
+  - name: Barrage Direct
     clip: {fileID: 8300000, guid: 23f798a19b0ce447c8e770488785c32f, type: 3}
     volume: 1
     pitch: 1
@@ -2659,13 +2659,13 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BarrierDelay
+  - name: Barrier Delay
     clip: {fileID: 8300000, guid: 3097328b14c624f8d8715c5fe4a0a317, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BarrierSingle
+  - name: Barrier Single
     clip: {fileID: 8300000, guid: 04eade85467a44798931ea171726c242, type: 3}
     volume: 1
     pitch: 1
@@ -2707,19 +2707,19 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BlizzardDirect
+  - name: Blizzard Direct
     clip: {fileID: 8300000, guid: ec205735e9b824d578495ab9e5674947, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BodySlam
+  - name: Body Slam
     clip: {fileID: 8300000, guid: 9f8f3dbbd779b48bf93771c3ae4097e3, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BoneClub
+  - name: Bone Club
     clip: {fileID: 8300000, guid: 9361063ff0a8444f48316aab77603400, type: 3}
     volume: 1
     pitch: 1
@@ -2749,31 +2749,31 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BubbleBeam
+  - name: Bubble Beam
     clip: {fileID: 8300000, guid: 925594f25c24748bf933ddb0da7f0dee, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BubbleBeam1
+  - name: Bubble Beam1
     clip: {fileID: 8300000, guid: cda0f5b04fab54d178806228ed8ed041, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BubbleBeam2
+  - name: Bubble Beam2
     clip: {fileID: 8300000, guid: a817b0696821e4183a0f913c0d662972, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BubbleBeam3
+  - name: Bubble Beam3
     clip: {fileID: 8300000, guid: b312b2ac424c94905ad9fcca55d9a7e5, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: BubbleBeamDirect
+  - name: Bubble Beam Direct
     clip: {fileID: 8300000, guid: f6ab67ee390e74298ab97b8649a1a702, type: 3}
     volume: 1
     pitch: 1
@@ -2785,19 +2785,19 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: CometPunch
+  - name: Comet Punch
     clip: {fileID: 8300000, guid: 8e9c1bdb9b2544f17985037131ac2989, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: CometPunchDelay
+  - name: Comet Punch Delay
     clip: {fileID: 8300000, guid: c904baba882ef4c32b3852615bbf5255, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: CometPunchSingle
+  - name: Comet Punch Single
     clip: {fileID: 8300000, guid: 27b659a9301d24c87ad702e235fb4fcd, type: 3}
     volume: 1
     pitch: 1
@@ -2815,7 +2815,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: ConfuseRay
+  - name: Confuse Ray
     clip: {fileID: 8300000, guid: 6a100ec9903254b18a7602b43e6c6415, type: 3}
     volume: 1
     pitch: 1
@@ -2863,7 +2863,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DefenseCurl
+  - name: Defense Curl
     clip: {fileID: 8300000, guid: b7c12be3b209b4a85bfea7b0b086a8b5, type: 3}
     volume: 1
     pitch: 1
@@ -2881,91 +2881,91 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DizzyPunch
+  - name: Dizzy Punch
     clip: {fileID: 8300000, guid: 6bcd80257b25f4a36abd79cac2240150, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DizzyPunch1Single
+  - name: Dizzy Punch1Single
     clip: {fileID: 8300000, guid: b5cf25fefb76f4f21997532f3500f55d, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DizzyPunch2
+  - name: Dizzy Punch2
     clip: {fileID: 8300000, guid: 41aa89a45621e461399b24e17bc2a09b, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DoubleEdge
+  - name: Double Edge
     clip: {fileID: 8300000, guid: 9dfe24e00396c488ca4a317e4895b592, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DoubleKick
+  - name: Double Kick
     clip: {fileID: 8300000, guid: 19fed9880b4544b9f926f6c426d4ebd9, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DoubleSlap
+  - name: Double Slap
     clip: {fileID: 8300000, guid: 42deeb729892a4d168bc8ac5c7f71c2a, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DoubleTeam
+  - name: Double Team
     clip: {fileID: 8300000, guid: 8de45e00ce2c346b4900dcd379f4ceb5, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DoubleTeamFull
+  - name: Double Team Full
     clip: {fileID: 8300000, guid: e82b110e5593e4678951e2f9dddf6847, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DoubleTeamShield
+  - name: Double Team Shield
     clip: {fileID: 8300000, guid: 78b4d835d2f394fc89a425ca4b78cbc1, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DragonRage
+  - name: Dragon Rage
     clip: {fileID: 8300000, guid: 4dfac50663cad439e9862725063492f8, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DragonRage1
+  - name: Dragon Rage1
     clip: {fileID: 8300000, guid: 20a5b2017c1f14618ae1a665aa1233dc, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DragonRage2
+  - name: Dragon Rage2
     clip: {fileID: 8300000, guid: b226f65e3592a4b1f9b8dd8958141388, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DragonRageDirecte
+  - name: Dragon Rage Directe
     clip: {fileID: 8300000, guid: 0ee09e13e29e142e9899a888ea2348f4, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DreamEater
+  - name: Dream Eater
     clip: {fileID: 8300000, guid: a1169be964b9b4a07b2aff8efb3ad5dd, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: DrillPeck
+  - name: Drill Peck
     clip: {fileID: 8300000, guid: 53f5b8649bd144ea4beb2ef21168b848, type: 3}
     volume: 1
     pitch: 1
@@ -2989,31 +2989,31 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: EarthquakeDirect
+  - name: Earthquake Direct
     clip: {fileID: 8300000, guid: 07eb9fae991b54858b58439798c89511, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: EggBomb
+  - name: Egg Bomb
     clip: {fileID: 8300000, guid: 0c72dcf76751b454ea882bfd2ea04f48, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: EggBomb1
+  - name: Egg Bomb1
     clip: {fileID: 8300000, guid: c0696023b22244e40b7b683bfaef310e, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: EggBomb2
+  - name: Egg Bomb2
     clip: {fileID: 8300000, guid: a3cd9cd9c6c644e1f873a12896d866ae, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: EggBomb3
+  - name: Egg Bomb3
     clip: {fileID: 8300000, guid: fa58946c5f8e54a96868cfc758737646, type: 3}
     volume: 1
     pitch: 1
@@ -3049,43 +3049,43 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FireBlast
+  - name: Fire Blast
     clip: {fileID: 8300000, guid: 2e0679452112a4361828673845dbbdb6, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FireBlast1
+  - name: Fire Blast1
     clip: {fileID: 8300000, guid: 59461906bf26f4d1fab02d5ff58532e0, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FireBlast2
+  - name: Fire Blast2
     clip: {fileID: 8300000, guid: df383948babdd4e04a05662b8e5d0fe0, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FirePunch
+  - name: Fire Punch
     clip: {fileID: 8300000, guid: b3beaacedcee74027a949e6fa1e5b549, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FireSpin
+  - name: Fire Spin
     clip: {fileID: 8300000, guid: f7eb98a77551c4c149c86f1be8a8b92c, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FireSpin1
+  - name: Fire Spin1
     clip: {fileID: 8300000, guid: 9df10c12fb45a4bb1a439f65ef1f3721, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FireSpin2
+  - name: Fire Spin2
     clip: {fileID: 8300000, guid: eecc2139df4184268b808afad130696d, type: 3}
     volume: 1
     pitch: 1
@@ -3121,43 +3121,43 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FlyHit
+  - name: Fly Hit
     clip: {fileID: 8300000, guid: 9d0cfe4322e1542508156a7bf094d2e9, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FlyUp
+  - name: Fly Up
     clip: {fileID: 8300000, guid: 0311e4e996ac24126bc0adcc6ea45ef9, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FlyUp1
+  - name: Fly Up1
     clip: {fileID: 8300000, guid: 68eed28fecaa04cd48411ae80ed3ff3d, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FlyUp2
+  - name: Fly Up2
     clip: {fileID: 8300000, guid: 1f743b62b9f5440b0904d28f847b6fdf, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FocusEnergy
+  - name: Focus Energy
     clip: {fileID: 8300000, guid: 40ec3b1f1ac444dfb905bf2542e2fc96, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FuryAttack
+  - name: Fury Attack
     clip: {fileID: 8300000, guid: d743af7ecb96c4133881efc031699eba, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: FurySwipes
+  - name: Fury Swipes
     clip: {fileID: 8300000, guid: cfd7588d274b04c298d9ef4f7901d262, type: 3}
     volume: 1
     pitch: 1
@@ -3187,7 +3187,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: GustSingle
+  - name: Gust Single
     clip: {fileID: 8300000, guid: f529cdf2d15f943c9a208d1920559cb5, type: 3}
     volume: 1
     pitch: 1
@@ -3211,109 +3211,109 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HighJumpKick
+  - name: High Jump Kick
     clip: {fileID: 8300000, guid: be21f5e40ee614636bbf4c86e2cf9045, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HornAttack
+  - name: Horn Attack
     clip: {fileID: 8300000, guid: 1a8a6ff7a33014738a7b97c36d3a546b, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HornDrill
+  - name: Horn Drill
     clip: {fileID: 8300000, guid: 33c91392bdfe04327885a563cf3b1e67, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HydroPump
+  - name: Hydro Pump
     clip: {fileID: 8300000, guid: 7140eaa998c464405b03022d09c9d2d8, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HydroPump1
+  - name: Hydro Pump1
     clip: {fileID: 8300000, guid: 23e5c871890e648188aeb1ee893d6e4f, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HydroPump2
+  - name: Hydro Pump2
     clip: {fileID: 8300000, guid: 71c1bff4ecedb43ed89cf85344105844, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HydroPump3
+  - name: Hydro Pump3
     clip: {fileID: 8300000, guid: d36d49e8320d4411bbca763c651c2c52, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HydroPumpDirect
+  - name: Hydro Pump Direct
     clip: {fileID: 8300000, guid: e0004275f0c774363b5c3742dd75ad85, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HydroPumpSingle
+  - name: Hydro Pump Single
     clip: {fileID: 8300000, guid: 0255229639b9e4e40b27c59cbfb54700, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperBeam
+  - name: Hyper Beam
     clip: {fileID: 8300000, guid: 385db8ed611124b06917572a5c404054, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperBeam1
+  - name: Hyper Beam1
     clip: {fileID: 8300000, guid: 432b67758916b45928b9eee34f373f62, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperBeam2
+  - name: Hyper Beam2
     clip: {fileID: 8300000, guid: 1bfb7eb2631aa44b699b27e4f6c261db, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperBeam3
+  - name: Hyper Beam3
     clip: {fileID: 8300000, guid: fc9c3f20184a2430482c03d1563023ec, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperBeamLaser
+  - name: Hyper Beam Laser
     clip: {fileID: 8300000, guid: 7b637a4834fe74734af119289518866c, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperBeamLaserDirect
+  - name: Hyper Beam LaserDirect
     clip: {fileID: 8300000, guid: 5d804b1a7bc964acda86efb207559268, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperFang
+  - name: Hyper Fang
     clip: {fileID: 8300000, guid: 6bf922cf22d59409a998f1b1821649da, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperFang1
+  - name: Hyper Fang1
     clip: {fileID: 8300000, guid: 9e81680f17ad9433c8e02fee4df97c64, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: HyperFang2
+  - name: Hyper Fang2
     clip: {fileID: 8300000, guid: 3f960cb6074f640968074492e7eda1b0, type: 3}
     volume: 1
     pitch: 1
@@ -3325,31 +3325,31 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: IceBeam
+  - name: Ice Beam
     clip: {fileID: 8300000, guid: d3d224a3b69d44c8ebe2a4626d4383ab, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: IceBeam1
+  - name: Ice Beam1
     clip: {fileID: 8300000, guid: a56d9683a294e49849f9df9e02ab5250, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: IceBeam2
+  - name: Ice Beam2
     clip: {fileID: 8300000, guid: f0e72c0f968a0485a9b59b7670895c44, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: IceBeam3
+  - name: Ice Beam3
     clip: {fileID: 8300000, guid: fa2916feb941c497eb0fe637de562a6e, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: IcePunch
+  - name: Ice Punch
     clip: {fileID: 8300000, guid: 66b348705266b4557aa9e9fc30ffbff1, type: 3}
     volume: 1
     pitch: 1
@@ -3373,19 +3373,19 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: JumpKick
+  - name: Jump Kick
     clip: {fileID: 8300000, guid: ff64fb1803dda4d2eaea17ac70e363d4, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: KarateChop
+  - name: Karate Chop
     clip: {fileID: 8300000, guid: f1ee849bd79f5463896aa2b9a248af49, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: KarateChopWHit
+  - name: Karate Chop WHit
     clip: {fileID: 8300000, guid: 73c50e4bccd5846bea8df3d7d1ee364d, type: 3}
     volume: 1
     pitch: 1
@@ -3397,25 +3397,25 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LeechLife
+  - name: Leech Life
     clip: {fileID: 8300000, guid: 9780e4bb331644180ab577befa418d58, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LeechLife1
+  - name: Leech Life1
     clip: {fileID: 8300000, guid: 955dee6e0322b4d1ab4d37197a02f79a, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LeechLife2
+  - name: Leech Life2
     clip: {fileID: 8300000, guid: 825e9b272574a4e49a95c25df8454433, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LeechSeed
+  - name: Leech Seed
     clip: {fileID: 8300000, guid: 2a5ebae23ce294600ba9306230ec3057, type: 3}
     volume: 1
     pitch: 1
@@ -3451,31 +3451,31 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LightScreen
+  - name: Light Screen
     clip: {fileID: 8300000, guid: 6f195d498ee594d39b10a4b4f0ddf6f7, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LightScreenDelay
+  - name: Light Screen Delay
     clip: {fileID: 8300000, guid: 3aa39c4e822ad417bad09552dee902a3, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LightScreenSingle
+  - name: Light Screen Single
     clip: {fileID: 8300000, guid: 134a0a6ab32b946a1a6ee4415ab3d580, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LovelyKiss
+  - name: Lovely Kiss
     clip: {fileID: 8300000, guid: 73a3d68c2352d455ca84a1ba5270e512, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: LowKick
+  - name: Low Kick
     clip: {fileID: 8300000, guid: 8f6c25a8dde124eae8c8a4cfd8c70884, type: 3}
     volume: 1
     pitch: 1
@@ -3487,31 +3487,31 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: MegaDrain
+  - name: Mega Drain
     clip: {fileID: 8300000, guid: c29b853816a4b4b00a2098a59d6c4fb9, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: MegaDrain1
+  - name: Mega Drain1
     clip: {fileID: 8300000, guid: 4d739d5f187fa470c82d3054aa77d9a7, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: MegaDrain2
+  - name: Mega Drain2
     clip: {fileID: 8300000, guid: b2d9f483787e04695bdb063a9f66fc49, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: MegaKick
+  - name: Mega Kick
     clip: {fileID: 8300000, guid: 1ebbf6af7075640ac827aa44c4f6114d, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: MegaPunch
+  - name: Mega Punch
     clip: {fileID: 8300000, guid: cbd69ec2a7441409da761e4dada23798, type: 3}
     volume: 1
     pitch: 1
@@ -3523,7 +3523,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: MetronomeSingle
+  - name: Metronome Single
     clip: {fileID: 8300000, guid: 7792461bfa19d4fb2810d357ace3fa3e, type: 3}
     volume: 1
     pitch: 1
@@ -3853,7 +3853,7 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: Sand Attack
+  - name: Sand-Attack
     clip: {fileID: 8300000, guid: b660ed4ded7de45f09cb6e0777a20d53, type: 3}
     volume: 1
     pitch: 1

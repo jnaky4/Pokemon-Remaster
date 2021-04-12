@@ -813,6 +813,7 @@ namespace Pokemon
             if (num <= (attack.accuracy * playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion)) //If the attack hits
             {
                 playerInitialAttack = true;
+                GameController.soundFX = attack.name;
                 while (!endofanimation)
                 {
                     yield return null;
@@ -1337,6 +1338,7 @@ namespace Pokemon
             {
                 yield return new WaitForSeconds(0.75f);
                 enemyInitialAttack = true;
+                GameController.soundFX = move.name;
                 while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
@@ -1548,7 +1550,7 @@ namespace Pokemon
                     yield return new WaitForSeconds(2);
                     dialogueText.text = "\"" + GameController.endText + "\"";
                     yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
-                    dialogueText.text = player.myName + " got ¥" + GameController.winMoney + " for winning!";
+                    dialogueText.text = player.myName + " got ?" + GameController.winMoney + " for winning!";
                     GameController.player.money += GameController.winMoney;
                 }
             }
