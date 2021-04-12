@@ -2453,6 +2453,7 @@ namespace Pokemon
                     yield return null;
                 }
                 poke.ask_to_evolve();
+                yesno.SetActive(false);
                 if (poke.want_to_evolve)
                 {
                     dialogueText.text = "Your Pokemon evolved into a " + poke.name + "!!";
