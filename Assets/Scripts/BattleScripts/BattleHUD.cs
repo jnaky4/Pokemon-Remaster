@@ -221,7 +221,6 @@ namespace Pokemon
             hpSlider.maxValue = unit.pokemon.max_hp;
             hpSlider.value = unit.pokemon.current_hp;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
-            currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
             expSlider.maxValue = unit.pokemon.next_lvl_exp;
             expSlider.minValue = unit.pokemon.base_lvl_exp;
             expSlider.value = unit.pokemon.current_exp;
