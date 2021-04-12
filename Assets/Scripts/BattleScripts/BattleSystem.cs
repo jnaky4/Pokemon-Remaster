@@ -1539,7 +1539,7 @@ namespace Pokemon
                     yield return new WaitForSeconds(2);
                     dialogueText.text = "\"" + GameController.endText + "\"";
                     yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
-                    dialogueText.text = player.myName + " got ?" + GameController.winMoney + " for winning!";
+                    dialogueText.text = player.myName + " got ¥" + GameController.winMoney + " for winning!";
                     GameController.player.money += GameController.winMoney;
                 }
             }
