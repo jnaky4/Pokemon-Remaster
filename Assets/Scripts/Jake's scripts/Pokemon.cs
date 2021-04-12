@@ -57,6 +57,7 @@ namespace Pokemon
             int current_exp = 0, int current_hp = 0, int current_attack = 0, int current_special_attack = 0, int current_defense = 0, int current_special_defense = 0, int current_speed = 0, ArrayList statuses = null)
         {
 
+
             this.level = level;
             this.dexnum = dexNum;
 
@@ -77,8 +78,12 @@ namespace Pokemon
             //sets: base_level_exp, current_exp if current_exp above is 0, next_level_exp
             set_exp();
 
+
             //grabs base and current stats, calculated from base_stats for this pokemon
             calculate_stats(current_hp, current_attack, current_special_attack, current_defense, current_special_defense, current_speed);
+
+            //adds persisting status to pokemon if it had prior to evolving
+            if (statuses != null) this.statuses = statuses;
 
             if (current_exp == 0)
             {
