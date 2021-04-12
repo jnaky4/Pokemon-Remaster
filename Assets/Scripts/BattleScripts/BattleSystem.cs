@@ -867,6 +867,7 @@ namespace Pokemon
                     else if (attack.status.SeeIfStatus(attack))
                     {
                         dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj + "!";
+                        enemyHUD.SetStatus(enemyUnit.pokemon);
                     }
                     else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                     yield return new WaitForSeconds(2);
@@ -1377,6 +1378,7 @@ namespace Pokemon
                     else if (move.status.SeeIfStatus(move))
                     {
                         dialogueText.text = "Your " + playerUnit.pokemon.name + " became " + move.status.adj + "!";
+                        playerHUD.SetStatus(playerUnit.pokemon);
                     }
                     else if (super == 0)
                     {
@@ -2452,7 +2454,7 @@ namespace Pokemon
                 {
                     yield return null;
                 }
-                poke.ask_to_evolve();
+                poke = poke.ask_to_evolve();
                 yesno.SetActive(false);
                 if (poke.want_to_evolve)
                 {
