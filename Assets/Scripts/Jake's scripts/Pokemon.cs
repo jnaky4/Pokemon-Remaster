@@ -490,7 +490,7 @@ namespace Pokemon
 
         public Pokemon ask_to_evolve()
         {
-            if (time_to_evolve)
+            if (want_to_evolve)
             {
                 //ask player for input
                 //this.want_to_evolve = false;
