@@ -8,12 +8,13 @@ namespace Pokemon
     {
         [SerializeField] Dialog dialog;
         [SerializeField] new string name;
+        [SerializeField] GameObject buttons;
 
         public void Interact(Transform initial)
         {
             StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
             {
-                Debug.Log("Dialog is finished.");
+                buttons.SetActive(true);
             }));
         }
     }
