@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarterSelection : MonoBehaviour, Interactable
+namespace Pokemon
 {
-    [SerializeField] Dialog dialog;
-    [SerializeField] new string name;
-
-    public void Interact(Transform initial)
+    public class StarterSelection : MonoBehaviour, Interactable
     {
-        StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
+        [SerializeField] Dialog dialog;
+        [SerializeField] new string name;
+
+        public void Interact(Transform initial)
         {
-            Debug.Log("Dialog is finished.");
-        }));
+            StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
+            {
+                Debug.Log("Dialog is finished.");
+            }));
+        }
     }
 }
