@@ -61,8 +61,10 @@ public class DialogController : MonoBehaviour
 
     public void HandleUpdate()
     {
+        //Debug.Log("Typing in progress: " + isTyping);
         if (Input.GetKeyDown(KeyCode.Z) && !isTyping)
         {
+            Debug.Log("Pressed Z in dialog");
             GameController.soundFX = "Button Press";
             ++currentLine;
             if (currentLine < dialog.Lines.Count)

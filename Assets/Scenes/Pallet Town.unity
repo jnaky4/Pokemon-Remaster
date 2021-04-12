@@ -83409,6 +83409,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1032393245}
   - component: {fileID: 1032393244}
+  - component: {fileID: 1032393248}
+  - component: {fileID: 1032393247}
+  - component: {fileID: 1032393246}
   m_Layer: 10
   m_Name: Charmander
   m_TagString: Untagged
@@ -83481,6 +83484,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1032393246
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032393243}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 4, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4}
+  m_EdgeRadius: 0
+--- !u!50 &1032393247
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032393243}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1032393248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1032393243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59382253f239f42d5902dfff4be3f350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - It's Charmander the lizard fire type Pokemon!
+    - Choose Charmander as your starter?
+  name: Charmander
 --- !u!1 &1215421690
 GameObject:
   m_ObjectHideFlags: 0
@@ -89993,17 +90060,13 @@ CompositeCollider2D:
         Y: -50000000
     - - X: 70000000
         Y: -70000000
-      - X: 50000100
+      - X: 50000000
         Y: -70000000
-      - X: 50000100
-        Y: -59999959
-      - X: 50000041
-        Y: -59999900
-      - X: 19999959
-        Y: -59999900
-      - X: 19999900
-        Y: -59999959
-      - X: 19999900
+      - X: 50000000
+        Y: -60000000
+      - X: 20000000
+        Y: -60000000
+      - X: 20000000
         Y: -70000000
       - X: 10000000
         Y: -70000000
@@ -90327,10 +90390,10 @@ CompositeCollider2D:
       - {x: -7.9999704, y: -5}
     - - {x: 6.9999704, y: -8}
       - {x: 6.9999704, y: -7}
-      - {x: 5.00001, y: -6.9999704}
-      - {x: 4.9999747, y: -5.99999}
-      - {x: 1.99999, y: -6.0000253}
-      - {x: 1.9999607, y: -7}
+      - {x: 5, y: -6.9999704}
+      - {x: 4.999971, y: -6}
+      - {x: 2, y: -6.000029}
+      - {x: 1.9999707, y: -7}
       - {x: 1, y: -7.0000296}
       - {x: 1.0000293, y: -8}
     - - {x: -9.00003, y: -10}
@@ -91120,6 +91183,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1916982810}
   - component: {fileID: 1916982809}
+  - component: {fileID: 1916982811}
+  - component: {fileID: 1916982813}
+  - component: {fileID: 1916982812}
   m_Layer: 10
   m_Name: Squirtle
   m_TagString: Untagged
@@ -91192,6 +91258,70 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1916982811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916982808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59382253f239f42d5902dfff4be3f350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialog:
+    lines:
+    - It's Squirtle the tiny turtle water Pokemon!
+    - Choose Squirtle as your starter?
+  name: Squirtle
+--- !u!61 &1916982812
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916982808}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 4, y: 4}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4}
+  m_EdgeRadius: 0
+--- !u!50 &1916982813
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916982808}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1920021654 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8253830089586189133, guid: a198f1684d43149d5827bc9ad5f6f491,
@@ -94780,6 +94910,7 @@ MonoBehaviour:
   dialog:
     lines:
     - It's Bulbasaur the grass/poison seed Pokemon!
+    - Choose Bulbasaur as your starter?
   name: Bulbasaur
 --- !u!61 &1944718258
 BoxCollider2D:

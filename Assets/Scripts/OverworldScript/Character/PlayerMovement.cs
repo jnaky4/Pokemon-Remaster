@@ -54,7 +54,7 @@ namespace Pokemon
 
             character.HandleUpdate();
 
-            if (Input.GetKeyDown(KeyCode.Z) && !GameController.inCombat)
+            if (Input.GetKeyDown(KeyCode.Z) && !GameController.inCombat && GameController.state == GameState.Roam)
                 Interact();
         }
 
@@ -66,6 +66,7 @@ namespace Pokemon
             var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameplayLayers.i.InteractLayer);
             if (collider != null)
             {
+                Debug.Log("Pressed Z in player");
                 collider.GetComponent<Interactable>()?.Interact(transform);
             }
         }
