@@ -505,7 +505,7 @@ namespace Pokemon
         public Pokemon evolve_pokemon()
         {
             //level, moves, exp, current stats, status effects
-            return new Pokemon(this.dexnum + 1, this.level, this.currentMoves[0].name, this.currentMoves[1].name, this.currentMoves[2].name, this.currentMoves[4].name, this.current_exp,
+            return new Pokemon(this.dexnum + 1, this.level, this.currentMoves[0].name, this.currentMoves[1].name, this.currentMoves[2].name, this.currentMoves[3].name, this.current_exp,
                 this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed, this.statuses);
         }
     }
