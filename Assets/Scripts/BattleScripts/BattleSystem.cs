@@ -2460,17 +2460,20 @@ namespace Pokemon
                 {
                     yield return null;
                 }
-                poke = poke.ask_to_evolve();
-                yesno.SetActive(false);
-                if (poke.want_to_evolve)
+                poke = playerUnit.pokemon;
+                bool temp = poke.want_to_evolve;
+                Debug.Log(poke.want_to_evolve.ToString());
+                Pokemon p = poke.ask_to_evolve();
+                if (temp == true)
                 {
-                    dialogueText.text = "Your Pokemon evolved into a " + poke.name + "!!";
-                    poke.want_to_evolve = false;
+                    dialogueText.text = "Your Pokemon evolved into a " + p.name + "!!";
+                    p.want_to_evolve = false;
                 }
                 else
                 {
                     dialogueText.text = "Your Pokemon will wait on evolving for now.";
                 }
+                playerUnit.pokemon = p;
             }
         }
 
