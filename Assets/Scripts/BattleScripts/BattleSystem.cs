@@ -1038,7 +1038,7 @@ namespace Pokemon
                         if (GameController.opponentPokemon[j].current_hp > 0)
                         {
                             enemyUnit.pokemon = GameController.opponentPokemon[j];
-                            GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
+                            //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
                             dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
                             yield return new WaitForSeconds(2);
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
