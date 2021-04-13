@@ -196,7 +196,6 @@ namespace Pokemon
             if (beginCatch == true)
             {
                 PlayerAttackAnim.Start();
-                GameController.soundFX = "Shake";
                 beginCatch = false;
                 playCatch = true;
                 MakeSpriteInvisible(enemySprite);
@@ -205,7 +204,7 @@ namespace Pokemon
             {
                 if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
                 {
-                    if (PlayerAttackAnim.CurrentFrame == 37 || PlayerAttackAnim.CurrentFrame == 71)
+                    if (PlayerAttackAnim.CurrentFrame == 3 || PlayerAttackAnim.CurrentFrame == 37 || PlayerAttackAnim.CurrentFrame == 71)
                         GameController.soundFX = "Shake";
                     PlayerAttackAnim.HandleUpdate();
                 }
