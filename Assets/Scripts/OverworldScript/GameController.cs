@@ -91,10 +91,11 @@ namespace Pokemon
 
             //Debug.Log("CSV's have been loaded");
 
-            playerPokemon[0] = new Pokemon(4, 18, "Poison Gas", "Flamethrower", "Tail Whip", "Bite");
-            playerPokemon[1] = new Pokemon(8, 18, "Water Gun", "Bubble", "Splash", "Crabhammer");
-            playerPokemon[2] = new Pokemon(2, 18, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
-            playerPokemon[3] = new Pokemon(26, 18, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            playerPokemon[0] = new Pokemon(25, 18, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            playerPokemon[1] = new Pokemon(9, 18, "Water Gun", "Bubble", "Splash", "Crabhammer");
+            //6114 is for a lvl 18 ivysaur
+            playerPokemon[2] = new Pokemon(3, 18, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf", 6114);
+            playerPokemon[3] = new Pokemon(6, 18, "Poison Gas", "Ember", "Tail Whip", "Bite");
             playerPokemon[4] = new Pokemon(12, 18, "Sleep Powder", "Poison Powder", "Stun Spore", "Confusion");
         }
 
