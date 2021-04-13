@@ -1038,6 +1038,7 @@ namespace Pokemon
                         if (GameController.opponentPokemon[j].current_hp > 0)
                         {
                             enemyUnit.pokemon = GameController.opponentPokemon[j];
+                            GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
                             dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
                             yield return new WaitForSeconds(2);
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
@@ -1247,6 +1248,7 @@ namespace Pokemon
                 dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
                 playerUnit.pokemon.reset_stages();
                 GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
+
                 yield return new WaitForSeconds(2);
                 playerUnit.pokemon = GameController.playerPokemon[num];
                 activePokemon = num;
@@ -1256,6 +1258,7 @@ namespace Pokemon
                 SetPlayerSprite(playerUnit, playerSprite);
                 phasePlayerSprite = 2;
                 dialogueText.text = "Go, " + playerUnit.pokemon.name + "!";
+                GameController.soundFX = playerUnit.pokemon.dexnum.ToString();
                 yield return new WaitForSeconds(2);
 
                 //Sets the moves buttons up.
