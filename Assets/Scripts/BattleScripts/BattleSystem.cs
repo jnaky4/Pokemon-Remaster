@@ -204,7 +204,7 @@ namespace Pokemon
             {
                 if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
                 {
-                    if (PlayerAttackAnim.CurrentFrame == 3 || PlayerAttackAnim.CurrentFrame == 37 || PlayerAttackAnim.CurrentFrame == 71)
+                    if (PlayerAttackAnim.CurrentFrame == 14 || PlayerAttackAnim.CurrentFrame == 45 || PlayerAttackAnim.CurrentFrame == 78)
                         GameController.soundFX = "Shake";
                     PlayerAttackAnim.HandleUpdate();
                 }
