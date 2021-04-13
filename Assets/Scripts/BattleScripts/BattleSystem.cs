@@ -196,6 +196,7 @@ namespace Pokemon
             if (beginCatch == true)
             {
                 PlayerAttackAnim.Start();
+                GameController.soundFX = "Shake";
                 beginCatch = false;
                 playCatch = true;
                 MakeSpriteInvisible(enemySprite);
@@ -204,6 +205,8 @@ namespace Pokemon
             {
                 if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
                 {
+                    if (PlayerAttackAnim.CurrentFrame == 37 || PlayerAttackAnim.CurrentFrame == 71)
+                        GameController.soundFX = "Shake";
                     PlayerAttackAnim.HandleUpdate();
                 }
                 else
@@ -212,7 +215,11 @@ namespace Pokemon
                     PlayerAttackAnim.EndAnimation();
                     playCatch = false;
                     endofanimation = true;
-                    if (state == BattleState.CAUGHTPOKEMON) { DisplayPokeball(); }
+                    if (state == BattleState.CAUGHTPOKEMON)
+                    {
+                        DisplayPokeball();
+                        GameController.soundFX = "Caught";
+                    }
                     else MakeSpriteVisible(enemySprite);
                 }
             }
@@ -1116,7 +1123,7 @@ namespace Pokemon
                 }
                 player.numMasterBalls--;
                 state = BattleState.CAUGHTPOKEMON;
-                PokeballShakes(3);
+                PokeballShakes(4);
                 yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 DisplayPokeball();
                 StartCoroutine(EndBattle());
@@ -1126,7 +1133,7 @@ namespace Pokemon
             if ((Status.SeeIfSleep(enemyUnit.pokemon) || Status.SeeIfFreeze(enemyUnit.pokemon)) && randomNumber < 25)
             {
                 state = BattleState.CAUGHTPOKEMON;
-                PokeballShakes(3);
+                PokeballShakes(4);
                 yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 DisplayPokeball();
                 StartCoroutine(EndBattle());
@@ -1135,7 +1142,7 @@ namespace Pokemon
             if ((Status.SeeIfParalyzed(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon)) && randomNumber < 12)
             {
                 state = BattleState.CAUGHTPOKEMON;
-                PokeballShakes(3);
+                PokeballShakes(4);
                 yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 DisplayPokeball();
                 StartCoroutine(EndBattle());
@@ -1165,7 +1172,7 @@ namespace Pokemon
             if (f >= randomNumber2) //If you actually caught them
             {
                 state = BattleState.CAUGHTPOKEMON;
-                PokeballShakes(3);
+                PokeballShakes(4);
                 yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 DisplayPokeball();
                 StartCoroutine(EndBattle());
@@ -2309,9 +2316,11 @@ namespace Pokemon
             Debug.Log("Shakes: " + shakes.ToString());
             string pathLeft = "Attack_Animations/Pokeball_Left";
             string pathRight = "Attack_Animations/Pokeball_Right";
+            string pathBreak = "Attack_Animations/Pokeball_Break";
             AttackSprites.Clear();
             AttackSprites.Add(null);
             var sprites = Resources.LoadAll<Sprite>(pathLeft);
+            var spritesBreak = Resources.LoadAll<Sprite>(pathBreak);
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
             {
@@ -2358,6 +2367,14 @@ namespace Pokemon
                     AttackSprites.Add(p);
                 }
                 //AttackSprites.AddRange(sprites);
+            }
+            if (shakes < 4)
+            {
+                foreach (var s in spritesBreak)
+                {
+                    Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
+                    AttackSprites.Add(p);
+                }
             }
 
             AttackSprites.TrimExcess();
