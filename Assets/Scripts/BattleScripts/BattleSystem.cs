@@ -866,10 +866,12 @@ namespace Pokemon
                     }
                     if (super > 1)
                     {
+                        GameController.soundFX = "Super Effective";
                         dialogueText.text = "It's super effective!";
                     }
                     else if (super < 1 && super != 0 && !attack.status.SeeIfStatus(attack))
                     {
+                        GameController.soundFX = "Not Very Effective";
                         dialogueText.text = "It's not very effective...";
                     }
                     else if (super == 0 || (attack.status.SeeIfStatus(attack) && attack.status.name.Equals("Paralysis") && Utility.IsGround(enemyUnit)))
@@ -885,7 +887,11 @@ namespace Pokemon
                         dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj + "!";
                         enemyHUD.SetStatus(enemyUnit.pokemon);
                     }
-                    else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
+                    else
+                    {
+                        GameController.soundFX = "Damage";
+                        dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
+                    }
                     yield return new WaitForSeconds(2);
                 }
                 else
@@ -1424,10 +1430,12 @@ namespace Pokemon
                     }
                     if (super > 1)
                     {
+                        GameController.soundFX = "Super Effective";
                         dialogueText.text = "It's super effective!";
                     }
                     else if (super < 1 && super != 0 && !move.status.SeeIfStatus(move))
                     {
+                        GameController.soundFX = "Not Very Effective";
                         dialogueText.text = "It's not very effective...";
                     }
                     else if (move.status.SeeIfStatus(move) && playerUnit.pokemon.statuses.Contains(move.status.name))
@@ -1443,7 +1451,11 @@ namespace Pokemon
                     {
                         dialogueText.text = "Your " + playerUnit.pokemon.name + " is immune!";
                     }
-                    else dialogueText.text = "Your " + playerUnit.pokemon.name + " took damage...";
+                    else
+                    {
+                        GameController.soundFX = "Damage";
+                        dialogueText.text = "Your " + playerUnit.pokemon.name + " took damage...";
+                    }
                 }
                 yield return new WaitForSeconds(2);
 

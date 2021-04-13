@@ -3717,19 +3717,19 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: IMHIT_Damage
+  - name: Damage
     clip: {fileID: 8300000, guid: 5102af4298e8846c188782f685c1543f, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: IMHIT_Super_Effective
+  - name: Super Effective
     clip: {fileID: 8300000, guid: af45a34c669ee48c18955ea4d3c7b58a, type: 3}
     volume: 1
     pitch: 1
     source: {fileID: 0}
     loop: 0
-  - name: IMHIT_Not_Very_Effective
+  - name: Not Very Effective
     clip: {fileID: 8300000, guid: 6c1d0ebf578104d379a123cc170dbf42, type: 3}
     volume: 1
     pitch: 1
