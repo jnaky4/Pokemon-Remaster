@@ -1770,6 +1770,11 @@ namespace Pokemon
                 CloseMovesMenu();
                 ClosePokemonMenu();
                 SetDownButtons();
+                if (playerUnit.pokemon.current_speed > enemyUnit.pokemon.current_speed)
+                {
+                    state = BattleState.RUNAWAY;
+                    StartCoroutine(EndBattle());
+                }
                 double a = playerUnit.pokemon.current_speed;
                 double b = a / 4;
                 b %= 256;
