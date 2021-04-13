@@ -874,7 +874,7 @@ namespace Pokemon
                         GameController.soundFX = "Not Very Effective";
                         dialogueText.text = "It's not very effective...";
                     }
-                    else if (super == 0 || (attack.status.SeeIfStatus(attack) && attack.status.name.Equals("Paralysis") && Utility.IsGround(enemyUnit)))
+                    else if (super == 0 || (attack.status.SeeIfStatus(attack) && attack.status.name.Equals("Paralysis") && Utility.IsGround(enemyUnit)) || (attack.status.SeeIfStatus(attack) && attack.status.name.Equals("Poison") && Utility.IsPoison(enemyUnit)))
                     {
                         dialogueText.text = enemyUnit.pokemon.name + " is immune!";
                     }
@@ -882,7 +882,7 @@ namespace Pokemon
                     {
                         dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " is already " + attack.status.adj + "!";
                     }
-                    else if (attack.status.SeeIfStatus(attack) && !Utility.IsPoison(enemyUnit))
+                    else if (attack.status.SeeIfStatus(attack))
                     {
                         dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj + "!";
                         enemyHUD.SetStatus(enemyUnit.pokemon);
@@ -986,17 +986,21 @@ namespace Pokemon
                 int x = 0;
                 for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++) //Determines if you win or not by seeing if the other trainer has other usable pokemon.
                 {
+                    x = j;
+                    if (GameController.opponentPokemon[j].current_hp == 0)
+                    {
+                        if (!GameController.isCatchable) enemyHUD.CrossOutBall(j + 1);
+                    }
                     if (GameController.opponentPokemon[j].current_hp > 0)
                     {
                         won = false;
-                        x = j;
                         break;
                     }
-                    else if (!GameController.isCatchable) enemyHUD.CrossOutBall(x + 1);
                 }
                 phaseOpponentSprite = 1;
                 if (won) //If you won
                 {
+                    enemyHUD.CrossOutBall(x + 2);
                     state = BattleState.WON;
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
                     int exp = 0;
@@ -1442,7 +1446,7 @@ namespace Pokemon
                     {
                         dialogueText.text = "Your " + playerUnit.pokemon.name + " is already " + move.status.adj + "!";
                     }
-                    else if (move.status.SeeIfStatus(move))
+                    else if (move.status.SeeIfStatus(move) ||(move.status.SeeIfStatus(move) && move.status.name.Equals("Paralysis") && Utility.IsGround(enemyUnit)) || (move.status.SeeIfStatus(move) && move.status.name.Equals("Poison") && Utility.IsPoison(enemyUnit)))
                     {
                         dialogueText.text = "Your " + playerUnit.pokemon.name + " became " + move.status.adj + "!";
                         playerHUD.SetStatus(playerUnit.pokemon);
