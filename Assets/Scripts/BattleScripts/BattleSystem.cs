@@ -387,6 +387,7 @@ namespace Pokemon
             phasePlayerSprite = 2;
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
+            if (GameController.isCatchable) GameController.catchRate = Pokedex.pokedex_dictionary[enemyUnit.pokemon.dexnum].catch_rate;
             PlayerTurn();
         }
 
@@ -978,11 +979,11 @@ namespace Pokemon
                         x = j;
                         break;
                     }
+                    else if (!GameController.isCatchable) enemyHUD.CrossOutBall(x + 1);
                 }
                 phaseOpponentSprite = 1;
                 if (won) //If you won
                 {
-                    if (!GameController.isCatchable) enemyHUD.CrossOutBall(x + 1);
                     state = BattleState.WON;
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
                     int exp = 0;
@@ -1012,7 +1013,6 @@ namespace Pokemon
                     int exp = 0;
                     double exp_multiplier;
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                    if (!GameController.isCatchable) enemyHUD.CrossOutBall(x);
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
                     exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
@@ -1612,7 +1612,7 @@ namespace Pokemon
                     yield return new WaitForSeconds(2);
                     dialogueText.text = "\"" + GameController.endText + "\"";
                     yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
-                    dialogueText.text = player.myName + " got ?" + GameController.winMoney + " for winning!";
+                    dialogueText.text = player.myName + " got $" + GameController.winMoney + " for winning!";
                     GameController.player.money += GameController.winMoney;
                 }
             }
@@ -2143,7 +2143,9 @@ namespace Pokemon
             string type = GameController.opponentType;
             string path;
 
-            if (type != "Gym Leader")
+            if (type == "Rival")
+                path = "Player_Rival/Blue";
+            else if (type != "Gym Leader")
                 path = "Final_NPC/" + type;
             else
                 path = "GymLeaders/" + GameController.opponentName;

@@ -45,10 +45,11 @@ public class TrainerController : MonoBehaviour
 
     public void startCombat()
     {
-        Debug.Log("Engaging thrusters");
-        //trainer = trainerInfo.getName();
-
-        //Dictionary<string, Route> route1_dic = Route.get_route(location);
+        if (trainerName == "Gary")
+        {
+            handleGary();
+        }
+        Debug.Log(trainerName);
         Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(GameController.location);
         GameController.endText = route_trainers[trainerName].exit_dialogue;
         GameController.winMoney = route_trainers[trainerName].money_mult * (GameController.level_cap / 10);
@@ -61,7 +62,7 @@ public class TrainerController : MonoBehaviour
         }
         GameController.isCatchable = false;
 
-        if (name == "Brock")
+        if (name == "Brock" || name == "Gary")
         {
             GameController.music = "Battle Gym Begin";
         }
@@ -73,7 +74,11 @@ public class TrainerController : MonoBehaviour
         if (route_trainers[trainerName].type != route_trainers[trainerName].name)
         {
             GameController.opponentType = route_trainers[trainerName].type;
-            GameController.opponentName = route_trainers[trainerName].name;
+
+            if (name != "Gary")
+                GameController.opponentName = route_trainers[trainerName].name;
+            else
+                GameController.opponentName = "Gary";
         }
         else
         {
@@ -93,6 +98,23 @@ public class TrainerController : MonoBehaviour
     /*public static Dictionary<string, int> badges_completed = new Dictionary<string, int>()
                 {{"Rock",1},{"Water",1},{"Electric",1},{"Grass",1},{"Poison",1},{"Psychic",1},{"Fire",1},{"Ground",1}
                 };*/
+
+    public void handleGary()
+    {
+        if (GameController.player.starter == 1)
+        {
+            trainerName = "Gary Charmander";
+        }
+        if (GameController.player.starter == 4)
+        {
+            trainerName = "Gary Squirtle";
+        }
+        if (GameController.player.starter == 7)
+        {
+            trainerName = "Gary Bulbasaur";
+        }
+        Debug.Log("Gary's new name is: " + trainerName);
+    }
 
     public void reward()
     {
