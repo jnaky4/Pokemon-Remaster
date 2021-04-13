@@ -19,6 +19,7 @@ namespace Pokemon
             {
                 Debug.Log("Set pokemon");
                 GameController.playerPokemon[0] = pokemon;
+                GameController.player.starter = pokemon.dexnum;
             }
 
             GameController.state = GameState.Roam;

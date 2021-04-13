@@ -2144,9 +2144,11 @@ namespace Pokemon
             string type = GameController.opponentType;
             string path;
 
-            if (type != "Gym Leader")
+            if (type == "Rival")
+                path = "Player_Rival/Blue";
+            else if (type != "Gym Leader")
                 path = "Final_NPC/" + type;
-            else
+            else 
                 path = "GymLeaders/" + GameController.opponentName;
 
             var sprite = Resources.Load<Sprite>(path);

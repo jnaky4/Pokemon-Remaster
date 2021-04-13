@@ -8,6 +8,8 @@ namespace Pokemon
     {
         public string name = "Red";
 
+        public int starter;
+
         public int pokeBalls = 10;
         public int greatBalls = 10;
         public int ultraBalls = 10;

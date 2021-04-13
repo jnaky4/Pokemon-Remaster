@@ -42,7 +42,13 @@ namespace Pokemon
                 state = NPCState.Dialog;
                 character.LookTowards(initial.position);
                 var isTrainer = GetComponent<TrainerController>();
-                if (isTrainer != null && isTrainer.name != "Brock")
+
+                if (isTrainer.name == "Gary")
+                {
+                    if (isTrainer.isBeaten == false)
+                        GameController.music = "Encounter Rival";
+                }
+                else if (isTrainer != null && isTrainer.name != "Brock")
                 {
                     if (isTrainer.isBeaten == false)
                         GameController.music = "Encounter Trainer";
