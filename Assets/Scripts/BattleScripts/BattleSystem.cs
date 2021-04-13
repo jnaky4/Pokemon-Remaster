@@ -829,9 +829,12 @@ namespace Pokemon
                 Debug.Log(playerUnit.damage);
 
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
+                if (attack.heal > 0) playerUnit.TakeDamage(-playerUnit.damage * attack.heal);
+                if (attack.heal < 0) playerUnit.TakeDamage(playerUnit.damage * -attack.heal);
+                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
                 if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
                 else StartCoroutine(Blink(enemySprite, 0.25));
-                enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
+                enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
                 //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
                 enemyHUD.SetStatus(enemyUnit.pokemon);
 
@@ -875,45 +878,6 @@ namespace Pokemon
                     }
                     else dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " took damage...";
                     yield return new WaitForSeconds(2);
-                    bool areYouDead = false;
-                    if (Status.SeeIfBurned(playerUnit.pokemon))
-                    {
-                        AnimateStatus("Burn", true);
-                        GameController.soundFX = "Ember";
-                        while (!endofanimation) //Animation shit, ask levi
-                        {
-                            yield return null;
-                        }
-                        endofanimation = false;
-
-                        playerUnit.BurnSelf();
-                        StartCoroutine(Blink(playerSprite, 0.25));
-                        playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                        dialogueText.text = playerUnit.pokemon.name + " got burned!";
-                        if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
-                        else areYouDead = false;
-                        yield return new WaitForSeconds(2);
-                        yield return StartCoroutine(EnemyKillsYou(areYouDead));
-                    }
-                    if (Status.SeeIfPoisoned(playerUnit.pokemon))
-                    {
-                        AnimateStatus("Poison", true);
-                        GameController.soundFX = "Poisoned";
-                        while (!endofanimation) //Animation shit, ask levi
-                        {
-                            yield return null;
-                        }
-                        endofanimation = false;
-
-                        playerUnit.PoisonSelf();
-                        StartCoroutine(Blink(playerSprite, 0.25));
-                        playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                        dialogueText.text = playerUnit.pokemon.name + " is poisoned!";
-                        if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
-                        else areYouDead = false;
-                        yield return new WaitForSeconds(2);
-                        yield return StartCoroutine(EnemyKillsYou(areYouDead));
-                    }
                 }
                 else
                 {
@@ -935,6 +899,66 @@ namespace Pokemon
                 dialogueText.text = "Your attack missed!";
                 yield return new WaitForSeconds(2);
                 yield break;
+            }
+            bool areYouDead = false;
+            if (Status.SeeIfBurned(playerUnit.pokemon))
+            {
+                AnimateStatus("Burn", true);
+                GameController.soundFX = "Ember";
+                while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+
+                playerUnit.BurnSelf();
+                StartCoroutine(Blink(playerSprite, 0.25));
+                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
+                dialogueText.text = playerUnit.pokemon.name + " got burned!";
+                if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
+                else areYouDead = false;
+                yield return new WaitForSeconds(2);
+                yield return StartCoroutine(EnemyKillsYou(areYouDead));
+            }
+            if (Status.SeeIfPoisoned(playerUnit.pokemon))
+            {
+                AnimateStatus("Poison", true);
+                GameController.soundFX = "Poisoned";
+                while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+
+                playerUnit.PoisonSelf();
+                StartCoroutine(Blink(playerSprite, 0.25));
+                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
+                dialogueText.text = playerUnit.pokemon.name + " is poisoned!";
+                if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
+                else areYouDead = false;
+                yield return new WaitForSeconds(2);
+                yield return StartCoroutine(EnemyKillsYou(areYouDead));
+            }
+            if (Status.SeeIfLeech(enemyUnit.pokemon))
+            {
+                //AnimateStatus("Poison", true);
+                GameController.soundFX = "Poisoned";
+                /*while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+                */
+                playerUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
+                StartCoroutine(Blink(enemySprite, 0.25));
+                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
+                enemyUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
+                enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
+                dialogueText.text = enemyUnit.pokemon.name + " got leeched by " + playerUnit.pokemon.name + "!";
+                if (enemyUnit.pokemon.current_hp <= 0) areYouDead = true;
+                else areYouDead = false;
+                yield return new WaitForSeconds(2);
+                yield return StartCoroutine(YouKilledThem(areYouDead));
             }
         }
 
@@ -1357,11 +1381,14 @@ namespace Pokemon
                 if (!move.status.Equals("null")) Status.SeeIfStatusEffect(move, playerUnit);
                 double super = Utility.DoDamage(enemyUnit, playerUnit, move, crit);
                 bool isDead = playerUnit.TakeDamage(enemyUnit.damage); //Forgot to comment this earlier, but this is where the damage actually gets applied.
+                if (move.heal > 0) enemyUnit.TakeDamage(-enemyUnit.damage * move.heal);
+                if (move.heal < 0) enemyUnit.TakeDamage(enemyUnit.damage * -move.heal);
+                enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
                 if (move.base_power <= 0) StartCoroutine(ShakeLeftRight());
                 else StartCoroutine(Blink(playerSprite, 0.25));
                 //Debug.Log(enemyUnit.damage.ToString());
 
-                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
+                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
                 //enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
 
                 if (move.current_stat_change.CompareTo("null") != 0 && move.target.CompareTo("enemy") == 0) dialogueText.text = "Your " + playerUnit.pokemon.name + "'s " + move.current_stat_change + " fell!";
@@ -1397,46 +1424,6 @@ namespace Pokemon
                     else dialogueText.text = "Your " + playerUnit.pokemon.name + " took damage...";
                 }
                 yield return new WaitForSeconds(2);
-                bool isYouDead;
-                if (Status.SeeIfBurned(enemyUnit.pokemon))
-                {
-                    AnimateStatus("Burn", false);
-                    GameController.soundFX = "Ember";
-                    while (!endofanimation) //Animation shit, ask levi
-                    {
-                        yield return null;
-                    }
-                    endofanimation = false;
-
-                    enemyUnit.BurnSelf();
-                    StartCoroutine(Blink(enemySprite, 0.25));
-                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
-                    dialogueText.text = enemyUnit.pokemon.name + " got burned!";
-                    if (enemyUnit.pokemon.current_hp <= 0) isYouDead = true;
-                    else isYouDead = false;
-                    yield return new WaitForSeconds(2);
-                    yield return StartCoroutine(YouKilledThem(isYouDead));
-                }
-
-                if (Status.SeeIfPoisoned(enemyUnit.pokemon))
-                {
-                    AnimateStatus("Poison", false);
-                    GameController.soundFX = "Poisoned";
-                    while (!endofanimation) //Animation shit, ask levi
-                    {
-                        yield return null;
-                    }
-                    endofanimation = false;
-
-                    enemyUnit.PoisonSelf();
-                    StartCoroutine(Blink(enemySprite, 0.25));
-                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp);
-                    dialogueText.text = enemyUnit.pokemon.name + " is poisoned!";
-                    if (enemyUnit.pokemon.current_hp <= 0) isYouDead = true;
-                    else isYouDead = false;
-                    yield return new WaitForSeconds(2);
-                    yield return StartCoroutine(YouKilledThem(isYouDead));
-                }
 
                 yield return StartCoroutine(EnemyKillsYou(isDead));
             }
@@ -1447,6 +1434,67 @@ namespace Pokemon
                 dialogueText.text = "The move failed!";
                 yield return new WaitForSeconds(2);
                 yield break;
+            }
+            bool isYouDead;
+            if (Status.SeeIfBurned(enemyUnit.pokemon))
+            {
+                AnimateStatus("Burn", false);
+                GameController.soundFX = "Ember";
+                while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+
+                enemyUnit.BurnSelf();
+                StartCoroutine(Blink(enemySprite, 0.25));
+                enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
+                dialogueText.text = enemyUnit.pokemon.name + " got burned!";
+                if (enemyUnit.pokemon.current_hp <= 0) isYouDead = true;
+                else isYouDead = false;
+                yield return new WaitForSeconds(2);
+                yield return StartCoroutine(YouKilledThem(isYouDead));
+            }
+
+            if (Status.SeeIfPoisoned(enemyUnit.pokemon))
+            {
+                AnimateStatus("Poison", false);
+                GameController.soundFX = "Poisoned";
+                while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+
+                enemyUnit.PoisonSelf();
+                StartCoroutine(Blink(enemySprite, 0.25));
+                enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
+                dialogueText.text = enemyUnit.pokemon.name + " is poisoned!";
+                if (enemyUnit.pokemon.current_hp <= 0) isYouDead = true;
+                else isYouDead = false;
+                yield return new WaitForSeconds(2);
+                yield return StartCoroutine(YouKilledThem(isYouDead));
+            }
+            if (Status.SeeIfLeech(playerUnit.pokemon))
+            {
+                //AnimateStatus("Poison", true);
+                GameController.soundFX = "Poisoned";
+                /*while (!endofanimation) //Animation shit, ask levi
+                {
+                    yield return null;
+                }
+                endofanimation = false;
+                */
+                enemyUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
+                StartCoroutine(Blink(playerSprite, 0.25));
+                enemyHUD.SetHP(enemyUnit.pokemon.current_hp, false);
+                playerUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
+                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
+                dialogueText.text = playerUnit.pokemon.name + " got leeched by " + enemyUnit.pokemon.name + "!";
+                if (playerUnit.pokemon.current_hp <= 0) isYouDead = true;
+                else isYouDead = false;
+                yield return new WaitForSeconds(2);
+                yield return StartCoroutine(EnemyKillsYou(isYouDead));
             }
             yield break;
         }
@@ -1616,6 +1664,7 @@ namespace Pokemon
                     GameController.player.greatBalls = player.numGreatBalls;
                     GameController.player.ultraBalls = player.numUltraBalls;
                     GameController.player.masterBalls = player.numMasterBalls;
+                    if (GameController.playerPokemon[i].statuses.Contains(Status.get_status("Leech Seed"))) GameController.playerPokemon[i].statuses.Remove(Status.get_status("Leech Seed"));
                 }
             }
             GameController.endCombat = true; //Something for levi.

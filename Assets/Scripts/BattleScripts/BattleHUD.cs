@@ -69,6 +69,7 @@ namespace Pokemon
         private int tempXP;
         private bool updateHp = false;
         private bool updateXP = false;
+        public bool negative = false;
 
         #endregion Declaration of variables
 
@@ -188,8 +189,10 @@ namespace Pokemon
         /// Sets the enemy hp.
         /// </summary>
         /// <param name="hp">The hp.</param>
-        public void SetHP(int hp)
+        public void SetHP(int hp, bool negative)
         {
+            if (negative) this.negative = true;
+            else this.negative = false;
             tempHP = hp;
             if (hp != hpSlider.value) updateHp = true;
         }
@@ -199,8 +202,10 @@ namespace Pokemon
         /// </summary>
         /// <param name="hp">The hp.</param>
         /// <param name="unit">The unit.</param>
-        public void SetHP(int hp, Unit unit)
+        public void SetHP(int hp, Unit unit, bool negative)
         {
+            if (negative) this.negative = true;
+            else this.negative = false;
             tempHP = hp;
             if (hp != hpSlider.value) updateHp = true;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
@@ -393,11 +398,18 @@ namespace Pokemon
         {
             if (poke.statuses.Count > 0)
             {
-                Status s = (Status)poke.statuses[0];
-                Color c = level.color;
-                c = GetColorOfStatus(s.name);
-                level.color = c;
-                level.text = s.name;
+                foreach (Status s in poke.statuses)
+                {
+                    if (s.persistance)
+                    {
+                        Color c = level.color;
+                        c = GetColorOfStatus(s.name);
+                        level.color = c;
+                        level.text = s.name;
+                        break;
+                    }
+                }
+                //Status s = (Status)poke.statuses[0];
             }
             else
             {
@@ -608,7 +620,7 @@ namespace Pokemon
         private void Update()
         {
             if ((int)hpSlider.value == tempHP) updateHp = false;
-            if (updateHp)
+            if (updateHp && negative)
             {
                 hpSlider.value = (int)hpSlider.value - 1;
                 if ((int)hpSlider.value == tempHP)
@@ -617,6 +629,16 @@ namespace Pokemon
                     tempHP = 0;
                 }
             }
+            if (updateHp && !negative)
+            {
+                hpSlider.value = (int)hpSlider.value + 1;
+                if ((int)hpSlider.value == tempHP)
+                {
+                    updateHp = false;
+                    tempHP = 0;
+                }
+            }
+
             if (expSlider.value == tempXP) updateXP = false;
             if (updateXP)
             {

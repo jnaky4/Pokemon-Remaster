@@ -82,7 +82,6 @@ namespace Pokemon
             {"Leech Seed", new Status(  "Leech Seed","seeded",      false,  "null",     .0625,  0,      "null",     1,          0,      -1,     -1)},
             //for csv, does nothing
             {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1)}
-
         };
 
         public string name;
@@ -216,10 +215,26 @@ namespace Pokemon
             return false;
         }
 
+        public static bool SeeIfLeech(Pokemon poke)
+        {
+            foreach (Status s in poke.statuses)
+            {
+                if (s.name.Equals("Leech Seed")) return true;
+            }
+            return false;
+        }
+
         public static void SeeIfStatusEffect(Moves move, Unit unit)
         {
             switch (move.status.name)
             {
+                case "Leech Seed":
+                    if (move.status.SeeIfStatus(move))
+                    {
+                        unit.pokemon.statuses.Add(get_status("Leech Seed"));
+                    }
+                    break;
+
                 case "Burn":
                     if (move.status.SeeIfStatus(move))
                     {

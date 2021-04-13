@@ -7,10 +7,10 @@ namespace Pokemon
     public class PlayerMovement : MonoBehaviour
     {
         //normal spawnrate
-        int spawnRate = 10;
+        //int spawnRate = 10;
 
         //uncomment this for high spawn rate
-        //private int spawnRate = 101;
+        private int spawnRate = 101;
 
         //uncomment this for no spawn rate
         //private int spawnRate = 0;
