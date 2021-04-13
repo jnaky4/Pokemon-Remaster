@@ -78,9 +78,11 @@ namespace Pokemon
             {"Paralysis", new Status(   "Paralysis", "paralyzed",   true,   "Electric", 0,      .25,    "Speed",    .5,         0,      -1,     -1)},
             {"Poison", new Status(      "Poison",    "poisoned",    true,   "Poison",   .125,   0,      "null",     1,          0,      -1,     -1)},
             {"Flinch", new Status(      "Flinch",    "flinched",    false,  "null",     0,      1.0,    "null",     1,          0,      1,      1)},
-            {"Confusion", new Status(   "Confusion", "confused",    false,     "null",     .175,   .33,    "null",     1,          0,      5,      2)},
+            {"Confusion", new Status(   "Confusion", "confused",    false,  "null",     .175,   .33,    "null",     1,          0,      5,      2)},
+            {"Leech Seed", new Status(  "Leech Seed","seeded",      false,  "null",     .0625,  0,      "null",     1,          0,      -1,     -1)},
             //for csv, does nothing
-            {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1) }
+            {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1)}
+
         };
 
         public string name;
