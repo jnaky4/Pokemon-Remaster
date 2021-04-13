@@ -394,6 +394,7 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
             if (GameController.isCatchable) GameController.catchRate = enemyUnit.pokemon.pokedex_entry.catch_rate;
+            Debug.Log("Catch rate: " + GameController.catchRate.ToString());
             PlayerTurn();
         }
 
@@ -1068,7 +1069,8 @@ namespace Pokemon
             }
             System.Random rnd = new System.Random();
             dialogueText.text = "";
-            int randomNumber = 0, catchRate = GameController.catchRate, randomNumber2, f, numShakes = 0;
+            int randomNumber = 0, catchRate = 0, randomNumber2, numShakes = 0;
+            double f = 0;
             if (typeOfPokeball == 1) //If you have a Poke Ball
             {
                 if (player.numPokeBalls == 0)
@@ -1158,16 +1160,18 @@ namespace Pokemon
                 catchRateModifier = 12;
                 s = 5;
             }
-            if (randomNumber < GameController.catchRate - catchRateModifier) //If they broke free
+            if (randomNumber > GameController.catchRate - catchRateModifier) //If they broke free
             {
                 dialogueText.text = enemyUnit.pokemon.name + " broke free!";
+                PokeballShakes(2);
+                Debug.Log("Do we hit here?");
                 yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 StartCoroutine(DecisionYouDontAttack());
                 yield break;
             }
             randomNumber2 = rnd.Next(256);
             f = (enemyUnit.pokemon.max_hp * 255 * 4);
-            f = f / (enemyUnit.pokemon.current_hp * catchRate);
+            f /= (enemyUnit.pokemon.current_hp * catchRate);
             if (f >= randomNumber2) //If you actually caught them
             {
                 state = BattleState.CAUGHTPOKEMON;
@@ -1180,24 +1184,29 @@ namespace Pokemon
             else //If they broke free again.
             {
                 int d = ((GameController.catchRate * 100) / numShakes) + s;
+                Debug.Log("D is " + d.ToString());
                 if (d < 10)
                 {
                     PokeballShakes(0);
+                    Debug.Log("0 pokemon shakes");
                     yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 }//no shakes
                 else if (d < 30)
                 {
                     PokeballShakes(1);
+                    Debug.Log("1 pokemon shakes");
                     yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 }//one shake
                 else if (d < 70)
                 {
                     PokeballShakes(2);
+                    Debug.Log("2 pokemon shakes");
                     yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 }//two shakes
                 else
                 {
                     PokeballShakes(3);
+                    Debug.Log("3 pokemon shakes");
                     yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
                 }//three shakes
 
