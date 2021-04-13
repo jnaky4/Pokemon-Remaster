@@ -67,7 +67,7 @@ PokedexNum,Pokemon_Name,Type1,Type2,Stage,Evolve_Level,Gender_Ratio,Height,Weigh
 66,Machop,Fighting,-,Basic,28,1:03,0.8,19.5,Loves to build its muscles. It trains in all styles of martial arts to become even stronger.,Superpower  ,1,61,180
 67,Machoke,Fighting,-,Intermediate,40,1:03,1.5,70.5,"Its muscular body is so powerful, it must wear a power save belt to be able to regulate its motions.",Superpower  ,1,142,90
 68,Machamp,Fighting,-,Final,-1,1:03,1.6,130,"Using its heavy muscles, it throws powerful punches that can send the victim clear over the horizon.",Superpower  ,1,253,45
-69,Bellsprout,Grass,Poison,Basic,21,1:01,0.7,4,A carnivorous POKÈMON that traps and eats bugs. It uses its root feet to soak up needed moisture.,Flower  ,1,60,255
+69,Bellsprout,Grass,Poison,Basic,20,1:01,0.7,4,A carnivorous POKÈMON that traps and eats bugs. It uses its root feet to soak up needed moisture.,Flower  ,1,60,255
 70,Weepinbell,Grass,Poison,Intermediate,-1,1:01,1,6.4,It spits out POISONPOWDER to immobilize the enemy and then finishes it with a spray of ACID.,Flycatcher  ,1,137,120
 71,Victreebel,Grass,Poison,Final,-1,1:01,1.7,15.5,"Said to live in huge colonies deep in jungles, although no one has ever returned from there.",Flycatcher  ,1,245,45
 72,Tentacool,Water,Poison,Basic,30,1:01,0.9,45.5,Drifts in shallow seas. Anglers who hook them by accident are often punished by its stinging acid.,Jellyfish  ,1.2,67,190
