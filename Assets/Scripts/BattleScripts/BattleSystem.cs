@@ -387,7 +387,7 @@ namespace Pokemon
             phasePlayerSprite = 2;
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
-            if (GameController.isCatchable) GameController.catchRate = Pokedex.pokedex_dictionary[enemyUnit.pokemon.dexnum].catch_rate;
+            if (GameController.isCatchable) GameController.catchRate = enemyUnit.pokemon.pokedex_entry.catch_rate;
             PlayerTurn();
         }
 
@@ -2121,7 +2121,7 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
             {
-                x = 0.58f;
+                x = 0.25f;
                 y = 0.20f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
@@ -2226,12 +2226,12 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 0.40f;
+                x = 0.00f;
                 y = 0.40f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-                x = 1.30f;
+                x = 1.40f;
                 y = 1.125f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
@@ -2333,12 +2333,12 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 1.30f;
+                x = 1.40f;
                 y = 1.125f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-                x = 0.40f;
+                x = 0.00f;
                 y = 0.40f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
