@@ -58,14 +58,14 @@ PokedexNum,Pokemon_Name,Type1,Type2,Stage,Evolve_Level,Gender_Ratio,Height,Weigh
 57,Primeape,Fighting,-,Final,-1,1:01,1,32,Always furious and tenacious to boot. It will not abandon chasing its quarry until it is caught.,Pig Monkey  ,0.8,159,75
 58,Growlithe,Fire,-,Basic,-1,1:03,0.7,19,Very protective of its territory. It will bark and bite to repel intruders from its space.,Puppy  ,1.2,70,190
 59,Arcanine,Fire,-,Final,-1,1:03,1.9,155,A POKÈMON that has been admired since the past for its beauty. It runs agilely as if on wings.,Legendary  ,1.2,194,75
-60,Poliwag,Water,-,Basic,25,1:01,0.6,12.4,Its newly grown legs prevent it from running. It appears to prefer swimming than trying to stand.,Tadpole  ,1,60,255
+60,Poliwag,Water,-,Basic,18,1:01,0.6,12.4,Its newly grown legs prevent it from running. It appears to prefer swimming than trying to stand.,Tadpole  ,1,60,255
 61,Poliwhirl,Water,-,Intermediate,-1,1:01,1,20,"Capable of living in or out of water. When out of water, it sweats to keep its body slimy.",Tadpole  ,1,135,120
 62,Poliwrath,Water,Fighting,Final,-1,1:01,1.3,54,An adept swimmer at both the front crawl and breast stroke. Easily overtakes the best human swimmers.,Tadpole  ,1,255,45
 63,Abra,Psychic,-,Basic,16,1:03,0.9,19.5,"Using its ability to read minds, it will identify impending danger and TELEPORT to safety.",Psi  ,1,62,200
 64,Kadabra,Psychic,-,Intermediate,36,1:03,1.3,56.5,It emits special alpha waves from its body that induce headaches just by being close by.,Psi  ,1,140,100
 65,Alakazam,Psychic,-,Final,-1,1:03,1.5,48,"Its brain can outperform a supercomputer. Its intelligence quotient is said to be 5,000.",Psi  ,1,250,50
 66,Machop,Fighting,-,Basic,28,1:03,0.8,19.5,Loves to build its muscles. It trains in all styles of martial arts to become even stronger.,Superpower  ,1,61,180
-67,Machoke,Fighting,-,Intermediate,40,1:03,1.5,70.5,"Its muscular body is so powerful, it must wear a power save belt to be able to regulate its motions.",Superpower  ,1,142,90
+67,Machoke,Fighting,-,Intermediate,38,1:03,1.5,70.5,"Its muscular body is so powerful, it must wear a power save belt to be able to regulate its motions.",Superpower  ,1,142,90
 68,Machamp,Fighting,-,Final,-1,1:03,1.6,130,"Using its heavy muscles, it throws powerful punches that can send the victim clear over the horizon.",Superpower  ,1,253,45
 69,Bellsprout,Grass,Poison,Basic,20,1:01,0.7,4,A carnivorous POKÈMON that traps and eats bugs. It uses its root feet to soak up needed moisture.,Flower  ,1,60,255
 70,Weepinbell,Grass,Poison,Intermediate,-1,1:01,1,6.4,It spits out POISONPOWDER to immobilize the enemy and then finishes it with a spray of ACID.,Flycatcher  ,1,137,120
