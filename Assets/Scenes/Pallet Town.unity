@@ -4899,6 +4899,12 @@ MonoBehaviour:
     pitch: 1
     source: {fileID: 0}
     loop: 0
+  - name: Break Out
+    clip: {fileID: 8300000, guid: 998121ee1919d48d995f3b9a23341833, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+    loop: 0
   SongPlaying:
     name: 
     clip: {fileID: 0}
