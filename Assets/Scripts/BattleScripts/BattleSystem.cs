@@ -387,7 +387,7 @@ namespace Pokemon
             phasePlayerSprite = 2;
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
-            if (GameController.isCatchable) GameController.catchRate = Pokedex.pokedex_dictionary[enemyUnit.pokemon.dexnum].catch_rate;
+            if (GameController.isCatchable) GameController.catchRate = enemyUnit.pokemon.pokedex_entry.catch_rate;
             PlayerTurn();
         }
 
@@ -865,7 +865,7 @@ namespace Pokemon
                     {
                         dialogueText.text = "It's not very effective...";
                     }
-                    else if (super == 0)
+                    else if (super == 0 || (attack.status.SeeIfStatus(attack) && attack.status.name.Equals("Paralysis") && Utility.IsGround(enemyUnit)))
                     {
                         dialogueText.text = enemyUnit.pokemon.name + " is immune!";
                     }
@@ -2112,6 +2112,11 @@ namespace Pokemon
                 x = 0.20f;
                 y = 0.30f;
             }
+            if (GameController.opponentType == "Rival")
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
             //spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, Mathf.SmoothStep(255, 0, 2.0f));
         }
@@ -2121,13 +2126,18 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
             {
-                x = 0.58f;
+                x = 0.25f;
                 y = 0.20f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
             {
                 x = 0.00f;
                 y = 0.50f;
+            }
+            if (GameController.opponentType == "Rival")
+            {
+                x = 0.00f;
+                y = 0.35f;
             }
             Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData = File.ReadAllBytes(unit.pokemon.image1);
@@ -2158,11 +2168,16 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.20f;
             }
-            /*if (GameController.location.CompareTo("Pallet Town") == 0)
+            if (GameController.location.CompareTo("Pallet Town") == 0)
             {
                 x = 0.00f;
                 y = 0.35f;
-            }*/
+            }
+            if (GameController.opponentType == "Rival")
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
         }
 
@@ -2179,6 +2194,11 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
+            if (GameController.opponentType == "Rival")
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
             Texture2D SpriteTexture = new Texture2D(0, 0);
             byte[] fileData = File.ReadAllBytes(unit.pokemon.image2);
             SpriteTexture.LoadImage(fileData);
@@ -2189,12 +2209,25 @@ namespace Pokemon
 
         public void SetBackground()
         {
-            Texture2D SpriteTexture = new Texture2D(2, 2);
-            var path = "Assets/Resources/Images/Backgrounds/";
+            string type = GameController.opponentType;
+            if (type == "Rival")
+            {
+                Texture2D SpriteTexture = new Texture2D(2, 2);
+                var path = "Assets/Resources/Images/Backgrounds/";
 
-            byte[] fileData = File.ReadAllBytes(path + GameController.location + ".png");
-            SpriteTexture.LoadImage(fileData);
-            background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+                byte[] fileData = File.ReadAllBytes(path + "Viridian Forest" + ".png");
+                SpriteTexture.LoadImage(fileData);
+                background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+            }
+            else
+            {
+                Texture2D SpriteTexture = new Texture2D(2, 2);
+                var path = "Assets/Resources/Images/Backgrounds/";
+
+                byte[] fileData = File.ReadAllBytes(path + GameController.location + ".png");
+                SpriteTexture.LoadImage(fileData);
+                background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
+            }
         }
 
         public void DisplayPokeball()
@@ -2226,12 +2259,12 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 0.40f;
+                x = 0.00f;
                 y = 0.40f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-                x = 1.30f;
+                x = 1.40f;
                 y = 1.125f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
@@ -2240,6 +2273,16 @@ namespace Pokemon
                 y = 0.65f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && !isPlayer)
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
+            if (GameController.opponentType == "Rival" && isPlayer)
+            {
+                x = -0.25f;
+                y = 0.65f;
+            }
+            if (GameController.opponentType == "Rival" && !isPlayer)
             {
                 x = 1.24f;
                 y = 1.175f;
@@ -2333,12 +2376,12 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0 && isPlayer)
             {
-                x = 1.30f;
+                x = 1.40f;
                 y = 1.125f;
             }
             if (GameController.location.CompareTo("Route 1") == 0 && !isPlayer)
             {
-                x = 0.40f;
+                x = 0.00f;
                 y = 0.40f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && isPlayer)
@@ -2347,6 +2390,16 @@ namespace Pokemon
                 y = 1.175f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0 && !isPlayer)
+            {
+                x = -0.25f;
+                y = 0.65f;
+            }
+            if (GameController.opponentType == "Rival" && isPlayer)
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
+            if (GameController.opponentType == "Rival" && !isPlayer)
             {
                 x = -0.25f;
                 y = 0.65f;

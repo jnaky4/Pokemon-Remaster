@@ -263,6 +263,12 @@ namespace Pokemon
                         {
                             if (unit.pokemon.type1.type.Equals("Electric")) break;
                             if (unit.pokemon.type2.type.Equals("Electric")) break;
+
+                            if (move.move_type.type.Equals("Electric"))
+                            {
+                                if (unit.pokemon.type1.type.Equals("Ground")) break;
+                                if (unit.pokemon.type2.type.Equals("Ground")) break;
+                            }
                         }
                         catch (NullReferenceException ex)
                         {
