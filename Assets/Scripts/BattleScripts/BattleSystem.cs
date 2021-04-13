@@ -786,7 +786,7 @@ namespace Pokemon
             if (Status.SeeIfParalyzed(playerUnit.pokemon))
             {
                 AnimateStatus("Paralysis", true);
-                GameController.soundFX = "Thunder Wave1";
+                GameController.soundFX = "Paralysis";
                 while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
@@ -1360,7 +1360,7 @@ namespace Pokemon
             if (Status.SeeIfParalyzed(enemyUnit.pokemon))
             {
                 AnimateStatus("Paralysis", false);
-                GameController.soundFX = "Thunder Wave1";
+                GameController.soundFX = "Paralysis";
                 while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
