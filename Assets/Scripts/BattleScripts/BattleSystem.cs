@@ -2314,12 +2314,12 @@ namespace Pokemon
             if (GameController.opponentType == "Rival" && isPlayer)
             {
                 x = -0.25f;
-                y = -0.75f;
+                y = 0.50f;
             }
             if (GameController.opponentType == "Rival" && !isPlayer)
             {
                 x = 1.24f;
-                y = 1.00f;
+                y = 1.175f;
             }
 
             var sprites = Resources.LoadAll<Sprite>(path);
@@ -2446,7 +2446,7 @@ namespace Pokemon
             if (GameController.opponentType == "Rival" && !isPlayer)
             {
                 x = -0.25f;
-                y = 0.65f;
+                y = 0.50f;
             }
 
             var sprites = Resources.LoadAll<Sprite>(path);
