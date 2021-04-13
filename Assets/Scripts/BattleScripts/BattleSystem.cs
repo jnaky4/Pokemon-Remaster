@@ -865,7 +865,7 @@ namespace Pokemon
                     {
                         dialogueText.text = "It's not very effective...";
                     }
-                    else if (super == 0)
+                    else if (super == 0 || (attack.status.SeeIfStatus(attack) && attack.status.name.Equals("Paralysis") && Utility.IsGround(enemyUnit)))
                     {
                         dialogueText.text = enemyUnit.pokemon.name + " is immune!";
                     }

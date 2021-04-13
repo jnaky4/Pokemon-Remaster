@@ -203,6 +203,21 @@ namespace Pokemon
             }
             return struggle;
         }
+
+        public static bool IsGround(Unit unit)
+        {
+            bool x = false;
+            try
+            {
+                if (unit.pokemon.type1.type.Equals("Ground")) x = true;
+                if (unit.pokemon.type1.type.Equals("Ground")) x = true;
+            }
+            catch
+            {
+                if (unit.pokemon.type1.type.Equals("Ground")) x = true;
+            }
+            return x;
+        }
     }
 }
 
