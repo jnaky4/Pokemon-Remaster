@@ -1,4 +1,5 @@
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -71,9 +72,84 @@ namespace Pokemon
         private bool updateXP = false;
         public bool negative = false;
 
+        public Image enemy1;
+        public Image enemy2;
+        public Image enemy3;
+        public Image enemy4;
+        public Image enemy5;
+        public Image enemy6;
+
         #endregion Declaration of variables
 
         #region Functions
+
+        public void SetUpEnemy()
+        {
+            if (GameController.isCatchable)
+            {
+                enemy6.enabled = false;
+                enemy5.enabled = false;
+                enemy4.enabled = false;
+                enemy3.enabled = false;
+                enemy2.enabled = false;
+                enemy1.enabled = false;
+                return;
+            }
+            int x = GameController.opponentPokemon.Count(s => s != null);
+            if (x < 6)
+            {
+                enemy6.enabled = false;
+            }
+            if (x < 5)
+            {
+                enemy5.enabled = false;
+            }
+            if (x < 4)
+            {
+                enemy4.enabled = false;
+            }
+            if (x < 3)
+            {
+                enemy3.enabled = false;
+            }
+            if (x < 2)
+            {
+                enemy2.enabled = false;
+            }
+            if (x < 1)
+            {
+                enemy1.enabled = false;
+            }
+        }
+
+        public void CrossOutBall(int x)
+        {
+            var sprite = Resources.Load<Sprite>("Images/Items/Pokeball_Dead2");
+            if (x == 6)
+            {
+                enemy6.sprite = sprite;
+            }
+            if (x == 5)
+            {
+                enemy5.sprite = sprite;
+            }
+            if (x == 4)
+            {
+                enemy4.sprite = sprite;
+            }
+            if (x == 3)
+            {
+                enemy3.sprite = sprite;
+            }
+            if (x == 2)
+            {
+                enemy2.sprite = sprite;
+            }
+            if (x == 1)
+            {
+                enemy1.sprite = sprite;
+            }
+        }
 
         public void ResetStatus(Pokemon poke)
         {
