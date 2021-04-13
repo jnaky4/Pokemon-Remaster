@@ -943,14 +943,14 @@ namespace Pokemon
             }
             if (Status.SeeIfLeech(enemyUnit.pokemon))
             {
-                //AnimateStatus("Poison", true);
+                AnimateStatus("Seeded", false);
                 GameController.soundFX = "Poisoned";
-                /*while (!endofanimation) //Animation shit, ask levi
+                while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
                 }
                 endofanimation = false;
-                */
+
                 playerUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
                 StartCoroutine(Blink(enemySprite, 0.25));
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
@@ -1481,14 +1481,14 @@ namespace Pokemon
             }
             if (Status.SeeIfLeech(playerUnit.pokemon))
             {
-                //AnimateStatus("Poison", true);
+                AnimateStatus("Seeded", true);
                 GameController.soundFX = "Poisoned";
-                /*while (!endofanimation) //Animation shit, ask levi
+                while (!endofanimation) //Animation shit, ask levi
                 {
                     yield return null;
                 }
                 endofanimation = false;
-                */
+
                 enemyUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
                 StartCoroutine(Blink(playerSprite, 0.25));
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp, false);
