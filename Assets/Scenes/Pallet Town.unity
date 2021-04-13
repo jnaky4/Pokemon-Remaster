@@ -83686,10 +83686,11 @@ MonoBehaviour:
   dialog:
     lines:
     - It's Charmander the lizard fire type Pokemon!
-    - Choose Charmander as your starter?
   name: Charmander
-  dexNum: 0
+  dexNum: 4
   buttons: {fileID: 1690639258}
+  dialogBox: {fileID: 1634417689}
+  text: {fileID: 1750630757}
 --- !u!1 &1215421690
 GameObject:
   m_ObjectHideFlags: 0
@@ -91226,6 +91227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons: {fileID: 1690639258}
+  dialogBox: {fileID: 1634417689}
   name: 
 --- !u!4 &1760668939
 Transform:
@@ -91579,10 +91581,11 @@ MonoBehaviour:
   dialog:
     lines:
     - It's Squirtle the tiny turtle water Pokemon!
-    - Choose Squirtle as your starter?
   name: Squirtle
-  dexNum: 0
+  dexNum: 7
   buttons: {fileID: 1690639258}
+  dialogBox: {fileID: 1634417689}
+  text: {fileID: 1750630757}
 --- !u!61 &1916982812
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -95218,10 +95221,11 @@ MonoBehaviour:
   dialog:
     lines:
     - It's Bulbasaur the grass/poison seed Pokemon!
-    - Choose Bulbasaur as your starter?
   name: Bulbasaur
-  dexNum: 0
+  dexNum: 1
   buttons: {fileID: 1690639258}
+  dialogBox: {fileID: 1634417689}
+  text: {fileID: 1750630757}
 --- !u!61 &1944718258
 BoxCollider2D:
   m_ObjectHideFlags: 0

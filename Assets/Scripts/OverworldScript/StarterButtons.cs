@@ -2,21 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarterButtons : MonoBehaviour
-{
-    [SerializeField] GameObject buttons;
-    public string name = "";
-
-    public void yes()
+namespace Pokemon
+{ 
+    public class StarterButtons : MonoBehaviour
     {
-        Debug.Log(name + " has been chosen.");
-        buttons.SetActive(false);
-        
-    }
+        [SerializeField] GameObject buttons;
+        [SerializeField] GameObject dialogBox;
+        public string name = "";
+        public Pokemon pokemon;
 
-    public void no()
-    {
-        Debug.Log(name + " has been denied");
-        buttons.SetActive(false);
+        public void yes()
+        {
+            Debug.Log(name + " has been chosen.");
+            Time.timeScale = 1f;
+            if (pokemon != null)
+            {
+                Debug.Log("Set pokemon");
+                GameController.playerPokemon[0] = pokemon;
+            }
+
+            GameController.state = GameState.Roam;
+            dialogBox.SetActive(false);
+            buttons.SetActive(false);
+        }
+
+        public void no()
+        {
+            Debug.Log(name + " has been denied");
+            Time.timeScale = 1f;
+            GameController.state = GameState.Roam;
+            dialogBox.SetActive(false);
+            buttons.SetActive(false);
+        }
     }
 }
