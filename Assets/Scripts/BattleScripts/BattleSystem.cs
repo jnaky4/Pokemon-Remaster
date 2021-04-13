@@ -49,6 +49,8 @@ namespace Pokemon
         private bool enemyStatus;
         private bool beginCatch;
         private bool playCatch;
+        private bool breakOut;
+        private int breakOutFrame;
         private string playerMoveName;
         private string enemyMoveName;
         //all of this stuff is for animation
@@ -204,6 +206,8 @@ namespace Pokemon
             {
                 if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
                 {
+                    if (breakOut == true && breakOutFrame == PlayerAttackAnim.CurrentFrame)
+                        GameController.soundFX = "Break Out";
                     if (PlayerAttackAnim.CurrentFrame == 14 || PlayerAttackAnim.CurrentFrame == 45 || PlayerAttackAnim.CurrentFrame == 78)
                         GameController.soundFX = "Shake";
                     PlayerAttackAnim.HandleUpdate();
@@ -2314,12 +2318,12 @@ namespace Pokemon
             if (GameController.opponentType == "Rival" && isPlayer)
             {
                 x = -0.25f;
-                y = -0.75f;
+                y = 0.50f;
             }
             if (GameController.opponentType == "Rival" && !isPlayer)
             {
                 x = 1.24f;
-                y = 1.00f;
+                y = 1.175f;
             }
 
             var sprites = Resources.LoadAll<Sprite>(path);
@@ -2397,11 +2401,17 @@ namespace Pokemon
             }
             if (shakes < 4)
             {
+                breakOutFrame = AttackSprites.Count(s => s != null);
                 foreach (var s in spritesBreak)
                 {
                     Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
                     AttackSprites.Add(p);
                 }
+                breakOut = true;
+            }
+            else
+            {
+                breakOut = false;
             }
 
             AttackSprites.TrimExcess();
@@ -2446,7 +2456,7 @@ namespace Pokemon
             if (GameController.opponentType == "Rival" && !isPlayer)
             {
                 x = -0.25f;
-                y = 0.65f;
+                y = 0.50f;
             }
 
             var sprites = Resources.LoadAll<Sprite>(path);
