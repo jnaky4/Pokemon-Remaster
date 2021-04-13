@@ -1615,7 +1615,7 @@ namespace Pokemon
                 }
                 else
                 {
-                    if (GameController.opponentName == "Brock")
+                    if (GameController.opponentName == "Brock" || GameController.opponentName == "Gary")
                         GameController.music = "Battle Victory Gym";
                     else
                         GameController.music = "Battle Victory Trainer";
