@@ -359,6 +359,7 @@ namespace Pokemon
 
             playerHUD.SetHUD(playerUnit, true, player, GameController.playerPokemon);
             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
+            enemyHUD.SetUpEnemy();
 
             SetPlayerTrainerSprite(playerSprite);
             SetBackground();
@@ -968,17 +969,20 @@ namespace Pokemon
             {
                 breakOutOfDecision = true;
                 bool won = true;
+                int x = 0;
                 for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++) //Determines if you win or not by seeing if the other trainer has other usable pokemon.
                 {
                     if (GameController.opponentPokemon[j].current_hp > 0)
                     {
                         won = false;
+                        x = j;
                         break;
                     }
                 }
                 phaseOpponentSprite = 1;
                 if (won) //If you won
                 {
+                    if (!GameController.isCatchable) enemyHUD.CrossOutBall(x + 1);
                     state = BattleState.WON;
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
                     int exp = 0;
@@ -1008,7 +1012,7 @@ namespace Pokemon
                     int exp = 0;
                     double exp_multiplier;
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
-
+                    if (!GameController.isCatchable) enemyHUD.CrossOutBall(x);
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
                     exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
@@ -1766,6 +1770,11 @@ namespace Pokemon
                 CloseMovesMenu();
                 ClosePokemonMenu();
                 SetDownButtons();
+                if (playerUnit.pokemon.current_speed > enemyUnit.pokemon.current_speed)
+                {
+                    state = BattleState.RUNAWAY;
+                    StartCoroutine(EndBattle());
+                }
                 double a = playerUnit.pokemon.current_speed;
                 double b = a / 4;
                 b %= 256;
