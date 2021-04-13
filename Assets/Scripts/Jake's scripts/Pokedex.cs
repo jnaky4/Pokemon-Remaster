@@ -55,7 +55,7 @@ namespace Pokemon
             this.base_exp = int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Base_Exp"].ToString());
             this.catch_rate = int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Catch_Rate"].ToString());
 
-            //hello
+           
 
             /*            this.type1 = pokedex[dexnum][2];
                         this.type2 = pokedex[dexnum][3];
