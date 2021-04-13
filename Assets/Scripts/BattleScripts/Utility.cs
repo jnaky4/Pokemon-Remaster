@@ -218,6 +218,21 @@ namespace Pokemon
             }
             return x;
         }
+
+        public static bool IsPoison(Unit unit)
+        {
+            bool x = false;
+            try
+            {
+                if (unit.pokemon.type1.type.Equals("Poison")) x = true;
+                if (unit.pokemon.type1.type.Equals("Poison")) x = true;
+            }
+            catch
+            {
+                if (unit.pokemon.type1.type.Equals("Poison")) x = true;
+            }
+            return x;
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 /*
  * Burn:
@@ -248,10 +249,7 @@ namespace Pokemon
                         {
                             //throw;
                         }
-                        finally
-                        {
-                            unit.pokemon.statuses.Add(get_status("Burn"));
-                        }
+                        unit.pokemon.statuses.Add(get_status("Burn"));
                     }
                     break;
 
@@ -274,11 +272,8 @@ namespace Pokemon
                         {
                             //throw;
                         }
-                        finally
-                        {
-                            unit.pokemon.statuses.Add(get_status("Paralysis"));
-                            ParalyzeSpeedReduce(unit);
-                        }
+                        unit.pokemon.statuses.Add(get_status("Paralysis"));
+                        ParalyzeSpeedReduce(unit);
                     }
                     break;
 
@@ -288,17 +283,16 @@ namespace Pokemon
                         if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
                         try
                         {
-                            if (unit.pokemon.type1.type.Equals("Poison")) break;
-                            if (unit.pokemon.type2.type.Equals("Poison")) break;
+                            if (unit.pokemon.type1.type == "Poison") break;
+                            if (unit.pokemon.type2.type == "Poison") break;
                         }
                         catch (NullReferenceException ex)
                         {
                             //throw;
+                            Debug.Log("Bellsprout should not be here.3");
                         }
-                        finally
-                        {
-                            unit.pokemon.statuses.Add(get_status("Poison"));
-                        }
+                        Debug.Log("Bellsprout should not be here.4");
+                        unit.pokemon.statuses.Add(get_status("Poison"));
                     }
                     break;
 
@@ -324,10 +318,7 @@ namespace Pokemon
                         {
                             //throw;
                         }
-                        finally
-                        {
-                            unit.pokemon.statuses.Add(get_status("Freeze"));
-                        }
+                        unit.pokemon.statuses.Add(get_status("Freeze"));
                     }
                     break;
 

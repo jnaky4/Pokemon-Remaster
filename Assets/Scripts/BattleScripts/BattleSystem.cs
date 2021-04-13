@@ -880,7 +880,7 @@ namespace Pokemon
                     {
                         dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " is already " + attack.status.adj + "!";
                     }
-                    else if (attack.status.SeeIfStatus(attack))
+                    else if (attack.status.SeeIfStatus(attack) && !Utility.IsPoison(enemyUnit))
                     {
                         dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " became " + attack.status.adj + "!";
                         enemyHUD.SetStatus(enemyUnit.pokemon);
