@@ -2298,12 +2298,12 @@ namespace Pokemon
             if (GameController.opponentType == "Rival" && isPlayer)
             {
                 x = -0.25f;
-                y = 0.65f;
+                y = -0.75f;
             }
             if (GameController.opponentType == "Rival" && !isPlayer)
             {
                 x = 1.24f;
-                y = 1.175f;
+                y = 1.00f;
             }
 
             var sprites = Resources.LoadAll<Sprite>(path);
