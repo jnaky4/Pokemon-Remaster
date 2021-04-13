@@ -387,6 +387,7 @@ namespace Pokemon
             phasePlayerSprite = 2;
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
+            if (GameController.isCatchable) GameController.catchRate = Pokedex.pokedex_dictionary[enemyUnit.pokemon.dexnum].catch_rate;
             PlayerTurn();
         }
 
