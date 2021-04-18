@@ -1,0 +1,869 @@
+dexnum,lvl,move,type
+152,1,Tackle,Normal
+152,1,Growl,Normal
+152,8,Razor Leaf,Grass
+152,12,Reflect,Psychic
+152,15,PoisonPowder,Poison
+152,22,Synthesis,Grass
+152,29,Body Slam,Normal
+152,36,Light Screen,Psychic
+152,43,Safeguard,Normal
+152,50,SolarBeam,Grass
+153,1,Tackle,Normal
+153,1,Growl,Normal
+153,1,Razor Leaf,Grass
+153,1,Reflect,Psychic
+153,8,Razor Leaf,Grass
+153,12,Reflect,Psychic
+153,15,PoisonPowder,Poison
+153,23,Synthesis,Grass
+153,31,Body Slam,Normal
+153,39,Light Screen,Psychic
+153,47,Safeguard,Normal
+153,55,SolarBeam,Grass
+154,1,Tackle,Normal
+154,1,Growl,Normal
+154,1,Razor Leaf,Grass
+154,1,Reflect,Psychic
+154,8,Razor Leaf,Grass
+154,12,Reflect,Psychic
+154,15,PoisonPowder,Poison
+154,23,Synthesis,Grass
+154,31,Body Slam,Normal
+154,41,Light Screen,Psychic
+154,51,Safeguard,Normal
+154,61,SolarBeam,Grass
+155,1,Tackle,Normal
+155,1,Leer,Normal
+155,6,SmokeScreen,Normal
+155,12,Ember,Fire
+155,19,Quick Attack,Normal
+155,27,Flame Wheel,Fire
+155,36,Swift,Normal
+155,46,Flamethrower,Fire
+156,1,Tackle,Normal
+156,1,Leer,Normal
+156,1,SmokeScreen,Normal
+156,6,SmokeScreen,Normal
+156,12,Ember,Fire
+156,21,Quick Attack,Normal
+156,31,Flame Wheel,Fire
+156,42,Swift,Normal
+156,54,Flamethrower,Fire
+157,1,Tackle,Normal
+157,1,Leer,Normal
+157,1,SmokeScreen,Normal
+157,1,Ember,Fire
+157,6,SmokeScreen,Normal
+157,12,Ember,Fire
+157,21,Quick Attack,Normal
+157,31,Flame Wheel,Fire
+157,45,Swift,Normal
+157,60,Flamethrower,Fire
+158,1,Scratch,Normal
+158,1,Leer,Normal
+158,7,Rage,Normal
+158,13,Water Gun,Water
+158,20,Bite,Dark
+158,27,Scary Face,Normal
+158,35,Slash,Normal
+158,43,Screech,Normal
+158,52,Hydro Pump,Water
+159,1,Scratch,Normal
+159,1,Leer,Normal
+159,1,Rage,Normal
+159,7,Rage,Normal
+159,13,Water Gun,Water
+159,21,Bite,Dark
+159,28,Scary Face,Normal
+159,37,Slash,Normal
+159,45,Screech,Normal
+159,55,Hydro Pump,Water
+160,1,Scratch,Normal
+160,1,Leer,Normal
+160,1,Rage,Normal
+160,1,Water Gun,Water
+160,7,Rage,Normal
+160,13,Water Gun,Water
+160,21,Bite,Dark
+160,28,Scary Face,Normal
+160,38,Slash,Normal
+160,47,Screech,Normal
+160,58,Hydro Pump,Water
+161,1,Tackle,Normal
+161,5,Defense Curl,Normal
+161,11,Quick Attack,Normal
+161,17,Fury Swipes,Normal
+161,25,Slam,Normal
+161,33,Rest,Psychic
+161,41,Amnesia,Psychic
+162,1,Scratch,Normal
+162,1,Defense Curl,Normal
+162,1,Quick Attack,Normal
+162,5,Defense Curl,Normal
+162,11,Quick Attack,Normal
+162,18,Fury Swipes,Normal
+162,28,Slam,Normal
+162,38,Rest,Psychic
+162,48,Amnesia,Psychic
+163,1,Tackle,Normal
+163,1,Growl,Normal
+163,6,Foresight,Normal
+163,11,Peck,Flying
+163,16,Hypnosis,Psychic
+163,22,Reflect,Psychic
+163,28,Take Down,Normal
+163,34,Confusion,Psychic
+163,48,Dream Eater,Psychic
+164,1,Tackle,Normal
+164,1,Growl,Normal
+164,1,Foresight,Normal
+164,1,Peck,Flying
+164,6,Foresight,Normal
+164,11,Peck,Flying
+164,16,Hypnosis,Psychic
+164,25,Reflect,Psychic
+164,33,Take Down,Normal
+164,41,Confusion,Psychic
+164,57,Dream Eater,Psychic
+165,1,Tackle,Normal
+165,8,Supersonic,Normal
+165,15,Comet Punch,Normal
+165,22,Light Screen,Psychic
+165,22,Reflect,Psychic
+165,22,Safeguard,Normal
+165,29,Baton Pass,Normal
+165,36,Swift,Normal
+165,43,Agility,Psychic
+165,50,Double-Edge,Normal
+166,1,Tackle,Normal
+166,1,Supersonic,Normal
+166,8,Supersonic,Normal
+166,15,Comet Punch,Normal
+166,24,Light Screen,Psychic
+166,24,Reflect,Psychic
+166,24,Safeguard,Normal
+166,33,Baton Pass,Normal
+166,42,Swift,Normal
+166,51,Agility,Psychic
+166,60,Double-Edge,Normal
+167,1,Poison Sting,Poison
+167,1,String Shot,Bug
+167,6,Scary Face,Normal
+167,11,Constrict,Normal
+167,17,Night Shade,Ghost
+167,23,Leech Life,Bug
+167,30,Fury Swipes,Normal
+167,37,Spider Web,Bug
+167,N/A,Screech,Normal
+167,45,Agility,Psychic
+167,53,Psychic,Psychic
+168,1,Poison Sting,Poison
+168,1,String Shot,Bug
+168,1,Scary Face,Normal
+168,1,Constrict,Normal
+168,6,Scary Face,Normal
+168,11,Constrict,Normal
+168,17,Night Shade,Ghost
+168,25,Leech Life,Bug
+168,34,Fury Swipes,Normal
+168,43,Spider Web,Bug
+168,N/A,Screech,Normal
+168,53,Agility,Psychic
+168,63,Psychic,Psychic
+169,1,Screech,Normal
+169,1,Leech Life,Bug
+169,1,Supersonic,Normal
+169,6,Supersonic,Normal
+169,12,Bite,Dark
+169,19,Confuse Ray,Ghost
+169,30,Wing Attack,Flying
+169,42,Mean Look,Normal
+169,55,Haze,Ice
+170,1,Bubble,Water
+170,1,Thunder Wave,Electric
+170,5,Supersonic,Normal
+170,13,Flail,Normal
+170,17,Water Gun,Water
+170,25,Spark,Electric
+170,29,Confuse Ray,Ghost
+170,37,Take Down,Normal
+170,41,Hydro Pump,Water
+171,1,Bubble,Water
+171,1,Thunder Wave,Electric
+171,1,Supersonic,Normal
+171,5,Supersonic,Normal
+171,13,Flail,Normal
+171,17,Water Gun,Water
+171,25,Spark,Electric
+171,33,Confuse Ray,Ghost
+171,45,Take Down,Normal
+171,53,Hydro Pump,Water
+172,1,ThunderShock,Electric
+172,1,Charm,Normal
+172,6,Tail Whip,Normal
+172,8,Thunder Wave,Electric
+172,11,Sweet Kiss,Normal
+173,1,Pound,Normal
+173,1,Charm,Normal
+173,4,Encore,Normal
+173,8,Sing,Normal
+173,13,Sweet Kiss,Normal
+174,1,Sing,Normal
+174,1,Charm,Normal
+174,4,Defense Curl,Normal
+174,9,Pound,Normal
+174,14,Sweet Kiss,Normal
+175,1,Growl,Normal
+175,1,Charm,Normal
+175,7,Metronome,Normal
+175,18,Sweet Kiss,Normal
+175,25,Encore,Normal
+175,31,Safeguard,Normal
+175,38,Double-Edge,Normal
+176,1,Growl,Normal
+176,1,Charm,Normal
+176,7,Metronome,Normal
+176,18,Sweet Kiss,Normal
+176,25,Encore,Normal
+176,31,Safeguard,Normal
+176,38,Double-Edge,Normal
+177,1,Peck,Flying
+177,1,Leer,Normal
+177,10,Night Shade,Ghost
+177,20,Teleport,Psychic
+177,30,Future Sight,Psychic
+177,40,Confuse Ray,Ghost
+177,50,Psychic,Psychic
+178,1,Peck,Flying
+178,1,Leer,Normal
+178,1,Night Shade,Ghost
+178,10,Night Shade,Ghost
+178,20,Teleport,Psychic
+178,35,Future Sight,Psychic
+178,50,Confuse Ray,Ghost
+178,65,Psychic,Psychic
+179,1,Tackle,Normal
+179,1,Growl,Normal
+179,9,ThunderShock,Electric
+179,16,Thunder Wave,Electric
+179,23,Cotton Spore,Grass
+179,30,Light Screen,Psychic
+179,37,Thunder,Electric
+180,1,Tackle,Normal
+180,1,Growl,Normal
+180,1,ThunderShock,Electric
+180,9,ThunderShock,Electric
+180,18,Thunder Wave,Electric
+180,27,Cotton Spore,Grass
+180,36,Light Screen,Psychic
+180,45,Thunder,Electric
+181,1,Tackle,Normal
+181,1,Growl,Normal
+181,1,ThunderShock,Electric
+181,1,Thunder Wave,Electric
+181,9,ThunderShock,Electric
+181,18,Thunder Wave,Electric
+181,27,Cotton Spore,Grass
+181,30,ThunderPunch,Electric
+181,42,Light Screen,Psychic
+181,57,Thunder,Electric
+182,1,Absorb,Grass
+182,1,Sweet Scent,Normal
+182,1,Stun Spore,Grass
+182,1,Petal Dance,Grass
+182,55,SolarBeam,Grass
+183,1,Tackle,Normal
+183,3,Defense Curl,Normal
+183,6,Tail Whip,Normal
+183,10,Water Gun,Water
+183,15,Rollout,Rock
+183,21,Bubble Beam,Water
+183,28,Double-Edge,Normal
+183,36,Rain Dance,Water
+184,1,Tackle,Normal
+184,1,Defense Curl,Normal
+184,1,Tail Whip,Normal
+184,1,Water Gun,Water
+184,3,Defense Curl,Normal
+184,6,Tail Whip,Normal
+184,10,Water Gun,Water
+184,15,Rollout,Rock
+184,25,Bubble Beam,Water
+184,36,Double-Edge,Normal
+184,48,Rain Dance,Water
+185,1,Rock Throw,Rock
+185,1,Mimic,Normal
+185,10,Flail,Normal
+185,19,Low Kick,Fighting
+185,28,Rock Slide,Rock
+185,37,Faint Attack,Dark
+185,46,Slam,Normal
+186,1,Water Gun,Water
+186,1,Hypnosis,Psychic
+186,1,DoubleSlap,Normal
+186,1,Perish Song,Normal
+186,35,Perish Song,Normal
+186,51,Swagger,Normal
+187,1,Splash,Normal
+187,5,Synthesis,Grass
+187,5,Tail Whip,Normal
+187,10,Tackle,Normal
+187,13,PoisonPowder,Poison
+187,15,Stun Spore,Grass
+187,17,Sleep Powder,Grass
+187,20,Leech Seed,Grass
+187,25,Cotton Spore,Grass
+187,30,Mega Drain,Grass
+188,1,Splash,Normal
+188,1,Synthesis,Grass
+188,1,Tail Whip,Normal
+188,1,Tackle,Normal
+188,5,Synthesis,Grass
+188,5,Tail Whip,Normal
+188,10,Tackle,Normal
+188,13,PoisonPowder,Poison
+188,15,Stun Spore,Grass
+188,17,Sleep Powder,Grass
+188,22,Leech Seed,Grass
+188,29,Cotton Spore,Grass
+188,36,Mega Drain,Grass
+189,1,Splash,Normal
+189,1,Synthesis,Grass
+189,1,Tail Whip,Normal
+189,1,Tackle,Normal
+189,5,Synthesis,Grass
+189,5,Tail Whip,Normal
+189,10,Tackle,Normal
+189,13,PoisonPowder,Poison
+189,15,Stun Spore,Grass
+189,17,Sleep Powder,Grass
+189,22,Leech Seed,Grass
+189,33,Cotton Spore,Grass
+189,44,Mega Drain,Grass
+190,1,Scratch,Normal
+190,1,Tail Whip,Normal
+190,6,Sand-Attack,Ground
+190,12,Baton Pass,Normal
+190,19,Fury Swipes,Normal
+190,27,Swift,Normal
+190,36,Screech,Normal
+190,46,Agility,Psychic
+191,1,Absorb,Grass
+191,4,Growth,Normal
+191,10,Mega Drain,Grass
+191,19,Sunny Day,Fire
+191,31,Synthesis,Grass
+191,46,Giga Drain,Grass
+192,1,Absorb,Grass
+192,1,Pound,Normal
+192,4,Growth,Normal
+192,10,Razor Leaf,Grass
+192,19,Sunny Day,Fire
+192,31,Petal Dance,Grass
+192,46,SolarBeam,Grass
+193,1,Tackle,Normal
+193,1,Foresight,Normal
+193,7,Quick Attack,Normal
+193,13,Double Team,Normal
+193,19,SonicBoom,Normal
+193,25,Detect,Fighting
+193,31,Supersonic,Normal
+193,N/A,Swift,Normal
+193,37,Wing Attack,Flying
+193,43,Screech,Normal
+194,1,Water Gun,Water
+194,1,Tail Whip,Normal
+194,11,Slam,Normal
+194,21,Amnesia,Psychic
+194,31,Earthquake,Ground
+194,41,Rain Dance,Water
+194,51,Mist,Ice
+194,51,Haze,Ice
+195,1,Water Gun,Water
+195,1,Tail Whip,Normal
+195,11,Slam,Normal
+195,23,Amnesia,Psychic
+195,35,Earthquake,Ground
+195,47,Rain Dance,Water
+195,59,Mist,Ice
+195,59,Haze,Ice
+196,1,Tackle,Normal
+196,1,Tail Whip,Normal
+196,8,Sand-Attack,Ground
+196,16,Confusion,Psychic
+196,23,Quick Attack,Normal
+196,30,Swift,Normal
+196,36,Psybeam,Psychic
+196,42,Psych Up,Normal
+196,47,Psychic,Psychic
+196,52,Morning Sun,Normal
+197,1,Tackle,Normal
+197,1,Tail Whip,Normal
+197,8,Sand-Attack,Ground
+197,16,Pursuit,Dark
+197,23,Quick Attack,Normal
+197,30,Confuse Ray,Ghost
+197,36,Faint Attack,Dark
+197,42,Mean Look,Normal
+197,47,Screech,Normal
+197,52,Moonlight,Normal
+198,1,Peck,Flying
+198,11,Pursuit,Dark
+198,16,Haze,Ice
+198,26,Night Shade,Ghost
+198,31,Faint Attack,Dark
+198,41,Mean Look,Normal
+199,1,Curse,???
+199,1,Tackle,Normal
+199,6,Growl,Normal
+199,15,Water Gun,Water
+199,20,Confusion,Psychic
+199,29,Disable,Normal
+199,34,Headbutt,Normal
+199,43,Swagger,Normal
+199,48,Psychic,Psychic
+200,1,Growl,Normal
+200,1,Psywave,Psychic
+200,6,Spite,Ghost
+200,12,Confuse Ray,Ghost
+200,19,Mean Look,Normal
+200,27,Psybeam,Psychic
+200,36,Pain Split,Normal
+200,46,Perish Song,Normal
+201,1,Hidden Power,Normal
+202,1,Counter,Fighting
+202,1,Mirror Coat,Psychic
+202,1,Safeguard,Normal
+202,1,Destiny Bond,Ghost
+203,1,Tackle,Normal
+203,1,Growl,Normal
+203,1,Confusion,Psychic
+203,1,Stomp,Normal
+203,7,Confusion,Psychic
+203,13,Stomp,Normal
+203,20,Agility,Psychic
+203,30,Baton Pass,Normal
+203,41,Psybeam,Psychic
+203,54,Crunch,Dark
+204,1,Tackle,Normal
+204,1,Protect,Normal
+204,8,Selfdestruct,Normal
+204,15,Take Down,Normal
+204,22,Rapid Spin,Normal
+204,29,Bide,Normal
+204,36,Explosion,Normal
+204,43,Spikes,Ground
+204,50,Double-Edge,Normal
+205,1,Tackle,Normal
+205,1,Protect,Normal
+205,1,Selfdestruct,Normal
+205,8,Selfdestruct,Normal
+205,15,Take Down,Normal
+205,22,Rapid Spin,Normal
+205,29,Bide,Normal
+205,39,Explosion,Normal
+205,49,Spikes,Ground
+205,59,Double-Edge,Normal
+206,1,Rage,Normal
+206,5,Defense Curl,Normal
+206,13,Glare,Normal
+206,18,Spite,Ghost
+206,26,Pursuit,Dark
+206,30,Screech,Normal
+206,38,Take Down,Normal
+207,1,Poison Sting,Poison
+207,6,Sand-Attack,Ground
+207,13,Harden,Normal
+207,20,Quick Attack,Normal
+207,28,Faint Attack,Dark
+207,36,Slash,Normal
+207,44,Screech,Normal
+207,52,Guillotine,Normal
+208,1,Tackle,Normal
+208,1,Screech,Normal
+208,10,Bind,Normal
+208,14,Rock Throw,Rock
+208,23,Harden,Normal
+208,27,Rage,Normal
+208,36,Sandstorm,Rock
+208,40,Slam,Normal
+208,49,Crunch,Dark
+209,1,Tackle,Normal
+209,1,Scary Face,Normal
+209,4,Tail Whip,Normal
+209,8,Charm,Normal
+209,13,Bite,Dark
+209,19,Lick,Ghost
+209,26,Roar,Normal
+209,34,Rage,Normal
+209,43,Take Down,Normal
+210,1,Tackle,Normal
+210,1,Scary Face,Normal
+210,4,Tail Whip,Normal
+210,8,Charm,Normal
+210,13,Bite,Dark
+210,19,Lick,Ghost
+210,28,Roar,Normal
+210,38,Rage,Normal
+210,51,Take Down,Normal
+211,1,Spikes,Ground
+211,1,Tackle,Normal
+211,1,Poison Sting,Poison
+211,10,Harden,Normal
+211,10,Minimize,Normal
+211,19,Water Gun,Water
+211,28,Pin Missile,Bug
+211,37,Take Down,Normal
+211,46,Hydro Pump,Water
+212,1,Quick Attack,Normal
+212,1,Leer,Normal
+212,6,Focus Energy,Normal
+212,12,Pursuit,Dark
+212,18,False Swipe,Normal
+212,24,Agility,Psychic
+212,30,Metal Claw,Steel
+212,36,Slash,Normal
+212,42,Swords Dance,Normal
+212,48,Double Team,Normal
+213,1,Constrict,Normal
+213,1,Withdraw,Water
+213,9,Wrap,Normal
+213,14,Encore,Normal
+213,23,Safeguard,Normal
+213,28,Bide,Normal
+213,37,Rest,Psychic
+214,1,Tackle,Normal
+214,1,Leer,Normal
+214,6,Horn Attack,Normal
+214,12,Endure,Normal
+214,19,Fury Attack,Normal
+214,27,Counter,Fighting
+214,35,Take Down,Normal
+214,44,Reversal,Fighting
+214,54,Megahorn,Bug
+215,1,Scratch,Normal
+215,1,Leer,Normal
+215,9,Quick Attack,Normal
+215,17,Screech,Normal
+215,25,Faint Attack,Dark
+215,33,Fury Swipes,Normal
+215,41,Agility,Psychic
+215,49,Slash,Normal
+215,57,Beat Up,Dark
+215,65,Metal Claw,Steel
+216,1,Scratch,Normal
+216,1,Leer,Normal
+216,8,Lick,Ghost
+216,15,Fury Swipes,Normal
+216,22,Faint Attack,Dark
+216,29,Rest,Psychic
+216,36,Slash,Normal
+216,43,Snore,Normal
+216,50,Thrash,Normal
+217,1,Scratch,Normal
+217,1,Leer,Normal
+217,1,Lick,Ghost
+217,1,Fury Swipes,Normal
+217,8,Lick,Ghost
+217,15,Fury Swipes,Normal
+217,22,Faint Attack,Dark
+217,29,Rest,Psychic
+217,39,Slash,Normal
+217,49,Snore,Normal
+217,59,Thrash,Normal
+218,1,Smog,Poison
+218,8,Ember,Fire
+218,15,Rock Throw,Rock
+218,22,Harden,Normal
+218,29,Amnesia,Psychic
+218,36,Flamethrower,Fire
+218,43,Rock Slide,Rock
+218,50,Body Slam,Normal
+219,1,Smog,Poison
+219,1,Ember,Fire
+219,1,Rock Throw,Rock
+219,8,Ember,Fire
+219,15,Rock Throw,Rock
+219,22,Harden,Normal
+219,29,Amnesia,Psychic
+219,36,Flamethrower,Fire
+219,48,Rock Slide,Rock
+219,60,Body Slam,Normal
+220,1,Tackle,Normal
+220,10,Powder Snow,Ice
+220,19,Endure,Normal
+220,28,Take Down,Normal
+220,37,Mist,Ice
+220,46,Blizzard,Ice
+220,55,Amnesia,Psychic
+221,1,Horn Attack,Normal
+221,1,Powder Snow,Ice
+221,1,Endure,Normal
+221,10,Powder Snow,Ice
+221,19,Endure,Normal
+221,28,Take Down,Normal
+221,33,Fury Attack,Normal
+221,42,Mist,Ice
+221,56,Blizzard,Ice
+221,70,Amnesia,Psychic
+222,1,Tackle,Normal
+222,7,Harden,Normal
+222,13,Bubble,Water
+222,19,Recover,Normal
+222,25,Bubble Beam,Water
+222,31,Spike Cannon,Normal
+222,37,Mirror Coat,Psychic
+222,43,Ancient Power,Rock
+223,1,Water Gun,Water
+223,11,Lock-On,Normal
+223,22,Psybeam,Psychic
+223,22,Aurora Beam,Ice
+223,22,Bubble Beam,Water
+223,33,Focus Energy,Normal
+223,44,Ice Beam,Ice
+223,55,Hyper Beam,Normal
+224,1,Water Gun,Water
+224,11,Constrict,Normal
+224,22,Psybeam,Psychic
+224,22,Aurora Beam,Ice
+224,22,Bubble Beam,Water
+224,25,Octazooka,Water
+224,38,Focus Energy,Normal
+224,54,Ice Beam,Ice
+224,70,Hyper Beam,Normal
+225,1,Present,Normal
+226,1,Tackle,Normal
+226,1,Bubble,Water
+226,10,Supersonic,Normal
+226,18,Bubble Beam,Water
+226,25,Take Down,Normal
+226,32,Agility,Psychic
+226,40,Wing Attack,Flying
+226,49,Confuse Ray,Ghost
+227,1,Leer,Normal
+227,1,Peck,Flying
+227,13,Sand-Attack,Ground
+227,19,Swift,Normal
+227,25,Agility,Psychic
+227,37,Fury Attack,Normal
+227,49,Steel Wing,Steel
+228,1,Leer,Normal
+228,1,Ember,Fire
+228,7,Roar,Normal
+228,13,Smog,Poison
+228,20,Bite,Dark
+228,27,Faint Attack,Dark
+228,35,Flamethrower,Fire
+228,43,Crunch,Dark
+229,1,Leer,Normal
+229,1,Ember,Fire
+229,7,Roar,Normal
+229,13,Smog,Poison
+229,20,Bite,Dark
+229,30,Faint Attack,Dark
+229,41,Flamethrower,Fire
+229,52,Crunch,Dark
+230,1,Bubble,Water
+230,1,SmokeScreen,Normal
+230,1,Leer,Normal
+230,1,Water Gun,Water
+230,8,SmokeScreen,Normal
+230,15,Leer,Normal
+230,22,Water Gun,Water
+230,29,Twister,Dragon
+230,40,Agility,Psychic
+230,51,Hydro Pump,Water
+231,1,Tackle,Normal
+231,1,Growl,Normal
+231,9,Defense Curl,Normal
+231,17,Flail,Normal
+231,25,Take Down,Normal
+231,33,Rollout,Rock
+231,41,Endure,Normal
+231,49,Double-Edge,Normal
+232,1,Horn Attack,Normal
+232,1,Growl,Normal
+232,9,Defense Curl,Normal
+232,17,Flail,Normal
+232,25,Fury Attack,Normal
+232,33,Rollout,Rock
+232,41,Rapid Spin,Normal
+232,49,Earthquake,Ground
+233,1,Conversion2,Normal
+233,1,Tackle,Normal
+233,1,Conversion,Normal
+233,9,Agility,Psychic
+233,12,Psybeam,Psychic
+233,20,Recover,Normal
+233,24,Defense Curl,Normal
+233,32,Lock-On,Normal
+233,36,Tri Attack,Normal
+233,44,Zap Cannon,Electric
+234,1,Tackle,Normal
+234,8,Leer,Normal
+234,15,Hypnosis,Psychic
+234,23,Stomp,Normal
+234,31,Sand-Attack,Ground
+234,40,Take Down,Normal
+234,49,Confuse Ray,Ghost
+235,1,Sketch,Normal
+235,11,Sketch,Normal
+235,21,Sketch,Normal
+235,31,Sketch,Normal
+235,41,Sketch,Normal
+235,51,Sketch,Normal
+235,61,Sketch,Normal
+235,71,Sketch,Normal
+235,81,Sketch,Normal
+235,91,Sketch,Normal
+236,1,Tackle,Normal
+237,1,Rolling Kick,Fighting
+237,7,Focus Energy,Normal
+237,13,Pursuit,Dark
+237,19,Quick Attack,Normal
+237,25,Rapid Spin,Normal
+237,31,Counter,Fighting
+237,37,Agility,Psychic
+237,43,Detect,Fighting
+237,49,Triple Kick,Fighting
+238,1,Pound,Normal
+238,1,Lick,Ghost
+238,9,Sweet Kiss,Normal
+238,13,Powder Snow,Ice
+238,21,Confusion,Psychic
+238,25,Sing,Normal
+238,33,Mean Look,Normal
+238,37,Psychic,Psychic
+238,45,Perish Song,Normal
+238,49,Blizzard,Ice
+239,1,Quick Attack,Normal
+239,1,Leer,Normal
+239,9,ThunderPunch,Electric
+239,17,Light Screen,Psychic
+239,25,Swift,Normal
+239,33,Screech,Normal
+239,41,Thunderbolt,Electric
+239,49,Thunder,Electric
+240,1,Ember,Fire
+240,7,Leer,Normal
+240,13,Smog,Poison
+240,19,Fire Punch,Fire
+240,25,SmokeScreen,Normal
+240,31,Sunny Day,Fire
+240,37,Flamethrower,Fire
+240,43,Confuse Ray,Ghost
+240,49,Fire Blast,Fire
+241,1,Tackle,Normal
+241,4,Growl,Normal
+241,8,Defense Curl,Normal
+241,13,Stomp,Normal
+241,19,Milk Drink,Normal
+241,26,Bide,Normal
+241,34,Rollout,Rock
+241,43,Body Slam,Normal
+241,53,Heal Bell,Normal
+242,1,Pound,Normal
+242,4,Growl,Normal
+242,7,Tail Whip,Normal
+242,10,Softboiled,Normal
+242,13,DoubleSlap,Normal
+242,18,Minimize,Normal
+242,23,Sing,Normal
+242,28,Egg Bomb,Normal
+242,33,Defense Curl,Normal
+242,40,Light Screen,Psychic
+242,47,Double-Edge,Normal
+243,1,Bite,Dark
+243,1,Leer,Normal
+243,11,ThunderShock,Electric
+243,21,Roar,Normal
+243,31,Quick Attack,Normal
+243,41,Spark,Electric
+243,51,Reflect,Psychic
+243,61,Crunch,Dark
+243,71,Thunder,Electric
+244,1,Bite,Dark
+244,1,Leer,Normal
+244,11,Ember,Fire
+244,21,Roar,Normal
+244,31,Fire Spin,Fire
+244,41,Stomp,Normal
+244,51,Flamethrower,Fire
+244,61,Swagger,Normal
+244,71,Fire Blast,Fire
+245,1,Bite,Dark
+245,1,Leer,Normal
+245,5,Water Gun,Water
+245,11,Bubble Beam,Water
+245,14,Roar,Normal
+245,21,Rain Dance,Water
+245,31,Gust,Flying
+245,38,Bubble Beam,Water
+245,41,Aurora Beam,Ice
+245,51,Mist,Ice
+245,61,Mirror Coat,Psychic
+245,71,Hydro Pump,Water
+246,1,Bite,Dark
+246,1,Leer,Normal
+246,8,Sandstorm,Rock
+246,15,Screech,Normal
+246,22,Rock Slide,Rock
+246,29,Thrash,Normal
+246,36,Scary Face,Normal
+246,43,Crunch,Dark
+246,50,Earthquake,Ground
+246,57,Hyper Beam,Normal
+247,1,Bite,Dark
+247,1,Leer,Normal
+247,1,Sandstorm,Rock
+247,1,Screech,Normal
+247,8,Sandstorm,Rock
+247,15,Screech,Normal
+247,22,Rock Slide,Rock
+247,29,Thrash,Normal
+247,38,Scary Face,Normal
+247,47,Crunch,Dark
+247,56,Earthquake,Ground
+247,65,Hyper Beam,Normal
+248,1,Bite,Dark
+248,1,Leer,Normal
+248,1,Sandstorm,Rock
+248,1,Screech,Normal
+248,8,Sandstorm,Rock
+248,15,Screech,Normal
+248,22,Rock Slide,Rock
+248,29,Thrash,Normal
+248,38,Scary Face,Normal
+248,47,Crunch,Dark
+248,61,Earthquake,Ground
+248,75,Hyper Beam,Normal
+249,1,Aeroblast,Flying
+249,11,Safeguard,Normal
+249,22,Gust,Flying
+249,33,Recover,Normal
+249,44,Hydro Pump,Water
+249,55,Rain Dance,Water
+249,66,Swift,Normal
+249,77,Whirlwind,Normal
+249,88,Ancient Power,Rock
+249,99,Future Sight,Psychic
+250,1,Sacred Fire,Fire
+250,11,Safeguard,Normal
+250,22,Gust,Flying
+250,33,Recover,Normal
+250,44,Fire Blast,Fire
+250,55,Sunny Day,Fire
+250,66,Swift,Normal
+250,77,Whirlwind,Normal
+250,88,Ancient Power,Rock
+250,99,Future Sight,Psychic
+251,1,Leech Seed,Grass
+251,1,Confusion,Psychic
+251,1,Recover,Normal
+251,1,Heal Bell,Normal
+251,10,Safeguard,Normal
+251,20,Ancient Power,Rock
+251,30,Future Sight,Psychic
+251,40,Baton Pass,Normal
+251,50,Perish Song,Normal
