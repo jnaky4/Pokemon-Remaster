@@ -240,7 +240,6 @@ namespace Pokemon
 
         //This means the maximum at this level, or full health
         public int max_hp;
-
         public int max_attack;
         public int max_defense;
         public int max_sp_attack;
@@ -271,6 +270,14 @@ namespace Pokemon
         public int next_lvl_exp;
         public bool time_to_evolve;
         public bool want_to_evolve;
+
+        //used to display changes in stats at level up
+        public int change_hp;
+        public int change_attack;
+        public int change_defense;
+        public int change_sp_attack;
+        public int change_sp_defense;
+        public int change_speed;
 
         public bool learned_new_move;
         public Moves learned_move;
@@ -409,16 +416,32 @@ namespace Pokemon
         public Moves check_learnset()
         {
             this.learned_move = null;
-            foreach (Learnset move in this.learnset)
+            foreach (Learnset available_move in this.learnset)
             {
-                if (this.level == move.level)
+                //if the learnables moves level to learn is equal to the pokemons new level, it can learn it
+                if (this.level == available_move.level)
                 {
-                    this.learned_move = move.move;
-                    return move.move;
+                    bool has_move = false;
+                    
+                    Moves check_move = available_move.move;
+                    //check if pokemon already has the move
+                    foreach (Moves current_move in this.currentMoves)
+                    {
+                        //currentMoves indexes can be null if they dont have a move
+                        if(current_move != null)
+                        {
+                            //if any of the current moves has the same name as the learnable then the pokemon has the move
+                            if (current_move.name == check_move.name) has_move = true;
+                        }
+
+                    }
+                    //if the pokemon doesnt have the move then the move returned is the move, otherwise null
+                    if (!has_move) this.learned_move = check_move;
+                    return this.learned_move;
                 }
             }
 
-            return null;
+            return this.learned_move;
         }
 
         public bool check_evolve()
@@ -460,8 +483,32 @@ namespace Pokemon
                 this.level += 1;
                 this.gained_a_level = true;
 
-                //update stats
+                //initially sets change_stats to previous level stats
+                this.change_hp = this.max_hp;
+                this.change_attack = this.max_attack;
+                this.change_defense = this.max_defense;
+                this.change_speed = this.max_speed;
+                this.change_sp_attack = this.max_sp_attack;
+                this.change_sp_defense = this.max_sp_defense;
+
                 this.update_current_stats();
+
+                //sets change_stats to new level max - prev level max stat
+                this.change_hp = this.max_hp - change_hp;               
+                this.change_attack = this.max_attack - change_attack;               
+                this.change_defense = this.max_defense - change_defense;               
+                this.change_speed = this.max_speed - change_speed;               
+                this.change_sp_attack = this.max_sp_attack - change_sp_attack;               
+                this.change_sp_defense = this.max_sp_defense - change_sp_defense;
+
+                Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
+                Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
+                Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
+                Debug.Log("Your Pokemon Gained " + change_defense + " DFN!");
+                Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
+                Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
+                Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");
+
 
                 //check if learnable move
                 Moves temp_new_move = this.check_learnset();
@@ -505,8 +552,32 @@ namespace Pokemon
         public Pokemon evolve_pokemon()
         {
             //level, moves, exp, current stats, status effects
-            return new Pokemon(this.dexnum + 1, this.level, this.currentMoves[0].name, this.currentMoves[1].name, this.currentMoves[2].name, this.currentMoves[3].name, this.current_exp,
-                this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed, this.statuses);
+            this.change_hp = max_hp;
+            this.change_attack = max_attack;
+            this.change_defense = max_defense;
+            this.change_speed = max_speed;
+            this.change_sp_attack = max_sp_attack;
+            this.change_sp_defense = max_sp_defense;
+
+            Pokemon evolved_pokemon = new Pokemon(this.dexnum + 1, this.level, this.currentMoves[0].name, this.currentMoves[1].name, this.currentMoves[2].name, this.currentMoves[3].name, this.current_exp,
+            this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed, this.statuses);
+            this.change_hp = evolved_pokemon.max_hp - change_hp;
+            this.change_attack = evolved_pokemon.max_attack - change_attack;
+            this.change_defense = evolved_pokemon.max_defense - change_defense;
+            this.change_speed = evolved_pokemon.max_speed - change_speed;
+            this.change_sp_attack = evolved_pokemon.max_sp_attack - change_sp_attack;
+            this.change_sp_defense = evolved_pokemon.max_sp_defense - change_sp_defense;
+
+            Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
+            Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
+            Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
+            Debug.Log("Your Pokemon Gained " + change_defense + " DFN!");
+            Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
+            Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
+            Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");
+            return evolved_pokemon;
+
         }
+        
     }
 }
