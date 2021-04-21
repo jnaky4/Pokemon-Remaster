@@ -43,15 +43,18 @@ namespace Pokemon
                 character.LookTowards(initial.position);
                 var isTrainer = GetComponent<TrainerController>();
 
-                if (isTrainer.name == "Gary")
+                if (isTrainer != null)
                 {
-                    if (isTrainer.isBeaten == false)
-                        GameController.music = "Encounter Rival";
-                }
-                else if (isTrainer != null && isTrainer.name != "Brock")
-                {
-                    if (isTrainer.isBeaten == false)
-                        GameController.music = "Encounter Trainer";
+                    if (isTrainer.name == "Gary")
+                    {
+                        if (isTrainer.isBeaten == false)
+                            GameController.music = "Encounter Rival";
+                    }
+                    else if (isTrainer.name != "Brock")
+                    {
+                        if (isTrainer.isBeaten == false)
+                            GameController.music = "Encounter Trainer";
+                    }
                 }
 
                 StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
