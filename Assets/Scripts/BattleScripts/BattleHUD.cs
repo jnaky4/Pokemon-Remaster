@@ -299,6 +299,7 @@ namespace Pokemon
         {
             yourName.text = unit.pokemon.name;
             level.text = "Level " + unit.pokemon.level;
+            //level.color = GetColorOfStatus("null");
             hpSlider.maxValue = unit.pokemon.max_hp;
             hpSlider.value = unit.pokemon.current_hp;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
@@ -321,6 +322,7 @@ namespace Pokemon
         {
             yourName.text = unit.pokemon.name;
             level.text = "Level " + unit.pokemon.level;
+            level.color = GetColorOfStatus("null");
             hpSlider.maxValue = unit.pokemon.max_hp;
             hpSlider.value = unit.pokemon.current_hp;
             currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
