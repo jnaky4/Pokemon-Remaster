@@ -205,7 +205,7 @@ namespace Pokemon
             {
                 forget1.text = unit.pokemon.currentMoves[0].name + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type);
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type + " Hidden");
                 forget1type.sprite = sprite;
 
                 ColorBlock c = forget1Button.GetComponent<Button>().colors;
@@ -217,7 +217,7 @@ namespace Pokemon
             {
                 forget2.text = unit.pokemon.currentMoves[1].name + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type);
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type + " Hidden");
                 forget2type.sprite = sprite;
 
                 ColorBlock c2 = forget2Button.GetComponent<Button>().colors;
@@ -229,7 +229,7 @@ namespace Pokemon
             {
                 forget3.text = unit.pokemon.currentMoves[2].name + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type);
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type + " Hidden");
                 forget3type.sprite = sprite;
 
                 ColorBlock c3 = forget3Button.GetComponent<Button>().colors;
@@ -241,7 +241,7 @@ namespace Pokemon
             {
                 forget4.text = unit.pokemon.currentMoves[3].name + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type);
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type + " Hidden");
                 forget4type.sprite = sprite;
 
                 ColorBlock c4 = forget4Button.GetComponent<Button>().colors;
@@ -252,7 +252,7 @@ namespace Pokemon
 
             forget5.text = unit.pokemon.learned_move.name + " ";
 
-            var s = Resources.Load<Sprite>(path + unit.pokemon.learned_move.move_type.type);
+            var s = Resources.Load<Sprite>(path + unit.pokemon.learned_move.move_type.type + " Hidden");
             forget5type.sprite = s;
 
             ColorBlock c5 = forget5Button.GetComponent<Button>().colors;
@@ -337,7 +337,7 @@ namespace Pokemon
             var path = "Images/Menu Icons/Type ";
             if (unit.pokemon.currentMoves[0] != null)
             {
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type);
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type + " Hidden");
                 moves1.text = unit.pokemon.currentMoves[0].name + " " + unit.pokemon.currentMoves[0].current_pp + "/" + unit.pokemon.currentMoves[0].maxpp + " ";
 
                 move1type.sprite = sprite;
@@ -351,7 +351,7 @@ namespace Pokemon
             {
                 moves2.text = unit.pokemon.currentMoves[1].name + " " + unit.pokemon.currentMoves[1].current_pp + "/" + unit.pokemon.currentMoves[1].maxpp + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type);
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type + " Hidden");
                 move2type.sprite = sprite;
 
                 ColorBlock c = move2Button.GetComponent<Button>().colors;
@@ -363,7 +363,7 @@ namespace Pokemon
             {
                 moves3.text = unit.pokemon.currentMoves[2].name + " " + unit.pokemon.currentMoves[2].current_pp + "/" + unit.pokemon.currentMoves[2].maxpp + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type);
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type + " Hidden");
                 move3type.sprite = sprite;
 
                 ColorBlock c = move3Button.GetComponent<Button>().colors;
@@ -375,7 +375,7 @@ namespace Pokemon
             {
                 moves4.text = unit.pokemon.currentMoves[3].name + " " + unit.pokemon.currentMoves[3].current_pp + "/" + unit.pokemon.currentMoves[3].maxpp + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type);
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type + " Hidden");
                 move4type.sprite = sprite;
 
                 ColorBlock c = move4Button.GetComponent<Button>().colors;
