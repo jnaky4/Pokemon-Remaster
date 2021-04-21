@@ -35,16 +35,24 @@ namespace Pokemon
         public Text masterBalls;
         public Button move1Button;
         public Image move1type;
+        public Image move1overlay;
         public Button move2Button;
         public Image move2type;
+        public Image move2overlay;
         public Button move3Button;
         public Image move3type;
+        public Image move3overlay;
         public Button move4Button;
         public Image move4type;
+        public Image move4overlay;
         public Text moves1;
         public Text moves2;
         public Text moves3;
         public Text moves4;
+        public Text pp1;
+        public Text pp2;
+        public Text pp3;
+        public Text pp4;
         public Button poke1;
         public Button poke2;
         public Button poke3;
@@ -338,9 +346,13 @@ namespace Pokemon
             if (unit.pokemon.currentMoves[0] != null)
             {
                 var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type + " Hidden");
-                moves1.text = unit.pokemon.currentMoves[0].name + " " + unit.pokemon.currentMoves[0].current_pp + "/" + unit.pokemon.currentMoves[0].maxpp + " ";
+                moves1.text = unit.pokemon.currentMoves[0].name;
+                pp1.text = unit.pokemon.currentMoves[0].current_pp + "/" + unit.pokemon.currentMoves[0].maxpp;
 
+                var overlay = Resources.Load<Sprite>("Button/Button" + unit.pokemon.currentMoves[0].move_type.type);
                 move1type.sprite = sprite;
+
+                move1overlay.sprite = overlay;
 
                 ColorBlock c = move1Button.GetComponent<Button>().colors;
                 c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
@@ -349,8 +361,8 @@ namespace Pokemon
             }
             if (unit.pokemon.currentMoves[1] != null)
             {
-                moves2.text = unit.pokemon.currentMoves[1].name + " " + unit.pokemon.currentMoves[1].current_pp + "/" + unit.pokemon.currentMoves[1].maxpp + " ";
-
+                moves2.text = unit.pokemon.currentMoves[1].name;
+                pp2.text = unit.pokemon.currentMoves[1].current_pp + "/" + unit.pokemon.currentMoves[1].maxpp;
                 var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type + " Hidden");
                 move2type.sprite = sprite;
 
@@ -361,7 +373,8 @@ namespace Pokemon
             }
             if (unit.pokemon.currentMoves[2] != null)
             {
-                moves3.text = unit.pokemon.currentMoves[2].name + " " + unit.pokemon.currentMoves[2].current_pp + "/" + unit.pokemon.currentMoves[2].maxpp + " ";
+                moves3.text = unit.pokemon.currentMoves[2].name;
+                pp3.text = unit.pokemon.currentMoves[2].current_pp + "/" + unit.pokemon.currentMoves[2].maxpp;
 
                 var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type + " Hidden");
                 move3type.sprite = sprite;
@@ -373,7 +386,8 @@ namespace Pokemon
             }
             if (unit.pokemon.currentMoves[3] != null)
             {
-                moves4.text = unit.pokemon.currentMoves[3].name + " " + unit.pokemon.currentMoves[3].current_pp + "/" + unit.pokemon.currentMoves[3].maxpp + " ";
+                moves4.text = unit.pokemon.currentMoves[3].name;
+                pp4.text = unit.pokemon.currentMoves[3].current_pp + "/" + unit.pokemon.currentMoves[3].maxpp;
 
                 var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type + " Hidden");
                 move4type.sprite = sprite;
