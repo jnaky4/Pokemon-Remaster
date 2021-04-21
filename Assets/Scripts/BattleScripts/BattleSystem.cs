@@ -1054,6 +1054,7 @@ namespace Pokemon
                             enemyUnit.pokemon = GameController.opponentPokemon[j];
                             //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
                             dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
+                            GameController.soundFX = enemyUnit.pokemon.dexnum.ToString();
                             yield return new WaitForSeconds(2);
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
                             SetOpponentSprite(enemyUnit, enemySprite);
@@ -1812,6 +1813,7 @@ namespace Pokemon
                 {
                     state = BattleState.RUNAWAY;
                     StartCoroutine(EndBattle());
+                    yield break;
                 }
                 double a = playerUnit.pokemon.current_speed;
                 double b = a / 4;
