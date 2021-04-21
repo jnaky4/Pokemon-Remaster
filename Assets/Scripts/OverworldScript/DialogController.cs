@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DialogController : MonoBehaviour
 {
     [SerializeField] GameObject dialogBox;
+    //GameObject dialogBox;
     [SerializeField] Text dialogText;
     [SerializeField] int lettersPerSecond;
 
@@ -33,6 +34,8 @@ public class DialogController : MonoBehaviour
 
         //Set SoundManager to DontDestroyOnLoad so that it won't be destroyed when reloading our scene.
         DontDestroyOnLoad(gameObject);
+
+        //dialogBox = GameObject.FindGameObjectWithTag("DialogUI");
 
         Instance = this;
     }
@@ -74,7 +77,6 @@ public class DialogController : MonoBehaviour
             else
             {
                 currentLine = 0;
-                Debug.Log("Dialog is done");
                 IsShowing = false;
                 dialogBox.SetActive(false);
                 onDialogFinished?.Invoke();

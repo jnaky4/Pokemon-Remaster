@@ -43,7 +43,7 @@ namespace Pokemon
 
         //triggers
         public static bool triggerCombat = false;
-
+        public static bool playerPress = false;
         public static bool endCombat = false;
         public static bool startCombatMusic = false;
         public static bool endCombatMusic = false;
@@ -101,16 +101,21 @@ namespace Pokemon
 
         private void Start()
         {
-            DialogController.Instance.OnShowDialog += () =>
-            {
-                state = GameState.Dialog;
-            };
-
             DialogController.Instance.OnCloseDialog += () =>
             {
                 if (state == GameState.Dialog)
                 {
+                    Debug.Log("Close Dialog");
                     state = GameState.Roam;
+                }
+            };
+
+            DialogController.Instance.OnShowDialog += () =>
+            {
+                if (state == GameState.Roam)
+                {
+                    state = GameState.Dialog;
+                    Debug.Log("Show Dialog");
                 }
             };
         }
