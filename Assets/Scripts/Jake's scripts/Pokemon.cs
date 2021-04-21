@@ -422,7 +422,7 @@ namespace Pokemon
                 if (this.level == available_move.level)
                 {
                     bool has_move = false;
-                    
+
                     Moves check_move = available_move.move;
                     //check if pokemon already has the move
                     foreach (Moves current_move in this.currentMoves)
@@ -494,11 +494,11 @@ namespace Pokemon
                 this.update_current_stats();
 
                 //sets change_stats to new level max - prev level max stat
-                this.change_hp = this.max_hp - change_hp;               
-                this.change_attack = this.max_attack - change_attack;               
-                this.change_defense = this.max_defense - change_defense;               
-                this.change_speed = this.max_speed - change_speed;               
-                this.change_sp_attack = this.max_sp_attack - change_sp_attack;               
+                this.change_hp = this.max_hp - change_hp;
+                this.change_attack = this.max_attack - change_attack;
+                this.change_defense = this.max_defense - change_defense;
+                this.change_speed = this.max_speed - change_speed;
+                this.change_sp_attack = this.max_sp_attack - change_sp_attack;
                 this.change_sp_defense = this.max_sp_defense - change_sp_defense;
 
                 Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
@@ -578,6 +578,6 @@ namespace Pokemon
             return evolved_pokemon;
 
         }
-        
+
     }
 }
