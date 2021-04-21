@@ -958,7 +958,7 @@ namespace Pokemon
                 yield return new WaitForSeconds(2);
                 yield return StartCoroutine(EnemyKillsYou(areYouDead));
             }
-            if (Status.SeeIfLeech(enemyUnit.pokemon))
+            if (Status.SeeIfLeech(enemyUnit.pokemon) && enemyUnit.pokemon.current_hp > 0)
             {
                 AnimateStatus("Seeded", false);
                 GameController.soundFX = "Poisoned";
@@ -1820,6 +1820,7 @@ namespace Pokemon
                 {
                     state = BattleState.RUNAWAY;
                     StartCoroutine(EndBattle());
+                    yield break;
                 }
                 double f = (((a * 32) / b) + 30) * runAwayNum;
                 runAwayNum++;
@@ -2192,13 +2193,20 @@ namespace Pokemon
             string path;
 
             if (type == "Rival")
-                path = "Player_Rival/Blue";
+                path = "Assets/Resources/Player_Rival/Blue";
             else if (type != "Gym Leader")
-                path = "Final_NPC/" + type;
+                path = "Assets/Resources/Final_NPC/" + type;
             else
-                path = "GymLeaders/" + GameController.opponentName;
+                path = "Assets/Resources/GymLeaders/" + GameController.opponentName;
 
-            var sprite = Resources.Load<Sprite>(path);
+            path += ".png";
+
+            //var sprite = Resources.Load<Sprite>(path);
+
+            Texture2D SpriteTexture = new Texture2D(0, 0);
+            byte[] fileData = File.ReadAllBytes(path);
+            SpriteTexture.LoadImage(fileData);
+
 
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
@@ -2216,7 +2224,9 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
-            spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
+            //spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
+
+            spriteRenderer.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
         }
 
         private void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
