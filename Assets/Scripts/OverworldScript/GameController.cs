@@ -101,15 +101,6 @@ namespace Pokemon
 
         private void Start()
         {
-            DialogController.Instance.OnCloseDialog += () =>
-            {
-                if (state == GameState.Dialog)
-                {
-                    Debug.Log("Close Dialog");
-                    state = GameState.Roam;
-                }
-            };
-
             DialogController.Instance.OnShowDialog += () =>
             {
                 if (state == GameState.Roam)
@@ -118,12 +109,22 @@ namespace Pokemon
                     Debug.Log("Show Dialog");
                 }
             };
+
+            DialogController.Instance.OnCloseDialog += () =>
+            {
+                if (state == GameState.Dialog)
+                {
+                    Debug.Log("Close Dialog");
+                    state = GameState.Roam;
+                }
+            };
         }
 
         private void Update()
         {
             if (state == GameState.Dialog)
             {
+                Debug.Log("In dialog");
                 DialogController.Instance.HandleUpdate();
             }
             /*if (state == GameState.Roam)

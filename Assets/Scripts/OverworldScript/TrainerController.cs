@@ -34,9 +34,11 @@ public class TrainerController : MonoBehaviour
 
             yield return character.Move(moveVec);
 
+            GameController.state = GameState.Dialog;
+
             yield return StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
              {
-                 Debug.Log("Starting Trainer Battle");
+                 Debug.Log("Battle Time");
                  startCombat();
              }));
         }
