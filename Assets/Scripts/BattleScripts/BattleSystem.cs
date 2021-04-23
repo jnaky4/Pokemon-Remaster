@@ -63,6 +63,10 @@ namespace Pokemon
         public Button runAwayButton;
         public Button pokemonButton;
         public Button ballsButton;
+
+        public GameObject mainUI;
+        public GameObject backUI;
+        public Button backButton;
         //Our button used to attack
 
         public BattleHUD playerHUD;
@@ -161,6 +165,7 @@ namespace Pokemon
             ballsMenuUI.SetActive(false);
             forgetMenuUI.SetActive(false);
             yesno.SetActive(false);
+            backUI.SetActive(false);
             SetDownButtons();
             StartCoroutine(SetupBattle());
             SetBackground();
@@ -1785,6 +1790,18 @@ namespace Pokemon
             }
         }
 
+        public void OnBackButton()
+        {
+            if (state != BattleState.PLAYERTURN) return;
+            CloseBallsMenu();
+            CloseMovesMenu();
+            ClosePokemonMenu();
+            backUI.SetActive(false);
+            mainUI.SetActive(true);
+        }
+
+
+
         /// <summary>
         /// Runs away. If you are in a trainer battle, you can't run away.
         /// TO DO: said it other places here but make this not automatic.
@@ -1867,6 +1884,8 @@ namespace Pokemon
             runAwayButton.interactable = false;
             pokemonButton.interactable = false;
             ballsButton.interactable = false;
+            backUI.SetActive(false);
+            mainUI.SetActive(true);
         }
 
         /// <summary>
@@ -1879,6 +1898,8 @@ namespace Pokemon
             poekmonMenuOpen = true;
             CloseBallsMenu();
             CloseMovesMenu();
+            backUI.SetActive(true);
+            mainUI.SetActive(false);
             //SetDownButtons();
         }
 
@@ -1979,6 +2000,8 @@ namespace Pokemon
                 return;
             }
             attackMenuUI.SetActive(true);
+            backUI.SetActive(true);
+            mainUI.SetActive(false);
             attackMenuOpen = true;
         }
 
@@ -1997,6 +2020,8 @@ namespace Pokemon
         public void OpenBallsMenu()
         {
             ballsMenuUI.SetActive(true);
+            backUI.SetActive(true);
+            mainUI.SetActive(false);
             ballsMenuOpen = true;
         }
 
