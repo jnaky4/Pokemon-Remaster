@@ -18,7 +18,7 @@ namespace Pokemon
         public float moveSpeed;
         public VectorValue startingPosition;
         public string location = "Route 1";
-        public GameObject dialogBox;
+        //public GameObject dialogBox;
 
         private Character character;
 
@@ -54,7 +54,7 @@ namespace Pokemon
 
             character.HandleUpdate();
 
-            if (Input.GetKeyDown(KeyCode.Z) && !GameController.inCombat && GameController.state == GameState.Roam)
+            if (Input.GetKeyDown(KeyCode.Z) && !GameController.inCombat && GameController.state == GameState.Roam && !GameController.inDialog)
             {
                 Debug.Log("Pressed Z in the player controller");
                 Interact();
@@ -67,9 +67,9 @@ namespace Pokemon
             var interactPos = transform.position + faceDir;
 
             var collider = Physics2D.OverlapCircle(interactPos, 0.3f, GameplayLayers.i.InteractLayer);
-            if (collider != null)
+            if (collider != null && GameController.state == GameState.Roam)
             {
-                //Debug.Log("Pressed Z in player");
+                Debug.Log("Initiating Dialog");
                 collider.GetComponent<Interactable>()?.Interact(transform);
             }
         }

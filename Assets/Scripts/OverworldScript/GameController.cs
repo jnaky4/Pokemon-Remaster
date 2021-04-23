@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -43,7 +44,7 @@ namespace Pokemon
 
         //triggers
         public static bool triggerCombat = false;
-        public static bool playerPress = false;
+        public static bool inDialog = false;
         public static bool endCombat = false;
         public static bool startCombatMusic = false;
         public static bool endCombatMusic = false;
@@ -129,6 +130,8 @@ namespace Pokemon
             }
             /*if (state == GameState.Roam)
                 PlayerMovement.Instance.HandleUpdate();*/
+            if (state == GameState.Roam && inDialog == true)
+                StartCoroutine(EndDialog());
 
             if (triggerCombat == true)
             {
@@ -155,6 +158,12 @@ namespace Pokemon
                 music = location;
                 endCombat = false;
             }
+        }
+
+        private IEnumerator EndDialog()
+        {
+            yield return new WaitForSeconds(1.0f);
+            inDialog = false;
         }
 
         public static void update_level_cap()
