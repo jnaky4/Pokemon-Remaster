@@ -17,18 +17,23 @@ namespace Pokemon
         public Text forget1;
         public Button forget1Button;
         public Image forget1type;
+        public Image forget1overlay;
         public Text forget2;
         public Button forget2Button;
         public Image forget2type;
+        public Image forget2overlay;
         public Text forget3;
         public Button forget3Button;
         public Image forget3type;
+        public Image forget3overlay;
         public Text forget4;
         public Button forget4Button;
         public Image forget4type;
+        public Image forget4overlay;
         public Text forget5;
         public Button forget5Button;
         public Image forget5type;
+        public Image forget5overlay;
         public Text greatBalls;
         public Slider hpSlider;
         public Text level;
@@ -211,15 +216,14 @@ namespace Pokemon
             var path = "Images/Menu Icons/Type ";
             if (unit.pokemon.currentMoves[0] != null)
             {
-                forget1.text = unit.pokemon.currentMoves[0].name + " ";
+                forget1.text = unit.pokemon.currentMoves[0].name;
 
                 var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type + " Hidden");
                 forget1type.sprite = sprite;
 
-                ColorBlock c = forget1Button.GetComponent<Button>().colors;
-                c.normalColor = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
-                c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
-                forget1Button.GetComponent<Button>().colors = c;
+                Color c = forget1overlay.GetComponent<Image>().color;
+                c = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                forget1overlay.GetComponent<Image>().color = c;
             }
             if (unit.pokemon.currentMoves[1] != null)
             {
@@ -228,10 +232,9 @@ namespace Pokemon
                 var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type + " Hidden");
                 forget2type.sprite = sprite;
 
-                ColorBlock c2 = forget2Button.GetComponent<Button>().colors;
-                c2.normalColor = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
-                c2.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
-                forget2Button.GetComponent<Button>().colors = c2;
+                Color c = forget2overlay.GetComponent<Image>().color;
+                c = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                forget2overlay.GetComponent<Image>().color = c;
             }
             if (unit.pokemon.currentMoves[2] != null)
             {
@@ -240,10 +243,9 @@ namespace Pokemon
                 var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type + " Hidden");
                 forget3type.sprite = sprite;
 
-                ColorBlock c3 = forget3Button.GetComponent<Button>().colors;
-                c3.normalColor = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
-                c3.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
-                forget3Button.GetComponent<Button>().colors = c3;
+                Color c = forget3overlay.GetComponent<Image>().color;
+                c = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                forget3overlay.GetComponent<Image>().color = c;
             }
             if (unit.pokemon.currentMoves[3] != null)
             {
@@ -252,10 +254,9 @@ namespace Pokemon
                 var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type + " Hidden");
                 forget4type.sprite = sprite;
 
-                ColorBlock c4 = forget4Button.GetComponent<Button>().colors;
-                c4.normalColor = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
-                c4.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
-                forget4Button.GetComponent<Button>().colors = c4;
+                Color c = forget4overlay.GetComponent<Image>().color;
+                c = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                forget4overlay.GetComponent<Image>().color = c;
             }
 
             forget5.text = unit.pokemon.learned_move.name + " ";
@@ -263,10 +264,9 @@ namespace Pokemon
             var s = Resources.Load<Sprite>(path + unit.pokemon.learned_move.move_type.type + " Hidden");
             forget5type.sprite = s;
 
-            ColorBlock c5 = forget5Button.GetComponent<Button>().colors;
-            c5.normalColor = GetColorOfMove(unit.pokemon.learned_move.move_type.type);
-            c5.highlightedColor = GetDarkColorOfMove(unit.pokemon.learned_move.move_type.type);
-            forget5Button.GetComponent<Button>().colors = c5;
+            Color c5 = forget5overlay.GetComponent<Image>().color;
+            c5 = GetColorOfMove(unit.pokemon.learned_move.move_type.type);
+            forget5overlay.GetComponent<Image>().color = c5;
         }
 
         /// <summary>
