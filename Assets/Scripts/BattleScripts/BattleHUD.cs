@@ -218,8 +218,7 @@ namespace Pokemon
             {
                 forget1.text = unit.pokemon.currentMoves[0].name;
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type + " Hidden");
-                forget1type.sprite = sprite;
+                forget1type.sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type + " Hidden");
 
                 Color c = forget1overlay.GetComponent<Image>().color;
                 c = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
@@ -229,8 +228,7 @@ namespace Pokemon
             {
                 forget2.text = unit.pokemon.currentMoves[1].name + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type + " Hidden");
-                forget2type.sprite = sprite;
+                forget2type.sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type + " Hidden");
 
                 Color c = forget2overlay.GetComponent<Image>().color;
                 c = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);

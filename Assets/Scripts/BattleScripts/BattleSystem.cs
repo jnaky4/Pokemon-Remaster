@@ -74,6 +74,8 @@ namespace Pokemon
         //The HUDs (the shit that shows our current hp and stuff like that
 
         public Text dialogueText;
+        public Text levelUpText;
+        public GameObject levelUpUI;
         //The dialog text to let us know what is happening
 
         public BattleState state;
@@ -166,6 +168,7 @@ namespace Pokemon
             forgetMenuUI.SetActive(false);
             yesno.SetActive(false);
             backUI.SetActive(false);
+            levelUpUI.SetActive(false);
             SetDownButtons();
             StartCoroutine(SetupBattle());
             SetBackground();
@@ -1059,8 +1062,9 @@ namespace Pokemon
                             enemyUnit.pokemon = GameController.opponentPokemon[j];
                             //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
                             dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
+
+                            yield return new WaitForSeconds(0.75f);
                             GameController.soundFX = enemyUnit.pokemon.dexnum.ToString();
-                            yield return new WaitForSeconds(2);
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
                             SetOpponentSprite(enemyUnit, enemySprite);
                             phaseOpponentSprite = 2;
@@ -2662,6 +2666,17 @@ namespace Pokemon
                     else poke.currentMoves[1] = poke.learned_move;
                 }
             }
+            levelUpText.text = "\n   " + playerUnit.pokemon.name + " Stats: \n";
+            dialogueText.text = "";
+            levelUpText.text += "   HP:    +" + playerUnit.pokemon.change_hp + "\n";
+            levelUpText.text += "   ATK:    +" + playerUnit.pokemon.change_attack + "\n";
+            levelUpText.text += "   DFN:   +" + playerUnit.pokemon.change_defense + "\n";
+            levelUpText.text += "   SPD:   +" + playerUnit.pokemon.change_speed + "\n";
+            levelUpText.text += "   SPA:   +" + playerUnit.pokemon.change_sp_attack + "\n";
+            levelUpText.text += "   SPD:   +" + playerUnit.pokemon.change_sp_defense + "\n";
+            levelUpUI.SetActive(true);
+            yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
+            levelUpUI.SetActive(false);
         }
 
         public IEnumerator Evolve(Pokemon poke)
