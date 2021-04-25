@@ -11,9 +11,6 @@ Route 2,17,Pidgeotto,0.1,-5,-2,25,Ground,2,Grass
 Route 2,18,Pidgeot ,0.1,-2,0,50,Ground,3,Grass
 Route 2,19,Rattata,0.3,-8,-5,19,any,10,Grass
 Route 2,20,Raticate,0.1,-5,-1,50,Ground,10,Grass
-Route 2,29,Nidoran,0.3,-8,-5,15,any,10,Grass
-Route 2,30,Nidorina,0.2,-8,-5,30,none,2,Grass
-Route 2,31,Nidoqueen,0.1,-2,0,50,none,3,Grass
 Route 2,32,Nidoran,0.3,-8,-5,15,any,10,Grass
 Route 2,33,Nidorino,0.2,-8,-5,30,none,2,Grass
 Route 2,34,Nidoking,0.1,-2,0,50,none,3,Grass
@@ -21,3 +18,12 @@ Route 2,21,Spearow,0.3,-8,-5,19,any,10,Grass
 Route 2,22,Fearow,0.1,-5,-2,50,Ground,10,Grass
 Route 1,23,Ekans,0.2,-8,-5,21,any,10,Grass
 Route 1 ,24,Arbok,0.1,-5,-2,50,none,2,Grass
+Route 22,19,Rattata,0.4,-7,0,19,any,10,Grass
+Route 22,20,Raticate,0.1,-5,-1,50,none,2,Grass
+Route 22,21,Spearow,0.3,-8,-5,19,any,10,Grass
+Route 22,29,Nidoran,0.3,-8,-5,15,any,10,Grass
+Route 22,30,Nidorina,0.2,-8,-5,30,none,2,Grass
+Route 22,31,Nidoqueen,0.1,-2,0,50,none,3,Grass
+Route 22,22,Fearow,0.1,-5,-2,50,Ground,10,Grass
+Route 22,56,Mankey,0.3,-7,-5,27,Rock,10,Grass
+Route 22,57,Primeape,0.1,-5,0,50,Rock,10,Grass
