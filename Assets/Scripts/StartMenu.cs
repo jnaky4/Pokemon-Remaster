@@ -50,57 +50,51 @@ namespace Pokemon
         }
         public void Continue()
         {
-            //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-
-            GameController.player.pokeBalls = PlayerPrefs.GetInt("Pokeball", 20);
-            GameController.player.greatBalls = PlayerPrefs.GetInt("Greatball", 20);
-            GameController.player.ultraBalls = PlayerPrefs.GetInt("Ultraball", 20);
-            GameController.player.masterBalls = PlayerPrefs.GetInt("Masterball", 20);
-
-            GameController.player.displayPokeBalls = PlayerPrefs.GetString("DisplayPoke").Equals("True");
-            GameController.player.displayGreatBalls = PlayerPrefs.GetString("DisplayGreat").Equals("True");
-            GameController.player.displayUltraBalls = PlayerPrefs.GetString("DisplayUltra").Equals("True");
-            GameController.player.displayMasterBalls = PlayerPrefs.GetString("DisplayMaster").Equals("True");
-
-            GameController.player.money = PlayerPrefs.GetInt("Money");
-            GameController.player.name = PlayerPrefs.GetString("Name");
-            GameController.location = PlayerPrefs.GetString("Location");
-            GameController.scene = PlayerPrefs.GetString("Scene");
-
-            //var t = GameObject.FindGameObjectWithTag("Player").transform.position;
-
-            //t.x = PlayerPrefs.GetFloat("X");
-            //t.y = PlayerPrefs.GetFloat("Y");
-
-            playerPosition.initialValue.x = PlayerPrefs.GetFloat("X");
-            playerPosition.initialValue.y = PlayerPrefs.GetFloat("Y");
-
-
-            for (int i = 0; i < 6; i++)
+            if (PlayerPrefs.HasKey("X"))
             {
-                if (PlayerPrefs.GetInt("Pokemon" + i + "_level") == 0)
-                {
-                    continue;
-                }
-                else
-                {
-                    int level = PlayerPrefs.GetInt("Pokemon" + i + "_level");
-                    int dex = PlayerPrefs.GetInt("Pokemon" + i + "_dex");
-                    int exp = PlayerPrefs.GetInt("Pokemon" + i + "_exp");
-                    int hp = PlayerPrefs.GetInt("Pokemon" + i + "_hp");
-                    string move1 = null, move2 = null, move3 = null, move4 = null;
+                GameController.player.pokeBalls = PlayerPrefs.GetInt("Pokeball");
+                GameController.player.greatBalls = PlayerPrefs.GetInt("Greatball");
+                GameController.player.ultraBalls = PlayerPrefs.GetInt("Ultraball");
+                GameController.player.masterBalls = PlayerPrefs.GetInt("Masterball");
 
-                    if (!PlayerPrefs.GetString("Pokemon" + i + "_move0").Equals("null")) move1 = PlayerPrefs.GetString("Pokemon" + i + "_move0");
-                    if (!PlayerPrefs.GetString("Pokemon" + i + "_move1").Equals("null")) move2 = PlayerPrefs.GetString("Pokemon" + i + "_move1");
-                    if (!PlayerPrefs.GetString("Pokemon" + i + "_move2").Equals("null")) move3 = PlayerPrefs.GetString("Pokemon" + i + "_move2");
-                    if (!PlayerPrefs.GetString("Pokemon" + i + "_move3").Equals("null")) move4 = PlayerPrefs.GetString("Pokemon" + i + "_move3");
+                GameController.player.displayPokeBalls = PlayerPrefs.GetString("DisplayPoke").Equals("True");
+                GameController.player.displayGreatBalls = PlayerPrefs.GetString("DisplayGreat").Equals("True");
+                GameController.player.displayUltraBalls = PlayerPrefs.GetString("DisplayUltra").Equals("True");
+                GameController.player.displayMasterBalls = PlayerPrefs.GetString("DisplayMaster").Equals("True");
 
-                    GameController.playerPokemon[i] = new Pokemon(dex, level, move1, move2, move3, move4, exp, hp);
+                GameController.player.money = PlayerPrefs.GetInt("Money");
+                GameController.player.name = PlayerPrefs.GetString("Name");
+                GameController.location = PlayerPrefs.GetString("Location");
+                GameController.scene = PlayerPrefs.GetString("Scene");
+
+                playerPosition.initialValue.x = PlayerPrefs.GetFloat("X");
+                playerPosition.initialValue.y = PlayerPrefs.GetFloat("Y");
+
+
+                for (int i = 0; i < 6; i++)
+                {
+                    if (PlayerPrefs.GetInt("Pokemon" + i + "_level") == 0)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        int level = PlayerPrefs.GetInt("Pokemon" + i + "_level");
+                        int dex = PlayerPrefs.GetInt("Pokemon" + i + "_dex");
+                        int exp = PlayerPrefs.GetInt("Pokemon" + i + "_exp");
+                        int hp = PlayerPrefs.GetInt("Pokemon" + i + "_hp");
+                        string move1 = null, move2 = null, move3 = null, move4 = null;
+
+                        if (!PlayerPrefs.GetString("Pokemon" + i + "_move0").Equals("null")) move1 = PlayerPrefs.GetString("Pokemon" + i + "_move0");
+                        if (!PlayerPrefs.GetString("Pokemon" + i + "_move1").Equals("null")) move2 = PlayerPrefs.GetString("Pokemon" + i + "_move1");
+                        if (!PlayerPrefs.GetString("Pokemon" + i + "_move2").Equals("null")) move3 = PlayerPrefs.GetString("Pokemon" + i + "_move2");
+                        if (!PlayerPrefs.GetString("Pokemon" + i + "_move3").Equals("null")) move4 = PlayerPrefs.GetString("Pokemon" + i + "_move3");
+
+                        GameController.playerPokemon[i] = new Pokemon(dex, level, move1, move2, move3, move4, exp, hp);
+                    }
                 }
+                SceneManager.LoadSceneAsync(GameController.scene);
             }
-
-            SceneManager.LoadSceneAsync(GameController.scene);
         }
-
     }
 }
