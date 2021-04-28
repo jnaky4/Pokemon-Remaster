@@ -2209,11 +2209,8 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
-            Texture2D SpriteTexture = new Texture2D(0, 0);
-            byte[] fileData = File.ReadAllBytes(unit.pokemon.image1);
-            SpriteTexture.LoadImage(fileData);
 
-            sprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+            sprite.sprite = Resources.Load<Sprite>("Images/PokemonImages/" + (playerUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + playerUnit.pokemon.name);
 
             GameController.soundFX = unit.pokemon.dexnum.ToString();
         }
@@ -2271,12 +2268,8 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
-            Texture2D SpriteTexture = new Texture2D(0, 0);
-            byte[] fileData = File.ReadAllBytes(unit.pokemon.image2);
-            SpriteTexture.LoadImage(fileData);
-            sprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+            sprite.sprite = Resources.Load<Sprite>("Images/PokemonImages/" + (enemyUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + enemyUnit.pokemon.name + "2");
             GameController.soundFX = unit.pokemon.dexnum.ToString();
-            Debug.Log("DexNum: " + unit.pokemon.dexnum.ToString());
         }
 
         public void SetBackground()
