@@ -40,13 +40,13 @@ namespace Pokemon
             switch (dexNum)
             {
                 case 1:
-                    starter.pokemon = new Pokemon(1, 5, "Leech Seed", "Vine Whip", "Growl", "Razor Leaf");
+                    starter.pokemon = new Pokemon(1, 5, "Tackle", "Growl");
                     break;
                 case 4:
-                    starter.pokemon = new Pokemon(4, 5, "Poison Gas", "Ember", "Tail Whip", "Bite");
+                    starter.pokemon = new Pokemon(4, 5, "Scratch", "Growl");
                     break;
                 case 7:
-                    starter.pokemon = new Pokemon(7, 5, "Water Gun", "Bubble", "Splash", "Crabhammer");
+                    starter.pokemon = new Pokemon(7, 5, "Tackle", "Tail Whip");
                     break;
             }
         }
