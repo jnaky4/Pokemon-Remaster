@@ -2289,24 +2289,11 @@ namespace Pokemon
         public void SetBackground()
         {
             string type = GameController.opponentType;
-            if (type == "Rival")
-            {
-                Texture2D SpriteTexture = new Texture2D(2, 2);
-                var path = "Assets/Resources/Images/Backgrounds/";
 
-                byte[] fileData = File.ReadAllBytes(path + "Viridian Forest" + ".png");
-                SpriteTexture.LoadImage(fileData);
-                background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-            }
-            else
-            {
-                Texture2D SpriteTexture = new Texture2D(2, 2);
-                var path = "Assets/Resources/Images/Backgrounds/";
+            var path = "Assets/Resources/Images/Backgrounds/";
 
-                byte[] fileData = File.ReadAllBytes(path + GameController.location + ".png");
-                SpriteTexture.LoadImage(fileData);
-                background.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(0, 0));
-            }
+            background.sprite = Resources.Load<Sprite>(path + GameController.location);
+
         }
 
         public void DisplayPokeball()
