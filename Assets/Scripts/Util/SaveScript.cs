@@ -22,6 +22,8 @@ namespace Pokemon
             PlayerPrefs.SetInt("Money", GameController.player.money);
             PlayerPrefs.SetString("Name", GameController.player.name);
             PlayerPrefs.SetString("Location", GameController.location);
+            PlayerPrefs.SetFloat("X", GameObject.FindGameObjectWithTag("Player").transform.position.x);
+            PlayerPrefs.SetFloat("Y", GameObject.FindGameObjectWithTag("Player").transform.position.y);
 
             for (int i = 0; i < 6; i++)
             {
@@ -59,6 +61,14 @@ namespace Pokemon
             GameController.player.money = PlayerPrefs.GetInt("Money");
             GameController.player.name = PlayerPrefs.GetString("Name");
             GameController.location = PlayerPrefs.GetString("Location");
+
+            var t = GameObject.FindGameObjectWithTag("Player").transform.position;
+
+            t.x = PlayerPrefs.GetFloat("X");
+            t.y = PlayerPrefs.GetFloat("Y");
+
+
+
 
             for (int i = 0; i < 6; i++)
             {
