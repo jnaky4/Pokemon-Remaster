@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 namespace Pokemon
@@ -8,10 +9,12 @@ namespace Pokemon
         public static bool GameIsPaused = false;
         public VectorValue playerPosition;
         public GameObject pauseMenuUI;
+        [SerializeField] Text progress;
 
         private void Start()
         {
             pauseMenuUI.SetActive(false);
+            progress.text = "Progress " + GameController.player.name + " Badges/money";
         }
 
         // Update is called once per frame
