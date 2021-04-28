@@ -9,7 +9,7 @@ namespace Pokemon
         public static bool GameIsPaused = false;
         public VectorValue playerPosition;
         public GameObject pauseMenuUI;
-        [SerializeField] Text progress;
+        public Text progress;
 
         private void Start()
         {
