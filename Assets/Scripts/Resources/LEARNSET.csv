@@ -484,8 +484,8 @@ dexnum,lvl,move,type
 69,13,Wrap,Normal
 69,15,Poison Powder,Poison
 69,18,Sleep Powder,Grass
-69,21,Acid,Poison
-69,26,Stun Spore,Grass
+69,21,Stun Spore,Poison
+69,26,Acid,Grass
 69,33,Razor Leaf,Grass
 69,42,Slam,Normal
 70,1,Vine Whip,Grass
