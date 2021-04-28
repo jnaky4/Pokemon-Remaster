@@ -137,6 +137,7 @@ namespace Pokemon
             }
 
             SceneManager.LoadSceneAsync(GameController.scene);
+            Resume();
             pauseMenuUI.SetActive(true);
         }
 
