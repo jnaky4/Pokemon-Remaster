@@ -677,6 +677,7 @@ GameObject:
   m_Component:
   - component: {fileID: 912797814}
   - component: {fileID: 912797813}
+  - component: {fileID: 912797815}
   m_Layer: 0
   m_Name: Main Menu
   m_TagString: Untagged
@@ -752,6 +753,19 @@ Transform:
   m_Father: {fileID: 1517021558}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &912797815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 912797812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4aa09c6a6758664abcd37a41946556f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 11400000, guid: 74664f11c5b064f85be2716b35a57b5d, type: 2}
 --- !u!1 &950543642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,13 +1585,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 912797812}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 912797815}
+        m_TargetAssemblyTypeName: Pokemon.StartMenu, Assembly-CSharp
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1946,6 +1960,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_SelectedColor.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057655422211029468, guid: 2b3ad2f6518eda04fa45942d99a96f69,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057655422211029468, guid: 2b3ad2f6518eda04fa45942d99a96f69,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057655422211029468, guid: 2b3ad2f6518eda04fa45942d99a96f69,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 912797815}
+    - target: {fileID: 5057655422211029468, guid: 2b3ad2f6518eda04fa45942d99a96f69,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057655422211029468, guid: 2b3ad2f6518eda04fa45942d99a96f69,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057655422211029468, guid: 2b3ad2f6518eda04fa45942d99a96f69,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Pokemon.StartMenu, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5057655422211029468, guid: 2b3ad2f6518eda04fa45942d99a96f69,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5057655422211029469, guid: 2b3ad2f6518eda04fa45942d99a96f69,
         type: 3}
