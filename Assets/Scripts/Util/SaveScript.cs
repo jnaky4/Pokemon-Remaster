@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 namespace Pokemon
 {
     public class SaveScript : MonoBehaviour
     {
+        public VectorValue playerPosition;
+
         public void Save()
         {
             PlayerPrefs.SetInt("Pokeball", GameController.player.pokeBalls);
@@ -22,6 +25,7 @@ namespace Pokemon
             PlayerPrefs.SetInt("Money", GameController.player.money);
             PlayerPrefs.SetString("Name", GameController.player.name);
             PlayerPrefs.SetString("Location", GameController.location);
+            PlayerPrefs.SetString("Scene", GameController.scene);
             PlayerPrefs.SetFloat("X", GameObject.FindGameObjectWithTag("Player").transform.position.x);
             PlayerPrefs.SetFloat("Y", GameObject.FindGameObjectWithTag("Player").transform.position.y);
 
@@ -48,6 +52,8 @@ namespace Pokemon
         }
         public void Load()
         {
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+
             GameController.player.pokeBalls = PlayerPrefs.GetInt("Pokeball", 20);
             GameController.player.greatBalls = PlayerPrefs.GetInt("Greatball", 20);
             GameController.player.ultraBalls = PlayerPrefs.GetInt("Ultraball", 20);
@@ -61,13 +67,15 @@ namespace Pokemon
             GameController.player.money = PlayerPrefs.GetInt("Money");
             GameController.player.name = PlayerPrefs.GetString("Name");
             GameController.location = PlayerPrefs.GetString("Location");
+            GameController.scene = PlayerPrefs.GetString("Scene");
 
-            var t = GameObject.FindGameObjectWithTag("Player").transform.position;
+            //var t = GameObject.FindGameObjectWithTag("Player").transform.position;
 
-            t.x = PlayerPrefs.GetFloat("X");
-            t.y = PlayerPrefs.GetFloat("Y");
+            //t.x = PlayerPrefs.GetFloat("X");
+            //t.y = PlayerPrefs.GetFloat("Y");
 
-
+            playerPosition.initialValue.x = PlayerPrefs.GetFloat("X");
+            playerPosition.initialValue.y = PlayerPrefs.GetFloat("Y");
 
 
             for (int i = 0; i < 6; i++)
@@ -92,6 +100,8 @@ namespace Pokemon
                     GameController.playerPokemon[i] = new Pokemon(dex, level, move1, move2, move3, move4, exp, hp);
                 }
             }
+
+            SceneManager.LoadSceneAsync(GameController.scene);
         }
     }
 
