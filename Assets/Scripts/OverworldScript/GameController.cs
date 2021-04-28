@@ -17,7 +17,7 @@ namespace Pokemon
         public static bool inCombat = false;
 
         //public GameObject player;
-        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Ground", 1 } };
+        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
 
         public static string location = "Pallet Town";
 
@@ -91,13 +91,13 @@ namespace Pokemon
 
             //Debug.Log("CSV's have been loaded");
 
-            playerPokemon[0] = new Pokemon(3, 18, "Water Gun", "Leech Seed", "Leer", "Crabhammer");
-            playerPokemon[1] = new Pokemon(25, 25, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            playerPokemon[0] = new Pokemon(3, 5, "Water Gun", "Leech Seed", "Leer", "Crabhammer");
+/*            playerPokemon[1] = new Pokemon(25, 25, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
             playerPokemon[2] = new Pokemon(60, 19, "Water Gun", "Bubble", "Splash", "Crabhammer", 7900);
             //6114 is for a lvl 18 ivysaur
             playerPokemon[3] = new Pokemon(69, 19, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 7900);
             //playerPokemon[3] = new Pokemon(6, 18, "Poison Gas", "Ember", "Tail Whip", "Bite");
-            playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");
+            playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");*/
         }
 
         private void Start()

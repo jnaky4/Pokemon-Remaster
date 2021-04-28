@@ -310,26 +310,14 @@ namespace Pokemon
             //sets all max_stats calculated from base stats & lvl
             update_current_stats();
 
-            //if pokemon wasnt passed hp, default is zero
-            if (current_hp == 0)
-            {
-                this.current_hp = this.max_hp;
-                this.current_attack = this.max_attack;
-                this.current_defense = this.max_defense;
-                this.current_sp_attack = this.max_sp_attack;
-                this.current_sp_defense = this.max_sp_defense;
-                this.current_speed = this.max_speed;
-            }
             //pokemon may have evolved so we need to pass in its current stats
-            else
-            {
-                this.current_hp = current_hp;
-                this.current_attack = current_attack;
-                this.current_defense = current_defense;
-                this.current_sp_attack = current_special_attack;
-                this.current_sp_defense = current_special_defense;
-                this.current_speed = current_speed;
-            }
+            //after updating stats, checks arguments passed, if 0 set to max_stat, otherwise set the value
+            this.current_hp = current_hp == 0 ? this.max_hp : current_hp;
+            this.current_attack = current_attack == 0 ? this.max_attack : current_attack;
+            this.current_defense = current_defense == 0 ? this.max_defense : current_defense;
+            this.current_sp_attack = current_special_attack == 0 ? this.max_sp_attack : current_sp_attack;
+            this.current_defense = current_special_defense == 0 ? this.max_sp_defense : current_special_defense;
+            this.current_defense = current_speed == 0 ? this.max_speed : current_speed;
         }
 
         public void print_pokemon()
