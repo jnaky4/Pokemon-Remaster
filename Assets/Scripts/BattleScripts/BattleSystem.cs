@@ -2224,20 +2224,13 @@ namespace Pokemon
             string path;
 
             if (type == "Rival")
-                path = "Assets/Resources/Player_Rival/Blue";
+                path = "Player_Rival/Blue";
             else if (type != "Gym Leader")
-                path = "Assets/Resources/Final_NPC/" + type;
+                path = "Final_NPC/" + type;
             else
-                path = "Assets/Resources/GymLeaders/" + GameController.opponentName;
+                path = "GymLeaders/" + GameController.opponentName;
 
-            path += ".png";
-
-            //var sprite = Resources.Load<Sprite>(path);
-
-            Texture2D SpriteTexture = new Texture2D(0, 0);
-            byte[] fileData = File.ReadAllBytes(path);
-            SpriteTexture.LoadImage(fileData);
-
+            var sprite = Resources.Load<Sprite>(path);
 
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
@@ -2257,7 +2250,7 @@ namespace Pokemon
             }
             //spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
 
-            spriteRenderer.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+            spriteRenderer.sprite = Sprite.Create(sprite.texture, new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(x, y));
         }
 
         private void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
@@ -2290,7 +2283,7 @@ namespace Pokemon
         {
             string type = GameController.opponentType;
 
-            var path = "Assets/Resources/Images/Backgrounds/";
+            var path = "Images/Backgrounds/";
 
             background.sprite = Resources.Load<Sprite>(path + GameController.location);
 
@@ -2310,10 +2303,7 @@ namespace Pokemon
                 y = 0.35f;
             }
 
-            Texture2D SpriteTexture = new Texture2D(0, 0);
-            byte[] fileData = File.ReadAllBytes("Assets/Resources/Attack_Animations/Pokeball_Left/Pokeball_Left_000.png");
-            SpriteTexture.LoadImage(fileData);
-            enemySprite.sprite = Sprite.Create(SpriteTexture, new Rect(0, 0, SpriteTexture.width, SpriteTexture.height), new Vector2(x, y));
+            enemySprite.sprite = Resources.Load<Sprite>("Attack_Animations/Pokeball_Left/Pokeball_Left_000");
             enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1);
         }
 
