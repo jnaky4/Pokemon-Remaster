@@ -52,7 +52,7 @@ namespace Pokemon
         }
         public void Load()
         {
-            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+            //SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
 
             GameController.player.pokeBalls = PlayerPrefs.GetInt("Pokeball", 20);
             GameController.player.greatBalls = PlayerPrefs.GetInt("Greatball", 20);
