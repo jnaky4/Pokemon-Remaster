@@ -8143,10 +8143,10 @@ MonoBehaviour:
   ball2: {fileID: 1919359086}
   ball3: {fileID: 723340096}
   ball4: {fileID: 396360787}
-  move1: {fileID: 0}
+  move1: {fileID: 2065458124}
   move2: {fileID: 1148799361}
-  move3: {fileID: 0}
-  move4: {fileID: 0}
+  move3: {fileID: 730673326}
+  move4: {fileID: 1694496693}
   poke1: {fileID: 1560591926}
   poke2: {fileID: 612882706}
   poke3: {fileID: 809158737}

@@ -84,8 +84,8 @@ namespace Pokemon
                     PlayerPrefs.SetInt("Pokemon" + i + "_hp", GameController.playerPokemon[i].current_hp);
                 }
                 else PlayerPrefs.SetInt("Pokemon" + i + "_level", 0);
-
             }
+            PlayerPrefs.Save();
         }
 
         public void Load()

@@ -77,7 +77,9 @@ namespace Pokemon
 
             DontDestroyOnLoad(transform.gameObject);
 
-            Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
+
+            //COMMENT THIS OUT FOR TESTING
+            /*Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
             Moves.all_moves = BattleSystem.load_CSV("MOVES");
             Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK");
             Type.type_defend = BattleSystem.load_CSV("TYPE_DEFEND");
@@ -88,17 +90,9 @@ namespace Pokemon
             TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
             Type.load_type();
             Moves.load_moves();
-            update_level_cap();
+            update_level_cap();*/
 
             //Debug.Log("CSV's have been loaded");
-
-            playerPokemon[0] = new Pokemon(3, 5, "Water Gun", "Leech Seed", "Leer", "Crabhammer");
-/*            playerPokemon[1] = new Pokemon(25, 25, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
-            playerPokemon[2] = new Pokemon(60, 19, "Water Gun", "Bubble", "Splash", "Crabhammer", 7900);
-            //6114 is for a lvl 18 ivysaur
-            playerPokemon[3] = new Pokemon(69, 19, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 7900);
-            //playerPokemon[3] = new Pokemon(6, 18, "Poison Gas", "Ember", "Tail Whip", "Bite");
-            playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");*/
         }
 
         private void Start()
