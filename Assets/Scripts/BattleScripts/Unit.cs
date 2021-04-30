@@ -95,6 +95,7 @@ namespace Pokemon
                 {
                     damage = 100000;
                     Debug.LogError(ex.ToString());
+                    Debug.Log(damage);
                 }
                 if (damage < 0) damage = 0; //If somehow you have negative damage, now you dont.
                 if (move.heal > 0)
@@ -118,7 +119,7 @@ namespace Pokemon
             pokemon.current_hp -= (int)dmg;
             if (pokemon.current_hp > pokemon.max_hp) pokemon.current_hp = pokemon.max_hp;
             if (pokemon.current_hp < 0) pokemon.current_hp = 0;
-
+            Debug.Log("Damage: " + dmg);
             if (pokemon.current_hp <= 0) return true;
             else return false;
         }
