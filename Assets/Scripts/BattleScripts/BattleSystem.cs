@@ -1483,7 +1483,7 @@ namespace Pokemon
             {
                 cancelAttack = true;
                 yield return new WaitForSeconds(2);
-                dialogueText.text = "The move failed!";
+                dialogueText.text = "The attack missed!";
                 yield return new WaitForSeconds(2);
                 yield break;
             }
