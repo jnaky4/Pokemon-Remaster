@@ -803,6 +803,30 @@ namespace Pokemon
                 cancelAttack = true;
                 dialogueText.text = playerUnit.pokemon.name + " is paralyzed!";
                 yield return new WaitForSeconds(2);
+
+                if (Status.SeeIfLeech(enemyUnit.pokemon) && enemyUnit.pokemon.current_hp > 0)
+                {
+                    bool x;
+                    AnimateStatus("Seeded", false);
+                    GameController.soundFX = "Poisoned";
+                    while (!endofanimation) //Animation shit, ask levi
+                    {
+                        yield return null;
+                    }
+                    endofanimation = false;
+
+                    playerUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
+                    StartCoroutine(Blink(enemySprite, 0.25));
+                    playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
+                    enemyUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
+                    dialogueText.text = enemyUnit.pokemon.name + " got leeched by " + playerUnit.pokemon.name + "!";
+                    if (enemyUnit.pokemon.current_hp <= 0) x = true;
+                    else x = false;
+                    yield return new WaitForSeconds(2);
+                    yield return StartCoroutine(YouKilledThem(x));
+                }
+
                 yield break;
             }
             if (Status.SeeIfSleep(playerUnit.pokemon))
@@ -818,6 +842,30 @@ namespace Pokemon
                 Status.ReduceSleep(playerUnit);
                 if (playerUnit.pokemon.sleep == 0) pWokeUp = true;
                 yield return new WaitForSeconds(2);
+
+                if (Status.SeeIfLeech(enemyUnit.pokemon) && enemyUnit.pokemon.current_hp > 0)
+                {
+                    bool x;
+                    AnimateStatus("Seeded", false);
+                    GameController.soundFX = "Poisoned";
+                    while (!endofanimation) //Animation shit, ask levi
+                    {
+                        yield return null;
+                    }
+                    endofanimation = false;
+
+                    playerUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
+                    StartCoroutine(Blink(enemySprite, 0.25));
+                    playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
+                    enemyUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
+                    dialogueText.text = enemyUnit.pokemon.name + " got leeched by " + playerUnit.pokemon.name + "!";
+                    if (enemyUnit.pokemon.current_hp <= 0) x = true;
+                    else x = false;
+                    yield return new WaitForSeconds(2);
+                    yield return StartCoroutine(YouKilledThem(x));
+                }
+
                 yield break;
             }
             if (Status.SeeIfFreeze(playerUnit.pokemon))
@@ -825,6 +873,30 @@ namespace Pokemon
                 dialogueText.text = playerUnit.pokemon.name + " is frozen!";
                 cancelAttack = true;
                 yield return new WaitForSeconds(2);
+
+                if (Status.SeeIfLeech(enemyUnit.pokemon) && enemyUnit.pokemon.current_hp > 0)
+                {
+                    bool x;
+                    AnimateStatus("Seeded", false);
+                    GameController.soundFX = "Poisoned";
+                    while (!endofanimation) //Animation shit, ask levi
+                    {
+                        yield return null;
+                    }
+                    endofanimation = false;
+
+                    playerUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
+                    StartCoroutine(Blink(enemySprite, 0.25));
+                    playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
+                    enemyUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
+                    dialogueText.text = enemyUnit.pokemon.name + " got leeched by " + playerUnit.pokemon.name + "!";
+                    if (enemyUnit.pokemon.current_hp <= 0) x = true;
+                    else x = false;
+                    yield return new WaitForSeconds(2);
+                    yield return StartCoroutine(YouKilledThem(x));
+                }
+
                 yield break;
             }
 
@@ -1380,6 +1452,30 @@ namespace Pokemon
                 dialogueText.text = enemyUnit.pokemon.name + " is paralyzed!";
                 cancelAttack = true;
                 yield return new WaitForSeconds(2);
+
+                if (Status.SeeIfLeech(playerUnit.pokemon))
+                {
+                    bool x;
+                    AnimateStatus("Seeded", true);
+                    GameController.soundFX = "Poisoned";
+                    while (!endofanimation) //Animation shit, ask levi
+                    {
+                        yield return null;
+                    }
+                    endofanimation = false;
+
+                    enemyUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
+                    StartCoroutine(Blink(playerSprite, 0.25));
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, false);
+                    playerUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
+                    playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
+                    dialogueText.text = playerUnit.pokemon.name + " got leeched by " + enemyUnit.pokemon.name + "!";
+                    if (playerUnit.pokemon.current_hp <= 0) x = true;
+                    else x = false;
+                    yield return new WaitForSeconds(2);
+                    yield return StartCoroutine(EnemyKillsYou(x));
+                }
+
                 yield break;
             }
             if (Status.SeeIfSleep(enemyUnit.pokemon))
@@ -1397,6 +1493,30 @@ namespace Pokemon
                 Status.ReduceSleep(enemyUnit);
                 if (enemyUnit.pokemon.sleep == 0) eWokeUp = true;
                 yield return new WaitForSeconds(2);
+
+                if (Status.SeeIfLeech(playerUnit.pokemon))
+                {
+                    bool x;
+                    AnimateStatus("Seeded", true);
+                    GameController.soundFX = "Poisoned";
+                    while (!endofanimation) //Animation shit, ask levi
+                    {
+                        yield return null;
+                    }
+                    endofanimation = false;
+
+                    enemyUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
+                    StartCoroutine(Blink(playerSprite, 0.25));
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, false);
+                    playerUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
+                    playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
+                    dialogueText.text = playerUnit.pokemon.name + " got leeched by " + enemyUnit.pokemon.name + "!";
+                    if (playerUnit.pokemon.current_hp <= 0) x = true;
+                    else x = false;
+                    yield return new WaitForSeconds(2);
+                    yield return StartCoroutine(EnemyKillsYou(x));
+                }
+
                 yield break;
             }
             if (Status.SeeIfFreeze(enemyUnit.pokemon))
@@ -1404,6 +1524,30 @@ namespace Pokemon
                 dialogueText.text = enemyUnit.pokemon.name + " is frozen!";
                 cancelAttack = true;
                 yield return new WaitForSeconds(2);
+
+                if (Status.SeeIfLeech(playerUnit.pokemon))
+                {
+                    bool x;
+                    AnimateStatus("Seeded", true);
+                    GameController.soundFX = "Poisoned";
+                    while (!endofanimation) //Animation shit, ask levi
+                    {
+                        yield return null;
+                    }
+                    endofanimation = false;
+
+                    enemyUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
+                    StartCoroutine(Blink(playerSprite, 0.25));
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, false);
+                    playerUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
+                    playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
+                    dialogueText.text = playerUnit.pokemon.name + " got leeched by " + enemyUnit.pokemon.name + "!";
+                    if (playerUnit.pokemon.current_hp <= 0) x = true;
+                    else x = false;
+                    yield return new WaitForSeconds(2);
+                    yield return StartCoroutine(EnemyKillsYou(x));
+                }
+
                 yield break;
             }
 
