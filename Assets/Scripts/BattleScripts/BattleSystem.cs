@@ -2291,6 +2291,7 @@ namespace Pokemon
             }
 
 
+
         }
 
         public void DisplayPokeball()
@@ -2306,7 +2307,6 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
-
             var s = Resources.Load<Sprite>("Attack_Animations/Pokeball_Left/Pokeball_Left_000");
             enemySprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
             enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1);

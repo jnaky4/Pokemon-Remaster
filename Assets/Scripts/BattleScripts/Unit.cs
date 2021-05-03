@@ -10,7 +10,7 @@ namespace Pokemon
 
         public Pokemon pokemon;
 
-        public double damage; //Gets updated each turn depending on all of the battle factors.
+        public double damage = 0; //Gets updated each turn depending on all of the battle factors.
         private double stab = 1; //same type attack bonus
         private double critical = 1; //critical multiplier
         private double random = 1; //some randomness to the move damage
@@ -104,6 +104,7 @@ namespace Pokemon
                 {
                     damage = 100000;
                     Debug.LogError(ex.ToString());
+                    Debug.Log(damage);
                 }
                 if (double.IsNaN(damage) || double.IsInfinity(damage))
                 {
@@ -131,7 +132,7 @@ namespace Pokemon
             pokemon.current_hp -= (int)dmg;
             if (pokemon.current_hp > pokemon.max_hp) pokemon.current_hp = pokemon.max_hp;
             if (pokemon.current_hp < 0) pokemon.current_hp = 0;
-
+            Debug.Log("Damage: " + dmg);
             if (pokemon.current_hp <= 0) return true;
             else return false;
         }
@@ -200,10 +201,10 @@ namespace Pokemon
                         break;
 
                     case "Accuracy":
-                        enemy.pokemon.sp_defense_stage += attack.stat_change_amount;
-                        if (enemy.pokemon.sp_defense_stage > 6) enemy.pokemon.sp_defense_stage = 6;
-                        if (enemy.pokemon.sp_defense_stage < -6) enemy.pokemon.sp_defense_stage = -6;
-                        enemy.pokemon.current_accuracy = (int)(1 * accuracyMultipliers[enemy.pokemon.accuracy_stage + 6]);
+                        enemy.pokemon.accuracy_stage += attack.stat_change_amount;
+                        if (enemy.pokemon.accuracy_stage > 6) enemy.pokemon.accuracy_stage = 6;
+                        if (enemy.pokemon.accuracy_stage < -6) enemy.pokemon.accuracy_stage = -6;
+                        enemy.pokemon.current_accuracy = (int)(accuracyMultipliers[enemy.pokemon.accuracy_stage + 6]);
                         break;
 
                     default:
@@ -262,9 +263,9 @@ namespace Pokemon
                         break;
 
                     case "Accuracy":
-                        pokemon.sp_defense_stage += attack.stat_change_amount;
-                        if (pokemon.sp_defense_stage > 6) pokemon.sp_defense_stage = 6;
-                        if (pokemon.sp_defense_stage < -6) pokemon.sp_defense_stage = -6;
+                        pokemon.accuracy_stage += attack.stat_change_amount;
+                        if (pokemon.accuracy_stage > 6) pokemon.accuracy_stage = 6;
+                        if (pokemon.accuracy_stage < -6) pokemon.accuracy_stage = -6;
                         pokemon.current_accuracy = (int)(1 * accuracyMultipliers[pokemon.accuracy_stage + 6]);
                         break;
 
