@@ -769,7 +769,7 @@ namespace Pokemon
                 enemyHUD.SetStatus(enemyUnit.pokemon);
                 playerHUD.SetStatus(playerUnit.pokemon);
                 SetUpButtons();
-                Debug.Log(playerUnit.pokemon.current_exp);
+                //Debug.Log(playerUnit.pokemon.current_exp);
             }
         }
 
@@ -1483,7 +1483,7 @@ namespace Pokemon
             {
                 cancelAttack = true;
                 yield return new WaitForSeconds(2);
-                dialogueText.text = "The move failed!";
+                dialogueText.text = "The attack missed!";
                 yield return new WaitForSeconds(2);
                 yield break;
             }
@@ -2210,7 +2210,8 @@ namespace Pokemon
                 y = 0.35f;
             }
 
-            sprite.sprite = Resources.Load<Sprite>("Images/PokemonImages/" + (playerUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + playerUnit.pokemon.name);
+            var s = Resources.Load<Sprite>("Images/PokemonImages/" + (playerUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + playerUnit.pokemon.name);
+            sprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
 
             GameController.soundFX = unit.pokemon.dexnum.ToString();
         }
@@ -2268,7 +2269,8 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
-            sprite.sprite = Resources.Load<Sprite>("Images/PokemonImages/" + (enemyUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + enemyUnit.pokemon.name + "2");
+            var s = Resources.Load<Sprite>("Images/PokemonImages/" + (enemyUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + enemyUnit.pokemon.name + "2");
+            sprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
             GameController.soundFX = unit.pokemon.dexnum.ToString();
         }
 
@@ -2278,7 +2280,16 @@ namespace Pokemon
 
             var path = "Images/Backgrounds/";
 
-            background.sprite = Resources.Load<Sprite>(path + GameController.location);
+            if (type == "Rival")
+            {
+                Texture2D SpriteTexture = new Texture2D(2, 2);
+                background.sprite = Resources.Load<Sprite>(path + "Viridian Forest");
+            }
+            else
+            {
+                background.sprite = Resources.Load<Sprite>(path + GameController.location);
+            }
+
 
         }
 
@@ -2296,7 +2307,8 @@ namespace Pokemon
                 y = 0.35f;
             }
 
-            enemySprite.sprite = Resources.Load<Sprite>("Attack_Animations/Pokeball_Left/Pokeball_Left_000");
+            var s = Resources.Load<Sprite>("Attack_Animations/Pokeball_Left/Pokeball_Left_000");
+            enemySprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
             enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1);
         }
 
