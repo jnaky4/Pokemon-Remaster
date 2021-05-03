@@ -316,8 +316,9 @@ namespace Pokemon
             this.current_attack = current_attack == 0 ? this.max_attack : current_attack;
             this.current_defense = current_defense == 0 ? this.max_defense : current_defense;
             this.current_sp_attack = current_special_attack == 0 ? this.max_sp_attack : current_sp_attack;
-            this.current_defense = current_special_defense == 0 ? this.max_sp_defense : current_special_defense;
-            this.current_defense = current_speed == 0 ? this.max_speed : current_speed;
+            this.current_sp_defense = current_special_defense == 0 ? this.max_sp_defense : current_special_defense;
+            this.current_speed = current_speed == 0 ? this.max_speed : current_speed;
+            Debug.LogWarning("Hey motherfucker, current defense for " + this.name + " is " + this.current_defense + " and the current sp defense is " + this.current_sp_defense);
         }
 
         public void print_pokemon()

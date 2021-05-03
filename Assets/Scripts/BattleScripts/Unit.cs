@@ -42,6 +42,10 @@ namespace Pokemon
         public void SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit, double type1Defend, double type2Defend)
         {
             Debug.Log("Damage: " + damage);
+            if (double.IsNaN(damage) || double.IsInfinity(damage))
+            {
+                damage = 0;
+            }
             try
             {
                 if (pokemon.type1.type.Equals(move.move_type.type) || (pokemon.type2.type != null && pokemon.type2.type.Equals(move.move_type.type))) //If STAB
@@ -77,6 +81,10 @@ namespace Pokemon
                 }
                 try
                 {
+                    if (enemyDefense == 0)
+                    {
+                        Debug.Log("Enemy defense is 0");
+                    }
                     if (move.base_power > 0) //If this does actual attacking.
                     {
                         damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2; //Basic attacking
@@ -90,13 +98,17 @@ namespace Pokemon
                 }
                 catch (DivideByZeroException ex)
                 {
-                    Debug.LogError(ex.ToString());
+                    Debug.LogWarning(ex.ToString());
                 }
                 catch (Exception ex) //If we fuck up, you will get fucked up.
                 {
                     damage = 100000;
                     Debug.LogError(ex.ToString());
                     Debug.Log(damage);
+                }
+                if (double.IsNaN(damage) || double.IsInfinity(damage))
+                {
+                    Debug.LogError("Damage is not a number.");
                 }
                 if (damage < 0) damage = 0; //If somehow you have negative damage, now you dont.
                 if (move.heal > 0)

@@ -34,6 +34,8 @@ namespace Pokemon
             GameController.player.displayUltraBalls = false;
             GameController.player.displayMasterBalls = false;
 
+            GameController.badges_completed.Add("Ground", 1);
+
             GameController.player.money = 3000;
             GameController.player.name = "Purple";
             GameController.location = "Pallet Town";
@@ -44,9 +46,9 @@ namespace Pokemon
 
             int level = 5;
             int dex = 25;
-            string move1 = "Tackle", move2 = "Growl";
+            string move1 = "Tackle", move2 = "Growl", move3 = "Gust";
 
-            GameController.playerPokemon[0] = new Pokemon(dex, level, move1, move2);
+            GameController.playerPokemon[0] = new Pokemon(dex, level, move1, move2, move3);
             SceneManager.LoadSceneAsync(GameController.scene);
         }
         public void Continue()
