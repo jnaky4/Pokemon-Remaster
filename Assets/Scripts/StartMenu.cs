@@ -23,7 +23,6 @@ namespace Pokemon
 
         public void NewGame()
         {
-            PlayerPrefs.DeleteAll();
             GameController.player.pokeBalls = 10;
             GameController.player.greatBalls = 0;
             GameController.player.ultraBalls = 0;
