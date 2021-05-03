@@ -58,6 +58,7 @@ namespace Pokemon
             PlayerPrefs.SetString("DisplayUltra", GameController.player.displayUltraBalls.ToString());
             PlayerPrefs.SetString("DisplayMaster", GameController.player.displayMasterBalls.ToString());
 
+            //PlayerPrefs.SetString("")
 
             PlayerPrefs.SetInt("Money", GameController.player.money);
             PlayerPrefs.SetString("Name", GameController.player.name);
