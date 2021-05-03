@@ -769,7 +769,7 @@ namespace Pokemon
                 enemyHUD.SetStatus(enemyUnit.pokemon);
                 playerHUD.SetStatus(playerUnit.pokemon);
                 SetUpButtons();
-                Debug.Log(playerUnit.pokemon.current_exp);
+                //Debug.Log(playerUnit.pokemon.current_exp);
             }
         }
 
