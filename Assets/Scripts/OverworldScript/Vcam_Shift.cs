@@ -4,17 +4,18 @@ namespace Pokemon
 {
     public class Vcam_Shift : MonoBehaviour
     {
-        GameObject startCam;
-        GameObject nextCam;
+        //GameObject startCam;
+        //GameObject nextCam;
         public string startString;
         public string endString;
         public string newLocation;
-        [SerializeField] GameObject originCam;
+        [SerializeField] GameObject startCam;
+        [SerializeField] GameObject nextCam;
 
         public void Start()
         {
-            startCam = GameObject.Find(startString);
-            nextCam = GameObject.Find(endString);
+            //startCam = GameObject.Find(startString);
+            //nextCam = GameObject.Find(endString);
         }
 
         public void OnTriggerEnter2D(Collider2D other)
