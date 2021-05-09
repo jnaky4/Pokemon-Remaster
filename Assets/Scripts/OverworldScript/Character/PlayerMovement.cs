@@ -89,7 +89,7 @@ namespace Pokemon
                     //new code
                     character.Animator.IsMoving = false;
 
-                    Dictionary<string, Route> route1_dic = Route.get_route(location);
+                    Dictionary<string, Route> route1_dic = Route.get_route(GameController.location);
                     string terrain = "Grass";
                     //list of spcific completed badges
 
