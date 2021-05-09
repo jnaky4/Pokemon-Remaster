@@ -16,6 +16,7 @@ namespace Pokemon
             {
                 playerStorage.initialValue = playerPosition;
                 GameController.location = location;
+                GameController.music = location;
                 SceneManager.LoadScene(sceneToLoad);
             }
         }
