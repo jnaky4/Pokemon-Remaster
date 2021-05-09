@@ -17,7 +17,7 @@ namespace Pokemon
         public static bool inCombat = false;
 
         //public GameObject player;
-        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() {/* {"Ground",1 } */};
+        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() {{"Ground",1 } };
 
         public static string location = "Pallet Town";
         public static string scene = "Pallet Town";
