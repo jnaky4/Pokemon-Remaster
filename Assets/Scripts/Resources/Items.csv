@@ -1,0 +1,12 @@
+﻿Name,Status,Health,Price,Description
+Potion,null,20,300,Restores 20 HP
+Super Potion,null,50,700,Restores 50 HP
+Antidote,Poison,0,100,Cures Poison
+Paralyze Heal,Paralyze,0,200,Cures Paralysis
+Awakening,Sleep,0,200,Cures Sleep
+Burn Heal,Burn,0,250,Cures Burn
+Poke Ball,null,0,200,Used to catch Pokemon
+Great Ball,null,0,600,Used to catch Pokemon
+Ultra Ball,null,0,1200,Used to catch Pokemon
+Master Ball,null,0,10000,Used to catch Pokemon
+Repel,null,0,350,Prevents Random Attacks
