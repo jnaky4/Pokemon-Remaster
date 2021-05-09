@@ -10,6 +10,17 @@ namespace Pokemon
         public VectorValue playerPosition;
         public GameObject pauseMenuUI;
         public Text progress;
+        public GameObject progressBadges;
+        public GameObject otherProgress;
+        public Image pokedexImage;
+        public Image brock;
+        public Image misty;
+        public Image surge;
+        public Image erika;
+        public Image koga;
+        public Image sabrina;
+        public Image blane;
+        public Image gio;
 
         private void Start()
         {
@@ -36,6 +47,8 @@ namespace Pokemon
         public void Resume()
         {
             pauseMenuUI.SetActive(false);
+            progressBadges.SetActive(false);
+            otherProgress.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
         }
@@ -45,6 +58,53 @@ namespace Pokemon
             pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
+            SetImages();
+        }
+
+        void SetImages()
+        {
+            pokedexImage.sprite = Resources.Load<Sprite>("Images/Menu Icons/Pokemon/" + GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name);
+            if (GameController.badges_completed.ContainsKey("Rock"))
+            {
+                brock.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Boulder Complete");
+            }
+            if (GameController.badges_completed.ContainsKey("Water"))
+            {
+                misty.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Cascade Complete");
+            }
+            if (GameController.badges_completed.ContainsKey("Electric"))
+            {
+                surge.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Thunder Complete");
+            }
+            if (GameController.badges_completed.ContainsKey("Grass"))
+            {
+                erika.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Rainbow Complete");
+            }
+            if (GameController.badges_completed.ContainsKey("Poison"))
+            {
+                koga.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Marsh Complete");
+            }
+            if (GameController.badges_completed.ContainsKey("Psychic"))
+            {
+                sabrina.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Soul Complete");
+            }
+            if (GameController.badges_completed.ContainsKey("Fire"))
+            {
+                blane.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Volcano Complete");
+            }
+            if (GameController.badges_completed.ContainsKey("Ground"))
+            {
+                gio.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Earth Complete");
+            }
+
+
+        }
+
+        public void ProgressMenu()
+        {
+            progressBadges.SetActive(true);
+            otherProgress.SetActive(true);
+            pauseMenuUI.SetActive(false);
         }
 
         public void Save()
