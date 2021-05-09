@@ -36,12 +36,14 @@ namespace Pokemon
             GameController.player.displayUltraBalls = true;
             GameController.player.displayMasterBalls = true;
 
-            
+
 
             GameController.player.money = 3000;
             GameController.player.name = "Purple";
             GameController.location = "Pallet Town";
             GameController.scene = "Pallet Town";
+
+
 
             playerPosition.initialValue.x = 3.5f;
             playerPosition.initialValue.y = 2.8f;
@@ -55,7 +57,7 @@ namespace Pokemon
             GameController.playerPokemon[2] = new Pokemon(60, 19, "Water Gun", "Bubble", "Splash", "Crabhammer", 7900);
             GameController.playerPokemon[3] = new Pokemon(69, 17, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 5500);
             GameController.playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");*/
-            
+
 
             SceneManager.LoadSceneAsync(GameController.scene);
         }
