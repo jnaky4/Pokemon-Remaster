@@ -10,6 +10,9 @@ namespace Pokemon
         public VectorValue playerPosition;
         public GameObject pauseMenuUI;
         public Text progress;
+        public GameObject progressBadges;
+        public GameObject otherProgress;
+        public Image pokedexImage;
 
         private void Start()
         {
@@ -29,6 +32,7 @@ namespace Pokemon
                 else
                 {
                     Pause();
+                    pokedexImage.sprite = Resources.Load<Sprite>("Images/Menu Icons/Pokemon/" + GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name);
                 }
             }
         }
@@ -36,6 +40,8 @@ namespace Pokemon
         public void Resume()
         {
             pauseMenuUI.SetActive(false);
+            progressBadges.SetActive(false);
+            otherProgress.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
         }
@@ -45,6 +51,13 @@ namespace Pokemon
             pauseMenuUI.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
+        }
+
+        public void ProgressMenu()
+        {
+            progressBadges.SetActive(true);
+            otherProgress.SetActive(true);
+            pauseMenuUI.SetActive(false);
         }
 
         public void Save()
