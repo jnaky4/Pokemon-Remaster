@@ -1,18 +1,23 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneTransition : MonoBehaviour
+namespace Pokemon
 {
-    public string sceneToLoad;
-    public Vector2 playerPosition;
-    public VectorValue playerStorage;
-
-    public void OnTriggerEnter2D(Collider2D other)
+    public class SceneTransition : MonoBehaviour
     {
-        if (other.CompareTag("Player") && !other.isTrigger)
+        public string sceneToLoad;
+        public Vector2 playerPosition;
+        public VectorValue playerStorage;
+        public string location;
+
+        public void OnTriggerEnter2D(Collider2D other)
         {
-            playerStorage.initialValue = playerPosition;
-            SceneManager.LoadScene(sceneToLoad);
+            if (other.CompareTag("Player") && !other.isTrigger)
+            {
+                playerStorage.initialValue = playerPosition;
+                GameController.location = location;
+                SceneManager.LoadScene(sceneToLoad);
+            }
         }
     }
 }

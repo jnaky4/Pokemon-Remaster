@@ -1824,6 +1824,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4954978704781150901, guid: 522a0f793a7d548d5bf1607a453804ab,
         type: 3}
+      propertyPath: location
+      value: Pallet Town
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954978704781150901, guid: 522a0f793a7d548d5bf1607a453804ab,
+        type: 3}
       propertyPath: playerStorage
       value: 
       objectReference: {fileID: 11400000, guid: 74664f11c5b064f85be2716b35a57b5d,
