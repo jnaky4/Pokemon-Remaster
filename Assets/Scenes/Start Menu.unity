@@ -744,8 +744,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 912797812}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 513, y: 1.9274, z: 0}
-  m_LocalScale: {x: 86.191864, y: 89.06118, z: 1}
+  m_LocalPosition: {x: 612.03296, y: 190.77258, z: 0}
+  m_LocalScale: {x: 90.0624, y: 66.72271, z: 1}
   m_Children:
   - {fileID: 1775156446}
   - {fileID: 1577037208}
@@ -1057,8 +1057,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -590.7415, y: 0}
-  m_SizeDelta: {x: -1181.4927, y: 0}
+  m_AnchoredPosition: {x: -584, y: 0}
+  m_SizeDelta: {x: -1470.5, y: -136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466483747
 MonoBehaviour:
@@ -1229,10 +1229,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -1249,7 +1249,7 @@ Canvas:
   m_GameObject: {fileID: 1517021554}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1257,7 +1257,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1795,7 +1795,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 77dbb42e517dc4b20a3c70a572b367b3, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7bc1180995610764fb44a001379ab19f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
