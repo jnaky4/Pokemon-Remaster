@@ -6,6 +6,8 @@ Route 1,17,Pidgeotto,0.1,-5,-2,25,Ground,2,Grass
 Route 1,18,Pidgeot ,0.1,-2,0,50,Ground,3,Grass
 Route 1,19,Rattata,0.3,-8,-5,19,any,10,Grass
 Route 1,20,Raticate,0.1,-5,-1,50,none,2,Grass
+Route 1,23,Ekans,0.2,-8,-5,21,any,10,Grass
+Route 1 ,24,Arbok,0.1,-5,-2,50,none,2,Grass
 Route 2,16,Pidgey,0.4,-8,-5,18,any,10,Grass
 Route 2,17,Pidgeotto,0.1,-5,-2,25,Ground,2,Grass
 Route 2,18,Pidgeot ,0.1,-2,0,50,Ground,3,Grass
@@ -16,8 +18,6 @@ Route 2,33,Nidorino,0.2,-8,-5,30,none,2,Grass
 Route 2,34,Nidoking,0.1,-2,0,50,none,3,Grass
 Route 2,21,Spearow,0.3,-8,-5,19,any,10,Grass
 Route 2,22,Fearow,0.1,-5,-2,50,Ground,10,Grass
-Route 1,23,Ekans,0.2,-8,-5,21,any,10,Grass
-Route 1 ,24,Arbok,0.1,-5,-2,50,none,2,Grass
 Route 22,19,Rattata,0.4,-7,0,19,any,10,Grass
 Route 22,20,Raticate,0.1,-5,-1,50,none,2,Grass
 Route 22,21,Spearow,0.3,-8,-5,19,any,10,Grass
