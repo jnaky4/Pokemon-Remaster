@@ -20,7 +20,7 @@ namespace Pokemon
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("Activate cam shift");
+            //Debug.Log("Activate cam shift");
             if (other.CompareTag("Player") && !other.isTrigger)
             {
                 nextCam.SetActive(true);

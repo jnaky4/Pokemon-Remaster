@@ -410,7 +410,7 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
             if (GameController.isCatchable) GameController.catchRate = enemyUnit.pokemon.pokedex_entry.catch_rate;
-            Debug.Log("Catch rate: " + GameController.catchRate.ToString());
+            //Debug.Log("Catch rate: " + GameController.catchRate.ToString());
             PlayerTurn();
         }
 
@@ -1097,7 +1097,7 @@ namespace Pokemon
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
                     string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
-                    Debug.Log(test);
+                    //Debug.Log(test);
                     exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
 
                     yield return new WaitForSeconds(2);

@@ -22,7 +22,7 @@ public class TrainerController : MonoBehaviour
     {
         if (isBeaten == false)
         {
-            Debug.Log("Starting Trainer Battle");
+            //Debug.Log("Starting Trainer Battle");
             exclamation.SetActive(true);
             yield return new WaitForSeconds(0.5f);
             exclamation.SetActive(false);
@@ -38,7 +38,7 @@ public class TrainerController : MonoBehaviour
 
             yield return StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
              {
-                 Debug.Log("Battle Time");
+                 //Debug.Log("Battle Time");
                  startCombat();
              }));
         }
@@ -51,7 +51,7 @@ public class TrainerController : MonoBehaviour
         {
             handleGary();
         }
-        Debug.Log(trainerName);
+        //Debug.Log(trainerName);
         Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(GameController.location);
         GameController.endText = route_trainers[trainerName].exit_dialogue;
         GameController.winMoney = route_trainers[trainerName].money_mult * (GameController.level_cap / 10);
@@ -88,7 +88,7 @@ public class TrainerController : MonoBehaviour
             GameController.opponentName = route_trainers[trainerName].name;
         }
 
-        Debug.Log("You are challenged by " + GameController.opponentName);
+        //Debug.Log("You are challenged by " + GameController.opponentName);
         GameController.triggerCombat = true;
 
         //fix this later this is a dirty fix
@@ -119,9 +119,10 @@ public class TrainerController : MonoBehaviour
     }
 
     public void reward()
-    {
-        if (name == "Brock")
+    {   
+        if (name == "Brock" && !GameController.badges_completed.ContainsKey("Rock"))
         {
+            Debug.Log("Level Cap Raised");
             GameController.badges_completed.Add("Rock", 1);
         }
     }
