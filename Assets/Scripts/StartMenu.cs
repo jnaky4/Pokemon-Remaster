@@ -55,10 +55,10 @@ namespace Pokemon
             string move1 = "Tackle", move2 = "Growl";
 
             GameController.playerPokemon[0] = new Pokemon(dex, level, move1, move2);
-/*            GameController.playerPokemon[1] = new Pokemon(25, 20, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+            GameController.playerPokemon[1] = new Pokemon(25, 20, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
             GameController.playerPokemon[2] = new Pokemon(60, 19, "Water Gun", "Bubble", "Splash", "Crabhammer", 7900);
             GameController.playerPokemon[3] = new Pokemon(69, 17, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 5500);
-            GameController.playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");*/
+            GameController.playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");
 
 
             SceneManager.LoadSceneAsync(GameController.scene);
