@@ -2800,10 +2800,11 @@ namespace Pokemon
                 else
                 {
                     dialogueText.text = poke.name + " learned " + poke.learned_move.name + "!";
-                    yield return new WaitForSeconds(2);
                     if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 3) poke.currentMoves[3] = poke.learned_move;
                     else if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 2) poke.currentMoves[2] = poke.learned_move;
                     else poke.currentMoves[1] = poke.learned_move;
+                    playerHUD.SetMoves(playerUnit);
+                    yield return new WaitForSeconds(2);
                 }
                 mainUI.SetActive(true);
             }
