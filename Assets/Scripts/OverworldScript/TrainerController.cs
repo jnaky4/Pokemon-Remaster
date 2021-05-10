@@ -10,6 +10,7 @@ public class TrainerController : MonoBehaviour
     [SerializeField] private string trainerName;
 
     private Character character;
+    private Dictionary<string, Trainer> route_trainers;
 
     public bool isBeaten = false;
 
@@ -19,9 +20,11 @@ public class TrainerController : MonoBehaviour
     }
 
     public IEnumerator TriggerTrainerBattle(/*PlayerMovement player*/ Vector3 playerPos)
-    {
+    { 
         if (isBeaten == false)
         {
+            route_trainers = Trainer.get_route_trainers(GameController.location);
+            dialog.Lines[0] = route_trainers[trainerName].intro_dialogue;
             //Debug.Log("Starting Trainer Battle");
             exclamation.SetActive(true);
             yield return new WaitForSeconds(0.5f);
@@ -52,9 +55,10 @@ public class TrainerController : MonoBehaviour
             handleGary();
         }
         //Debug.Log(trainerName);
-        Dictionary<string, Trainer> route_trainers = Trainer.get_route_trainers(GameController.location);
+        route_trainers = Trainer.get_route_trainers(GameController.location);
         GameController.endText = route_trainers[trainerName].exit_dialogue;
         GameController.winMoney = route_trainers[trainerName].money_mult * (GameController.level_cap / 10);
+ 
         for (int i = 0; i < 6; i++)
         {
             if (route_trainers[trainerName].trainer_team[i] != null)
