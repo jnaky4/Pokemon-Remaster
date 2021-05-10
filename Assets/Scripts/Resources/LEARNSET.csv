@@ -31,7 +31,7 @@ dexnum,lvl,move,type
 3,65,Solar Beam,Grass
 4,1,Growl,Normal
 4,1,Scratch,Normal
-4,9,Ember,Fire
+4,6,Ember,Fire
 4,15,Leer,Normal
 4,22,Rage,Normal
 4,30,Slash,Normal
@@ -1030,7 +1030,9 @@ dexnum,lvl,move,type
 141,53,Hydro Pump,Water
 142,1,Wing Attack,Flying
 142,1,Agility,Psychic
+142,15,Rock Throw,Rock
 142,33,Supersonic,Normal
+142,36,Rock Slide,Rock
 142,38,Bite,Normal
 142,45,Take Down,Normal
 142,54,Hyper Beam,Normal

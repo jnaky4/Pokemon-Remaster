@@ -78,7 +78,7 @@ namespace Pokemon
                 //if there are less available moves than 4 slots, stop getting new moves
                 if (i >= num_available_moves)
                 {
-                    foreach (Moves current_move in temp_pokemon.currentMoves) Debug.Log("List of Moves 80: " + current_move.name);
+                    //foreach (Moves current_move in temp_pokemon.currentMoves) Debug.Log("List of Moves 80: " + current_move.name);
                     return temp_pokemon;
                 }
                 else
@@ -132,7 +132,7 @@ namespace Pokemon
                     }
                 }
             }
-            foreach (Moves current_move in temp_pokemon.currentMoves) Debug.Log("List of Moves 131: " + current_move.name);
+            //foreach (Moves current_move in temp_pokemon.currentMoves) Debug.Log("List of Moves 131: " + current_move.name);
             return temp_pokemon;
 
 
