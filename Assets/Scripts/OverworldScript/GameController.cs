@@ -150,12 +150,14 @@ namespace Pokemon
                 eventSystem.SetActive(true);
                 overworldCam.SetActive(true);
 
-                var Trainer = GameObject.Find(opponentName).GetComponent<TrainerController>();
-                Trainer.isBeaten = true;
-                Trainer.reward();
+                if (!isCatchable)
+                {
+                    var Trainer = GameObject.Find(opponentName).GetComponent<TrainerController>();
+                    Trainer.isBeaten = true;
+                    Trainer.reward();
+                }
                 music = location;
                 endCombat = false;
-                Debug.Log("Opponent name: " + opponentName);
             }
         }
 
