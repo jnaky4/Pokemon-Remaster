@@ -378,6 +378,7 @@ namespace Pokemon
             playerHUD.SetHUD(playerUnit, true, player, GameController.playerPokemon);
             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
             enemyHUD.SetUpEnemy();
+            playerHUD.SetUpPlayer();
 
             SetPlayerTrainerSprite(playerSprite);
             SetBackground();
@@ -1700,8 +1701,14 @@ namespace Pokemon
             if (isDead) //If your Pokemon died.
             {
                 breakOutOfDecision = true;
+                int x = 0;
                 for (int j = 0; j < GameController.playerPokemon.Count(s => s != null); j++) //See if you have any other usable Pokemon.
                 {
+                    x = j;
+                    if (GameController.playerPokemon[j].current_hp == 0)
+                    {
+                        playerHUD.CrossOutPlayerBall(j + 1);
+                    }
                     if (GameController.playerPokemon[j].current_hp > 0)
                     {
                         breakOutOfDecision = false;
@@ -1711,6 +1718,7 @@ namespace Pokemon
                 if (breakOutOfDecision) //If you lost the battle.
                 {
                     state = BattleState.LOST;
+                    playerHUD.CrossOutPlayerBall(x + 2);
                     yield break;
                 }
                 else //If you have other Pokemon.
