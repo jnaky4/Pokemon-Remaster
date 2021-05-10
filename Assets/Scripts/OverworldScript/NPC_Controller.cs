@@ -9,7 +9,7 @@ namespace Pokemon
         [SerializeField] List<Vector2> movementPattern;
         [SerializeField] float timeBetweenPattern;
         [SerializeField] Dialog dialog;
-        [SerializeField] new string name;
+        //private string Name;
         //[SerializeField] string type;
 
         Character character;
@@ -22,6 +22,7 @@ namespace Pokemon
         NPCState state;
         float idleTimer = 0f;
         int currentPattern = 0;
+        private Dictionary<string, Trainer> route_trainers;
 
         private void Awake()
         {
@@ -45,6 +46,11 @@ namespace Pokemon
 
                 if (isTrainer != null)
                 {
+                    if (!isTrainer.isBeaten)
+                    {
+                        route_trainers = Trainer.get_route_trainers(GameController.location);
+                        dialog.Lines[0] = route_trainers[name].intro_dialogue;
+                    }
                     if (isTrainer.name == "Gary")
                     {
                         if (isTrainer.isBeaten == false)

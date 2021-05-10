@@ -146,6 +146,8 @@ namespace Pokemon
             if (endCombat == true)
             {
                 SceneManager.UnloadSceneAsync("BattleScene");
+                Debug.Log("Level Cap: " + level_cap);
+                Debug.Log("Badge Count: " + badges_completed.Count);
                 inCombat = false;
                 eventSystem.SetActive(true);
                 overworldCam.SetActive(true);
