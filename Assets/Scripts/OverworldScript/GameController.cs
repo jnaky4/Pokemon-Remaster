@@ -103,7 +103,7 @@ namespace Pokemon
                 if (state == GameState.Roam)
                 {
                     state = GameState.Dialog;
-                    Debug.Log("Show Dialog");
+                    //Debug.Log("Show Dialog");
                 }
             };
 
@@ -111,7 +111,7 @@ namespace Pokemon
             {
                 if (state == GameState.Dialog)
                 {
-                    Debug.Log("Close Dialog");
+                    //Debug.Log("Close Dialog");
                     state = GameState.Roam;
                 }
             };
@@ -121,7 +121,7 @@ namespace Pokemon
         {
             if (state == GameState.Dialog)
             {
-                Debug.Log("In dialog");
+                //Debug.Log("In dialog");
                 DialogController.Instance.HandleUpdate();
             }
             /*if (state == GameState.Roam)

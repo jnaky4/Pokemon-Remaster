@@ -13,11 +13,11 @@ namespace Pokemon
 
         public void yes()
         {
-            Debug.Log(name + " has been chosen.");
+            //Debug.Log(name + " has been chosen.");
             Time.timeScale = 1f;
             if (pokemon != null)
             {
-                Debug.Log("Set pokemon");
+                //Debug.Log("Set pokemon");
                 GameController.playerPokemon[0] = pokemon;
                 GameController.player.starter = pokemon.dexnum;
             }

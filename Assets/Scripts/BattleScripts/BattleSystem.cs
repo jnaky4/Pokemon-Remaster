@@ -410,7 +410,7 @@ namespace Pokemon
             yield return new WaitForSeconds(2);
             state = BattleState.PLAYERTURN;
             if (GameController.isCatchable) GameController.catchRate = enemyUnit.pokemon.pokedex_entry.catch_rate;
-            Debug.Log("Catch rate: " + GameController.catchRate.ToString());
+            //Debug.Log("Catch rate: " + GameController.catchRate.ToString());
             PlayerTurn();
         }
 
@@ -1097,7 +1097,7 @@ namespace Pokemon
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
                     string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
-                    Debug.Log(test);
+                    //Debug.Log(test);
                     exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
 
                     yield return new WaitForSeconds(2);
@@ -2345,6 +2345,11 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
+            if (GameController.location == "Viridian Forest")
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
             //spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, Mathf.SmoothStep(255, 0, 2.0f));
         }
@@ -2367,6 +2372,12 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
+            if (GameController.location == "Viridian Forest")
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
+
 
             var s = Resources.Load<Sprite>("Images/PokemonImages/" + (playerUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + playerUnit.pokemon.name);
             sprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
@@ -2404,6 +2415,11 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
+            if (GameController.location == "Viridian Forest")
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
             //spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
 
             spriteRenderer.sprite = Sprite.Create(sprite.texture, new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(x, y));
@@ -2423,6 +2439,11 @@ namespace Pokemon
                 y = 0.35f;
             }
             if (GameController.opponentType == "Rival")
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
+            if (GameController.location == "Viridian Forest")
             {
                 x = 0.00f;
                 y = 0.35f;
@@ -2460,6 +2481,11 @@ namespace Pokemon
                 y = 0.40f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 0.00f;
+                y = 0.35f;
+            }
+            if (GameController.location.CompareTo("Viridian Forest") == 0)
             {
                 x = 0.00f;
                 y = 0.35f;
@@ -2502,6 +2528,16 @@ namespace Pokemon
                 y = 0.50f;
             }
             if (GameController.opponentType == "Rival" && !isPlayer)
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Viridian Forest" && isPlayer)
+            {
+                x = -0.25f;
+                y = 0.50f;
+            }
+            if (GameController.location == "Viridian Forest" && !isPlayer)
             {
                 x = 1.24f;
                 y = 1.175f;
@@ -2635,6 +2671,16 @@ namespace Pokemon
                 y = 1.175f;
             }
             if (GameController.opponentType == "Rival" && !isPlayer)
+            {
+                x = -0.25f;
+                y = 0.50f;
+            }
+            if (GameController.location == "Viridian Forest" && isPlayer)
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Viridian Forest" && !isPlayer)
             {
                 x = -0.25f;
                 y = 0.50f;
@@ -2842,20 +2888,20 @@ namespace Pokemon
                 {
                     yield return null;
                 }
-                poke = playerUnit.pokemon;
+                //poke = playerUnit.pokemon;
                 bool temp = poke.want_to_evolve;
                 Debug.Log(poke.want_to_evolve.ToString());
                 Pokemon p = poke.ask_to_evolve();
-                if (temp == true)
+                if (temp)
                 {
                     dialogueText.text = "Your Pokemon evolved into a " + p.name + "!!";
                     p.want_to_evolve = false;
+                    GameController.playerPokemon[i] = p;
                 }
                 else
                 {
                     dialogueText.text = "Your Pokemon will wait on evolving for now.";
                 }
-                GameController.playerPokemon[i] = p;
             }
         }
 
