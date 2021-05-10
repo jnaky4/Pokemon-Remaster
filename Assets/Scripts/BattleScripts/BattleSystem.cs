@@ -2800,17 +2800,22 @@ namespace Pokemon
                 else
                 {
                     dialogueText.text = poke.name + " learned " + poke.learned_move.name + "!";
+                    Debug.Log("Name of move: " + poke.learned_move.name);
                     if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 3) poke.currentMoves[3] = poke.learned_move;
                     else if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 2) poke.currentMoves[2] = poke.learned_move;
                     else poke.currentMoves[1] = poke.learned_move;
                     playerHUD.SetMoves(playerUnit);
+                    for (int i = 0; i < playerUnit.pokemon.currentMoves.Count(s => s != null); i++)
+                    {
+                        Debug.Log("Move " + i + ": " + playerUnit.pokemon.currentMoves[i].name);
+                    }
                     yield return new WaitForSeconds(2);
                 }
                 mainUI.SetActive(true);
             }
             levelUpText.text = "\n   " + playerUnit.pokemon.name + " Stats: \n";
             dialogueText.text = "";
-            levelUpText.text += "   HP:    +" + playerUnit.pokemon.change_hp + "\n";
+            levelUpText.text += "   HP:     +" + playerUnit.pokemon.change_hp + "\n";
             levelUpText.text += "   ATK:    +" + playerUnit.pokemon.change_attack + "\n";
             levelUpText.text += "   DFN:   +" + playerUnit.pokemon.change_defense + "\n";
             levelUpText.text += "   SPD:   +" + playerUnit.pokemon.change_speed + "\n";
