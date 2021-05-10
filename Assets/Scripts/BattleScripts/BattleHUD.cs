@@ -603,7 +603,7 @@ namespace Pokemon
                     break;
 
                 default:
-                    color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);
+                    color = new Color(0f / 255f, 0f / 255f, 0f / 255f, 1);
                     break;
             }
             return color;

@@ -2776,6 +2776,7 @@ namespace Pokemon
                     yield return new WaitForSeconds(2);
                     dialogueText.text = "But they can only learn four moves. Forget which move?";
                     forgetMenuUI.SetActive(true);
+                    mainUI.SetActive(false);
                     forgetMenuOpen = true;
                     playerHUD.SetForgetMoves(playerUnit);
                     while (forgetMenuOpen)
@@ -2791,6 +2792,7 @@ namespace Pokemon
                     else if (playerUnit.pokemon.currentMoves.Count(s => s != null) == 2) poke.currentMoves[2] = poke.learned_move;
                     else poke.currentMoves[1] = poke.learned_move;
                 }
+                mainUI.SetActive(true);
             }
             levelUpText.text = "\n   " + playerUnit.pokemon.name + " Stats: \n";
             dialogueText.text = "";
