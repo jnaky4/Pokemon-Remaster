@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 //using Microsoft.VisualBasic.FileIO;
 
 namespace Pokemon
@@ -61,16 +65,20 @@ namespace Pokemon
                 {
 
                     learnable_moves.Add(learnable_move);
+                    Debug.Log("Initally: " + learnable_move);
                 }
             }
+            
 
             int num_available_moves = learnable_moves.Count;
             int num_available_moves_left = num_available_moves;
+            Debug.Log("Start Count: " + num_available_moves);
             for (int i = 0; i < 4; i++)
             {
                 //if there are less available moves than 4 slots, stop getting new moves
-                if (i >= learnable_moves.Count)
+                if (i >= num_available_moves)
                 {
+                    foreach (Moves current_move in temp_pokemon.currentMoves) Debug.Log("List of Moves 80: " + current_move.name);
                     return temp_pokemon;
                 }
                 else
@@ -80,18 +88,28 @@ namespace Pokemon
                     while (learnable_moves.Count != 0 && !move_added) { 
                         
                         //Debug.Log("Size of Learnable Moves: " + learnable_moves.Count);
+
+                        //max is inclusive, get a random value to pick move
                         int random = UnityEngine.Random.Range(0, learnable_moves.Count);
 
                         //Debug.Log("Random Pick Index: " + random);
                     
                         bool has_move = false;
+                        
+                        //create move object from move
                         Moves move = Moves.get_move(learnable_moves[random].move.name);
+                        Debug.Log("Grabbed " + move.name);
+                        //iterate through current moves
                         foreach (Moves current_move in temp_pokemon.currentMoves)
                         {
+                            //slot can be null
                             if(current_move != null)
                             {
+                                //if pokemon alredy has the move
                                 if (move.name == current_move.name)
                                 {
+
+                                    //has move is true, remove from potential learnable moves
                                     has_move = true;
                                     learnable_moves.RemoveAt(random);
                                 }
@@ -100,10 +118,12 @@ namespace Pokemon
                         }
                         if (!has_move)
                         {
+                            Debug.Log("No Dupe, Adding Move: " + move.name);
                             temp_pokemon.currentMoves[i] = move;
                             move_added = true;
                             //make sure not to add duplicates
                             learnable_moves.Remove(learnable_moves[random]);
+                            Debug.Log("Learnable Moves Left: " + learnable_moves.Count);
                         }
                         //Debug.Log("Move Learned: " + move.move);
 
@@ -112,6 +132,7 @@ namespace Pokemon
                     }
                 }
             }
+            foreach (Moves current_move in temp_pokemon.currentMoves) Debug.Log("List of Moves 131: " + current_move.name);
             return temp_pokemon;
 
 

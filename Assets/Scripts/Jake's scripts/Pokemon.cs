@@ -557,13 +557,13 @@ namespace Pokemon
             this.change_sp_attack = evolved_pokemon.max_sp_attack - change_sp_attack;
             this.change_sp_defense = evolved_pokemon.max_sp_defense - change_sp_defense;
 
-            Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
+/*            Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
             Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
             Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
             Debug.Log("Your Pokemon Gained " + change_defense + " DFN!");
             Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
             Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
-            Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");
+            Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*/
             return evolved_pokemon;
 
         }
