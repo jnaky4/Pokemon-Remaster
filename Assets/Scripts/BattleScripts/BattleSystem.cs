@@ -145,6 +145,7 @@ namespace Pokemon
         private int phasePlayerSprite = 0; //0 means no phasing, 1 means phase out, 2 means phase in
         private int phaseOpponentSprite = 0;
 
+        private bool wantsToEvolve;
         #endregion Declaration of variables
 
         /**********************************************************************************************************************************************
@@ -2303,13 +2304,13 @@ namespace Pokemon
 
         public void Yes()
         {
-            playerUnit.pokemon.want_to_evolve = true;
+            wantsToEvolve = true;
             yesno.SetActive(false);
         }
 
         public void No()
         {
-            playerUnit.pokemon.want_to_evolve = false;
+            wantsToEvolve = false;
             yesno.SetActive(false);
         }
 
@@ -2889,7 +2890,7 @@ namespace Pokemon
                     yield return null;
                 }
                 //poke = playerUnit.pokemon;
-                bool temp = poke.want_to_evolve;
+                bool temp = wantsToEvolve;
                 Debug.Log(poke.want_to_evolve.ToString());
                 Pokemon p = poke.ask_to_evolve();
                 if (temp)
@@ -2902,6 +2903,7 @@ namespace Pokemon
                 {
                     dialogueText.text = "Your Pokemon will wait on evolving for now.";
                 }
+                wantsToEvolve = false;
             }
         }
 
