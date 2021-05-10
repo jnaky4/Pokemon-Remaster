@@ -1793,7 +1793,7 @@ namespace Pokemon
             {
                 for (int i = 0; i < GameController.playerPokemon.Count(s => s != null); i++)
                 {
-                    yield return StartCoroutine(Evolve(GameController.playerPokemon[i]));
+                    yield return StartCoroutine(Evolve(GameController.playerPokemon[i], i));
                 }
                 if (GameController.isCatchable)
                 {
@@ -2830,7 +2830,7 @@ namespace Pokemon
             SwitchPokemon(activePokemon);
         }
 
-        public IEnumerator Evolve(Pokemon poke)
+        public IEnumerator Evolve(Pokemon poke, int i)
         {
             if (poke.time_to_evolve && poke.current_hp > 0)
             {
@@ -2855,7 +2855,7 @@ namespace Pokemon
                 {
                     dialogueText.text = "Your Pokemon will wait on evolving for now.";
                 }
-                playerUnit.pokemon = p;
+                GameController.playerPokemon[i] = p;
             }
         }
 
