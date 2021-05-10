@@ -2818,6 +2818,7 @@ namespace Pokemon
             levelUpUI.SetActive(true);
             yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
             levelUpUI.SetActive(false);
+            playerUnit.pokemon = poke;
             playerHUD.SetMoves(playerUnit);
         }
 
@@ -2884,6 +2885,7 @@ namespace Pokemon
             }
             forgetMenuOpen = false;
             poke.learned_new_move = false;
+            playerUnit.pokemon = poke;
             playerHUD.SetMoves(playerUnit);
         }
 
