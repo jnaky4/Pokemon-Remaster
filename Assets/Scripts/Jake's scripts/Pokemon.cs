@@ -548,7 +548,12 @@ namespace Pokemon
             this.change_sp_attack = max_sp_attack;
             this.change_sp_defense = max_sp_defense;
 
-            Pokemon evolved_pokemon = new Pokemon(this.dexnum + 1, this.level, this.currentMoves[0].name, this.currentMoves[1].name, this.currentMoves[2].name, this.currentMoves[3].name, this.current_exp,
+            string temp_move1_name = this.currentMoves[0] != null ? this.currentMoves[0].name : null;
+            string temp_move2_name = this.currentMoves[1] != null ? this.currentMoves[1].name : null;
+            string temp_move3_name = this.currentMoves[2] != null ? this.currentMoves[2].name : null;
+            string temp_move4_name = this.currentMoves[3] != null ? this.currentMoves[3].name : null;
+
+            Pokemon evolved_pokemon = new Pokemon(this.dexnum + 1, this.level, temp_move1_name, temp_move2_name, temp_move3_name, temp_move4_name, this.current_exp,
             this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed, this.statuses);
             this.change_hp = evolved_pokemon.max_hp - change_hp;
             this.change_attack = evolved_pokemon.max_attack - change_attack;
@@ -564,7 +569,9 @@ namespace Pokemon
             Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
             Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
             Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*/
+
             return evolved_pokemon;
+
 
         }
 
