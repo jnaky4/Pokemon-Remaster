@@ -149,10 +149,13 @@ namespace Pokemon
                 inCombat = false;
                 eventSystem.SetActive(true);
                 overworldCam.SetActive(true);
-                //player.SetActive(true);
-                //endCombatMusic = true;
+
+                var Trainer = GameObject.Find(opponentName).GetComponent<TrainerController>();
+                Trainer.isBeaten = true;
+                Trainer.reward();
                 music = location;
                 endCombat = false;
+                Debug.Log("Opponent name: " + opponentName);
             }
         }
 

@@ -92,8 +92,8 @@ public class TrainerController : MonoBehaviour
         GameController.triggerCombat = true;
 
         //fix this later this is a dirty fix
-        isBeaten = true;
-        reward();
+        /*isBeaten = true;
+        reward();*/
     }
 
     //badges
