@@ -7,7 +7,7 @@ public class TrainerController : MonoBehaviour
 {
     [SerializeField] private Dialog dialog;
     [SerializeField] private GameObject exclamation;
-    [SerializeField] private string trainerName;
+    private string trainerName;
 
     private Character character;
     private Dictionary<string, Trainer> route_trainers;
@@ -16,6 +16,7 @@ public class TrainerController : MonoBehaviour
 
     private void Awake()
     {
+        trainerName = this.name;
         character = GetComponent<Character>();
     }
 

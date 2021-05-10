@@ -9,7 +9,7 @@ namespace Pokemon
         [SerializeField] List<Vector2> movementPattern;
         [SerializeField] float timeBetweenPattern;
         [SerializeField] Dialog dialog;
-        [SerializeField] new string name;
+        //private string Name;
         //[SerializeField] string type;
 
         Character character;
