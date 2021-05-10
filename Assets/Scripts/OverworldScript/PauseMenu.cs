@@ -103,7 +103,7 @@ namespace Pokemon
 
             money.text = "Money: " + "¥" + GameController.player.money;
             playerName.text = "Trainer Name: " + GameController.player.name;
-            time.text = "Total play time: " + ((int) UnityEngine.Time.realtimeSinceStartup / 60 / 60) + " Hours, " + ((int)UnityEngine.Time.realtimeSinceStartup / 60) + " Minutes";
+            time.text = "Total play time: " + ((int) (UnityEngine.Time.realtimeSinceStartup + GameController.player.time) / 60 / 60) + " Hours, " + ((int)(UnityEngine.Time.realtimeSinceStartup + GameController.player.time) / 60) + " Minutes";
         }
 
         public void ProgressMenu()
@@ -123,6 +123,9 @@ namespace Pokemon
             PlayerPrefs.SetString("DisplayGreat", GameController.player.displayGreatBalls.ToString());
             PlayerPrefs.SetString("DisplayUltra", GameController.player.displayUltraBalls.ToString());
             PlayerPrefs.SetString("DisplayMaster", GameController.player.displayMasterBalls.ToString());
+
+            GameController.player.time += UnityEngine.Time.realtimeSinceStartup;
+            PlayerPrefs.SetFloat("Time", (float)GameController.player.time);
 
             //PlayerPrefs.SetString("")
 
@@ -168,6 +171,8 @@ namespace Pokemon
             GameController.player.displayGreatBalls = PlayerPrefs.GetString("DisplayGreat").Equals("True");
             GameController.player.displayUltraBalls = PlayerPrefs.GetString("DisplayUltra").Equals("True");
             GameController.player.displayMasterBalls = PlayerPrefs.GetString("DisplayMaster").Equals("True");
+
+            GameController.player.time = PlayerPrefs.GetFloat("Time");
 
             GameController.player.money = PlayerPrefs.GetInt("Money");
             GameController.player.name = PlayerPrefs.GetString("Name");

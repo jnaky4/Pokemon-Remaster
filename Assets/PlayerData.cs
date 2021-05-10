@@ -21,5 +21,6 @@ namespace Pokemon
         public bool displayMasterBalls = true;
 
         public int money = 0;
+        public float time = 0;
     }
 }
