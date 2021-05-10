@@ -265,6 +265,8 @@ namespace Pokemon
             if (PlayerPrefs.GetInt("BadgeFire") == 1) GameController.badges_completed.Add("Fire", 1);
             if (PlayerPrefs.GetInt("BadgeGround") == 1) GameController.badges_completed.Add("Ground", 1);
 
+            GameController.update_level_cap();
+
             SceneManager.LoadSceneAsync(GameController.scene);
             Resume();
             pauseMenuUI.SetActive(true);
