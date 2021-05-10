@@ -2846,16 +2846,16 @@ namespace Pokemon
                 bool temp = poke.want_to_evolve;
                 Debug.Log(poke.want_to_evolve.ToString());
                 Pokemon p = poke.ask_to_evolve();
-                if (temp == true)
+                if (temp)
                 {
                     dialogueText.text = "Your Pokemon evolved into a " + p.name + "!!";
                     p.want_to_evolve = false;
+                    GameController.playerPokemon[i] = p;
                 }
                 else
                 {
                     dialogueText.text = "Your Pokemon will wait on evolving for now.";
                 }
-                GameController.playerPokemon[i] = p;
             }
         }
 
