@@ -155,6 +155,48 @@ namespace Pokemon
                 }
                 else PlayerPrefs.SetInt("Pokemon" + i + "_level", 0);
             }
+
+            if (GameController.badges_completed.ContainsKey("Rock"))
+            {
+                PlayerPrefs.SetInt("BadgeRock", 1);
+            }
+            else PlayerPrefs.SetInt("BadgeRock", 0);
+            if (GameController.badges_completed.ContainsKey("Water"))
+            {
+                PlayerPrefs.SetInt("BadgeWater", 1);
+            }
+            else PlayerPrefs.SetInt("BadgeWater", 0);
+            if (GameController.badges_completed.ContainsKey("Electric"))
+            {
+                PlayerPrefs.SetInt("BadgeElectric", 1);
+            }
+            else PlayerPrefs.SetInt("BadgeElectric", 0);
+            if (GameController.badges_completed.ContainsKey("Grass"))
+            {
+                PlayerPrefs.SetInt("BadgeGrass", 1);
+            }
+            else PlayerPrefs.SetInt("BadgeGrass", 0);
+            if (GameController.badges_completed.ContainsKey("Poison"))
+            {
+                PlayerPrefs.SetInt("BadgePoison", 1);
+            }
+            else PlayerPrefs.SetInt("BadgePoison", 0);
+            if (GameController.badges_completed.ContainsKey("Psychic"))
+            {
+                PlayerPrefs.SetInt("BadgePsychic", 1);
+            }
+            else PlayerPrefs.SetInt("BadgePsychic", 0);
+            if (GameController.badges_completed.ContainsKey("Fire"))
+            {
+                PlayerPrefs.SetInt("BadgeFire", 1);
+            }
+            else PlayerPrefs.SetInt("BadgeFire", 0);
+            if (GameController.badges_completed.ContainsKey("Ground"))
+            {
+                PlayerPrefs.SetInt("BadgeGround", 1);
+            }
+            else PlayerPrefs.SetInt("BadgeGround", 0);
+
             PlayerPrefs.Save();
         }
 
@@ -210,6 +252,15 @@ namespace Pokemon
                     GameController.playerPokemon[i] = new Pokemon(dex, level, move1, move2, move3, move4, exp, hp);
                 }
             }
+
+            if (PlayerPrefs.GetInt("BadgeRock") == 1) GameController.badges_completed.Add("Rock", 1);
+            if (PlayerPrefs.GetInt("BadgeWater") == 1) GameController.badges_completed.Add("Water", 1);
+            if (PlayerPrefs.GetInt("BadgeElectric") == 1) GameController.badges_completed.Add("Electric", 1);
+            if (PlayerPrefs.GetInt("BadgeGrass") == 1) GameController.badges_completed.Add("Grass", 1);
+            if (PlayerPrefs.GetInt("BadgePoison") == 1) GameController.badges_completed.Add("Poison", 1);
+            if (PlayerPrefs.GetInt("BadgePsychic") == 1) GameController.badges_completed.Add("Psychic", 1);
+            if (PlayerPrefs.GetInt("BadgeFire") == 1) GameController.badges_completed.Add("Fire", 1);
+            if (PlayerPrefs.GetInt("BadgeGround") == 1) GameController.badges_completed.Add("Ground", 1);
 
             SceneManager.LoadSceneAsync(GameController.scene);
             Resume();
