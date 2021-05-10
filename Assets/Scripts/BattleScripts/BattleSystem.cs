@@ -2880,6 +2880,7 @@ namespace Pokemon
             }
             forgetMenuOpen = false;
             poke.learned_new_move = false;
+            playerHUD.SetMoves(playerUnit);
         }
 
         #endregion leveling up
