@@ -2818,6 +2818,7 @@ namespace Pokemon
             levelUpUI.SetActive(true);
             yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
             levelUpUI.SetActive(false);
+            playerHUD.SetMoves(playerUnit);
         }
 
         public IEnumerator Evolve(Pokemon poke)
