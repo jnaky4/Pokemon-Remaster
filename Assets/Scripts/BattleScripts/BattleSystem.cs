@@ -2034,6 +2034,7 @@ namespace Pokemon
             runAwayButton.interactable = true;
             pokemonButton.interactable = true;
             ballsButton.interactable = true;
+            mainUI.SetActive(true);
         }
 
         /// <summary>
@@ -2046,7 +2047,7 @@ namespace Pokemon
             pokemonButton.interactable = false;
             ballsButton.interactable = false;
             backUI.SetActive(false);
-            mainUI.SetActive(true);
+            mainUI.SetActive(false);
         }
 
         /// <summary>
