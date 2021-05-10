@@ -180,27 +180,30 @@ namespace Pokemon
         /// </summary>
         private void Update()
         {
-            if (phasePlayerSprite == 1)
+            if (GameController.inCombat)
             {
-                StartCoroutine(PhaseOut(playerSprite, 0.20));
-                //StartCoroutine(SlideInLeft(playerSprite));
-                phasePlayerSprite = 0;
-            }
+                if (phasePlayerSprite == 1)
+                {
+                    StartCoroutine(PhaseOut(playerSprite, 0.20));
+                    //StartCoroutine(SlideInLeft(playerSprite));
+                    phasePlayerSprite = 0;
+                }
 
-            if (phasePlayerSprite == 2)
-            {
-                StartCoroutine(PhaseIn(playerSprite, 0.20));
-                phasePlayerSprite = 0;
-            }
-            if (phaseOpponentSprite == 1)
-            {
-                StartCoroutine(PhaseOut(enemySprite, 0.20));
-                phaseOpponentSprite = 0;
-            }
-            if (phaseOpponentSprite == 2)
-            {
-                StartCoroutine(PhaseIn(enemySprite, 0.20));
-                phaseOpponentSprite = 0;
+                if (phasePlayerSprite == 2)
+                {
+                    StartCoroutine(PhaseIn(playerSprite, 0.20));
+                    phasePlayerSprite = 0;
+                }
+                if (phaseOpponentSprite == 1)
+                {
+                    StartCoroutine(PhaseOut(enemySprite, 0.20));
+                    phaseOpponentSprite = 0;
+                }
+                if (phaseOpponentSprite == 2)
+                {
+                    StartCoroutine(PhaseIn(enemySprite, 0.20));
+                    phaseOpponentSprite = 0;
+                }
             }
 
             if (beginCatch == true)
