@@ -10,6 +10,7 @@ public class TrainerController : MonoBehaviour
     private string trainerName;
 
     private Character character;
+    private CharacterAnimator animator;
     private Dictionary<string, Trainer> route_trainers;
 
     public bool isBeaten = false;
