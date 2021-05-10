@@ -1788,8 +1788,10 @@ namespace Pokemon
             GameController.update_level_cap();
             if (state == BattleState.WON) //If you won
             {
-                yield return StartCoroutine(Evolve(playerUnit.pokemon));
-
+                for (int i = 0; i < GameController.playerPokemon.Count(s => s != null); i++)
+                {
+                    yield return StartCoroutine(Evolve(GameController.playerPokemon[i]));
+                }
                 if (GameController.isCatchable)
                 {
                     GameController.music = "Battle Victory Wild";
