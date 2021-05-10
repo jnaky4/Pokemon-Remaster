@@ -363,7 +363,7 @@ namespace Pokemon
             if (!player.greatBalls) ball2.SetActive(false);
             if (!player.ultraBalls) ball3.SetActive(false);
             if (!player.masterBalls) ball4.SetActive(false);
-            if (String.Compare(playerUnit.pokemon.currentMoves[0].name, "default") == 0) move1.SetActive(false);
+            //if (String.Compare(playerUnit.pokemon.currentMoves[0].name, "default") == 0) move1.SetActive(false);
             if (playerUnit.pokemon.currentMoves[1] == null) move2.SetActive(false);
             if (playerUnit.pokemon.currentMoves[2] == null) move3.SetActive(false);
             if (playerUnit.pokemon.currentMoves[3] == null) move4.SetActive(false);
