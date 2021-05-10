@@ -2890,10 +2890,10 @@ namespace Pokemon
                     yield return null;
                 }
                 //poke = playerUnit.pokemon;
-                bool temp = wantsToEvolve;
                 Debug.Log(poke.want_to_evolve.ToString());
+                poke.want_to_evolve = wantsToEvolve;
                 Pokemon p = poke.ask_to_evolve();
-                if (temp)
+                if (wantsToEvolve)
                 {
                     dialogueText.text = "Your Pokemon evolved into a " + p.name + "!!";
                     p.want_to_evolve = false;
