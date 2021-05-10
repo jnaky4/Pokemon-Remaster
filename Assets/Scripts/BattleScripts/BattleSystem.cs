@@ -2826,6 +2826,7 @@ namespace Pokemon
             levelUpUI.SetActive(false);
             playerUnit.pokemon = poke;
             playerHUD.SetMoves(playerUnit);
+            SwitchPokemon(activePokemon);
         }
 
         public IEnumerator Evolve(Pokemon poke)
