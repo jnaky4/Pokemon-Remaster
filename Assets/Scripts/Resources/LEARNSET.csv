@@ -58,7 +58,7 @@ dexnum,lvl,move,type
 6,55,Fire Spin,Fire
 7,1,Tackle,Normal
 7,1,Tail Whip,Normal
-7,8,Bubble,Water
+7,6,Bubble,Water
 7,15,Water Gun,Water
 7,22,Bite,Normal
 7,28,Withdraw,Water
@@ -892,8 +892,8 @@ dexnum,lvl,move,type
 122,39,Meditate,Psychic
 122,47,Substitute,Normal
 123,1,Quick Attack,Normal
-123,17,Leer,Normal
-123,20,Focus Energy,Normal
+123,1,Leer,Normal
+123,21,Focus Energy,Normal
 123,24,Double Team,Normal
 123,29,Slash,Normal
 123,35,Swords Dance,Normal
