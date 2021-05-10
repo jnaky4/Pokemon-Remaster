@@ -92,6 +92,13 @@ namespace Pokemon
         public Image enemy5;
         public Image enemy6;
 
+        public Image player1;
+        public Image player2;
+        public Image player3;
+        public Image player4;
+        public Image player5;
+        public Image player6;
+
         #endregion Declaration of variables
 
         #region Functions
@@ -134,6 +141,34 @@ namespace Pokemon
                 enemy1.enabled = false;
             }
         }
+        public void SetUpPlayer()
+        {
+            int x = GameController.playerPokemon.Count(s => s != null);
+            if (x < 6)
+            {
+                player6.enabled = false;
+            }
+            if (x < 5)
+            {
+                player5.enabled = false;
+            }
+            if (x < 4)
+            {
+                player4.enabled = false;
+            }
+            if (x < 3)
+            {
+                player3.enabled = false;
+            }
+            if (x < 2)
+            {
+                player2.enabled = false;
+            }
+            if (x < 1)
+            {
+                player1.enabled = false;
+            }
+        }
 
         public void CrossOutBall(int x)
         {
@@ -161,6 +196,35 @@ namespace Pokemon
             if (x == 1)
             {
                 enemy1.sprite = sprite;
+            }
+        }
+
+        public void CrossOutPlayerBall(int x)
+        {
+            var sprite = Resources.Load<Sprite>("Images/Items/Pokeball_Dead2");
+            if (x == 6)
+            {
+                player6.sprite = sprite;
+            }
+            if (x == 5)
+            {
+                player5.sprite = sprite;
+            }
+            if (x == 4)
+            {
+                player4.sprite = sprite;
+            }
+            if (x == 3)
+            {
+                player3.sprite = sprite;
+            }
+            if (x == 2)
+            {
+                player2.sprite = sprite;
+            }
+            if (x == 1)
+            {
+                player1.sprite = sprite;
             }
         }
 
@@ -579,7 +643,7 @@ namespace Pokemon
 
         private Color GetColorOfStatus(string name)
         {
-            Color color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 1);
+            Color color;
             switch (name)
             {
                 case "Burn":
