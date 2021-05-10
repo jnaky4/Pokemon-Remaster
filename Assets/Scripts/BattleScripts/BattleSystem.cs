@@ -1787,6 +1787,7 @@ namespace Pokemon
         /// <returns>Nothing.</returns>
         private IEnumerator EndBattle()
         {
+            GameController.update_level_cap();
             breakOutOfDecision = true;
             SetDownButtons();
             GameController.update_level_cap();
