@@ -23,12 +23,12 @@ namespace Pokemon
         public Image blane;
         public Image gio;
 
-        public Image poke1;
-        public Image poke2;
-        public Image poke3;
-        public Image poke4;
-        public Image poke5;
-        public Image poke6;
+        public Image pokeImage1;
+        public Image pokeImage2;
+        public Image pokeImage3;
+        public Image pokeImage4;
+        public Image pokeImage5;
+        public Image pokeImage6;
 
         public GameObject pokeCanvas1;
         public GameObject pokeCanvas2;
@@ -46,6 +46,13 @@ namespace Pokemon
         public Text pokeName4;
         public Text pokeName5;
         public Text pokeName6;
+
+        public Dropdown pokeDrop1;
+        public Dropdown pokeDrop2;
+        public Dropdown pokeDrop3;
+        public Dropdown pokeDrop4;
+        public Dropdown pokeDrop5;
+        public Dropdown pokeDrop6;
 
         public Text playerName;
         public Text time;
@@ -106,50 +113,146 @@ namespace Pokemon
 
         private void SetPokemon()
         {
+            var x = 0;
             string path = "Images/Menu Icons/Pokemon/";
             if (GameController.playerPokemon[0] != null)
             {
+                x++;
                 pokeCanvas1.SetActive(true);
-                poke1.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name);
+                pokeImage1.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name);
                 pokeName1.text = "" + GameController.playerPokemon[0].name + ", Level " + GameController.playerPokemon[0].level + "\nHP: " + GameController.playerPokemon[0].current_hp + "/" + GameController.playerPokemon[0].max_hp;
             }
             else pokeCanvas1.SetActive(false);
 
             if (GameController.playerPokemon[1] != null)
             {
+                x++;
                 pokeCanvas2.SetActive(true);
-                poke2.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[1].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[1].name);
+                pokeImage2.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[1].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[1].name);
                 pokeName2.text = "" + GameController.playerPokemon[1].name + ", Level " + GameController.playerPokemon[1].level + "\nHP: " + GameController.playerPokemon[1].current_hp + "/" + GameController.playerPokemon[1].max_hp;
             }
             else pokeCanvas2.SetActive(false);
             if (GameController.playerPokemon[2] != null)
             {
+                x++;
                 pokeCanvas3.SetActive(true);
-                poke3.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[2].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[2].name);
+                pokeImage3.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[2].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[2].name);
                 pokeName3.text = "" + GameController.playerPokemon[2].name + ", Level " + GameController.playerPokemon[2].level + "\nHP: " + GameController.playerPokemon[2].current_hp + "/" + GameController.playerPokemon[2].max_hp;
             }
             else pokeCanvas3.SetActive(false);
             if (GameController.playerPokemon[3] != null)
             {
+                x++;
                 pokeCanvas4.SetActive(true);
-                poke4.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[3].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[3].name);
+                pokeImage4.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[3].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[3].name);
                 pokeName4.text = "" + GameController.playerPokemon[3].name + ", Level " + GameController.playerPokemon[3].level + "\nHP: " + GameController.playerPokemon[3].current_hp + "/" + GameController.playerPokemon[3].max_hp;
             }
             else pokeCanvas4.SetActive(false);
             if (GameController.playerPokemon[4] != null)
             {
+                x++;
                 pokeCanvas5.SetActive(true);
-                poke5.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[4].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[4].name);
+                pokeImage5.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[4].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[4].name);
                 pokeName5.text = "" + GameController.playerPokemon[4].name + ", Level " + GameController.playerPokemon[4].level + "\nHP: " + GameController.playerPokemon[4].current_hp + "/" + GameController.playerPokemon[4].max_hp;
             }
             else pokeCanvas5.SetActive(false);
             if (GameController.playerPokemon[5] != null)
             {
+                x++;
                 pokeCanvas6.SetActive(true);
-                poke6.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[5].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[5].name);
+                pokeImage6.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[5].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[5].name);
                 pokeName6.text = "" + GameController.playerPokemon[5].name + ", Level " + GameController.playerPokemon[5].level + "\nHP: " + GameController.playerPokemon[5].current_hp + "/" + GameController.playerPokemon[5].max_hp;
             }
             else pokeCanvas6.SetActive(false);
+
+            if (x >= 6) SetDropdown(pokeDrop6, x, 6);
+            if (x >= 5) SetDropdown(pokeDrop5, x, 5);
+            if (x >= 4) SetDropdown(pokeDrop4, x, 4);
+            if (x >= 3) SetDropdown(pokeDrop3, x, 3);
+            if (x >= 2) SetDropdown(pokeDrop2, x, 2);
+            if (x >= 1) SetDropdown(pokeDrop1, x, 1);
+        }
+
+        private void SetDropdown(Dropdown d, int i, int k)
+        {
+            d.options.Clear();
+            for (int j = 1; j <= i; j++)
+            {
+                var x = new Dropdown.OptionData(j.ToString());
+                d.options.Add(x);
+            }
+            d.value = k - 1;
+        }
+
+        public void ChangeDropdown(Dropdown active)
+        {
+            if (pokeDrop1.value == active.value && GameController.playerPokemon[0] != null)
+            {
+                var temp = GameController.playerPokemon[0];
+                GameController.playerPokemon[0] = GameController.playerPokemon[active.value];
+                GameController.playerPokemon[active.value] = temp;
+            }
+            if (pokeDrop2.value == active.value && GameController.playerPokemon[1] != null)
+            {
+                var temp = GameController.playerPokemon[1];
+                GameController.playerPokemon[1] = GameController.playerPokemon[active.value];
+                GameController.playerPokemon[active.value] = temp;
+            }
+            if (pokeDrop3.value == active.value && GameController.playerPokemon[2] != null)
+            {
+                var temp = GameController.playerPokemon[2];
+                GameController.playerPokemon[2] = GameController.playerPokemon[active.value];
+                GameController.playerPokemon[active.value] = temp;
+            }
+            if (pokeDrop4.value == active.value && GameController.playerPokemon[3] != null)
+            {
+                var temp = GameController.playerPokemon[3];
+                GameController.playerPokemon[3] = GameController.playerPokemon[active.value];
+                GameController.playerPokemon[active.value] = temp;
+            }
+            if (pokeDrop5.value == active.value && GameController.playerPokemon[4] != null)
+            {
+                var temp = GameController.playerPokemon[4];
+                GameController.playerPokemon[4] = GameController.playerPokemon[active.value];
+                GameController.playerPokemon[active.value] = temp;
+            }
+            if (pokeDrop6.value == active.value && GameController.playerPokemon[5] != null)
+            {
+                var temp = GameController.playerPokemon[5];
+                GameController.playerPokemon[5] = GameController.playerPokemon[active.value];
+                GameController.playerPokemon[active.value] = temp;
+            }
+            SetPokemon();
+        }
+
+        private Vector3 GetPosition(int x, Vector3 defaultPos)
+        {
+            Vector3 pos;
+            switch (x)
+            {
+                case 1:
+                    pos = new Vector3(0, 450, 0);
+                    break;
+                case 2:
+                    pos = new Vector3(0, 270, 0);
+                    break;
+                case 3:
+                    pos = new Vector3(0, 90, 0);
+                    break;
+                case 4:
+                    pos = new Vector3(0, -90, 0);
+                    break;
+                case 5:
+                    pos = new Vector3(0, -270, 0);
+                    break;
+                case 6:
+                    pos = new Vector3(0, -450, 0);
+                    break;
+                default:
+                    pos = defaultPos;
+                    break;
+            }
+            return pos;
         }
 
         void SetImages()
