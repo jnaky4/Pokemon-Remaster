@@ -25,9 +25,6 @@ namespace Pokemon
 
         public void NewGame()
         {
-
-
-
             GameController.player.pokeBalls = 10;
             GameController.player.greatBalls = 0;
             GameController.player.ultraBalls = 0;
@@ -38,21 +35,17 @@ namespace Pokemon
             GameController.player.displayUltraBalls = true;
             GameController.player.displayMasterBalls = true;
 
-
-
             GameController.player.money = 3000;
             GameController.player.name = "Purple";
             GameController.location = "Pallet Town";
             GameController.scene = "Pallet Town";
 
-
-
             playerPosition.initialValue.x = 3.5f;
             playerPosition.initialValue.y = 2.8f;
 
-            int level = 5;
+            int level = 1;
             int dex = 25;
-            string move1 = "Tackle", move2 = "Growl";
+            string move1 = "Tackle", move2 = "Tail Whip";
 
             GameController.playerPokemon[0] = new Pokemon(dex, level, move1, move2);
             GameController.playerPokemon[1] = new Pokemon(25, 20, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");

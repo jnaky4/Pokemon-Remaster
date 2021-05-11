@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, CHANGEPOKEMON }
@@ -171,8 +172,16 @@ namespace Pokemon
             backUI.SetActive(false);
             levelUpUI.SetActive(false);
             SetDownButtons();
-            StartCoroutine(SetupBattle());
-            SetBackground();
+            try
+            {
+                StartCoroutine(SetupBattle());
+                SetBackground();
+            }
+            catch
+            {
+                dialogueText.text = "Error. Going back to main menu....";
+                SceneManager.LoadSceneAsync("Start Menu");
+            }
         }
 
         //logic for whether a player or opponent's attack animation plays
@@ -391,13 +400,13 @@ namespace Pokemon
             {
                 dialogueText.text = "A wild " + enemyUnit.pokemon.name + " appears!";
                 SetOpponentSprite(enemyUnit, enemySprite);
-                yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
+                yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space));
             }
             else
             {
                 SetOpponentTrainerSprite(enemySprite);
                 dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " wants to battle!";
-                yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
+                yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space));
                 phaseOpponentSprite = 1;
                 SetOpponentSprite(enemyUnit, enemySprite);
                 phaseOpponentSprite = 2;
@@ -1818,7 +1827,7 @@ namespace Pokemon
                     dialogueText.text = player.myName + " defeated " + GameController.opponentType + " " + GameController.opponentName + "!";
                     yield return new WaitForSeconds(2);
                     dialogueText.text = "\"" + GameController.endText + "\"";
-                    yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
+                    yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space));
                     dialogueText.text = player.myName + " got $" + GameController.winMoney + " for winning!";
                     GameController.player.money += GameController.winMoney;
                 }
@@ -1826,6 +1835,14 @@ namespace Pokemon
             else if (state == BattleState.LOST) //If you lost
             {
                 dialogueText.text = player.myName + " lost! You blacked out!";
+                yield return new WaitForSeconds(2);
+                dialogueText.text = "Going back to the start menu....";
+                yield return new WaitForSeconds(2);
+                GameController.endCombat = true; //Something for levi.a
+                Destroy(playerSprite);
+                Destroy(enemySprite);
+                Destroy(GameObject.Find("Sound Controller"));
+                SceneManager.LoadSceneAsync("Start Menu");
             }
             else if (state == BattleState.RUNAWAY) //If you ran away.
             {
@@ -1849,7 +1866,7 @@ namespace Pokemon
             {
                 dialogueText.text = "What the fuck just happened";
             }
-            yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
+            yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space));
             GameController.playerPokemon[activePokemon] = playerUnit.pokemon; //Places your active pokemon back in the array - this is so its stats gets updated.
             for (int i = 0; i < 5; i++) //Resets the stages and attacks of all of your pokemon.
             {
@@ -2422,9 +2439,7 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
-            //spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
-
-            spriteRenderer.sprite = Sprite.Create(sprite.texture, new Rect(0, 0, sprite.texture.width, sprite.texture.height), new Vector2(x, y));
+            spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
         }
 
         private void SetOpponentSprite(Unit unit, SpriteRenderer sprite)
@@ -2871,7 +2886,7 @@ namespace Pokemon
             levelUpText.text += "   SPA:   +" + playerUnit.pokemon.change_sp_attack + "\n";
             levelUpText.text += "   SPD:   +" + playerUnit.pokemon.change_sp_defense + "\n";
             levelUpUI.SetActive(true);
-            yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Z));
+            yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space));
             levelUpUI.SetActive(false);
             playerUnit.pokemon = poke;
             playerHUD.SetMoves(playerUnit);

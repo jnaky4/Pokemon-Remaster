@@ -122,6 +122,7 @@ namespace Pokemon
         }
         public static void load_type()
         {
+            type_dictionary.Clear();
             for (var i = 0; i < type_defend.Count; i++)
             {
                 string temp_type_str = type_defend[i]["Defending"].ToString();

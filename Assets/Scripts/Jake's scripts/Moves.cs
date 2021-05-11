@@ -69,6 +69,7 @@ namespace Pokemon
 
         public static void load_moves()
         {
+            move_dictionary.Clear();
             for (var i = 0; i < all_moves.Count; i++)
             {
 

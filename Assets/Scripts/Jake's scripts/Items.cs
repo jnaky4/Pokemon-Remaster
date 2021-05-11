@@ -29,24 +29,17 @@ namespace Pokemon
 
         static public void load_items_to_dict()
         {
-
+            items_dict.Clear();
             for (var i = 0; i < Items.all_Items.Count; i++)
             {
                 string name = Items.all_Items[i]["Name"].ToString();
-                Status status_heal = Status.get_status(Items.all_Items[i]["Status"].ToString()); 
+                Status status_heal = Status.get_status(Items.all_Items[i]["Status"].ToString());
                 int restore_health = int.Parse(Items.all_Items[i]["Health"].ToString());
                 int price = int.Parse(Items.all_Items[i]["Price"].ToString());
                 string description = Items.all_Items[i]["Description"].ToString();
                 Items temp_item = new Items(name, status_heal, restore_health, price, description);
                 items_dict.Add(name, temp_item);
             }
-
-
-
-
-
-
-     
         }
     }
 }
