@@ -51,7 +51,7 @@ namespace Pokemon
                         route_trainers = Trainer.get_route_trainers(GameController.location);
                         dialog.Lines[0] = route_trainers[name].intro_dialogue;
                     }
-                    if (isTrainer.name == "Gary")
+                    if (name == "Gary")
                     {
                         if (isTrainer.isBeaten == false)
                             GameController.music = "Encounter Rival";

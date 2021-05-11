@@ -102,7 +102,7 @@ MonoBehaviour:
         m_PostInfinity: 0
         m_RotationOrder: 0
   - m_From: CM Viridian City vcam
-    m_To: CM route28vcam
+    m_To: CM route22vcam
     m_Blend:
       m_Style: 5
       m_Time: 1
@@ -112,7 +112,7 @@ MonoBehaviour:
         m_PreInfinity: 0
         m_PostInfinity: 0
         m_RotationOrder: 0
-  - m_From: CM route28vcam
+  - m_From: CM route22vcam
     m_To: CM Viridian City vcam
     m_Blend:
       m_Style: 5
