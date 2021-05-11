@@ -65,7 +65,7 @@ public class DialogController : MonoBehaviour
     public void HandleUpdate()
     {
         //Debug.Log("Typing in progress: " + isTyping);
-        if (Input.GetKeyDown(KeyCode.Z) && !isTyping)
+        if (Input.GetKeyDown(KeyCode.Space) && !isTyping)
         {
             GameController.inDialog = true;
             //Debug.Log("Pressed Z in dialog");
