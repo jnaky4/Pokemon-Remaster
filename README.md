@@ -17,3 +17,4 @@ This repository is our capstone project for Mizzou. It is a pokemon remaster usi
 - `Z` - Pause music
 - `Esc` - Pause the game, show/hide pause menus
 - `Space` - Interact with enivornment, advance dialogue
+- `Mousedown` - Click on UI elements
