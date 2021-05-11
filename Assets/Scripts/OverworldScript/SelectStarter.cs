@@ -52,6 +52,7 @@ namespace Pokemon
                     break;
 
             }
+            Destroy(GameObject.Find("Starters"));
         }
     }
 }

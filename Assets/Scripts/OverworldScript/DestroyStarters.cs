@@ -11,8 +11,8 @@ namespace Pokemon
         {
             if (GameController.starterChosen)
             {
-                Destroy(this);
+                Destroy(gameObject);
             }
-    }
+        }
     }
 }
