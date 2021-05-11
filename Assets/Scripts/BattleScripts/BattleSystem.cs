@@ -1085,9 +1085,9 @@ namespace Pokemon
                 for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++) //Determines if you win or not by seeing if the other trainer has other usable pokemon.
                 {
                     x = j;
-                    if (GameController.opponentPokemon[j].current_hp == 0)
+                    if (GameController.opponentPokemon[j].current_hp == 0 && !GameController.isCatchable)
                     {
-                        if (!GameController.isCatchable) enemyHUD.CrossOutBall(j + 1);
+                        enemyHUD.CrossOutBall(j + 1);
                     }
                     if (GameController.opponentPokemon[j].current_hp > 0)
                     {
