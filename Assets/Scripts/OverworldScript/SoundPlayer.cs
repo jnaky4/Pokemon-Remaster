@@ -82,7 +82,7 @@ namespace Pokemon
                 GameController.soundFX = null;
             }
 
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("z"))
             {
                 if (song_playing)
                     PauseSong();

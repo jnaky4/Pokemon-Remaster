@@ -54,7 +54,7 @@ namespace Pokemon
 
             character.HandleUpdate();
 
-            if (Input.GetKeyDown(KeyCode.Z) && !GameController.inCombat && GameController.state == GameState.Roam && !GameController.inDialog)
+            if (Input.GetKeyDown(KeyCode.Space) && !GameController.inCombat && GameController.state == GameState.Roam && !GameController.inDialog)
             {
                 //Debug.Log("Pressed Z in the player controller");
                 Interact();
