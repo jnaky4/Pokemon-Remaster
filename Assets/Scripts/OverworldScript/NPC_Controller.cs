@@ -46,7 +46,7 @@ namespace Pokemon
 
                 if (isTrainer != null)
                 {
-                    if (!isTrainer.isBeaten)
+                    if (!isTrainer.isBeaten && isTrainer.name != "Gary")
                     {
                         route_trainers = Trainer.get_route_trainers(GameController.location);
                         dialog.Lines[0] = route_trainers[name].intro_dialogue;
@@ -63,7 +63,7 @@ namespace Pokemon
                     }
                 }
 
-                StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
+                StartCoroutine(DialogController.Instance.ShowDialog(dialog, false, () =>
                 {
                     idleTimer = 0f;
                     state = NPCState.Idle;

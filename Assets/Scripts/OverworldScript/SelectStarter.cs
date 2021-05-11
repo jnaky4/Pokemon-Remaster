@@ -15,10 +15,10 @@ namespace Pokemon
 
         public void Interact(Transform initial)
         {
-            StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
+            StartCoroutine(DialogController.Instance.ShowDialog(dialog, true, () =>
             {
-                //setUpUI();
-                //chooseStarter();
+                if (GameController.starterChosen)
+                    chooseStarter();
             }));
         }
 
@@ -29,29 +29,30 @@ namespace Pokemon
             dialogBox.SetActive(true);
             buttons.SetActive(true);
             text.text = "Choose " + name + " as your starter?";
-        }
+        }*/
 
         public void chooseStarter()
         {
-            var starter = GetComponentInParent<StarterButtons>();
-            starter.name = name;
+            //var starter = GetComponentInParent<StarterButtons>();
+            //var starte
+            //starter.name = name;
             switch (dexNum)
             {
                 case 1:
-                    starter.pokemon = new Pokemon(1, 5, "Tackle", "Growl");
+                    GameController.playerPokemon[0] = new Pokemon(1, 5, "Tackle", "Growl");
                     //starter.pokemon = new Pokemon(1, 19, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 7900);
                     break;
                 case 4:
-                    starter.pokemon = new Pokemon(4, 5, "Scratch", "Growl", "Ember");
+                    GameController.playerPokemon[0] = new Pokemon(4, 5, "Scratch", "Growl", "Ember");
                     //starter.pokemon = new Pokemon(4, 19, "Poison Gas", "Ember", "Tail Whip", "Bite", 7900);
                     break;
                 case 7:
-                    starter.pokemon = new Pokemon(7, 5, "Tackle", "Tail Whip");
+                    GameController.playerPokemon[0] = new Pokemon(7, 5, "Tackle", "Tail Whip");
                     //starter.pokemon = new Pokemon(7, 19, "Water Gun", "Bubble", "Leer", "Crabhammer", 7900);
                     break;
 
             }
-        }*/
+        }
     }
 }
 

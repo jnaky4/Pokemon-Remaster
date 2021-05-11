@@ -12,7 +12,7 @@ namespace Pokemon
 
         public void Interact(Transform initial)
         {
-            StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
+            StartCoroutine(DialogController.Instance.ShowDialog(dialog, false, () =>
             {
                 Heal();
             }));

@@ -16,6 +16,7 @@ namespace Pokemon
         public static Pokemon[] playerPokemon = new Pokemon[6];
         public static PlayerData player = new PlayerData();
         public static bool inCombat = false;
+        public static bool starterChosen = false;
 
         //public GameObject player;
         public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() {/*{"Ground",1 }*/ };

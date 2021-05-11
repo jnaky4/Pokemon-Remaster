@@ -41,7 +41,7 @@ public class TrainerController : MonoBehaviour
 
             GameController.state = GameState.Dialog;
 
-            yield return StartCoroutine(DialogController.Instance.ShowDialog(dialog, () =>
+            yield return StartCoroutine(DialogController.Instance.ShowDialog(dialog, false, () =>
              {
                  //Debug.Log("Battle Time");
                  startCombat();
@@ -54,6 +54,7 @@ public class TrainerController : MonoBehaviour
     {
         if (trainerName == "Gary")
         {
+            Debug.Log("Handle Gary");
             handleGary();
         }
         //Debug.Log(trainerName);

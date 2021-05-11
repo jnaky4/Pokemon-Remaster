@@ -10,9 +10,14 @@ public class DialogController : MonoBehaviour
     //GameObject dialogBox;
     [SerializeField] Text dialogText;
     [SerializeField] int lettersPerSecond;
+    [SerializeField] GameObject buttonwrapper;
+    [SerializeField] Button yesButton;
+    [SerializeField] Button noButton;
 
     public event Action OnShowDialog;
     public event Action OnCloseDialog;
+
+    private bool NoIsClicked = false;
 
     public static DialogController Instance { get; private set; }
 
@@ -38,16 +43,19 @@ public class DialogController : MonoBehaviour
         //dialogBox = GameObject.FindGameObjectWithTag("DialogUI");
 
         Instance = this;
+        yesButton.onClick.AddListener(TaskOnClick);
+        noButton.onClick.AddListener(NoButtonClick);
     }
 
     Dialog dialog;
     Action onDialogFinished;
     int currentLine = 0;
     bool isTyping;
+    bool dialogChoice;
 
     public bool IsShowing { get; private set; }
 
-    public IEnumerator ShowDialog(Dialog dialog, Action onFinished = null)
+    public IEnumerator ShowDialog(Dialog dialog, bool dialogChoice = false, Action onFinished = null)
     {
         yield return new WaitForEndOfFrame();
 
@@ -58,6 +66,7 @@ public class DialogController : MonoBehaviour
         onDialogFinished = onFinished;
 
         this.dialog = dialog;
+        this.dialogChoice = dialogChoice;
         dialogBox.SetActive(true);
         StartCoroutine(TypeDialog(dialog.Lines[0]));
     }
@@ -75,16 +84,36 @@ public class DialogController : MonoBehaviour
             {
                 StartCoroutine(TypeDialog(dialog.Lines[currentLine]));
             }
-            else
+            else if (dialogChoice)
             {
+                //Debug.Log("Make a choice");
+                //buttonwrapper.SetActive(true);
+                StartCoroutine(HandleDialogChoice());
+                Debug.Log("Coroutine ended");
+            }
+            else if (!dialogChoice)
+            {
+                /*Debug.Log("End dialog");
                 currentLine = 0;
                 IsShowing = false;
                 dialogBox.SetActive(false);
                 onDialogFinished?.Invoke();
 
-                OnCloseDialog?.Invoke();
+                OnCloseDialog?.Invoke();*/
+                endDialog();
             }
         }
+    }
+
+    public IEnumerator HandleDialogChoice()
+    {
+        buttonwrapper.SetActive(true);
+
+        while (!NoIsClicked)
+        {
+            yield return null;
+        }
+        endDialog();
     }
 
     public IEnumerator TypeDialog(string dialog)
@@ -97,5 +126,27 @@ public class DialogController : MonoBehaviour
             yield return new WaitForSeconds(1f / lettersPerSecond);
         }
         isTyping = false;
+    }
+
+    void endDialog()
+    {
+        currentLine = 0;
+        IsShowing = false;
+        dialogBox.SetActive(false);
+        buttonwrapper.SetActive(false);
+        onDialogFinished?.Invoke();
+
+        OnCloseDialog?.Invoke();
+    }
+
+    void TaskOnClick()
+    {
+        GameController.starterChosen = true;
+        NoIsClicked = true;
+    }
+
+    void NoButtonClick()
+    {
+        NoIsClicked = true;
     }
 }
