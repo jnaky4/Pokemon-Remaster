@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 namespace Pokemon
 {
@@ -54,6 +55,10 @@ namespace Pokemon
         public Dropdown pokeDrop5;
         public Dropdown pokeDrop6;
 
+        public GameObject releaseUI;
+        public Text releaseText;
+        private int releaseNumber = 7;
+
         public Text playerName;
         public Text time;
         public Text money;
@@ -64,6 +69,7 @@ namespace Pokemon
             otherProgress.SetActive(false);
             pauseMenuUI.SetActive(false);
             pokeUI.SetActive(false);
+            releaseUI.SetActive(false);
             //pokePosition.SetActive(false);
             progress.text = GameController.player.name;
         }
@@ -93,6 +99,7 @@ namespace Pokemon
             progressBadges.SetActive(false);
             otherProgress.SetActive(false);
             pokeUI.SetActive(false);
+            releaseUI.SetActive(false);
             //pokePosition.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
@@ -182,6 +189,39 @@ namespace Pokemon
                 d.options.Add(x);
             }
             d.value = k - 1;
+        }
+
+        public void ReleasePokemon(int i)
+        {
+            if (GameController.playerPokemon[1] == null) return;
+            pokeUI.SetActive(false);
+            releaseUI.SetActive(true);
+            releaseText.text = "Are you sure you want to release " + GameController.playerPokemon[i] + "?";
+            releaseNumber = i;
+        }
+        public void OnYes()
+        {
+            GameController.playerPokemon[releaseNumber] = null;
+
+            for (int i = 0; i < GameController.playerPokemon.Count(s => s != null) + 1; i++)
+            {
+                if (GameController.playerPokemon[i] == null)
+                {
+                    GameController.playerPokemon[i] = GameController.playerPokemon[i + 1];
+                    GameController.playerPokemon[i + 1] = null;
+                }
+            }
+
+            SetPokemon();
+            releaseNumber = 7;
+            releaseUI.SetActive(false);
+            pokeUI.SetActive(true);
+        }
+        public void OnNo()
+        {
+            releaseUI.SetActive(false);
+            pokeUI.SetActive(true);
+            releaseNumber = 7;
         }
 
         public void ChangeDropdown(Dropdown active)
@@ -302,6 +342,7 @@ namespace Pokemon
             otherProgress.SetActive(true);
             pauseMenuUI.SetActive(false);
             pokeUI.SetActive(false);
+            releaseUI.SetActive(false);
             //pokePosition.SetActive(false);
         }
 
@@ -310,6 +351,7 @@ namespace Pokemon
             progressBadges.SetActive(false);
             otherProgress.SetActive(false);
             pauseMenuUI.SetActive(false);
+            releaseUI.SetActive(false);
             pokeUI.SetActive(true);
             //pokePosition.SetActive(true);
         }
