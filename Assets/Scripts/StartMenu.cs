@@ -5,6 +5,7 @@ namespace Pokemon
 {
     public class StartMenu : MonoBehaviour
     {
+        public Vector2 startingPosition;
         public VectorValue playerPosition;
         private void Start()
         {
@@ -40,8 +41,11 @@ namespace Pokemon
             GameController.location = "Pallet Town";
             GameController.scene = "Pallet Town";
 
+            /*
             playerPosition.initialValue.x = 3.5f;
-            playerPosition.initialValue.y = 2.8f;
+            playerPosition.initialValue.y = 2.8f;*/
+            playerPosition.initialValue.x = startingPosition.x;
+            playerPosition.initialValue.y = startingPosition.y;
 
             int level = 1;
             int dex = 25;
@@ -74,6 +78,7 @@ namespace Pokemon
                 GameController.player.name = PlayerPrefs.GetString("Name");
                 GameController.location = PlayerPrefs.GetString("Location");
                 GameController.scene = PlayerPrefs.GetString("Scene");
+
 
                 playerPosition.initialValue.x = PlayerPrefs.GetFloat("X");
                 playerPosition.initialValue.y = PlayerPrefs.GetFloat("Y");
