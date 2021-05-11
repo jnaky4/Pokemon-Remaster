@@ -61,6 +61,7 @@ public class DialogController : MonoBehaviour
 
         OnShowDialog?.Invoke();
 
+        NoIsClicked = false;
         IsShowing = true;
         this.dialog = dialog;
         onDialogFinished = onFinished;
@@ -89,7 +90,7 @@ public class DialogController : MonoBehaviour
                 //Debug.Log("Make a choice");
                 //buttonwrapper.SetActive(true);
                 StartCoroutine(HandleDialogChoice());
-                Debug.Log("Coroutine ended");
+                //Debug.Log("Coroutine ended");
             }
             else if (!dialogChoice)
             {
