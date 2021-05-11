@@ -40,15 +40,15 @@ namespace Pokemon
             {
                 case 1:
                     GameController.playerPokemon[0] = new Pokemon(1, 5, "Tackle", "Growl");
-                    //starter.pokemon = new Pokemon(1, 19, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 7900);
+                    GameController.player.starter = 1;
                     break;
                 case 4:
                     GameController.playerPokemon[0] = new Pokemon(4, 5, "Scratch", "Growl");
-                    //starter.pokemon = new Pokemon(4, 19, "Poison Gas", "Ember", "Tail Whip", "Bite", 7900);
+                    GameController.player.starter = 4;
                     break;
                 case 7:
                     GameController.playerPokemon[0] = new Pokemon(7, 5, "Tackle", "Tail Whip");
-                    //starter.pokemon = new Pokemon(7, 19, "Water Gun", "Bubble", "Leer", "Crabhammer", 7900);
+                    GameController.player.starter = 7;
                     break;
 
             }

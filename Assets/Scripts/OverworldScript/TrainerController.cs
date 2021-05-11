@@ -22,7 +22,13 @@ public class TrainerController : MonoBehaviour
     }
 
     public IEnumerator TriggerTrainerBattle(/*PlayerMovement player*/ Vector3 playerPos)
-    { 
+    {
+        if (trainerName == "Gary")
+        {
+            Debug.Log("Handle Gary");
+            handleGary();
+        }
+
         if (isBeaten == false)
         {
             route_trainers = Trainer.get_route_trainers(GameController.location);
