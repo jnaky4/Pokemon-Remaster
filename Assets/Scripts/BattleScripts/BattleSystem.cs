@@ -2506,17 +2506,7 @@ namespace Pokemon
 
             var path = "Images/Backgrounds/";
 
-            if (type == "Rival")
-            {
-                Texture2D SpriteTexture = new Texture2D(2, 2);
-                background.sprite = Resources.Load<Sprite>(path + "Viridian Forest");
-            }
-            else
-            {
-                background.sprite = Resources.Load<Sprite>(path + GameController.location);
-            }
-
-
+            background.sprite = Resources.Load<Sprite>(path + GameController.location);
         }
 
         public void DisplayPokeball()

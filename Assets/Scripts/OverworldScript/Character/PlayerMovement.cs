@@ -117,7 +117,12 @@ namespace Pokemon
                 if (trainerInfo.isBeaten == false)
                 {
                     GameController.state = GameState.TrainerEncounter;
-                    GameController.music = "Encounter Trainer";
+
+                    if (trainerInfo.name == "Gary")
+                        GameController.music = "Encounter Rival";
+                    else
+                        GameController.music = "Encounter Trainer";
+
                     character.Animator.IsMoving = false;
                     StartCoroutine(trainerInfo.TriggerTrainerBattle(transform.position));
                 }
