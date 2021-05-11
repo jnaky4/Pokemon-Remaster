@@ -82,7 +82,7 @@ namespace Pokemon
 
 
             //COMMENT THIS OUT FOR TESTING
-            Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
+            /*Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
             Moves.all_moves = BattleSystem.load_CSV("MOVES");
             Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK");
             Type.type_defend = BattleSystem.load_CSV("TYPE_DEFEND");
@@ -95,7 +95,7 @@ namespace Pokemon
             Moves.load_moves();
             update_level_cap();
             GameController.playerPokemon[0] = new Pokemon(25, 20, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
-
+            */
             //Debug.Log("CSV's have been loaded");
         }
 
