@@ -9,6 +9,7 @@ namespace Pokemon
         public static bool GameIsPaused = false;
         public VectorValue playerPosition;
         public GameObject pauseMenuUI;
+        public GameObject saveButton;
         public Text progress;
         public GameObject progressBadges;
         public GameObject otherProgress;
@@ -93,6 +94,10 @@ namespace Pokemon
         void Pause()
         {
             pauseMenuUI.SetActive(true);
+            if (SceneManager.GetActiveScene().name != "Pallet Town")
+                saveButton.SetActive(false);
+            else
+                saveButton.SetActive(true);
             Time.timeScale = 0f;
             GameIsPaused = true;
             SetImages();
