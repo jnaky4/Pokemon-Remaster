@@ -331,7 +331,7 @@ namespace Pokemon
                 gio.sprite = Resources.Load<Sprite>("Images/Menu Icons/Badge Earth Complete");
             }
 
-            money.text = "Money: " + "?" + GameController.player.money;
+            money.text = "Money: " + "$" + GameController.player.money;
             playerName.text = "Trainer Name: " + GameController.player.name;
             time.text = "Total play time: " + ((int) (UnityEngine.Time.realtimeSinceStartup + GameController.player.time) / 60 / 60) + " Hours, " + ((int)(UnityEngine.Time.realtimeSinceStartup + GameController.player.time) / 60) + " Minutes";
         }
