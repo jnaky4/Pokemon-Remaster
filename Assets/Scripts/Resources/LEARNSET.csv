@@ -158,7 +158,7 @@ dexnum,lvl,move,type
 22,43,Agility,Psychic
 23,1,Leer,Normal
 23,1,Wrap,Normal
-23,10,Poison Sting,Poison
+23,1,Poison Sting,Poison
 23,17,Bite,Normal
 23,24,Glare,Normal
 23,31,Screech,Normal
