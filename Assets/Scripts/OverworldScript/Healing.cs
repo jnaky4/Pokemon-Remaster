@@ -8,10 +8,15 @@ namespace Pokemon
     public class Healing : MonoBehaviour, Interactable
     {
         [SerializeField] Dialog dialog;
-        [SerializeField] new string name;
+        //[SerializeField] new string name;
 
         public void Interact(Transform initial)
         {
+            if (name == "Mom" && !GameController.starterChosen)
+            {
+                dialog.Lines[0] = "The professor said he had a pokemon for you in his lab.";
+                dialog.Lines[1] = "Make sure you visit him before you try to leave town!";
+            }
             StartCoroutine(DialogController.Instance.ShowDialog(dialog, false, () =>
             {
                 Heal();
