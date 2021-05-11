@@ -26,18 +26,18 @@ namespace Pokemon
 
         public void NewGame()
         {
-            GameController.player.pokeBalls = 10;
+            GameController.player.pokeBalls = 99;
             GameController.player.greatBalls = 0;
             GameController.player.ultraBalls = 0;
-            GameController.player.masterBalls = 0;
+            GameController.player.masterBalls = 1;
 
             GameController.player.displayPokeBalls = true;
-            GameController.player.displayGreatBalls = false;
-            GameController.player.displayUltraBalls = false;
-            GameController.player.displayMasterBalls = false;
+            GameController.player.displayGreatBalls = true;
+            GameController.player.displayUltraBalls = true;
+            GameController.player.displayMasterBalls = true;
 
             GameController.player.money = 3000;
-            GameController.player.name = "Purple";
+            GameController.player.name = "Red";
             GameController.location = "Pallet Town";
             GameController.scene = "Pallet Town";
 
