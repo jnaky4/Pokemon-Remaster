@@ -2874,6 +2874,7 @@ namespace Pokemon
                         Debug.Log("Move " + i + ": " + playerUnit.pokemon.currentMoves[i].name);
                     }
                     yield return new WaitForSeconds(2);
+                    poke.learned_new_move
                 }
                 mainUI.SetActive(true);
             }
