@@ -37,7 +37,7 @@ namespace Pokemon
         public GameObject pokeCanvas6;
 
         public GameObject pokeUI;
-        public GameObject pokePosition;
+        //public GameObject //pokePosition;
 
         public Text pokeName1;
         public Text pokeName2;
@@ -56,7 +56,7 @@ namespace Pokemon
             otherProgress.SetActive(false);
             pauseMenuUI.SetActive(false);
             pokeUI.SetActive(false);
-            pokePosition.SetActive(false);
+            //pokePosition.SetActive(false);
             progress.text = GameController.player.name;
         }
 
@@ -85,7 +85,7 @@ namespace Pokemon
             progressBadges.SetActive(false);
             otherProgress.SetActive(false);
             pokeUI.SetActive(false);
-            pokePosition.SetActive(false);
+            //pokePosition.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
         }
@@ -194,7 +194,7 @@ namespace Pokemon
             otherProgress.SetActive(true);
             pauseMenuUI.SetActive(false);
             pokeUI.SetActive(false);
-            pokePosition.SetActive(false);
+            //pokePosition.SetActive(false);
         }
 
         public void PokeMenu()
@@ -203,7 +203,7 @@ namespace Pokemon
             otherProgress.SetActive(false);
             pauseMenuUI.SetActive(false);
             pokeUI.SetActive(true);
-            pokePosition.SetActive(true);
+            //pokePosition.SetActive(true);
         }
 
         public void Save()
