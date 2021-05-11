@@ -2359,15 +2359,15 @@ namespace Pokemon
                 x = 0.20f;
                 y = 0.30f;
             }
-            if (GameController.opponentType == "Rival")
-            {
-                x = 0.00f;
-                y = 0.35f;
-            }
             if (GameController.location == "Viridian Forest")
             {
                 x = 0.00f;
                 y = 0.35f;
+            }
+            if (GameController.location == "Route 22")
+            {
+                x = 0.00f;
+                y = 0.45f;
             }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
             //spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, Mathf.SmoothStep(255, 0, 2.0f));
@@ -2386,17 +2386,16 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.50f;
             }
-            if (GameController.opponentType == "Rival")
-            {
-                x = 0.00f;
-                y = 0.35f;
-            }
             if (GameController.location == "Viridian Forest")
             {
                 x = 0.00f;
                 y = 0.35f;
             }
-
+            if (GameController.location == "Route 22")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
 
             var s = Resources.Load<Sprite>("Images/PokemonImages/" + (playerUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + playerUnit.pokemon.name);
             sprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
@@ -2439,6 +2438,11 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
+            if (GameController.location == "Route 22")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
         }
 
@@ -2464,6 +2468,11 @@ namespace Pokemon
             {
                 x = 0.00f;
                 y = 0.35f;
+            }
+            if (GameController.location == "Route 22")
+            {
+                x = 0.00f;
+                y = 0.45f;
             }
             var s = Resources.Load<Sprite>("Images/PokemonImages/" + (enemyUnit.pokemon.dexnum).ToString().PadLeft(3, '0') + enemyUnit.pokemon.name + "2");
             sprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
@@ -2507,6 +2516,16 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.35f;
             }
+            if (GameController.location == "Route 22")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
+            if (GameController.location == "Route 22")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
 
             var s = Resources.Load<Sprite>("Attack_Animations/Pokeball_Left/Pokeball_Left_000");
             enemySprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
@@ -2539,16 +2558,6 @@ namespace Pokemon
                 x = 1.24f;
                 y = 1.175f;
             }
-            if (GameController.opponentType == "Rival" && isPlayer)
-            {
-                x = -0.25f;
-                y = 0.50f;
-            }
-            if (GameController.opponentType == "Rival" && !isPlayer)
-            {
-                x = 1.24f;
-                y = 1.175f;
-            }
             if (GameController.location == "Viridian Forest" && isPlayer)
             {
                 x = -0.25f;
@@ -2559,6 +2568,17 @@ namespace Pokemon
                 x = 1.24f;
                 y = 1.175f;
             }
+            if (GameController.location == "Route 22" && isPlayer)
+            {
+                x = 1.25f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Route 22" && !isPlayer)
+            {
+                x = 0.00f;
+                y = 0.65f;
+            }
+
 
             var sprites = Resources.LoadAll<Sprite>(path);
             foreach (var sprite in sprites)
@@ -2593,6 +2613,16 @@ namespace Pokemon
                 y = 1.125f;
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Viridian Forest")
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Route 22")
             {
                 x = 1.24f;
                 y = 1.175f;
@@ -2682,16 +2712,6 @@ namespace Pokemon
                 x = -0.25f;
                 y = 0.65f;
             }
-            if (GameController.opponentType == "Rival" && isPlayer)
-            {
-                x = 1.24f;
-                y = 1.175f;
-            }
-            if (GameController.opponentType == "Rival" && !isPlayer)
-            {
-                x = -0.25f;
-                y = 0.50f;
-            }
             if (GameController.location == "Viridian Forest" && isPlayer)
             {
                 x = 1.24f;
@@ -2701,6 +2721,16 @@ namespace Pokemon
             {
                 x = -0.25f;
                 y = 0.50f;
+            }
+            if (GameController.location == "Route 22" && isPlayer)
+            {
+                x = 1.25f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Route 22" && !isPlayer)
+            {
+                x = 0.00f;
+                y = 0.65f;
             }
 
             var sprites = Resources.LoadAll<Sprite>(path);
