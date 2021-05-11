@@ -2374,6 +2374,11 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.45f;
             }
+            if (GameController.location == "Gym")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
             //spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, Mathf.SmoothStep(255, 0, 2.0f));
         }
@@ -2402,6 +2407,11 @@ namespace Pokemon
                 y = 0.45f;
             }
             if (GameController.location == "Route 2")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
+            if (GameController.location == "Gym")
             {
                 x = 0.00f;
                 y = 0.45f;
@@ -2458,6 +2468,11 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.45f;
             }
+            if (GameController.location == "Gym")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
             spriteRenderer.sprite = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
         }
 
@@ -2490,6 +2505,11 @@ namespace Pokemon
                 y = 0.45f;
             }
             if (GameController.location == "Route 2")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
+            if (GameController.location == "Gym")
             {
                 x = 0.00f;
                 y = 0.45f;
@@ -2533,6 +2553,11 @@ namespace Pokemon
                 y = 0.45f;
             }
             if (GameController.location == "Route 2")
+            {
+                x = 0.00f;
+                y = 0.45f;
+            }
+            if (GameController.location == "Gym")
             {
                 x = 0.00f;
                 y = 0.45f;
@@ -2599,6 +2624,16 @@ namespace Pokemon
                 x = 0.00f;
                 y = 0.65f;
             }
+            if (GameController.location == "Gym" && isPlayer)
+            {
+                x = 1.25f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Gym" && !isPlayer)
+            {
+                x = 0.00f;
+                y = 0.65f;
+            }
 
             var sprites = Resources.LoadAll<Sprite>(path);
             foreach (var sprite in sprites)
@@ -2648,6 +2683,11 @@ namespace Pokemon
                 y = 1.175f;
             }
             if (GameController.location == "Route 2")
+            {
+                x = 1.24f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Gym")
             {
                 x = 1.24f;
                 y = 1.175f;
@@ -2763,6 +2803,16 @@ namespace Pokemon
                 y = 1.175f;
             }
             if (GameController.location == "Route 2" && !isPlayer)
+            {
+                x = 0.00f;
+                y = 0.65f;
+            }
+            if (GameController.location == "Gym" && isPlayer)
+            {
+                x = 1.25f;
+                y = 1.175f;
+            }
+            if (GameController.location == "Gym" && !isPlayer)
             {
                 x = 0.00f;
                 y = 0.65f;
