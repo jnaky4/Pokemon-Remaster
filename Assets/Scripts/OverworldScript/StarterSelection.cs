@@ -8,7 +8,6 @@ namespace Pokemon
     public class StarterSelection : MonoBehaviour, Interactable
     {
         [SerializeField] Dialog dialog;
-        [SerializeField] new string name;
         [SerializeField] int dexNum;
         [SerializeField] GameObject buttons;
         [SerializeField] GameObject dialogBox;
