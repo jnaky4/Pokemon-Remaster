@@ -21,7 +21,7 @@ PokedexNum,Pokemon_Name,Type1,Type2,Stage,Evolve_Level,Gender_Ratio,Height,Weigh
 20,Raticate,Normal,-,Final,-1,1:01,0.7,18.5,It uses its whiskers to maintain its balance. It apparently slows down if they are cut off.,Mouse  ,0.8,145,127
 21,Spearow,Normal,Flying,Basic,20,1:01,0.3,2,Eats bugs in grassy areas. It has to flap its short wings at high speed to stay airborne.,Tiny Bird  ,0.8,52,255
 22,Fearow,Normal,Flying,Final,-1,1:01,1.2,38,"With its huge and magnificent wings, it can keep aloft without ever having to land for rest.",Beak  ,0.8,155,90
-23,Ekans,Poison,-,Basic,22,1:01,2,6.9,"Moves silently and stealthily. Eats the eggs of birds, such as PIDGEY and SPEAROW, whole.",Snake  ,0.8,58,255
+23,Ekans,Poison,-,Basic,20,1:01,2,6.9,"Moves silently and stealthily. Eats the eggs of birds, such as PIDGEY and SPEAROW, whole.",Snake  ,0.8,58,255
 24,Arbok,Poison,-,Final,-1,1:01,3.5,65,It is rumored that the ferocious warning markings on its belly differ from area to area.,Cobra  ,0.8,157,90
 25,Pikachu,Electric,-,Basic,-1,1:01,0.4,6,"When several of these POKÈMON gather, their electricity could build and cause lightning storms.",Mouse  ,0.8,112,190
 26,Raichu,Electric,Electric,Final,-1,1:01,0.8,66.1,Its long tail serves as a ground to protect itself from its own high voltage power.,Mouse  ,0.8,243,75

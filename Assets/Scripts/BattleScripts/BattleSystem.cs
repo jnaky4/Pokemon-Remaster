@@ -3035,7 +3035,7 @@ namespace Pokemon
                 {
                     dialogueText.text = "Your Pokemon will wait on evolving for now.";
                 }
-                wantsToEvolve = false;
+                //wantsToEvolve = false;
             }
         }
 

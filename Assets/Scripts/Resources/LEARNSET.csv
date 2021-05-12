@@ -87,7 +87,7 @@ dexnum,lvl,move,type
 10,1,Tackle,Normal
 11,1,Harden,Normal
 12,1,Confusion,Psychic
-12,12,Confusion,Psychic
+12,10,Confusion,Psychic
 12,15,Poison Powder,Poison
 12,16,Stun Spore,Grass
 12,17,Sleep Powder,Grass
@@ -96,11 +96,17 @@ dexnum,lvl,move,type
 12,32,Psybeam,Psychic
 13,1,String Shot,Bug
 13,1,Poison Sting,Poison
+14,1,String Shot,Bug
+14,1,Poison Sting,Poison
 14,1,Harden,Normal
+14,10,Twineedle,Bug
+15,1,String Shot,Bug
+15,1,Poison Sting,Poison
+15,1,Harden,Normal
 15,1,Fury Attack,Normal
+15,10,Twineedle,Bug
 15,12,Fury Attack,Normal
 15,16,Focus Energy,Normal
-15,20,Twineedle,Bug
 15,25,Rage,Normal
 15,30,Pin Missile,Bug
 15,35,Agility,Psychic
@@ -131,14 +137,14 @@ dexnum,lvl,move,type
 19,1,Tackle,Normal
 19,1,Tail Whip,Normal
 19,7,Quick Attack,Normal
-19,14,Hyper Fang,Normal
+19,14,Bite,Normal
 19,23,Focus Energy,Normal
 19,34,Super Fang,Normal
 20,1,Quick Attack,Normal
 20,1,Tackle,Normal
 20,1,Tail Whip,Normal
 20,7,Quick Attack,Normal
-20,14,Hyper Fang,Normal
+20,14,Bite,Normal
 20,27,Focus Energy,Normal
 20,41,Super Fang,Normal
 21,1,Peck,Flying
