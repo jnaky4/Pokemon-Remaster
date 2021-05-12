@@ -417,7 +417,7 @@ namespace Pokemon
                     foreach (Moves current_move in this.currentMoves)
                     {
                         //currentMoves indexes can be null if they dont have a move
-                        if(current_move != null)
+                        if (current_move != null)
                         {
                             //if any of the current moves has the same name as the learnable then the pokemon has the move
                             if (current_move.name == check_move.name) has_move = true;
@@ -524,7 +524,7 @@ namespace Pokemon
             return exp_gained;
         }
 
-        public Pokemon ask_to_evolve()
+/*        public Pokemon ask_to_evolve()
         {
             if (want_to_evolve)
             {
@@ -562,18 +562,48 @@ namespace Pokemon
             this.change_sp_attack = evolved_pokemon.max_sp_attack - change_sp_attack;
             this.change_sp_defense = evolved_pokemon.max_sp_defense - change_sp_defense;
 
-/*            Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
-            Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
-            Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
-            Debug.Log("Your Pokemon Gained " + change_defense + " DFN!");
-            Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
-            Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
-            Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*/
+            *//*            Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
+                        Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
+                        Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
+                        Debug.Log("Your Pokemon Gained " + change_defense + " DFN!");
+                        Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
+                        Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
+                        Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*//*
 
             return evolved_pokemon;
 
 
-        }
+        }*/
+        public void evolve()
+        {
+            //save old stats
+            this.change_hp = max_hp;
+            this.change_attack = max_attack;
+            this.change_defense = max_defense;
+            this.change_speed = max_speed;
+            this.change_sp_attack = max_sp_attack;
+            this.change_sp_defense = max_sp_defense;
 
+            Pokemon evolved_pokemon = new Pokemon(this.dexnum + 1, this.level);
+
+
+            this.dexnum = evolved_pokemon.dexnum;
+            this.name = evolved_pokemon.name;
+            this.calculate_stats(this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed);
+
+            this.image1 = evolved_pokemon.image1;
+            this.image2 = evolved_pokemon.image2;
+
+            this.want_to_evolve = false;
+
+            //update change to new stats
+            this.change_hp = evolved_pokemon.max_hp - change_hp;
+            this.change_attack = evolved_pokemon.max_attack - change_attack;
+            this.change_defense = evolved_pokemon.max_defense - change_defense;
+            this.change_speed = evolved_pokemon.max_speed - change_speed;
+            this.change_sp_attack = evolved_pokemon.max_sp_attack - change_sp_attack;
+            this.change_sp_defense = evolved_pokemon.max_sp_defense - change_sp_defense;
+
+        }
     }
 }

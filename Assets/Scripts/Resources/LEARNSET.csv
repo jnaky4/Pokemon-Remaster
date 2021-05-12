@@ -85,8 +85,13 @@ dexnum,lvl,move,type
 9,52,Hydro Pump,Water
 10,1,String Shot,Bug
 10,1,Tackle,Normal
+11,1,String Shot,Bug
+11,1,Tackle,Normal
 11,1,Harden,Normal
-12,1,Confusion,Psychic
+11,10,Confusion,Psychic
+12,1,String Shot,Bug
+12,1,Tackle,Normal
+12,1,Harden,Normal
 12,10,Confusion,Psychic
 12,15,Poison Powder,Poison
 12,16,Stun Spore,Grass

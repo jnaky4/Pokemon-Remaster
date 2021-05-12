@@ -3011,6 +3011,7 @@ namespace Pokemon
 
         public IEnumerator Evolve(Pokemon poke, int i)
         {
+            
             if (poke.time_to_evolve && poke.current_hp > 0)
             {
                 dialogueText.text = poke.name + " is trying to evolve!";
@@ -3024,18 +3025,22 @@ namespace Pokemon
                 //poke = playerUnit.pokemon;
                 Debug.Log(poke.want_to_evolve.ToString());
                 poke.want_to_evolve = wantsToEvolve;
-                Pokemon p = poke.ask_to_evolve();
+                //Pokemon p = poke.ask_to_evolve();
                 if (wantsToEvolve)
                 {
-                    dialogueText.text = "Your Pokemon evolved into a " + p.name + "!!";
-                    p.want_to_evolve = false;
-                    GameController.playerPokemon[i] = p;
+
+                    //Pokemon p = poke.evolve_pokemon();
+                    GameController.playerPokemon[i].evolve();
+                    dialogueText.text = "Your Pokemon evolved into a " + GameController.playerPokemon[i].name + "!!";
+                    GameController.playerPokemon[i].want_to_evolve = false;
+                    //p.want_to_evolve = false;
+                    
                 }
                 else
                 {
                     dialogueText.text = "Your Pokemon will wait on evolving for now.";
                 }
-                //wantsToEvolve = false;
+                wantsToEvolve = false;
             }
         }
 
