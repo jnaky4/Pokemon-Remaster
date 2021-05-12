@@ -22,7 +22,8 @@ namespace Pokemon
                 dialog.Lines[0] = "The professor said he had a pokemon for you in his lab.";
                 dialog.Lines[1] = "Make sure you visit him before you try to leave town!";
             }
-            character.LookTowards(initial.position);
+            if (character != null)
+                character.LookTowards(initial.position);
             StartCoroutine(DialogController.Instance.ShowDialog(dialog, false, () =>
             {
                 Heal();
