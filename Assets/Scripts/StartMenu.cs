@@ -41,6 +41,7 @@ namespace Pokemon
             GameController.player.name = "Red";
             GameController.location = "Pallet Town";
             GameController.scene = "Pallet Town";
+            GameController.starterChosen = false;
 
             /*
             playerPosition.initialValue.x = 3.5f;
