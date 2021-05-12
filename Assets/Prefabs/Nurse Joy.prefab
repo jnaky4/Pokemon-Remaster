@@ -71,8 +71,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -416488339
-  m_SortingLayer: 1
+  m_SortingLayerID: -1969628089
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -2582308126677212058, guid: f456b42b8e7ed13468d971f7d234614c,
     type: 3}
@@ -148,4 +148,3 @@ MonoBehaviour:
   dialog:
     lines:
     - Let me heal your Pokemon for you.
-  name: Nurse Joy
