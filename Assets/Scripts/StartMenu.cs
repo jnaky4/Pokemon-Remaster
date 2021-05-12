@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -79,6 +80,8 @@ namespace Pokemon
                 GameController.location = PlayerPrefs.GetString("Location");
                 GameController.scene = PlayerPrefs.GetString("Scene");
 
+                GameController.starterChosen = Convert.ToBoolean(PlayerPrefs.GetInt("HasStarter"));
+                GameController.player.starter = PlayerPrefs.GetInt("Starter");
 
                 playerPosition.initialValue.x = PlayerPrefs.GetFloat("X");
                 playerPosition.initialValue.y = PlayerPrefs.GetFloat("Y");
