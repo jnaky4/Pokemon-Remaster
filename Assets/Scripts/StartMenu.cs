@@ -110,6 +110,17 @@ namespace Pokemon
                         GameController.playerPokemon[i] = new Pokemon(dex, level, move1, move2, move3, move4, exp, hp);
                     }
                 }
+
+                if (PlayerPrefs.GetInt("BadgeRock") == 1) GameController.badges_completed.Add("Rock", 1);
+                if (PlayerPrefs.GetInt("BadgeWater") == 1) GameController.badges_completed.Add("Water", 1);
+                if (PlayerPrefs.GetInt("BadgeElectric") == 1) GameController.badges_completed.Add("Electric", 1);
+                if (PlayerPrefs.GetInt("BadgeGrass") == 1) GameController.badges_completed.Add("Grass", 1);
+                if (PlayerPrefs.GetInt("BadgePoison") == 1) GameController.badges_completed.Add("Poison", 1);
+                if (PlayerPrefs.GetInt("BadgePsychic") == 1) GameController.badges_completed.Add("Psychic", 1);
+                if (PlayerPrefs.GetInt("BadgeFire") == 1) GameController.badges_completed.Add("Fire", 1);
+                if (PlayerPrefs.GetInt("BadgeGround") == 1) GameController.badges_completed.Add("Ground", 1);
+                GameController.update_level_cap();
+
                 SceneManager.LoadSceneAsync(GameController.scene);
             }
         }
