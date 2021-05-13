@@ -118,7 +118,7 @@ namespace Pokemon
             SetImages();
             SetPokemon();
         }
-
+     
         private void SetPokemon()
         {
             var x = 0;
