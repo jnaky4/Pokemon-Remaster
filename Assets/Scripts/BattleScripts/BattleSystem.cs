@@ -2620,13 +2620,13 @@ namespace Pokemon
             }
             if (GameController.location == "Route 2" && isPlayer)
             {
-                x = 1.25f;
-                y = 1.175f;
+                x = 0.00f;
+                y = 0.00f;
             }
             if (GameController.location == "Route 2" && !isPlayer)
             {
-                x = 0.00f;
-                y = 0.65f;
+                x = 1.50f;
+                y = 1.50f;
             }
             if (GameController.location == "Gym" && isPlayer)
             {
@@ -3015,7 +3015,7 @@ namespace Pokemon
 
         public IEnumerator Evolve(Pokemon poke, int i)
         {
-            
+
             if (poke.time_to_evolve && poke.current_hp > 0)
             {
                 dialogueText.text = poke.name + " is trying to evolve!";
@@ -3038,7 +3038,7 @@ namespace Pokemon
                     dialogueText.text = "Your Pokemon evolved into a " + GameController.playerPokemon[i].name + "!!";
                     GameController.playerPokemon[i].want_to_evolve = false;
                     //p.want_to_evolve = false;
-                    
+
                 }
                 else
                 {
