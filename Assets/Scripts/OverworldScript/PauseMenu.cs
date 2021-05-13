@@ -382,6 +382,7 @@ namespace Pokemon
             PlayerPrefs.SetInt("HasStarter", Convert.ToInt32(GameController.starterChosen));
             PlayerPrefs.SetInt("Starter", GameController.player.starter);
 
+
             for (int i = 0; i < 6; i++)
             {
                 if (GameController.playerPokemon[i] != null)
