@@ -605,5 +605,28 @@ namespace Pokemon
             this.change_sp_defense = evolved_pokemon.max_sp_defense - change_sp_defense;
 
         }
+        //TODO help function to reset stats
+        public void reset_battle_stats()
+        {
+            //Reset all stages
+            this.attack_stage = 0;
+            this.defense_stage = 0;
+            this.sp_attack_stage = 0;
+            this.sp_defense_stage = 0;
+            this.speed_stage = 0;
+            this.accuracy_stage = 0;
+            this.evasion_stage = 0;
+
+            //Every current Stat but HP is reset
+            this.current_attack = this.max_attack;
+            this.current_defense = this.max_defense;
+            this.current_sp_attack = this.max_sp_attack;
+            this.current_sp_defense = this.max_sp_defense;
+            this.current_speed = Status.SeeIfParalyzed(this) ? this.current_speed : this.max_speed;
+
+            this.current_accuracy = 1;
+            this.current_evasion = 1;
+        }
     }
+
 }

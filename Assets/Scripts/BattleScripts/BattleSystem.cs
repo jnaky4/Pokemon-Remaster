@@ -147,6 +147,7 @@ namespace Pokemon
         private int phaseOpponentSprite = 0;
 
         private bool wantsToEvolve;
+
         #endregion Declaration of variables
 
         /**********************************************************************************************************************************************
@@ -353,6 +354,7 @@ namespace Pokemon
             {
                 if (GameController.playerPokemon[i].current_hp > 0)
                 {
+                    activePokemon = i;
                     playerUnit.pokemon = GameController.playerPokemon[i];
                     break;
                 }
@@ -1867,12 +1869,14 @@ namespace Pokemon
                 dialogueText.text = "What the fuck just happened";
             }
             yield return new WaitWhile(() => !Input.GetKeyDown(KeyCode.Space));
+
             GameController.playerPokemon[activePokemon] = playerUnit.pokemon; //Places your active pokemon back in the array - this is so its stats gets updated.
-            for (int i = 0; i < 5; i++) //Resets the stages and attacks of all of your pokemon.
+            for (int i = 0; i < 6; i++) //Resets the stages and attacks of all of your pokemon.
             {
                 if (GameController.playerPokemon[i] != null)
                 {
-                    GameController.playerPokemon[i].critical_stage = 0;
+                    GameController.playerPokemon[i].reset_battle_stats();
+/*                    GameController.playerPokemon[i].critical_stage = 0;
                     GameController.playerPokemon[i].attack_stage = 0;
                     GameController.playerPokemon[i].defense_stage = 0;
                     GameController.playerPokemon[i].sp_attack_stage = 0;
@@ -1887,7 +1891,7 @@ namespace Pokemon
                     if (!Status.SeeIfParalyzed(GameController.playerPokemon[i])) GameController.playerPokemon[i].current_speed = GameController.playerPokemon[i].max_speed;
                     else GameController.playerPokemon[i].current_speed = (int)(GameController.playerPokemon[i].max_speed * 0.5);
                     GameController.playerPokemon[i].current_accuracy = 1;
-                    GameController.playerPokemon[i].current_evasion = 1;
+                    GameController.playerPokemon[i].current_evasion = 1;*/
                     GameController.player.pokeBalls = player.numPokeBalls;
                     GameController.player.greatBalls = player.numGreatBalls;
                     GameController.player.ultraBalls = player.numUltraBalls;
