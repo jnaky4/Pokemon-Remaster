@@ -56,6 +56,13 @@ namespace Pokemon
         public Dropdown pokeDrop5;
         public Dropdown pokeDrop6;
 
+        public Image pokeColor1;
+        public Image pokeColor2;
+        public Image pokeColor3;
+        public Image pokeColor4;
+        public Image pokeColor5;
+        public Image pokeColor6;
+
         public GameObject releaseUI;
         public Text releaseText;
         private int releaseNumber = 7;
@@ -118,7 +125,7 @@ namespace Pokemon
             SetImages();
             SetPokemon();
         }
-     
+
         private void SetPokemon()
         {
             var x = 0;
@@ -129,9 +136,7 @@ namespace Pokemon
                 pokeCanvas1.SetActive(true);
                 pokeImage1.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name);
                 pokeName1.text = "" + GameController.playerPokemon[0].name + ", Level " + GameController.playerPokemon[0].level + "\nHP: " + GameController.playerPokemon[0].current_hp + "/" + GameController.playerPokemon[0].max_hp;
-/*                Color c = BattleHUD.forget3overlay.GetComponent<Image>().color;
-                c = BattleHUD.GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
-                BattleHUD.forget3overlay.GetComponent<Image>().color = c;*/
+                pokeColor1.color = GetColorOfMove(GameController.playerPokemon[0].type1.type);
             }
             else pokeCanvas1.SetActive(false);
 
@@ -141,6 +146,7 @@ namespace Pokemon
                 pokeCanvas2.SetActive(true);
                 pokeImage2.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[1].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[1].name);
                 pokeName2.text = "" + GameController.playerPokemon[1].name + ", Level " + GameController.playerPokemon[1].level + "\nHP: " + GameController.playerPokemon[1].current_hp + "/" + GameController.playerPokemon[1].max_hp;
+                pokeColor2.color = GetColorOfMove(GameController.playerPokemon[1].type1.type);
             }
             else pokeCanvas2.SetActive(false);
             if (GameController.playerPokemon[2] != null)
@@ -149,6 +155,7 @@ namespace Pokemon
                 pokeCanvas3.SetActive(true);
                 pokeImage3.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[2].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[2].name);
                 pokeName3.text = "" + GameController.playerPokemon[2].name + ", Level " + GameController.playerPokemon[2].level + "\nHP: " + GameController.playerPokemon[2].current_hp + "/" + GameController.playerPokemon[2].max_hp;
+                pokeColor3.color = GetColorOfMove(GameController.playerPokemon[2].type1.type);
             }
             else pokeCanvas3.SetActive(false);
             if (GameController.playerPokemon[3] != null)
@@ -157,6 +164,7 @@ namespace Pokemon
                 pokeCanvas4.SetActive(true);
                 pokeImage4.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[3].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[3].name);
                 pokeName4.text = "" + GameController.playerPokemon[3].name + ", Level " + GameController.playerPokemon[3].level + "\nHP: " + GameController.playerPokemon[3].current_hp + "/" + GameController.playerPokemon[3].max_hp;
+                pokeColor4.color = GetColorOfMove(GameController.playerPokemon[3].type1.type);
             }
             else pokeCanvas4.SetActive(false);
             if (GameController.playerPokemon[4] != null)
@@ -165,6 +173,7 @@ namespace Pokemon
                 pokeCanvas5.SetActive(true);
                 pokeImage5.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[4].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[4].name);
                 pokeName5.text = "" + GameController.playerPokemon[4].name + ", Level " + GameController.playerPokemon[4].level + "\nHP: " + GameController.playerPokemon[4].current_hp + "/" + GameController.playerPokemon[4].max_hp;
+                pokeColor5.color = GetColorOfMove(GameController.playerPokemon[4].type1.type);
             }
             else pokeCanvas5.SetActive(false);
             if (GameController.playerPokemon[5] != null)
@@ -173,6 +182,7 @@ namespace Pokemon
                 pokeCanvas6.SetActive(true);
                 pokeImage6.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[5].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[5].name);
                 pokeName6.text = "" + GameController.playerPokemon[5].name + ", Level " + GameController.playerPokemon[5].level + "\nHP: " + GameController.playerPokemon[5].current_hp + "/" + GameController.playerPokemon[5].max_hp;
+                pokeColor6.color = GetColorOfMove(GameController.playerPokemon[5].type1.type);
             }
             else pokeCanvas6.SetActive(false);
 
@@ -523,6 +533,174 @@ namespace Pokemon
         {
             Debug.Log("Quitting Game");
             Application.Quit();
+        }
+
+        private Color GetColorOfMove(string type)
+        {
+            Color color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
+            switch (type)
+            {
+                case "Normal":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Fire":
+                    color = new Color(255f / 255f, 152f / 255f, 56f / 255f, 1);
+                    break;
+
+                case "Water":
+                    color = new Color(58f / 255f, 176f / 255f, 232f / 255f, 1);
+                    break;
+
+                case "Electric":
+                    color = new Color(246f / 255f, 216f / 255f, 48f / 255f, 1);
+                    break;
+
+                case "Grass":
+                    color = new Color(64f / 255f, 208f / 255f, 112f / 255f, 1);
+                    break;
+
+                case "Ice":
+                    color = new Color(98f / 255f, 204f / 255f, 212f / 255f, 1);
+                    break;
+
+                case "Fighting":
+                    color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
+                    break;
+
+                case "Poison":
+                    color = new Color(188f / 255f, 82f / 255f, 232f / 255f, 1);
+                    break;
+
+                case "Ground":
+                    color = new Color(232f / 255f, 130f / 255f, 68f / 255f, 1);
+                    break;
+
+                case "Flying":
+                    color = new Color(80f / 255f, 124f / 255f, 212f / 255f, 1);
+                    break;
+
+                case "Psychic":
+                    color = new Color(255f / 255f, 136f / 255f, 130f / 255f, 1);
+                    break;
+
+                case "Bug":
+                    color = new Color(153f / 255f, 204f / 255f, 51f / 255f, 1);
+                    break;
+
+                case "Rock":
+                    color = new Color(196f / 255f, 174f / 255f, 112f / 255f, 1);
+                    break;
+
+                case "Ghost":
+                    color = new Color(94f / 255f, 100f / 255f, 208f / 255f, 1);
+                    break;
+
+                case "Dragon":
+                    color = new Color(80f / 255f, 136f / 255f, 188f / 255f, 1);
+                    break;
+
+                case "Dark":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Steel":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Fairy":
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+
+                default:
+                    color = new Color(146f / 255f, 154f / 255f, 156f / 255f, 1);
+                    break;
+            }
+            return color;
+        }
+
+        private Color GetDarkColorOfMove(string type)
+        {
+            Color color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+            switch (type)
+            {
+                case "Normal":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+
+                case "Fire":
+                    color = new Color(156f / 255f, 83f / 255f, 31f / 255f, 1);
+                    break;
+
+                case "Water":
+                    color = new Color(68f / 255f, 94f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Electric":
+                    color = new Color(161f / 255f, 135f / 255f, 31f / 255f, 1);
+                    break;
+
+                case "Grass":
+                    color = new Color(78f / 255f, 130f / 255f, 52f / 255f, 1);
+                    break;
+
+                case "Ice":
+                    color = new Color(99f / 255f, 141f / 255f, 141f / 255f, 1);
+                    break;
+
+                case "Fighting":
+                    color = new Color(125f / 255f, 31f / 255f, 26f / 255f, 1);
+                    break;
+
+                case "Poison":
+                    color = new Color(104f / 255f, 42f / 255f, 104f / 255f, 1);
+                    break;
+
+                case "Ground":
+                    color = new Color(146f / 255f, 125f / 255f, 68f / 255f, 1);
+                    break;
+
+                case "Flying":
+                    color = new Color(109f / 255f, 94f / 255f, 156f / 255f, 1);
+                    break;
+
+                case "Psychic":
+                    color = new Color(161f / 255f, 57f / 255f, 89f / 255f, 1);
+                    break;
+
+                case "Bug":
+                    color = new Color(109f / 255f, 120f / 255f, 21f / 255f, 1);
+                    break;
+
+                case "Rock":
+                    color = new Color(120f / 255f, 104f / 255f, 36f / 255f, 1);
+                    break;
+
+                case "Ghost":
+                    color = new Color(73f / 255f, 57f / 255f, 99f / 255f, 1);
+                    break;
+
+                case "Dragon":
+                    color = new Color(73f / 255f, 36f / 255f, 161f / 255f, 1);
+                    break;
+
+                case "Dark":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+
+                case "Steel":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+
+                case "Fairy":
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+
+                default:
+                    color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+                    break;
+            }
+            return color;
         }
     }
 }

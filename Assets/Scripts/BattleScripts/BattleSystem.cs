@@ -2620,8 +2620,8 @@ namespace Pokemon
             }
             if (GameController.location == "Route 2" && isPlayer)
             {
-                x = 0.00f;
-                y = 0.00f;
+                x = 2.75f;
+                y = 2.025f;
             }
             if (GameController.location == "Route 2" && !isPlayer)
             {
