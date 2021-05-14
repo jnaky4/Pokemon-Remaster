@@ -129,6 +129,9 @@ namespace Pokemon
                 pokeCanvas1.SetActive(true);
                 pokeImage1.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name);
                 pokeName1.text = "" + GameController.playerPokemon[0].name + ", Level " + GameController.playerPokemon[0].level + "\nHP: " + GameController.playerPokemon[0].current_hp + "/" + GameController.playerPokemon[0].max_hp;
+/*                Color c = BattleHUD.forget3overlay.GetComponent<Image>().color;
+                c = BattleHUD.GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                BattleHUD.forget3overlay.GetComponent<Image>().color = c;*/
             }
             else pokeCanvas1.SetActive(false);
 
