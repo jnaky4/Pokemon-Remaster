@@ -305,7 +305,7 @@ dexnum,lvl,move,type
 43,24,Acid,Poison
 43,33,Petal Dance,Grass
 43,46,Solar Beam,Grass
-44,1,Absorb,Grass
+44,1,Razor Leaf,Grass
 44,1,Stun Spore,Grass
 44,1,Poison Powder,Poison
 44,15,Poison Powder,Poison
@@ -335,7 +335,7 @@ dexnum,lvl,move,type
 47,30,Spore,Grass
 47,39,Slash,Normal
 47,48,Growth,Normal
-48,1,Disable,Normal
+48,1,Sleep Powder,Grass
 48,1,Tackle,Normal
 48,24,Poison Powder,Poison
 48,27,Leech Life,Bug

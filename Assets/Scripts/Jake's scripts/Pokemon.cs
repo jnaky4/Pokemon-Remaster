@@ -67,6 +67,7 @@ namespace Pokemon
             //grab name from pokedex
             this.name = pokedex_entry.name;
 
+            
             //set exp for new pokemon, default 0,
             this.lvl_speed = pokedex_entry.leveling_speed;
             this.current_exp = current_exp;
@@ -84,6 +85,7 @@ namespace Pokemon
             {
                 this.current_exp = this.base_lvl_exp;
             }
+
 
             //get learnset added to learnset_dictionary for this pokemon
             this.learnset = Learnset.get_learnset(this.dexnum);
@@ -295,7 +297,9 @@ namespace Pokemon
             speed_stage = 0;
             accuracy_stage = 0;
             evasion_stage = 0;
+
         }
+
 
         public void calculate_stats(int current_hp = 0, int current_attack = 0, int current_special_attack = 0, int current_defense = 0, int current_special_defense = 0, int current_speed = 0)
         {
@@ -586,6 +590,12 @@ namespace Pokemon
 
             Pokemon evolved_pokemon = new Pokemon(this.dexnum + 1, this.level);
 
+            //update pokemon data 
+            this.learnset = evolved_pokemon.learnset;
+            this.pokedex_entry = evolved_pokemon.pokedex_entry;
+            this.learnset = evolved_pokemon.learnset;
+            this.type1 = evolved_pokemon.type1;
+            this.type2 = evolved_pokemon.type2;
 
             this.dexnum = evolved_pokemon.dexnum;
             this.name = evolved_pokemon.name;
@@ -616,6 +626,7 @@ namespace Pokemon
             this.speed_stage = 0;
             this.accuracy_stage = 0;
             this.evasion_stage = 0;
+
 
             //Every current Stat but HP is reset
             this.current_attack = this.max_attack;
