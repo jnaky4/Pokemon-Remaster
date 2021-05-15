@@ -73,7 +73,7 @@ PokedexNum,Pokemon_Name,Type1,Type2,Stage,Evolve_Level,Gender_Ratio,Height,Weigh
 72,Tentacool,Water,Poison,Basic,30,1:01,0.9,45.5,Drifts in shallow seas. Anglers who hook them by accident are often punished by its stinging acid.,Jellyfish  ,1.2,67,190
 73,Tentacruel,Water,Poison,Final,-1,1:01,1.6,55,"The tentacles are normally kept short. On hunts, they are extended to ensnare and immobilize prey.",Jellyfish  ,1.2,180,60
 74,Geodude,Rock,Ground,Basic,25,1:01,0.4,20,"Found in fields and mountains. Mistaking them for boulders, people often step or trip on them.",Rock  ,1,60,255
-75,Graveler,Rock,Ground,Intermediate,36,1:01,1,105,Rolls down slopes to move. It rolls over any obstacle without slowing or changing its direction.,Rock  ,1,137,120
+75,Graveler,Rock,Ground,Intermediate,35,1:01,1,105,Rolls down slopes to move. It rolls over any obstacle without slowing or changing its direction.,Rock  ,1,137,120
 76,Golem,Rock,Ground,Final,-1,1:01,1.4,300,Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without damage.,Megaton  ,1,248,45
 77,Ponyta,Fire,-,Basic,40,1:01,1,30,Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time.,Fire Horse  ,1,82,190
 78,Rapidash,Fire,-,Final,-1,1:01,1.7,95,"Very competitive, this POKÈMON will chase anything that moves fast in the hopes of racing it.",Fire Horse  ,1,175,60

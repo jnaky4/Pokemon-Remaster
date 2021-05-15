@@ -1028,6 +1028,7 @@ dexnum,lvl,move,type
 139,49,Hydro Pump,Water
 140,1,Harden,Normal
 140,1,Scratch,Normal
+140,1,Water Gun,Water
 140,34,Absorb,Grass
 140,39,Slash,Normal
 140,44,Leer,Normal
@@ -1035,6 +1036,7 @@ dexnum,lvl,move,type
 141,1,Absorb,Grass
 141,1,Harden,Normal
 141,1,Scratch,Normal
+141,1,Water Gun,Water
 141,34,Absorb,Grass
 141,39,Slash,Normal
 141,46,Leer,Normal
