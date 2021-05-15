@@ -47,7 +47,7 @@ namespace Pokemon
                     //starter.pokemon = new Pokemon(4, 19, "Poison Gas", "Ember", "Tail Whip", "Bite", 7900);
                     break;
                 case 7:
-                    starter.pokemon = new Pokemon(7, 5, "Tackle", "Tail Whip");
+                    starter.pokemon = new Pokemon(7, 9, "Tackle", "Tail Whip", "Bubble", null, 990);
                     //starter.pokemon = new Pokemon(7, 19, "Water Gun", "Bubble", "Leer", "Crabhammer", 7900);
                     break;
                     

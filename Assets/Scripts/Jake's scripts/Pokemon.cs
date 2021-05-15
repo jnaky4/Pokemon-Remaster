@@ -414,27 +414,31 @@ namespace Pokemon
                 //if the learnables moves level to learn is equal to the pokemons new level, it can learn it
                 if (this.level == available_move.level)
                 {
-                    bool has_move = false;
 
-                    Moves check_move = available_move.move;
                     //check if pokemon already has the move
-                    foreach (Moves current_move in this.currentMoves)
-                    {
-                        //currentMoves indexes can be null if they dont have a move
-                        if (current_move != null)
-                        {
-                            //if any of the current moves has the same name as the learnable then the pokemon has the move
-                            if (current_move.name == check_move.name) has_move = true;
-                        }
+                    bool has_move = have_move(available_move.move);
 
-                    }
+                    //Moves check_move = available_move.move;
+
+                    //check if pokemon already has the move
+                    /*                    foreach (Moves current_move in this.currentMoves)
+                                        {
+                                            //currentMoves indexes can be null if they dont have a move
+                                            if (current_move != null)
+                                            {
+                                                //if any of the current moves has the same name as the learnable then the pokemon has the move
+                                                if (current_move.name == check_move.name) has_move = true;
+                                            }
+
+                                        }*/
+
                     //if the pokemon doesnt have the move then the move returned is the move, otherwise null
-                    if (!has_move) this.learned_move = check_move;
+                    if (!has_move) this.learned_move = available_move.move;
 
                     //if the available learned move is already learned check to ugrade a move
                     else if (upgrade_move() != null)this.learned_move = upgrade_move(); 
                     
-                    //TODO ADD Upgrade move
+                    
                    
 
                     return this.learned_move;
@@ -650,7 +654,7 @@ namespace Pokemon
         //Helper function to check_learnset, if a pokemon is at a level where they should have a better move, this returns the upgraded move
         public Moves upgrade_move()
         {
-            
+            Moves Upgraded_move = null;
             foreach (Moves move in this.currentMoves){
 
                 /*
@@ -665,44 +669,70 @@ namespace Pokemon
                  */
                 if(move != null)
                 {
-                    Moves Upgraded_move = null;
+                    
                     switch (move.name)
                     {
                         case "Ember":
                         case "Flame Wheel":
                         case "Flamethrower":
-                            //Upgraded_move = this.level >= 20 ? Moves.get_move("Flame Wheel") : move;
-                            Upgraded_move = this.level >= 38 ? Moves.get_move("Flamethrower") : move;
-                            Upgraded_move = this.level >= 50 ? Moves.get_move("Fire Blast") : move;
+                            //Upgraded_move = this.level >= 20 ? Moves.get_move("Flame Wheel") : Upgraded_move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Flamethrower") : Upgraded_move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Fire Blast") : Upgraded_move;
                             break;
                         case "Bubble":                       
                         case "Water Gun":
                         case "Surf":
-                            Upgraded_move = this.level >= 20 ? Moves.get_move("Water Gun") : move;
-                            Upgraded_move = this.level >= 38 ? Moves.get_move("Surf") : move;
-                            Upgraded_move = this.level >= 50 ? Moves.get_move("Hydro Pump") : move;
+                            Debug.Log("UPGRADED BUBBLE");
+                            Upgraded_move = this.level >= 20 ? Moves.get_move("Water Gun") : Upgraded_move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Surf") : Upgraded_move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Hydro Pump") : Upgraded_move;
                             break;
                         case "Vine Whip":
                         case "Mega Drain":
                         case "Razor Leaf":
-                            Upgraded_move = this.level >= 20 ? Moves.get_move("Vine Whip") : move;
-                            //Upgraded_move = this.level >= 38 ? Moves.get_move("Mega Drain") : move;
-                            Upgraded_move = this.level >= 50 ? Moves.get_move("Razor Leaf") : move;
+                            Upgraded_move = this.level >= 20 ? Moves.get_move("Vine Whip") : Upgraded_move;
+                            //Upgraded_move = this.level >= 38 ? Moves.get_move("Mega Drain") : Upgraded_move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Razor Leaf") : Upgraded_move;
                             break;
                         case "Thunder Shock":
                         case "Volt Switch":
                         case "Thunderbolt":
-                            //Upgraded_move = this.level >= 20 ? Moves.get_move("Volt Switch") : move;
-                            Upgraded_move = this.level >= 38 ? Moves.get_move("Thunderbolt") : move;
-                            Upgraded_move = this.level >= 50 ? Moves.get_move("Thunder") : move;
+                            //Upgraded_move = this.level >= 20 ? Moves.get_move("Volt Switch") : Upgraded_move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Thunderbolt") : Upgraded_move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Thunder") : Upgraded_move;
                             break;
                         default:
                             break;
                     }
-                    if (Upgraded_move != null) return Upgraded_move;
+                    
                 }
             }
-            return null;
+
+
+            //check if pokemon has move
+            return Upgraded_move = have_move(Upgraded_move) ? null: Upgraded_move;
+
+            
+        }
+        public bool have_move(Moves new_move)
+        {
+            bool has_move = false;
+            //check if pokemon has the move already
+            if (new_move != null)
+            {
+                foreach (Moves move in this.currentMoves)
+                {
+                    if (move != null)
+                    {
+                        has_move = move.name == new_move.name ? true : has_move;
+
+                    }
+
+                }
+
+            }
+            return has_move;
+
         }
 
     }
