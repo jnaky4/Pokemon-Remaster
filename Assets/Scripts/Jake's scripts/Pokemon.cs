@@ -430,10 +430,19 @@ namespace Pokemon
                     }
                     //if the pokemon doesnt have the move then the move returned is the move, otherwise null
                     if (!has_move) this.learned_move = check_move;
+
+                    //if the available learned move is already learned check to ugrade a move
+                    else if (upgrade_move() != null)this.learned_move = upgrade_move(); 
+                    
+                    //TODO ADD Upgrade move
+                   
+
                     return this.learned_move;
                 }
             }
 
+            //no moves have been learned, check if one can be upgraded
+            if (upgrade_move() != null) this.learned_move = upgrade_move();
             return this.learned_move;
         }
 
@@ -638,6 +647,64 @@ namespace Pokemon
             this.current_accuracy = 1;
             this.current_evasion = 1;
         }
+        //Helper function to check_learnset, if a pokemon is at a level where they should have a better move, this returns the upgraded move
+        public Moves upgrade_move()
+        {
+            
+            foreach (Moves move in this.currentMoves){
+
+                /*
+                 * Upgraded Moves:
+                 * Start Moves  -> lvl 20               -> lvl 38       -> lvl 50
+                 * Ember        -> lvl flame Wheel      -> Flamethrower -> Fire Blast
+                 * Bubble       -> Water Gun            -> Surf         -> Hydropump
+                 * Vinewhip     -> Mega Drain           -> Razor Leaf   -> Solar Beam
+                 * Thundershock -> Volt Switch          -> Thunder Bolt -> Thunder
+                 * 
+                 * 
+                 */
+                if(move != null)
+                {
+                    Moves Upgraded_move = null;
+                    switch (move.name)
+                    {
+                        case "Ember":
+                        case "Flame Wheel":
+                        case "Flamethrower":
+                            //Upgraded_move = this.level >= 20 ? Moves.get_move("Flame Wheel") : move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Flamethrower") : move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Fire Blast") : move;
+                            break;
+                        case "Bubble":                       
+                        case "Water Gun":
+                        case "Surf":
+                            Upgraded_move = this.level >= 20 ? Moves.get_move("Water Gun") : move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Surf") : move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Hydro Pump") : move;
+                            break;
+                        case "Vine Whip":
+                        case "Mega Drain":
+                        case "Razor Leaf":
+                            Upgraded_move = this.level >= 20 ? Moves.get_move("Vine Whip") : move;
+                            //Upgraded_move = this.level >= 38 ? Moves.get_move("Mega Drain") : move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Razor Leaf") : move;
+                            break;
+                        case "Thunder Shock":
+                        case "Volt Switch":
+                        case "Thunderbolt":
+                            //Upgraded_move = this.level >= 20 ? Moves.get_move("Volt Switch") : move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Thunderbolt") : move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Thunder") : move;
+                            break;
+                        default:
+                            break;
+                    }
+                    if (Upgraded_move != null) return Upgraded_move;
+                }
+            }
+            return null;
+        }
+
     }
 
 }
