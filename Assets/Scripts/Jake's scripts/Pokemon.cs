@@ -418,35 +418,27 @@ namespace Pokemon
                     //check if pokemon already has the move
                     bool has_move = have_move(available_move.move);
 
-                    //Moves check_move = available_move.move;
-
-                    //check if pokemon already has the move
-                    /*                    foreach (Moves current_move in this.currentMoves)
-                                        {
-                                            //currentMoves indexes can be null if they dont have a move
-                                            if (current_move != null)
-                                            {
-                                                //if any of the current moves has the same name as the learnable then the pokemon has the move
-                                                if (current_move.name == check_move.name) has_move = true;
-                                            }
-
-                                        }*/
-
                     //if the pokemon doesnt have the move then the move returned is the move, otherwise null
-                    if (!has_move) this.learned_move = available_move.move;
+                    if (!has_move)
+                    {
+                        this.learned_move = available_move.move;
 
-                    //if the available learned move is already learned check to ugrade a move
-                    else if (upgrade_move() != null)this.learned_move = upgrade_move(); 
-                    
-                    
-                   
-
-                    return this.learned_move;
+                        return this.learned_move;
+                    }
                 }
             }
 
-            //no moves have been learned, check if one can be upgraded
-            if (upgrade_move() != null) this.learned_move = upgrade_move();
+            //no moves have been learned, check if one of the currentmoves can be upgraded
+/*            Moves upgraded_move = null;
+            for(int i = 0; i < 4; i++)
+            {
+                //if upgraded move is not null we have upgraded a move already and should stop
+                if(upgraded_move == null) upgraded_move = upgrade_a_move(currentMoves[i]) != null ? this.upgrade_a_move(currentMoves[i]) : learned_move;
+
+            }
+
+            if (upgraded_move != null) this.learned_move = upgraded_move;*/
+
             return this.learned_move;
         }
 
@@ -541,56 +533,6 @@ namespace Pokemon
             return exp_gained;
         }
 
-/*        public Pokemon ask_to_evolve()
-        {
-            if (want_to_evolve)
-            {
-                //ask player for input
-                //this.want_to_evolve = false;
-                return evolve_pokemon();
-            }
-            else
-            {
-                return this;
-            }
-        }
-
-        public Pokemon evolve_pokemon()
-        {
-            //level, moves, exp, current stats, status effects
-            this.change_hp = max_hp;
-            this.change_attack = max_attack;
-            this.change_defense = max_defense;
-            this.change_speed = max_speed;
-            this.change_sp_attack = max_sp_attack;
-            this.change_sp_defense = max_sp_defense;
-
-            string temp_move1_name = this.currentMoves[0] != null ? this.currentMoves[0].name : null;
-            string temp_move2_name = this.currentMoves[1] != null ? this.currentMoves[1].name : null;
-            string temp_move3_name = this.currentMoves[2] != null ? this.currentMoves[2].name : null;
-            string temp_move4_name = this.currentMoves[3] != null ? this.currentMoves[3].name : null;
-
-            Pokemon evolved_pokemon = new Pokemon(this.dexnum + 1, this.level, temp_move1_name, temp_move2_name, temp_move3_name, temp_move4_name, this.current_exp,
-            this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed, this.statuses);
-            this.change_hp = evolved_pokemon.max_hp - change_hp;
-            this.change_attack = evolved_pokemon.max_attack - change_attack;
-            this.change_defense = evolved_pokemon.max_defense - change_defense;
-            this.change_speed = evolved_pokemon.max_speed - change_speed;
-            this.change_sp_attack = evolved_pokemon.max_sp_attack - change_sp_attack;
-            this.change_sp_defense = evolved_pokemon.max_sp_defense - change_sp_defense;
-
-            *//*            Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
-                        Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
-                        Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
-                        Debug.Log("Your Pokemon Gained " + change_defense + " DFN!");
-                        Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
-                        Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
-                        Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*//*
-
-            return evolved_pokemon;
-
-
-        }*/
         public void evolve()
         {
             //save old stats
@@ -627,8 +569,15 @@ namespace Pokemon
             this.change_sp_attack = evolved_pokemon.max_sp_attack - change_sp_attack;
             this.change_sp_defense = evolved_pokemon.max_sp_defense - change_sp_defense;
 
+/*          Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
+            Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
+            Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
+            Debug.Log("Your Pokemon Gained " + change_defense + " DFN!");
+            Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
+            Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
+            Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*/
         }
-        //TODO help function to reset stats
+        //function to reset stats
         public void reset_battle_stats()
         {
             //Reset all stages
@@ -642,7 +591,7 @@ namespace Pokemon
 
 
             //Every current Stat but HP is reset
-            this.current_attack = this.max_attack;
+            this.current_attack = Status.SeeIfBurned(this) ? this.current_speed : this.max_speed;
             this.current_defense = this.max_defense;
             this.current_sp_attack = this.max_sp_attack;
             this.current_sp_defense = this.max_sp_defense;
@@ -652,21 +601,73 @@ namespace Pokemon
             this.current_evasion = 1;
         }
         //Helper function to check_learnset, if a pokemon is at a level where they should have a better move, this returns the upgraded move
-        public Moves upgrade_move()
+        public void upgrade_moves()
         {
             Moves Upgraded_move = null;
-            foreach (Moves move in this.currentMoves){
+            for(int i = 0; i < 4; i++)
+            {
+                if (this.currentMoves[i] != null)
+                {
+                    /*
+                     * Upgraded Moves:
+                     * Start Moves  -> lvl 20               -> lvl 38       -> lvl 50
+                     * Ember        -> lvl flame Wheel      -> Flamethrower -> Fire Blast
+                     * Bubble       -> Water Gun            -> Surf         -> Hydropump
+                     * Vinewhip     -> Mega Drain           -> Razor Leaf   -> Solar Beam
+                     * Thundershock -> Volt Switch          -> Thunder Bolt -> Thunder
+                     */
+                    Moves move = this.currentMoves[i];
+                    switch (move.name)
+                    {
+                        case "Ember":
+                        case "Flame Wheel":
+                        case "Flamethrower":
+                            
+                            //Upgraded_move = this.level >= 20 ? Moves.get_move("Flame Wheel") : Upgraded_move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Flamethrower") : Upgraded_move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Fire Blast") : Upgraded_move;
+                            //Debug.Log("Upgraded a Move! : " + Upgraded_move.name);
+                            break;
+                        case "Bubble":
+                        case "Water Gun":
+                        case "Surf":
+                            
+                            Upgraded_move = this.level >= 20 ? Moves.get_move("Water Gun") : Upgraded_move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Surf") : Upgraded_move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Hydro Pump") : Upgraded_move;
+                            //Debug.Log("Upgraded a Move! : " + Upgraded_move.name);
+                            break;
+                        case "Vine Whip":
+                        case "Mega Drain":
+                        case "Razor Leaf":
+                            
+                            Upgraded_move = this.level >= 20 ? Moves.get_move("Vine Whip") : Upgraded_move;
+                            //Upgraded_move = this.level >= 38 ? Moves.get_move("Mega Drain") : Upgraded_move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Razor Leaf") : Upgraded_move;
+                            //Debug.Log("Upgraded a Move! : " + Upgraded_move.name);
+                            break;
+                        case "Thunder Shock":
+                        case "Volt Switch":
+                        case "Thunderbolt":
+                            
+                            //Upgraded_move = this.level >= 20 ? Moves.get_move("Volt Switch") : Upgraded_move;
+                            Upgraded_move = this.level >= 38 ? Moves.get_move("Thunderbolt") : Upgraded_move;
+                            Upgraded_move = this.level >= 50 ? Moves.get_move("Thunder") : Upgraded_move;
+                            //Debug.Log("Upgraded a Move! : " + Upgraded_move.name);
+                            break;
+                        default:
+                            break;
+                    }
+                    //if the player doesnt have the move or the upgraded move != null, replace with upgraded move
+                    this.currentMoves[i] = have_move(Upgraded_move) || Upgraded_move == null ? this.currentMoves[i] : Upgraded_move;
+                }
+            
+            }
 
-                /*
-                 * Upgraded Moves:
-                 * Start Moves  -> lvl 20               -> lvl 38       -> lvl 50
-                 * Ember        -> lvl flame Wheel      -> Flamethrower -> Fire Blast
-                 * Bubble       -> Water Gun            -> Surf         -> Hydropump
-                 * Vinewhip     -> Mega Drain           -> Razor Leaf   -> Solar Beam
-                 * Thundershock -> Volt Switch          -> Thunder Bolt -> Thunder
-                 * 
-                 * 
-                 */
+
+            /*foreach (Moves move in this.currentMoves){
+
+
                 if(move != null)
                 {
                     
@@ -682,7 +683,6 @@ namespace Pokemon
                         case "Bubble":                       
                         case "Water Gun":
                         case "Surf":
-                            Debug.Log("UPGRADED BUBBLE");
                             Upgraded_move = this.level >= 20 ? Moves.get_move("Water Gun") : Upgraded_move;
                             Upgraded_move = this.level >= 38 ? Moves.get_move("Surf") : Upgraded_move;
                             Upgraded_move = this.level >= 50 ? Moves.get_move("Hydro Pump") : Upgraded_move;
@@ -705,15 +705,70 @@ namespace Pokemon
                             break;
                     }
                     
+
                 }
-            }
+                move = have_move(Upgraded_move) ? null : Upgraded_move;*/
+
+            //}
 
 
-            //check if pokemon has move
-            return Upgraded_move = have_move(Upgraded_move) ? null: Upgraded_move;
+            
+             
 
             
         }
+
+        public Moves upgrade_a_move(Moves move)
+        {
+            if (move == null) return move;
+
+            Moves Upgraded_move = null;
+            switch (move.name)
+            {
+                case "Ember":
+                case "Flame Wheel":
+                case "Flamethrower":
+                    
+                    //Upgraded_move = this.level >= 20 ? Moves.get_move("Flame Wheel") : Upgraded_move;
+                    Upgraded_move = this.level >= 38 ? Moves.get_move("Flamethrower") : Upgraded_move;
+                    Upgraded_move = this.level >= 50 ? Moves.get_move("Fire Blast") : Upgraded_move;
+                    //Debug.Log("Upgraded a Move! : " + Upgraded_move.name);
+                    break;
+                case "Bubble":
+                case "Water Gun":
+                case "Surf":
+                    
+                    Upgraded_move = this.level >= 20 ? Moves.get_move("Water Gun") : Upgraded_move;
+                    Upgraded_move = this.level >= 38 ? Moves.get_move("Surf") : Upgraded_move;
+                    Upgraded_move = this.level >= 50 ? Moves.get_move("Hydro Pump") : Upgraded_move;
+                    //Debug.Log("Upgraded a Move! : " + Upgraded_move.name);
+                    break;
+                case "Vine Whip":
+                case "Mega Drain":
+                case "Razor Leaf":
+                    
+                    Upgraded_move = this.level >= 20 ? Moves.get_move("Vine Whip") : Upgraded_move;
+                    //Upgraded_move = this.level >= 38 ? Moves.get_move("Mega Drain") : Upgraded_move;
+                    Upgraded_move = this.level >= 50 ? Moves.get_move("Razor Leaf") : Upgraded_move;
+                    //Debug.Log("Upgraded a Move! : " + Upgraded_move.name);
+                    break;
+                case "Thunder Shock":
+                case "Volt Switch":
+                case "Thunderbolt":
+                    
+                    //Upgraded_move = this.level >= 20 ? Moves.get_move("Volt Switch") : Upgraded_move;
+                    Upgraded_move = this.level >= 38 ? Moves.get_move("Thunderbolt") : Upgraded_move;
+                    Upgraded_move = this.level >= 50 ? Moves.get_move("Thunder") : Upgraded_move;
+                    //Debug.Log("Upgraded a Move! : " + Upgraded_move.name);
+                    break;
+                default:
+                    break;
+
+            }
+            return Upgraded_move;
+        }
+
+        //check if pokemon has move
         public bool have_move(Moves new_move)
         {
             bool has_move = false;

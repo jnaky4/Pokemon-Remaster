@@ -65,14 +65,14 @@ namespace Pokemon
                 {
 
                     learnable_moves.Add(learnable_move);
-                    Debug.Log("Initally: " + learnable_move);
+                    //Debug.Log("Initally: " + learnable_move);
                 }
             }
             
 
             int num_available_moves = learnable_moves.Count;
             int num_available_moves_left = num_available_moves;
-            Debug.Log("Start Count: " + num_available_moves);
+            //Debug.Log("Start Count: " + num_available_moves);
             for (int i = 0; i < 4; i++)
             {
                 //if there are less available moves than 4 slots, stop getting new moves
@@ -98,7 +98,7 @@ namespace Pokemon
                         
                         //create move object from move
                         Moves move = Moves.get_move(learnable_moves[random].move.name);
-                        Debug.Log("Grabbed " + move.name);
+                        //Debug.Log("Grabbed " + move.name);
                         //iterate through current moves
                         foreach (Moves current_move in temp_pokemon.currentMoves)
                         {
@@ -118,12 +118,12 @@ namespace Pokemon
                         }
                         if (!has_move)
                         {
-                            Debug.Log("No Dupe, Adding Move: " + move.name);
+                            //Debug.Log("No Dupe, Adding Move: " + move.name);
                             temp_pokemon.currentMoves[i] = move;
                             move_added = true;
                             //make sure not to add duplicates
                             learnable_moves.Remove(learnable_moves[random]);
-                            Debug.Log("Learnable Moves Left: " + learnable_moves.Count);
+                            //Debug.Log("Learnable Moves Left: " + learnable_moves.Count);
                         }
                         //Debug.Log("Move Learned: " + move.move);
 
@@ -132,6 +132,8 @@ namespace Pokemon
                     }
                 }
             }
+            temp_pokemon.upgrade_moves();
+
             //foreach (Moves current_move in temp_pokemon.currentMoves) Debug.Log("List of Moves 131: " + current_move.name);
             return temp_pokemon;
 
