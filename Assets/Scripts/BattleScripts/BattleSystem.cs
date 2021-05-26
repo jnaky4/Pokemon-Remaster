@@ -475,6 +475,7 @@ namespace Pokemon
             {
                 do
                 {
+                    // implement logic to determine which move is optimal for enemy
                     moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
                     enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
                 }
