@@ -472,10 +472,12 @@ namespace Pokemon
                 enemyMove = enemyUnit.pokemon.struggle;
             }
             else
-            {
+            {            
                 do
                 {
-                    moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
+                    //Pick move for AI decision
+                    //enemyUnit.pokemon.decide_move();
+                    moveNum = rnd.Next(enemyUnit.pokemon.count_moves());
                     enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
                 }
                 while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
@@ -1570,6 +1572,8 @@ namespace Pokemon
             System.Random rnd = new System.Random();
             bool crit = Utility.CriticalHit(enemyUnit);
             int num = rnd.Next(1, 100);
+
+
             dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + move.name + "!";
             if (num <= move.accuracy * enemyUnit.pokemon.current_accuracy * playerUnit.pokemon.current_evasion) //If the move hits
             {

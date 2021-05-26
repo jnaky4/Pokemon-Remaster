@@ -790,6 +790,56 @@ namespace Pokemon
 
         }
 
+        //AI Decision
+        public int count_moves()
+        {
+            int count = 0;
+            foreach (Moves move in this.currentMoves)
+            {
+                if (move != null) count++;
+            }
+            return count;
+        }
+
+        public Moves decide_move(Pokemon Enemy)
+        {
+            //get sum of moves
+            int num_moves = this.count_moves();
+            
+            //<move_name, score> 
+            Dictionary<string, int> available_moves = new Dictionary<string, int>();
+
+            //grab all moves and store in available_moves
+            for (int i = 0; i < num_moves; i++)
+            {   
+                //make sure not null
+                if(currentMoves[i] != null)
+                {
+                    //if move has pp, and isnt in available moves already, add it
+                    if(currentMoves[i].current_pp > 0 && !available_moves.ContainsKey(currentMoves[i].name))
+                    {
+                        available_moves.Add(currentMoves[i].name, 0);
+                    }
+                }        
+            }
+
+            Debug.Log("Decision Tree Move COUNT: " + available_moves.Count);
+
+
+            //Evaluating
+            foreach (KeyValuePair<string, int> move in available_moves)
+            {
+                //get dmg of move
+                int dmg = 0;
+
+                //10: Lethal in 1 turn with priority speed
+                /*                if (dmg > Enemy.current_hp && );
+
+                                }*/
+                return null;
+
+            }
+        }
     }
 
 }
