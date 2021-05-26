@@ -595,7 +595,7 @@ namespace Pokemon
             this.current_defense = this.max_defense;
             this.current_sp_attack = this.max_sp_attack;
             this.current_sp_defense = this.max_sp_defense;
-            this.current_speed = Status.SeeIfParalyzed(this) ? this.current_speed : this.max_speed;
+            this.current_speed = Status.roll_for_Paralysis(this) ? this.current_speed : this.max_speed;
 
             this.current_accuracy = 1;
             this.current_evasion = 1;
@@ -837,11 +837,50 @@ namespace Pokemon
                 /*                if (dmg > Enemy.current_hp && );
 
                                 }*/
-                
 
             }
             return null;
         }
+
+        //cleans up stats for end of battle / fainted / Swapping Pokemon
+        public void cleanup_stats()
+        {
+            //check if pokemon fainted
+            if (this.current_hp <= 0)
+            {
+                //remove all statuses
+                this.statuses.Clear();
+            }
+            //pokemon isnt fainted, remove all non persisting status effects
+            else
+            {
+
+                foreach(Status status in this.statuses)
+                {
+                    //if status doesnt persist, remove
+                    if (!status.persistance) this.statuses.Remove(status);
+                }
+            }
+
+            //reset stages
+            this.speed_stage = 0;
+            this.sp_attack_stage = 0;
+            this.attack_stage = 0;
+            this.defense_stage = 0;
+            this.sp_defense_stage = 0;
+            this.critical_stage = 0;
+            this.evasion_stage = 0;
+            this.accuracy_stage = 0;
+
+            //reset stat changes
+            this.current_speed = this.max_speed;
+            this.current_attack = this.max_attack;
+            this.current_sp_attack = this.max_sp_attack;
+            this.current_defense = this.max_defense;
+            this.current_sp_defense = this.max_sp_defense;
+
+        }
+
     }
 
 }

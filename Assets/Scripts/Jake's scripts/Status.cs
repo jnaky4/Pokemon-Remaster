@@ -99,6 +99,7 @@ namespace Pokemon
         public double removal_chance;
         public int max_duration;
         public int min_duration;
+        public int remaining_turns = 0;
 
         public Status(string name, string adj, bool persistance, string ignore_type, double self_damage, double unable_to_attack_chance, string affect_stat, double affect_stat_mulitplier, double removal_chance, int max_duration, int min_duration)
         {
@@ -113,6 +114,7 @@ namespace Pokemon
             this.removal_chance = removal_chance;
             this.max_duration = max_duration;
             this.min_duration = min_duration;
+
         }
 
         public static Status get_status(string name)
@@ -144,17 +146,23 @@ namespace Pokemon
             }
         }
 
-        public static bool SeeIfParalyzed(Pokemon poke)
+        public static bool roll_for_Paralysis(Pokemon poke)
         {
-            int check = 0;
+            bool paralyzed = false;
+            //check statuses in pokemon for paralysis
             foreach (Status s in poke.statuses)
             {
-                if (s.name.Equals("Paralysis")) check = 1;
+                if (s.name.Equals("Paralysis")) paralyzed = true ;
             }
-            if (check == 0) return false;
-            System.Random rnd = new System.Random();
-            int num = rnd.Next(1, 100);
-            if (num <= 25) return true;
+
+            //if paralyzed, roll for paralysis
+            if (paralyzed)
+            {
+                System.Random rnd = new System.Random();
+                //returns a number >= 0.0 AND < 1.0 : [0.0 - .99999]
+                double num = rnd.NextDouble();
+                if (num <= all_status_effects["Paralysis"].unable_to_attack_chance) return true;
+            }
             return false;
         }
 
@@ -326,5 +334,63 @@ namespace Pokemon
                     break;
             }
         }
+
+
+        //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
+        public bool check_able_attack(Pokemon poke)
+        {
+            bool can_attack = true;
+            foreach(Status status in poke.statuses)
+            {
+                if (status.unable_to_attack_chance == 1.0) return false;
+                if(status.unable_to_attack_chance > 0)
+                {
+                    System.Random rnd = new System.Random();
+                    //returns a number >= 0.0 AND < 1.0 : [0.0 to .99999]
+                    double num = rnd.NextDouble();
+                    if (num <= status.unable_to_attack_chance) can_attack = false;
+                }
+            }
+            return can_attack;
+        }
+
+
+        //checks for removal, counters for statuses
+
+        //TODO add Text notifications in game for method?
+        public void end_turn_statuses_update(Pokemon poke)
+        {
+            foreach (Status status in poke.statuses)
+            {
+                status.remaining_turns--;
+            }
+
+        }
+
+        public void start_turn_statuses_update(Pokemon poke)
+        {
+            foreach (Status status in poke.statuses)
+            {
+                
+                //checks if remaining_number of turns reaches 0 to remove status
+                if (status.remaining_turns == 0)
+                {
+                    Debug.Log("Removed " + status.name);
+                    poke.statuses.Remove(status);
+
+                }
+                //checks if there is a removal chance to roll for removal
+                if (status.removal_chance > 0)
+                {
+                    System.Random rnd = new System.Random();
+                    //returns a number >= 0.0 AND < 1.0 : [0.0 to .99999]
+                    double num = rnd.NextDouble();
+                    if (num <= status.removal_chance) poke.statuses.Remove(status);
+                }
+            }
+        }
+
+        
+        
     }
 }

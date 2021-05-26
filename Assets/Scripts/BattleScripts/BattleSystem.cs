@@ -133,6 +133,8 @@ namespace Pokemon
         public GameObject poke6;
         public Button backPoke;
 
+
+
         private bool breakOutOfDecision = false;
         private bool deadPokemon = false;
         private bool pWokeUp = false;
@@ -360,6 +362,7 @@ namespace Pokemon
                 }
             }
 
+
             player.myName = GameController.player.name;
             player.pokeBalls = GameController.player.displayPokeBalls;
             player.numPokeBalls = GameController.player.pokeBalls;
@@ -489,26 +492,34 @@ namespace Pokemon
             playerMoveName = playerMove.name;
             enemyMoveName = enemyMove.name;
 
+
             if (playerMoveNum != -2 && playerMove.max_turns > 1)
             {
                 playerContinuingAttack = rnd.Next(playerMove.min_turns, playerMove.max_turns + 1);
                 playerMoveStorage = playerMove;
             }
+
             if (playerMoveNum == -2) playerContinuingAttack--;
 
             if (enemyContinuingAttack != 0) enemyContinuingAttack--;
+            
             else if (enemyMove.max_turns > 1)
             {
                 enemyContinuingAttack = rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
                 enemyMoveStorage = enemyMove;
             }
 
+            //number of moves per turn the player/enemy can attack
             int numTimesPlayer = rnd.Next(playerMove.min_per_turn, playerMove.max_per_turn + 1);
             int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
 
             if (playerMoveNum >= 0) playerUnit.DoPP(playerMoveNum);
+            
             if (moveNum >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
 
+
+
+            
             if (playerMove.priority > enemyMove.priority)
             {
                 state = BattleState.PLAYERTURN;
@@ -809,7 +820,7 @@ namespace Pokemon
                 pWokeUp = false;
             }
 
-            if (Status.SeeIfParalyzed(playerUnit.pokemon))
+            if (Status.roll_for_Paralysis(playerUnit.pokemon))
             {
                 AnimateStatus("Paralysis", true);
                 GameController.soundFX = "Paralysis";
@@ -1255,7 +1266,7 @@ namespace Pokemon
                 StartCoroutine(EndBattle());
                 yield break;
             }
-            if ((Status.SeeIfParalyzed(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon)) && randomNumber < 12)
+            if ((Status.roll_for_Paralysis(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon)) && randomNumber < 12)
             {
                 state = BattleState.CAUGHTPOKEMON;
                 PokeballShakes(4);
@@ -1270,7 +1281,7 @@ namespace Pokemon
                 catchRateModifier = 25;
                 s = 10;
             }
-            else if (Status.SeeIfParalyzed(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon))
+            else if (Status.roll_for_Paralysis(enemyUnit.pokemon) || Status.SeeIfPoisoned(enemyUnit.pokemon) || Status.SeeIfBurned(enemyUnit.pokemon))
             {
                 catchRateModifier = 12;
                 s = 5;
@@ -1457,7 +1468,7 @@ namespace Pokemon
                 eWokeUp = false;
             }
 
-            if (Status.SeeIfParalyzed(enemyUnit.pokemon))
+            if (Status.roll_for_Paralysis(enemyUnit.pokemon))
             {
                 AnimateStatus("Paralysis", false);
                 GameController.soundFX = "Paralysis";
@@ -3089,6 +3100,7 @@ namespace Pokemon
             playerUnit.pokemon = poke;
             playerHUD.SetMoves(playerUnit);
         }
+        
 
         #endregion leveling up
     }
