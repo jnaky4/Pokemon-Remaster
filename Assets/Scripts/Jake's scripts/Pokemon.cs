@@ -823,6 +823,7 @@ namespace Pokemon
                 }        
             }
 
+
             Debug.Log("Decision Tree Move COUNT: " + available_moves.Count);
 
 
@@ -836,9 +837,10 @@ namespace Pokemon
                 /*                if (dmg > Enemy.current_hp && );
 
                                 }*/
-                return null;
+                
 
             }
+            return null;
         }
     }
 
