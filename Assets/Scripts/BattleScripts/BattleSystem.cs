@@ -56,8 +56,8 @@ namespace Pokemon
         private string enemyMoveName;
         //all of this stuff is for animation
 
-        private Unit playerUnit;
-        private Unit enemyUnit;
+        public Unit playerUnit;
+        public Unit enemyUnit;
         //The Pokemon used in the fight
 
         public Button attackButton;
@@ -147,6 +147,7 @@ namespace Pokemon
         private int phaseOpponentSprite = 0;
 
         private bool wantsToEvolve;
+        public bool playerAttacksFirst;
 
         #endregion Declaration of variables
 
@@ -159,11 +160,11 @@ namespace Pokemon
         /// <summary>
         /// Starts the battle.
         /// </summary>
-        private void Start()
+        /// 
+        public void Setup()
         {
             PlayerAttackAnim = new SpriteAnimator(AttackSprites, playerAttackSprite, 0.04f);
             EnemyAttackAnim = new SpriteAnimator(AttackSprites, enemyAttackSprite, 0.04f);
-
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
             attackMenuUI.SetActive(false);
@@ -173,6 +174,10 @@ namespace Pokemon
             backUI.SetActive(false);
             levelUpUI.SetActive(false);
             SetDownButtons();
+        }
+        private void Start()
+        {
+            Setup();
             try
             {
                 StartCoroutine(SetupBattle());
@@ -340,7 +345,7 @@ namespace Pokemon
         /// Setups the battle.
         /// </summary>
         /// <returns>Returns nothing. IEnumerator is so we can have text and stop the function so the player can read the text. I won't be commenting this anymore</returns>
-        private IEnumerator SetupBattle()
+        public IEnumerator SetupBattle()
         {
             //GameObject pokeMenu = Instantiate(pokemonMenuUI);
             player = new PlayerBattle();
@@ -430,6 +435,49 @@ namespace Pokemon
 
         #endregion Set up battle and update functions
 
+
+
+        public Moves DeterminePlayerMove(int playerMoveNum)
+        {
+            Moves playerMove;
+            if (playerMoveNum == -2) playerMove = playerMoveStorage;
+            else if (playerMoveNum != -1) playerMove = playerUnit.pokemon.currentMoves[playerMoveNum];
+            else playerMove = playerUnit.pokemon.struggle;
+            return playerMove;
+        }
+
+        public Moves DetermineEnemyMove(int enemyMoveNum, System.Random rnd)
+        {
+            Moves enemyMove;
+            bool struggle = false;
+            if (enemyContinuingAttack == 0) struggle = Utility.EnemyStruggle(enemyUnit);
+            if (enemyContinuingAttack != 0)
+            {
+                enemyMove = enemyMoveStorage;
+            }
+            else if (struggle)
+            {
+                enemyMove = enemyUnit.pokemon.struggle;
+            }
+            else
+            {
+                do
+                {
+                    //Pick move for AI decision
+                    //enemyUnit.pokemon.decide_move();
+                    enemyMoveNum = rnd.Next(enemyUnit.pokemon.count_moves());
+                    enemyMove = enemyUnit.pokemon.currentMoves[enemyMoveNum];
+                }
+                while (enemyUnit.pokemon.currentMoves[enemyMoveNum].current_pp == 0);
+            }
+            return enemyMove;
+        }
+
+        public bool DeterminePriority(Moves a, Moves b)
+        {
+            return a.priority > b.priority;
+        }
+
         #region Decision functions to see who goes first
 
         /// <summary>
@@ -437,8 +485,13 @@ namespace Pokemon
         /// </summary>
         /// <param name="playerMoveNum">The player move number. -1 if struggle, -2 if continuing attack.</param>
         /// <returns>Nothing</returns>
-        private IEnumerator Decision(int playerMoveNum)
+        /// 
+
+
+
+        public IEnumerator Decision(int playerMoveNum)
         {
+            Debug.Log("entering Decision function");
             SetDownButtons();
             ClosePokemonMenu();
             CloseMovesMenu();
@@ -454,34 +507,13 @@ namespace Pokemon
                     yield break;
                 }
             }
-            int moveNum = -1;
-            bool struggle = false;
-            if (enemyContinuingAttack == 0) struggle = Utility.EnemyStruggle(enemyUnit);
             Moves enemyMove, playerMove;
+            int enemyMoveNum = 0;
             System.Random rnd = new System.Random();
-            if (playerMoveNum == -2) playerMove = playerMoveStorage;
-            else if (playerMoveNum != -1) playerMove = playerUnit.pokemon.currentMoves[playerMoveNum];
-            else playerMove = playerUnit.pokemon.struggle;
+            playerMove = DeterminePlayerMove(playerMoveNum);
+            enemyMove = DetermineEnemyMove(enemyMoveNum, rnd);
+            playerAttacksFirst = DeterminePriority(playerMove, enemyMove);
 
-            if (enemyContinuingAttack != 0)
-            {
-                enemyMove = enemyMoveStorage;
-            }
-            else if (struggle)
-            {
-                enemyMove = enemyUnit.pokemon.struggle;
-            }
-            else
-            {            
-                do
-                {
-                    //Pick move for AI decision
-                    //enemyUnit.pokemon.decide_move();
-                    moveNum = rnd.Next(enemyUnit.pokemon.count_moves());
-                    enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
-                }
-                while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
-            }
             ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
@@ -489,6 +521,8 @@ namespace Pokemon
             playerMoveName = playerMove.name;
             enemyMoveName = enemyMove.name;
 
+
+            // implementation for multi attack moves, like Fury Attack
             if (playerMoveNum != -2 && playerMove.max_turns > 1)
             {
                 playerContinuingAttack = rnd.Next(playerMove.min_turns, playerMove.max_turns + 1);
@@ -507,8 +541,10 @@ namespace Pokemon
             int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
 
             if (playerMoveNum >= 0) playerUnit.DoPP(playerMoveNum);
-            if (moveNum >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
+            if (enemyMoveNum >= 0) enemyUnit.DoPP(enemyMoveNum); //If it is not struggle, take down some PP.
 
+            Debug.Log("about to use priority to execute turn order");
+            playerAttacksFirst = playerMove.priority > enemyMove.priority;
             if (playerMove.priority > enemyMove.priority)
             {
                 state = BattleState.PLAYERTURN;
@@ -712,7 +748,7 @@ namespace Pokemon
             CloseMovesMenu();
             CloseBallsMenu();
 
-            int moveNum = 0;
+            int enemyMoveNum = 0;
             bool struggle = Utility.EnemyStruggle(enemyUnit);
             Moves enemyMove;
             System.Random rnd = new System.Random();
@@ -721,13 +757,13 @@ namespace Pokemon
             {
                 do
                 {
-                    moveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
-                    enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
+                    enemyMoveNum = rnd.Next(enemyUnit.pokemon.currentMoves.Count(s => s != null));
+                    enemyMove = enemyUnit.pokemon.currentMoves[enemyMoveNum];
                 }
-                while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
+                while (enemyUnit.pokemon.currentMoves[enemyMoveNum].current_pp == 0);
             }
             enemyMoveName = enemyMove.name;
-            if (moveNum >= 0) enemyUnit.DoPP(moveNum);
+            if (enemyMoveNum >= 0) enemyUnit.DoPP(enemyMoveNum);
 
             if (enemyContinuingAttack != 0) enemyContinuingAttack--;
             else if (enemyMove.max_turns > 1)

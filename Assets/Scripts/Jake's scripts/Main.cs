@@ -8,7 +8,7 @@ namespace Pokemon
     public class Main : MonoBehaviour
     {
 
-        void Start()
+        public void Start()
         {
             Pokemon.all_base_stats = load_CSV("BASE_STATS");
             Moves.all_moves = load_CSV("MOVES");
@@ -24,7 +24,7 @@ namespace Pokemon
             //Debug.Log("learnset Dict Count " + Learnset.get_learnset.Count);
 
 
-            print_pokemon();
+            //print_pokemon();
             //print_moves();
 
         }
