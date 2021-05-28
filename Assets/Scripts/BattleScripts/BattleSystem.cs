@@ -148,6 +148,7 @@ namespace Pokemon
 
         private bool wantsToEvolve;
         public bool playerAttacksFirst;
+        public bool isRunning;
 
         #endregion Declaration of variables
 
@@ -510,7 +511,7 @@ namespace Pokemon
                 if (breakOutOfDecision) break;
                 Debug.Log("cancel = " + cancelAttack);
                 if (cancelAttack) break;
-                yield return StartCoroutine(PlayerAttack(playerMove));
+                yield return PlayerAttack(playerMove);
             }
         }
 
@@ -524,7 +525,7 @@ namespace Pokemon
             {
                 if (breakOutOfDecision) break;
                 if (cancelAttack)  break;
-                yield return StartCoroutine(EnemyAttack(enemyMove));
+                yield return EnemyAttack(enemyMove);
 
             }
         }
@@ -541,11 +542,14 @@ namespace Pokemon
         {
             Debug.Log("entering Decision function");
             Debug.Log("using playerMoveNum" + playerMoveNum.ToString());
+            /*
             SetDownButtons();
             ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
 
+
+            
             if (playerMoveNum >= 0)
             {
                 if (playerUnit.pokemon.currentMoves[playerMoveNum].current_pp == 0)
@@ -560,11 +564,11 @@ namespace Pokemon
                     yield break;
                 }
 
-            } 
+            } */
 
 
 
-            Moves enemyMove, playerMove;
+            Moves enemyMove, playerMove; 
             int enemyMoveNum = 0;
             System.Random rnd = new System.Random();
             Debug.Log("playerMoveNum " + playerMoveNum);
@@ -580,19 +584,20 @@ namespace Pokemon
                 Debug.Log("cancel = " + cancelAttack);
                 int attacks = playerMove.min_per_turn;
                 Debug.Log("playerMove.min_per_turn= "+ attacks.ToString());
-                yield return StartCoroutine(PlayerAction(playerMove));
-                yield return StartCoroutine(EnemyAction(enemyMove));
+                yield return PlayerAction(playerMove);
+                yield return EnemyAction(enemyMove);
             } 
             else 
             {
                 Debug.Log("starting actions enemy turn");
                 Debug.Log("breakout = " + breakOutOfDecision);
                 Debug.Log("cancel = " + cancelAttack);
-                yield return StartCoroutine(EnemyAction(enemyMove));
-                yield return StartCoroutine(PlayerAction(playerMove));
+                yield return EnemyAction(enemyMove);
+                yield return PlayerAction(playerMove);
 
             }
-   
+            isRunning = false;
+            /*
             if (deadPokemon)
             {
                 yield return SwitchPokemonAfterDeath();
@@ -605,6 +610,7 @@ namespace Pokemon
             }
             PlayerTurn();
             yield break;
+            */
         }
 
         /// <summary>
@@ -704,11 +710,12 @@ namespace Pokemon
         /// <returns>Nothing</returns>
         private IEnumerator PlayerAttack(Moves attack)
         {
-            ClosePokemonMenu();
+            /* ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
-            SetDownButtons();
+            SetDownButtons(); */
             Debug.Log("starting player attack with move" + attack.name);
+            Debug.Log("accuracy is " + attack.accuracy);
             if (pWokeUp)
             {
                 dialogueText.text = playerUnit.pokemon.name + " woke up!";
@@ -829,32 +836,39 @@ namespace Pokemon
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
             dialogueText.text = playerUnit.pokemon.name + " used " + attack.name + "!";
-            yield return new WaitForSeconds(0.75f);
+            Debug.Log("Dialogue text is " + dialogueText.text); 
+
+            //yield return new WaitForSeconds(0.75f); 
+            Debug.Log("executing is continuing into hit calculations");
+            float hit_val = attack.accuracy * playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion;
+            Debug.Log("hit criteria is " + hit_val);
+            Debug.Log("random num is " + num);
             if (num <= (attack.accuracy * playerUnit.pokemon.current_accuracy * enemyUnit.pokemon.current_evasion)) //If the attack hits
             {
+                Debug.Log("entering hit loop");
                 playerInitialAttack = true;
-                if (attack.name == "Growl") GameController.soundFX = playerUnit.pokemon.dexnum.ToString();
+                /*if (attack.name == "Growl") GameController.soundFX = playerUnit.pokemon.dexnum.ToString();
                 else GameController.soundFX = attack.name;
                 while (!endofanimation)
                 {
                     yield return null;
                 }
-                endofanimation = false;
+                endofanimation = false; */
 
-                if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
-                if (!attack.status.Equals("null")) Status.SeeIfStatusEffect(attack, enemyUnit);
+                //if (attack.current_stat_change.CompareTo("null") != 0) playerUnit.SetStages(attack, enemyUnit);
+                //if (!attack.status.Equals("null")) Status.SeeIfStatusEffect(attack, enemyUnit);
                 double super = Utility.DoDamage(playerUnit, enemyUnit, attack, crit);
-                Debug.Log(playerUnit.damage);
+                Debug.Log("some damage was done "+playerUnit.damage);
 
                 bool isDead = enemyUnit.TakeDamage(playerUnit.damage);
                 if (attack.heal > 0) playerUnit.TakeDamage(-playerUnit.damage * attack.heal);
                 if (attack.heal < 0) playerUnit.TakeDamage(playerUnit.damage * -attack.heal);
-                playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
+                //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
                 if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
-                else StartCoroutine(Blink(enemySprite, 0.25));
-                enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
+                //else StartCoroutine(Blink(enemySprite, 0.25));
+                //enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
                 //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                enemyHUD.SetStatus(enemyUnit.pokemon);
+                //enemyHUD.SetStatus(enemyUnit.pokemon);
 
                 if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
                 {
@@ -936,7 +950,7 @@ namespace Pokemon
                 endofanimation = false;
 
                 playerUnit.BurnSelf();
-                StartCoroutine(Blink(playerSprite, 0.25));
+                //StartCoroutine(Blink(playerSprite, 0.25));
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
                 dialogueText.text = playerUnit.pokemon.name + " got burned!";
                 if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
@@ -955,7 +969,7 @@ namespace Pokemon
                 endofanimation = false;
 
                 playerUnit.PoisonSelf();
-                StartCoroutine(Blink(playerSprite, 0.25));
+                //StartCoroutine(Blink(playerSprite, 0.25));
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, true);
                 dialogueText.text = playerUnit.pokemon.name + " is poisoned!";
                 if (playerUnit.pokemon.current_hp <= 0) areYouDead = true;
@@ -974,7 +988,7 @@ namespace Pokemon
                 endofanimation = false;
 
                 playerUnit.TakeDamage(-playerUnit.pokemon.max_hp * 0.0625);
-                StartCoroutine(Blink(enemySprite, 0.25));
+                //StartCoroutine(Blink(enemySprite, 0.25));
                 playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit, false);
                 enemyUnit.TakeDamage(playerUnit.pokemon.max_hp * 0.0625);
                 enemyHUD.SetHP(enemyUnit.pokemon.current_hp, true);
@@ -1356,7 +1370,7 @@ namespace Pokemon
         /// <returns>Nothing.</returns>
         private IEnumerator EnemyAttack(Moves move)
         {
-            SetDownButtons();
+            //SetDownButtons();
             if (eWokeUp)
             {
                 dialogueText.text = enemyUnit.pokemon.name + " woke up!";
@@ -1480,7 +1494,7 @@ namespace Pokemon
             bool crit = Utility.CriticalHit(enemyUnit);
             int num = rnd.Next(1, 100);
 
-
+            Debug.Log(dialogueText);
             dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " used " + move.name + "!";
             if (num <= move.accuracy * enemyUnit.pokemon.current_accuracy * playerUnit.pokemon.current_evasion) //If the move hits
             {

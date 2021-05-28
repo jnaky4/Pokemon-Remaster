@@ -8,7 +8,7 @@ namespace Pokemon
     {
         public Vector2 startingPosition;
         public VectorValue playerPosition;
-        private void Start()
+        public void Start()
         {
             Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
             Moves.all_moves = BattleSystem.load_CSV("MOVES");

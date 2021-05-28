@@ -79,10 +79,10 @@ namespace Pokemon
         public Image pokemon6Image;
         public Text ultraBalls;
         public Text yourName;
-        private int tempHP;
-        private int tempXP;
-        private bool updateHp = false;
-        private bool updateXP = false;
+        public int tempHP;
+        public int tempXP;
+        public bool updateHp = false;
+        public bool updateXP = false;
         public bool negative = false;
 
         public Image enemy1;
@@ -757,7 +757,7 @@ namespace Pokemon
             return color;
         }
 
-        private void Update()
+        public void Update()
         {
             if ((int)hpSlider.value == tempHP) updateHp = false;
             if (updateHp && negative)
