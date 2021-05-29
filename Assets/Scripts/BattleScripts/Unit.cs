@@ -41,7 +41,7 @@ namespace Pokemon
         /// <param name="type2Defend">The type2 defense multiplier.</param>
         public void SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit, double type1Defend, double type2Defend)
         {
-            Debug.Log("Damage: " + damage);
+            //Debug.Log("Damage: " + damage);
             if (double.IsNaN(damage) || double.IsInfinity(damage))
             {
                 damage = 0;
@@ -162,8 +162,8 @@ namespace Pokemon
                         if (enemy.pokemon.defense_stage > 6) enemy.pokemon.defense_stage = 6;
                         if (enemy.pokemon.defense_stage < -6) enemy.pokemon.defense_stage = -6;
                         enemy.pokemon.current_defense = (int)(enemy.pokemon.max_defense * multipliers[enemy.pokemon.defense_stage + 6]);
-                        Debug.Log("Index: " + (enemy.pokemon.defense_stage + 6) + " At Index: " + multipliers[enemy.pokemon.defense_stage + 6] + " Max: " + enemy.pokemon.max_defense +
-                            " Current: " + enemy.pokemon.current_defense);
+                        //Debug.Log("Index: " + (enemy.pokemon.defense_stage + 6) + " At Index: " + multipliers[enemy.pokemon.defense_stage + 6] + " Max: " + enemy.pokemon.max_defense +
+                        //    " Current: " + enemy.pokemon.current_defense);
                         if (enemy.pokemon.current_defense == (double)0) enemy.pokemon.current_defense = 1;
                         break;
 

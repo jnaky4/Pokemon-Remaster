@@ -331,32 +331,24 @@ namespace Pokemon
             forget5overlay.GetComponent<Image>().color = c5;
         }
 
-        /// <summary>
-        /// Sets the enemy hp.
-        /// </summary>
-        /// <param name="hp">The hp.</param>
-        public void SetHP(int hp, bool negative)
-        {
-            if (negative) this.negative = true;
-            else this.negative = false;
-            tempHP = hp;
-            if (hp != hpSlider.value) updateHp = true;
-        }
 
-        /// <summary>
-        /// Sets the player hp.
-        /// </summary>
-        /// <param name="hp">The hp.</param>
-        /// <param name="unit">The unit.</param>
-        public void SetHP(int hp, Unit unit, bool negative)
-        {
-            if (negative) this.negative = true;
-            else this.negative = false;
-            tempHP = hp;
-            if (hp != hpSlider.value) updateHp = true;
-            currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
-        }
+        
 
+
+        public void SetHP(int newHP, Unit unit, string whichplayer)
+        {
+            this.negative = newHP < hpSlider.value ? true : false;
+            tempHP = newHP;
+            if (newHP != hpSlider.value) updateHp = true;
+
+            if (whichplayer == "player")
+            {
+
+                currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
+            }
+
+
+        }
         /// <summary>
         /// Sets the HUD with pokemon name, level, hp, moves, the types of balls the player has, and the pokemon the player has.
         /// Player hud.

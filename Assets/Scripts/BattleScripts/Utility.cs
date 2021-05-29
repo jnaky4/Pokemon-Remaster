@@ -164,7 +164,7 @@ namespace Pokemon
                 default:
                     break;
             }
-            Debug.Log(attack.base_power);
+            //Debug.Log(attack.base_power);
             if (attack.base_power > 0)
             {
                 if (Utility.GetCategoryOfMove(attack).CompareTo("Physical") == 0)

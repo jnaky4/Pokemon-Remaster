@@ -100,6 +100,8 @@ namespace Pokemon
         public int max_duration;
         public int min_duration;
         public int remaining_turns = 0;
+        
+
 
         public Status(string name, string adj, bool persistance, string ignore_type, double self_damage, double unable_to_attack_chance, string affect_stat, double affect_stat_mulitplier, double removal_chance, int max_duration, int min_duration)
         {
@@ -122,7 +124,8 @@ namespace Pokemon
             return all_status_effects[name];
         }
 
-        public bool SeeIfStatus(Moves move)
+        //roll for applying status
+        public bool RollToApplyStatus(Moves move)
         {
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
@@ -136,15 +139,15 @@ namespace Pokemon
             unit.pokemon.current_speed = (int)(unit.pokemon.current_speed * .5);
         }
 
-        public static void ReduceSleep(Unit unit)
-        {
-            unit.pokemon.sleep--;
-            if (unit.pokemon.sleep == 0)
-            {
-                unit.pokemon.statuses.Remove(get_status("Sleep"));
-                //BattleSystem.dialogueText.text = unit.pokemon.name + " woke up!";
-            }
-        }
+        /*        public static void ReduceSleep(Unit unit)
+                {
+                    unit.pokemon.sleep--;
+                    if (unit.pokemon.sleep == 0)
+                    {
+                        unit.pokemon.statuses.Remove(get_status("Sleep"));
+                        //BattleSystem.dialogueText.text = unit.pokemon.name + " woke up!";
+                    }
+                }*/
 
         public static bool roll_for_Paralysis(Pokemon poke)
         {
@@ -152,7 +155,7 @@ namespace Pokemon
             //check statuses in pokemon for paralysis
             foreach (Status s in poke.statuses)
             {
-                if (s.name.Equals("Paralysis")) paralyzed = true ;
+                if (s.name.Equals("Paralysis")) paralyzed = true;
             }
 
             //if paralyzed, roll for paralysis
@@ -233,162 +236,134 @@ namespace Pokemon
             return false;
         }
 
-        public static void SeeIfStatusEffect(Moves move, Unit unit)
+        //Takes the attacking move and the pokemon and checks if attack can apply status
+        public static void Apply_Attack_Status_Effect(Moves attacking_move, Unit enemy_pokemon)
         {
-            switch (move.status.name)
+            
+            foreach(Status status in enemy_pokemon.pokemon.statuses)
             {
-                case "Leech Seed":
-                    if (move.status.SeeIfStatus(move))
-                    {
-                        unit.pokemon.statuses.Add(get_status("Leech Seed"));
-                    }
-                    break;
+                //if same status applied, don't apply
+                if (attacking_move.status.name == status.name) return;
+                //if status is a perm status and there is already a perm status
+                if (attacking_move.status.persistance && status.persistance) return; 
+            }
+
+            //if roll to apply status fails dont apply status
+            if (!attacking_move.status.RollToApplyStatus(attacking_move)) return;
+
+
+
+            //extra checks on apply status, like pokemon type
+            switch (attacking_move.status.name)
+            {
 
                 case "Burn":
-                    if (move.status.SeeIfStatus(move))
+                    
+                    try
                     {
-                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
-                        try
-                        {
-                            if (unit.pokemon.type1.type.Equals("Fire")) break;
-                            if (unit.pokemon.type2.type.Equals("Fire")) break;
-                        }
-                        catch (NullReferenceException ex)
-                        {
-                            //throw;
-                        }
-                        unit.pokemon.statuses.Add(get_status("Burn"));
+                        if (enemy_pokemon.pokemon.type1.type.Equals("Fire")) break;
+                        if (enemy_pokemon.pokemon.type2.type.Equals("Fire")) break;
                     }
+                    catch (NullReferenceException ex)
+                    {
+                        //throw;
+                    }
+
+                    Status burn = attacking_move.status;
+                    burn.remaining_turns = -1;
+
+                    enemy_pokemon.pokemon.statuses.Add(burn);
+
                     break;
 
                 case "Paralysis":
-                    if (move.status.SeeIfStatus(move))
+                    try
                     {
-                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
-                        try
-                        {
-                            if (unit.pokemon.type1.type.Equals("Electric")) break;
-                            if (unit.pokemon.type2.type.Equals("Electric")) break;
+                        if (enemy_pokemon.pokemon.type1.type.Equals("Electric")) break;
+                        if (enemy_pokemon.pokemon.type2.type.Equals("Electric")) break;
 
-                            if (move.move_type.type.Equals("Electric"))
-                            {
-                                if (unit.pokemon.type1.type.Equals("Ground")) break;
-                                if (unit.pokemon.type2.type.Equals("Ground")) break;
-                            }
-                        }
-                        catch (NullReferenceException ex)
+                        if (attacking_move.move_type.type.Equals("Electric"))
                         {
-                            //throw;
+                            if (enemy_pokemon.pokemon.type1.type.Equals("Ground")) break;
+                            if (enemy_pokemon.pokemon.type2.type.Equals("Ground")) break;
                         }
-                        unit.pokemon.statuses.Add(get_status("Paralysis"));
-                        ParalyzeSpeedReduce(unit);
                     }
+                    catch (NullReferenceException ex)
+                    {
+                        //throw;
+                    }
+
+                    Status paralysis = attacking_move.status;
+                    paralysis.remaining_turns = -1;
+                    enemy_pokemon.pokemon.statuses.Add(paralysis);
+                    ParalyzeSpeedReduce(enemy_pokemon);
                     break;
 
                 case "Poison":
-                    if (move.status.SeeIfStatus(move))
+                    try
                     {
-                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
-                        try
-                        {
-                            if (unit.pokemon.type1.type == "Poison") break;
-                            if (unit.pokemon.type2.type == "Poison") break;
-                        }
-                        catch (NullReferenceException ex)
-                        {
-                            //throw;
-                            Debug.Log("Bellsprout should not be here.3");
-                        }
-                        Debug.Log("Bellsprout should not be here.4");
-                        unit.pokemon.statuses.Add(get_status("Poison"));
+                        if (enemy_pokemon.pokemon.type1.type == "Poison") break;
+                        if (enemy_pokemon.pokemon.type2.type == "Poison") break;
                     }
+                    catch (NullReferenceException ex)
+                    {
+                        //throw;
+                        //Debug.Log("Bellsprout should not be here.3");
+                    }
+                    //Debug.Log("Bellsprout should not be here.4");
+                    Status poison = attacking_move.status;
+                    poison.remaining_turns = -1;
+                    enemy_pokemon.pokemon.statuses.Add(attacking_move.status);
                     break;
 
                 case "Sleep":
-                    if (move.status.SeeIfStatus(move))
-                    {
-                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
-                        unit.pokemon.statuses.Add(get_status("Sleep"));
-                        unit.pokemon.sleep = GameController._rnd.Next(1, 4);
-                    }
+
+                    Status sleep = attacking_move.status;
+                    System.Random rnd = new System.Random();
+                    //random.next range(x to y-1) : (0,20) = [0 to 19]
+                    int remaining_turns = rnd.Next(sleep.min_duration, sleep.max_duration +1);
+                    sleep.remaining_turns = remaining_turns;
+
+
+                    enemy_pokemon.pokemon.statuses.Add(sleep);
+
+                    //TODO change to Status.remaining_turns
+                    enemy_pokemon.pokemon.sleep = GameController._rnd.Next(1, 4);
+                    
                     break;
 
-                case "Freeze":
-                    if (move.status.SeeIfStatus(move))
+                case "Freeze":            
+                    try
                     {
-                        if (SeeIfPersistanceIsAlreadyHere(unit.pokemon)) break;
-                        try
-                        {
-                            if (unit.pokemon.type1.type.Equals("Ice")) break;
-                            if (unit.pokemon.type2.type.Equals("Ice")) break;
-                        }
-                        catch (NullReferenceException ex)
-                        {
-                            //throw;
-                        }
-                        unit.pokemon.statuses.Add(get_status("Freeze"));
+                        if (enemy_pokemon.pokemon.type1.type.Equals("Ice")) break;
+                        if (enemy_pokemon.pokemon.type2.type.Equals("Ice")) break;
                     }
+                    catch (NullReferenceException ex)
+                    {
+                        //throw;
+                    }
+                    Status freeze = attacking_move.status;
+                    freeze.remaining_turns = -1;
+                    enemy_pokemon.pokemon.statuses.Add(attacking_move.status);
                     break;
 
                 default:
+                    Status status = attacking_move.status;
+                    System.Random rnd2 = new System.Random();
+                    //random.next range(x to y-1) : (0,20) = [0 to 19]
+                    int remaining_turns2 = rnd2.Next(status.min_duration, status.max_duration + 1);
+                    status.remaining_turns = remaining_turns2;
+                    enemy_pokemon.pokemon.statuses.Add(status);
+
                     break;
             }
         }
 
 
-        //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
-        public bool check_able_attack(Pokemon poke)
-        {
-            bool can_attack = true;
-            foreach(Status status in poke.statuses)
-            {
-                if (status.unable_to_attack_chance == 1.0) return false;
-                if(status.unable_to_attack_chance > 0)
-                {
-                    System.Random rnd = new System.Random();
-                    //returns a number >= 0.0 AND < 1.0 : [0.0 to .99999]
-                    double num = rnd.NextDouble();
-                    if (num <= status.unable_to_attack_chance) can_attack = false;
-                }
-            }
-            return can_attack;
-        }
 
 
-        //checks for removal, counters for statuses
 
-        //TODO add Text notifications in game for method?
-        public void end_turn_statuses_update(Pokemon poke)
-        {
-            foreach (Status status in poke.statuses)
-            {
-                status.remaining_turns--;
-            }
 
-        }
-
-        public void start_turn_statuses_update(Pokemon poke)
-        {
-            foreach (Status status in poke.statuses)
-            {
-                
-                //checks if remaining_number of turns reaches 0 to remove status
-                if (status.remaining_turns == 0)
-                {
-                    Debug.Log("Removed " + status.name);
-                    poke.statuses.Remove(status);
-
-                }
-                //checks if there is a removal chance to roll for removal
-                if (status.removal_chance > 0)
-                {
-                    System.Random rnd = new System.Random();
-                    //returns a number >= 0.0 AND < 1.0 : [0.0 to .99999]
-                    double num = rnd.NextDouble();
-                    if (num <= status.removal_chance) poke.statuses.Remove(status);
-                }
-            }
-        }
 
         
         

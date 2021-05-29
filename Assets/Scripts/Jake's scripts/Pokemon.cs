@@ -263,6 +263,8 @@ namespace Pokemon
 
         public int type = 1;
         public int burn = 1;
+        //stores name of unable to attack move
+        public string UnableToAttackStatusName = "";
 
         //used to calculate exp and evolution
         public double lvl_speed;
@@ -790,7 +792,7 @@ namespace Pokemon
 
         }
 
-        //AI Decision
+        //returns number of moves the pokemon currently has checking for null
         public int count_moves()
         {
             int count = 0;
@@ -800,7 +802,7 @@ namespace Pokemon
             }
             return count;
         }
-
+        //TODO Finish out AI decisions 
         public Moves decide_move(Pokemon Enemy)
         {
             //get sum of moves
@@ -881,6 +883,86 @@ namespace Pokemon
 
         }
 
+        //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
+        public bool check_able_attack()
+        {
+            bool can_attack = true;
+            foreach (Status status in this.statuses)
+            {
+                if (status.unable_to_attack_chance == 1.0)
+                {
+                    this.UnableToAttackStatusName = status.name;
+                    return false;
+                }
+                if (status.unable_to_attack_chance > 0)
+                {
+                    System.Random rnd = new System.Random();
+                    //returns a number >= 0.0 AND < 1.0 : [0.0 to .99999]
+                    double num = rnd.NextDouble();
+                    if (num <= status.unable_to_attack_chance)
+                    {
+                        this.UnableToAttackStatusName = status.name;
+                        return false;
+                    }
+                }
+            }
+            return can_attack;
+        }
+
+        public bool is_dead()
+        {
+            bool is_dead;
+            return is_dead = this.current_hp <= 0 ? true : false;
+        }
+
+        //Checks to remove status
+        public string start_turn_statuses_update()
+        {
+            string remove_status = "";
+            foreach (Status status in this.statuses)
+            {
+                //Debug.Log("STATUS NAME:" + status.name);
+                //Debug.Log("REMAINING TURNS: " + status.remaining_turns);
+                //checks if remaining_number of turns reaches 0 to remove status
+                if (status.remaining_turns == 0)
+                {
+                    
+                    //Debug.Log("Removed " + status.name);
+                    this.statuses.Remove(status);
+                    return status.name;
+
+                }
+                //checks if there is a removal chance to roll for removal
+                if (status.removal_chance > 0)
+                {
+                    System.Random rnd = new System.Random();
+                    //returns a number >= 0.0 AND < 1.0 : [0.0 to .99999]
+                    double num = rnd.NextDouble();
+                    if (num <= status.removal_chance)
+                    {
+                        this.statuses.Remove(status);
+                        return status.name;
+                    }
+                
+                }
+            }
+            return remove_status;
+        }
+        
+        
+        
+        //decrements number counters for statuses
+        public void end_turn_statuses_update()
+        {
+            foreach (Status status in this.statuses)
+            {
+                //Debug.Log("Status: " +status.name);
+                //Debug.Log("Remaining Turns: " + status.remaining_turns);
+                status.remaining_turns = status.remaining_turns -1;
+                //Debug.Log("After Remaining Turns: " + status.remaining_turns);
+            }
+
+        }
     }
 
 }
