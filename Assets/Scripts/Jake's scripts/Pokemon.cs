@@ -418,7 +418,7 @@ namespace Pokemon
                 {
 
                     //check if pokemon already has the move
-                    bool has_move = have_move(available_move.move);
+                    bool has_move = HasMove(available_move.move);
 
                     //if the pokemon doesnt have the move then the move returned is the move, otherwise null
                     if (!has_move)
@@ -461,6 +461,10 @@ namespace Pokemon
         {
             //if pokemon is at the level cap, do nothing
             if (this.level >= GameController.level_cap) return 0;
+
+
+
+
 
             this.gained_a_level = false;
             //EXP = (a * t * e * b * L) / (7 * s)
@@ -580,6 +584,9 @@ namespace Pokemon
             Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*/
         }
         //function to reset stats
+        /// <summary>
+        /// Resets battle stats and fainted stats
+        /// </summary>
         public void reset_battle_stats()
         {
             //Reset all stages
@@ -593,31 +600,34 @@ namespace Pokemon
 
 
             //Every current Stat but HP is reset
-            this.current_attack = Status.SeeIfBurned(this) ? this.current_speed : this.max_speed;
+            this.current_attack = this.HasStatus("Burn") ? this.current_attack : this.max_attack;
             this.current_defense = this.max_defense;
             this.current_sp_attack = this.max_sp_attack;
             this.current_sp_defense = this.max_sp_defense;
-            this.current_speed = Status.roll_for_Paralysis(this) ? this.current_speed : this.max_speed;
+            this.current_speed = this.HasStatus("Paralysis") ? this.current_speed : this.max_speed;
 
             this.current_accuracy = 1;
             this.current_evasion = 1;
         }
-        //Helper function to check_learnset, if a pokemon is at a level where they should have a better move, this returns the upgraded move
-        public void upgrade_moves()
+
+        /// <summary>
+        /// <para>For AI Pokemon</para>
+        /// <para>looks at all moves a pokemon has and checks if they are at a level to auto upgrade to the next tier</para>
+        /// <para>Upgraded Moves:</para>
+        /// <para>Start Moves  -> lvl 20               -> lvl 38       -> lvl 50</para>
+        /// <para>Ember        -> lvl flame Wheel      -> Flamethrower -> Fire Blast</para>
+        /// <para>Bubble       -> Water Gun            -> Surf         -> Hydropump</para>
+        /// <para>Vinewhip     -> Mega Drain           -> Razor Leaf   -> Solar Beam</para>
+        /// <para>Thundershock -> Volt Switch          -> Thunder Bolt -> Thunder</para>
+        /// </summary>
+        public void UpgradeMoves()
         {
             Moves Upgraded_move = null;
             for(int i = 0; i < 4; i++)
             {
                 if (this.currentMoves[i] != null)
                 {
-                    /*
-                     * Upgraded Moves:
-                     * Start Moves  -> lvl 20               -> lvl 38       -> lvl 50
-                     * Ember        -> lvl flame Wheel      -> Flamethrower -> Fire Blast
-                     * Bubble       -> Water Gun            -> Surf         -> Hydropump
-                     * Vinewhip     -> Mega Drain           -> Razor Leaf   -> Solar Beam
-                     * Thundershock -> Volt Switch          -> Thunder Bolt -> Thunder
-                     */
+
                     Moves move = this.currentMoves[i];
                     switch (move.name)
                     {
@@ -661,7 +671,7 @@ namespace Pokemon
                             break;
                     }
                     //if the player doesnt have the move or the upgraded move != null, replace with upgraded move
-                    this.currentMoves[i] = have_move(Upgraded_move) || Upgraded_move == null ? this.currentMoves[i] : Upgraded_move;
+                    this.currentMoves[i] = HasMove(Upgraded_move) || Upgraded_move == null ? this.currentMoves[i] : Upgraded_move;
                 }
             
             }
@@ -720,7 +730,7 @@ namespace Pokemon
             
         }
 
-        public Moves upgrade_a_move(Moves move)
+        public Moves UpgradeAMove(Moves move)
         {
             if (move == null) return move;
 
@@ -770,8 +780,12 @@ namespace Pokemon
             return Upgraded_move;
         }
 
-        //check if pokemon has move
-        public bool have_move(Moves new_move)
+        /// <summary>
+        /// Check if pokemon has a move
+        /// </summary>
+        /// <param name="new_move">Move Object to check</param>
+        /// <returns>True if has the move</returns>
+        public bool HasMove(Moves new_move)
         {
             bool has_move = false;
             //check if pokemon has the move already
@@ -793,7 +807,7 @@ namespace Pokemon
         }
 
         //returns number of moves the pokemon currently has checking for null
-        public int count_moves()
+        public int CountMoves()
         {
             int count = 0;
             foreach (Moves move in this.currentMoves)
@@ -803,10 +817,10 @@ namespace Pokemon
             return count;
         }
         //TODO Finish out AI decisions 
-        public Moves decide_move(Pokemon Enemy)
+        public Moves DecideMove(Pokemon Enemy)
         {
             //get sum of moves
-            int num_moves = this.count_moves();
+            int num_moves = this.CountMoves();
             
             //<move_name, score> 
             Dictionary<string, int> available_moves = new Dictionary<string, int>();
@@ -845,7 +859,10 @@ namespace Pokemon
         }
 
         //cleans up stats for end of battle / fainted / Swapping Pokemon
-        public void cleanup_stats()
+        /// <summary>
+        /// Cleans up stats of pokemon at end of battle / fainted / swapping pokemon
+        /// </summary>
+        public void CleanupStats()
         {
             //check if pokemon fainted
             if (this.current_hp <= 0)
@@ -884,7 +901,7 @@ namespace Pokemon
         }
 
         //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
-        public bool check_able_attack()
+        public bool CheckAbleAttack()
         {
             bool can_attack = true;
             foreach (Status status in this.statuses)
@@ -909,14 +926,21 @@ namespace Pokemon
             return can_attack;
         }
 
-        public bool is_dead()
+        /// <summary>
+        /// Checks if pokemon is fainted
+        /// </summary>
+        /// <returns>returns true if pokemon health is <= 0</returns>
+        public bool IsFainted()
         {
-            bool is_dead;
-            return is_dead = this.current_hp <= 0 ? true : false;
+            bool IsFainted;
+            return IsFainted = this.current_hp <= 0 ? true : false;
         }
 
-        //Checks to remove status
-        public string start_turn_statuses_update()
+        /// <summary>
+        /// At start of turn checks if any statuses remaining turns = 0
+        /// </summary>
+        /// <returns>String of the status removed</returns>
+        public string StartTurnStatusUpdate()
         {
             string remove_status = "";
             foreach (Status status in this.statuses)
@@ -950,9 +974,10 @@ namespace Pokemon
         }
         
         
-        
-        //decrements number counters for statuses
-        public void end_turn_statuses_update()
+        /// <summary>
+        /// Decrements all statuses remaning turns by 1
+        /// </summary>
+        public void EndTurnStatusUpdate()
         {
             foreach (Status status in this.statuses)
             {
@@ -962,6 +987,12 @@ namespace Pokemon
                 //Debug.Log("After Remaining Turns: " + status.remaining_turns);
             }
 
+        }
+        public bool HasStatus(string name)
+        {
+            if (this.statuses.Contains(name)) return true;
+            else return false;
+            
         }
     }
 

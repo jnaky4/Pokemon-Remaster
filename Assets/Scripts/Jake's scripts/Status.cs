@@ -139,15 +139,6 @@ namespace Pokemon
             unit.pokemon.current_speed = (int)(unit.pokemon.current_speed * .5);
         }
 
-        /*        public static void ReduceSleep(Unit unit)
-                {
-                    unit.pokemon.sleep--;
-                    if (unit.pokemon.sleep == 0)
-                    {
-                        unit.pokemon.statuses.Remove(get_status("Sleep"));
-                        //BattleSystem.dialogueText.text = unit.pokemon.name + " woke up!";
-                    }
-                }*/
 
         public static bool roll_for_Paralysis(Pokemon poke)
         {
@@ -168,52 +159,7 @@ namespace Pokemon
             }
             return false;
         }
-
-        public static bool SeeIfPoisoned(Pokemon poke)
-        {
-            foreach (Status s in poke.statuses)
-            {
-                if (s.name.Equals("Poison")) return true;
-            }
-            return false;
-        }
-
-        public static bool SeeIfBurned(Pokemon poke)
-        {
-            foreach (Status s in poke.statuses)
-            {
-                if (s.name.Equals("Burn")) return true;
-            }
-            return false;
-        }
-
-        public static bool SeeIfSleep(Pokemon poke)
-        {
-            foreach (Status s in poke.statuses)
-            {
-                if (s.name.Equals("Sleep")) return true;
-            }
-            return false;
-        }
-
-        public static bool SeeIfFreeze(Pokemon poke)
-        {
-            int check = 0;
-            foreach (Status s in poke.statuses)
-            {
-                if (s.name.Equals("Freeze")) check = 1;
-            }
-            if (check == 0) return false;
-            System.Random rnd = new System.Random();
-            int num = rnd.Next(1, 100);
-            if (num > 20) return true;
-            else
-            {
-                poke.statuses.Remove("Freeze");
-                //BattleSystem.dialogueText.text = poke.name + " unfroze!";
-                return false;
-            }
-        }
+     
 
         public static bool SeeIfPersistanceIsAlreadyHere(Pokemon poke)
         {

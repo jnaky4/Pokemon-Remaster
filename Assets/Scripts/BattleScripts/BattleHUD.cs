@@ -343,10 +343,10 @@ namespace Pokemon
 
             if (whichplayer == "player")
             {
-
-                currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
+                if (unit.pokemon.IsFainted()) currentHP.text = 0 + "/" + unit.pokemon.max_hp;
+                else currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
             }
-
+            
 
         }
         /// <summary>

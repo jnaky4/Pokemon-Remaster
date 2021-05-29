@@ -132,7 +132,7 @@ namespace Pokemon
                     }
                 }
             }
-            temp_pokemon.upgrade_moves();
+            temp_pokemon.UpgradeMoves();
 
             //foreach (Moves current_move in temp_pokemon.currentMoves) Debug.Log("List of Moves 131: " + current_move.name);
             return temp_pokemon;
