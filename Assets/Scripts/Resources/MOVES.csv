@@ -72,7 +72,7 @@ Jump Kick,Fighting,25,70,95,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A 
 Karate Chop,Fighting,25,50,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Often turns into a critical hit and inflicts double the damage.
 Kinesis,Psychic,15,-1,80,Status,null,0,enemy,1,1,1,1,self,1,Evasion,1,0,0,A special move of bending spoons to confound the enemy. Makes the user harder to hit.
 Leech Life,Bug,15,20,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0.5,An HP-draining attack. It adds half the HP it drained from the target to the attacker's HP.
-Leech Seed,Grass,10,-1,90,Status,Leech Seed,1,enemy,1,1,1,1,enemy,0,null,0,0,0.0625,Plants a seed on the target Pokémon. The seed slowly drains the target's HP for the attacker.
+Leech Seed,Grass,10,-1,90,Status,Seeded,1,enemy,1,1,1,1,enemy,0,null,0,0,0.0625,Plants a seed on the target Pokémon. The seed slowly drains the target's HP for the attacker.
 Leer,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,enemy,1,Defense,-1,0,0,"A technique that lowers the target's DEFENSE. Useful against tough, armored Pokémon."
 Lick,Ghost,30,20,100,Physical,Paralysis,0.33,enemy,1,1,1,1,enemy,0,null,0,0,0,A GHOST-type attack. Has a one-in-three chance of leaving the target with paralysis.
 Light Screen,Psychic,30,-1,100,Status,null,0,enemy,1,1,1,1,self,0,null,0,0,0,Reduces damage from special attacks by about half. A special PSYCHIC-type technique.

@@ -73,14 +73,14 @@ namespace Pokemon
              * max_duration: (1 to 5):  -1 means always persist
              */
             //                          name         adj            persist ig_type     s_dmg%  u_atk%  afct_st     afct_st_mul rmv_ch  max_dur min_dur
-            {"Burn",  new Status(       "Burn",      "burned",      true,   "Fire",     .125,   0,      "Attack",   .5,         0,      -1,     -1)},
-            {"Freeze",  new Status(     "Freeze",    "frozen",      true,   "Ice",      0,      1.0,    "null",     1,          .2,     -1,     -1)},
-            {"Sleep",  new Status(      "Sleep",     "asleep",      true,   "null",     0,      1.0,    "null",     1,          0,      3,      1)},
-            {"Paralysis", new Status(   "Paralysis", "paralyzed",   true,   "Electric", 0,      .25,    "Speed",    .5,         0,      -1,     -1)},
-            {"Poison", new Status(      "Poison",    "poisoned",    true,   "Poison",   .125,   0,      "null",     1,          0,      -1,     -1)},
-            {"Flinch", new Status(      "Flinch",    "flinched",    false,  "null",     0,      1.0,    "null",     1,          0,      1,      1)},
-            {"Confusion", new Status(   "Confusion", "confused",    false,  "null",     .175,   .33,    "null",     1,          0,      5,      2)},
-            {"Leech Seed", new Status(  "Leech Seed","seeded",      false,  "null",     .0625,  0,      "null",     1,          0,      -1,     -1)},
+            {"Burn",  new Status(       "Burn",      "Burned",      true,   "Fire",     .125,   0,      "Attack",   .5,         0,      -1,     -1)},
+            {"Freeze",  new Status(     "Freeze",    "Frozen",      true,   "Ice",      0,      1.0,    "null",     1,          .2,     -1,     -1)},
+            {"Sleep",  new Status(      "Sleep",     "Asleep",      true,   "null",     0,      1.0,    "null",     1,          0,      3,      1)},
+            {"Paralysis", new Status(   "Paralysis", "Paralyzed",   true,   "Electric", 0,      .25,    "Speed",    .5,         0,      -1,     -1)},
+            {"Poison", new Status(      "Poison",    "Poisoned",    true,   "Poison",   .125,   0,      "null",     1,          0,      -1,     -1)},
+            {"Flinch", new Status(      "Flinch",    "Flinched",    false,  "null",     0,      1.0,    "null",     1,          0,      1,      1)},
+            {"Confusion", new Status(   "Confusion", "Confused",    false,  "null",     .175,   .33,    "null",     1,          0,      5,      2)},
+            {"Seeded", new Status(      "Seeded",    "Seeded",      false,  "null",     .0625,  0,      "null",     1,          0,      -1,     -1)},
             //for csv, does nothing
             {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1)}
         };
@@ -231,7 +231,7 @@ namespace Pokemon
         {
             foreach (Status s in poke.statuses)
             {
-                if (s.name.Equals("Leech Seed")) return true;
+                if (s.name.Equals("Seeded")) return true;
             }
             return false;
         }

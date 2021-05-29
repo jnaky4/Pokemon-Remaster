@@ -274,14 +274,6 @@ namespace Pokemon
             }
         }
 
-        public void BurnSelf()
-        {
-            TakeDamage(pokemon.max_hp * (.125));
-        }
 
-        public void PoisonSelf()
-        {
-            TakeDamage(pokemon.max_hp * (.125));
-        }
     }
 }

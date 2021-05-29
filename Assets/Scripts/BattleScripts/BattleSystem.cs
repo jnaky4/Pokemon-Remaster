@@ -440,6 +440,9 @@ namespace Pokemon
         /// <returns>Nothing</returns>
         private IEnumerator Decision(int playerMoveNum)
         {
+            Debug.Log("Line 443");
+            Debug.Log("PLAYER POKEMON IS DEAD: " + playerUnit.pokemon.is_dead());
+
             SetDownButtons();
             ClosePokemonMenu();
             CloseMovesMenu();
@@ -517,15 +520,15 @@ namespace Pokemon
 
 
 
+            Debug.Log("Line 523");
 
-            
             if (playerMove.priority > enemyMove.priority)
             {
                 state = BattleState.PLAYERTURN;
 
                 for (int k = 0; k < numTimesPlayer; k++)
                 {
-                    yield return StartCoroutine(Attack(playerMove, "player", playerUnit, enemyUnit));
+                    yield return StartCoroutine(AttackXYZ(playerMove, "player", playerUnit, enemyUnit));
                     if (unableToAttack)
                     {
                         unableToAttack = false;
@@ -539,7 +542,7 @@ namespace Pokemon
                     state = BattleState.ENEMYTURN;
                     for (int k = 0; k < numTimesEnemy; k++)
                     {
-                        yield return StartCoroutine(Attack(enemyMove, "enemy", enemyUnit, playerUnit));
+                        yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
                         if (unableToAttack)
                         {
                             unableToAttack = false;
@@ -554,7 +557,7 @@ namespace Pokemon
                 state = BattleState.ENEMYTURN;
                 for (int k = 0; k < numTimesEnemy; k++)
                 {
-                    yield return StartCoroutine(Attack(enemyMove, "enemy", enemyUnit, playerUnit));
+                    yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
                     if (unableToAttack)
                     {
                         unableToAttack = false;
@@ -567,7 +570,7 @@ namespace Pokemon
                     state = BattleState.PLAYERTURN;
                     for (int k = 0; k < numTimesPlayer; k++)
                     {
-                        yield return StartCoroutine(Attack(playerMove, "player", playerUnit, enemyUnit));
+                        yield return StartCoroutine(AttackXYZ(playerMove, "player", playerUnit, enemyUnit));
                         if (unableToAttack)
                         {
                             unableToAttack = false;
@@ -585,7 +588,7 @@ namespace Pokemon
                     state = BattleState.ENEMYTURN;
                     for (int k = 0; k < numTimesEnemy; k++)
                     {
-                        yield return StartCoroutine(Attack(enemyMove, "enemy", enemyUnit, playerUnit));
+                        yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
                         if (unableToAttack)
                         {
                             unableToAttack = false;
@@ -598,7 +601,7 @@ namespace Pokemon
                         state = BattleState.PLAYERTURN;
                         for (int k = 0; k < numTimesPlayer; k++)
                         {
-                            yield return StartCoroutine(Attack(playerMove, "player", playerUnit, enemyUnit));
+                            yield return StartCoroutine(AttackXYZ(playerMove, "player", playerUnit, enemyUnit));
                             if (unableToAttack)
                             {
                                 unableToAttack = false;
@@ -613,7 +616,7 @@ namespace Pokemon
                     state = BattleState.PLAYERTURN;
                     for (int k = 0; k < numTimesPlayer; k++)
                     {
-                        yield return StartCoroutine(Attack(playerMove, "player", playerUnit, enemyUnit));
+                        yield return StartCoroutine(AttackXYZ(playerMove, "player", playerUnit, enemyUnit));
                         if (unableToAttack)
                         {
                             unableToAttack = false;
@@ -626,7 +629,7 @@ namespace Pokemon
                         state = BattleState.ENEMYTURN;
                         for (int k = 0; k < numTimesEnemy; k++)
                         {
-                            yield return StartCoroutine(Attack(enemyMove, "enemy", enemyUnit, playerUnit));
+                            yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
                             if (unableToAttack)
                             {
                                 unableToAttack = false;
@@ -644,7 +647,7 @@ namespace Pokemon
                         state = BattleState.PLAYERTURN;
                         for (int k = 0; k < numTimesPlayer; k++)
                         {
-                            yield return StartCoroutine(Attack(playerMove, "player", playerUnit, enemyUnit));
+                            yield return StartCoroutine(AttackXYZ(playerMove, "player", playerUnit, enemyUnit));
                             if (unableToAttack)
                             {
                                 unableToAttack = false;
@@ -657,7 +660,7 @@ namespace Pokemon
                             state = BattleState.ENEMYTURN;
                             for (int k = 0; k < numTimesEnemy; k++)
                             {
-                                yield return StartCoroutine(Attack(enemyMove, "enemy", enemyUnit, playerUnit));
+                                yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
                                 if (unableToAttack)
                                 {
                                     unableToAttack = false;
@@ -672,7 +675,7 @@ namespace Pokemon
                         state = BattleState.ENEMYTURN;
                         for (int k = 0; k < numTimesEnemy; k++)
                         {
-                            yield return StartCoroutine(Attack(enemyMove, "enemy", enemyUnit, playerUnit));
+                            yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
                             if (unableToAttack)
                             {
                                 unableToAttack = false;
@@ -685,7 +688,7 @@ namespace Pokemon
                             state = BattleState.PLAYERTURN;
                             for (int k = 0; k < numTimesPlayer; k++)
                             {
-                                yield return StartCoroutine(Attack(playerMove, "player", playerUnit, enemyUnit));
+                                yield return StartCoroutine(AttackXYZ(playerMove, "player", playerUnit, enemyUnit));
                                 if (unableToAttack)
                                 {
                                     unableToAttack = false;
@@ -698,17 +701,21 @@ namespace Pokemon
                 }
             }
 
+            Debug.Log("Line 704");
             state = BattleState.PLAYERTURN;
             if (deadPokemon)
             {
+                Debug.Log("Line 709");
                 yield return SwitchPokemonAfterDeath();
             }
             if (battleIsOver)
             {
+
                 yield return SeeIfEndBattle();
                 PlayerTurn();
                 yield break;
             }
+            Debug.Log("Line 718");
             PlayerTurn();
             yield break;
         }
@@ -753,7 +760,7 @@ namespace Pokemon
             state = BattleState.ENEMYTURN;
             for (int k = 0; k < numTimesEnemy; k++)
             {
-                yield return StartCoroutine(Attack(enemyMove, "enemy", enemyUnit, playerUnit));
+                yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
                 if (unableToAttack)
                 {
                     unableToAttack = false;
@@ -772,7 +779,7 @@ namespace Pokemon
 
         #endregion Decision functions to see who goes first
 
-        #region Player attack functions
+        #region Attack functions
 
         /// <summary>
         /// This function is what we go to before anything happens.
@@ -781,10 +788,13 @@ namespace Pokemon
         /// </summary>
         private void PlayerTurn()
         {
+
+            Debug.Log("Line 792 Start Player Turn");
             deadPokemon = false;
             battleIsOver = false;
-            if (playerUnit.pokemon.current_hp == 0)
+            if (playerUnit.pokemon.is_dead())
             {
+                Debug.Log("Line 797 Pokemon Is Dead");
                 state = BattleState.CHANGEPOKEMON;
                 SwitchPokemonAfterDeath();
 
@@ -809,10 +819,10 @@ namespace Pokemon
         /// </summary>
         /// <param name="attack">The move we are attacking with.</param>
         /// <returns>Nothing</returns>
-        private IEnumerator Attack(Moves attack, string whosattacking, Unit Player, Unit Opponent)
+        private IEnumerator AttackXYZ(Moves attack, string whosattacking, Unit Player, Unit Opponent)
         {
 
-
+            Debug.Log("Line 815");
 
 
             if (whosattacking == "player")
@@ -836,11 +846,13 @@ namespace Pokemon
 
 
 
-
+            Debug.Log("Line 839");
 
 
             if (!unableToAttack)
             {
+
+                Debug.Log("Line 845");
                 bool crit = Utility.CriticalHit(Player);
                 System.Random rnd = new System.Random();
                 int num = rnd.Next(1, 100);
@@ -929,7 +941,7 @@ namespace Pokemon
                         if (crit)
                         {
                             dialogueText.text = "Critical hit!";
-                            yield return new WaitForSeconds(2);
+                            yield return new WaitForSeconds(0.75f);
                         }
                         if (super > 1)
                         {
@@ -984,6 +996,8 @@ namespace Pokemon
                 }
             }
 
+
+            Debug.Log("Line 990");
             //deals status damages, and decrements status counters
             yield return StartCoroutine(EndTurnStatusUpdate(whosattacking, Player, Opponent));
 
@@ -994,7 +1008,7 @@ namespace Pokemon
             if(whosattacking == "player")
             {
                 yield return StartCoroutine(IsPokemonDead(Opponent.pokemon.is_dead(), "enemy", GameController.opponentPokemon));
-                //yield return StartCoroutine(isPokemonDead(Player.pokemon.is_dead(), "player", GameController.playerPokemon));
+                yield return StartCoroutine(IsPokemonDead(Player.pokemon.is_dead(), "player", GameController.playerPokemon));
             }
 
             if(whosattacking == "enemy")
@@ -1003,7 +1017,7 @@ namespace Pokemon
                 yield return StartCoroutine(IsPokemonDead(Player.pokemon.is_dead(), "enemy", GameController.opponentPokemon));
             }
 
-            
+            Debug.Log("Line 1010");
 
 
 
@@ -1035,7 +1049,7 @@ namespace Pokemon
 
         //END TURN STATUS UPDATE
         //looks for statuses that apply at end of turn
-        //Leech Seed, Burn, Poison
+        //Seeded, Burn, Poison
         public IEnumerator EndTurnStatusUpdate(string whosattacking, Unit Player, Unit Opponent)
         {
 
@@ -1052,8 +1066,9 @@ namespace Pokemon
                     {
 
 
-                        case "Leech Seed":
-                            AnimateStatus("Seeded", animate_on_player);
+                        case "Seeded":
+                            AnimateStatus(status.name, animate_on_player);
+                            
                             GameController.soundFX = "Poisoned";
                             while (!endofanimation)
                             {
@@ -1061,10 +1076,10 @@ namespace Pokemon
                             }
                             endofanimation = false;
 
-                            //Take Damage: unit has leech seed on them
-                            Player.TakeDamage(Player.pokemon.max_hp * 0.0625);
+                            //Take Damage: unit has Seeded on them
+                            Player.TakeDamage(Player.pokemon.max_hp * status.self_damage);
                             //Heal Damage: oponnent pokemon heals damage
-                            Opponent.TakeDamage(-Player.pokemon.max_hp * 0.0625);
+                            Opponent.TakeDamage(-Player.pokemon.max_hp * status.self_damage);
 
                             if (whosattacking == "player")
                             {
@@ -1087,7 +1102,7 @@ namespace Pokemon
 
                             break;
                         case "Burn":
-                            AnimateStatus("Burn", animate_on_player);
+                            AnimateStatus(status.name, animate_on_player);
                             GameController.soundFX = "Ember";
                             while (!endofanimation)
                             {
@@ -1095,7 +1110,8 @@ namespace Pokemon
                             }
                             endofanimation = false;
 
-                            Player.BurnSelf();
+                            
+                            Player.TakeDamage(Player.pokemon.max_hp * status.self_damage);
 
                             if (whosattacking == "player")
                             {
@@ -1115,8 +1131,8 @@ namespace Pokemon
                             break;
                         case "Poison":
                             //Debug.Log("REACHING POISON");
-                            AnimateStatus("Poison", animate_on_player);
-                            GameController.soundFX = "Poisoned";
+                            AnimateStatus(status.name, animate_on_player);
+                            GameController.soundFX = status.adj;
 
                             while (!endofanimation)
                             {
@@ -1124,7 +1140,8 @@ namespace Pokemon
                             }
                             endofanimation = false;
 
-                            Player.PoisonSelf();
+                            Player.TakeDamage(Player.pokemon.max_hp * status.self_damage);
+
                             if (whosattacking == "player")
                             {
                                 StartCoroutine(Blink(playerSprite, 0.25));
@@ -1136,7 +1153,7 @@ namespace Pokemon
                                 enemyHUD.SetHP(Player.pokemon.current_hp, playerUnit, whosattacking);
                             }
                             
-                            dialogueText.text = Player.pokemon.name + " is poisoned!";
+                            dialogueText.text = Player.pokemon.name + " is " + status.adj + "!" ;
 
                             yield return new WaitForSeconds(2);
                             break;
@@ -1148,13 +1165,14 @@ namespace Pokemon
             //decrements all counters
             Player.pokemon.end_turn_statuses_update();               
               
-            //decrements all counters
-            enemyUnit.pokemon.end_turn_statuses_update();
-        }
 
-        //ABLE TO ATTACK
-        //checks all statuses if able to attack, if unable to attack, displays animation
-        //if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
+        }
+        /// <summary> 
+        /// checks all statuses if able to attack, if unable to attack sets global bool unableToAttack, animates status effect.
+        /// </summary>
+        /// <param name="Player">Player object that stores pokemon</param>
+        /// <param name="whosattacking">specifies which player to check statuses for able to attack</param>
+        /// if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
         public IEnumerator AbleToAttack(Unit Player, string whosattacking)
         {
             bool animate_on_player = whosattacking == "player" ? true : false;
@@ -1207,6 +1225,9 @@ namespace Pokemon
             //reset name
             Player.pokemon.UnableToAttackStatusName = "";
         }
+
+
+
 
         public IEnumerator IsPokemonDead(bool pokemonFainted, string whoFainted, Pokemon[] pokemonTeam)
         {
@@ -1592,42 +1613,8 @@ namespace Pokemon
             yield break;
         }
 
-        #endregion Player attack functions
+        #endregion Attack functions
 
-        #region Enemy attack functions
-
-        /// <summary>
-        /// The enemy version of player attack.
-        /// There is only one function because I cleaned up this code to allow one to be used for struggle.
-        /// There is no reason this can't be done for the player functions, I just haven't gotten around to it yet and that is very low on my priority list.
-        /// </summary>
-        /// <param name="move">The attack the enemy Pokemon chose.</param>
-        /// <returns>Nothing.</returns>
-
-/*        private IEnumerator EnemyAttack(Moves move, Pokemon pokemon)
-        {
-
-
-
-                        else if (move.status.RollToApplyStatus(move) && playerUnit.pokemon.statuses.Contains(move.status.name))
-                        {
-                            dialogueText.text = "Your " + playerUnit.pokemon.name + " is already " + move.status.adj + "!";
-                        }
-                        else if (move.status.RollToApplyStatus(move) || (move.status.RollToApplyStatus(move) && move.status.name.Equals("Paralysis") && Utility.IsGround(enemyUnit)) || (move.status.RollToApplyStatus(move) && move.status.name.Equals("Poison") && Utility.IsPoison(enemyUnit)))
-                        {
-                            dialogueText.text = "Your " + playerUnit.pokemon.name + " became " + move.status.adj + "!";
-                            playerHUD.SetStatus(playerUnit.pokemon);
-                        }
-
-
-                    yield return new WaitForSeconds(2);
-
-
-
-        }*/
-
-
-        #endregion Enemy attack functions
 
         #region End of Battle functions
 
@@ -1776,7 +1763,7 @@ namespace Pokemon
                     GameController.player.greatBalls = player.numGreatBalls;
                     GameController.player.ultraBalls = player.numUltraBalls;
                     GameController.player.masterBalls = player.numMasterBalls;
-                    if (GameController.playerPokemon[i].statuses.Contains(Status.get_status("Leech Seed"))) GameController.playerPokemon[i].statuses.Remove(Status.get_status("Leech Seed"));
+                    if (GameController.playerPokemon[i].statuses.Contains(Status.get_status("Seeded"))) GameController.playerPokemon[i].statuses.Remove(Status.get_status("Seeded"));
                 }
             }
             GameController.endCombat = true; //Something for levi.
