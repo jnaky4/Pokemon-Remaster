@@ -145,7 +145,7 @@ Supersonic,Normal,20,-1,55,Status,Confusion,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A
 Surf,Water,15,95,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A WATER-type attack. The power of this technique is strong and highly accurate.
 Swift,Normal,20,60,100,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"A NORMAL-type attack. It is highly accurate, so it can be counted on to inflict damage."
 Swords Dance,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Attack,2,0,0,A special move that greatly boosts the user's ATTACK power. Can normally be used up to three times.
-Tackle,Normal,35,35,95,Physical,Burn,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Many Pokémon know this attack right from the start.
+Tackle,Normal,35,35,95,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Many Pokémon know this attack right from the start.
 Tail Whip,Normal,30,-1,100,Status,null,0,enemy,1,1,1,1,enemy,1,Defense,-1,0,0,"A technique that lowers the target's DEFENSE. Useful against tough, armored Pokémon."
 Take Down,Normal,20,90,85,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,-0.25,A charging attack. One quarter of the damage it inflicts comes back to hurt the attacker.
 Teleport,Psychic,20,-1,100,Status,null,0,self,1,1,1,1,enemy,0,null,0,0,0,A special technique for instantly escaping from wild Pokémon. Useful in the wild only.

@@ -71,7 +71,7 @@ namespace Pokemon
             //set exp for new pokemon, default 0,
             this.lvl_speed = pokedex_entry.leveling_speed;
             this.current_exp = current_exp;
-            //Debug.Log("Argurment Current EXP: " + this.current_exp);
+
             //sets: base_level_exp, current_exp if current_exp above is 0, next_level_exp
             set_exp();
 
@@ -81,10 +81,6 @@ namespace Pokemon
             //adds persisting status to pokemon if it had prior to evolving
             if (statuses != null) this.statuses = statuses;
 
-            if (current_exp == 0)
-            {
-                this.current_exp = this.base_lvl_exp;
-            }
 
 
             //get learnset added to learnset_dictionary for this pokemon
@@ -376,10 +372,8 @@ namespace Pokemon
                 //Debug.Log("SET_EXP() next_lvl_exp: " + this.next_lvl_exp);
 
                 //Debug.Log("BEFORE SET_EXP() current_lvl_exp " + this.current_exp);
-                if (this.current_exp == 0 || this.current_exp < this.base_lvl_exp)
-                {
-                    this.current_exp = this.base_lvl_exp;
-                }
+                this.current_exp = this.current_exp < this.base_lvl_exp ? this.base_lvl_exp : this.current_exp;
+
                 //Debug.Log("AFTER SET_EXP() current_lvl_exp " + this.current_exp);
             }
 
@@ -474,16 +468,16 @@ namespace Pokemon
             //b is enemy_base_exp
             //L is enemy_level
             int exp_gained = (int)(trainer_wild_multipllier * 1 * 1 * enemy_base_exp * enemy_level) / (7 * num_player_pokemon_used);
-            Debug.Log(this.name + " gained " + exp_gained + "!");
+            //Debug.Log(this.name + " gained " + exp_gained + "!");
             this.current_exp += exp_gained;
 
-            Debug.Log("base exp " + this.base_lvl_exp);
+/*            Debug.Log("base exp " + this.base_lvl_exp);
             Debug.Log("current exp " + this.current_exp);
-            Debug.Log("next level exp " + this.next_lvl_exp);
+            Debug.Log("next level exp " + this.next_lvl_exp);*/
 
             if (this.current_exp >= this.next_lvl_exp)
             {
-                Debug.Log("Pokemon Leveled!");
+                //Debug.Log("Pokemon Leveled!");
                 this.level += 1;
                 this.gained_a_level = true;
 
@@ -505,20 +499,20 @@ namespace Pokemon
                 this.change_sp_attack = this.max_sp_attack - change_sp_attack;
                 this.change_sp_defense = this.max_sp_defense - change_sp_defense;
 
-                Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
+/*                Debug.Log("Your Pokemon Gained " + change_hp + " HP!");
                 Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
                 Debug.Log("Your Pokemon Gained " + change_attack + " ATK!");
                 Debug.Log("Your Pokemon Gained " + change_defense + " DFN!");
                 Debug.Log("Your Pokemon Gained " + change_speed + " SPD!");
                 Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
-                Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");
+                Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*/
 
 
                 //check if learnable move
                 Moves temp_new_move = this.check_learnset();
                 if (temp_new_move != null)
                 {
-                    Debug.Log("Your pokemon learned a new move! " + temp_new_move.name);
+                    //Debug.Log("Your pokemon learned a new move! " + temp_new_move.name);
                     this.learned_new_move = true;
                 }
 
@@ -526,7 +520,7 @@ namespace Pokemon
                 this.time_to_evolve = this.check_evolve();
                 if (this.time_to_evolve)
                 {
-                    Debug.Log("Your Pokemon is ready to evolve!");
+                    //Debug.Log("Your Pokemon is ready to evolve!");
                 }
 
                 //update exp

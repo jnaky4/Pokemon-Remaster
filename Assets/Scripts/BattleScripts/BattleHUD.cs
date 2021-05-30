@@ -170,7 +170,7 @@ namespace Pokemon
             }
         }
 
-        public void CrossOutBall(int x)
+        public void CrossOutEnemyBall(int x)
         {
             var sprite = Resources.Load<Sprite>("Images/Items/Pokeball_Dead2");
             if (x == 6)
