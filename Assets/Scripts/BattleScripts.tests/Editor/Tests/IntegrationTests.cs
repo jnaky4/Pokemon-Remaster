@@ -108,8 +108,7 @@ namespace Pokemon
             public bool interactable;
         }
 
-        [UnityTest]
-        public IEnumerator AttackFunctionExecutes()
+        public BattleSystem BsSetup()
         {
             Main App = (new GameObject("MainLoader")).AddComponent<Main>();
             App.Start();
@@ -129,11 +128,41 @@ namespace Pokemon
             bs.mainUI = new GameObject();
             bs.backUI = new GameObject();
 
+            return bs;
+        }
+
+        [UnityTest]
+        public IEnumerator AttackFunctionExecutes()
+        {
+            BattleSystem bs = BsSetup(); 
+
             MonoBehaviour myUnity = (new GameObject("UnityObject")).AddComponent<FakeUnity>();
 
             Moves attack = bs.playerUnit.pokemon.currentMoves[0];
             myUnity.StartCoroutine(bs.AttackXYZ(attack, "player", bs.playerUnit, bs.enemyUnit));
 
+            yield return null;
+        }
+
+        [UnityTest]
+        public IEnumerator Attack_Damages_Enemy()
+        {
+            BattleSystem bs = BsSetup();
+
+            MonoBehaviour myUnity = (new GameObject("UnityObject")).AddComponent<FakeUnity>();
+
+            Moves attack = bs.playerUnit.pokemon.currentMoves[0];
+            int starting_hp = bs.enemyUnit.pokemon.current_hp;
+            myUnity.StartCoroutine(bs.AttackXYZ(attack, "player", bs.playerUnit, bs.enemyUnit));
+            Assert.IsTrue(bs.enemyUnit.pokemon.current_hp < starting_hp, "ember does damage to charmander");
+
+            yield return null;
+        }
+
+
+        [UnityTest]
+        public IEnumerator Attack_Function_Does_No_Damage_If_Disabled_By_Status()
+        {
             yield return null;
         }
 

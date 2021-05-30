@@ -42,8 +42,11 @@ namespace Pokemon
                     starter.pokemon = new Pokemon(1, 5, "Tackle", "Growl");
                     //starter.pokemon = new Pokemon(1, 19, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 7900);
                     break;
+                /////////////////////////////////////////////////
+                ////////////////////////////////////////////
+                ///////////////////////////////////////////////
                 case 4:
-                    starter.pokemon = new Pokemon(4, 5, "Scratch", "Growl", "Ember");
+                    starter.pokemon = new Pokemon(4, 5, "Scratch", "Growl", "Ember", "Fire Blast", 1, 1);
                     //starter.pokemon = new Pokemon(4, 19, "Poison Gas", "Ember", "Tail Whip", "Bite", 7900);
                     break;
                 case 7:
