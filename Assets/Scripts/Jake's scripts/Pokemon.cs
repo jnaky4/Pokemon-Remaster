@@ -923,6 +923,7 @@ namespace Pokemon
                     }
                 }
             }
+            Debug.Log("CheckAbleAttack result determines if pokemon can attack" + can_attack);
             return can_attack;
         }
 

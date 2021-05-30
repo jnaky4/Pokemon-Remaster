@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum BattleState { START, PLAYERTURN, ENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, CHANGEPOKEMON }
+public enum ActionChoice { ATTACK, SWITCH, CATCH, RUN}
 
 namespace Pokemon
 {
@@ -135,13 +136,12 @@ namespace Pokemon
 
 
 
-        private bool battleIsOver = false;
-        private bool deadPokemon = false;
-        private bool unableToAttack = false;
-        private int playerContinuingAttack = 0;
-        private int enemyContinuingAttack = 0;
-        private Moves playerMoveStorage;
-        private Moves enemyMoveStorage;
+        public bool battleIsOver = false;
+        public bool unableToAttack = false;
+        public int playerContinuingAttack = 0;
+        public int enemyContinuingAttack = 0;
+        public Moves playerMoveStorage;
+        public Moves enemyMoveStorage;
 
         private int phasePlayerSprite = 0; //0 means no phasing, 1 means phase out, 2 means phase in
         private int phaseOpponentSprite = 0;
@@ -163,7 +163,7 @@ namespace Pokemon
         {
             PlayerAttackAnim = new SpriteAnimator(AttackSprites, playerAttackSprite, 0.04f);
             EnemyAttackAnim = new SpriteAnimator(AttackSprites, enemyAttackSprite, 0.04f);
-
+            Debug.Log("start function was called of course!");
             state = BattleState.START;
             pokeMenuUI.SetActive(false);
             attackMenuUI.SetActive(false);
@@ -431,29 +431,105 @@ namespace Pokemon
 
         #endregion Set up battle and update functions
 
-        #region Decision functions to see who goes first
+        public Moves DeterminePlayerMove(int playerMoveNum, System.Random rnd)
+        {
+            Moves playerMove;
+            switch (playerMoveNum)
+            {
+                case -2:
+                    playerContinuingAttack--;
+                    playerMove = playerMoveStorage;
+                    break;
+                case -1:
+                    playerMove = playerUnit.pokemon.struggle;
+                    break;
+                default:
+                    playerMove = playerUnit.pokemon.currentMoves[playerMoveNum];
+                    playerUnit.DoPP(playerMoveNum);
+                    if (playerMove.max_turns > 1)
+                    {
+                        playerContinuingAttack = rnd.Next(playerMove.min_turns, playerMove.max_turns + 1);
+                    }
+                    break;
+            }
+
+            playerMoveName = playerMove.name;
+            return playerMove;
+        }
 
 
-        public BattleState DetermineNextState(Moves playerMove, Moves enemyMove)
+        public Moves DetermineEnemyMove(int enemyMoveNum, System.Random rnd)
         {
 
-            //priorities arent the same
-            //1,0 or 0,1
-            if (playerMove.priority != enemyMove.priority)
+            Moves enemyMove;
+            switch (enemyMoveNum)
             {
-                return playerMove.priority > enemyMove.priority ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
-
+                case -2:
+                    enemyContinuingAttack--;
+                    enemyMove = enemyMoveStorage;
+                    break;
+                case -1:
+                    enemyMove = enemyUnit.pokemon.struggle;
+                    break;
+                default:
+                    enemyMove = enemyUnit.pokemon.currentMoves[enemyMoveNum];
+                    enemyUnit.DoPP(enemyMoveNum);
+                    if (enemyMove.max_turns > 1)
+                    {
+                        enemyContinuingAttack = rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
+                    }
+                    break;
             }
-            //priorities are the same, do additional checks
-            //1,1, or 0,0
-            else
-            {
-                return playerUnit.pokemon.current_speed > enemyUnit.pokemon.current_speed ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
-            }
+            enemyMoveName = enemyMove.name;
+            return enemyMove;
+        }
 
+        public BattleState DetermineNextState(Moves a, Moves b)
+        {
+            if ((a.priority == b.priority) && (playerUnit.pokemon.current_speed > enemyUnit.pokemon.current_speed)) return BattleState.PLAYERTURN;
+            else if (a.priority > b.priority) return BattleState.PLAYERTURN;
+            else if (b.priority > a.priority) return BattleState.ENEMYTURN;
+            else if (a.priority == b.priority) return BattleState.ENEMYTURN;
+            else return BattleState.ENEMYTURN;
 
         }
 
+
+        #region Decision functions to see who goes first
+
+        private IEnumerator PlayerAction(Moves playerMove)
+        {
+            System.Random rnd = new System.Random();
+            int numTimesPlayer = rnd.Next(playerMove.min_per_turn, playerMove.max_per_turn + 1);
+            Debug.Log("numTimesPlayer = " + numTimesPlayer);
+            for (int k = 0; k < numTimesPlayer; k++)
+            {
+                yield return AttackXYZ(playerMove, "player", playerUnit, enemyUnit);
+            }
+        }
+
+
+        private IEnumerator EnemyAction(Moves enemyMove)
+        {
+
+            System.Random rnd = new System.Random();
+            int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
+            for (int k = 0; k < numTimesEnemy; k++)
+            {
+                yield return AttackXYZ(enemyMove, "enemy", playerUnit, enemyUnit);
+            }
+        }
+
+        private IEnumerator CheckAndHandleNoPP(Moves move)
+        { 
+            if (move.current_pp == 0)
+            {
+                dialogueText.text = "No remaining PP for " + move.name + "!";
+                yield return new WaitForSeconds(2);
+                PlayerTurn();
+                yield break;
+            }
+        }
 
 
         /// <summary>
@@ -461,179 +537,73 @@ namespace Pokemon
         /// </summary>
         /// <param name="playerMoveNum">The player move number. -1 if struggle, -2 if continuing attack.</param>
         /// <returns>Nothing</returns>
-        private IEnumerator Decision(int playerMoveNum)
+        private IEnumerator Decision(ActionChoice choice, String action)
         {
-            Debug.Log("Line 443");
-            Debug.Log("PLAYER POKEMON IS DEAD: " + playerUnit.pokemon.IsFainted());
+
+
+            Debug.Log("Line 471");
+            Debug.Log("PLAYER POKEMON IS DEAD?: " + playerUnit.pokemon.IsFainted());
 
             SetDownButtons();
             ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
 
-            if (playerMoveNum >= 0)
-            {
-                if (playerUnit.pokemon.currentMoves[playerMoveNum].current_pp == 0)
-                {
-                    dialogueText.text = "No remaining PP for " + playerUnit.pokemon.currentMoves[playerMoveNum].name + "!";
-                    yield return new WaitForSeconds(2);
-                    PlayerTurn();
-                    yield break;
-                }
-            }
-            int moveNum = -1;
-            bool struggle = false;
-            if (enemyContinuingAttack == 0) struggle = Utility.EnemyStruggle(enemyUnit);
-            Moves enemyMove, playerMove;
+            // choices  ATTACK, SWITCH, CATCH, RUN
             System.Random rnd = new System.Random();
-            if (playerMoveNum == -2) playerMove = playerMoveStorage;
-            else if (playerMoveNum != -1) playerMove = playerUnit.pokemon.currentMoves[playerMoveNum];
-            else playerMove = playerUnit.pokemon.struggle;
-
-            if (enemyContinuingAttack != 0)
+            Moves enemyMove = DetermineEnemyMove(0, rnd);
+            switch (choice)
             {
-                enemyMove = enemyMoveStorage;
-            }
-            else if (struggle)
-            {
-                enemyMove = enemyUnit.pokemon.struggle;
-            }
-            else
-            {            
-                do
-                {
-                    //Pick move for AI decision
-                    //enemyUnit.pokemon.decide_move();
-                    moveNum = rnd.Next(enemyUnit.pokemon.CountMoves());
-                    enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
-                }
-                while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
-            }
-            ClosePokemonMenu();
-            CloseMovesMenu();
-            CloseBallsMenu();
-            SetDownButtons();
-            playerMoveName = playerMove.name;
-            enemyMoveName = enemyMove.name;
-
-
-            if (playerMoveNum != -2 && playerMove.max_turns > 1)
-            {
-                playerContinuingAttack = rnd.Next(playerMove.min_turns, playerMove.max_turns + 1);
-                playerMoveStorage = playerMove;
-            }
-
-            if (playerMoveNum == -2) playerContinuingAttack--;
-
-            if (enemyContinuingAttack != 0) enemyContinuingAttack--;
-            
-            else if (enemyMove.max_turns > 1)
-            {
-                enemyContinuingAttack = rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
-                enemyMoveStorage = enemyMove;
-            }
-
-            //number of moves per turn the player/enemy can attack
-            int numTimesPlayer = rnd.Next(playerMove.min_per_turn, playerMove.max_per_turn + 1);
-            int numTimesEnemy = rnd.Next(enemyMove.min_per_turn, enemyMove.max_per_turn + 1);
-
-            if (playerMoveNum >= 0) playerUnit.DoPP(playerMoveNum);
-            
-            if (moveNum >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
-
-
-            state = DetermineNextState(playerMove, enemyMove);
-
-            switch (state)
-            {
-
-                case BattleState.PLAYERTURN:
-                    for (int k = 0; k < numTimesPlayer; k++)
+                case ActionChoice.ATTACK:
+                    // determine player attack
+                    // determine enemy attack
+                    int playerMoveNum = Int16.Parse(action);
+                    Moves playerMove = DeterminePlayerMove(playerMoveNum, rnd);
+                    yield return CheckAndHandleNoPP(playerMove);
+                    state = DetermineNextState(playerMove, enemyMove);
+                    // do combat phase
+                    if (state == BattleState.PLAYERTURN)
                     {
-                        yield return StartCoroutine(AttackXYZ(playerMove, "player", playerUnit, enemyUnit));
-
-                        if (unableToAttack)
-                        {
-                            unableToAttack = false;
-                            break;
-                        }
-                        if (battleIsOver) break;
+                        int attacks = playerMove.min_per_turn;
+                        yield return PlayerAction(playerMove);
+                        yield return EnemyAction(enemyMove);
                     }
-
-                    if (state != BattleState.CHANGEPOKEMON && !battleIsOver)
+                    else if (state == BattleState.ENEMYTURN)
                     {
-                        state = BattleState.ENEMYTURN;
-                        
-                        for (int k = 0; k < numTimesEnemy; k++)
-                        {
-                            yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
-
-                            if (unableToAttack)
-                            {
-                                unableToAttack = false;
-                                break;
-                            }
-                            if (battleIsOver) break;
-                        }
+                        yield return EnemyAction(enemyMove);
+                        yield return PlayerAction(playerMove);
                     }
-
                     break;
-                case BattleState.ENEMYTURN:
-                    for (int k = 0; k < numTimesEnemy; k++)
-                    {
-                        yield return StartCoroutine(AttackXYZ(enemyMove, "enemy", enemyUnit, playerUnit));
-                        if (unableToAttack)
-                        {
-                            unableToAttack = false;
-                            break;
-                        }
-                        if (battleIsOver) break;
-                    }
-                    if (!battleIsOver && !deadPokemon)
-                    {
-                        state = BattleState.PLAYERTURN;
-                        for (int k = 0; k < numTimesPlayer; k++)
-                        {
-                            yield return StartCoroutine(AttackXYZ(playerMove, "player", playerUnit, enemyUnit));
-                            if (unableToAttack)
-                            {
-                                unableToAttack = false;
-                                break;
-                            }
-                            if (battleIsOver) break;
-                        }
-                    }
-                    //deals status damages, and decrements status counters
-
-
+                case ActionChoice.SWITCH:
+                    // do switch
+                    if (action == "0") StartCoroutine(SwitchPokemon(0));
+                    else if (action == "1") StartCoroutine(SwitchPokemon(1));
+                    else if (action == "2") StartCoroutine(SwitchPokemon(2));
+                    else if (action == "3") StartCoroutine(SwitchPokemon(3));
+                    else if (action == "4") StartCoroutine(SwitchPokemon(4));
+                    else if (action == "5") StartCoroutine(SwitchPokemon(5));
+                    yield return EnemyAction(enemyMove);
                     break;
-                default:
+
+                case ActionChoice.CATCH:
+                    if (String.Equals(action, "pokeball")) StartCoroutine(CatchPokemon(1));
+                    else if (String.Equals(action, "greatball")) StartCoroutine(CatchPokemon(2));
+                    else if (String.Equals(action, "ultraball")) StartCoroutine(CatchPokemon(3));
+                    else if (String.Equals(action, "masterball")) StartCoroutine(CatchPokemon(4));
+                    yield return EnemyAction(enemyMove);
+                    break;
+
+                case ActionChoice.RUN:
+                    StartCoroutine(RunAway());
+                    yield return EnemyAction(enemyMove);
                     break;
             }
 
             //deals status damages, and decrements status counters
-
             yield return StartCoroutine(EndRoundStatusUpdate("Player", playerUnit, enemyUnit));
             yield return StartCoroutine(EndRoundStatusUpdate("Enemy", enemyUnit, playerUnit));
 
-            Debug.Log("Line 523");
-
-
-            Debug.Log("Line 704");
-            state = BattleState.PLAYERTURN;
-            if (deadPokemon)
-            {
-                Debug.Log("Line 709");
-                yield return SwitchPokemonAfterDeath();
-            }
-            if (battleIsOver)
-            {
-
-                yield return SeeIfEndBattle();
-                PlayerTurn();
-                yield break;
-            }
-            Debug.Log("Line 718");
+            yield return SeeIfEndBattle();
             PlayerTurn();
             yield break;
         }
@@ -708,8 +678,6 @@ namespace Pokemon
         {
 
             Debug.Log("Line 792 Start Player Turn");
-            deadPokemon = false;
-            battleIsOver = false;
             if (playerUnit.pokemon.IsFainted())
             {
                 Debug.Log("Line 797 Pokemon Is Dead");
@@ -755,16 +723,18 @@ namespace Pokemon
             if (AttackingPlayer.pokemon.IsFainted()) unableToAttack = true;
 
             //BEGIN TURN STATUS UPDATE
+            Debug.Log("starting turn status update");
             yield return StartCoroutine(BeginTurnStatusUpdate(AttackingPlayer));
 
             //ABLE TO ATTACK
             //checks all statuses if able to attack, if unable to attack, displays animation
             //if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
-            yield return StartCoroutine(AbleToAttack(AttackingPlayer, whosattacking));
+            Debug.Log("1 unable to attack?"+ unableToAttack);
+            yield return StartCoroutine(AbleToAttack(AttackingPlayer, whosattacking)); 
+            Debug.Log("2 unable to attack?" + unableToAttack); 
 
 
-
-            Debug.Log("Line 839");
+            Debug.Log("Line 769");
 
 
             if (!unableToAttack)
@@ -1064,12 +1034,14 @@ namespace Pokemon
         public IEnumerator AbleToAttack(Unit Player, string whosattacking)
         {
             bool animate_on_player = whosattacking == "player" ? true : false;
+            Debug.Log("entering AbleToAttack unableToAttack:" + unableToAttack);
 
             if (!Player.pokemon.CheckAbleAttack())
             {
                 //Debug.Log("Unable to attack becasue of :" + playerUnit.pokemon.UnableToAttackStatusName);
                 unableToAttack = true;
 
+                Debug.Log("switching on UnableToAttackStatusName" + Player.pokemon.UnableToAttackStatusName); 
                 switch (Player.pokemon.UnableToAttackStatusName)
                 {
 
@@ -1110,6 +1082,10 @@ namespace Pokemon
                         break;
                 }
             } 
+            else
+            {
+                Debug.Log("pokemon should be able to attack");          
+            }
             //reset name
             Player.pokemon.UnableToAttackStatusName = "";
         }
@@ -1174,7 +1150,6 @@ namespace Pokemon
 
             if (!battleIsOver && whoFainted == "player") //If you have other Pokemon.
             {
-                deadPokemon = true;
                 state = BattleState.CHANGEPOKEMON;
                 dialogueText.text = playerUnit.pokemon.name + " faints!";
                 yield return new WaitForSeconds(2);
@@ -1857,7 +1832,8 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(SwitchPokemon(0));
+            StartCoroutine(Decision(ActionChoice.SWITCH, "0"));
+            //StartCoroutine(SwitchPokemon(0));
         }
 
         /// <summary>
@@ -1867,7 +1843,8 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(SwitchPokemon(1));
+            StartCoroutine(Decision(ActionChoice.SWITCH, "1"));
+            //StartCoroutine(SwitchPokemon(1));
         }
 
         /// <summary>
@@ -1877,7 +1854,8 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(SwitchPokemon(2));
+            StartCoroutine(Decision(ActionChoice.SWITCH, "2"));
+            //StartCoroutine(SwitchPokemon(2));;
         }
 
         /// <summary>
@@ -1887,7 +1865,8 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(SwitchPokemon(3));
+            StartCoroutine(Decision(ActionChoice.SWITCH, "3"));
+            //StartCoroutine(SwitchPokemon(3));
         }
 
         /// <summary>
@@ -1898,6 +1877,8 @@ namespace Pokemon
             ClosePokemonMenu();
             SetDownButtons();
             StartCoroutine(SwitchPokemon(4));
+            StartCoroutine(Decision(ActionChoice.SWITCH, "4"));
+
         }
 
         /// <summary>
@@ -1907,7 +1888,8 @@ namespace Pokemon
         {
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(SwitchPokemon(5));
+            StartCoroutine(Decision(ActionChoice.SWITCH, "5"));
+            //StartCoroutine(SwitchPokemon(5));
         }
 
         /// <summary>
@@ -1917,7 +1899,8 @@ namespace Pokemon
         {
             if (playerContinuingAttack != 0)
             {
-                StartCoroutine(Decision(-2));
+                StartCoroutine(Decision(ActionChoice.ATTACK, "-2"));
+                //StartCoroutine(Decision(-2));
                 return;
             }
 
@@ -1932,7 +1915,9 @@ namespace Pokemon
             }
             if (struggle)
             {
-                StartCoroutine(Decision(-1));
+
+                StartCoroutine(Decision(ActionChoice.ATTACK, "-1"));
+                //StartCoroutine(Decision(-1));
                 return;
             }
             attackMenuUI.SetActive(true);
@@ -1977,7 +1962,8 @@ namespace Pokemon
         {
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(Decision(0));
+            StartCoroutine(Decision(ActionChoice.ATTACK, "1"));
+            //StartCoroutine(Decision(0));
         }
 
         /// <summary>
@@ -1987,7 +1973,8 @@ namespace Pokemon
         {
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(Decision(1));
+            StartCoroutine(Decision(ActionChoice.ATTACK, "2"));
+            //StartCoroutine(Decision(1));
         }
 
         /// <summary>
@@ -1997,7 +1984,8 @@ namespace Pokemon
         {
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(Decision(2));
+            StartCoroutine(Decision(ActionChoice.ATTACK, "3"));
+            //StartCoroutine(Decision(2));
         }
 
         /// <summary>
@@ -2007,7 +1995,8 @@ namespace Pokemon
         {
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(Decision(3));
+            StartCoroutine(Decision(ActionChoice.ATTACK, "4"));
+            //StartCoroutine(Decision(3));
         }
 
         /// <summary>
@@ -2017,7 +2006,8 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(CatchPokemon(1));
+            StartCoroutine(Decision(ActionChoice.CATCH, "pokeball"));
+            //StartCoroutine(CatchPokemon(1));
         }
 
         /// <summary>
@@ -2027,7 +2017,8 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(CatchPokemon(2));
+            StartCoroutine(Decision(ActionChoice.CATCH, "greatball"));
+            //StartCoroutine(CatchPokemon(2));
         }
 
         /// <summary>
@@ -2037,7 +2028,8 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(CatchPokemon(3));
+            StartCoroutine(Decision(ActionChoice.CATCH, "ultraball"));
+            //StartCoroutine(CatchPokemon(3));
         }
 
         /// <summary>
@@ -2047,7 +2039,8 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(CatchPokemon(4));
+            StartCoroutine(Decision(ActionChoice.CATCH, "masterball"));
+            //StartCoroutine(CatchPokemon(4));
         }
 
         public void Forget1()
@@ -2091,7 +2084,8 @@ namespace Pokemon
         {
             dialogueText.text = "Can't Escape!";
             yield return new WaitForSeconds(2);
-            StartCoroutine(DecisionYouDontAttack());
+            StartCoroutine(Decision(ActionChoice.RUN, "0"));
+            // was DecisionYouDontAttack branch
         }
 
         #endregion utility functions for the ui and picking options
