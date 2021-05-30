@@ -1,0 +1,7 @@
+A p2p solution will probably be using these C# libraries
+
+System.Net.Http.Json
+System.Text.Json
+
+This has a good tutorial and some example code: 
+https://www.stevejgordon.co.uk/sending-and-receiving-json-using-httpclient-with-system-net-http-json

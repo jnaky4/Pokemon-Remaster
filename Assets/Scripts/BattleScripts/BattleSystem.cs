@@ -924,7 +924,21 @@ namespace Pokemon
 
             //current state gives double exp
             //check if either pokemon is dead
-            if (whosattacking == "player")
+
+            if (Opponent.pokemon.IsFainted())
+            {
+                yield return StartCoroutine(IfPokemonDead(true, "enemy", GameController.opponentPokemon));
+            } 
+            else if (Player.pokemon.IsFainted())
+            {
+                yield return StartCoroutine(IfPokemonDead(true, "player", GameController.playerPokemon));
+            }
+
+            yield return StartCoroutine(SeeIfEndBattle());
+            
+
+            /*
+                if (whosattacking == "player")
             {
                 yield return StartCoroutine(IfPokemonDead(Opponent.pokemon.IsFainted(), "enemy", GameController.opponentPokemon));
                 yield return StartCoroutine(IfPokemonDead(Player.pokemon.IsFainted(), "player", GameController.playerPokemon));
@@ -934,7 +948,7 @@ namespace Pokemon
             {
                 yield return StartCoroutine(IfPokemonDead(Opponent.pokemon.IsFainted(), "player", GameController.playerPokemon));
                 yield return StartCoroutine(IfPokemonDead(Player.pokemon.IsFainted(), "enemy", GameController.opponentPokemon));
-            }
+            } */
 
             Debug.Log("Line 1010");
 
@@ -1094,8 +1108,6 @@ namespace Pokemon
             //reset name
             Player.pokemon.UnableToAttackStatusName = "";
         }
-
-
 
 
         public IEnumerator IfPokemonDead(bool pokemonFainted, string whoFainted, Pokemon[] pokemonTeam)
