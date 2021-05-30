@@ -56,8 +56,8 @@ namespace Pokemon
         private string enemyMoveName;
         //all of this stuff is for animation
 
-        private Unit playerUnit;
-        private Unit enemyUnit;
+        public Unit playerUnit;
+        public Unit enemyUnit;
         //The Pokemon used in the fight
 
         public Button attackButton;
