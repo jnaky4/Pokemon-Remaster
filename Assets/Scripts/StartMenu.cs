@@ -49,7 +49,7 @@ namespace Pokemon
             playerPosition.initialValue.x = startingPosition.x;
             playerPosition.initialValue.y = startingPosition.y;
 
-            int level = 10;
+            int level = 5;
             int dex = 25;
             string move1 = "Tackle", move2 = "Tail Whip";
 
