@@ -704,7 +704,7 @@ namespace Pokemon
         /// It lets us know what the player chooses to do and will call the appropriate functions from there.
         /// When in doubt, call this function.
         /// </summary>
-        private void PlayerTurn()
+        public void PlayerTurn()
         {
 
             Debug.Log("Line 792 Start Player Turn");
@@ -737,7 +737,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="attack">The move we are attacking with.</param>
         /// <returns>Nothing</returns>
-        private IEnumerator AttackXYZ(Moves attack, string whosattacking, Unit AttackingPlayer, Unit DefendingPlayer)
+        public IEnumerator AttackXYZ(Moves attack, string whosattacking, Unit AttackingPlayer, Unit DefendingPlayer)
         {
 
             Debug.Log("Line 815");

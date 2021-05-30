@@ -32,7 +32,7 @@ namespace Pokemon
         {
             public override void CrossOutBall(int i)
             {
-                Debug.Log("I am a printer!!");
+                // do nothing and be quiet about it
             }
         }
 
@@ -58,7 +58,7 @@ namespace Pokemon
             GameController.opponentPokemon = enemyPokemon;
             GameController.isCatchable = false;
 
-            Debug.Log("Pokemon exp "+ bs.playerUnit.pokemon.current_exp);
+            Debug.Log("Pokemon exp " + bs.playerUnit.pokemon.current_exp);
             int startingExp = bs.playerUnit.pokemon.current_exp;
 
             BattleHUD playerHUD = (new GameObject("PlayerHUD")).AddComponent<FakeHUD>();
@@ -82,8 +82,61 @@ namespace Pokemon
             Debug.Log("direct exp from gain_exp(): " + exp);
             Assert.IsTrue(expGained == exp, "exp from IfPokemonDead is compared to direct exp calculation");
 
-            yield return null; 
+            yield return null;
 
         }
+
+        [UnityTest]
+        public IEnumerator PlayerTurnExecutes()
+        {
+            Main App = (new GameObject("MainLoader")).AddComponent<Main>();
+            App.Start();
+            BattleSystem bs = (new GameObject("BattleSystemObject")).AddComponent<BattleSystem>();
+
+            bs.playerUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
+            bs.enemyUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
+            bs.playerUnit.pokemon = new Pokemon(3, 4, "Ember");
+            bs.enemyUnit.pokemon = new Pokemon(3, 3, "Ember");
+
+            bs.PlayerTurn();
+
+            yield return null;
+        }
+
+        public class FakeButton : Button
+        {
+            public bool interactable;
+        }
+
+        [UnityTest]
+        public IEnumerator AttackFunctionExecutes()
+        {
+            Main App = (new GameObject("MainLoader")).AddComponent<Main>();
+            App.Start();
+            BattleSystem bs = (new GameObject("BattleSystemObject")).AddComponent<BattleSystem>();
+
+            bs.playerUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
+            bs.enemyUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
+            bs.playerUnit.pokemon = new Pokemon(3, 4, "Ember");
+            bs.enemyUnit.pokemon = new Pokemon(3, 3, "Ember");
+            bs.pokeMenuUI = new GameObject();
+            bs.attackButton = (new GameObject("ButtonObj")).AddComponent<FakeButton>();
+            bs.runAwayButton = (new GameObject("ButtonObj")).AddComponent<FakeButton>();
+            bs.pokemonButton = (new GameObject("ButtonObj")).AddComponent<FakeButton>();
+            bs.ballsButton = (new GameObject("ButtonObj")).AddComponent<FakeButton>();
+            bs.attackMenuUI = new GameObject();
+            bs.ballsMenuUI = new GameObject();
+            bs.mainUI = new GameObject();
+            bs.backUI = new GameObject();
+
+            MonoBehaviour myUnity = (new GameObject("UnityObject")).AddComponent<FakeUnity>();
+
+            Moves attack = bs.playerUnit.pokemon.currentMoves[0];
+            myUnity.StartCoroutine(bs.AttackXYZ(attack, "player", bs.playerUnit, bs.enemyUnit));
+
+            yield return null;
+        }
+
+
     }
 }
