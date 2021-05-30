@@ -71,7 +71,7 @@ namespace Pokemon
             bs.dialogueText = myDialogue;
 
             MonoBehaviour myUnity = (new GameObject("UnityObject")).AddComponent<FakeUnity>();
-            myUnity.StartCoroutine(bs.IfPokemonDead(bs.enemyUnit.pokemon.IsFainted(), "enemy", GameController.opponentPokemon));
+            myUnity.StartCoroutine(bs.IfPokemonDead("enemy", GameController.opponentPokemon));
             Debug.Log("Pokemon exp " + bs.playerUnit.pokemon.current_exp);
             int finalExp = bs.playerUnit.pokemon.current_exp;
             int expGained = finalExp - startingExp;

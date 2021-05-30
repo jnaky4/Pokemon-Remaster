@@ -994,6 +994,11 @@ namespace Pokemon
             else return false;
             
         }
+
+        public String ToString()
+        {
+            return name;
+        }
     }
 
 }

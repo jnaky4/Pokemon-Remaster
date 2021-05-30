@@ -737,7 +737,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="attack">The move we are attacking with.</param>
         /// <returns>Nothing</returns>
-        private IEnumerator AttackXYZ(Moves attack, string whosattacking, Unit Player, Unit Opponent)
+        private IEnumerator AttackXYZ(Moves attack, string whosattacking, Unit AttackingPlayer, Unit DefendingPlayer)
         {
 
             Debug.Log("Line 815");
@@ -752,15 +752,15 @@ namespace Pokemon
 
             SetDownButtons();
 
-            if (Player.pokemon.IsFainted()) unableToAttack = true;
+            if (AttackingPlayer.pokemon.IsFainted()) unableToAttack = true;
 
             //BEGIN TURN STATUS UPDATE
-            yield return StartCoroutine(BeginTurnStatusUpdate(Player));
+            yield return StartCoroutine(BeginTurnStatusUpdate(AttackingPlayer));
 
             //ABLE TO ATTACK
             //checks all statuses if able to attack, if unable to attack, displays animation
             //if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
-            yield return StartCoroutine(AbleToAttack(Player, whosattacking));
+            yield return StartCoroutine(AbleToAttack(AttackingPlayer, whosattacking));
 
 
 
@@ -771,17 +771,17 @@ namespace Pokemon
             {
 
                 Debug.Log("Line 845");
-                bool crit = Utility.CriticalHit(Player);
+                bool crit = Utility.CriticalHit(AttackingPlayer);
                 System.Random rnd = new System.Random();
                 int num = rnd.Next(1, 100);
 
-                dialogueText.text = Player.pokemon.name + " used " + attack.name + "!";
+                dialogueText.text = AttackingPlayer.pokemon.name + " used " + attack.name + "!";
                 yield return new WaitForSeconds(0.75f);
 
 
 
                 //If the attack hits
-                if (num <= (attack.accuracy * Player.pokemon.current_accuracy * Opponent.pokemon.current_evasion))
+                if (num <= (attack.accuracy * AttackingPlayer.pokemon.current_accuracy * DefendingPlayer.pokemon.current_evasion))
                 {
 
                     
@@ -796,7 +796,7 @@ namespace Pokemon
                     
 
                     
-                    if (attack.name == "Growl") GameController.soundFX = Player.pokemon.dexnum.ToString();
+                    if (attack.name == "Growl") GameController.soundFX = AttackingPlayer.pokemon.dexnum.ToString();
                     else GameController.soundFX = attack.name;
                     while (!endofanimation)
                     {
@@ -807,31 +807,31 @@ namespace Pokemon
 
 
 
-                    if (attack.current_stat_change.CompareTo("null") != 0) Player.SetStages(attack, Opponent);
-                    if (!attack.status.Equals("null")) Status.Apply_Attack_Status_Effect(attack, Opponent);
-                    double super = Utility.DoDamage(Player, Opponent, attack, crit);
+                    if (attack.current_stat_change.CompareTo("null") != 0) AttackingPlayer.SetStages(attack, DefendingPlayer);
+                    if (!attack.status.Equals("null")) Status.Apply_Attack_Status_Effect(attack, DefendingPlayer);
+                    double super = Utility.DoDamage(AttackingPlayer, DefendingPlayer, attack, crit);
                     //Debug.Log(playerUnit.damage);
 
-                    bool isDead = Opponent.TakeDamage(Player.damage);
-                    if (attack.heal > 0) Player.TakeDamage(-Player.damage * attack.heal);
-                    if (attack.heal < 0) Player.TakeDamage(Player.damage * -attack.heal);
+                    bool isDead = DefendingPlayer.TakeDamage(AttackingPlayer.damage);
+                    if (attack.heal > 0) AttackingPlayer.TakeDamage(-AttackingPlayer.damage * attack.heal);
+                    if (attack.heal < 0) AttackingPlayer.TakeDamage(AttackingPlayer.damage * -attack.heal);
 
 
                     if(whosattacking == "player")
                     {
-                        playerHUD.SetHP(Player.pokemon.current_hp, Player, whosattacking);
+                        playerHUD.SetHP(AttackingPlayer.pokemon.current_hp, AttackingPlayer, whosattacking);
                         if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
                         else StartCoroutine(Blink(enemySprite, 0.25));
-                        enemyHUD.SetHP(Opponent.pokemon.current_hp, Player, whosattacking);
+                        enemyHUD.SetHP(DefendingPlayer.pokemon.current_hp, AttackingPlayer, whosattacking);
                         //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                        enemyHUD.SetStatus(Opponent.pokemon);
+                        enemyHUD.SetStatus(DefendingPlayer.pokemon);
                     }
                     else
                     {
-                        enemyHUD.SetHP(enemyUnit.pokemon.current_hp, Opponent, whosattacking);
+                        enemyHUD.SetHP(enemyUnit.pokemon.current_hp, DefendingPlayer, whosattacking);
                         if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
                         else StartCoroutine(Blink(playerSprite, 0.25));
-                        playerHUD.SetHP(Opponent.pokemon.current_hp, Opponent, whosattacking);
+                        playerHUD.SetHP(DefendingPlayer.pokemon.current_hp, DefendingPlayer, whosattacking);
                     }
 
                     //old enemy checks 
@@ -846,12 +846,12 @@ namespace Pokemon
 
                     if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
                     {
-                        dialogueText.text = "Enemy " + Opponent.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
+                        dialogueText.text = "Enemy " + DefendingPlayer.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
                         yield return new WaitForSeconds(1);
                     }
                     else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0)
                     {
-                        dialogueText.text = "Your " + Player.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
+                        dialogueText.text = "Your " + AttackingPlayer.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
                         yield return new WaitForSeconds(1);
                     }
                     if (attack.base_power != -1)//If this move is a damage dealing move.
@@ -872,36 +872,36 @@ namespace Pokemon
                             GameController.soundFX = "Not Very Effective";
                             dialogueText.text = "It's not very effective...";
                         }
-                        else if (super == 0 || (attack.status.RollToApplyStatus(attack) && attack.status.name.Equals("Paralysis") && Utility.IsGround(Opponent)) || (attack.status.RollToApplyStatus(attack) && attack.status.name.Equals("Poison") && Utility.IsPoison(Opponent)))
+                        else if (super == 0 || (attack.status.RollToApplyStatus(attack) && attack.status.name.Equals("Paralysis") && Utility.IsGround(DefendingPlayer)) || (attack.status.RollToApplyStatus(attack) && attack.status.name.Equals("Poison") && Utility.IsPoison(DefendingPlayer)))
                         {
-                            dialogueText.text = Opponent.pokemon.name + " is immune!";
+                            dialogueText.text = DefendingPlayer.pokemon.name + " is immune!";
                         }
-                        else if (attack.status.RollToApplyStatus(attack) && Opponent.pokemon.statuses.Contains(attack.status.name))
+                        else if (attack.status.RollToApplyStatus(attack) && DefendingPlayer.pokemon.statuses.Contains(attack.status.name))
                         {
-                            dialogueText.text = "Enemy " + Opponent.pokemon.name + " is already " + attack.status.adj + "!";
+                            dialogueText.text = "Enemy " + DefendingPlayer.pokemon.name + " is already " + attack.status.adj + "!";
                         }
                         else if (attack.status.RollToApplyStatus(attack))
                         {
-                            dialogueText.text = "Enemy " + Opponent.pokemon.name + " became " + attack.status.adj + "!";
-                            enemyHUD.SetStatus(Opponent.pokemon);
+                            dialogueText.text = "Enemy " + DefendingPlayer.pokemon.name + " became " + attack.status.adj + "!";
+                            enemyHUD.SetStatus(DefendingPlayer.pokemon);
                         }
                         else
                         {
                             GameController.soundFX = "Damage";
-                            if(whosattacking == "player") dialogueText.text = "Enemy " + Opponent.pokemon.name + " took damage...";
-                            else dialogueText.text = "Your " + Opponent.pokemon.name + " took damage...";
+                            if(whosattacking == "player") dialogueText.text = "Enemy " + DefendingPlayer.pokemon.name + " took damage...";
+                            else dialogueText.text = "Your " + DefendingPlayer.pokemon.name + " took damage...";
                         }
                         yield return new WaitForSeconds(2);
                     }
                     else
                     {
-                        if (attack.status.RollToApplyStatus(attack) && Opponent.pokemon.statuses.Contains(attack.status.name))
+                        if (attack.status.RollToApplyStatus(attack) && DefendingPlayer.pokemon.statuses.Contains(attack.status.name))
                         {
-                            dialogueText.text = "Enemy " + Opponent.pokemon.name + " is already " + attack.status.adj + "!";
+                            dialogueText.text = "Enemy " + DefendingPlayer.pokemon.name + " is already " + attack.status.adj + "!";
                         }
                         else if (attack.status.RollToApplyStatus(attack))
                         {
-                            dialogueText.text = "Enemy " + Opponent.pokemon.name + " became " + attack.status.adj + "!";
+                            dialogueText.text = "Enemy " + DefendingPlayer.pokemon.name + " became " + attack.status.adj + "!";
                         }
                         yield return new WaitForSeconds(2);
                     }
@@ -917,21 +917,26 @@ namespace Pokemon
 
 
             Debug.Log("Line 990");
-/*            //deals status damages, and decrements status counters
-            yield return StartCoroutine(EndRoundStatusUpdate(whosattacking, Player, Opponent));*/
+            /*            //deals status damages, and decrements status counters
+                        yield return StartCoroutine(EndRoundStatusUpdate(whosattacking, Player, Opponent));*/
 
 
 
             //current state gives double exp
             //check if either pokemon is dead
+            // the state can be determined from whos attacking 
+            // i fpokemon dead arguments are 
+            //
 
-            if (Opponent.pokemon.IsFainted())
+            Pokemon[] defendingTeam = whosattacking == "player" ? GameController.playerPokemon : GameController.opponentPokemon;
+            Pokemon[] attackingTeam = whosattacking == "player" ? GameController.opponentPokemon : GameController.playerPokemon;
+            if (DefendingPlayer.pokemon.IsFainted())
             {
-                yield return StartCoroutine(IfPokemonDead(true, "enemy", GameController.opponentPokemon));
+                yield return StartCoroutine(IfPokemonDead(whosattacking=="enemy"?"player":"enemy", defendingTeam));
             } 
-            else if (Player.pokemon.IsFainted())
+            else if (AttackingPlayer.pokemon.IsFainted())
             {
-                yield return StartCoroutine(IfPokemonDead(true, "player", GameController.playerPokemon));
+                yield return StartCoroutine(IfPokemonDead(whosattacking, attackingTeam));
             }
 
             yield return StartCoroutine(SeeIfEndBattle());
@@ -1104,13 +1109,13 @@ namespace Pokemon
                     default:
                         break;
                 }
-            }
+            } 
             //reset name
             Player.pokemon.UnableToAttackStatusName = "";
         }
 
 
-        public IEnumerator IfPokemonDead(bool pokemonFainted, string whoFainted, Pokemon[] pokemonTeam)
+        public IEnumerator IfPokemonDead(string whoFainted, Pokemon[] pokemonTeam)
         {
 
             battleIsOver = true;
@@ -1132,91 +1137,89 @@ namespace Pokemon
                 if (!pokemonTeam[j].IsFainted())
                 {
                     battleIsOver = false;
+                    Debug.Log("pokemon is still alive!" + pokemonTeam[j].name);
                     break;
                 }
-
             }
-            if (pokemonFainted) //the Pokemon Died
+
+            if (battleIsOver && whoFainted == "player") //If you lost the battle.
             {
-                if (battleIsOver && whoFainted == "player") //If you lost the battle.
-                {
-                    state = BattleState.LOST;
-                    playerHUD.CrossOutPlayerBall(x + 2);
-                    yield break;
-                }
-                if (battleIsOver && whoFainted == "enemy")
-                {
-                    enemyHUD.CrossOutBall(x + 2);
-                    state = BattleState.WON;
-                    dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                    int exp = 0;
-                    double exp_multiplier;
-                    //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
-                    //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
-                    exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
-                    exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
+                state = BattleState.LOST;
+                playerHUD.CrossOutPlayerBall(x + 2);
+                yield break;
+            }
+            if (battleIsOver && whoFainted == "enemy")
+            {
+                enemyHUD.CrossOutBall(x + 2);
+                state = BattleState.WON;
+                dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                int exp = 0;
+                double exp_multiplier;
+                //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
+                //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
+                exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
+                exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
 
-                    yield return new WaitForSeconds(2);
-                    dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
-                    playerHUD.SetEXP(playerUnit.pokemon, exp);
-                    if (playerUnit.pokemon.gained_a_level)
+                yield return new WaitForSeconds(2);
+                dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
+                playerHUD.SetEXP(playerUnit.pokemon, exp);
+                if (playerUnit.pokemon.gained_a_level)
+                {
+                    yield return StartCoroutine(LevelUp(playerUnit.pokemon));
+                }
+                //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
+                yield return new WaitForSeconds(2);
+                yield break;
+            }
+
+            if (!battleIsOver && whoFainted == "player") //If you have other Pokemon.
+            {
+                deadPokemon = true;
+                state = BattleState.CHANGEPOKEMON;
+                dialogueText.text = playerUnit.pokemon.name + " faints!";
+                yield return new WaitForSeconds(2);
+                yield return SwitchPokemonAfterDeath();
+                yield break;
+            }
+            if(!battleIsOver && whoFainted == "enemy")
+            {
+                unableToAttack = true;
+                state = BattleState.CHANGEPOKEMON;
+
+                int exp = 0;
+                double exp_multiplier;
+                dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
+                exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
+                exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
+                /*                    string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
+                                    Debug.Log(test);*/
+                yield return new WaitForSeconds(2);
+                dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
+                playerHUD.SetEXP(playerUnit.pokemon, exp);
+                yield return new WaitForSeconds(2);
+                if (playerUnit.pokemon.gained_a_level)
+                {
+                    yield return StartCoroutine(LevelUp(playerUnit.pokemon));
+                }
+                for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+                {
+                    if (GameController.opponentPokemon[j].current_hp > 0)
                     {
-                        yield return StartCoroutine(LevelUp(playerUnit.pokemon));
-                    }
-                    //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
-                    yield return new WaitForSeconds(2);
-                    yield break;
-                }
+                        enemyUnit.pokemon = GameController.opponentPokemon[j];
+                        //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
+                        dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
 
-                if (!battleIsOver && whoFainted == "player") //If you have other Pokemon.
-                {
-                    deadPokemon = true;
-                    state = BattleState.CHANGEPOKEMON;
-                    dialogueText.text = playerUnit.pokemon.name + " faints!";
-                    yield return new WaitForSeconds(2);
-                    yield return SwitchPokemonAfterDeath();
-                    yield break;
-                }
-                if(!battleIsOver && whoFainted == "enemy")
-                {
-                    unableToAttack = true;
-                    state = BattleState.CHANGEPOKEMON;
-
-                    int exp = 0;
-                    double exp_multiplier;
-                    dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                    //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
-                    exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
-                    exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
-                    /*                    string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
-                                        Debug.Log(test);*/
-                    yield return new WaitForSeconds(2);
-                    dialogueText.text = playerUnit.pokemon.name + " gained " + exp + " EXP!";
-                    playerHUD.SetEXP(playerUnit.pokemon, exp);
-                    yield return new WaitForSeconds(2);
-                    if (playerUnit.pokemon.gained_a_level)
-                    {
-                        yield return StartCoroutine(LevelUp(playerUnit.pokemon));
+                        yield return new WaitForSeconds(0.75f);
+                        GameController.soundFX = enemyUnit.pokemon.dexnum.ToString();
+                        enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
+                        SetOpponentSprite(enemyUnit, enemySprite);
+                        phaseOpponentSprite = 2;
+                        break;
                     }
-                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
-                    {
-                        if (GameController.opponentPokemon[j].current_hp > 0)
-                        {
-                            enemyUnit.pokemon = GameController.opponentPokemon[j];
-                            //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
-                            dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
-
-                            yield return new WaitForSeconds(0.75f);
-                            GameController.soundFX = enemyUnit.pokemon.dexnum.ToString();
-                            enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
-                            SetOpponentSprite(enemyUnit, enemySprite);
-                            phaseOpponentSprite = 2;
-                            break;
-                        }
-                    }
-                    PlayerTurn();
-                    yield break;
                 }
+                PlayerTurn();
+                yield break;
             }
 
 

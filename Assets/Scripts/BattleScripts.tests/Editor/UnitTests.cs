@@ -68,9 +68,9 @@ namespace Pokemon
             Debug.Log(playerMove.name);
             Debug.Log(enemyMove.name);
             
-
-
         }
+
+        //see if end battle should set battlestate to won, lost, runaway, caughtpokemon
 
 
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use

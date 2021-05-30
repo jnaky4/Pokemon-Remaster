@@ -43,7 +43,7 @@ namespace Pokemon
                     GameController.player.starter = 1;
                     break;
                 case 4:
-                    GameController.playerPokemon[0] = new Pokemon(4, 5, "Scratch", "Growl");
+                    GameController.playerPokemon[0] = new Pokemon(4, 5, "Scratch", "Growl", "Flamethrower", "Growl", 1, 1);
                     GameController.player.starter = 4;
                     break;
                 case 7:
