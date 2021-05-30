@@ -1142,8 +1142,6 @@ namespace Pokemon
                     //Debug.Log(playerUnit.pokemon.base_lvl_exp + " " + playerUnit.pokemon.current_exp + " " + playerUnit.pokemon.next_lvl_exp);
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
-                    string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
-                    //Debug.Log(test);
                     exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
 
                     yield return new WaitForSeconds(2);

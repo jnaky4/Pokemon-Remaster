@@ -24,56 +24,66 @@ namespace Pokemon
 
         public class FakeUnity : MonoBehaviour
         {
-
+            public Pokemon[] enemyPokemon;
+            public Pokemon[] playerPokemon;
         }
 
-        [UnityTest]
-        public IEnumerator DecisionRuns()
+        public class FakeHUD : BattleHUD
         {
-            /*
-            StartMenu App = new StartMenu();
+            public override void CrossOutBall(int i)
+            {
+                Debug.Log("I am a printer!!");
+            }
+        }
+
+        public BattleHUD playerHUD;
+        public BattleHUD enemyHUD;
+
+        [UnityTest]
+        public IEnumerator IfPokemonDeadGivesCorrectExp()
+        {
+            Main App = (new GameObject("MainLoader")).AddComponent<Main>();
             App.Start();
-
-            GameController.scene = "C:\\Users\\dadam\\source\\repos\\Pokemon-Remaster\\Assets\\Scenes\\BattleScene.unity";
-            EditorSceneManager.OpenScene(GameController.scene);
-
             BattleSystem bs = (new GameObject("BattleSystemObject")).AddComponent<BattleSystem>();
+
             bs.playerUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
             bs.enemyUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
             bs.playerUnit.pokemon = new Pokemon(3, 4, "Ember");
             bs.enemyUnit.pokemon = new Pokemon(3, 3, "Ember");
-            bs.playerUnit.pokemon.currentMoves[0].accuracy = 100;
-            bs.enemyUnit.pokemon.currentMoves[0].accuracy = 100;
-            Debug.Log("health of player pokemon starting is " + bs.playerUnit.pokemon.current_hp.ToString());
+            bs.enemyUnit.pokemon.current_hp = 0;
 
+            Pokemon[] playerPokemon = new Pokemon[] { bs.playerUnit.pokemon };
+            Pokemon[] enemyPokemon = new Pokemon[] { bs.enemyUnit.pokemon };
+            GameController.playerPokemon = playerPokemon;
+            GameController.opponentPokemon = enemyPokemon;
+            GameController.isCatchable = false;
+
+            Debug.Log("Pokemon exp "+ bs.playerUnit.pokemon.current_exp);
+            int startingExp = bs.playerUnit.pokemon.current_exp;
+
+            BattleHUD playerHUD = (new GameObject("PlayerHUD")).AddComponent<FakeHUD>();
+            BattleHUD enemyHUD = (new GameObject("EnemyHUD")).AddComponent<FakeHUD>();
+            bs.playerHUD = playerHUD;
+            bs.enemyHUD = enemyHUD;
 
             DialogueTextObject myDialogue = (new GameObject("TextObject")).AddComponent<DialogueTextObject>();
             myDialogue.text = "Test String!";
-            Debug.Log("myText in test script is " + myDialogue.text);
-            Text myText = (Text)myDialogue;
-
-            bs.dialogueText = myText;
-            Debug.Log(bs.enemyUnit.pokemon.name);
-            Debug.Log(bs.playerUnit.pokemon.name);
-            Debug.Log("in test script dialogue text is " + bs.dialogueText);
-
+            bs.dialogueText = myDialogue;
 
             MonoBehaviour myUnity = (new GameObject("UnityObject")).AddComponent<FakeUnity>();
-            myUnity.StartCoroutine(bs.Decision(0));
-            Debug.Log("bs has finished execution");
-            Debug.Log("1 health of player pokemon is " + bs.enemyUnit.pokemon.current_hp.ToString());
-            myUnity.StartCoroutine(bs.Decision(0));
-            Debug.Log("bs has finished execution");
-            Debug.Log("2 health of player pokemon is " + bs.enemyUnit.pokemon.current_hp.ToString());
-            myUnity.StartCoroutine(bs.Decision(0));
-            Debug.Log("bs has finished execution");
-            Debug.Log("3 health of player pokemon is " + bs.enemyUnit.pokemon.current_hp.ToString());
-            myUnity.StartCoroutine(bs.Decision(0));
-            Debug.Log("bs has finished execution");
-            Debug.Log("health of player pokemon is " + bs.enemyUnit.pokemon.current_hp.ToString());
+            myUnity.StartCoroutine(bs.IfPokemonDead(bs.enemyUnit.pokemon.IsFainted(), "enemy", GameController.opponentPokemon));
+            Debug.Log("Pokemon exp " + bs.playerUnit.pokemon.current_exp);
+            int finalExp = bs.playerUnit.pokemon.current_exp;
+            int expGained = finalExp - startingExp;
 
-            yield return new WaitForSecondsRealtime(4); */
-            yield return null;
+            // let this be a trainer battle
+            double multiplier = (GameController.isCatchable) ? 1 : 1.5;
+            int exp = bs.playerUnit.pokemon.gain_exp(bs.enemyUnit.pokemon.level, bs.enemyUnit.pokemon.pokedex_entry.base_exp, 1, multiplier);
+            Debug.Log("direct exp from gain_exp(): " + exp);
+            Assert.IsTrue(expGained == exp, "exp from IfPokemonDead is compared to direct exp calculation");
+
+            yield return null; 
+
         }
     }
 }
