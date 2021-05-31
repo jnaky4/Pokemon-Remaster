@@ -233,6 +233,11 @@ namespace Pokemon
             }
             return x;
         }
+
+        public bool IsImmune(Moves attack, Unit Defender)
+        {
+            return true;
+        }
     }
 }
 

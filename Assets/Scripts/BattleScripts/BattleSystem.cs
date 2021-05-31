@@ -711,12 +711,66 @@ namespace Pokemon
 
         }
 
+        public void UpdateDialogueForDamageAndStatus(Moves attack, Unit Attacker, Unit Defender, System.Random rnd, bool crit, double super)
+        {
+
+            bool appliesStatus = attack.status.RollToApplyStatus(attack);
+            // handle damage text
+            if (attack.base_power != -1)//If this move is a damage dealing move.
+            {
+                switch (super)
+                {
+                    case double super when (super > 1):
+                        {
+                            GameController.soundFX = "Super Effective";
+                            dialogueText.text = "It's super effective!";
+                            break;
+                        }
+                    case double super when ((super < 1) && (super != 0)):
+                        {
+                            GameController.soundFX = "Not Very Effective";
+                            dialogueText.text = "It's not very effective...";
+                            break;
+                        }
+                    case 0:
+                        {
+                            if (Utility.IsImmune(attack, Defender)) ;
+                            {
+                                dialogueText.text = Defender.pokemon.name + " is immune!";
+                            }
+                            break;
+                        }
+                    case 1:
+                    case default:
+                        {
+                            GameController.soundFX = "Damage";
+                            if (state == BattleState.PLAYERTURN) dialogueText.text = "Enemy " + Defender.pokemon.name + " took damage...";
+                            else dialogueText.text = "Your " + Defender.pokemon.name + " took damage...";
+                        }
+                }
+            }
+
+            // status information, maybe this comes like a second after damage information?
+            if (appliesStatus)
+            {
+                if (Defender.pokemon.statuses.Contains(attack.status.name))
+                {
+                    dialogueText.text = "Enemy " + Defender.pokemon.name + " is already " + attack.status.adj + "!";
+                }
+                else
+                {
+                    dialogueText.text = "Enemy " + Defender.pokemon.name + " became " + attack.status.adj + "!";
+                    enemyHUD.SetStatus(Defender.pokemon);
+                }
+            }
+        }
+
         /// <summary>
         /// Determines if the Player's attack hits or not, and then does all of the damage calculations and crits and all that.
         /// </summary>
         /// <param name="attack">The move we are attacking with.</param>
         /// <returns>Nothing</returns>
-        private IEnumerator AttackXYZ(Moves attack, Unit Player, Unit Opponent)
+        private IEnumerator AttackXYZ(Moves attack, Unit Attacker, Unit Defender)
         {
             if (state == BattleState.PLAYERTURN)
             {
@@ -728,22 +782,22 @@ namespace Pokemon
             SetDownButtons();      
 
             //BEGIN TURN STATUS UPDATE
-            yield return StartCoroutine(BeginTurnStatusUpdate(Player));
+            yield return StartCoroutine(BeginTurnStatusUpdate(Attacker));
 
             //ABLE TO ATTACK
             //checks all statuses if able to attack, if unable to attack, displays animation
             //if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
-            yield return StartCoroutine(AbleToAttack(Player));
+            yield return StartCoroutine(AbleToAttack(Attacker));
 
-            bool crit = Utility.CriticalHit(Player);
+            bool crit = Utility.CriticalHit(Attacker);
             System.Random rnd = new System.Random();
             int num = rnd.Next(1, 100);
 
-            dialogueText.text = Player.pokemon.name + " used " + attack.name + "!";
+            dialogueText.text = Attacker.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(0.75f);
 
             //If the attack hits
-            if (num <= (attack.accuracy * Player.pokemon.current_accuracy * Opponent.pokemon.current_evasion))
+            if (num <= (attack.accuracy * Attacker.pokemon.current_accuracy * Defender.pokemon.current_evasion))
             {
 
                 if(state == BattleState.PLAYERTURN)
@@ -755,7 +809,7 @@ namespace Pokemon
                     enemyInitialAttack = true;
                 }
                     
-                if (attack.name == "Growl") GameController.soundFX = Player.pokemon.dexnum.ToString();
+                if (attack.name == "Growl") GameController.soundFX = Attacker.pokemon.dexnum.ToString();
                 else GameController.soundFX = attack.name;
                 while (!endofanimation)
                 {
@@ -763,94 +817,45 @@ namespace Pokemon
                 }
                 endofanimation = false;
 
-                if (attack.current_stat_change.CompareTo("null") != 0) Player.SetStages(attack, Opponent);
-                if (!attack.status.Equals("null")) Status.Apply_Attack_Status_Effect(attack, Opponent);
-                double super = Utility.DoDamage(Player, Opponent, attack, crit);
+                if (attack.current_stat_change.CompareTo("null") != 0) Attacker.SetStages(attack, Defender);
+                if (!attack.status.Equals("null")) Status.Apply_Attack_Status_Effect(attack, Defender);
+                double super = Utility.DoDamage(Attacker, Defender, attack, crit);
                 //Debug.Log(playerUnit.damage);
 
-                bool isDead = Opponent.TakeDamage(Player.damage);
-                if (attack.heal > 0) Player.TakeDamage(-Player.damage * attack.heal);
-                if (attack.heal < 0) Player.TakeDamage(Player.damage * -attack.heal);
+                bool isDead = Defender.TakeDamage(Attacker.damage);
+                if (attack.heal > 0) Attacker.TakeDamage(-Attacker.damage * attack.heal);
+                if (attack.heal < 0) Attacker.TakeDamage(Attacker.damage * -attack.heal);
 
                 if(state == BattleState.PLAYERTURN)
                 {
-                    playerHUD.SetHP(Player.pokemon.current_hp, Player, "player");
+                    playerHUD.SetHP(Attacker.pokemon.current_hp, Attacker, "player");
                     if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
                     else StartCoroutine(Blink(enemySprite, 0.25));
-                    enemyHUD.SetHP(Opponent.pokemon.current_hp, Player, "player");
+                    enemyHUD.SetHP(Defender.pokemon.current_hp, Attacker, "player");
                     //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                    enemyHUD.SetStatus(Opponent.pokemon);
+                    enemyHUD.SetStatus(Defender.pokemon);
                 }
                 else
                 {
-                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, Opponent, "enemy");
+                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, Defender, "enemy");
                     if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
                     else StartCoroutine(Blink(playerSprite, 0.25));
-                    playerHUD.SetHP(Opponent.pokemon.current_hp, Opponent, "enemy");
+                    playerHUD.SetHP(Defender.pokemon.current_hp, Defender, "enemy");
                 }
 
                 if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
                 {
-                    dialogueText.text = "Enemy " + Opponent.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
+                    dialogueText.text = "Enemy " + Defender.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
                     yield return new WaitForSeconds(1);
                 }
                 else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0)
                 {
-                    dialogueText.text = "Your " + Player.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
+                    dialogueText.text = "Your " + Attacker.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
                     yield return new WaitForSeconds(1);
                 }
-                if (attack.base_power != -1)//If this move is a damage dealing move.
-                {
-                    if (crit)
-                    {
-                        dialogueText.text = "Critical hit!";
-                        yield return new WaitForSeconds(0.75f);
-                    }
-
-                    if (super > 1)
-                    {
-                        GameController.soundFX = "Super Effective";
-                        dialogueText.text = "It's super effective!";
-                    }
-                    else if (super < 1 && super != 0 && !attack.status.RollToApplyStatus(attack))
-                    {
-                        GameController.soundFX = "Not Very Effective";
-                        dialogueText.text = "It's not very effective...";
-                    }
-                    else if (super == 0 || (attack.status.RollToApplyStatus(attack) && attack.status.name.Equals("Paralysis") && Utility.IsGround(Opponent)) || (attack.status.RollToApplyStatus(attack) && attack.status.name.Equals("Poison") && Utility.IsPoison(Opponent)))
-                    {
-                        dialogueText.text = Opponent.pokemon.name + " is immune!";
-                    }
-                    else if (attack.status.RollToApplyStatus(attack) && Opponent.pokemon.statuses.Contains(attack.status.name))
-                    {
-                        dialogueText.text = "Enemy " + Opponent.pokemon.name + " is already " + attack.status.adj + "!";
-                    }
-                    else if (attack.status.RollToApplyStatus(attack))
-                    {
-                        dialogueText.text = "Enemy " + Opponent.pokemon.name + " became " + attack.status.adj + "!";
-                        enemyHUD.SetStatus(Opponent.pokemon);
-                    }
-                    else
-                    {
-                        GameController.soundFX = "Damage";
-                        if(state == BattleState.PLAYERTURN) dialogueText.text = "Enemy " + Opponent.pokemon.name + " took damage...";
-                        else dialogueText.text = "Your " + Opponent.pokemon.name + " took damage...";
-                    }
-                    yield return new WaitForSeconds(2);
-                }
-                else
-                {
-                    if (attack.status.RollToApplyStatus(attack) && Opponent.pokemon.statuses.Contains(attack.status.name))
-                    {
-                        dialogueText.text = "Enemy " + Opponent.pokemon.name + " is already " + attack.status.adj + "!";
-                    }
-                    else if (attack.status.RollToApplyStatus(attack))
-                    {
-                        dialogueText.text = "Enemy " + Opponent.pokemon.name + " became " + attack.status.adj + "!";
-                    }
-                    yield return new WaitForSeconds(2);
-                }
-                // yield return StartCoroutine(YouKilledThem(isDead));
+                if ((attack.base_power != -1) && (crit)) yield return WaitForSeconds(0.75f);
+                UpdateDialogueForDamageAndStatus(attack, Attacker, Defender, rnd, crit, super);
+                yield return new WaitForSeconds(2);
             }
             else //If your attack missed
             {
