@@ -526,7 +526,7 @@ namespace Pokemon
             }
         }
 
-        public void SetStatus(Pokemon poke)
+        virtual public void SetStatus(Pokemon poke)
         {
             if (poke.statuses.Count > 0)
             {

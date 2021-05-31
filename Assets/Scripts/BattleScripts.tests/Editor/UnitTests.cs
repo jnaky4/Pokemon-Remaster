@@ -44,6 +44,14 @@ namespace Pokemon
             }
         }
 
+        public class FakeHUD : BattleHUD
+        {
+            override public void SetStatus(Pokemon poke)
+            {
+                // do nothing
+            }
+        }
+
 
         [Test]
         public void PriorityTests()
@@ -76,7 +84,7 @@ namespace Pokemon
             BattleSystem bs = (new GameObject("BattleSystemObject")).AddComponent<BattleSystem>();
             bs.playerUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
             bs.enemyUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
-            bs.playerUnit.pokemon = new Pokemon(4, 2, "Tackle");
+            bs.playerUnit.pokemon = new Pokemon(4, 2, "Tackle", "Thunder Wave");
             bs.enemyUnit.pokemon = new Pokemon(4, 3, "Tackle");
             Moves playerMove = bs.playerUnit.pokemon.currentMoves[0];
             Moves enemyMove = bs.enemyUnit.pokemon.currentMoves[0];
@@ -88,7 +96,12 @@ namespace Pokemon
             myDialogue.text = "Test String!";
             bs.dialogueText = myDialogue;
 
+            BattleHUD enemyHUD = (new GameObject("EnemyHUD")).AddComponent<FakeHUD>();
+            bs.enemyHUD = enemyHUD;
+
             bs.state = BattleState.PLAYERTURN;
+
+
 
             return bs;
         }
@@ -99,24 +112,45 @@ namespace Pokemon
         {
 
             BattleSystem testBench = AttackXYZ_Setup();
-
+            System.Random rnd = new FakeRandom();
+            double super = 1;
+            String dialogue = "";
 
             // should deal damage to enemy with neutral damage attacking move
             Moves playerMove = testBench.playerUnit.pokemon.currentMoves[0];
-            System.Random rnd = new FakeRandom();
-            double super = 1;
+
             testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, super);
-            String dialogue = "Enemy Charmander took damage...";
+            dialogue = "Enemy Charmander took damage...";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
             Assert.IsTrue(testBench.dialogueText.text == dialogue, "Charmander should just do neutral damage to enemy");
 
+            // should create status effect on enemy with status move 
+            playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
+            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, super);
+            dialogue = "Enemy Charmander became Paralyzed!";
+            Debug.Log("resulting text is: " + testBench.dialogueText.text);
+            Debug.Log("expected text is: " + dialogue);
+            Assert.IsTrue(testBench.dialogueText.text == dialogue, "Charmander should be paralyzed by Thunder Wave");
 
-            // should create status effect on enemy with status move
-
-            // should miss on move with 0 accuracy
+            // Thunderwave should fail to re-apply to target if already paralyzed
+            playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
+            testBench.enemyUnit.pokemon.statuses = new ArrayList(new[] { "Paralysis"});
+            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, super);
+            dialogue = "Enemy Charmander is already Paralyzed!";
+            Debug.Log("resulting text is: " + testBench.dialogueText.text);
+            Debug.Log("expected text is: " + dialogue);
+            Assert.IsTrue(testBench.dialogueText.text == dialogue, "Charmander should be paralyzed by Thunder Wave");
 
             // status effect doesnt get applied to status typed pokemon (burned - fire, etc.)
+            // todo implement IsImmune() in Utility class - this function is just a stub so this test should fail until it is fixed
+            playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
+            testBench.enemyUnit.pokemon = new Pokemon(25, 3, "Tackle"); //Pikachu... comment even necessary?
+            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, super);
+            dialogue = "Enemy Pikachu is Immune!";
+            Debug.Log("resulting text is: " + testBench.dialogueText.text);
+            Debug.Log("expected text is: " + dialogue);
+            Assert.IsTrue(testBench.dialogueText.text == dialogue, "Pikachu can't be paralyzed by Thunder Wave");
 
 
         }
