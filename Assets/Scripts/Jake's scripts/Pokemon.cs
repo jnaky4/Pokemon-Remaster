@@ -841,13 +841,10 @@ namespace Pokemon
             foreach (KeyValuePair<string, int> move in available_moves)
             {
                 //get dmg of move
-                int dmg = 0;
-
                 //10: Lethal in 1 turn with priority speed
                 /*                if (dmg > Enemy.current_hp && );
 
                                 }*/
-
             }
             return null;
         }
