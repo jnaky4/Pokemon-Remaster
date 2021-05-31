@@ -28,7 +28,6 @@ namespace Pokemon
         public double defend_dragon;
         public double defend_normal;
 
-
         //for attacking
         public double attack_fire;
         public double attack_water;
@@ -117,8 +116,6 @@ namespace Pokemon
             this.defend_dragon = d_dragon;
             this.defend_normal = d_normal;
 
-
-
         }
         public static void load_type()
         {
@@ -126,7 +123,6 @@ namespace Pokemon
             for (var i = 0; i < type_defend.Count; i++)
             {
                 string temp_type_str = type_defend[i]["Defending"].ToString();
-
 
                 double attack_fire = double.Parse(type_attack[i]["Fire"].ToString());
                 double attack_water = double.Parse(type_attack[i]["Water"].ToString());
@@ -143,9 +139,6 @@ namespace Pokemon
                 double attack_ghost = double.Parse(type_attack[i]["Ghost"].ToString());
                 double attack_dragon = double.Parse(type_attack[i]["Dragon"].ToString());
                 double attack_normal = double.Parse(type_attack[i]["Normal"].ToString());
-
-
-
 
                 double defend_fire = double.Parse(type_defend[i]["Fire"].ToString());
                 double defend_water = double.Parse(type_defend[i]["Water"].ToString());
@@ -198,8 +191,6 @@ namespace Pokemon
                     defend_dragon,
                     defend_normal
                     );
-
-
 
                 type_dictionary.Add(temp_type_str, temp_type);
             }

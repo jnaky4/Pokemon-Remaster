@@ -711,22 +711,22 @@ namespace Pokemon
 
         }
 
-        public void UpdateDialogueForDamageAndStatus(Moves attack, Unit Attacker, Unit Defender, System.Random rnd, bool crit, double super)
+        public void UpdateDialogueForDamageAndStatus(Moves attack, Unit Attacker, Unit Defender, System.Random rnd, bool crit, double effectivenessMultiplier)
         {
 
             bool appliesStatus = attack.status.RollToApplyStatus(attack);
             // handle damage text
             if (attack.base_power != -1)//If this move is a damage dealing move.
             {
-                switch (super)
+                switch (effectivenessMultiplier)
                 {
-                    case double super when (super > 1):
+                    case double s when (s > 1):
                         {
                             GameController.soundFX = "Super Effective";
                             dialogueText.text = "It's super effective!";
                             break;
                         }
-                    case double super when ((super < 1) && (super != 0)):
+                    case double s when ((s < 1) && (s != 0)):
                         {
                             GameController.soundFX = "Not Very Effective";
                             dialogueText.text = "It's not very effective...";
@@ -734,23 +734,27 @@ namespace Pokemon
                         }
                     case 0:
                         {
-                            if (Utility.IsImmune(attack, Defender)) ;
+                            // todo this function is just a stub
+                            if (Utility.IsImmune(attack, Defender))
                             {
                                 dialogueText.text = Defender.pokemon.name + " is immune!";
                             }
                             break;
                         }
                     case 1:
-                    case default:
+                    default:
                         {
+                            Debug.Log("dialogueText" + dialogueText.text);
+                            Debug.Log("defender" + Defender.pokemon.name);
                             GameController.soundFX = "Damage";
                             if (state == BattleState.PLAYERTURN) dialogueText.text = "Enemy " + Defender.pokemon.name + " took damage...";
                             else dialogueText.text = "Your " + Defender.pokemon.name + " took damage...";
                         }
+                        break;
                 }
             }
 
-            // status information, maybe this comes like a second after damage information?
+            // todo split into new function. add delay. status information, maybe this comes like a second after damage information?
             if (appliesStatus)
             {
                 if (Defender.pokemon.statuses.Contains(attack.status.name))
@@ -853,7 +857,7 @@ namespace Pokemon
                     dialogueText.text = "Your " + Attacker.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
                     yield return new WaitForSeconds(1);
                 }
-                if ((attack.base_power != -1) && (crit)) yield return WaitForSeconds(0.75f);
+                if ((attack.base_power != -1) && (crit)) yield return new WaitForSeconds(0.75f);
                 UpdateDialogueForDamageAndStatus(attack, Attacker, Defender, rnd, crit, super);
                 yield return new WaitForSeconds(2);
             }
