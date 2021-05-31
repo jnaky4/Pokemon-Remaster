@@ -236,7 +236,7 @@ namespace Pokemon
 
         public static bool IsImmune(Moves attack, Unit Defender)
         {
-            return true;
+            return false;
         }
     }
 }

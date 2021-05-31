@@ -755,11 +755,18 @@ namespace Pokemon
             }
 
             // todo split into new function. add delay. status information, maybe this comes like a second after damage information?
+            // todo split tests in UnitTests if this method is split
             if (appliesStatus)
             {
+           
                 if (Defender.pokemon.statuses.Contains(attack.status.name))
                 {
                     dialogueText.text = "Enemy " + Defender.pokemon.name + " is already " + attack.status.adj + "!";
+                }
+                // todo IsImmune is a stub, and needs to implemented, return false currently
+                else if (Utility.IsImmune(attack, Defender))
+                {
+                    dialogueText.text = Defender.pokemon.name + " is immune!";
                 }
                 else
                 {
