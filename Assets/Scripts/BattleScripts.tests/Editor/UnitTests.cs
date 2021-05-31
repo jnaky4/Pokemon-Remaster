@@ -28,6 +28,8 @@ namespace Pokemon
         public void PriorityTests()
         {
             // Use the Assert class to test conditions
+
+            /*
             Main App = (new GameObject("MainLoader")).AddComponent<Main>();
             App.Start();
             BattleSystem bs = (new GameObject("BattleSystemObject")).AddComponent<BattleSystem>();
@@ -67,7 +69,7 @@ namespace Pokemon
             Assert.IsTrue(bs.DetermineNextState(playerMove, enemyMove) == BattleState.ENEMYTURN, "higher level clone (enemy) is faster");
             Debug.Log(playerMove.name);
             Debug.Log(enemyMove.name);
-            
+            */
 
 
         }
