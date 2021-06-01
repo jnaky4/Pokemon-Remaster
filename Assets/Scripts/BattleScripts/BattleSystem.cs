@@ -52,8 +52,9 @@ namespace Pokemon
         private bool endofanimation;
         private bool enemyAttack;
 
-        
-        
+
+        public bool isCaught;
+        public int ballShakes;
         private bool enemyStatus;
         private bool beginCatch;
         private bool playCatch;
@@ -235,6 +236,7 @@ namespace Pokemon
             {
                 if (PlayerAttackAnim.CurrentFrame < PlayerAttackAnim.Frames.Count - 1)
                 {
+                    breakOut = state != BattleState.CAUGHTPOKEMON; 
                     if (breakOut == true && breakOutFrame == PlayerAttackAnim.CurrentFrame)
                         GameController.soundFX = "Break Out";
                     if (PlayerAttackAnim.CurrentFrame == 14 || PlayerAttackAnim.CurrentFrame == 45 || PlayerAttackAnim.CurrentFrame == 78)
@@ -997,6 +999,7 @@ namespace Pokemon
         /// <param name="Player">Player object that stores pokemon</param>
         /// <param name="whosattacking">specifies which player to check statuses for able to attack</param>
         /// if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
+        /// should be TriesToAttack
         public IEnumerator AbleToAttack(Unit Player)
         {
             bool animate_on_player = state == BattleState.PLAYERTURN;
@@ -1077,6 +1080,62 @@ namespace Pokemon
         }
 
 
+
+
+        // ball_shakes (int), caught (bool), next state (break free -> combat or caught -> end battle = f(ball_type, enemyUnit, rnd)
+
+        public void DetermineCatchResult(int ball, Unit enemyUnit, int rnd)
+        {
+            // ball_shakes (int), caught (bool), next state (break free -> combat or caught -> end battle = f(ball_type, enemyUnit, rnd)
+            Double statusModifier = 1.0;
+            foreach (String status in enemyUnit.pokemon.statuses)
+            {
+                switch (status)
+                {
+                    case "Sleep":
+                    case "Freeze":
+                        statusModifier = 1.3;
+                        break;
+                    case "Paralysis":
+                    case "Poison":
+                    case "Burn":
+                        statusModifier = 1.15;
+                        break;
+                } 
+            }
+            Double ballModifier = 0.0;
+            switch (ball)
+            {
+                case 1: // pokeball
+                    ballModifier = 0.5;
+                    break;
+                case 2: // greateball
+                    ballModifier = 0.75;
+                    break;
+                case 3: // ultraball
+                    ballModifier = 1.0;
+                    break;
+                case 4: // masterball
+                    ballModifier = 256.0;
+                    break;
+            }
+
+            // (f/256) = probability of catching the pokemon 
+            Double currentHP = enemyUnit.pokemon.current_hp;
+            Double maxHP = enemyUnit.pokemon.max_hp;
+            // todo add field on pokemon called catchRate
+            Double catchRate = 1.0;
+            Double f = 256 * ballModifier * (1 - 0.5 * currentHP / maxHP) * catchRate * statusModifier;
+            // if f > 256, set it to 256
+            f = (f > 256) ? 256 : f;
+            Debug.Log("f: " + f);
+            ballShakes = (int)Math.Floor(3 * (256 - rnd) / (256 - f)) + 1;
+            Debug.Log("catch f:" + f + " rnd: " + rnd + " shakes halfway calc:" +ballShakes);
+            ballShakes = (ballShakes > 3) ? 3 : ballShakes;
+            state = (rnd < f) ? BattleState.CAUGHTPOKEMON : BattleState.ONLYENEMYTURN;
+            
+        }
+
         /// <summary>
         /// Logic to execute if you try to catch a Pokemon.
         /// </summary>
@@ -1093,11 +1152,7 @@ namespace Pokemon
                 PlayerMakesDecision();
                 yield break;
             }
-            System.Random rnd = new System.Random();
             dialogueText.text = "";
-            int randomNumber = 0, catchRate = 0, randomNumber2, numShakes = 0;
-            double f = 0;
-
             if (typeOfPokeball == 1) //If you have a Poke Ball
             {
                 if (player.numPokeBalls == 0)
@@ -1108,9 +1163,7 @@ namespace Pokemon
                     yield break;
                 }
                 player.numPokeBalls--;
-                randomNumber = rnd.Next(256);
-                catchRate = 6;
-                numShakes = 255;
+                dialogueText.text = "Used Pokeball!";
             }
 
             if (typeOfPokeball == 2) //Great Ball
@@ -1123,9 +1176,7 @@ namespace Pokemon
                     yield break;
                 }
                 player.numGreatBalls--;
-                randomNumber = rnd.Next(201);
-                catchRate = 8;
-                numShakes = 200;
+                dialogueText.text = "Used Greatball!";
             }
 
             if (typeOfPokeball == 3) //Ultra Ball
@@ -1138,9 +1189,7 @@ namespace Pokemon
                     yield break;
                 }
                 player.numUltraBalls--;
-                randomNumber = rnd.Next(151);
-                catchRate = 12;
-                numShakes = 150;
+                dialogueText.text = "Used Ultraball!";
             }
 
             if (typeOfPokeball == 4) //Master Ball
@@ -1153,101 +1202,29 @@ namespace Pokemon
                     yield break;
                 }
                 player.numMasterBalls--;
-                state = BattleState.CAUGHTPOKEMON;
-                PokeballShakes(4);
-                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
+                dialogueText.text = "Used Masterball!? Hope you didn't waste it!";
+            }
+
+            // ball_shakes (int), caught (bool), next state (break free -> combat or caught -> end battle = f(ball_type, enemyUnit, rnd)
+            int catchRoll = (int)rnd.Next(256);
+            DetermineCatchResult(typeOfPokeball, enemyUnit, catchRoll);
+            PokeballShakes(ballShakes); //beginCatch set to true
+            yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
+            if (state == BattleState.CAUGHTPOKEMON)
+            {
+                dialogueText.text = enemyUnit.pokemon.name + " was caught!";
                 DisplayPokeball();
-                StartCoroutine(EndBattle());
-                yield break;
-            }
-
-            if ((enemyUnit.pokemon.HasStatus("Sleep") || enemyUnit.pokemon.HasStatus("Freeze")) && randomNumber < 25)
-            {
-                state = BattleState.CAUGHTPOKEMON;
-                PokeballShakes(4);
-                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
-                DisplayPokeball();
-                StartCoroutine(EndBattle());
-                yield break;
-            }
-
-            if ((enemyUnit.pokemon.HasStatus("Paralysis") || enemyUnit.pokemon.HasStatus("Poison") || enemyUnit.pokemon.HasStatus("Burn")) && randomNumber < 12)
-            {
-                state = BattleState.CAUGHTPOKEMON;
-                PokeballShakes(4);
-                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
-                DisplayPokeball();
-                StartCoroutine(EndBattle());
-                yield break;
-            }
-
-            int catchRateModifier = 0, s = 0;
-
-            //set catch rate modifier by checking statuses
-            catchRate = enemyUnit.pokemon.HasStatus("Sleep") || enemyUnit.pokemon.HasStatus("Freeze") ? 25 : catchRateModifier;
-            catchRate = enemyUnit.pokemon.HasStatus("Paralysis") || enemyUnit.pokemon.HasStatus("Poison") || enemyUnit.pokemon.HasStatus("Burn") ? 12 : catchRateModifier;
-
-            s = enemyUnit.pokemon.HasStatus("Sleep") || enemyUnit.pokemon.HasStatus("Freeze") ? 10 : s;
-            s = enemyUnit.pokemon.HasStatus("Paralysis") || enemyUnit.pokemon.HasStatus("Poison") || enemyUnit.pokemon.HasStatus("Burn") ? 5 : s;
-
-            
-
-            if (randomNumber > GameController.catchRate - catchRateModifier) //If they broke free
-            {
-                
-                PokeballShakes(2);
-                //Debug.Log("Do we hit here?");
-                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
-                dialogueText.text = enemyUnit.pokemon.name + " broke free!";
-                StartCoroutine(CombatPhase(-3));
-                yield break;
-            }
-            randomNumber2 = rnd.Next(256);
-            f = (enemyUnit.pokemon.max_hp * 255 * 4);
-            f /= (enemyUnit.pokemon.current_hp * catchRate);
-            if (f >= randomNumber2) //If you actually caught them
-            {
-                state = BattleState.CAUGHTPOKEMON;
-                PokeballShakes(4);
-                yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
-                DisplayPokeball();
-                StartCoroutine(EndBattle());
-                yield break;
-            }
-            else //If they broke free again.
-            {
-                int d = ((GameController.catchRate * 100) / numShakes) + s;
-                Debug.Log("D is " + d.ToString());
-                if (d < 10)
-                {
-                    PokeballShakes(0);
-                    Debug.Log("0 pokemon shakes");
-                    yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
-                }//no shakes
-                else if (d < 30)
-                {
-                    PokeballShakes(1);
-                    Debug.Log("1 pokemon shakes");
-                    yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
-                }//one shake
-                else if (d < 70)
-                {
-                    PokeballShakes(2);
-                    Debug.Log("2 pokemon shakes");
-                    yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
-                }//two shakes
-                else
-                {
-                    PokeballShakes(3);
-                    Debug.Log("3 pokemon shakes");
-                    yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
-                }//three shakes
-
-                dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
-                StartCoroutine(CombatPhase(-3));
+                yield return StartCoroutine(EndBattle());
                 yield break;
             }
+            else if (state == BattleState.ONLYENEMYTURN)
+            {
+                dialogueText.text = enemyUnit.pokemon.name + " will not submit to your authority!";
+                yield return new WaitForSeconds(2);
+                yield return StartCoroutine(CombatPhase(-3));
+            }
+
         }
 
         /// <summary>
@@ -2337,7 +2314,7 @@ namespace Pokemon
                 }
                 //AttackSprites.AddRange(sprites);
             }
-            if (shakes < 4)
+            if (state == BattleState.ONLYENEMYTURN)
             {
                 breakOutFrame = AttackSprites.Count(s => s != null);
                 foreach (var s in spritesBreak)

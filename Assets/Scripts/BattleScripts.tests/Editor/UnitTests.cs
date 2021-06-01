@@ -37,10 +37,14 @@ namespace Pokemon
 
         public class FakeRandom : System.Random
         {
-
-            public int next()
+            public int secretField = 1;
+            override public int Next()
             {
-                return 1;
+                return secretField;
+            }
+            public void updateSecret(int value)
+            {
+                secretField = value;
             }
         }
 
@@ -152,6 +156,53 @@ namespace Pokemon
             Debug.Log("expected text is: " + dialogue);
             Assert.IsTrue(testBench.dialogueText.text == dialogue, "Pikachu can't be paralyzed by Thunder Wave");
 
+
+        }
+
+        [Test]
+        public void AttackXYZ_Catch_Pokemon_Tests()
+        {
+            BattleSystem testBench = AttackXYZ_Setup();
+            FakeRandom root = new FakeRandom();
+
+            String dialogue = "";
+
+            // set rnd to 0, ensure the pokeball does not catch the pokemon
+            // BattleState -> enemyTurn
+            // 0 shakes
+            // caught -> false
+
+            int ball = 1; // pokeball
+            testBench.ballShakes = -1;
+            int rnd = 0;
+            testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
+            Debug.Log("ballShakes: " + testBench.ballShakes);
+            Debug.Log("ballShakes: " + testBench.state);
+            Assert.IsTrue(testBench.ballShakes == 3, "pokemon should be caught, so 3 ball shakes");
+            Assert.IsTrue(testBench.state == BattleState.CAUGHTPOKEMON, "state was updated after pokemon is caught");
+
+
+            ball = 3; // ultra-ball - modifier of 1.0
+            // f = 256 * ballModifier (1 - 0.5 * currentHP / maxHP) * catchRate + statusModifer;
+            // f = 256 * 1.0 * 0.5 * 1.0 + 0 = 128
+            // set rnd = 129
+            // ballShakes = 3*(256-129) / (256 - 128) = 127/128 -> 3 shakes
+            testBench.ballShakes = -1;
+            rnd = 128;
+            testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
+            Assert.IsTrue(testBench.ballShakes == 3, "rnd was set to 128, so 3 ball shakes");
+            Assert.IsTrue(testBench.state == BattleState.ONLYENEMYTURN, "state was updated after pokemon breaks free");
+
+            ball = 3; // ultra-ball - modifier of 1.0
+            // f = 256 * ballModifier (1 - 0.5 * currentHP / maxHP) * catchRate + statusModifer;
+            // f = 256 * 1.0 * 0.5 * 1.0 + 0 = 128
+            // set rnd = 200
+            // ballShakes = 3*(256-200) / (256 - 128) = 56/128 -> 1.31 -> 2 shakes
+            testBench.ballShakes = -1;
+            rnd = 200;
+            testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
+            Assert.IsTrue(testBench.ballShakes == 2, "rnd was set to 128 for no-status full hp pokemon, so 2 ball shakes");
+            Assert.IsTrue(testBench.state == BattleState.ONLYENEMYTURN, "state was updated after pokemon breaks free");
 
         }
 
