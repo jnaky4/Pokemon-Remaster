@@ -1079,8 +1079,14 @@ namespace Pokemon
             yield return StartCoroutine(SeeIfEndBattle());
         }
 
+
+
+
+        // ball_shakes (int), caught (bool), next state (break free -> combat or caught -> end battle = f(ball_type, enemyUnit, rnd)
+
         public void DetermineCatchResult(int ball, Unit enemyUnit, int rnd)
         {
+            // ball_shakes (int), caught (bool), next state (break free -> combat or caught -> end battle = f(ball_type, enemyUnit, rnd)
             Double statusModifier = 1.0;
             foreach (String status in enemyUnit.pokemon.statuses)
             {
@@ -1095,8 +1101,6 @@ namespace Pokemon
                     case "Burn":
                         statusModifier = 1.15;
                         break;
-                    default:
-                        break;
                 } 
             }
             Double ballModifier = 0.0;
@@ -1105,7 +1109,7 @@ namespace Pokemon
                 case 1: // pokeball
                     ballModifier = 0.5;
                     break;
-                case 2: // greatball
+                case 2: // greateball
                     ballModifier = 0.75;
                     break;
                 case 3: // ultraball
@@ -1114,7 +1118,6 @@ namespace Pokemon
                 case 4: // masterball
                     ballModifier = 256.0;
                     break;
-
             }
 
             // (f/256) = probability of catching the pokemon 
@@ -1123,7 +1126,7 @@ namespace Pokemon
             // todo add field on pokemon called catchRate
             Double catchRate = 1.0;
             Double f = 256 * ballModifier * (1 - 0.5 * currentHP / maxHP) * catchRate * statusModifier;
-            // if f > 255, set it to 255
+            // if f > 256, set it to 256
             f = (f > 255) ? 255 : f;
             Debug.Log("f: " + f);
             ballShakes = (int)Math.Floor(3 * (256 - rnd) / (256 - f)) + 1;
@@ -1133,27 +1136,6 @@ namespace Pokemon
             
         }
 
-        public IEnumerator HandleNotEnoughPokeBalls(int ball)
-        {
-            switch(ball)
-            {
-                case 1:
-                    dialogueText.text = "You don't have enough Poke Balls!";
-                    break;
-                case 2:
-                    dialogueText.text = "You don't have enough Great Balls!";
-                    break;
-                case 3:
-                    dialogueText.text = "You don't have enough Ultra Balls!";
-                    break;
-                case 4:
-                    dialogueText.text = "You don't have enough Master Balls!";
-                    break;
-            }
-            yield return new WaitForSeconds(2);
-            PlayerMakesDecision();
-            yield break;
-        }
         /// <summary>
         /// Logic to execute if you try to catch a Pokemon.
         /// </summary>
@@ -1171,40 +1153,60 @@ namespace Pokemon
                 yield break;
             }
             dialogueText.text = "";
-
-            // set dialogue if used ball and has ball in inventory
-            // otherwise break and have player do turn again
-            if ((typeOfPokeball == 1) && (player.numPokeBalls > 0)) //If you have a Poke Ball
+            if (typeOfPokeball == 1) //If you have a Poke Ball
             {
+                if (player.numPokeBalls == 0)
+                {
+                    dialogueText.text = "You don't have enough Poke Balls!";
+                    yield return new WaitForSeconds(2);
+                    PlayerMakesDecision();
+                    yield break;
+                }
                 player.numPokeBalls--;
-                dialogueText.text = "Used Poke Ball!";
-            }
-            else if ((typeOfPokeball == 2) && (player.numGreatBalls > 0))
-            {
-                player.numGreatBalls--;
-                dialogueText.text = "Used Great Ball!";
-            }
-            else if ((typeOfPokeball == 3) && (player.numUltraBalls > 0))
-            {
-                player.numUltraBalls--;
-                dialogueText.text = "Used Ultra Ball!";
-            }
-            else if ((typeOfPokeball == 4) && (player.numMasterBalls > 0))
-            {
-                player.numMasterBalls--;
-                dialogueText.text = "Used Master Ball!";
-            }
-            else
-            {
-                yield return StartCoroutine(HandleNotEnoughPokeBalls(typeOfPokeball));
-                yield break;
+                dialogueText.text = "Used Pokeball!";
             }
 
-            // catch chance works out to 25% for a full health pokemon with a pokeball
-            // up to 3 shakes, it is possible to have 3 shakes and catch / not catch pokemon
-            // shakes are scaled so that if the roll is far away from the catch threshold it is 1 shake
-            // if the roll is very close to the catch threshold it is 3 shakes
-            int catchRoll = (int) rnd.Next(256);
+            if (typeOfPokeball == 2) //Great Ball
+            {
+                if (player.numGreatBalls == 0)
+                {
+                    dialogueText.text = "You don't have enough Great Balls!";
+                    yield return new WaitForSeconds(2);
+                    PlayerMakesDecision();
+                    yield break;
+                }
+                player.numGreatBalls--;
+                dialogueText.text = "Used Greatball!";
+            }
+
+            if (typeOfPokeball == 3) //Ultra Ball
+            {
+                if (player.numUltraBalls == 0)
+                {
+                    dialogueText.text = "You don't have enough Ultra Balls!";
+                    yield return new WaitForSeconds(2);
+                    PlayerMakesDecision();
+                    yield break;
+                }
+                player.numUltraBalls--;
+                dialogueText.text = "Used Ultraball!";
+            }
+
+            if (typeOfPokeball == 4) //Master Ball
+            {
+                if (player.numMasterBalls == 0)
+                {
+                    dialogueText.text = "You don't have enough Master Balls!";
+                    yield return new WaitForSeconds(2);
+                    PlayerMakesDecision();
+                    yield break;
+                }
+                player.numMasterBalls--;
+                dialogueText.text = "Used Masterball!? Hope you didn't waste it!";
+            }
+
+            // ball_shakes (int), caught (bool), next state (break free -> combat or caught -> end battle = f(ball_type, enemyUnit, rnd)
+            int catchRoll = (int)rnd.Next(256);
             DetermineCatchResult(typeOfPokeball, enemyUnit, catchRoll);
             PokeballShakes(ballShakes); //beginCatch set to true
             yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
