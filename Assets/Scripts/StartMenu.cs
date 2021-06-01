@@ -69,6 +69,8 @@ namespace Pokemon
         {
             if (PlayerPrefs.HasKey("X"))
             {
+                SceneManager.LoadSceneAsync(GameController.scene);
+
                 Debug.Log("starting continue loads");
                 GameController.player.pokeBalls = PlayerPrefs.GetInt("Pokeball");
                 GameController.player.greatBalls = PlayerPrefs.GetInt("Greatball");
@@ -125,8 +127,11 @@ namespace Pokemon
                 if (PlayerPrefs.GetInt("BadgeGround") == 1) GameController.badges_completed.Add("Ground", 1);
                 GameController.update_level_cap();
                 Debug.Log("loaded badges");
-                SceneManager.LoadSceneAsync(GameController.scene);
                 Debug.Log("loaded scene");
+            }
+            else
+            {
+                Debug.Log("why no key in prefs??");
             }
         }
     }

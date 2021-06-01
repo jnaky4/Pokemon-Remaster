@@ -36,6 +36,13 @@ namespace Pokemon
 
         //[SerializeField] List<Sprite> AttackSprites;
         private List<Sprite> AttackSprites = new List<Sprite>();
+        public String pathLeft;
+        public String pathRight;
+        public String pathBreak;
+        public Sprite[] spritesLeft;
+        public Sprite[] spritesRight;
+        public Sprite[] spritesBreak;
+
 
         private SpriteAnimator PlayerAttackAnim;
         private SpriteAnimator EnemyAttackAnim;
@@ -181,6 +188,7 @@ namespace Pokemon
             backUI.SetActive(false);
             levelUpUI.SetActive(false);
             SetDownButtons();
+            PokeballSpriteFactory();
             try
             {
                 StartCoroutine(SetupBattle());
@@ -191,6 +199,7 @@ namespace Pokemon
                 dialogueText.text = "Error. Going back to main menu....";
                 SceneManager.LoadSceneAsync("Start Menu");
             }
+
         }
 
         //logic for whether a player or opponent's attack animation plays
@@ -2235,16 +2244,22 @@ namespace Pokemon
                 enemyInitialStatus = true;
         }
 
+        public void PokeballSpriteFactory()
+        {
+            pathLeft = "Attack_Animations/Pokeball_Left";
+            pathRight = "Attack_Animations/Pokeball_Right";
+            pathBreak = "Attack_Animations/Pokeball_Break";
+            spritesLeft =  Resources.LoadAll<Sprite>(pathLeft);
+            spritesBreak =  Resources.LoadAll<Sprite>(pathBreak);
+            spritesRight = Resources.LoadAll<Sprite>(pathRight);
+        }
+
         public void PokeballShakes(int shakes)
         {
             Debug.Log("Shakes: " + shakes.ToString());
-            string pathLeft = "Attack_Animations/Pokeball_Left";
-            string pathRight = "Attack_Animations/Pokeball_Right";
-            string pathBreak = "Attack_Animations/Pokeball_Break";
             AttackSprites.Clear();
             AttackSprites.Add(null);
-            var sprites = Resources.LoadAll<Sprite>(pathLeft);
-            var spritesBreak = Resources.LoadAll<Sprite>(pathBreak);
+
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
             {
@@ -2279,38 +2294,33 @@ namespace Pokemon
 
             if (shakes == 0)
             {
-                pathLeft += "/Pokeball_Left_000";
-                var sprite = Resources.Load<Sprite>(pathLeft);
+                Sprite sprite = spritesLeft[0];
                 Sprite p = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
                 AttackSprites.Add(p);
             }
             if (shakes >= 1)
             {
-                foreach (var s in sprites)
+                foreach (var s in spritesLeft)
                 {
                     Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
                     AttackSprites.Add(p);
                 }
-                //AttackSprites.AddRange(sprites);
             }
             if (shakes >= 2)
             {
-                var spritesRight = Resources.LoadAll<Sprite>(pathRight);
                 foreach (var s in spritesRight)
                 {
                     Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
                     AttackSprites.Add(p);
                 }
-                //AttackSprites.AddRange(spritesRight);
             }
             if (shakes >= 3)
             {
-                foreach (var s in sprites)
+                foreach (var s in spritesLeft)
                 {
                     Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
                     AttackSprites.Add(p);
                 }
-                //AttackSprites.AddRange(sprites);
             }
             if (state == BattleState.ONLYENEMYTURN)
             {
