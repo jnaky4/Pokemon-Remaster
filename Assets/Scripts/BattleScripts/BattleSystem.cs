@@ -1127,7 +1127,7 @@ namespace Pokemon
             Double catchRate = 1.0;
             Double f = 256 * ballModifier * (1 - 0.5 * currentHP / maxHP) * catchRate * statusModifier;
             // if f > 256, set it to 256
-            f = (f > 256) ? 256 : f;
+            f = (f > 255) ? 255 : f;
             Debug.Log("f: " + f);
             ballShakes = (int)Math.Floor(3 * (256 - rnd) / (256 - f)) + 1;
             Debug.Log("catch f:" + f + " rnd: " + rnd + " shakes halfway calc:" +ballShakes);
