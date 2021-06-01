@@ -2285,7 +2285,7 @@ namespace Pokemon
             }
 
             Sprite[] spritesLeftArray =  Resources.LoadAll<Sprite>(pathLeft);
-            foreach (var s in spritesLeft)
+            foreach (var s in spritesLeftArray)
             {
                 Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
                 spritesLeft.Add(p);
@@ -2338,6 +2338,7 @@ namespace Pokemon
                     AttackSprites.Add(s);
                 }
             }
+
             if (state == BattleState.ONLYENEMYTURN)
             {
                 breakOutFrame = AttackSprites.Count(s => s != null);
