@@ -39,9 +39,9 @@ namespace Pokemon
         public String pathLeft;
         public String pathRight;
         public String pathBreak;
-        public Sprite[] spritesLeft;
-        public Sprite[] spritesRight;
-        public Sprite[] spritesBreak;
+        public List<Sprite> spritesLeft = new List<Sprite>();
+        public List<Sprite> spritesRight = new List<Sprite>();
+        public List<Sprite> spritesBreak = new List<Sprite>();
 
 
         private SpriteAnimator PlayerAttackAnim;
@@ -1216,6 +1216,8 @@ namespace Pokemon
             // if the roll is very close to the catch threshold it is 3 shakes
             int catchRoll = (int) rnd.Next(256);
             DetermineCatchResult(typeOfPokeball, enemyUnit, catchRoll);
+            //PokeballShakes was optimized so much that we need a wait here
+            yield return new WaitForSeconds(.5f);
             PokeballShakes(ballShakes); //beginCatch set to true
             yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
             if (state == BattleState.CAUGHTPOKEMON)
@@ -2249,16 +2251,6 @@ namespace Pokemon
             pathLeft = "Attack_Animations/Pokeball_Left";
             pathRight = "Attack_Animations/Pokeball_Right";
             pathBreak = "Attack_Animations/Pokeball_Break";
-            spritesLeft =  Resources.LoadAll<Sprite>(pathLeft);
-            spritesBreak =  Resources.LoadAll<Sprite>(pathBreak);
-            spritesRight = Resources.LoadAll<Sprite>(pathRight);
-        }
-
-        public void PokeballShakes(int shakes)
-        {
-            Debug.Log("Shakes: " + shakes.ToString());
-            AttackSprites.Clear();
-            AttackSprites.Add(null);
 
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
@@ -2292,43 +2284,66 @@ namespace Pokemon
                 y = 1.175f;
             }
 
+            Sprite[] spritesLeftArray =  Resources.LoadAll<Sprite>(pathLeft);
+            foreach (var s in spritesLeft)
+            {
+                Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
+                spritesLeft.Add(p);
+            }
+
+            Sprite[] spritesRightArray = Resources.LoadAll<Sprite>(pathRight);
+            foreach (var s in spritesRightArray)
+            {
+                Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
+                spritesRight.Add(p);
+            }
+
+            Sprite[] spritesBreakArray =  Resources.LoadAll<Sprite>(pathBreak);
+            foreach (var s in spritesBreakArray)
+            {
+                Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
+                spritesBreak.Add(p);
+            }
+        }
+
+        public void PokeballShakes(int shakes)
+        {
+            Debug.Log("Shakes: " + shakes.ToString());
+            AttackSprites.Clear();
+            AttackSprites.Add(null);
+
             if (shakes == 0)
             {
-                Sprite sprite = spritesLeft[0];
-                Sprite p = Sprite.Create(sprite.texture, sprite.rect, new Vector2(x, y));
-                AttackSprites.Add(p);
+                Sprite s = spritesLeft[0];
+                AttackSprites.Add(s);
             }
             if (shakes >= 1)
             {
-                foreach (var s in spritesLeft)
+                foreach (Sprite s in spritesLeft)
                 {
-                    Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
-                    AttackSprites.Add(p);
+                    AttackSprites.Add(s);
                 }
             }
             if (shakes >= 2)
             {
-                foreach (var s in spritesRight)
+                foreach (Sprite s in spritesRight)
                 {
-                    Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
-                    AttackSprites.Add(p);
+                    AttackSprites.Add(s);
                 }
             }
             if (shakes >= 3)
             {
-                foreach (var s in spritesLeft)
+                foreach (Sprite s in spritesLeft)
                 {
-                    Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
-                    AttackSprites.Add(p);
+                    AttackSprites.Add(s);
                 }
             }
             if (state == BattleState.ONLYENEMYTURN)
             {
                 breakOutFrame = AttackSprites.Count(s => s != null);
-                foreach (var s in spritesBreak)
+                foreach (Sprite s in spritesBreak)
                 {
-                    Sprite p = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
-                    AttackSprites.Add(p);
+                    AttackSprites.Add(s);
                 }
                 breakOut = true;
             }
