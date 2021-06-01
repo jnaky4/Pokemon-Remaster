@@ -337,6 +337,7 @@ namespace Pokemon
                 EnemyAttackAnim.Start();
                 enemyInitialAttack = false;
                 enemyAttack = true;
+                Debug.Log("have some frames for enemy: "+ AttackSprites.Count);
             }
             if (enemyAttack == true)
             {
@@ -467,7 +468,6 @@ namespace Pokemon
 
             if(state == BattleState.POKEMONFAINTED)
             {
-                state = BattleState.POKEMONFAINTED;
                 SwapPokemonOnHUD();
             }
 
@@ -1236,7 +1236,6 @@ namespace Pokemon
                 yield return StartCoroutine(CombatPhase(-3));
             }
         }
-
         /// <summary>
         /// Switches the player's active Pokemon.
         /// </summary>
@@ -1248,16 +1247,14 @@ namespace Pokemon
             {
                 dialogueText.text = "That Pokemon has no HP remaining!";
                 yield return new WaitForSeconds(2);
-                if (state != BattleState.POKEMONFAINTED) PlayerMakesDecision();
-                else yield return SwapPokemonOnHUD();
+                yield return StartCoroutine(SwapPokemonOnHUD());
                 yield break;
             }
             else if (activePokemon == num) //If you try to swap out the current active Pokemon.
             {
                 dialogueText.text = "You already have that Pokemon out!";
                 yield return new WaitForSeconds(2);
-                if (state != BattleState.POKEMONFAINTED) PlayerMakesDecision();
-                else yield return SwapPokemonOnHUD();
+                yield return StartCoroutine(SwapPokemonOnHUD());
                 yield break;
             }
             else
@@ -1335,7 +1332,7 @@ namespace Pokemon
         /// <returns></returns>
         private IEnumerator SwapPokemonOnHUD()
         {
-            state = BattleState.POKEMONFAINTED;
+            if (playerUnit.pokemon.IsFainted())  state = BattleState.POKEMONFAINTED;
             playerHUD.SetPokemon(GameController.playerPokemon);
             SetDownButtons();
             OpenPokemonMenu();
