@@ -606,6 +606,7 @@ namespace Pokemon
 
 
             // is this for pokemon switches?
+            // hit when pokeball catch fails
             if (playerMoveNum == -3) state = BattleState.ONLYENEMYTURN;
             else
             {
