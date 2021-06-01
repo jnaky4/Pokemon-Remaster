@@ -1133,9 +1133,9 @@ namespace Pokemon
             
         }
 
-        public IEnumerator HandleNotEnoughPokeBalls(int ball)
+        public IEnumerator HandleNotEnoughPokeBalls(int typeOfPokeball)
         {
-            switch(ball)
+            switch(typeOfPokeball)
             {
                 case 1:
                     dialogueText.text = "You don't have enough Poke Balls!";
