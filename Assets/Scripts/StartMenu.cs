@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,14 @@ namespace Pokemon
     {
         public Vector2 startingPosition;
         public VectorValue playerPosition;
+        public PlayerData player;
+        public String location;
+        public String scene;
+        public bool starterChosen;
+        public Vector2 initialValue;
+        public Pokemon[] playerPokemon;
+        public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
+
         private void Start()
         {
             Debug.Log("executing Start");
@@ -25,6 +34,7 @@ namespace Pokemon
             Moves.load_moves();
             Items.load_items_to_dict();
             Debug.Log("finished importing csvs in start");
+            PlayerLoad();
         }
 
         public void NewGame()
@@ -65,33 +75,39 @@ namespace Pokemon
 
             SceneManager.LoadSceneAsync(GameController.scene);
         }
-        public void Continue()
+
+        public void DoNothing()
+        {
+
+        }
+
+        public void PlayerLoad()
         {
             if (PlayerPrefs.HasKey("X"))
             {
-                SceneManager.LoadSceneAsync(GameController.scene);
-
+                player = (new GameObject("PlayerData")).AddComponent<PlayerData>();
+                playerPokemon = new Pokemon[6];
                 Debug.Log("starting continue loads");
-                GameController.player.pokeBalls = PlayerPrefs.GetInt("Pokeball");
-                GameController.player.greatBalls = PlayerPrefs.GetInt("Greatball");
-                GameController.player.ultraBalls = PlayerPrefs.GetInt("Ultraball");
-                GameController.player.masterBalls = PlayerPrefs.GetInt("Masterball");
+                player.pokeBalls = PlayerPrefs.GetInt("Pokeball");
+                player.greatBalls = PlayerPrefs.GetInt("Greatball");
+                player.ultraBalls = PlayerPrefs.GetInt("Ultraball");
+                player.masterBalls = PlayerPrefs.GetInt("Masterball");
                 Debug.Log("loaded balls");
-                GameController.player.displayPokeBalls = PlayerPrefs.GetString("DisplayPoke").Equals("True");
-                GameController.player.displayGreatBalls = PlayerPrefs.GetString("DisplayGreat").Equals("True");
-                GameController.player.displayUltraBalls = PlayerPrefs.GetString("DisplayUltra").Equals("True");
-                GameController.player.displayMasterBalls = PlayerPrefs.GetString("DisplayMaster").Equals("True");
+                player.displayPokeBalls = PlayerPrefs.GetString("DisplayPoke").Equals("True");
+                player.displayGreatBalls = PlayerPrefs.GetString("DisplayGreat").Equals("True");
+                player.displayUltraBalls = PlayerPrefs.GetString("DisplayUltra").Equals("True");
+                player.displayMasterBalls = PlayerPrefs.GetString("DisplayMaster").Equals("True");
                 Debug.Log("loaded balls display");
-                GameController.player.money = PlayerPrefs.GetInt("Money");
-                GameController.player.name = PlayerPrefs.GetString("Name");
-                GameController.location = PlayerPrefs.GetString("Location");
-                GameController.scene = PlayerPrefs.GetString("Scene");
+                player.money = PlayerPrefs.GetInt("Money");
+                player.name = PlayerPrefs.GetString("Name");
+                location = PlayerPrefs.GetString("Location");
+                scene = PlayerPrefs.GetString("Scene");
 
-                GameController.starterChosen = Convert.ToBoolean(PlayerPrefs.GetInt("HasStarter"));
-                GameController.player.starter = PlayerPrefs.GetInt("Starter");
+                starterChosen = Convert.ToBoolean(PlayerPrefs.GetInt("HasStarter"));
+                player.starter = PlayerPrefs.GetInt("Starter");
 
-                playerPosition.initialValue.x = PlayerPrefs.GetFloat("X");
-                playerPosition.initialValue.y = PlayerPrefs.GetFloat("Y");
+                initialValue.x = PlayerPrefs.GetFloat("X");
+                initialValue.y = PlayerPrefs.GetFloat("Y");
                 Debug.Log("loaded game cunt");
 
                 for (int i = 0; i < 6; i++)
@@ -113,21 +129,43 @@ namespace Pokemon
                         if (!PlayerPrefs.GetString("Pokemon" + i + "_move2").Equals("null")) move3 = PlayerPrefs.GetString("Pokemon" + i + "_move2");
                         if (!PlayerPrefs.GetString("Pokemon" + i + "_move3").Equals("null")) move4 = PlayerPrefs.GetString("Pokemon" + i + "_move3");
 
-                        GameController.playerPokemon[i] = new Pokemon(dex, level, move1, move2, move3, move4, exp, hp);
+                        playerPokemon[i] = new Pokemon(dex, level, move1, move2, move3, move4, exp, hp);
                     }
                 }
                 Debug.Log("loaded pokemon");
-                if (PlayerPrefs.GetInt("BadgeRock") == 1) GameController.badges_completed.Add("Rock", 1);
-                if (PlayerPrefs.GetInt("BadgeWater") == 1) GameController.badges_completed.Add("Water", 1);
-                if (PlayerPrefs.GetInt("BadgeElectric") == 1) GameController.badges_completed.Add("Electric", 1);
-                if (PlayerPrefs.GetInt("BadgeGrass") == 1) GameController.badges_completed.Add("Grass", 1);
-                if (PlayerPrefs.GetInt("BadgePoison") == 1) GameController.badges_completed.Add("Poison", 1);
-                if (PlayerPrefs.GetInt("BadgePsychic") == 1) GameController.badges_completed.Add("Psychic", 1);
-                if (PlayerPrefs.GetInt("BadgeFire") == 1) GameController.badges_completed.Add("Fire", 1);
-                if (PlayerPrefs.GetInt("BadgeGround") == 1) GameController.badges_completed.Add("Ground", 1);
-                GameController.update_level_cap();
+                if (PlayerPrefs.GetInt("BadgeRock") == 1) badges_completed.Add("Rock", 1);
+                if (PlayerPrefs.GetInt("BadgeWater") == 1) badges_completed.Add("Water", 1);
+                if (PlayerPrefs.GetInt("BadgeElectric") == 1) badges_completed.Add("Electric", 1);
+                if (PlayerPrefs.GetInt("BadgeGrass") == 1) badges_completed.Add("Grass", 1);
+                if (PlayerPrefs.GetInt("BadgePoison") == 1) badges_completed.Add("Poison", 1);
+                if (PlayerPrefs.GetInt("BadgePsychic") == 1) badges_completed.Add("Psychic", 1);
+                if (PlayerPrefs.GetInt("BadgeFire") == 1) badges_completed.Add("Fire", 1);
+                if (PlayerPrefs.GetInt("BadgeGround") == 1) badges_completed.Add("Ground", 1);
+
                 Debug.Log("loaded badges");
                 Debug.Log("loaded scene");
+            }
+            else
+            {
+                Debug.Log("why no key in prefs??");
+            }
+
+
+        }
+        public void Continue()
+        {
+            if (PlayerPrefs.HasKey("X"))
+            {
+                GameController.player = player;
+                GameController.location = location;
+                GameController.scene = scene;
+                GameController.starterChosen = starterChosen;
+                playerPosition.initialValue.x = initialValue.x;
+                playerPosition.initialValue.y = initialValue.y;
+                GameController.playerPokemon = playerPokemon;
+                GameController.badges_completed = badges_completed;
+                GameController.update_level_cap();
+                SceneManager.LoadSceneAsync(GameController.scene);
             }
             else
             {
