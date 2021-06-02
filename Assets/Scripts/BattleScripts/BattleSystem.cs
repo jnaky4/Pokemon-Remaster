@@ -727,6 +727,7 @@ namespace Pokemon
         {
 
             bool appliesStatus = attack.status.RollToApplyStatus(attack);
+            string namePrefix = (state == BattleState.PLAYERTURN) ? "Enemy " : "E";
             // handle damage text
             if (attack.base_power != -1)//If this move is a damage dealing move.
             {
@@ -746,11 +747,7 @@ namespace Pokemon
                         }
                     case 0:
                         {
-                            // todo this function is just a stub
-                            if (Utility.IsImmune(attack, Defender))
-                            {
-                                dialogueText.text = Defender.pokemon.name + " is immune!";
-                            }
+                            dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
                             break;
                         }
                     case 1:
@@ -778,7 +775,7 @@ namespace Pokemon
                 // todo IsImmune is a stub, and needs to implemented, return false currently
                 else if (Utility.IsImmune(attack, Defender))
                 {
-                    dialogueText.text = Defender.pokemon.name + " is immune!";
+                    dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
                 }
                 else
                 {
@@ -2126,8 +2123,8 @@ namespace Pokemon
             float x = 0, y = 0;
             if (GameController.location.CompareTo("Route 1") == 0)
             {
-                x = 0.10f;
-                y = 0.40f;
+                x = -0.05f; 
+                y = 0.46f; 
             }
             if (GameController.location.CompareTo("Pallet Town") == 0)
             {
@@ -2155,7 +2152,7 @@ namespace Pokemon
                 y = 0.45f;
             }
 
-            var s = Resources.Load<Sprite>("Attack_Animations/Pokeball_Left/Pokeball_Left_000");
+            var s = spritesLeft[0];
             enemySprite.sprite = Sprite.Create(s.texture, s.rect, new Vector2(x, y));
             enemySprite.color = new Color(enemySprite.color.r, enemySprite.color.g, enemySprite.color.b, 1);
         }

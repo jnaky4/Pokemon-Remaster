@@ -92,8 +92,6 @@ namespace Pokemon
             bs.enemyUnit.pokemon = new Pokemon(4, 3, "Tackle");
             Moves playerMove = bs.playerUnit.pokemon.currentMoves[0];
             Moves enemyMove = bs.enemyUnit.pokemon.currentMoves[0];
-            int playerMoveNum = 0;
-            int enemyMoveNum = 0;
             System.Random rnd = new System.Random();
 
             DialogueTextObject myDialogue = (new GameObject("TextObject")).AddComponent<DialogueTextObject>();
@@ -150,8 +148,8 @@ namespace Pokemon
             // todo implement IsImmune() in Utility class - this function is just a stub so this test should fail until it is fixed
             playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
             testBench.enemyUnit.pokemon = new Pokemon(25, 3, "Tackle"); //Pikachu... comment even necessary?
-            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, super);
-            dialogue = "Enemy Pikachu is Immune!";
+            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, 0);
+            dialogue = "Enemy Pikachu is immune!";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
             Assert.IsTrue(testBench.dialogueText.text == dialogue, "Pikachu can't be paralyzed by Thunder Wave");
@@ -164,8 +162,6 @@ namespace Pokemon
         {
             BattleSystem testBench = AttackXYZ_Setup();
             FakeRandom root = new FakeRandom();
-
-            String dialogue = "";
 
             // set rnd to 0, ensure the pokeball does not catch the pokemon
             // BattleState -> enemyTurn
@@ -209,5 +205,29 @@ namespace Pokemon
         // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
         // `yield return null;` to skip a frame.
 
+        public BattleSystem PokeballSpriteFactory_Setup()
+        {
+            // Use the Assert class to test conditions
+            Main App = (new GameObject("MainLoader")).AddComponent<Main>();
+            App.Start();
+
+            BattleSystem bs = (new GameObject("BattleSystemObject")).AddComponent<BattleSystem>();
+            bs.playerUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
+            bs.enemyUnit = (new GameObject("UnitObject")).AddComponent<Unit>();
+
+            bs.PokeballSpriteFactory();
+            DialogueTextObject myDialogue = (new GameObject("TextObject")).AddComponent<DialogueTextObject>();
+            myDialogue.text = "Test String!";
+            bs.dialogueText = myDialogue;
+
+            BattleHUD enemyHUD = (new GameObject("EnemyHUD")).AddComponent<FakeHUD>();
+            bs.enemyHUD = enemyHUD;
+
+            bs.state = BattleState.PLAYERTURN;
+
+
+
+            return bs;
+        }
     }
 }
