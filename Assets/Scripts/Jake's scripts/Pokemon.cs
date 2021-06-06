@@ -442,7 +442,7 @@ namespace Pokemon
         }
 
         //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
-        public int GainExp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
+        public int Gain_EXP(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
         {
             //if pokemon is at the level cap, do nothing
             if (this.level >= GameController.level_cap) return 0;
@@ -510,9 +510,7 @@ namespace Pokemon
                 //check evolve
                 this.time_to_evolve = this.CheckEvolve();
                 if (this.time_to_evolve)
-                {
-                    //Debug.Log("Your Pokemon is ready to evolve!");
-                }
+
 
                 //update exp
                 this.SetExp();
@@ -916,7 +914,7 @@ namespace Pokemon
         public bool IsFainted()
         {
             bool IsFainted;
-            return IsFainted = this.current_hp <= 0 ? true : false;
+            return IsFainted = this.current_hp <= 0;
         }
 
         /// <summary>
@@ -963,14 +961,13 @@ namespace Pokemon
         /// </summary>
         public void EndTurnStatusUpdate()
         {
+            this.can_attack = true;
             foreach (Status status in this.statuses)
             {
-                //Debug.Log("Status: " +status.name);
-                //Debug.Log("Remaining Turns: " + status.remaining_turns);
                 status.remaining_turns = status.remaining_turns -1;
-                //Debug.Log("After Remaining Turns: " + status.remaining_turns);
-                this.can_attack = true;
+                
             }
+
 
         }
         public bool HasStatus(string name)

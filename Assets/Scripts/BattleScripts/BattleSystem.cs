@@ -710,16 +710,21 @@ namespace Pokemon
 
         public IEnumerator MultiAttackPerTurn(Moves Attack, Unit Attacking, Unit Defending)
         {
-            //number of moves per turn the player/enemy can attack
-            int NumTimesAttack = rnd.Next(Attack.min_per_turn, Attack.max_per_turn + 1);
-
-            for (int k = 0; k < NumTimesAttack; k++)
+            yield return StartCoroutine(AbleToAttack(Attacking));
+            if (Attacking.pokemon.can_attack)
             {
-                yield return StartCoroutine(AttackXYZ(Attack, Attacking, Defending));
+                //number of moves per turn the player/enemy can attack
+                int NumTimesAttack = rnd.Next(Attack.min_per_turn, Attack.max_per_turn + 1);
 
-                if (state == BattleState.POKEMONFAINTED) yield break;
+                for (int k = 0; k < NumTimesAttack; k++)
+                {
+                    yield return StartCoroutine(AttackXYZ(Attack, Attacking, Defending));
 
+                    if (state == BattleState.POKEMONFAINTED) yield break;
+
+                }
             }
+
 
         }
 
@@ -807,7 +812,7 @@ namespace Pokemon
             //ABLE TO ATTACK
             //checks all statuses if able to attack, if unable to attack, displays animation
             //if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
-            yield return StartCoroutine(AbleToAttack(Attacker));
+            //yield return StartCoroutine(AbleToAttack(Attacker));
 
             bool crit = Utility.CriticalHit(Attacker);
             System.Random rnd = new System.Random();
@@ -894,7 +899,7 @@ namespace Pokemon
                 int exp = 0;
                 double exp_multiplier;
                 exp_multiplier = (GameController.isCatchable) ? 1 : 1.5;
-                exp = playerUnit.pokemon.gain_exp(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
+                exp = playerUnit.pokemon.Gain_EXP(enemyUnit.pokemon.level, enemyUnit.pokemon.pokedex_entry.base_exp, 1, exp_multiplier);
                 /*                    string test = exp_multiplier == 1 ? "pokemon is wild" : "pokemon is a trainers";
                                     Debug.Log(test);*/
 
@@ -1228,7 +1233,7 @@ namespace Pokemon
             }
             else if (state == BattleState.ONLYENEMYTURN)
             {
-                dialogueText.text = enemyUnit.pokemon.name + " will not submit to your authority!";
+                dialogueText.text = enemyUnit.pokemon.name + " broke free!";
                 yield return new WaitForSeconds(2);
                 yield return StartCoroutine(CombatPhase(-3));
             }
@@ -1259,7 +1264,7 @@ namespace Pokemon
                 playerContinuingAttack = 0;
                 phasePlayerSprite = 1;
                 dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
-                playerUnit.pokemon.reset_stages();
+                playerUnit.pokemon.ResetStages();
                 GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
 
                 yield return new WaitForSeconds(2);
@@ -1459,7 +1464,7 @@ namespace Pokemon
             {
                 if (GameController.playerPokemon[i] != null)
                 {
-                    GameController.playerPokemon[i].reset_battle_stats();
+                    GameController.playerPokemon[i].ResetBattleStats();
 /*                    GameController.playerPokemon[i].critical_stage = 0;
                     GameController.playerPokemon[i].attack_stage = 0;
                     GameController.playerPokemon[i].defense_stage = 0;
@@ -2637,7 +2642,7 @@ namespace Pokemon
                 {
 
                     //Pokemon p = poke.evolve_pokemon();
-                    GameController.playerPokemon[i].evolve();
+                    GameController.playerPokemon[i].Evolve();
                     dialogueText.text = "Your Pokemon evolved into a " + GameController.playerPokemon[i].name + "!!";
                     GameController.playerPokemon[i].want_to_evolve = false;
                     //p.want_to_evolve = false;
