@@ -14,7 +14,7 @@ namespace Pokemon
 
         //player data
         public static Pokemon[] playerPokemon = new Pokemon[6];
-        public static PlayerData player = new PlayerData();
+        public static PlayerData player = (new GameObject("PlayerData")).AddComponent<PlayerData>();
         public static bool inCombat = false;
         public static bool starterChosen = false;
 

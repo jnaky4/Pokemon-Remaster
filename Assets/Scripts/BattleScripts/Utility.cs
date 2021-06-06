@@ -236,7 +236,12 @@ namespace Pokemon
 
         public static bool IsImmune(Moves attack, Unit Defender)
         {
-            return true;
+            bool safeTypeTwo = (Defender.pokemon.type2 != null) ? (attack.status.ignore_type == Defender.pokemon.type2.type) : false;
+            bool immunity = (attack.status.ignore_type == Defender.pokemon.type1.type) || (safeTypeTwo);
+            Debug.Log("immunity: " + immunity);
+            Debug.Log("typeTwo: " + Defender.pokemon.type2 + " ignore type: " + attack.status.ignore_type); 
+
+            return immunity;
         }
     }
 }
