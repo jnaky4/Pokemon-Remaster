@@ -288,14 +288,16 @@ namespace Pokemon
 
         public void ResetStages()
         {
-            critical_stage = 0;
-            attack_stage = 0;
-            defense_stage = 0;
-            sp_attack_stage = 0;
-            sp_defense_stage = 0;
-            speed_stage = 0;
-            accuracy_stage = 0;
-            evasion_stage = 0;
+
+
+            this.attack_stage = 0;
+            this.defense_stage = 0;
+            this.sp_attack_stage = 0;
+            this.sp_defense_stage = 0;
+            this.speed_stage = 0;
+            this.accuracy_stage = 0;
+            this.evasion_stage = 0;
+            this.critical_stage = 0;
 
         }
 
@@ -566,29 +568,47 @@ namespace Pokemon
             Debug.Log("Your Pokemon Gained " + change_sp_attack + " SPA!");
             Debug.Log("Your Pokemon Gained " + change_sp_defense + " SPD!");*/
         }
-        //function to reset stats
+
+
         /// <summary>
-        /// Resets battle stats and fainted stats
+        /// Resets stats of pokemon at Beginning of Battle / end of battle / fainted / swapping pokemon
         /// </summary>
         public void ResetBattleStats()
         {
-            //Reset all stages
-            this.attack_stage = 0;
-            this.defense_stage = 0;
-            this.sp_attack_stage = 0;
-            this.sp_defense_stage = 0;
-            this.speed_stage = 0;
-            this.accuracy_stage = 0;
-            this.evasion_stage = 0;
+            //check if pokemon fainted
+            if (this.IsFainted())
+            {
+                //remove all statuses
+                this.statuses.Clear();
+
+                //reset stat changes
+                this.current_speed = this.max_speed;
+                this.current_attack = this.max_attack;
+                this.current_sp_attack = this.max_sp_attack;
+                this.current_defense = this.max_defense;
+                this.current_sp_defense = this.max_sp_defense;
+            }
+            //pokemon isnt fainted, remove all non persisting status effects
+            else
+            {
+
+                foreach (Status status in this.statuses)
+                {
+                    //if status doesnt persist, remove
+                    if (!status.persistance) this.statuses.Remove(status);
+                }
 
 
-            //Every current Stat but HP is reset
-            this.current_attack = this.HasStatus("Burn") ? this.current_attack : this.max_attack;
-            this.current_defense = this.max_defense;
-            this.current_sp_attack = this.max_sp_attack;
-            this.current_sp_defense = this.max_sp_defense;
-            this.current_speed = this.HasStatus("Paralysis") ? this.current_speed : this.max_speed;
+                //Every current Stat but HP is reset
+                this.current_attack = this.HasStatus("Burn") ? this.current_attack : this.max_attack;
+                this.current_defense = this.max_defense;
+                this.current_sp_attack = this.max_sp_attack;
+                this.current_sp_defense = this.max_sp_defense;
+                this.current_speed = this.HasStatus("Paralysis") ? this.current_speed : this.max_speed;
+            }
 
+            //reset stages
+            ResetStages();
             this.current_accuracy = 1;
             this.current_evasion = 1;
         }
@@ -838,48 +858,6 @@ namespace Pokemon
             return null;
         }
 
-        //cleans up stats for end of battle / fainted / Swapping Pokemon
-        /// <summary>
-        /// Cleans up stats of pokemon at end of battle / fainted / swapping pokemon
-        /// </summary>
-        public void CleanupStats()
-        {
-            //check if pokemon fainted
-            if (this.current_hp <= 0)
-            {
-                //remove all statuses
-                this.statuses.Clear();
-            }
-            //pokemon isnt fainted, remove all non persisting status effects
-            else
-            {
-
-                foreach(Status status in this.statuses)
-                {
-                    //if status doesnt persist, remove
-                    if (!status.persistance) this.statuses.Remove(status);
-                }
-            }
-
-            //reset stages
-            this.speed_stage = 0;
-            this.sp_attack_stage = 0;
-            this.attack_stage = 0;
-            this.defense_stage = 0;
-            this.sp_defense_stage = 0;
-            this.critical_stage = 0;
-            this.evasion_stage = 0;
-            this.accuracy_stage = 0;
-
-            //reset stat changes
-            this.current_speed = this.max_speed;
-            this.current_attack = this.max_attack;
-            this.current_sp_attack = this.max_sp_attack;
-            this.current_defense = this.max_defense;
-            this.current_sp_defense = this.max_sp_defense;
-
-        }
-
         //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
         public bool CheckAbleAttack()
         {
@@ -967,6 +945,7 @@ namespace Pokemon
                 status.remaining_turns = status.remaining_turns -1;
                 
             }
+
 
 
         }

@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, ONLYENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, POKEMONFAINTED, ENDCOMBATPHASE }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, ONLYENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, POKEMONFAINTED, ENDCOMBATPHASE, PLAYERSWAPPED }
 
 namespace Pokemon
 {
@@ -337,7 +337,7 @@ namespace Pokemon
                 EnemyAttackAnim.Start();
                 enemyInitialAttack = false;
                 enemyAttack = true;
-                Debug.Log("have some frames for enemy: "+ AttackSprites.Count);
+                //Debug.Log("have some frames for enemy: "+ AttackSprites.Count);
             }
             if (enemyAttack == true)
             {
@@ -466,16 +466,13 @@ namespace Pokemon
         private void PlayerMakesDecision()
         {
 
-            if(state == BattleState.POKEMONFAINTED)
+
+
+
+            if (playerUnit.pokemon.IsFainted() || state == BattleState.POKEMONFAINTED)
             {
+
                 SwapPokemonOnHUD();
-            }
-
-
-            if (playerUnit.pokemon.IsFainted())
-            {
-
-
             }
             else
             {
@@ -521,7 +518,7 @@ namespace Pokemon
         private IEnumerator CombatPhase(int playerMoveNum)
         {
 
-            Debug.Log("START <COMBAT PHASE>");
+            //Debug.Log("START <COMBAT PHASE>");
 
             SetDownButtons();
             ClosePokemonMenu();
@@ -542,7 +539,7 @@ namespace Pokemon
             }
 
 
-            Debug.Log("MOVE NUMBER" + playerMoveNum);
+            //Debug.Log("MOVE NUMBER" + playerMoveNum);
 
 
             int moveNum = -1;
@@ -643,8 +640,8 @@ namespace Pokemon
 
 
 
-            Debug.Log("END <COMBAT PHASE>");
-            Debug.Log("START <END OF BOTH TURNS PHASE>");
+            //Debug.Log("END <COMBAT PHASE>");
+            //Debug.Log("START <END OF BOTH TURNS PHASE>");
 
             if (!playerUnit.pokemon.IsFainted())
             {
@@ -654,6 +651,7 @@ namespace Pokemon
             {
                 yield return StartCoroutine(EndRoundStatusUpdate("Enemy", enemyUnit, playerUnit));
             }
+
 
 
 
@@ -708,23 +706,42 @@ namespace Pokemon
 
         #region Attack functions
 
-        public IEnumerator MultiAttackPerTurn(Moves Attack, Unit Attacking, Unit Defending)
+        public IEnumerator MultiAttackPerTurn(Moves Attack, Unit Attacker, Unit Defender)
         {
-            yield return StartCoroutine(AbleToAttack(Attacking));
-            if (Attacking.pokemon.can_attack)
+            //BEGIN TURN STATUS UPDATE
+            yield return StartCoroutine(BeginTurnStatusUpdate(Attacker));
+
+            yield return StartCoroutine(AbleToAttack(Attacker));
+            if (Attacker.pokemon.can_attack)
             {
-                //number of moves per turn the player/enemy can attack
-                int NumTimesAttack = rnd.Next(Attack.min_per_turn, Attack.max_per_turn + 1);
-
-                for (int k = 0; k < NumTimesAttack; k++)
+                if(AccuracyCheck(Attack, Attacker, Defender))
                 {
-                    yield return StartCoroutine(AttackXYZ(Attack, Attacking, Defending));
+                    //number of moves per turn the player/enemy can attack
+                    int NumTimesAttack = rnd.Next(Attack.min_per_turn, Attack.max_per_turn + 1);
 
-                    if (state == BattleState.POKEMONFAINTED) yield break;
+                    for (int k = 0; k < NumTimesAttack; k++)
+                    {
+                        yield return StartCoroutine(AttackXYZ(Attack, Attacker, Defender));
 
+                        if (state == BattleState.POKEMONFAINTED) yield break;
+
+                    }
                 }
+                else
+                {
+                    dialogueText.text = "Your attack missed!";
+                    yield return new WaitForSeconds(2);
+                }
+
             }
 
+
+        }
+        public bool AccuracyCheck(Moves attack, Unit Attacker, Unit Defender)
+        {
+            int num = rnd.Next(1, 100);
+            if (num <= (attack.accuracy * Attacker.pokemon.current_accuracy * Defender.pokemon.current_evasion)) return true;
+            else return false;
 
         }
 
@@ -758,8 +775,8 @@ namespace Pokemon
                     case 1:
                     default:
                         {
-                            Debug.Log("dialogueText" + dialogueText.text);
-                            Debug.Log("defender" + Defender.pokemon.name);
+                            //Debug.Log("dialogueText" + dialogueText.text);
+                            //Debug.Log("defender" + Defender.pokemon.name);
                             GameController.soundFX = "Damage";
                             if (state == BattleState.PLAYERTURN) dialogueText.text = "Enemy " + Defender.pokemon.name + " took damage...";
                             else dialogueText.text = "Your " + Defender.pokemon.name + " took damage...";
@@ -806,8 +823,7 @@ namespace Pokemon
 
             SetDownButtons();      
 
-            //BEGIN TURN STATUS UPDATE
-            yield return StartCoroutine(BeginTurnStatusUpdate(Attacker));
+
 
             //ABLE TO ATTACK
             //checks all statuses if able to attack, if unable to attack, displays animation
@@ -815,79 +831,70 @@ namespace Pokemon
             //yield return StartCoroutine(AbleToAttack(Attacker));
 
             bool crit = Utility.CriticalHit(Attacker);
-            System.Random rnd = new System.Random();
-            int num = rnd.Next(1, 100);
 
             dialogueText.text = Attacker.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(0.75f);
 
-            //If the attack hits
-            if (num <= (attack.accuracy * Attacker.pokemon.current_accuracy * Defender.pokemon.current_evasion))
-            {
 
-                if(state == BattleState.PLAYERTURN)
-                {
-                    playerInitialAttack = true;
-                }
-                else
-                {
-                    enemyInitialAttack = true;
-                }
+
+            if(state == BattleState.PLAYERTURN)
+            {
+                playerInitialAttack = true;
+            }
+            else
+            {
+                enemyInitialAttack = true;
+            }
                     
-                if (attack.name == "Growl") GameController.soundFX = Attacker.pokemon.dexnum.ToString();
-                else GameController.soundFX = attack.name;
-                while (!endofanimation)
-                {
-                    yield return null;
-                }
-                endofanimation = false;
-
-                if (attack.current_stat_change.CompareTo("null") != 0) Attacker.SetStages(attack, Defender);
-                if (!attack.status.Equals("null")) Status.Apply_Attack_Status_Effect(attack, Defender);
-                double super = Utility.DoDamage(Attacker, Defender, attack, crit);
-                //Debug.Log(playerUnit.damage);
-
-                bool isDead = Defender.TakeDamage(Attacker.damage);
-                if (attack.heal > 0) Attacker.TakeDamage(-Attacker.damage * attack.heal);
-                if (attack.heal < 0) Attacker.TakeDamage(Attacker.damage * -attack.heal);
-
-                if(state == BattleState.PLAYERTURN)
-                {
-                    playerHUD.SetHP(Attacker.pokemon.current_hp, Attacker, "player");
-                    if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
-                    else StartCoroutine(Blink(enemySprite, 0.25));
-                    enemyHUD.SetHP(Defender.pokemon.current_hp, Attacker, "player");
-                    //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
-                    enemyHUD.SetStatus(Defender.pokemon);
-                }
-                else
-                {
-                    enemyHUD.SetHP(enemyUnit.pokemon.current_hp, Defender, "enemy");
-                    if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
-                    else StartCoroutine(Blink(playerSprite, 0.25));
-                    playerHUD.SetHP(Defender.pokemon.current_hp, Defender, "enemy");
-                }
-
-                if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
-                {
-                    dialogueText.text = "Enemy " + Defender.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
-                    yield return new WaitForSeconds(1);
-                }
-                else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0)
-                {
-                    dialogueText.text = "Your " + Attacker.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
-                    yield return new WaitForSeconds(1);
-                }
-                if ((attack.base_power != -1) && (crit)) yield return new WaitForSeconds(0.75f);
-                UpdateDialogueForDamageAndStatus(attack, Attacker, Defender, rnd, crit, super);
-                yield return new WaitForSeconds(2);
-            }
-            else //If your attack missed
+            if (attack.name == "Growl") GameController.soundFX = Attacker.pokemon.dexnum.ToString();
+            else GameController.soundFX = attack.name;
+            while (!endofanimation)
             {
-
-                dialogueText.text = "Your attack missed!";
-                yield return new WaitForSeconds(2);
+                yield return null;
             }
+            endofanimation = false;
+
+            if (attack.current_stat_change.CompareTo("null") != 0) Attacker.SetStages(attack, Defender);
+            if (!attack.status.Equals("null")) Status.Apply_Attack_Status_Effect(attack, Defender);
+            double super = Utility.DoDamage(Attacker, Defender, attack, crit);
+            //Debug.Log(playerUnit.damage);
+
+            bool isDead = Defender.TakeDamage(Attacker.damage);
+            if (attack.heal > 0) Attacker.TakeDamage(-Attacker.damage * attack.heal);
+            if (attack.heal < 0) Attacker.TakeDamage(Attacker.damage * -attack.heal);
+
+            if(state == BattleState.PLAYERTURN)
+            {
+                playerHUD.SetHP(Attacker.pokemon.current_hp, Attacker, "player");
+                if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
+                else StartCoroutine(Blink(enemySprite, 0.25));
+                enemyHUD.SetHP(Defender.pokemon.current_hp, Attacker, "player");
+                //playerHUD.SetHP(playerUnit.pokemon.current_hp, playerUnit);
+                enemyHUD.SetStatus(Defender.pokemon);
+            }
+            else
+            {
+                enemyHUD.SetHP(enemyUnit.pokemon.current_hp, Defender, "enemy");
+                if (attack.base_power <= 0) StartCoroutine(ShakeLeftRight());
+                else StartCoroutine(Blink(playerSprite, 0.25));
+                playerHUD.SetHP(Defender.pokemon.current_hp, Defender, "enemy");
+            }
+
+            if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
+            {
+                dialogueText.text = "Enemy " + Defender.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
+                yield return new WaitForSeconds(1);
+            }
+            else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0)
+            {
+                dialogueText.text = "Your " + Attacker.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
+                yield return new WaitForSeconds(1);
+            }
+            if ((attack.base_power != -1) && (crit)) yield return new WaitForSeconds(0.75f);
+            UpdateDialogueForDamageAndStatus(attack, Attacker, Defender, rnd, crit, super);
+            yield return new WaitForSeconds(2);
+
+
 
             yield return StartCoroutine(IsEitherPokemonDead());
         }
@@ -1001,6 +1008,7 @@ namespace Pokemon
 
                 }
             }
+            IsEitherPokemonDead();
             //decrements all counters
             AttackingPlayer.pokemon.EndTurnStatusUpdate();                         
 
@@ -1137,9 +1145,9 @@ namespace Pokemon
             Double f = 256 * ballModifier * (1 - 0.5 * currentHP / maxHP) * catchRate * statusModifier;
             // if f > 255, set it to 255
             f = (f > 255) ? 255 : f;
-            Debug.Log("f: " + f);
+            //Debug.Log("f: " + f);
             ballShakes = (int)Math.Floor(3 * (256 - rnd) / (256 - f)) + 1;
-            Debug.Log("catch f:" + f + " rnd: " + rnd + " shakes halfway calc:" +ballShakes);
+            //Debug.Log("catch f:" + f + " rnd: " + rnd + " shakes halfway calc:" +ballShakes);
             ballShakes = (ballShakes > 3) ? 3 : ballShakes;
             state = (rnd < f) ? BattleState.CAUGHTPOKEMON : BattleState.ONLYENEMYTURN;
             
@@ -1247,6 +1255,7 @@ namespace Pokemon
         {
             if (GameController.playerPokemon[num].IsFainted())
             {
+
                 dialogueText.text = "That Pokemon has no HP remaining!";
                 yield return new WaitForSeconds(2);
                 yield return StartCoroutine(SwapPokemonOnHUD());
@@ -1264,7 +1273,7 @@ namespace Pokemon
                 playerContinuingAttack = 0;
                 phasePlayerSprite = 1;
                 dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
-                playerUnit.pokemon.ResetStages();
+                playerUnit.pokemon.ResetBattleStats();
                 GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
 
                 yield return new WaitForSeconds(2);
@@ -1312,17 +1321,16 @@ namespace Pokemon
                 {
                     move4.SetActive(true);
                 }
-                if (state == BattleState.POKEMONFAINTED)
-                {
-                    Debug.Log("CHANGE POKEMON 1482");
-                    state = BattleState.PLAYERTURN;
-                    PlayerMakesDecision();
-                }
-                else
+                if(state == BattleState.PLAYERSWAPPED)
                 {
                     state = BattleState.ONLYENEMYTURN;
                     StartCoroutine(CombatPhase(-3));
                 }
+                else
+                {
+                    PlayerMakesDecision();
+                }
+                
             }
             yield break;
         }
@@ -1538,7 +1546,7 @@ namespace Pokemon
         /// </summary>
         public void OnPokemonButton()
         {
-            if (state != BattleState.PLAYERTURN) return;
+            state = BattleState.PLAYERSWAPPED;
             if (poekmonMenuOpen) ClosePokemonMenu();
             else
             {
@@ -1566,7 +1574,8 @@ namespace Pokemon
 
         public void OnBackButton()
         {
-            if (state != BattleState.PLAYERTURN) return;
+            //if (state != BattleState.PLAYERTURN) return;
+            state = BattleState.PLAYERTURN;
             CloseBallsMenu();
             CloseMovesMenu();
             ClosePokemonMenu();
@@ -2308,7 +2317,7 @@ namespace Pokemon
 
         public void PokeballShakes(int shakes)
         {
-            Debug.Log("Shakes: " + shakes.ToString());
+            //Debug.Log("Shakes: " + shakes.ToString());
             AttackSprites.Clear();
             AttackSprites.Add(null);
 
@@ -2618,7 +2627,7 @@ namespace Pokemon
             levelUpUI.SetActive(false);
             playerUnit.pokemon = poke;
             playerHUD.SetMoves(playerUnit);
-            TryToSwitchPokemon(activePokemon);
+            //TryToSwitchPokemon(activePokemon);
         }
 
         public IEnumerator Evolve(Pokemon poke, int i)
