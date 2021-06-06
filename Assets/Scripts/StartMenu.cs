@@ -19,7 +19,7 @@ namespace Pokemon
 
         private void Start()
         {
-            Debug.Log("executing Start");
+            //Debug.Log("executing Start");
             Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
             Moves.all_moves = BattleSystem.load_CSV("MOVES");
             Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK");
@@ -33,13 +33,13 @@ namespace Pokemon
             Type.load_type();
             Moves.load_moves();
             Items.load_items_to_dict();
-            Debug.Log("finished importing csvs in start");
+            //Debug.Log("finished importing csvs in start");
             PlayerLoad();
         }
 
         public void NewGame()
         {
-            Debug.Log("new game starts");
+            //Debug.Log("new game starts");
             GameController.player.pokeBalls = 99;
             GameController.player.greatBalls = 0;
             GameController.player.ultraBalls = 0;
@@ -87,17 +87,17 @@ namespace Pokemon
             {
                 player = (new GameObject("PlayerData")).AddComponent<PlayerData>();
                 playerPokemon = new Pokemon[6];
-                Debug.Log("starting continue loads");
+                //Debug.Log("starting continue loads");
                 player.pokeBalls = PlayerPrefs.GetInt("Pokeball");
                 player.greatBalls = PlayerPrefs.GetInt("Greatball");
                 player.ultraBalls = PlayerPrefs.GetInt("Ultraball");
                 player.masterBalls = PlayerPrefs.GetInt("Masterball");
-                Debug.Log("loaded balls");
+                //Debug.Log("loaded balls");
                 player.displayPokeBalls = PlayerPrefs.GetString("DisplayPoke").Equals("True");
                 player.displayGreatBalls = PlayerPrefs.GetString("DisplayGreat").Equals("True");
                 player.displayUltraBalls = PlayerPrefs.GetString("DisplayUltra").Equals("True");
                 player.displayMasterBalls = PlayerPrefs.GetString("DisplayMaster").Equals("True");
-                Debug.Log("loaded balls display");
+                //Debug.Log("loaded balls display");
                 player.money = PlayerPrefs.GetInt("Money");
                 player.name = PlayerPrefs.GetString("Name");
                 location = PlayerPrefs.GetString("Location");
@@ -108,7 +108,7 @@ namespace Pokemon
 
                 initialValue.x = PlayerPrefs.GetFloat("X");
                 initialValue.y = PlayerPrefs.GetFloat("Y");
-                Debug.Log("loaded game cunt");
+                //Debug.Log("loaded game cunt");
 
                 for (int i = 0; i < 6; i++)
                 {
@@ -132,7 +132,7 @@ namespace Pokemon
                         playerPokemon[i] = new Pokemon(dex, level, move1, move2, move3, move4, exp, hp);
                     }
                 }
-                Debug.Log("loaded pokemon");
+                //Debug.Log("loaded pokemon");
                 if (PlayerPrefs.GetInt("BadgeRock") == 1) badges_completed.Add("Rock", 1);
                 if (PlayerPrefs.GetInt("BadgeWater") == 1) badges_completed.Add("Water", 1);
                 if (PlayerPrefs.GetInt("BadgeElectric") == 1) badges_completed.Add("Electric", 1);
@@ -142,12 +142,12 @@ namespace Pokemon
                 if (PlayerPrefs.GetInt("BadgeFire") == 1) badges_completed.Add("Fire", 1);
                 if (PlayerPrefs.GetInt("BadgeGround") == 1) badges_completed.Add("Ground", 1);
 
-                Debug.Log("loaded badges");
-                Debug.Log("loaded scene");
+                //Debug.Log("loaded badges");
+                //Debug.Log("loaded scene");
             }
             else
             {
-                Debug.Log("why no key in prefs??");
+                //Debug.Log("why no key in prefs??");
             }
 
 
@@ -169,7 +169,7 @@ namespace Pokemon
             }
             else
             {
-                Debug.Log("why no key in prefs??");
+                //Debug.Log("why no key in prefs??");
             }
         }
     }
