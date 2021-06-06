@@ -208,7 +208,7 @@ namespace Pokemon
                         if (Defending.pokemon.type1.name.Equals("Fire")) break;
                         if (Defending.pokemon.type2.name.Equals("Fire")) break;
                     }
-                    catch (NullReferenceException ex)
+                    catch
                     {
                         //throw;
                     }
@@ -232,7 +232,7 @@ namespace Pokemon
                             if (Defending.pokemon.type2.name.Equals("Ground")) break;
                         }
                     }
-                    catch (NullReferenceException ex)
+                    catch
                     {
                         //throw;
                     }
@@ -249,10 +249,9 @@ namespace Pokemon
                         if (Defending.pokemon.type1.name == "Poison") break;
                         if (Defending.pokemon.type2.name == "Poison") break;
                     }
-                    catch (NullReferenceException ex)
+                    catch
                     {
-                        //throw;
-                        //Debug.Log("Bellsprout should not be here.3");
+
                     }
                     //Debug.Log("Bellsprout should not be here.4");
                     Status poison = attacking_move.status;
@@ -282,7 +281,7 @@ namespace Pokemon
                         if (Defending.pokemon.type1.name.Equals("Ice")) break;
                         if (Defending.pokemon.type2.name.Equals("Ice")) break;
                     }
-                    catch (NullReferenceException ex)
+                    catch
                     {
                         //throw;
                     }

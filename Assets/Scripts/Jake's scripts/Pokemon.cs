@@ -95,7 +95,7 @@ namespace Pokemon
             }
             else
             {
-                this.type2 = null;
+                this.type2 = Type.get_type("Null");
             }
             GetImagePath();
         }
@@ -199,7 +199,7 @@ namespace Pokemon
         //each pokemon has up to 2 types
         public Type type1;
 
-        public Type type2 = null;
+        public Type type2;
 
         //list of learnable moves
         public List<Learnset> learnset = new List<Learnset>();
@@ -327,24 +327,10 @@ namespace Pokemon
             //Debug.LogWarning("Hey motherfucker, current defense for " + this.name + " is " + this.current_defense + " and the current sp defense is " + this.current_sp_defense);
         }
 
-        public void PrintPokemon()
-        {
-            //Console.WriteLine(this.name + " type1 and type2" + ((this.type1) + (this.type1)));
 
-            Console.WriteLine(this.name + "s type1 is: " + this.type1);
-            if (this.type2 != null)
-            {
-                Console.WriteLine(this.name + "s type2 is: " + this.type2);
-            }
-
-            Console.WriteLine(this.name + "s attack1 is: " + this.currentMoves[0].name);
-            Console.WriteLine(this.name + "s attack1 dmg is: " + this.currentMoves[0].base_power);
-            Console.WriteLine(this.name + "s attack2 is: " + this.currentMoves[1].name);
-            Console.WriteLine(this.name + "s attack3 is: " + this.currentMoves[2].name);
-            Console.WriteLine(this.name + "s attack4 is: " + this.currentMoves[3].name);
-        }
-
-        //loads an image of the pokemon when created
+        /// <summary>
+        /// Sets image path for pokemon
+        /// </summary>
         public void GetImagePath()
         {
             var path = "Assets/Resources/Images/PokemonImages/";
@@ -354,6 +340,11 @@ namespace Pokemon
 
         }
 
+        /// <summary>
+        /// Sets the base exp and next level exp, after 50, exp is constant increase of 7500
+        /// forumla <50 : base: lvl_speed * level^3, next: lvl_speed * (level + 1)^3
+        /// formula >50 : base: lvl_speed * 50^3 + 7500*(lvl-50), next: lvl_speed * 50^3 + 7500*(lvl-50 + 1)
+        /// </summary>
         public void SetExp()
         {
             //leveling is multiplier * level^3 up to level 50
@@ -383,6 +374,9 @@ namespace Pokemon
             }
         }
 
+        /// <summary>
+        /// takes the base stats and level and caculates the max_stats
+        /// </summary>
         public void UpdateCurrentStats()
         {
             //iv is set to 30
@@ -396,6 +390,10 @@ namespace Pokemon
             this.max_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
         }
 
+        /// <summary>
+        /// Checks if a new move is learnable at its level after leveling up
+        /// </summary>
+        /// <returns>Moves object of learnable move</returns>
         public Moves CheckLearnset()
         {
             this.learned_move = null;
@@ -432,6 +430,10 @@ namespace Pokemon
             return this.learned_move;
         }
 
+        /// <summary>
+        /// Checks if the pokemon is ready to evovle
+        /// </summary>
+        /// <returns>true if ready to evolve</returns>
         public bool CheckEvolve()
         {
             if (this.pokedex_entry.evolve_level != -1)
@@ -525,6 +527,9 @@ namespace Pokemon
             return exp_gained;
         }
 
+        /// <summary>
+        /// Evolves the current pokemon into its dex+1 and recalculates its new stats, grabs new CSV's
+        /// </summary>
         public void Evolve()
         {
             //save old stats
@@ -950,12 +955,24 @@ namespace Pokemon
 
 
         }
+
+        /// <summary>
+        /// Returns true if the string name matches the name of a status in the statuses array
+        /// </summary>
+        /// <param name="name">name of the status</param>
+        /// <returns>true/false</returns>
         public bool HasStatus(string name)
         {
             return this.statuses.Contains(name);
 
             
         }
+
+        /// <summary>
+        /// Checks the pokemon.statuses array to see if the pokemon already has a persisting status.
+        /// only one can be applied at a time
+        /// </summary>
+        /// <returns>true if the pokemon has a persisting status</returns>
         public bool HasPersistenceStatus()
         {
             bool hasPersistence = false;

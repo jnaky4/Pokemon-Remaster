@@ -13,7 +13,7 @@ namespace Pokemon
             Pokemon.all_base_stats = load_CSV("BASE_STATS");
             Moves.all_moves = load_CSV("MOVES");
             Type.type_attack = load_CSV("TYPE_ATTACK");
-            Type.type_defend = load_CSV("TYPE_DEFEND");
+            //Type.type_defend = load_CSV("TYPE_DEFEND");
             Learnset.all_learnset = load_CSV("LEARNSET");
             Pokedex.all_pokedex = load_CSV("POKEMON");
             Type.load_type();

@@ -39,7 +39,7 @@ namespace Pokemon
         /// <param name="crit">if set to <c>true</c> [crit].</param>
         /// <param name="type1Defend">The type1 defense number.</param>
         /// <param name="type2Defend">The type2 defense multiplier.</param>
-        public void SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit, double type1Defend, double type2Defend)
+        public void SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit, double damage_multiplier)
         {
             //Debug.Log("Damage: " + damage);
             if (double.IsNaN(damage) || double.IsInfinity(damage))
@@ -88,7 +88,7 @@ namespace Pokemon
                     if (move.base_power > 0) //If this does actual attacking.
                     {
                         damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2; //Basic attacking
-                        damage *= (critical * stab * random * type1Defend * type2Defend * burn); //Extra multipliers.
+                        damage *= (critical * stab * random * damage_multiplier * burn); //Extra multipliers.
                         if (damage == 0) damage = 1;
                     }
                     else

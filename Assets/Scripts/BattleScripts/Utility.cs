@@ -57,140 +57,38 @@ namespace Pokemon
         /// <returns>This returns the type1 advantage of the defender multiplied by the type2 advantage of the defender.</returns>
         public static double DoDamage(Unit attacker, Unit defender, Moves attack, bool crit)
         {
-            double type1 = 1;
-            double type2 = 1;
+            double dmg_multiplier = 1;
 
-            Type attack_type = attack.move_type;
+            //calculates the damage multiplier for attacking move on both defender types
             if(defender.pokemon.type2 != null)
             {
-
+                dmg_multiplier = Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type1.name] * Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type2.name];
             }
             else
             {
-
+                dmg_multiplier =  Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type1.name];
             }
 
-            switch (attack.move_type.name)
-            {
-                case "Normal":
-                    type1 = defender.pokemon.type1.defend_normal;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_normal;
-                    break;
 
-                case "Fire":
-                    type1 = defender.pokemon.type1.defend_fire;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_fire;
-                    break;
-
-                case "Water":
-                    type1 = defender.pokemon.type1.defend_water;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_water;
-                    break;
-
-                case "Electric":
-                    type1 = defender.pokemon.type1.defend_electric;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_electric;
-                    break;
-
-                case "Grass":
-                    type1 = defender.pokemon.type1.defend_grass;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_grass;
-                    break;
-
-                case "Ice":
-                    type1 = defender.pokemon.type1.defend_ice;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_ice;
-                    break;
-
-                case "Fighting":
-                    type1 = defender.pokemon.type1.defend_fighting;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_fighting;
-                    break;
-
-                case "Poison":
-                    type1 = defender.pokemon.type1.defend_poison;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_poison;
-                    break;
-
-                case "Ground":
-                    type1 = defender.pokemon.type1.defend_ground;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_ground;
-                    break;
-
-                case "Flying":
-                    type1 = defender.pokemon.type1.defend_flying;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_flying;
-                    break;
-
-                case "Psychic":
-                    type1 = defender.pokemon.type1.defend_psychic;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_psychic;
-                    break;
-
-                case "Bug":
-                    type1 = defender.pokemon.type1.defend_bug;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_bug;
-                    break;
-
-                case "Rock":
-                    type1 = defender.pokemon.type1.defend_rock;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_rock;
-                    break;
-
-                case "Ghost":
-                    type1 = defender.pokemon.type1.defend_ghost;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_ghost;
-                    break;
-
-                case "Dragon":
-                    type1 = defender.pokemon.type1.defend_dragon;
-                    if (defender.pokemon.type2 is null) type2 = 1;
-                    else type2 = defender.pokemon.type2.defend_dragon;
-                    break;
-
-                case "Dark":
-                    break;
-
-                case "Steel":
-                    break;
-
-                case "Fairy":
-                    break;
-
-                default:
-                    break;
-            }
             //Debug.Log(attack.base_power);
             if (attack.base_power > 0)
             {
                 if (Utility.GetCategoryOfMove(attack).CompareTo("Physical") == 0)
                 {
-                    attacker.SetDamage(defender.pokemon.current_defense, attacker.pokemon.current_attack, attack.base_power, attack, crit, type1, type2);
+                    attacker.SetDamage(defender.pokemon.current_defense, attacker.pokemon.current_attack, attack.base_power, attack, crit, dmg_multiplier);
                 }
                 else
                 {
-                    attacker.SetDamage(defender.pokemon.current_sp_defense, attacker.pokemon.current_sp_attack, attack.base_power, attack, crit, type1, type2);
+                    attacker.SetDamage(defender.pokemon.current_sp_defense, attacker.pokemon.current_sp_attack, attack.base_power, attack, crit, dmg_multiplier);
                 }
             }
             else
             {
-                attacker.SetDamage(1, 0, 0, attack, crit, 1, 1);
+                attacker.SetDamage(1, 0, 0, attack, crit, 1);
             }
-            return type1 * type2;
+            return dmg_multiplier;
+
+
         }
 
         /// <summary>

@@ -23,13 +23,13 @@ namespace Pokemon
             Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
             Moves.all_moves = BattleSystem.load_CSV("MOVES");
             Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK");
-            Type.type_defend = BattleSystem.load_CSV("TYPE_DEFEND");
             Learnset.all_learnset = BattleSystem.load_CSV("LEARNSET");
             Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON");
             Route.all_routes = BattleSystem.load_CSV("ROUTES");
             Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
             TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
             Items.all_Items = BattleSystem.load_CSV("Items");
+
             Type.load_type();
             Moves.load_moves();
             Items.load_items_to_dict();

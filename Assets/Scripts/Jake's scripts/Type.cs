@@ -4,32 +4,38 @@ namespace Pokemon
 {
     public class Type
     {
+        public enum Types { Fire, Water, Grass, Electric, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dragon, Normal, Null }
+
+
+        //Atk typ           Fr  Wa  Gr  El  Ic  Fg  Po  Gd  Fl  Py  Bg  Ro  Gh  Dr  No     
+        ///*Fire*/	        .5,	.5,	2,	1,	2,	1,	1,	1,	1,	1,	2,	.5,	1,	.5,	1   
+        ///*Water*/	        2,	.5,	.5,	1,	1,	1,	1,	2,	1,	1,	1,	2,	1,	.5,	1   
+        ///*Grass*/	        .5,	2,	.5,	1,	1,	1,	.5,	2,	.5,	1,	.5,	2,	1,	.5,	1   
+        ///*Electric*/	    1,	2,	.5,	.5,	1,	1,	1,	0,	2,	1,	1,	1,	1,	.5,	1   
+        ///*Ice*/	        1,	.5,	2,	1,	.5,	1,	1,	2,	2,	1,	1,	1,	1,	2,	1   
+        ///*Fighting*/	    1,	1,	1,	1,	2,	1,	.5,	1,	.5,	.5,	.5,	2,	0,	1,	2   
+        ///*Poison*/	    1,	1,	2,	1,	1,	1,	.5,	.5,	1,	1,	2,	.5,	.5,	1,	1   
+        ///*Ground*/        2,	1,	.5,	2,	1,	1,	2,	1,	0,	1,	.5,	2,	1,	1,	1
+        ///*Flying*/	    1,	1,	2,	.5,	1,	2,	1,	1,	1,	1,	2,	.5,	1,	1,	1
+        ///*Psychic*/	    1,	1,	1,	1,	1,	2,	2,	1,	1,	.5,	1,	1,	1,	1,	1
+        ///*Bug*/	        .5,	1,	2,	1,	1,	.5,	2,	1,	.5,	2,	1,	1,	.5,	1,	1
+        ///*Rock*/	        2,	1,	1,	1,	2,	.5,	1,	.5,	2,	1,	2,	1,	1,	1,	1
+        ///*Ghost*/	        1,	1,	1,	1,	1,	1,	1,	1,	1,	0,	1,	1,	2,	1,	0
+        ///*Dragon*/	    1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	2,	1
+        ///*Normal*/	    1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	.5,	0,	1,	1 
+        ///*Null*/          1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1
+
+
         //CSV's get loaded into these Lists
         public static List<Dictionary<string, object>> type_attack = new List<Dictionary<string, object>>();
-        public static List<Dictionary<string, object>> type_defend = new List<Dictionary<string, object>>();
+        //public static List<Dictionary<string, object>> type_defend = new List<Dictionary<string, object>>();
         //After a Static Dictionary of Types is created with load_type()
         public static Dictionary<string, Type> type_dictionary = new Dictionary<string, Type>();
 
-        public static Dictionary<string, Dictionary<string, double>> type_dict = new Dictionary<string, Dictionary<string, double>>();
+        public static Dictionary<string, Dictionary<string, double>> attacking_type_dict = new Dictionary<string, Dictionary<string, double>>();
 
         public string name;
 
-        //for defenses
-        public double defend_fire;
-        public double defend_water;
-        public double defend_grass;
-        public double defend_electric;
-        public double defend_ice;
-        public double defend_fighting;
-        public double defend_poison;
-        public double defend_ground;
-        public double defend_flying;
-        public double defend_psychic;
-        public double defend_bug;
-        public double defend_rock;
-        public double defend_ghost;
-        public double defend_dragon;
-        public double defend_normal;
 
         //for attacking
         public double attack_fire;
@@ -65,23 +71,7 @@ namespace Pokemon
             double a_rock,
             double a_ghost,
             double a_dragon,
-            double a_normal,
-
-            double d_fire,
-            double d_water,
-            double d_grass,
-            double d_electric,
-            double d_ice,
-            double d_fighting,
-            double d_poison,
-            double d_ground,
-            double d_flying,
-            double d_psychic,
-            double d_bug,
-            double d_rock,
-            double d_ghost,
-            double d_dragon,
-            double d_normal)
+            double a_normal)
 
         {
             this.name = name;
@@ -102,30 +92,15 @@ namespace Pokemon
             this.attack_dragon = a_dragon;
             this.attack_normal = a_normal;
 
-            //for defending
-            this.defend_fire = d_fire;
-            this.defend_water = d_water;
-            this.defend_grass = d_grass;
-            this.defend_electric = d_electric;
-            this.defend_ice = d_ice;
-            this.defend_fighting = d_fighting;
-            this.defend_poison = d_poison;
-            this.defend_ground = d_ground;
-            this.defend_flying = d_flying;
-            this.defend_psychic = d_psychic;
-            this.defend_bug = d_bug;
-            this.defend_rock = d_rock;
-            this.defend_ghost = d_ghost;
-            this.defend_dragon = d_dragon;
-            this.defend_normal = d_normal;
+
 
         }
         public static void load_type()
         {
             type_dictionary.Clear();
-            for (var i = 0; i < type_defend.Count; i++)
+            for (var i = 0; i < type_attack.Count; i++)
             {
-                string temp_type_str = type_defend[i]["Defending"].ToString();
+                string temp_type_str = type_attack[i]["Attacking"].ToString();
 
                 double attack_fire = double.Parse(type_attack[i]["Fire"].ToString());
                 double attack_water = double.Parse(type_attack[i]["Water"].ToString());
@@ -143,21 +118,7 @@ namespace Pokemon
                 double attack_dragon = double.Parse(type_attack[i]["Dragon"].ToString());
                 double attack_normal = double.Parse(type_attack[i]["Normal"].ToString());
 
-                double defend_fire = double.Parse(type_defend[i]["Fire"].ToString());
-                double defend_water = double.Parse(type_defend[i]["Water"].ToString());
-                double defend_grass = double.Parse(type_defend[i]["Grass"].ToString());
-                double defend_electric = double.Parse(type_defend[i]["Electric"].ToString());
-                double defend_ice = double.Parse(type_defend[i]["Ice"].ToString());
-                double defend_fighting = double.Parse(type_defend[i]["Fighting"].ToString());
-                double defend_poison = double.Parse(type_defend[i]["Poison"].ToString());
-                double defend_ground = double.Parse(type_defend[i]["Ground"].ToString());
-                double defend_flying = double.Parse(type_defend[i]["Flying"].ToString());
-                double defend_psychic = double.Parse(type_defend[i]["Psychic"].ToString());
-                double defend_bug = double.Parse(type_defend[i]["Bug"].ToString());
-                double defend_rock = double.Parse(type_defend[i]["Rock"].ToString());
-                double defend_ghost = double.Parse(type_defend[i]["Ghost"].ToString());
-                double defend_dragon = double.Parse(type_defend[i]["Dragon"].ToString());
-                double defend_normal = double.Parse(type_defend[i]["Normal"].ToString());
+
 
                 Type temp_type = new Type
                     (
@@ -176,29 +137,49 @@ namespace Pokemon
                     attack_rock,
                     attack_ghost,
                     attack_dragon,
-                    attack_normal,
-
-                    defend_fire,
-                    defend_water,
-                    defend_grass,
-                    defend_electric,
-                    defend_ice,
-                    defend_fighting,
-                    defend_poison,
-                    defend_ground,
-                    defend_flying,
-                    defend_psychic,
-                    defend_bug,
-                    defend_rock,
-                    defend_ghost,
-                    defend_dragon,
-                    defend_normal
+                    attack_normal
                     );
 
                 type_dictionary.Add(temp_type_str, temp_type);
             }
+
+
+
+            attacking_type_dict.Clear();
+            //initial dictionary loaded into is type_defend
+            for (int i = 0; i < type_attack.Count; i++)
+            {
+
+
+                Dictionary<string, double> temp = new Dictionary<string, double>
+                {
+                    ["Fire"] = double.Parse(type_attack[i]["Fire"].ToString()),
+                    ["Water"] = double.Parse(type_attack[i]["Water"].ToString()),
+                    ["Grass"] = double.Parse(type_attack[i]["Grass"].ToString()),
+                    ["Electric"] = double.Parse(type_attack[i]["Electric"].ToString()),
+                    ["Ice"] = double.Parse(type_attack[i]["Ice"].ToString()),
+                    ["Fighting"] = double.Parse(type_attack[i]["Fighting"].ToString()),
+                    ["Poison"] = double.Parse(type_attack[i]["Poison"].ToString()),
+                    ["Ground"] = double.Parse(type_attack[i]["Ground"].ToString()),
+                    ["Flying"] = double.Parse(type_attack[i]["Flying"].ToString()),
+                    ["Psychic"] = double.Parse(type_attack[i]["Psychic"].ToString()),
+                    ["Bug"] = double.Parse(type_attack[i]["Bug"].ToString()),
+                    ["Rock"] = double.Parse(type_attack[i]["Rock"].ToString()),
+                    ["Ghost"] = double.Parse(type_attack[i]["Ghost"].ToString()),
+                    ["Dragon"] = double.Parse(type_attack[i]["Dragon"].ToString()),
+                    ["Normal"] = double.Parse(type_attack[i]["Normal"].ToString())
+                };
+
+
+                string type = type_attack[i]["Attacking"].ToString();
+                attacking_type_dict[type] = temp;
+                
+            }
+
+
         }
 
+        
         public static Type get_type(string type)
         {
             /*Console.WriteLine(type);*/
