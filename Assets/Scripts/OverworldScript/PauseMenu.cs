@@ -136,7 +136,7 @@ namespace Pokemon
                 pokeCanvas1.SetActive(true);
                 pokeImage1.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name);
                 pokeName1.text = "" + GameController.playerPokemon[0].name + ", Level " + GameController.playerPokemon[0].level + "\nHP: " + GameController.playerPokemon[0].current_hp + "/" + GameController.playerPokemon[0].max_hp;
-                pokeColor1.color = GetColorOfMove(GameController.playerPokemon[0].type1.type);
+                pokeColor1.color = GetColorOfMove(GameController.playerPokemon[0].type1.name);
             }
             else pokeCanvas1.SetActive(false);
 
@@ -146,7 +146,7 @@ namespace Pokemon
                 pokeCanvas2.SetActive(true);
                 pokeImage2.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[1].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[1].name);
                 pokeName2.text = "" + GameController.playerPokemon[1].name + ", Level " + GameController.playerPokemon[1].level + "\nHP: " + GameController.playerPokemon[1].current_hp + "/" + GameController.playerPokemon[1].max_hp;
-                pokeColor2.color = GetColorOfMove(GameController.playerPokemon[1].type1.type);
+                pokeColor2.color = GetColorOfMove(GameController.playerPokemon[1].type1.name);
             }
             else pokeCanvas2.SetActive(false);
             if (GameController.playerPokemon[2] != null)
@@ -155,7 +155,7 @@ namespace Pokemon
                 pokeCanvas3.SetActive(true);
                 pokeImage3.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[2].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[2].name);
                 pokeName3.text = "" + GameController.playerPokemon[2].name + ", Level " + GameController.playerPokemon[2].level + "\nHP: " + GameController.playerPokemon[2].current_hp + "/" + GameController.playerPokemon[2].max_hp;
-                pokeColor3.color = GetColorOfMove(GameController.playerPokemon[2].type1.type);
+                pokeColor3.color = GetColorOfMove(GameController.playerPokemon[2].type1.name);
             }
             else pokeCanvas3.SetActive(false);
             if (GameController.playerPokemon[3] != null)
@@ -164,7 +164,7 @@ namespace Pokemon
                 pokeCanvas4.SetActive(true);
                 pokeImage4.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[3].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[3].name);
                 pokeName4.text = "" + GameController.playerPokemon[3].name + ", Level " + GameController.playerPokemon[3].level + "\nHP: " + GameController.playerPokemon[3].current_hp + "/" + GameController.playerPokemon[3].max_hp;
-                pokeColor4.color = GetColorOfMove(GameController.playerPokemon[3].type1.type);
+                pokeColor4.color = GetColorOfMove(GameController.playerPokemon[3].type1.name);
             }
             else pokeCanvas4.SetActive(false);
             if (GameController.playerPokemon[4] != null)
@@ -173,7 +173,7 @@ namespace Pokemon
                 pokeCanvas5.SetActive(true);
                 pokeImage5.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[4].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[4].name);
                 pokeName5.text = "" + GameController.playerPokemon[4].name + ", Level " + GameController.playerPokemon[4].level + "\nHP: " + GameController.playerPokemon[4].current_hp + "/" + GameController.playerPokemon[4].max_hp;
-                pokeColor5.color = GetColorOfMove(GameController.playerPokemon[4].type1.type);
+                pokeColor5.color = GetColorOfMove(GameController.playerPokemon[4].type1.name);
             }
             else pokeCanvas5.SetActive(false);
             if (GameController.playerPokemon[5] != null)
@@ -182,7 +182,7 @@ namespace Pokemon
                 pokeCanvas6.SetActive(true);
                 pokeImage6.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[5].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[5].name);
                 pokeName6.text = "" + GameController.playerPokemon[5].name + ", Level " + GameController.playerPokemon[5].level + "\nHP: " + GameController.playerPokemon[5].current_hp + "/" + GameController.playerPokemon[5].max_hp;
-                pokeColor6.color = GetColorOfMove(GameController.playerPokemon[5].type1.type);
+                pokeColor6.color = GetColorOfMove(GameController.playerPokemon[5].type1.name);
             }
             else pokeCanvas6.SetActive(false);
 

@@ -282,52 +282,52 @@ namespace Pokemon
             {
                 forget1.text = unit.pokemon.currentMoves[0].name;
 
-                forget1type.sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type + " Hidden");
+                forget1type.sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.name + " Hidden");
 
                 Color c = forget1overlay.GetComponent<Image>().color;
-                c = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                c = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.name);
                 forget1overlay.GetComponent<Image>().color = c;
             }
             if (unit.pokemon.currentMoves[1] != null)
             {
                 forget2.text = unit.pokemon.currentMoves[1].name + " ";
 
-                forget2type.sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type + " Hidden");
+                forget2type.sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.name + " Hidden");
 
                 Color c = forget2overlay.GetComponent<Image>().color;
-                c = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                c = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.name);
                 forget2overlay.GetComponent<Image>().color = c;
             }
             if (unit.pokemon.currentMoves[2] != null)
             {
                 forget3.text = unit.pokemon.currentMoves[2].name + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type + " Hidden");
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.name + " Hidden");
                 forget3type.sprite = sprite;
 
                 Color c = forget3overlay.GetComponent<Image>().color;
-                c = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                c = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.name);
                 forget3overlay.GetComponent<Image>().color = c;
             }
             if (unit.pokemon.currentMoves[3] != null)
             {
                 forget4.text = unit.pokemon.currentMoves[3].name + " ";
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type + " Hidden");
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.name + " Hidden");
                 forget4type.sprite = sprite;
 
                 Color c = forget4overlay.GetComponent<Image>().color;
-                c = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                c = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.name);
                 forget4overlay.GetComponent<Image>().color = c;
             }
 
             forget5.text = unit.pokemon.learned_move.name + " ";
 
-            var s = Resources.Load<Sprite>(path + unit.pokemon.learned_move.move_type.type + " Hidden");
+            var s = Resources.Load<Sprite>(path + unit.pokemon.learned_move.move_type.name + " Hidden");
             forget5type.sprite = s;
 
             Color c5 = forget5overlay.GetComponent<Image>().color;
-            c5 = GetColorOfMove(unit.pokemon.learned_move.move_type.type);
+            c5 = GetColorOfMove(unit.pokemon.learned_move.move_type.name);
             forget5overlay.GetComponent<Image>().color = c5;
         }
 
@@ -341,7 +341,7 @@ namespace Pokemon
             tempHP = newHP;
             if (newHP != hpSlider.value) updateHp = true;
 
-            if (whichplayer == "player")
+            if (whichplayer == "Player")
             {
                 if (unit.pokemon.IsFainted()) currentHP.text = 0 + "/" + unit.pokemon.max_hp;
                 else currentHP.text = unit.pokemon.current_hp + "/" + unit.pokemon.max_hp;
@@ -399,12 +399,12 @@ namespace Pokemon
             var path = "Images/Menu Icons/Type ";
             if (unit.pokemon.currentMoves[0] != null)
             {
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.type + " Hidden");
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[0].move_type.name + " Hidden");
                 moves1.text = unit.pokemon.currentMoves[0].name;
                 pp1.text = unit.pokemon.currentMoves[0].current_pp + "/" + unit.pokemon.currentMoves[0].maxpp;
                 move1type.sprite = sprite;
                 Color c = move1overlay.GetComponent<Image>().color;
-                c = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
+                c = GetColorOfMove(unit.pokemon.currentMoves[0].move_type.name);
                 //c.highlightedColor = GetDarkColorOfMove(unit.pokemon.currentMoves[0].move_type.type);
                 move1overlay.GetComponent<Image>().color = c;
             }
@@ -412,11 +412,11 @@ namespace Pokemon
             {
                 moves2.text = unit.pokemon.currentMoves[1].name;
                 pp2.text = unit.pokemon.currentMoves[1].current_pp + "/" + unit.pokemon.currentMoves[1].maxpp;
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.type + " Hidden");
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[1].move_type.name + " Hidden");
                 move2type.sprite = sprite;
 
                 Color c = move2overlay.GetComponent<Image>().color;
-                c = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.type);
+                c = GetColorOfMove(unit.pokemon.currentMoves[1].move_type.name);
                 move2overlay.GetComponent<Image>().color = c;
             }
             if (unit.pokemon.currentMoves[2] != null)
@@ -424,11 +424,11 @@ namespace Pokemon
                 moves3.text = unit.pokemon.currentMoves[2].name;
                 pp3.text = unit.pokemon.currentMoves[2].current_pp + "/" + unit.pokemon.currentMoves[2].maxpp;
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.type + " Hidden");
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[2].move_type.name + " Hidden");
                 move3type.sprite = sprite;
 
                 Color c = move3overlay.GetComponent<Image>().color;
-                c = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.type);
+                c = GetColorOfMove(unit.pokemon.currentMoves[2].move_type.name);
                 move3overlay.GetComponent<Image>().color = c;
             }
             if (unit.pokemon.currentMoves[3] != null)
@@ -436,11 +436,11 @@ namespace Pokemon
                 moves4.text = unit.pokemon.currentMoves[3].name;
                 pp4.text = unit.pokemon.currentMoves[3].current_pp + "/" + unit.pokemon.currentMoves[3].maxpp;
 
-                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.type + " Hidden");
+                var sprite = Resources.Load<Sprite>(path + unit.pokemon.currentMoves[3].move_type.name + " Hidden");
                 move4type.sprite = sprite;
 
                 Color c = move4overlay.GetComponent<Image>().color;
-                c = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.type);
+                c = GetColorOfMove(unit.pokemon.currentMoves[3].move_type.name);
                 move4overlay.GetComponent<Image>().color = c;
             }
         }
@@ -460,8 +460,8 @@ namespace Pokemon
                 pokemon1Image.sprite = sprite;
 
                 ColorBlock c = poke1.GetComponent<Button>().colors;
-                c.normalColor = GetColorOfMove(pokemons[0].type1.type);
-                c.highlightedColor = GetDarkColorOfMove(pokemons[0].type1.type);
+                c.normalColor = GetColorOfMove(pokemons[0].type1.name);
+                c.highlightedColor = GetDarkColorOfMove(pokemons[0].type1.name);
                 poke1.GetComponent<Button>().colors = c;
             }
             if (pokemons[1] != null)
@@ -472,8 +472,8 @@ namespace Pokemon
                 pokemon2Image.sprite = sprite;
 
                 ColorBlock c = poke2.GetComponent<Button>().colors;
-                c.normalColor = GetColorOfMove(pokemons[1].type1.type);
-                c.highlightedColor = GetDarkColorOfMove(pokemons[1].type1.type);
+                c.normalColor = GetColorOfMove(pokemons[1].type1.name);
+                c.highlightedColor = GetDarkColorOfMove(pokemons[1].type1.name);
                 poke2.GetComponent<Button>().colors = c;
             }
             if (pokemons[2] != null)
@@ -484,8 +484,8 @@ namespace Pokemon
                 pokemon3Image.sprite = sprite;
 
                 ColorBlock c = poke3.GetComponent<Button>().colors;
-                c.normalColor = GetColorOfMove(pokemons[2].type1.type);
-                c.highlightedColor = GetDarkColorOfMove(pokemons[2].type1.type);
+                c.normalColor = GetColorOfMove(pokemons[2].type1.name);
+                c.highlightedColor = GetDarkColorOfMove(pokemons[2].type1.name);
                 poke3.GetComponent<Button>().colors = c;
             }
             if (pokemons[3] != null)
@@ -496,8 +496,8 @@ namespace Pokemon
                 pokemon4Image.sprite = sprite;
 
                 ColorBlock c = poke4.GetComponent<Button>().colors;
-                c.normalColor = GetColorOfMove(pokemons[3].type1.type);
-                c.highlightedColor = GetDarkColorOfMove(pokemons[3].type1.type);
+                c.normalColor = GetColorOfMove(pokemons[3].type1.name);
+                c.highlightedColor = GetDarkColorOfMove(pokemons[3].type1.name);
                 poke4.GetComponent<Button>().colors = c;
             }
             if (pokemons[4] != null)
@@ -508,8 +508,8 @@ namespace Pokemon
                 pokemon5Image.sprite = sprite;
 
                 ColorBlock c = poke5.GetComponent<Button>().colors;
-                c.normalColor = GetColorOfMove(pokemons[4].type1.type);
-                c.highlightedColor = GetDarkColorOfMove(pokemons[4].type1.type);
+                c.normalColor = GetColorOfMove(pokemons[4].type1.name);
+                c.highlightedColor = GetDarkColorOfMove(pokemons[4].type1.name);
                 poke5.GetComponent<Button>().colors = c;
             }
             if (pokemons[5] != null)
@@ -520,8 +520,8 @@ namespace Pokemon
                 pokemon6Image.sprite = sprite;
 
                 ColorBlock c = poke6.GetComponent<Button>().colors;
-                c.normalColor = GetColorOfMove(pokemons[5].type1.type);
-                c.highlightedColor = GetDarkColorOfMove(pokemons[5].type1.type);
+                c.normalColor = GetColorOfMove(pokemons[5].type1.name);
+                c.highlightedColor = GetDarkColorOfMove(pokemons[5].type1.name);
                 poke6.GetComponent<Button>().colors = c;
             }
         }
@@ -532,7 +532,7 @@ namespace Pokemon
             {
                 foreach (Status s in poke.statuses)
                 {
-                    if (s.persistance)
+                    if (s.persistence)
                     {
                         Color c = level.color;
                         c = GetColorOfStatus(s.name);

@@ -89,7 +89,7 @@ namespace Pokemon
         public string adj;
 
         //if the move persist outside battle/switched out
-        public bool persistance;
+        public bool persistence;
 
         public string ignore_type;
         public double self_damage;
@@ -107,7 +107,7 @@ namespace Pokemon
         {
             this.name = name;
             this.adj = adj;
-            this.persistance = persistance;
+            this.persistence = persistance;
             this.ignore_type = ignore_type;
             this.self_damage = self_damage;
             this.unable_to_attack_chance = unable_to_attack_chance;
@@ -165,7 +165,7 @@ namespace Pokemon
         {
             foreach (Status s in poke.statuses)
             {
-                if (s.persistance)
+                if (s.persistence)
                 {
                     return true;
                 }
@@ -183,22 +183,20 @@ namespace Pokemon
         }
 
         //Takes the attacking move and the pokemon and checks if attack can apply status
-        public static void Apply_Attack_Status_Effect(Moves attacking_move, Unit enemy_pokemon)
+        public static void Apply_Attack_Status_Effect(Moves attacking_move, Unit Defending)
         {
-            
-            foreach(Status status in enemy_pokemon.pokemon.statuses)
-            {
-                //if same status applied, don't apply
-                if (attacking_move.status.name == status.name) return;
-                //if status is a perm status and there is already a perm status
-                if (attacking_move.status.persistance && status.persistance) return; 
-            }
+
+            //if status is a perm status and there is already a perm status
+            if (attacking_move.status.persistence && Defending.pokemon.HasPersistenceStatus()) return;
+
+            //if same status applied, don't apply
+            if (Defending.pokemon.HasStatus(attacking_move.status.name)) return;
 
             //if roll to apply status fails dont apply status
             if (!attacking_move.status.RollToApplyStatus(attacking_move)) return;
 
 
-
+            //EVAN CODE PUT INSIDE A SWITCH
             //extra checks on apply status, like pokemon type
             switch (attacking_move.status.name)
             {
@@ -207,8 +205,8 @@ namespace Pokemon
                     
                     try
                     {
-                        if (enemy_pokemon.pokemon.type1.type.Equals("Fire")) break;
-                        if (enemy_pokemon.pokemon.type2.type.Equals("Fire")) break;
+                        if (Defending.pokemon.type1.name.Equals("Fire")) break;
+                        if (Defending.pokemon.type2.name.Equals("Fire")) break;
                     }
                     catch (NullReferenceException ex)
                     {
@@ -218,20 +216,20 @@ namespace Pokemon
                     Status burn = attacking_move.status;
                     burn.remaining_turns = -1;
 
-                    enemy_pokemon.pokemon.statuses.Add(burn);
+                    Defending.pokemon.statuses.Add(burn);
 
                     break;
 
                 case "Paralysis":
                     try
                     {
-                        if (enemy_pokemon.pokemon.type1.type.Equals("Electric")) break;
-                        if (enemy_pokemon.pokemon.type2.type.Equals("Electric")) break;
+                        if (Defending.pokemon.type1.name.Equals("Electric")) break;
+                        if (Defending.pokemon.type2.name.Equals("Electric")) break;
 
-                        if (attacking_move.move_type.type.Equals("Electric"))
+                        if (attacking_move.move_type.name.Equals("Electric"))
                         {
-                            if (enemy_pokemon.pokemon.type1.type.Equals("Ground")) break;
-                            if (enemy_pokemon.pokemon.type2.type.Equals("Ground")) break;
+                            if (Defending.pokemon.type1.name.Equals("Ground")) break;
+                            if (Defending.pokemon.type2.name.Equals("Ground")) break;
                         }
                     }
                     catch (NullReferenceException ex)
@@ -241,15 +239,15 @@ namespace Pokemon
 
                     Status paralysis = attacking_move.status;
                     paralysis.remaining_turns = -1;
-                    enemy_pokemon.pokemon.statuses.Add(paralysis);
-                    ParalyzeSpeedReduce(enemy_pokemon);
+                    Defending.pokemon.statuses.Add(paralysis);
+                    ParalyzeSpeedReduce(Defending);
                     break;
 
                 case "Poison":
                     try
                     {
-                        if (enemy_pokemon.pokemon.type1.type == "Poison") break;
-                        if (enemy_pokemon.pokemon.type2.type == "Poison") break;
+                        if (Defending.pokemon.type1.name == "Poison") break;
+                        if (Defending.pokemon.type2.name == "Poison") break;
                     }
                     catch (NullReferenceException ex)
                     {
@@ -259,7 +257,7 @@ namespace Pokemon
                     //Debug.Log("Bellsprout should not be here.4");
                     Status poison = attacking_move.status;
                     poison.remaining_turns = -1;
-                    enemy_pokemon.pokemon.statuses.Add(attacking_move.status);
+                    Defending.pokemon.statuses.Add(attacking_move.status);
                     break;
 
                 case "Sleep":
@@ -271,18 +269,18 @@ namespace Pokemon
                     sleep.remaining_turns = remaining_turns;
 
 
-                    enemy_pokemon.pokemon.statuses.Add(sleep);
+                    Defending.pokemon.statuses.Add(sleep);
 
                     //TODO change to Status.remaining_turns
-                    enemy_pokemon.pokemon.sleep = GameController._rnd.Next(1, 4);
+                    Defending.pokemon.sleep = GameController._rnd.Next(1, 4);
                     
                     break;
 
                 case "Freeze":            
                     try
                     {
-                        if (enemy_pokemon.pokemon.type1.type.Equals("Ice")) break;
-                        if (enemy_pokemon.pokemon.type2.type.Equals("Ice")) break;
+                        if (Defending.pokemon.type1.name.Equals("Ice")) break;
+                        if (Defending.pokemon.type2.name.Equals("Ice")) break;
                     }
                     catch (NullReferenceException ex)
                     {
@@ -290,7 +288,7 @@ namespace Pokemon
                     }
                     Status freeze = attacking_move.status;
                     freeze.remaining_turns = -1;
-                    enemy_pokemon.pokemon.statuses.Add(attacking_move.status);
+                    Defending.pokemon.statuses.Add(attacking_move.status);
                     break;
 
                 default:
@@ -299,7 +297,7 @@ namespace Pokemon
                     //random.next range(x to y-1) : (0,20) = [0 to 19]
                     int remaining_turns2 = rnd2.Next(status.min_duration, status.max_duration + 1);
                     status.remaining_turns = remaining_turns2;
-                    enemy_pokemon.pokemon.statuses.Add(status);
+                    Defending.pokemon.statuses.Add(status);
 
                     break;
             }

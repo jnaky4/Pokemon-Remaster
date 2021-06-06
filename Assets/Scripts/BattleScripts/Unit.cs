@@ -48,7 +48,7 @@ namespace Pokemon
             }
             try
             {
-                if (pokemon.type1.type.Equals(move.move_type.type) || (pokemon.type2.type != null && pokemon.type2.type.Equals(move.move_type.type))) //If STAB
+                if (pokemon.type1.name.Equals(move.move_type.name) || (pokemon.type2.name != null && pokemon.type2.name.Equals(move.move_type.name))) //If STAB
                 {
                     stab = 1.5;
                 }

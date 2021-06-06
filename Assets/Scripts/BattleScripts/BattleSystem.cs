@@ -643,14 +643,10 @@ namespace Pokemon
             //Debug.Log("END <COMBAT PHASE>");
             //Debug.Log("START <END OF BOTH TURNS PHASE>");
 
-            if (!playerUnit.pokemon.IsFainted())
-            {
-                yield return StartCoroutine(EndRoundStatusUpdate("Player", playerUnit, enemyUnit));
-            }
-            if (!enemyUnit.pokemon.IsFainted())
-            {
-                yield return StartCoroutine(EndRoundStatusUpdate("Enemy", enemyUnit, playerUnit));
-            }
+            //End turn status updates for both pokemon
+            yield return StartCoroutine(EndRoundStatusUpdate("Player", playerUnit, enemyUnit));
+            yield return StartCoroutine(EndRoundStatusUpdate("Enemy", enemyUnit, playerUnit));
+
 
 
 
@@ -891,6 +887,7 @@ namespace Pokemon
                 yield return new WaitForSeconds(1);
             }
             if ((attack.base_power != -1) && (crit)) yield return new WaitForSeconds(0.75f);
+
             UpdateDialogueForDamageAndStatus(attack, Attacker, Defender, rnd, crit, super);
             yield return new WaitForSeconds(2);
 
@@ -950,8 +947,10 @@ namespace Pokemon
         //Seeded, Burn, Poison
         public IEnumerator EndRoundStatusUpdate(string whosattacking, Unit AttackingPlayer, Unit DefendingPlayer)
         {
+            //Debug.Log("WHOS END TURN: " + whosattacking);
+
             //AnimateStatus required boolean, true to animate on the player
-            bool animate_on_player = whosattacking == "player" ? true : false;
+            bool player_attacking = whosattacking == "Player";
             
             //if dead no need to do status affects
             if (!AttackingPlayer.pokemon.IsFainted())
@@ -961,7 +960,7 @@ namespace Pokemon
                     //if status doesnt do damage skip
                     if(status.self_damage > 0)
                     {
-                        AnimateStatus(status.name, animate_on_player);
+                        AnimateStatus(status.name, player_attacking);
 
                         GameController.soundFX = status.name;
                         while (!endofanimation)
@@ -970,10 +969,11 @@ namespace Pokemon
                         }
                         endofanimation = false;
 
-                        //Take Damage: unit has Seeded on them
+                        //Attacking Player takes damage based on status self damage
+                        //Debug.Log();
                         AttackingPlayer.TakeDamage(AttackingPlayer.pokemon.max_hp * status.self_damage);
 
-                        if (whosattacking == "player")
+                        if (player_attacking)
                         {
                             StartCoroutine(Blink(playerSprite, 0.25));
                             playerHUD.SetHP(AttackingPlayer.pokemon.current_hp, AttackingPlayer, whosattacking);
@@ -981,7 +981,7 @@ namespace Pokemon
                         else
                         {
                             StartCoroutine(Blink(enemySprite, 0.25));
-                            enemyHUD.SetHP(AttackingPlayer.pokemon.current_hp, playerUnit, whosattacking);
+                            enemyHUD.SetHP(AttackingPlayer.pokemon.current_hp, AttackingPlayer, whosattacking);
                         }
                         //code for specific moves
                         switch (status.name)
@@ -990,7 +990,7 @@ namespace Pokemon
                                 //Heal Damage: oponnent pokemon heals damage
                                 DefendingPlayer.TakeDamage(-AttackingPlayer.pokemon.max_hp * status.self_damage);
                                 //update hud with damage
-                                if (whosattacking == "player") enemyHUD.SetHP(DefendingPlayer.pokemon.current_hp, AttackingPlayer, whosattacking);
+                                if (player_attacking) enemyHUD.SetHP(DefendingPlayer.pokemon.current_hp, AttackingPlayer, whosattacking);
                                 else playerHUD.SetHP(DefendingPlayer.pokemon.current_hp, DefendingPlayer, whosattacking);
 
                                 dialogueText.text = AttackingPlayer.pokemon.name + " got leeched by " + DefendingPlayer.pokemon.name + "!";
@@ -1007,10 +1007,12 @@ namespace Pokemon
                     }
 
                 }
+                yield return StartCoroutine(IsEitherPokemonDead());
+                //decrements all counters
+                AttackingPlayer.pokemon.EndTurnStatusUpdate();
             }
-            IsEitherPokemonDead();
-            //decrements all counters
-            AttackingPlayer.pokemon.EndTurnStatusUpdate();                         
+            
+                         
 
         }
         /// <summary> 
@@ -1023,22 +1025,23 @@ namespace Pokemon
         public IEnumerator AbleToAttack(Unit Player)
         {
             bool animate_on_player = state == BattleState.PLAYERTURN;
-            if (!Player.pokemon.CheckAbleAttack())
+            if (!Player.pokemon.CanAttack())
             {
                 //Debug.Log("Unable to attack becasue of :" + playerUnit.pokemon.UnableToAttackStatusName);
-                switch (Player.pokemon.UnableToAttackStatusName)
+                switch (Player.pokemon.UnableToAttackStatus.name)
                 {
 
                     case "Paralysis":
                         //Todo change for all other cases to be the same
-                        AnimateStatus(Player.pokemon.UnableToAttackStatusName, animate_on_player);
-                        GameController.soundFX = Player.pokemon.UnableToAttackStatusName;
+                        AnimateStatus(Player.pokemon.UnableToAttackStatus.name, animate_on_player);
+                        GameController.soundFX = Player.pokemon.UnableToAttackStatus.name;
                         while (!endofanimation)
                         {
                             yield return null;
                         }
                         endofanimation = false;
-                        dialogueText.text = Player.pokemon.name + " is " + Player.pokemon.UnableToAttackStatusName + "!";
+                        
+                        dialogueText.text = Player.pokemon.name + " is " + Player.pokemon.UnableToAttackStatus.adj + "!";
                         yield return new WaitForSeconds(2);
                         break;
 
@@ -1068,7 +1071,7 @@ namespace Pokemon
                 
             }
             //reset name
-            Player.pokemon.UnableToAttackStatusName = "";
+            Player.pokemon.UnableToAttackStatus = null;
            
         }
 
@@ -1337,7 +1340,7 @@ namespace Pokemon
 
 
         /// <summary>
-        /// Actuall Swaps the Pokemon on
+        /// Function that visually shows swap pokemon.
         /// </summary>
         /// <returns></returns>
         private IEnumerator SwapPokemonOnHUD()

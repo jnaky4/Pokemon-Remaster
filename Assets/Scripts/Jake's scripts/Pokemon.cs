@@ -260,7 +260,8 @@ namespace Pokemon
         public int type = 1;
         public int burn = 1;
         //stores name of unable to attack move
-        public string UnableToAttackStatusName = "";
+        public Status UnableToAttackStatus = null;
+        //public string UnableToAttackStatusName = "";
         public bool can_attack = true;
 
         //used to calculate exp and evolution
@@ -595,7 +596,7 @@ namespace Pokemon
                 foreach (Status status in this.statuses)
                 {
                     //if status doesnt persist, remove
-                    if (!status.persistance) this.statuses.Remove(status);
+                    if (!status.persistence) this.statuses.Remove(status);
                 }
 
 
@@ -859,13 +860,13 @@ namespace Pokemon
         }
 
         //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
-        public bool CheckAbleAttack()
+        public bool CanAttack()
         {
             foreach (Status status in this.statuses)
             {
                 if (status.unable_to_attack_chance == 1.0)
                 {
-                    this.UnableToAttackStatusName = status.name;
+                    this.UnableToAttackStatus = status;
                     return this.can_attack = false;
                 }
                 if (status.unable_to_attack_chance > 0)
@@ -875,7 +876,7 @@ namespace Pokemon
                     double num = rnd.NextDouble();
                     if (num <= status.unable_to_attack_chance)
                     {
-                        this.UnableToAttackStatusName = status.name;
+                        this.UnableToAttackStatus = status;
                         return this.can_attack = false;
                         
                     }
@@ -951,9 +952,22 @@ namespace Pokemon
         }
         public bool HasStatus(string name)
         {
-            if (this.statuses.Contains(name)) return true;
-            else return false;
+            return this.statuses.Contains(name);
+
             
+        }
+        public bool HasPersistenceStatus()
+        {
+            bool hasPersistence = false;
+            foreach(Status status in this.statuses)
+            {
+                if (status.persistence)
+                {
+                    hasPersistence = true;
+                }
+            }
+
+            return hasPersistence; 
         }
     }
 

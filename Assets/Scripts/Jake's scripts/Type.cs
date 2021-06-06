@@ -9,7 +9,10 @@ namespace Pokemon
         public static List<Dictionary<string, object>> type_defend = new List<Dictionary<string, object>>();
         //After a Static Dictionary of Types is created with load_type()
         public static Dictionary<string, Type> type_dictionary = new Dictionary<string, Type>();
-        public string type;
+
+        public static Dictionary<string, Dictionary<string, double>> type_dict = new Dictionary<string, Dictionary<string, double>>();
+
+        public string name;
 
         //for defenses
         public double defend_fire;
@@ -46,7 +49,7 @@ namespace Pokemon
         public double attack_normal;
 
         public Type(
-            string type,
+            string name,
 
             double a_fire,
             double a_water,
@@ -81,7 +84,7 @@ namespace Pokemon
             double d_normal)
 
         {
-            this.type = type;
+            this.name = name;
             //for attacking
             this.attack_fire = a_fire;
             this.attack_water = a_water;
