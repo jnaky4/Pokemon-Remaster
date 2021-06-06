@@ -73,10 +73,10 @@ namespace Pokemon
             this.current_exp = current_exp;
 
             //sets: base_level_exp, current_exp if current_exp above is 0, next_level_exp
-            set_exp();
+            SetExp();
 
             //grabs base and current stats, calculated from base_stats for this pokemon
-            calculate_stats(current_hp, current_attack, current_special_attack, current_defense, current_special_defense, current_speed);
+            CalculateStats(current_hp, current_attack, current_special_attack, current_defense, current_special_defense, current_speed);
 
             //adds persisting status to pokemon if it had prior to evolving
             if (statuses != null) this.statuses = statuses;
@@ -97,7 +97,7 @@ namespace Pokemon
             {
                 this.type2 = null;
             }
-            get_image_path();
+            GetImagePath();
         }
 
         public static Dictionary<int, string> dictionary_pokemon = new Dictionary<int, string> {
@@ -261,6 +261,7 @@ namespace Pokemon
         public int burn = 1;
         //stores name of unable to attack move
         public string UnableToAttackStatusName = "";
+        public bool can_attack = true;
 
         //used to calculate exp and evolution
         public double lvl_speed;
@@ -285,7 +286,7 @@ namespace Pokemon
 
         public ArrayList statuses = new ArrayList();
 
-        public void reset_stages()
+        public void ResetStages()
         {
             critical_stage = 0;
             attack_stage = 0;
@@ -299,7 +300,7 @@ namespace Pokemon
         }
 
 
-        public void calculate_stats(int current_hp = 0, int current_attack = 0, int current_special_attack = 0, int current_defense = 0, int current_special_defense = 0, int current_speed = 0)
+        public void CalculateStats(int current_hp = 0, int current_attack = 0, int current_special_attack = 0, int current_defense = 0, int current_special_defense = 0, int current_speed = 0)
         {
             //var test = Pokemon.all_base_stats[this.dexnum - 1]["HP"];
             this.base_hp = int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["HP"].ToString());
@@ -310,7 +311,7 @@ namespace Pokemon
             this.base_speed = int.Parse(Pokemon.all_base_stats[this.dexnum - 1]["Speed"].ToString());
 
             //sets all max_stats calculated from base stats & lvl
-            update_current_stats();
+            UpdateCurrentStats();
 
             //pokemon may have evolved so we need to pass in its current stats
             //after updating stats, checks arguments passed, if 0 set to max_stat, otherwise set the value
@@ -323,7 +324,7 @@ namespace Pokemon
             //Debug.LogWarning("Hey motherfucker, current defense for " + this.name + " is " + this.current_defense + " and the current sp defense is " + this.current_sp_defense);
         }
 
-        public void print_pokemon()
+        public void PrintPokemon()
         {
             //Console.WriteLine(this.name + " type1 and type2" + ((this.type1) + (this.type1)));
 
@@ -341,26 +342,16 @@ namespace Pokemon
         }
 
         //loads an image of the pokemon when created
-        public void get_image_path()
+        public void GetImagePath()
         {
             var path = "Assets/Resources/Images/PokemonImages/";
 
-            /*if (Application.platform == RuntimePlatform.OSXPlayer || Application.platform == RuntimePlatform.OSXEditor)
-            {*/
-            //Debug.Log("Does something happen here?");
             this.image1 = path + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
             this.image2 = path + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
-            /*            }
-                        else
-                        {
-                            this.image1 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + ".png";
-                            this.image2 = path + "\\Images\\PokemonImages\\" + (this.dexnum).ToString().PadLeft(3, '0') + this.name + "2.png";
-                        }*/
-            //Debug.Log(image1);
-            //Debug.Log(image2);
+
         }
 
-        public void set_exp()
+        public void SetExp()
         {
             //leveling is multiplier * level^3 up to level 50
             if (this.level <= 50)
@@ -389,7 +380,7 @@ namespace Pokemon
             }
         }
 
-        public void update_current_stats()
+        public void UpdateCurrentStats()
         {
             //iv is set to 30
             //ev set for +20 for each stat
@@ -402,7 +393,7 @@ namespace Pokemon
             this.max_speed = (((((this.base_speed + this.iv) * 2) + 20) * this.level) / 100) + 5;
         }
 
-        public Moves check_learnset()
+        public Moves CheckLearnset()
         {
             this.learned_move = null;
             foreach (Learnset available_move in this.learnset)
@@ -438,7 +429,7 @@ namespace Pokemon
             return this.learned_move;
         }
 
-        public bool check_evolve()
+        public bool CheckEvolve()
         {
             if (this.pokedex_entry.evolve_level != -1)
             {
@@ -451,7 +442,7 @@ namespace Pokemon
         }
 
         //for: trainer_wild_multiplier, if it is a trainer pokemon, needs to be set to 1.5, default 1
-        public int gain_exp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
+        public int GainExp(int enemy_level, int enemy_base_exp, int num_player_pokemon_used = 1, double trainer_wild_multipllier = 1)
         {
             //if pokemon is at the level cap, do nothing
             if (this.level >= GameController.level_cap) return 0;
@@ -489,7 +480,7 @@ namespace Pokemon
                 this.change_sp_attack = this.max_sp_attack;
                 this.change_sp_defense = this.max_sp_defense;
 
-                this.update_current_stats();
+                this.UpdateCurrentStats();
 
                 //sets change_stats to new level max - prev level max stat
                 this.change_hp = this.max_hp - change_hp;
@@ -509,7 +500,7 @@ namespace Pokemon
 
 
                 //check if learnable move
-                Moves temp_new_move = this.check_learnset();
+                Moves temp_new_move = this.CheckLearnset();
                 if (temp_new_move != null)
                 {
                     //Debug.Log("Your pokemon learned a new move! " + temp_new_move.name);
@@ -517,14 +508,14 @@ namespace Pokemon
                 }
 
                 //check evolve
-                this.time_to_evolve = this.check_evolve();
+                this.time_to_evolve = this.CheckEvolve();
                 if (this.time_to_evolve)
                 {
                     //Debug.Log("Your Pokemon is ready to evolve!");
                 }
 
                 //update exp
-                this.set_exp();
+                this.SetExp();
                 /*                Debug.Log("New base EXP " + this.base_lvl_exp);
                                 Debug.Log("Current EXP " + this.current_exp);
                                 Debug.Log("New Next levl EXP " + this.next_lvl_exp);*/
@@ -533,7 +524,7 @@ namespace Pokemon
             return exp_gained;
         }
 
-        public void evolve()
+        public void Evolve()
         {
             //save old stats
             this.change_hp = max_hp;
@@ -554,7 +545,7 @@ namespace Pokemon
 
             this.dexnum = evolved_pokemon.dexnum;
             this.name = evolved_pokemon.name;
-            this.calculate_stats(this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed);
+            this.CalculateStats(this.current_hp, this.current_attack, this.current_sp_attack, this.current_defense, this.current_sp_defense, this.current_speed);
 
             this.image1 = evolved_pokemon.image1;
             this.image2 = evolved_pokemon.image2;
@@ -581,7 +572,7 @@ namespace Pokemon
         /// <summary>
         /// Resets battle stats and fainted stats
         /// </summary>
-        public void reset_battle_stats()
+        public void ResetBattleStats()
         {
             //Reset all stages
             this.attack_stage = 0;
@@ -894,13 +885,12 @@ namespace Pokemon
         //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
         public bool CheckAbleAttack()
         {
-            bool can_attack = true;
             foreach (Status status in this.statuses)
             {
                 if (status.unable_to_attack_chance == 1.0)
                 {
                     this.UnableToAttackStatusName = status.name;
-                    return false;
+                    return this.can_attack = false;
                 }
                 if (status.unable_to_attack_chance > 0)
                 {
@@ -910,11 +900,13 @@ namespace Pokemon
                     if (num <= status.unable_to_attack_chance)
                     {
                         this.UnableToAttackStatusName = status.name;
-                        return false;
+                        return this.can_attack = false;
+                        
                     }
                 }
             }
-            return can_attack;
+            
+            return this.can_attack;
         }
 
         /// <summary>
@@ -967,6 +959,7 @@ namespace Pokemon
         
         /// <summary>
         /// Decrements all statuses remaning turns by 1
+        /// Sets Unable to attack back to true
         /// </summary>
         public void EndTurnStatusUpdate()
         {
@@ -976,6 +969,7 @@ namespace Pokemon
                 //Debug.Log("Remaining Turns: " + status.remaining_turns);
                 status.remaining_turns = status.remaining_turns -1;
                 //Debug.Log("After Remaining Turns: " + status.remaining_turns);
+                this.can_attack = true;
             }
 
         }
