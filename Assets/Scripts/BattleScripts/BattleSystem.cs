@@ -248,7 +248,7 @@ namespace Pokemon
                     breakOut = state != BattleState.CAUGHTPOKEMON; 
                     if (breakOut == true && breakOutFrame == PlayerAttackAnim.CurrentFrame)
                         GameController.soundFX = "Break Out";
-                    if (PlayerAttackAnim.CurrentFrame == 14 || PlayerAttackAnim.CurrentFrame == 45 || PlayerAttackAnim.CurrentFrame == 78)
+                    if (PlayerAttackAnim.CurrentFrame == 14 || PlayerAttackAnim.CurrentFrame == 48 || PlayerAttackAnim.CurrentFrame == 82)
                         GameController.soundFX = "Shake";
                     PlayerAttackAnim.HandleUpdate();
                 }
@@ -2350,6 +2350,8 @@ namespace Pokemon
 
             AttackSprites.TrimExcess();
             beginCatch = true;
+            Debug.Log("pokeball catch sprite array has length" + AttackSprites.Count);
+            Debug.Log("pokeball shakes: " + ballShakes);
         }
 
         public void GetAttackSprites(string attack)
