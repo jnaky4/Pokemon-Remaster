@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using UnityEngine;
 
 namespace Pokemon
 {
@@ -167,7 +171,8 @@ namespace Pokemon
                     ["Rock"] = double.Parse(type_attack[i]["Rock"].ToString()),
                     ["Ghost"] = double.Parse(type_attack[i]["Ghost"].ToString()),
                     ["Dragon"] = double.Parse(type_attack[i]["Dragon"].ToString()),
-                    ["Normal"] = double.Parse(type_attack[i]["Normal"].ToString())
+                    ["Normal"] = double.Parse(type_attack[i]["Normal"].ToString()),
+                    ["Null"] = double.Parse(type_attack[i]["Null"].ToString()),
                 };
 
 
@@ -175,8 +180,6 @@ namespace Pokemon
                 attacking_type_dict[type] = temp;
                 
             }
-
-
         }
 
         

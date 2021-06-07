@@ -60,14 +60,9 @@ namespace Pokemon
             double dmg_multiplier = 1;
 
             //calculates the damage multiplier for attacking move on both defender types
-            if(defender.pokemon.type2 != null)
-            {
-                dmg_multiplier = Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type1.name] * Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type2.name];
-            }
-            else
-            {
-                dmg_multiplier =  Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type1.name];
-            }
+            dmg_multiplier = Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type1.name] * Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type2.name];
+
+
 
 
             //Debug.Log(attack.base_power);
