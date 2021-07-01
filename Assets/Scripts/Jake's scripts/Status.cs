@@ -140,61 +140,26 @@ namespace Pokemon
         }
 
 
-        public static bool roll_for_Paralysis(Pokemon poke)
-        {
-            bool paralyzed = false;
-            //check statuses in pokemon for paralysis
-            foreach (Status s in poke.statuses)
-            {
-                if (s.name.Equals("Paralysis")) paralyzed = true;
-            }
-
-            //if paralyzed, roll for paralysis
-            if (paralyzed)
-            {
-                System.Random rnd = new System.Random();
-                //returns a number >= 0.0 AND < 1.0 : [0.0 - .99999]
-                double num = rnd.NextDouble();
-                if (num <= all_status_effects["Paralysis"].unable_to_attack_chance) return true;
-            }
-            return false;
-        }
-     
-
-        public static bool SeeIfPersistanceIsAlreadyHere(Pokemon poke)
-        {
-            foreach (Status s in poke.statuses)
-            {
-                if (s.persistence)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public static bool SeeIfLeech(Pokemon poke)
-        {
-            foreach (Status s in poke.statuses)
-            {
-                if (s.name.Equals("Seeded")) return true;
-            }
-            return false;
-        }
 
         //Takes the attacking move and the pokemon and checks if attack can apply status
-        public static void Apply_Attack_Status_Effect(Moves attacking_move, Unit Defending)
+        public static Status Apply_Attack_Status_Effect(Moves attacking_move, Unit Defending)
         {
+            
+
+            //if move has no status, return
+            if (attacking_move.status.Equals("null")) return null;
 
             //if status is a perm status and there is already a perm status
-            if (attacking_move.status.persistence && Defending.pokemon.HasPersistenceStatus()) return;
+            if (attacking_move.status.persistence && Defending.pokemon.HasPersistenceStatus()) return Status.get_status("null");
 
             //if same status applied, don't apply
-            if (Defending.pokemon.HasStatus(attacking_move.status.name)) return;
+            if (Defending.pokemon.HasStatus(attacking_move.status.name)) return Status.get_status("null");
 
             //if roll to apply status fails dont apply status
-            if (!attacking_move.status.RollToApplyStatus(attacking_move)) return;
+            if (!attacking_move.status.RollToApplyStatus(attacking_move)) return Status.get_status("null");
 
+            //Debug.Log(attacking_move.status);
+            //Debug.Log(attacking_move.name);
 
             //EVAN CODE PUT INSIDE A SWITCH
             //extra checks on apply status, like pokemon type
@@ -226,7 +191,7 @@ namespace Pokemon
                         if (Defending.pokemon.type1.name.Equals("Electric")) break;
                         if (Defending.pokemon.type2.name.Equals("Electric")) break;
 
-                        if (attacking_move.move_type.name.Equals("Electric"))
+                        if (attacking_move.type.name.Equals("Electric"))
                         {
                             if (Defending.pokemon.type1.name.Equals("Ground")) break;
                             if (Defending.pokemon.type2.name.Equals("Ground")) break;
@@ -300,6 +265,8 @@ namespace Pokemon
 
                     break;
             }
+
+            return attacking_move.status;
 
         }
 

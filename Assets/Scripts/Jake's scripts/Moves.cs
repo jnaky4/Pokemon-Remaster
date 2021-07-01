@@ -6,7 +6,7 @@ namespace Pokemon
     public class Moves
     {
         public string name = "default";
-        public Type move_type;
+        public Type type;
         public int current_pp;
         public int maxpp;
         public int base_power;
@@ -42,7 +42,7 @@ namespace Pokemon
             int stat_change_amount, int priority, double heal, string description)
         {
             this.name = move;
-            this.move_type = move_type;
+            this.type = move_type;
             this.current_pp = pp;
             this.maxpp = pp;
             this.base_power = base_power;
@@ -106,7 +106,7 @@ namespace Pokemon
         public static Moves get_move(string move)
         {
             Moves move_reference = Moves.move_dictionary[move];
-            Moves new_move = new Moves(move_reference.name, move_reference.move_type,
+            Moves new_move = new Moves(move_reference.name, move_reference.type,
                 move_reference.maxpp, move_reference.base_power, move_reference.accuracy,
                 move_reference.category, move_reference.status, move_reference.status_chance,
                 move_reference.status_target, move_reference.max_per_turn, move_reference.min_per_turn,

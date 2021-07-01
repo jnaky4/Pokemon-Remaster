@@ -121,7 +121,7 @@ namespace Pokemon
             // should deal damage to enemy with neutral damage attacking move
             Moves playerMove = testBench.playerUnit.pokemon.currentMoves[0];
 
-            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, super);
+            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, super, null, false);
             dialogue = "Enemy Charmander took damage...";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
@@ -129,7 +129,7 @@ namespace Pokemon
 
             // should create status effect on enemy with status move 
             playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
-            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, super);
+            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, super, null, false);
             dialogue = "Enemy Charmander became Paralyzed!";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
@@ -138,7 +138,7 @@ namespace Pokemon
             // Thunderwave should fail to re-apply to target if already paralyzed
             playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
             testBench.enemyUnit.pokemon.statuses = new ArrayList(new[] { "Paralysis"});
-            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, super);
+            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, super, null, false);
             dialogue = "Enemy Charmander is already Paralyzed!";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
@@ -148,7 +148,7 @@ namespace Pokemon
             // todo implement IsImmune() in Utility class - this function is just a stub so this test should fail until it is fixed
             playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
             testBench.enemyUnit.pokemon = new Pokemon(25, 3, "Tackle"); //Pikachu... comment even necessary?
-            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, false, 0);
+            testBench.UpdateDialogueForDamageAndStatus(playerMove, testBench.playerUnit, testBench.enemyUnit, rnd, 0, null, false);
             dialogue = "Enemy Pikachu is immune!";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);

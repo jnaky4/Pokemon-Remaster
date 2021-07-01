@@ -639,7 +639,7 @@ namespace Pokemon
             }
 
 
-
+            
             //Debug.Log("END <COMBAT PHASE>");
             //Debug.Log("START <END OF BOTH TURNS PHASE>");
 
@@ -677,7 +677,7 @@ namespace Pokemon
                             //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
                             dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
 
-                            yield return new WaitForSeconds(0.75f);
+                            yield return new WaitForSeconds(1.0f);
                             GameController.soundFX = enemyUnit.pokemon.dexnum.ToString();
                             enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
                             SetOpponentSprite(enemyUnit, enemySprite);
@@ -710,7 +710,7 @@ namespace Pokemon
             yield return StartCoroutine(AbleToAttack(Attacker));
             if (Attacker.pokemon.can_attack)
             {
-                if(AccuracyCheck(Attack, Attacker, Defender))
+                if (AccuracyCheck(Attack, Attacker, Defender))
                 {
                     //number of moves per turn the player/enemy can attack
                     int NumTimesAttack = rnd.Next(Attack.min_per_turn, Attack.max_per_turn + 1);
@@ -741,16 +741,27 @@ namespace Pokemon
 
         }
 
-        public void UpdateDialogueForDamageAndStatus(Moves attack, Unit Attacker, Unit Defender, System.Random rnd, bool crit, double effectivenessMultiplier)
+        public IEnumerator UpdateDialogueForDamageAndStatus(Moves attack, Unit Attacker, Unit Defender, System.Random rnd, double effectivenessMultiplier, Status applied_Status, bool crit)
         {
 
-            bool appliesStatus = attack.status.RollToApplyStatus(attack);
+            //missing Crit
+
+            if (crit && attack.base_power > 0)
+            {
+                dialogueText.text = "Critical hit!";
+                yield return new WaitForSeconds(0.75f);
+            }
+
+
+
+
+
             string namePrefix = (state == BattleState.PLAYERTURN) ? "Enemy " : "E";
             // handle damage text
             if (attack.base_power != -1)//If this move is a damage dealing move.
             {
                 switch (effectivenessMultiplier)
-                {
+                { 
                     case double s when (s > 1):
                         {
                             GameController.soundFX = "Super Effective";
@@ -763,6 +774,7 @@ namespace Pokemon
                             dialogueText.text = "It's not very effective...";
                             break;
                         }
+                       
                     case 0:
                         {
                             dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
@@ -781,25 +793,13 @@ namespace Pokemon
                 }
             }
 
-            // todo split into new function. add delay. status information, maybe this comes like a second after damage information?
-            // todo split tests in UnitTests if this method is split
-            if (appliesStatus)
+            yield return new WaitForSeconds(2);
+            //Debug.Log(applied_Status);
+            if (applied_Status.name != "null")
             {
-           
-                if (Defender.pokemon.statuses.Contains(attack.status.name))
-                {
-                    dialogueText.text = "Enemy " + Defender.pokemon.name + " is already " + attack.status.adj + "!";
-                }
-                // todo IsImmune is a stub, and needs to implemented, return false currently
-                else if (Utility.IsImmune(attack, Defender))
-                {
-                    dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
-                }
-                else
-                {
-                    dialogueText.text = "Enemy " + Defender.pokemon.name + " became " + attack.status.adj + "!";
-                    enemyHUD.SetStatus(Defender.pokemon);
-                }
+                dialogueText.text = Defender.pokemon.name + " became " + applied_Status.adj + "!";
+                yield return new WaitForSeconds(2);
+                //Debug.Log("Pokemon was " + applied_Status.adj);
             }
         }
 
@@ -826,7 +826,7 @@ namespace Pokemon
             //if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
             //yield return StartCoroutine(AbleToAttack(Attacker));
 
-            bool crit = Utility.CriticalHit(Attacker);
+            
 
             dialogueText.text = Attacker.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(0.75f);
@@ -850,8 +850,10 @@ namespace Pokemon
             }
             endofanimation = false;
 
+            bool crit = Utility.CriticalHit(Attacker);
+
             if (attack.current_stat_change.CompareTo("null") != 0) Attacker.SetStages(attack, Defender);
-            if (!attack.status.Equals("null")) Status.Apply_Attack_Status_Effect(attack, Defender);
+            Status applied_Status = Status.Apply_Attack_Status_Effect(attack, Defender);
             double super = Utility.DoDamage(Attacker, Defender, attack, crit);
             //Debug.Log(playerUnit.damage);
 
@@ -876,6 +878,14 @@ namespace Pokemon
                 playerHUD.SetHP(Defender.pokemon.current_hp, Defender, "enemy");
             }
 
+            /* Dialogue
+             * Stat change rose/fell
+             * Super/Not Effective
+             * Is Immune to status
+             * Took Damage
+             * crit
+             */
+
             if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
             {
                 dialogueText.text = "Enemy " + Defender.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
@@ -886,10 +896,11 @@ namespace Pokemon
                 dialogueText.text = "Your " + Attacker.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
                 yield return new WaitForSeconds(1);
             }
-            if ((attack.base_power != -1) && (crit)) yield return new WaitForSeconds(0.75f);
 
-            UpdateDialogueForDamageAndStatus(attack, Attacker, Defender, rnd, crit, super);
-            yield return new WaitForSeconds(2);
+            //if ((attack.base_power != -1) && (crit)) yield return new WaitForSeconds(0.75f);
+
+            yield return StartCoroutine(UpdateDialogueForDamageAndStatus(attack, Attacker, Defender, rnd, super, applied_Status, crit));
+            
 
 
 
@@ -957,8 +968,8 @@ namespace Pokemon
             {
                 foreach (Status status in AttackingPlayer.pokemon.statuses)
                 {
-                    //if status doesnt do damage skip
-                    if(status.self_damage > 0)
+                    //if status doesnt do damage skip, execpt Confusion
+                    if(status.self_damage > 0 && status.name != "Confusion")
                     {
                         AnimateStatus(status.name, player_attacking);
 
@@ -1024,51 +1035,51 @@ namespace Pokemon
         /// should be TriesToAttack
         public IEnumerator AbleToAttack(Unit Player)
         {
-            bool animate_on_player = state == BattleState.PLAYERTURN;
+            //dictates who the animation is played on
+            bool player_turn = state == BattleState.PLAYERTURN;
+
+            //Only applies to statuses that have %chance unable to attack and rolls unable to attack from CanAttack()
             if (!Player.pokemon.CanAttack())
             {
+
                 //Debug.Log("Unable to attack becasue of :" + playerUnit.pokemon.UnableToAttackStatusName);
                 switch (Player.pokemon.UnableToAttackStatus.name)
                 {
 
                     case "Paralysis":
-                        //Todo change for all other cases to be the same
-                        AnimateStatus(Player.pokemon.UnableToAttackStatus.name, animate_on_player);
+                    case "Sleep":
+                        
+                        AnimateStatus(Player.pokemon.UnableToAttackStatus.name, player_turn);
                         GameController.soundFX = Player.pokemon.UnableToAttackStatus.name;
                         while (!endofanimation)
                         {
                             yield return null;
                         }
                         endofanimation = false;
-                        
-                        dialogueText.text = Player.pokemon.name + " is " + Player.pokemon.UnableToAttackStatus.adj + "!";
-                        yield return new WaitForSeconds(2);
                         break;
-
-                    case "Sleep":
-                        AnimateStatus("Sleep", animate_on_player);
-                        //TODO change sound name to Sleep
-                        GameController.soundFX = "Sleeping";
-                        while (!endofanimation)
-                        {
-                            yield return null;
-                        }
-
-                        dialogueText.text = Player.pokemon.name + " is asleep!";
-                        yield return new WaitForSeconds(2);
-                        break;
-
+                    case "Confusion":
                     case "Freeze":
-                        //TODO Add Animation
-                        dialogueText.text = Player.pokemon.name + " is frozen!";
-
-                        yield return new WaitForSeconds(2);
-                        break;
+                    case "Flinch":
 
                     default:
+                        //Todo change for all cases to be the same
+                        //TODO Add Animation
                         break;
                 }
-                
+                dialogueText.text = Player.pokemon.name + " is " + Player.pokemon.UnableToAttackStatus.adj + "!";
+                yield return new WaitForSeconds(2);
+
+                if(Player.pokemon.UnableToAttackStatus.name == "Confusion")
+                {
+                    Player.TakeDamage(Player.pokemon.max_hp * Player.pokemon.UnableToAttackStatus.self_damage);
+                    if (player_turn) playerHUD.SetHP(Player.pokemon.current_hp, Player, "Player");
+                    else enemyHUD.SetHP(Player.pokemon.current_hp, Player, "Enemy");
+                    dialogueText.text = Player.pokemon.name + " hurt itself in it's confusion!";
+                    yield return new WaitForSeconds(1);
+
+                }
+
+
             }
             //reset name
             Player.pokemon.UnableToAttackStatus = null;

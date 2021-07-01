@@ -60,15 +60,14 @@ namespace Pokemon
             double dmg_multiplier = 1;
 
             //calculates the damage multiplier for attacking move on both defender types
-            dmg_multiplier = Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type1.name] * Type.attacking_type_dict[attack.move_type.name][defender.pokemon.type2.name];
+            dmg_multiplier = Type.attacking_type_dict[attack.type.name][defender.pokemon.type1.name] * Type.attacking_type_dict[attack.type.name][defender.pokemon.type2.name];
 
-
-
-
+            
+            
             //Debug.Log(attack.base_power);
             if (attack.base_power > 0)
             {
-                if (Utility.GetCategoryOfMove(attack).CompareTo("Physical") == 0)
+                if (attack.category == "Physical")
                 {
                     attacker.SetDamage(defender.pokemon.current_defense, attacker.pokemon.current_attack, attack.base_power, attack, crit, dmg_multiplier);
                 }

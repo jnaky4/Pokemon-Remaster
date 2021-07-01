@@ -33,92 +33,77 @@ namespace Pokemon
         /// Sets the damage that this unit does for this turn using this specific move.
         /// </summary>
         /// <param name="enemyDefense">The enemy's defense.</param>
-        /// <param name="pokemonAttack">The pokemon's attack. I think this is the super effective shit, it might not be tho. IDK.</param>
+        /// <param name="pokemonAttack">The pokemon's attack</param>
         /// <param name="attackPower">The attack power of the move</param>
         /// <param name="move">The move itself.</param>
         /// <param name="crit">if set to <c>true</c> [crit].</param>
         /// <param name="type1Defend">The type1 defense number.</param>
         /// <param name="type2Defend">The type2 defense multiplier.</param>
-        public void SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit, double damage_multiplier)
+        public int SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit, double damage_multiplier)
         {
+
+            
             //Debug.Log("Damage: " + damage);
-            if (double.IsNaN(damage) || double.IsInfinity(damage))
+            if (double.IsNaN(damage) || double.IsInfinity(damage)) damage = 0;
+
+            stab = 1;
+            if(move.type.name == pokemon.type1.name) stab = 1.5;
+            if(move.type.name == pokemon.type2.name) stab = 1.5;
+
+
+            critical = (crit) ? 1.5 : 1; //If it is a crit, multiply by 1.5
+
+            System.Random rnd = new System.Random();
+            double num = rnd.Next(85, 100);
+            random = num / 100; //Random number for the random element.
+            double burn = 1;
+            if (pokemon.statuses.Contains(Status.get_status("Burn")))
             {
-                damage = 0;
+                burn = Status.get_status("Burn").affect_stat_mulitplier;
             }
             try
             {
-                if (pokemon.type1.name.Equals(move.move_type.name) || (pokemon.type2.name != null && pokemon.type2.name.Equals(move.move_type.name))) //If STAB
+                if (enemyDefense == 0)
                 {
-                    stab = 1.5;
+                    Debug.Log("Enemy defense is 0");
+                }
+                if (move.base_power > 0) //If this does actual attacking.
+                {
+                    damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2; //Basic attacking
+                    damage *= (critical * stab * random * damage_multiplier * burn); //Extra multipliers.
+                    if (damage == 0) damage = 1;
                 }
                 else
                 {
-                    stab = 1;
+                    damage = 0;
                 }
             }
-            catch //Because sometimes this crashes.
+            catch (DivideByZeroException ex)
             {
-                stab = 1;
+                Debug.LogWarning(ex.ToString());
             }
-            finally
+            catch (Exception ex) //If we fuck up, you will get fucked up.
             {
-                if (crit) //If it is a crit, multiply by 1.5
-                {
-                    critical = 1.5;
-                }
-                else
-                {
-                    critical = 1;
-                }
-                System.Random rnd = new System.Random();
-                double num = rnd.Next(85, 100);
-                random = num / 100; //Random number for the random element.
-                double burn = 1;
-                if (pokemon.statuses.Contains(Status.get_status("Burn")))
-                {
-                    burn = Status.get_status("Burn").affect_stat_mulitplier;
-                }
-                try
-                {
-                    if (enemyDefense == 0)
-                    {
-                        Debug.Log("Enemy defense is 0");
-                    }
-                    if (move.base_power > 0) //If this does actual attacking.
-                    {
-                        damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2; //Basic attacking
-                        damage *= (critical * stab * random * damage_multiplier * burn); //Extra multipliers.
-                        if (damage == 0) damage = 1;
-                    }
-                    else
-                    {
-                        damage = 0;
-                    }
-                }
-                catch (DivideByZeroException ex)
-                {
-                    Debug.LogWarning(ex.ToString());
-                }
-                catch (Exception ex) //If we fuck up, you will get fucked up.
-                {
-                    damage = 100000;
-                    Debug.LogError(ex.ToString());
-                }
-                if (double.IsNaN(damage) || double.IsInfinity(damage))
-                {
-                    Debug.LogError("Damage is not a number.");
-                }
-                if (damage < 0) damage = 0; //If somehow you have negative damage, now you dont.
-                if (move.heal > 0)
-                {
-                    this.TakeDamage(-damage * move.heal);
-                }
-                if (move.heal < 0)
-                {
-                    this.TakeDamage(damage * -move.heal);
-                }
+                damage = 100000;
+                Debug.LogError(ex.ToString());
             }
+            if (double.IsNaN(damage) || double.IsInfinity(damage))
+            {
+                Debug.LogError("Damage is not a number.");
+            }
+            if (damage < 0) damage = 0; //If somehow you have negative damage, now you dont.
+
+            //doesnt work correctly
+            /*            if (move.heal > 0)
+                        {
+                            this.TakeDamage(-damage * move.heal);
+                        }
+                        if (move.heal < 0)
+                        {
+                            this.TakeDamage(damage * -move.heal);
+                        }*/
+            return (int)damage;
+
         }
 
         /// <summary>
