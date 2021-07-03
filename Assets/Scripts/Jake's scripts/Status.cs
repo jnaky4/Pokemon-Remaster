@@ -144,19 +144,31 @@ namespace Pokemon
         //Takes the attacking move and the pokemon and checks if attack can apply status
         public static Status Apply_Attack_Status_Effect(Moves attacking_move, Unit Defending)
         {
-            
 
+
+           
             //if move has no status, return
-            if (attacking_move.status.Equals("null")) return null;
-
+            if (attacking_move.status.name == "null") return Status.get_status("null");
             //if status is a perm status and there is already a perm status
             if (attacking_move.status.persistence && Defending.pokemon.HasPersistenceStatus()) return Status.get_status("null");
+
+            //Debug.Log("attacking_move.status.name " + attacking_move.status.name);
+            //Debug.Log("Defending.pokemon.HasStatus(attacking_move.status.name )" + Defending.pokemon.HasStatus(attacking_move.status.name));
+
+
+
+            foreach (Status status in Defending.pokemon.statuses)
+            {
+                Debug.Log("Has Status" + status.name);
+            }
 
             //if same status applied, don't apply
             if (Defending.pokemon.HasStatus(attacking_move.status.name)) return Status.get_status("null");
 
+
             //if roll to apply status fails dont apply status
             if (!attacking_move.status.RollToApplyStatus(attacking_move)) return Status.get_status("null");
+
 
             //Debug.Log(attacking_move.status);
             //Debug.Log(attacking_move.name);

@@ -963,9 +963,7 @@ namespace Pokemon
         /// <returns>true/false</returns>
         public bool HasStatus(string name)
         {
-            return this.statuses.Contains(name);
-
-            
+        return this.statuses.Contains(Status.get_status(name));
         }
 
         /// <summary>

@@ -465,15 +465,8 @@ namespace Pokemon
 
         private void PlayerMakesDecision()
         {
-
-
-
-
-            if (playerUnit.pokemon.IsFainted() || state == BattleState.POKEMONFAINTED)
-            {
-
-                SwapPokemonOnHUD();
-            }
+            //todo see if this check matters? doesnt work since start coroutine doesnt work
+            if (playerUnit.pokemon.IsFainted() || state == BattleState.POKEMONFAINTED) SwapPokemonOnHUD();
             else
             {
                 //state = BattleState.PLAYERTURN;
@@ -509,7 +502,8 @@ namespace Pokemon
 
         }
 
-
+        #endregion Decision functions to see who goes first
+        #region Attack functions
         /// <summary>
         /// Decides who attacks first, based on priority of the move, then the speed of each pokemon, then random
         /// </summary>
@@ -663,7 +657,7 @@ namespace Pokemon
                 if (enemyUnit.pokemon.IsFainted())
                 {
                     //Gain EXP
-                    if(!playerUnit.pokemon.IsFainted()) yield return StartCoroutine(gainEXP());
+                    if(!playerUnit.pokemon.IsFainted()) yield return StartCoroutine(GainEXP());
 
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
@@ -698,10 +692,6 @@ namespace Pokemon
         }
 
 
-        #endregion Decision functions to see who goes first
-
-        #region Attack functions
-
         public IEnumerator MultiAttackPerTurn(Moves Attack, Unit Attacker, Unit Defender)
         {
             //BEGIN TURN STATUS UPDATE
@@ -733,6 +723,7 @@ namespace Pokemon
 
 
         }
+
         public bool AccuracyCheck(Moves attack, Unit Attacker, Unit Defender)
         {
             int num = rnd.Next(1, 100);
@@ -741,67 +732,67 @@ namespace Pokemon
 
         }
 
-        public IEnumerator UpdateDialogueForDamageAndStatus(Moves attack, Unit Attacker, Unit Defender, System.Random rnd, double effectivenessMultiplier, Status applied_Status, bool crit)
+        public IEnumerator AttackDialogue(Moves attack, Unit Attacker, Unit Defender, double effectivenessMultiplier, Status applied_Status, bool crit)
         {
 
-            //missing Crit
-
-            if (crit && attack.base_power > 0)
+            //Your/enemy Pokemons stat rose/fell
+            if (attack.current_stat_change != "null")
             {
-                dialogueText.text = "Critical hit!";
-                yield return new WaitForSeconds(0.75f);
+                //player target enemy or enemy target self: enemy Pokemons stat rose/fell!
+                //player target self or enemy target player: your Pokemons stat rose/fell
+                string prefix = ((state == BattleState.PLAYERTURN && attack.target == "enemy") || (state == BattleState.ENEMYTURN && attack.target == "self")) ? "Enemy " : "Your ";
+
+                string rosefell = attack.stat_change_amount > 0 ? " rose!" : " fell!";
+                string target = attack.target == "enemy" ? Defender.pokemon.name : Attacker.pokemon.name;
+
+                dialogueText.text = prefix + target + "'s " + attack.current_stat_change + rosefell; //If you lower their stat
+                yield return new WaitForSeconds(1);
             }
 
 
+            string namePrefix = (state == BattleState.PLAYERTURN) ? "Enemy " : "Your ";
 
-
-
-            string namePrefix = (state == BattleState.PLAYERTURN) ? "Enemy " : "E";
-            // handle damage text
-            if (attack.base_power != -1)//If this move is a damage dealing move.
+            if (attack.base_power > 0)
             {
-                switch (effectivenessMultiplier)
-                { 
-                    case double s when (s > 1):
-                        {
-                            GameController.soundFX = "Super Effective";
-                            dialogueText.text = "It's super effective!";
-                            break;
-                        }
-                    case double s when ((s < 1) && (s != 0)):
-                        {
-                            GameController.soundFX = "Not Very Effective";
-                            dialogueText.text = "It's not very effective...";
-                            break;
-                        }
-                       
-                    case 0:
-                        {
-                            dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
-                            break;
-                        }
-                    case 1:
-                    default:
-                        {
-                            //Debug.Log("dialogueText" + dialogueText.text);
-                            //Debug.Log("defender" + Defender.pokemon.name);
-                            GameController.soundFX = "Damage";
-                            if (state == BattleState.PLAYERTURN) dialogueText.text = "Enemy " + Defender.pokemon.name + " took damage...";
-                            else dialogueText.text = "Your " + Defender.pokemon.name + " took damage...";
-                        }
-                        break;
+                if (crit)
+                {
+                    dialogueText.text = "Critical hit!";
+                    yield return new WaitForSeconds(1);
                 }
+
+                if (effectivenessMultiplier > 1)
+                {
+                    GameController.soundFX = "Super Effective";
+                    dialogueText.text = "It's super effective!";
+                    yield return new WaitForSeconds(2);
+                }
+                else if (effectivenessMultiplier < 1 && effectivenessMultiplier > 0)
+                {
+                    GameController.soundFX = "Not Very Effective";
+                    dialogueText.text = "It's not very effective...";
+                    yield return new WaitForSeconds(2);
+                }
+                else GameController.soundFX = "Damage";
+
+
+                
+                dialogueText.text = namePrefix + Defender.pokemon.name + " took damage...";
+                yield return new WaitForSeconds(2);
+            }
+            else if(attack.base_power == 0)
+            {
+                dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
+                yield return new WaitForSeconds(2);
             }
 
-            yield return new WaitForSeconds(2);
-            //Debug.Log(applied_Status);
             if (applied_Status.name != "null")
             {
                 dialogueText.text = Defender.pokemon.name + " became " + applied_Status.adj + "!";
                 yield return new WaitForSeconds(2);
-                //Debug.Log("Pokemon was " + applied_Status.adj);
             }
+            
         }
+
 
         /// <summary>
         /// Determines if the Player's attack hits or not, and then does all of the damage calculations and crits and all that.
@@ -819,18 +810,8 @@ namespace Pokemon
 
             SetDownButtons();      
 
-
-
-            //ABLE TO ATTACK
-            //checks all statuses if able to attack, if unable to attack, displays animation
-            //if unable, stores the attack that affected them in: pokemon.UnableToAttackStatusName
-            //yield return StartCoroutine(AbleToAttack(Attacker));
-
-            
-
             dialogueText.text = Attacker.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(0.75f);
-
 
 
             if(state == BattleState.PLAYERTURN)
@@ -853,6 +834,8 @@ namespace Pokemon
             bool crit = Utility.CriticalHit(Attacker);
 
             if (attack.current_stat_change.CompareTo("null") != 0) Attacker.SetStages(attack, Defender);
+            Debug.Log(attack.name);
+            Debug.Log(Defender.pokemon.name);
             Status applied_Status = Status.Apply_Attack_Status_Effect(attack, Defender);
             double super = Utility.DoDamage(Attacker, Defender, attack, crit);
             //Debug.Log(playerUnit.damage);
@@ -878,36 +861,12 @@ namespace Pokemon
                 playerHUD.SetHP(Defender.pokemon.current_hp, Defender, "enemy");
             }
 
-            /* Dialogue
-             * Stat change rose/fell
-             * Super/Not Effective
-             * Is Immune to status
-             * Took Damage
-             * crit
-             */
-
-            if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("enemy") == 0)
-            {
-                dialogueText.text = "Enemy " + Defender.pokemon.name + "'s " + attack.current_stat_change + " fell!"; //If you lower their stat
-                yield return new WaitForSeconds(1);
-            }
-            else if (attack.current_stat_change.CompareTo("null") != 0 && attack.target.CompareTo("self") == 0)
-            {
-                dialogueText.text = "Your " + Attacker.pokemon.name + "'s " + attack.current_stat_change + " rose!"; //If you increase your own stat
-                yield return new WaitForSeconds(1);
-            }
-
-            //if ((attack.base_power != -1) && (crit)) yield return new WaitForSeconds(0.75f);
-
-            yield return StartCoroutine(UpdateDialogueForDamageAndStatus(attack, Attacker, Defender, rnd, super, applied_Status, crit));
-            
-
-
+            yield return StartCoroutine(AttackDialogue(attack, Attacker, Defender, super, applied_Status, crit));
 
             yield return StartCoroutine(IsEitherPokemonDead());
         }
 
-        public IEnumerator gainEXP()
+        public IEnumerator GainEXP()
         {
             if (enemyUnit.pokemon.IsFainted() && !playerUnit.pokemon.IsFainted())
             {
@@ -1364,7 +1323,6 @@ namespace Pokemon
         }
 
 
-
         /// <summary>
         /// </summary>
         /// <returns>Nothing</returns>
@@ -1412,7 +1370,7 @@ namespace Pokemon
             SetDownButtons();
             if (state == BattleState.WON) //If you won
             {
-                yield return StartCoroutine(gainEXP());
+                yield return StartCoroutine(GainEXP());
                 //Check Evolve
                 for (int i = 0; i < GameController.playerPokemon.Count(s => s != null); i++)
                 {
@@ -1586,6 +1544,7 @@ namespace Pokemon
             }
         }
 
+
         public void OnBackButton()
         {
             //if (state != BattleState.PLAYERTURN) return;
@@ -1598,7 +1557,6 @@ namespace Pokemon
         }
 
         
-
         /// <summary>
         /// Runs away. If you are in a trainer battle, you can't run away.
         /// TO DO: said it other places here but make this not automatic.
