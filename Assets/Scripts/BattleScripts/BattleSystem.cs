@@ -617,14 +617,12 @@ namespace Pokemon
                     state = BattleState.ENEMYTURN;
                     yield return StartCoroutine(MultiAttackPerTurn(enemyMove, enemyUnit, playerUnit));
                     break;
-    
                 case BattleState.ENEMYTURN:
                     yield return StartCoroutine(MultiAttackPerTurn(enemyMove, enemyUnit, playerUnit));
                     if (state == BattleState.POKEMONFAINTED) break;
                     state = BattleState.PLAYERTURN;
                     yield return StartCoroutine(MultiAttackPerTurn(playerMove, playerUnit, enemyUnit));
                     break;
-  
                 case BattleState.ONLYENEMYTURN:
                     yield return StartCoroutine(MultiAttackPerTurn(enemyMove, enemyUnit, playerUnit));
                     break;
@@ -698,8 +696,11 @@ namespace Pokemon
             yield return StartCoroutine(BeginTurnStatusUpdate(Attacker));
 
             yield return StartCoroutine(AbleToAttack(Attacker));
+
             if (Attacker.pokemon.can_attack)
             {
+                //Debug.Log("BattleState: " + state);
+                //Debug.Log("Can Attack");
                 if (AccuracyCheck(Attack, Attacker, Defender))
                 {
                     //number of moves per turn the player/enemy can attack
@@ -715,6 +716,7 @@ namespace Pokemon
                 }
                 else
                 {
+                    
                     dialogueText.text = "Your attack missed!";
                     yield return new WaitForSeconds(2);
                 }
@@ -759,37 +761,42 @@ namespace Pokemon
                     dialogueText.text = "Critical hit!";
                     yield return new WaitForSeconds(1);
                 }
-
-                if (effectivenessMultiplier > 1)
+                switch (effectivenessMultiplier)
                 {
-                    GameController.soundFX = "Super Effective";
-                    dialogueText.text = "It's super effective!";
-                    yield return new WaitForSeconds(2);
+                    case double s when (s > 1):
+                        GameController.soundFX = "Super Effective";
+                        dialogueText.text = "It's super effective!";
+                        break;
+                    case double s when ((s < 1) && (s != 0)):
+                        GameController.soundFX = "Not Very Effective";
+                        dialogueText.text = "It's not very effective...";
+                        break;
+                    case 0:
+                        dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
+                        break;
+                    case 1:
+                    default:
+                        GameController.soundFX = "Damage";
+                        dialogueText.text = namePrefix + Defender.pokemon.name + " took damage...";
+                        break;
                 }
-                else if (effectivenessMultiplier < 1 && effectivenessMultiplier > 0)
-                {
-                    GameController.soundFX = "Not Very Effective";
-                    dialogueText.text = "It's not very effective...";
-                    yield return new WaitForSeconds(2);
-                }
-                else GameController.soundFX = "Damage";
-
-
-                
-                dialogueText.text = namePrefix + Defender.pokemon.name + " took damage...";
                 yield return new WaitForSeconds(2);
+
+
             }
-            else if(attack.base_power == 0)
+
+            if (applied_Status.name == "immune")
             {
                 dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
                 yield return new WaitForSeconds(2);
             }
-
-            if (applied_Status.name != "null")
+            else if (applied_Status.name != "null")
             {
                 dialogueText.text = Defender.pokemon.name + " became " + applied_Status.adj + "!";
                 yield return new WaitForSeconds(2);
             }
+
+
             
         }
 
@@ -834,8 +841,6 @@ namespace Pokemon
             bool crit = Utility.CriticalHit(Attacker);
 
             if (attack.current_stat_change.CompareTo("null") != 0) Attacker.SetStages(attack, Defender);
-            Debug.Log(attack.name);
-            Debug.Log(Defender.pokemon.name);
             Status applied_Status = Status.Apply_Attack_Status_Effect(attack, Defender);
             double super = Utility.DoDamage(Attacker, Defender, attack, crit);
             //Debug.Log(playerUnit.damage);
@@ -921,14 +926,34 @@ namespace Pokemon
 
             //AnimateStatus required boolean, true to animate on the player
             bool player_attacking = whosattacking == "Player";
-            
+
+            //Debug.Log(AttackingPlayer.pokemon.name + "Current HP " + AttackingPlayer.pokemon.current_hp);
+            //Debug.Log(AttackingPlayer.pokemon.name + " is Fainted " + AttackingPlayer.pokemon.IsFainted());
+
             //if dead no need to do status affects
             if (!AttackingPlayer.pokemon.IsFainted())
             {
+                
                 foreach (Status status in AttackingPlayer.pokemon.statuses)
                 {
+
+                    //Debug.Log("Current HP" + AttackingPlayer.pokemon.current_hp);
+                    //if pokemon is dead stop status effects      
+                    if (AttackingPlayer.pokemon.IsFainted())
+                    {
+                        state = BattleState.POKEMONFAINTED;
+                        break;
+                    }
+
+                    //if attacker has leech seed and defending pokemon has 0 health, it will keep them alive
+                    if (status.name == "Seeded" && DefendingPlayer.pokemon.IsFainted())
+                    {
+                        state = BattleState.POKEMONFAINTED;
+                        continue;
+                    }
+
                     //if status doesnt do damage skip, execpt Confusion
-                    if(status.self_damage > 0 && status.name != "Confusion")
+                    if (status.self_damage > 0 && status.name != "Confusion")
                     {
                         AnimateStatus(status.name, player_attacking);
 
@@ -953,6 +978,8 @@ namespace Pokemon
                             StartCoroutine(Blink(enemySprite, 0.25));
                             enemyHUD.SetHP(AttackingPlayer.pokemon.current_hp, AttackingPlayer, whosattacking);
                         }
+
+
                         //code for specific moves
                         switch (status.name)
                         {
@@ -977,6 +1004,7 @@ namespace Pokemon
                     }
 
                 }
+
                 yield return StartCoroutine(IsEitherPokemonDead());
                 //decrements all counters
                 AttackingPlayer.pokemon.EndTurnStatusUpdate();
@@ -996,6 +1024,12 @@ namespace Pokemon
         {
             //dictates who the animation is played on
             bool player_turn = state == BattleState.PLAYERTURN;
+
+            if (Player.pokemon.HasStatus("Confusion"))
+            {
+                dialogueText.text = Player.pokemon.name + " is Confused!";
+                yield return new WaitForSeconds(2);
+            }
 
             //Only applies to statuses that have %chance unable to attack and rolls unable to attack from CanAttack()
             if (!Player.pokemon.CanAttack())
@@ -1025,8 +1059,8 @@ namespace Pokemon
                         //TODO Add Animation
                         break;
                 }
-                dialogueText.text = Player.pokemon.name + " is " + Player.pokemon.UnableToAttackStatus.adj + "!";
-                yield return new WaitForSeconds(2);
+
+
 
                 if(Player.pokemon.UnableToAttackStatus.name == "Confusion")
                 {
@@ -1034,8 +1068,13 @@ namespace Pokemon
                     if (player_turn) playerHUD.SetHP(Player.pokemon.current_hp, Player, "Player");
                     else enemyHUD.SetHP(Player.pokemon.current_hp, Player, "Enemy");
                     dialogueText.text = Player.pokemon.name + " hurt itself in it's confusion!";
-                    yield return new WaitForSeconds(1);
+                    yield return new WaitForSeconds(2);
 
+                }
+                else
+                {
+                    dialogueText.text = Player.pokemon.name + " is " + Player.pokemon.UnableToAttackStatus.adj + "!";
+                    yield return new WaitForSeconds(2);
                 }
 
 
@@ -1051,6 +1090,18 @@ namespace Pokemon
         /// <returns></returns>
         public IEnumerator IsEitherPokemonDead()
         {
+            if (playerUnit.pokemon.IsFainted())
+            {
+                dialogueText.text = playerUnit.pokemon.name + " fainted!";
+                yield return new WaitForSeconds(1);
+            }
+
+            if (enemyUnit.pokemon.IsFainted())
+            {
+                dialogueText.text = "Enemy " + enemyUnit.pokemon.name + " fainted!";
+                yield return new WaitForSeconds(1);
+            }
+
             if (playerUnit.pokemon.IsFainted() || enemyUnit.pokemon.IsFainted())
             {
                 state = BattleState.POKEMONFAINTED;
@@ -1245,7 +1296,8 @@ namespace Pokemon
             {
                 playerContinuingAttack = 0;
                 phasePlayerSprite = 1;
-                dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
+
+                if (!playerUnit.pokemon.IsFainted()) dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
                 playerUnit.pokemon.ResetBattleStats();
                 GameController.playerPokemon[activePokemon] = playerUnit.pokemon;
 

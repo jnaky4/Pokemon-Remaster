@@ -60,9 +60,7 @@ namespace Pokemon
             double dmg_multiplier = 1;
 
             //calculates the damage multiplier for attacking move on both defender types
-            dmg_multiplier = Type.attacking_type_dict[attack.type.name][defender.pokemon.type1.name] * Type.attacking_type_dict[attack.type.name][defender.pokemon.type2.name];
-
-            
+            dmg_multiplier = EffectivenessMultiplier(attack, defender.pokemon);
             
             //Debug.Log(attack.base_power);
             if (attack.base_power > 0)
@@ -83,6 +81,10 @@ namespace Pokemon
             return dmg_multiplier;
 
 
+        }
+        public static double EffectivenessMultiplier(Moves attack, Pokemon defender)
+        {
+            return Type.attacking_type_dict[attack.type.name][defender.type1.name] * Type.attacking_type_dict[attack.type.name][defender.type2.name];
         }
 
         /// <summary>

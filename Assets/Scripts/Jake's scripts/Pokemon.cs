@@ -598,10 +598,10 @@ namespace Pokemon
             else
             {
 
-                foreach (Status status in this.statuses)
+                foreach (KeyValuePair<string,Status> status_item in Status.all_status_effects)
                 {
                     //if status doesnt persist, remove
-                    if (!status.persistence) this.statuses.Remove(status);
+                    if (!status_item.Value.persistence && this.statuses.Contains(Status.get_status(status_item.Value.name))) this.statuses.Remove(Status.get_status(status_item.Value.name));
                 }
 
 
@@ -890,15 +890,15 @@ namespace Pokemon
             
             return this.can_attack;
         }
-
+        
         /// <summary>
         /// Checks if pokemon is fainted
         /// </summary>
         /// <returns>returns true if pokemon health is <= 0</returns>
         public bool IsFainted()
         {
-            bool IsFainted;
-            return IsFainted = this.current_hp <= 0;
+            //Debug.Log(this.name + " current HP: " + this.current_hp);
+            return (this.current_hp <= 0);
         }
 
         /// <summary>

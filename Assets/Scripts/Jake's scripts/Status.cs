@@ -58,7 +58,7 @@ namespace Pokemon
 {
     public class Status
     {
-        private static Dictionary<string, Status> all_status_effects = new Dictionary<string, Status>()
+        public static Dictionary<string, Status> all_status_effects = new Dictionary<string, Status>()
         {
             /*
              * name: name of status effect
@@ -82,7 +82,9 @@ namespace Pokemon
             {"Confusion", new Status(   "Confusion", "Confused",    false,  "null",     .175,   .33,    "null",     1,          0,      5,      2)},
             {"Seeded", new Status(      "Seeded",    "Seeded",      false,  "null",     .0625,  0,      "null",     1,          0,      -1,     -1)},
             //for csv, does nothing
-            {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1)}
+            {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1)},
+            {"immune", new Status(      "immune",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1) }
+
         };
 
         public string name;
@@ -134,152 +136,62 @@ namespace Pokemon
             return false;
         }
 
-        public static void ParalyzeSpeedReduce(Unit unit)
+        public static void StatReduce(Unit unit, Status status)
         {
-            unit.pokemon.current_speed = (int)(unit.pokemon.current_speed * .5);
+            switch (status.affect_stat)
+            {
+                case "Speed":
+                    unit.pokemon.current_speed = (int)(unit.pokemon.current_speed * status.affect_stat_mulitplier);
+                    break;
+                case "Attack":
+                    unit.pokemon.current_attack = (int)(unit.pokemon.current_attack * status.affect_stat_mulitplier);
+                    break;
+            }
+            
         }
+
 
 
 
         //Takes the attacking move and the pokemon and checks if attack can apply status
         public static Status Apply_Attack_Status_Effect(Moves attacking_move, Unit Defending)
         {
-
-
-           
             //if move has no status, return
             if (attacking_move.status.name == "null") return Status.get_status("null");
+            Debug.Log("Attack has status");
             //if status is a perm status and there is already a perm status
             if (attacking_move.status.persistence && Defending.pokemon.HasPersistenceStatus()) return Status.get_status("null");
+            
 
             //Debug.Log("attacking_move.status.name " + attacking_move.status.name);
             //Debug.Log("Defending.pokemon.HasStatus(attacking_move.status.name )" + Defending.pokemon.HasStatus(attacking_move.status.name));
 
-
-
-            foreach (Status status in Defending.pokemon.statuses)
-            {
-                Debug.Log("Has Status" + status.name);
-            }
-
             //if same status applied, don't apply
             if (Defending.pokemon.HasStatus(attacking_move.status.name)) return Status.get_status("null");
+            Debug.Log("Attack status not already on pokemon");
 
+            //if the status ignore type is either of the Defending pokemons types, dont apply
+            if (attacking_move.status.ignore_type == Defending.pokemon.type1.name) return Status.get_status("immune");
+            if(attacking_move.status.ignore_type == Defending.pokemon.type2.name) return Status.get_status("immune");
+            Debug.Log("Pokemon Type not ignore type");
+
+            //if defender is immune to attack type, dont apply
+            if (Utility.EffectivenessMultiplier(attacking_move, Defending.pokemon) == 0) return Status.get_status("null");
+            Debug.Log("Pokemon not immune to attack");
 
             //if roll to apply status fails dont apply status
             if (!attacking_move.status.RollToApplyStatus(attacking_move)) return Status.get_status("null");
+            Debug.Log("Status Effect Succeeded");
 
+            System.Random rnd = new System.Random();
 
-            //Debug.Log(attacking_move.status);
-            //Debug.Log(attacking_move.name);
-
-            //EVAN CODE PUT INSIDE A SWITCH
-            //extra checks on apply status, like pokemon type
-            switch (attacking_move.status.name)
-            {
-
-                case "Burn":
-                    
-                    try
-                    {
-                        if (Defending.pokemon.type1.name.Equals("Fire")) break;
-                        if (Defending.pokemon.type2.name.Equals("Fire")) break;
-                    }
-                    catch
-                    {
-                        //throw;
-                    }
-
-                    Status burn = attacking_move.status;
-                    burn.remaining_turns = -1;
-
-                    Defending.pokemon.statuses.Add(burn);
-
-                    break;
-
-                case "Paralysis":
-                    try
-                    {
-                        if (Defending.pokemon.type1.name.Equals("Electric")) break;
-                        if (Defending.pokemon.type2.name.Equals("Electric")) break;
-
-                        if (attacking_move.type.name.Equals("Electric"))
-                        {
-                            if (Defending.pokemon.type1.name.Equals("Ground")) break;
-                            if (Defending.pokemon.type2.name.Equals("Ground")) break;
-                        }
-                    }
-                    catch
-                    {
-                        //throw;
-                    }
-
-                    Status paralysis = attacking_move.status;
-                    paralysis.remaining_turns = -1;
-                    Defending.pokemon.statuses.Add(paralysis);
-                    ParalyzeSpeedReduce(Defending);
-                    break;
-
-                case "Poison":
-                    try
-                    {
-                        if (Defending.pokemon.type1.name == "Poison") break;
-                        if (Defending.pokemon.type2.name == "Poison") break;
-                    }
-                    catch
-                    {
-
-                    }
-                    //Debug.Log("Bellsprout should not be here.4");
-                    Status poison = attacking_move.status;
-                    poison.remaining_turns = -1;
-                    Defending.pokemon.statuses.Add(attacking_move.status);
-                    break;
-
-                case "Sleep":
-
-                    Status sleep = attacking_move.status;
-                    System.Random rnd = new System.Random();
-                    //random.next range(x to y-1) : (0,20) = [0 to 19]
-                    int remaining_turns = rnd.Next(sleep.min_duration, sleep.max_duration +1);
-                    sleep.remaining_turns = remaining_turns;
-
-
-                    Defending.pokemon.statuses.Add(sleep);
-
-                    //TODO change to Status.remaining_turns
-                    Defending.pokemon.sleep = GameController._rnd.Next(1, 4);
-                    
-                    break;
-
-                case "Freeze":            
-                    try
-                    {
-                        if (Defending.pokemon.type1.name.Equals("Ice")) break;
-                        if (Defending.pokemon.type2.name.Equals("Ice")) break;
-                    }
-                    catch
-                    {
-                        //throw;
-                    }
-                    Status freeze = attacking_move.status;
-                    freeze.remaining_turns = -1;
-                    Defending.pokemon.statuses.Add(attacking_move.status);
-                    break;
-
-                default:
-                    Status status = attacking_move.status;
-                    System.Random rnd2 = new System.Random();
-                    //random.next range(x to y-1) : (0,20) = [0 to 19]
-                    int remaining_turns2 = rnd2.Next(status.min_duration, status.max_duration + 1);
-                    status.remaining_turns = remaining_turns2;
-                    Defending.pokemon.statuses.Add(status);
-
-                    break;
-            }
+            attacking_move.status.remaining_turns = rnd.Next(attacking_move.status.min_duration, attacking_move.status.max_duration + 1);
+            Debug.Log("Status Remaining Turns: " + attacking_move.status.remaining_turns);
+            Defending.pokemon.statuses.Add(attacking_move.status);
+            StatReduce(Defending, attacking_move.status);
+            
 
             return attacking_move.status;
-
         }
 
 
