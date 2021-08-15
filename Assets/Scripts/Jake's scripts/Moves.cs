@@ -62,6 +62,7 @@ namespace Pokemon
             this.priority = priority;
             this.heal = heal;
             this.description = description;
+
         }
         //public static string[][] move_list = new string[151][];
         public static Dictionary<string, Moves> move_dictionary = new Dictionary<string, Moves>();

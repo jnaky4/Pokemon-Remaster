@@ -825,44 +825,7 @@ namespace Pokemon
             }
             return count;
         }
-        //TODO Finish out AI decisions 
-        public Moves DecideMove(Pokemon Enemy)
-        {
-            //get sum of moves
-            int num_moves = this.CountMoves();
-            
-            //<move_name, score> 
-            Dictionary<string, int> available_moves = new Dictionary<string, int>();
 
-            //grab all moves and store in available_moves
-            for (int i = 0; i < num_moves; i++)
-            {   
-                //make sure not null
-                if(currentMoves[i] != null)
-                {
-                    //if move has pp, and isnt in available moves already, add it
-                    if(currentMoves[i].current_pp > 0 && !available_moves.ContainsKey(currentMoves[i].name))
-                    {
-                        available_moves.Add(currentMoves[i].name, 0);
-                    }
-                }        
-            }
-
-
-            Debug.Log("Decision Tree Move COUNT: " + available_moves.Count);
-
-
-            //Evaluating
-            foreach (KeyValuePair<string, int> move in available_moves)
-            {
-                //get dmg of move
-                //10: Lethal in 1 turn with priority speed
-                /*                if (dmg > Enemy.current_hp && );
-
-                                }*/
-            }
-            return null;
-        }
 
         //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
         public bool CanAttack()
@@ -983,6 +946,20 @@ namespace Pokemon
             }
 
             return hasPersistence; 
+        }
+
+        public int getMoveIndex(string name)
+        {
+            for(int i = 0; i < 4; i++)
+            {
+                if(this.currentMoves[i] != null)
+                {
+                    if (this.currentMoves[i].name == name) return i;
+                }
+                
+            }
+            Debug.Log("ERROR: Move not found on Pokemon");
+            return 0;
         }
     }
 

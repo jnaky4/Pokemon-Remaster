@@ -141,10 +141,16 @@ namespace Pokemon
             switch (status.affect_stat)
             {
                 case "Speed":
-                    unit.pokemon.current_speed = (int)(unit.pokemon.current_speed * status.affect_stat_mulitplier);
+                    Debug.Log(unit.pokemon.name + " speed before is: " + unit.pokemon.current_speed);
+                    unit.pokemon.current_speed -= (int)(unit.pokemon.max_speed * status.affect_stat_mulitplier);
+                    if (unit.pokemon.current_speed <  1) unit.pokemon.current_speed = 1;
+                    Debug.Log(unit.pokemon.name + " speed after is: " + unit.pokemon.current_speed);
                     break;
                 case "Attack":
-                    unit.pokemon.current_attack = (int)(unit.pokemon.current_attack * status.affect_stat_mulitplier);
+                    Debug.Log(unit.pokemon.name + " attack before is: " + unit.pokemon.current_attack);
+                    unit.pokemon.current_attack -= (int)(unit.pokemon.max_attack * status.affect_stat_mulitplier);
+                    if (unit.pokemon.current_attack < 1) unit.pokemon.current_attack = 1;
+                    Debug.Log(unit.pokemon.name + " attack after is: " + unit.pokemon.current_attack);
                     break;
             }
             
@@ -158,7 +164,7 @@ namespace Pokemon
         {
             //if move has no status, return
             if (attacking_move.status.name == "null") return Status.get_status("null");
-            Debug.Log("Attack has status");
+            //Debug.Log("Attack has status");
             //if status is a perm status and there is already a perm status
             if (attacking_move.status.persistence && Defending.pokemon.HasPersistenceStatus()) return Status.get_status("null");
             
@@ -168,25 +174,25 @@ namespace Pokemon
 
             //if same status applied, don't apply
             if (Defending.pokemon.HasStatus(attacking_move.status.name)) return Status.get_status("null");
-            Debug.Log("Attack status not already on pokemon");
+            //Debug.Log("Attack status not already on pokemon");
 
-            //if the status ignore type is either of the Defending pokemons types, dont apply
+            //if the status ignore type is either of the Defending pokemons types, return immune
             if (attacking_move.status.ignore_type == Defending.pokemon.type1.name) return Status.get_status("immune");
             if(attacking_move.status.ignore_type == Defending.pokemon.type2.name) return Status.get_status("immune");
-            Debug.Log("Pokemon Type not ignore type");
+            //Debug.Log("Pokemon Type not ignore type");
 
             //if defender is immune to attack type, dont apply
             if (Utility.EffectivenessMultiplier(attacking_move, Defending.pokemon) == 0) return Status.get_status("null");
-            Debug.Log("Pokemon not immune to attack");
+            //Debug.Log("Pokemon not immune to attack");
 
             //if roll to apply status fails dont apply status
             if (!attacking_move.status.RollToApplyStatus(attacking_move)) return Status.get_status("null");
-            Debug.Log("Status Effect Succeeded");
+            //Debug.Log("Status Effect Succeeded");
 
             System.Random rnd = new System.Random();
 
             attacking_move.status.remaining_turns = rnd.Next(attacking_move.status.min_duration, attacking_move.status.max_duration + 1);
-            Debug.Log("Status Remaining Turns: " + attacking_move.status.remaining_turns);
+            //Debug.Log("Status Remaining Turns: " + attacking_move.status.remaining_turns);
             Defending.pokemon.statuses.Add(attacking_move.status);
             StatReduce(Defending, attacking_move.status);
             

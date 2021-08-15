@@ -1,10 +1,16 @@
 using System.Linq;
 using UnityEngine;
+using System;
 
 namespace Pokemon
 {
     public class Utility : MonoBehaviour
     {
+        public static int randomSeed = 1000;
+        public static System.Random rnd = new System.Random(randomSeed);
+        //public static System.Random rnd = new System.Random();
+
+
         /// <summary>
         /// Determines if a hit is a critical or not.
         /// </summary>
@@ -12,8 +18,10 @@ namespace Pokemon
         /// <returns>Returns true if the hit becomes a crit, false otherwise.</returns>
         public static bool CriticalHit(Unit unit)
         {
-            System.Random rnd = new System.Random();
-            int num = rnd.Next(1, 100);
+            
+
+
+            int num = Utility.rnd.Next(1, 100);
             if (unit.pokemon.critical_stage == 0)
             {
                 if (num <= 6) return true;
@@ -37,15 +45,6 @@ namespace Pokemon
             return false;
         }
 
-        /// <summary>
-        /// Gets the category of move.
-        /// </summary>
-        /// <param name="move">The move we want the category of.</param>
-        /// <returns>The string of what category the move is.</returns>
-        public static string GetCategoryOfMove(Moves move)
-        {
-            return move.category;
-        }
 
         /// <summary>
         /// Calculates how much damage is done based on the types of the attacker and defender
@@ -55,33 +54,58 @@ namespace Pokemon
         /// <param name="attack">The move we want to use.</param>
         /// <param name="crit">A bool that lets us know if the attack is a crit or not.</param>
         /// <returns>This returns the type1 advantage of the defender multiplied by the type2 advantage of the defender.</returns>
-        public static double DoDamage(Unit attacker, Unit defender, Moves attack, bool crit)
+        public static int CalculateDamage(Unit attacker, Unit defender, Moves attack, bool crit, double dmg_multiplier, double stab)
         {
-            double dmg_multiplier = 1;
-
+            double damage = 0;
             //calculates the damage multiplier for attacking move on both defender types
-            dmg_multiplier = EffectivenessMultiplier(attack, defender.pokemon);
+            //double dmg_multiplier = EffectivenessMultiplier(attack, defender.pokemon);
+            double critical = (crit) ? 1.5 : 1; //If it is a crit, multiply by 1.5
             
-            //Debug.Log(attack.base_power);
+
+
+            //System.Random rnd = new System.Random();
+
+            //85 to 99
+            double num = Utility.rnd.Next(85, 100);
+            double random = num / 100; //Random number for the random element.
+            double burn = 1;
+
+
+            //doesnt get used
+/*            if (attacker.pokemon.statuses.Contains(Status.get_status("Burn")))
+            {
+                burn = Status.get_status("Burn").affect_stat_mulitplier;
+            }*/
+
             if (attack.base_power > 0)
             {
-                if (attack.category == "Physical")
+                if(attack.category == "Physical")
                 {
-                    attacker.SetDamage(defender.pokemon.current_defense, attacker.pokemon.current_attack, attack.base_power, attack, crit, dmg_multiplier);
+                    damage = (((((2 * attacker.pokemon.level) / 5) + 2) * attack.base_power * (attacker.pokemon.current_attack / defender.pokemon.current_defense)) / 50) + 2; //Basic attacking
                 }
                 else
                 {
-                    attacker.SetDamage(defender.pokemon.current_sp_defense, attacker.pokemon.current_sp_attack, attack.base_power, attack, crit, dmg_multiplier);
+                    damage = (((((2 * attacker.pokemon.level) / 5) + 2) * attack.base_power * (attacker.pokemon.current_sp_attack / defender.pokemon.current_sp_defense)) / 50) + 2;
                 }
+                
+                damage *= (critical * stab * random * dmg_multiplier); //Extra multipliers.
+                //immune moves will never deal damage
+                if (dmg_multiplier == 0) damage = 0;
+                //damaging moves always do 1 damage
+                else if (damage == 0) damage = 1;
             }
             else
             {
-                attacker.SetDamage(1, 0, 0, attack, crit, 1);
+                damage = 0;
             }
-            return dmg_multiplier;
+            if (damage < 0) damage = 0;
 
+            attacker.damage = damage;
 
+            return (int)damage;
         }
+
+
         public static double EffectivenessMultiplier(Moves attack, Pokemon defender)
         {
             return Type.attacking_type_dict[attack.type.name][defender.type1.name] * Type.attacking_type_dict[attack.type.name][defender.type2.name];
@@ -108,31 +132,51 @@ namespace Pokemon
             return struggle;
         }
 
-        public static bool IsGround(Unit unit)
+        public static double STAB(Moves attack, Pokemon attacker)
         {
-            bool x = false;
-            if (unit.pokemon.type1.name.Equals("Ground")) return true;
-            try
-            {
-                if (unit.pokemon.type2.name.Equals("Ground")) return true;
-            }
-            catch
-            {
-
-            }
-            return x;
+            return attack.type.name == attacker.type1.name || attack.type.name == attacker.type2.name ? 1.5 : 1;
         }
 
 
-        public static bool IsImmune(Moves attack, Unit Defender)
+        public static BattleState WhoGoesFirst(Moves playerMove, Moves enemyMove, Pokemon playerPokemon, Pokemon enemyPokemon)
         {
-            bool safeTypeTwo = (Defender.pokemon.type2 != null) ? (attack.status.ignore_type == Defender.pokemon.type2.name) : false;
-            bool immunity = (attack.status.ignore_type == Defender.pokemon.type1.name) || (safeTypeTwo);
-            //Debug.Log("immunity: " + immunity);
-            //Debug.Log("typeTwo: " + Defender.pokemon.type2 + " ignore type: " + attack.status.ignore_type); 
 
-            return immunity;
+            //priorities arent the same
+            //1,0 or 0,1
+            if (playerMove.priority != enemyMove.priority)
+            {
+                return playerMove.priority > enemyMove.priority ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
+
+            }
+            //priorities are the same, do additional checks
+            //1,1, or 0,0
+            if(playerPokemon.current_speed != enemyPokemon.current_speed)
+            {
+                return playerPokemon.current_speed > enemyPokemon.current_speed ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
+            }
+            //same priority, same speed
+            else
+            {
+
+                return Utility.rnd.Next(2) < 1 ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
+            }
+
         }
+
+        public static bool isLethal(int damage, Pokemon target) => damage >= target.current_hp;
+
+        public static int turnsUntilFaint(int attackerDamage, Pokemon defending, BattleState whoGoesFirst)
+        {
+            int turnsUntilFaint = -1;
+            if (attackerDamage > 0)
+            {
+                turnsUntilFaint = (int)Math.Ceiling((double)defending.current_hp / (double)attackerDamage);
+
+                turnsUntilFaint += whoGoesFirst == BattleState.PLAYERTURN ? 0 : 1;
+            }
+            return turnsUntilFaint;
+        }
+
     }
 }
 

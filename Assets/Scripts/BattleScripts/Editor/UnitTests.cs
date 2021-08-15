@@ -121,7 +121,7 @@ namespace Pokemon
             // should deal damage to enemy with neutral damage attacking move
             Moves playerMove = testBench.playerUnit.pokemon.currentMoves[0];
 
-            testBench.AttackDialogue(playerMove, testBench.playerUnit, testBench.enemyUnit, super, null, false);
+            testBench.AttackDialogue(playerMove, testBench.playerUnit, testBench.enemyUnit, super, null, false, 0);
             dialogue = "Enemy Charmander took damage...";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
@@ -129,7 +129,7 @@ namespace Pokemon
 
             // should create status effect on enemy with status move 
             playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
-            testBench.AttackDialogue(playerMove, testBench.playerUnit, testBench.enemyUnit, super, null, false);
+            testBench.AttackDialogue(playerMove, testBench.playerUnit, testBench.enemyUnit, super, null, false, 0);
             dialogue = "Enemy Charmander became Paralyzed!";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
@@ -138,7 +138,7 @@ namespace Pokemon
             // Thunderwave should fail to re-apply to target if already paralyzed
             playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
             testBench.enemyUnit.pokemon.statuses = new ArrayList(new[] { "Paralysis"});
-            testBench.AttackDialogue(playerMove, testBench.playerUnit, testBench.enemyUnit, super, null, false);
+            testBench.AttackDialogue(playerMove, testBench.playerUnit, testBench.enemyUnit, super, null, false, 0);
             dialogue = "Enemy Charmander is already Paralyzed!";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
@@ -148,7 +148,7 @@ namespace Pokemon
             // todo implement IsImmune() in Utility class - this function is just a stub so this test should fail until it is fixed
             playerMove = testBench.playerUnit.pokemon.currentMoves[1]; //Thunderwave
             testBench.enemyUnit.pokemon = new Pokemon(25, 3, "Tackle"); //Pikachu... comment even necessary?
-            testBench.AttackDialogue(playerMove, testBench.playerUnit, testBench.enemyUnit, 0, null, false);
+            testBench.AttackDialogue(playerMove, testBench.playerUnit, testBench.enemyUnit, 0, null, false, 0);
             dialogue = "Enemy Pikachu is immune!";
             Debug.Log("resulting text is: " + testBench.dialogueText.text);
             Debug.Log("expected text is: " + dialogue);
@@ -171,7 +171,7 @@ namespace Pokemon
             int ball = 1; // pokeball
             testBench.ballShakes = -1;
             int rnd = 0;
-            testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
+            //testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
             Debug.Log("ballShakes: " + testBench.ballShakes);
             Debug.Log("ballShakes: " + testBench.state);
             Assert.IsTrue(testBench.ballShakes == 3, "pokemon should be caught, so 3 ball shakes");
@@ -185,7 +185,7 @@ namespace Pokemon
             // ballShakes = 3*(256-129) / (256 - 128) = 127/128 -> 3 shakes
             testBench.ballShakes = -1;
             rnd = 128;
-            testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
+           // testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
             Assert.IsTrue(testBench.ballShakes == 3, "rnd was set to 128, so 3 ball shakes");
             Assert.IsTrue(testBench.state == BattleState.ONLYENEMYTURN, "state was updated after pokemon breaks free");
 
@@ -196,7 +196,7 @@ namespace Pokemon
             // ballShakes = 3*(256-200) / (256 - 128) = 56/128 -> 1.31 -> 2 shakes
             testBench.ballShakes = -1;
             rnd = 200;
-            testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
+            //testBench.DetermineCatchResult(ball, testBench.enemyUnit, rnd);
             Assert.IsTrue(testBench.ballShakes == 2, "rnd was set to 128 for no-status full hp pokemon, so 2 ball shakes");
             Assert.IsTrue(testBench.state == BattleState.ONLYENEMYTURN, "state was updated after pokemon breaks free");
 

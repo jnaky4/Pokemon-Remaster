@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 namespace Pokemon
 {
@@ -11,9 +12,6 @@ namespace Pokemon
         public Pokemon pokemon;
 
         public double damage; //Gets updated each turn depending on all of the battle factors.
-        private double stab = 1; //same type attack bonus
-        private double critical = 1; //critical multiplier
-        private double random = 1; //some randomness to the move damage
         private double[] multipliers = new double[] { (2f / 8f), (2f / 7f), (2f / 6f), (2f / 5f), (2f / 4f), (2f / 3f), (2f / 2f), (3f / 2f), (4f / 2f), (5f / 2f), (6f / 2f), (7f / 2f), (8f / 2f) }; //multipliers for all stages except accuracy and evasion
         private double[] accuracyMultipliers = new double[] { (3f / 9f), (3f / 8f), (3f / 7f), (3f / 6f), (3f / 5f), (3f / 4f), (3f / 3f), (4f / 3f), (5f / 3f), (6f / 3f), (7f / 3f), (8f / 3f), (9f / 3f) };
         private double[] evasionMultipliers = new double[] { (9f / 3f), (8f / 3f), (7f / 3f), (6f / 3f), (5f / 3f), (4f / 3f), (3f / 3f), (3f / 4f), (3f / 5f), (3f / 6f), (3f / 7f), (3f / 8f), (3f / 9f) };
@@ -27,85 +25,7 @@ namespace Pokemon
         public void DoPP(int numMove)
         {
             pokemon.currentMoves[numMove].current_pp--;
-        }
-
-        /// <summary>
-        /// Sets the damage that this unit does for this turn using this specific move.
-        /// </summary>
-        /// <param name="enemyDefense">The enemy's defense.</param>
-        /// <param name="pokemonAttack">The pokemon's attack</param>
-        /// <param name="attackPower">The attack power of the move</param>
-        /// <param name="move">The move itself.</param>
-        /// <param name="crit">if set to <c>true</c> [crit].</param>
-        /// <param name="type1Defend">The type1 defense number.</param>
-        /// <param name="type2Defend">The type2 defense multiplier.</param>
-        public int SetDamage(double enemyDefense, double pokemonAttack, double attackPower, Moves move, bool crit, double damage_multiplier)
-        {
-
-            
-            //Debug.Log("Damage: " + damage);
-            if (double.IsNaN(damage) || double.IsInfinity(damage)) damage = 0;
-
-            stab = 1;
-            if(move.type.name == pokemon.type1.name) stab = 1.5;
-            if(move.type.name == pokemon.type2.name) stab = 1.5;
-
-
-            critical = (crit) ? 1.5 : 1; //If it is a crit, multiply by 1.5
-
-            System.Random rnd = new System.Random();
-            double num = rnd.Next(85, 100);
-            random = num / 100; //Random number for the random element.
-            double burn = 1;
-            if (pokemon.statuses.Contains(Status.get_status("Burn")))
-            {
-                burn = Status.get_status("Burn").affect_stat_mulitplier;
-            }
-            try
-            {
-                if (enemyDefense == 0)
-                {
-                    Debug.Log("Enemy defense is 0");
-                }
-                if (move.base_power > 0) //If this does actual attacking.
-                {
-                    damage = (((((2 * pokemon.level) / 5) + 2) * attackPower * (pokemonAttack / enemyDefense)) / 50) + 2; //Basic attacking
-                    damage *= (critical * stab * random * damage_multiplier * burn); //Extra multipliers.
-                    if (damage_multiplier == 0) damage = 0;
-                    else if (damage == 0) damage = 1;
-                }
-                else
-                {
-                    damage = 0;
-                }
-            }
-            catch (DivideByZeroException ex)
-            {
-                Debug.LogWarning(ex.ToString());
-            }
-            catch (Exception ex) //If we fuck up, you will get fucked up.
-            {
-                damage = 100000;
-                Debug.LogError(ex.ToString());
-            }
-            if (double.IsNaN(damage) || double.IsInfinity(damage))
-            {
-                Debug.LogError("Damage is not a number.");
-            }
-            if (damage < 0) damage = 0; //If somehow you have negative damage, now you dont.
-
-            //doesnt work correctly
-            /*            if (move.heal > 0)
-                        {
-                            this.TakeDamage(-damage * move.heal);
-                        }
-                        if (move.heal < 0)
-                        {
-                            this.TakeDamage(damage * -move.heal);
-                        }*/
-            return (int)damage;
-
-        }
+        } 
 
         /// <summary>
         /// Applies damage to this current pokemon, based on the function above (which was applied to the opponent pokemon).
@@ -129,136 +49,186 @@ namespace Pokemon
         /// Stages are so everything can be consistant and looks alright. Idk, but they are important.
         /// </summary>
         /// <param name="attack">The attack that raises/lowers stages.</param>
-        /// <param name="enemy">The enemy whose stage might get set.</param>
-        public void SetStages(Moves attack, Unit enemy)
+        /// <param name="Target">The enemy whose stage might get set.</param>
+        public static void SetStages(Moves attack, Unit Attacker, Unit Defender)
         {
-            if (attack.target.CompareTo("enemy") == 0 || attack.target.CompareTo("both") == 0) //If you are staging the enemy
+            //Default Target
+            Unit Target = Defender;
+
+            //Pick target of stat change, more option that self, enemy, just not implemented yet  
+            if (attack.status_target == "self") Target = Attacker;
+            if (attack.status_target == "enemy") Target = Defender;
+
+            //roll to see if stat change applies
+            System.Random rnd = new System.Random();
+
+            int chance_apply_stat = (int)attack.chance_stat_change * 100;
+            int roll = rnd.Next(1, 101); 
+
+            if (roll <= chance_apply_stat)
             {
-                switch (attack.current_stat_change) //Switch statement should be self-explanatory.
+                String[] multiple_stat_changes = attack.target.Split(',');
+                foreach (string statChange in multiple_stat_changes)
                 {
-                    case "Attack":
-                        enemy.pokemon.attack_stage += attack.stat_change_amount; //changes it by the amount the attack changes. It is typically 1.
-                        if (enemy.pokemon.attack_stage > 6) enemy.pokemon.attack_stage = 6; //If you go above or below 6, set it to 6
-                        if (enemy.pokemon.attack_stage < -6) enemy.pokemon.attack_stage = -6;
-                        enemy.pokemon.current_attack = (int)(enemy.pokemon.max_attack * multipliers[enemy.pokemon.attack_stage + 6]); //Makes your current stat based on the multiplier at the stage you are at.
-                        break;
 
-                    case "Defense":
-                        enemy.pokemon.defense_stage += attack.stat_change_amount;
-                        if (enemy.pokemon.defense_stage > 6) enemy.pokemon.defense_stage = 6;
-                        if (enemy.pokemon.defense_stage < -6) enemy.pokemon.defense_stage = -6;
-                        enemy.pokemon.current_defense = (int)(enemy.pokemon.max_defense * multipliers[enemy.pokemon.defense_stage + 6]);
-                        //Debug.Log("Index: " + (enemy.pokemon.defense_stage + 6) + " At Index: " + multipliers[enemy.pokemon.defense_stage + 6] + " Max: " + enemy.pokemon.max_defense +
-                        //    " Current: " + enemy.pokemon.current_defense);
-                        if (enemy.pokemon.current_defense == (double)0) enemy.pokemon.current_defense = 1;
-                        break;
+                    if (attack.target == "self" || attack.target == "enemy") //If you are staging the enemy
+                    {
+                        switch (statChange) //Switch statement should be self-explanatory.
+                        {
 
-                    case "Speed":
-                        enemy.pokemon.speed_stage += attack.stat_change_amount;
-                        if (enemy.pokemon.speed_stage > 6) enemy.pokemon.speed_stage = 6;
-                        if (enemy.pokemon.speed_stage < -6) enemy.pokemon.speed_stage = -6;
-                        enemy.pokemon.current_speed = (int)((double)enemy.pokemon.max_speed * multipliers[enemy.pokemon.speed_stage + 6]);
-                        break;
+                            case "Attack":
+                                Target.pokemon.attack_stage += attack.stat_change_amount; //changes it by the amount the attack changes. It is typically 1.
+                                if (Target.pokemon.attack_stage > 6) Target.pokemon.attack_stage = 6; //If you go above or below 6, set it to 6
+                                if (Target.pokemon.attack_stage < -6) Target.pokemon.attack_stage = -6;
+                                Target.pokemon.current_attack = (int)(Target.pokemon.max_attack * Target.multipliers[Target.pokemon.attack_stage + 6]); //Makes your current stat based on the multiplier at the stage you are at.
+                                break;
 
-                    case "Special Attack":
-                        enemy.pokemon.sp_attack_stage += attack.stat_change_amount;
-                        if (enemy.pokemon.sp_attack_stage > 6) enemy.pokemon.sp_attack_stage = 6;
-                        if (enemy.pokemon.sp_attack_stage < -6) enemy.pokemon.sp_attack_stage = -6;
-                        enemy.pokemon.current_sp_attack = (int)(enemy.pokemon.max_sp_attack * multipliers[enemy.pokemon.sp_attack_stage + 6]);
-                        break;
+                            case "Defense":
+                                Target.pokemon.defense_stage += attack.stat_change_amount;
+                                if (Target.pokemon.defense_stage > 6) Target.pokemon.defense_stage = 6;
+                                if (Target.pokemon.defense_stage < -6) Target.pokemon.defense_stage = -6;
+                                Target.pokemon.current_defense = (int)(Target.pokemon.max_defense * Target.multipliers[Target.pokemon.defense_stage + 6]);
+                                //Debug.Log("Index: " + (enemy.pokemon.defense_stage + 6) + " At Index: " + multipliers[enemy.pokemon.defense_stage + 6] + " Max: " + enemy.pokemon.max_defense +
+                                //    " Current: " + enemy.pokemon.current_defense);
+                                if (Target.pokemon.current_defense == (double)0) Target.pokemon.current_defense = 1;
+                                break;
 
-                    case "Special Defense":
-                        enemy.pokemon.sp_defense_stage += attack.stat_change_amount;
-                        if (enemy.pokemon.sp_defense_stage > 6) enemy.pokemon.sp_defense_stage = 6;
-                        if (enemy.pokemon.sp_defense_stage < -6) enemy.pokemon.sp_defense_stage = -6;
-                        enemy.pokemon.current_sp_defense = (int)(enemy.pokemon.max_sp_defense * multipliers[enemy.pokemon.sp_defense_stage + 6]);
-                        break;
+                            case "Speed":
+                                Target.pokemon.speed_stage += attack.stat_change_amount;
+                                if (Target.pokemon.speed_stage > 6) Target.pokemon.speed_stage = 6;
+                                if (Target.pokemon.speed_stage < -6) Target.pokemon.speed_stage = -6;
+                                Target.pokemon.current_speed = (int)((double)Target.pokemon.max_speed * Target.multipliers[Target.pokemon.speed_stage + 6]);
+                                break;
 
-                    case "Critical": //I don't know why critical is different, but I don't want to change anything now.
-                        enemy.pokemon.critical_stage += attack.stat_change_amount;
-                        break;
+                            case "Special Attack":
+                                Target.pokemon.sp_attack_stage += attack.stat_change_amount;
+                                if (Target.pokemon.sp_attack_stage > 6) Target.pokemon.sp_attack_stage = 6;
+                                if (Target.pokemon.sp_attack_stage < -6) Target.pokemon.sp_attack_stage = -6;
+                                Target.pokemon.current_sp_attack = (int)(Target.pokemon.max_sp_attack * Target.multipliers[Target.pokemon.sp_attack_stage + 6]);
+                                break;
 
-                    case "Evasion":
-                        enemy.pokemon.evasion_stage += attack.stat_change_amount;
-                        if (enemy.pokemon.evasion_stage > 6) enemy.pokemon.evasion_stage = 6;
-                        if (enemy.pokemon.evasion_stage < -6) enemy.pokemon.evasion_stage = -6;
-                        enemy.pokemon.current_evasion = (int)(1 * evasionMultipliers[enemy.pokemon.evasion_stage + 6]);
-                        break;
+                            case "Special Defense":
+                                Target.pokemon.sp_defense_stage += attack.stat_change_amount;
+                                if (Target.pokemon.sp_defense_stage > 6) Target.pokemon.sp_defense_stage = 6;
+                                if (Target.pokemon.sp_defense_stage < -6) Target.pokemon.sp_defense_stage = -6;
+                                Target.pokemon.current_sp_defense = (int)(Target.pokemon.max_sp_defense * Target.multipliers[Target.pokemon.sp_defense_stage + 6]);
+                                break;
 
-                    case "Accuracy":
-                        enemy.pokemon.sp_defense_stage += attack.stat_change_amount;
-                        if (enemy.pokemon.sp_defense_stage > 6) enemy.pokemon.sp_defense_stage = 6;
-                        if (enemy.pokemon.sp_defense_stage < -6) enemy.pokemon.sp_defense_stage = -6;
-                        enemy.pokemon.current_accuracy = (int)(1 * accuracyMultipliers[enemy.pokemon.accuracy_stage + 6]);
-                        break;
+                            case "Critical": //I don't know why critical is different, but I don't want to change anything now.
+                                Target.pokemon.critical_stage += attack.stat_change_amount;
+                                break;
 
-                    default:
-                        break;
-                }
-            }
-            if (attack.target.CompareTo("self") == 0 || attack.target.CompareTo("both") == 0)
-            {
-                switch (attack.current_stat_change)
-                {
-                    case "Attack":
-                        pokemon.attack_stage += attack.stat_change_amount;
-                        if (pokemon.attack_stage > 6) pokemon.attack_stage = 6;
-                        if (pokemon.attack_stage < -6) pokemon.attack_stage = -6;
-                        pokemon.current_attack = (int)(pokemon.max_attack * multipliers[pokemon.attack_stage + 6]);
-                        break;
+                            case "Evasion":
+                                Target.pokemon.evasion_stage += attack.stat_change_amount;
+                                if (Target.pokemon.evasion_stage > 6) Target.pokemon.evasion_stage = 6;
+                                if (Target.pokemon.evasion_stage < -6) Target.pokemon.evasion_stage = -6;
+                                Target.pokemon.current_evasion = (int)(1 * Target.evasionMultipliers[Target.pokemon.evasion_stage + 6]);
+                                break;
 
-                    case "Defense":
-                        pokemon.defense_stage += attack.stat_change_amount;
-                        if (pokemon.defense_stage > 6) pokemon.defense_stage = 6;
-                        if (pokemon.defense_stage < -6) pokemon.defense_stage = -6;
-                        pokemon.current_defense = (int)(pokemon.max_defense * multipliers[pokemon.defense_stage + 6]);
-                        if (pokemon.current_defense == 0) pokemon.current_defense = 1;
-                        break;
+                            case "Accuracy":
+                                Target.pokemon.sp_defense_stage += attack.stat_change_amount;
+                                if (Target.pokemon.sp_defense_stage > 6) Target.pokemon.sp_defense_stage = 6;
+                                if (Target.pokemon.sp_defense_stage < -6) Target.pokemon.sp_defense_stage = -6;
+                                Target.pokemon.current_accuracy = (int)(1 * Target.accuracyMultipliers[Target.pokemon.accuracy_stage + 6]);
+                                break;
 
-                    case "Speed":
-                        pokemon.speed_stage += attack.stat_change_amount;
-                        if (pokemon.speed_stage > 6) pokemon.speed_stage = 6;
-                        if (pokemon.speed_stage < -6) pokemon.speed_stage = -6;
-                        pokemon.current_speed = (int)(pokemon.max_speed * multipliers[pokemon.speed_stage + 6]);
-                        break;
-
-                    case "Special Attack":
-                        pokemon.sp_attack_stage += attack.stat_change_amount;
-                        if (pokemon.sp_attack_stage > 6) pokemon.sp_attack_stage = 6;
-                        if (pokemon.sp_attack_stage < -6) pokemon.sp_attack_stage = -6;
-                        pokemon.current_sp_attack = (int)(pokemon.max_sp_attack * multipliers[pokemon.sp_attack_stage + 6]);
-                        break;
-
-                    case "Special Defense":
-                        pokemon.sp_defense_stage += attack.stat_change_amount;
-                        if (pokemon.sp_defense_stage > 6) pokemon.sp_defense_stage = 6;
-                        if (pokemon.sp_defense_stage < -6) pokemon.sp_defense_stage = -6;
-                        pokemon.current_sp_defense = (int)(pokemon.max_sp_defense * multipliers[pokemon.sp_defense_stage + 6]);
-                        break;
-
-                    case "Critical":
-                        pokemon.critical_stage += attack.stat_change_amount;
-                        break;
-
-                    case "Evasion":
-                        pokemon.evasion_stage += attack.stat_change_amount;
-                        if (pokemon.evasion_stage > 6) pokemon.evasion_stage = 6;
-                        if (pokemon.evasion_stage < -6) pokemon.evasion_stage = -6;
-                        pokemon.current_evasion = (int)(1 * evasionMultipliers[pokemon.evasion_stage + 6]);
-                        break;
-
-                    case "Accuracy":
-                        pokemon.sp_defense_stage += attack.stat_change_amount;
-                        if (pokemon.sp_defense_stage > 6) pokemon.sp_defense_stage = 6;
-                        if (pokemon.sp_defense_stage < -6) pokemon.sp_defense_stage = -6;
-                        pokemon.current_accuracy = (int)(1 * accuracyMultipliers[pokemon.accuracy_stage + 6]);
-                        break;
-
-                    default:
-                        break;
+                            default:
+                                break;
+                        }
+                    }
                 }
             }
         }
+
+
+
+        //TODO Finish out AI decisions 
+        public int DecideMove(Moves playerAttack, Unit Player)
+        {
+            //<move_name, score> 
+            Dictionary<string, int> available_moves = new Dictionary<string, int>();
+
+            //without prioritymove, who will go first
+            BattleState whoGoesFirst = Utility.WhoGoesFirst(Moves.get_move("Tackle"), playerAttack, pokemon, Player.pokemon);
+            //Debug.Log(whoGoesFirst);
+
+            //Data on players Pokemon
+            double playerEmul = Utility.EffectivenessMultiplier(playerAttack, pokemon);
+            double playerStab = Utility.STAB(playerAttack, Player.pokemon);
+            int playerDamage = Utility.CalculateDamage(Player, this, playerAttack, false, playerEmul, playerStab);
+            bool playerAttackLethal = Utility.isLethal(playerDamage, pokemon);
+
+
+            int AIturnsUntilFaint = Utility.turnsUntilFaint(playerDamage, pokemon, whoGoesFirst);
+
+
+             
+
+            Debug.Log("AI HP: " + pokemon.current_hp);
+            Debug.Log("Player Damage: " + playerDamage);
+            Debug.Log("AI will faint in " + AIturnsUntilFaint + " turns");
+
+
+            //get sum of moves
+            int num_moves = this.pokemon.CountMoves();
+            //Debug.Log("Num Moves: " + num_moves);
+
+            int decided_attack = 0;
+            int decided_attack_damage = 0;
+            int playerTurnsUntilFaint = -1;
+
+            bool killsEnemy = false;
+
+            
+            if(whoGoesFirst == BattleState.PLAYERTURN && playerAttackLethal)
+            {
+                Debug.Log("AI will die before it can attack");
+                //TODO Check for swap
+                return 0;
+            }
+
+            
+            //Debug.Log("Enemy has " + enemyhealth + " hp.");
+            
+
+            //does basic damage calculation for each move the AI pokemon has
+            for (int i = 0; i < num_moves; i++)
+            {
+                //Debug.Log(this.pokemon.currentMoves[i].name);
+
+                if(this.pokemon.currentMoves[i].base_power > 0 && this.pokemon.currentMoves[i].current_pp > 0)
+                {
+                    double emul = Utility.EffectivenessMultiplier(this.pokemon.currentMoves[i], Player.pokemon);
+                    double stab = Utility.STAB(this.pokemon.currentMoves[i], this.pokemon);
+                    //Debug.Log("Effectiveness: " + emul);
+                    int potentialDmg = Utility.CalculateDamage(this, Player, this.pokemon.currentMoves[i], false, emul, stab);
+                    available_moves.Add(this.pokemon.currentMoves[i].name, potentialDmg);
+                    Debug.Log(this.pokemon.currentMoves[i].name + " might do " + potentialDmg + " damage.");
+                }
+            }
+
+
+            //sets decided attack to which move will do the most damage
+            foreach (KeyValuePair<string, int> attack in available_moves)
+            {
+                if(attack.Value > decided_attack_damage)
+                {
+                    decided_attack = this.pokemon.getMoveIndex(attack.Key);
+                    decided_attack_damage = attack.Value;
+                    killsEnemy = Utility.isLethal(decided_attack_damage, Player.pokemon);
+                    //Debug.Log(attack.Key + " Lethal? " + Utility.isLethal(decided_attack_damage, Player.pokemon));
+                    playerTurnsUntilFaint = Utility.turnsUntilFaint(decided_attack_damage, Player.pokemon, whoGoesFirst);
+                    Debug.Log("Player HP: " + Player.pokemon.current_hp);
+                    Debug.Log("AI Damage: " + decided_attack_damage);
+                    Debug.Log("Player will faint in " + playerTurnsUntilFaint + " turns");
+
+                }
+
+            }
+                
+            return decided_attack;
+        }
+        
 
 
     }

@@ -147,10 +147,6 @@ namespace Pokemon
         public GameObject poke5;
         public GameObject poke6;
         public Button backPoke;
-
-        public System.Random rnd = new System.Random();
-
-
       
         private int playerContinuingAttack = 0;
         private int enemyContinuingAttack = 0;
@@ -161,6 +157,15 @@ namespace Pokemon
         private int phaseOpponentSprite = 0;
 
         private bool wantsToEvolve;
+
+        public int player_attack_damage = 0;
+        Status player_applied_status;
+        double player_dmg_multiplier;
+        double player_stab;
+        bool player_crit;
+        BattleState who_went_first;
+        Moves player_attack;
+
 
         #endregion Declaration of variables
 
@@ -482,25 +487,6 @@ namespace Pokemon
             }
         }
 
-        public BattleState WhoGoesFirst(Moves playerMove, Moves enemyMove)
-        {
-
-            //priorities arent the same
-            //1,0 or 0,1
-            if (playerMove.priority != enemyMove.priority)
-            {
-                return playerMove.priority > enemyMove.priority ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
-
-            }
-            //priorities are the same, do additional checks
-            //1,1, or 0,0
-            else
-            {
-                return playerUnit.pokemon.current_speed > enemyUnit.pokemon.current_speed ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
-            }
-
-
-        }
 
         #endregion Decision functions to see who goes first
         #region Attack functions
@@ -520,7 +506,7 @@ namespace Pokemon
             CloseBallsMenu();
 
 
-
+            //TODO find out what this does
             if (playerMoveNum >= 0)
             {
                 if (playerUnit.pokemon.currentMoves[playerMoveNum].current_pp == 0)
@@ -535,7 +521,7 @@ namespace Pokemon
 
             //Debug.Log("MOVE NUMBER" + playerMoveNum);
 
-
+            //TODO check if Struggle is working properly and how to clean this up
             int moveNum = -1;
             bool struggle = false;
             if (enemyContinuingAttack == 0) struggle = Utility.EnemyStruggle(enemyUnit);
@@ -555,26 +541,33 @@ namespace Pokemon
             }
             else
             {            
-                do
-                {
-                    //Pick move for AI decision
-                    //enemyUnit.pokemon.decide_move();
-                    moveNum = rnd.Next(enemyUnit.pokemon.CountMoves());
-                    enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
-                }
-                while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);
+/*                do
+                {*/
+                //Pick move for AI decision
+                //enemyUnit.pokemon.decide_move();
+                moveNum = enemyUnit.DecideMove(playerMove, playerUnit);
+                enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
+                
+                Debug.Log("Enemy Decided to use: " + enemyMove.name);
+/*                    moveNum = rnd.Next(enemyUnit.pokemon.CountMoves());
+                enemyMove = enemyUnit.pokemon.currentMoves[moveNum];*/
+/*                }
+                while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);*/
             }
+
             ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
             SetDownButtons();
+
+            //grabs name for animation
             playerMoveName = playerMove.name;
             enemyMoveName = enemyMove.name;
 
-
+            //TODO Mulitturn attack logic, check if correctly works
             if (playerMoveNum != -2 && playerMove.max_turns > 1)
             {
-                playerContinuingAttack = rnd.Next(playerMove.min_turns, playerMove.max_turns + 1);
+                playerContinuingAttack = Utility.rnd.Next(playerMove.min_turns, playerMove.max_turns + 1);
                 playerMoveStorage = playerMove;
             }
 
@@ -584,29 +577,41 @@ namespace Pokemon
             
             else if (enemyMove.max_turns > 1)
             {
-                enemyContinuingAttack = rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
+                enemyContinuingAttack = Utility.rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
                 enemyMoveStorage = enemyMove;
             }
 
 
-
+            /*
+                TODO move inside logic of if the attack hit
+                shouldnt apply if:
+                    attack missed
+                    multi turn move
+             
+             */
             if (playerMoveNum >= 0) playerUnit.DoPP(playerMoveNum);
             
-            if (moveNum >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
+            if (enemyMove.current_pp >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
 
 
+            /*
+             * TODO figure out what this does
+             * hit when pokeball catch fails
+             */
 
-            // is this for pokemon switches?
-            // hit when pokeball catch fails
+           
+            // hit when pokeball catch fails or pokemon fails to run away
             if (playerMoveNum == -3) state = BattleState.ONLYENEMYTURN;
             else
             {
-                state = WhoGoesFirst(playerMove, enemyMove);
+                state = Utility.WhoGoesFirst(playerMove, enemyMove, playerUnit.pokemon, enemyUnit.pokemon);
+                who_went_first = state;
+
             }
             
 
 
-            
+            //TODO need to merge Multiturn attacks with this logic
             switch (state)
             {
 
@@ -704,7 +709,7 @@ namespace Pokemon
                 if (AccuracyCheck(Attack, Attacker, Defender))
                 {
                     //number of moves per turn the player/enemy can attack
-                    int NumTimesAttack = rnd.Next(Attack.min_per_turn, Attack.max_per_turn + 1);
+                    int NumTimesAttack = Utility.rnd.Next(Attack.min_per_turn, Attack.max_per_turn + 1);
 
                     for (int k = 0; k < NumTimesAttack; k++)
                     {
@@ -723,18 +728,29 @@ namespace Pokemon
 
             }
 
+              
+        }
+        public void PrintStats(Unit Attacker)
+        {
+            Debug.Log(Attacker.pokemon.name);
+            Debug.Log("Current/Max HP  " + Attacker.pokemon.current_hp + "/" + Attacker.pokemon.max_hp);
+            Debug.Log("Current/Max Attack " + Attacker.pokemon.current_attack + "/" + Attacker.pokemon.max_attack);
+            Debug.Log("Current/Max SP_Attack " + Attacker.pokemon.current_sp_attack + "/" + Attacker.pokemon.max_sp_attack);
+            Debug.Log("Current/Max Defense " + Attacker.pokemon.current_defense + "/" + Attacker.pokemon.max_defense);
+            Debug.Log("Current/Max SP_Defense " + Attacker.pokemon.current_sp_defense + "/" + Attacker.pokemon.max_sp_defense);
+            Debug.Log("Current/Max speed " + Attacker.pokemon.current_speed + "/" + Attacker.pokemon.max_speed);
 
         }
 
         public bool AccuracyCheck(Moves attack, Unit Attacker, Unit Defender)
         {
-            int num = rnd.Next(1, 100);
+            int num = Utility.rnd.Next(1, 100);
             if (num <= (attack.accuracy * Attacker.pokemon.current_accuracy * Defender.pokemon.current_evasion)) return true;
             else return false;
 
         }
 
-        public IEnumerator AttackDialogue(Moves attack, Unit Attacker, Unit Defender, double effectivenessMultiplier, Status applied_Status, bool crit)
+        public IEnumerator AttackDialogue(Moves attack, Unit Attacker, Unit Defender, double effectivenessMultiplier, Status applied_Status, bool crit, int damage)
         {
 
             //Your/enemy Pokemons stat rose/fell
@@ -777,7 +793,7 @@ namespace Pokemon
                     case 1:
                     default:
                         GameController.soundFX = "Damage";
-                        dialogueText.text = namePrefix + Defender.pokemon.name + " took damage...";
+                        dialogueText.text = namePrefix + Defender.pokemon.name + " took " + damage + " damage";
                         break;
                 }
                 yield return new WaitForSeconds(2);
@@ -808,6 +824,10 @@ namespace Pokemon
         /// <returns>Nothing</returns>
         private IEnumerator AttackXYZ(Moves attack, Unit Attacker, Unit Defender)
         {
+
+            //PrintStats(Attacker);
+
+
             if (state == BattleState.PLAYERTURN)
             {
                 ClosePokemonMenu();
@@ -821,14 +841,9 @@ namespace Pokemon
             yield return new WaitForSeconds(0.75f);
 
 
-            if(state == BattleState.PLAYERTURN)
-            {
-                playerInitialAttack = true;
-            }
-            else
-            {
-                enemyInitialAttack = true;
-            }
+            if(state == BattleState.PLAYERTURN) playerInitialAttack = true;
+            else enemyInitialAttack = true;
+
                     
             if (attack.name == "Growl") GameController.soundFX = Attacker.pokemon.dexnum.ToString();
             else GameController.soundFX = attack.name;
@@ -839,13 +854,25 @@ namespace Pokemon
             endofanimation = false;
 
             bool crit = Utility.CriticalHit(Attacker);
+            
 
-            if (attack.current_stat_change.CompareTo("null") != 0) Attacker.SetStages(attack, Defender);
+
+            if (attack.current_stat_change != "null") Unit.SetStages(attack, Attacker, Defender);
+
+
             Status applied_Status = Status.Apply_Attack_Status_Effect(attack, Defender);
-            double super = Utility.DoDamage(Attacker, Defender, attack, crit);
+            
+            double dmg_multiplier = Utility.EffectivenessMultiplier(attack, Defender.pokemon);
+            //Debug.Log("Damage Multiplier: " + dmg_multiplier);
+            double stab = Utility.STAB(attack, Attacker.pokemon);
+            //Debug.Log("Stab: " + stab);
+
+            int damage = Utility.CalculateDamage(Attacker, Defender, attack, crit, dmg_multiplier, stab);
+
             //Debug.Log(playerUnit.damage);
 
             bool isDead = Defender.TakeDamage(Attacker.damage);
+
             if (attack.heal > 0) Attacker.TakeDamage(-Attacker.damage * attack.heal);
             if (attack.heal < 0) Attacker.TakeDamage(Attacker.damage * -attack.heal);
 
@@ -866,10 +893,11 @@ namespace Pokemon
                 playerHUD.SetHP(Defender.pokemon.current_hp, Defender, "enemy");
             }
 
-            yield return StartCoroutine(AttackDialogue(attack, Attacker, Defender, super, applied_Status, crit));
+            yield return StartCoroutine(AttackDialogue(attack, Attacker, Defender, dmg_multiplier, applied_Status, crit, damage));
 
             yield return StartCoroutine(IsEitherPokemonDead());
         }
+
 
         public IEnumerator GainEXP()
         {
@@ -1123,7 +1151,7 @@ namespace Pokemon
             yield return StartCoroutine(SeeIfEndBattle());
         }
 
-        public void DetermineCatchResult(int ball, Unit enemyUnit, int rnd)
+        public void DetermineCatchResult(string ball, Unit enemyUnit, int rnd)
         {
             Double statusModifier = 1.0;
             foreach (String status in enemyUnit.pokemon.statuses)
@@ -1146,16 +1174,16 @@ namespace Pokemon
             Double ballModifier = 0.0;
             switch (ball)
             {
-                case 1: // pokeball
+                case "Poke": // pokeball
                     ballModifier = 0.5;
                     break;
-                case 2: // greatball
+                case "Great": // greatball
                     ballModifier = 0.75;
                     break;
-                case 3: // ultraball
+                case "Ultra": // ultraball
                     ballModifier = 1.0;
                     break;
-                case 4: // masterball
+                case "Master": // masterball
                     ballModifier = 256.0;
                     break;
 
@@ -1177,23 +1205,9 @@ namespace Pokemon
             
         }
 
-        public IEnumerator HandleNotEnoughPokeBalls(int typeOfPokeball)
+        public IEnumerator HandleNotEnoughPokeBalls(string typeOfPokeball)
         {
-            switch(typeOfPokeball)
-            {
-                case 1:
-                    dialogueText.text = "You don't have enough Poke Balls!";
-                    break;
-                case 2:
-                    dialogueText.text = "You don't have enough Great Balls!";
-                    break;
-                case 3:
-                    dialogueText.text = "You don't have enough Ultra Balls!";
-                    break;
-                case 4:
-                    dialogueText.text = "You don't have enough Master Balls!";
-                    break;
-            }
+            dialogueText.text = "You don't have enough " + typeOfPokeball + " Balls!";
             yield return new WaitForSeconds(2);
             PlayerMakesDecision();
             yield break;
@@ -1204,7 +1218,7 @@ namespace Pokemon
         /// </summary>
         /// <param name="typeOfPokeball">The type of pokeball. 1 = Poke, 2 = Great, 3 = Ultra, 4 = Master</param>
         /// <returns>Nothing.</returns>
-        private IEnumerator CatchPokemon(int typeOfPokeball)
+        private IEnumerator CatchPokemon(string typeOfPokeball)
         {
             SetDownButtons();
 
@@ -1219,22 +1233,24 @@ namespace Pokemon
 
             // set dialogue if used ball and has ball in inventory
             // otherwise break and have player do turn again
-            if ((typeOfPokeball == 1) && (player.numPokeBalls > 0)) //If you have a Poke Ball
+            
+
+            if ((typeOfPokeball == "Poke") && (player.numPokeBalls > 0)) //If you have a Poke Ball
             {
                 player.numPokeBalls--;
                 dialogueText.text = "Used Poke Ball!";
             }
-            else if ((typeOfPokeball == 2) && (player.numGreatBalls > 0))
+            else if ((typeOfPokeball == "Great") && (player.numGreatBalls > 0))
             {
                 player.numGreatBalls--;
                 dialogueText.text = "Used Great Ball!";
             }
-            else if ((typeOfPokeball == 3) && (player.numUltraBalls > 0))
+            else if ((typeOfPokeball == "Ultra") && (player.numUltraBalls > 0))
             {
                 player.numUltraBalls--;
                 dialogueText.text = "Used Ultra Ball!";
             }
-            else if ((typeOfPokeball == 4) && (player.numMasterBalls > 0))
+            else if ((typeOfPokeball == "Master") && (player.numMasterBalls > 0))
             {
                 player.numMasterBalls--;
                 dialogueText.text = "Used Master Ball!";
@@ -1249,7 +1265,7 @@ namespace Pokemon
             // up to 3 shakes, it is possible to have 3 shakes and catch / not catch pokemon
             // shakes are scaled so that if the roll is far away from the catch threshold it is 1 shake
             // if the roll is very close to the catch threshold it is 3 shakes
-            int catchRoll = (int) rnd.Next(256);
+            int catchRoll = (int) Utility.rnd.Next(256);
             DetermineCatchResult(typeOfPokeball, enemyUnit, catchRoll);
             //PokeballShakes was optimized so much that we need a wait here
             yield return new WaitForSeconds(.5f);
@@ -1657,7 +1673,7 @@ namespace Pokemon
                 }
                 else
                 {
-                    int r = GameController._rnd.Next(256);
+                    int r = Utility.rnd.Next(256);
                     if (r < f)
                     {
                         state = BattleState.RUNAWAY;
@@ -1889,7 +1905,7 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(CatchPokemon(1));
+            StartCoroutine(CatchPokemon("Poke"));
         }
 
         /// <summary>
@@ -1899,7 +1915,7 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(CatchPokemon(2));
+            StartCoroutine(CatchPokemon("Great"));
         }
 
         /// <summary>
@@ -1909,7 +1925,7 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(CatchPokemon(3));
+            StartCoroutine(CatchPokemon("Ultra"));
         }
 
         /// <summary>
@@ -1919,7 +1935,7 @@ namespace Pokemon
         {
             CloseBallsMenu();
             SetDownButtons();
-            StartCoroutine(CatchPokemon(4));
+            StartCoroutine(CatchPokemon("Master"));
         }
 
         public void Forget1()
@@ -2697,28 +2713,10 @@ namespace Pokemon
                 dialogueText.text = poke.name + " won't learn " + poke.learned_move.name + "!";
                 yield return new WaitForSeconds(2);
             }
-            else if (move == 1)
+            else
             {
-                dialogueText.text = poke.name + " forgot " + poke.currentMoves[0].name + " and learned " + poke.learned_move.name + "!";
-                poke.currentMoves[0] = poke.learned_move;
-                yield return new WaitForSeconds(2);
-            }
-            else if (move == 2)
-            {
-                dialogueText.text = poke.name + " forgot " + poke.currentMoves[1].name + " and learned " + poke.learned_move.name + "!";
-                poke.currentMoves[1] = poke.learned_move;
-                yield return new WaitForSeconds(2);
-            }
-            else if (move == 3)
-            {
-                dialogueText.text = poke.name + " forgot " + poke.currentMoves[2].name + " and learned " + poke.learned_move.name + "!";
-                poke.currentMoves[2] = poke.learned_move;
-                yield return new WaitForSeconds(2);
-            }
-            else if (move == 4)
-            {
-                dialogueText.text = poke.name + " forgot " + poke.currentMoves[3].name + " and learned " + poke.learned_move.name + "!";
-                poke.currentMoves[3] = poke.learned_move;
+                dialogueText.text = poke.name + " forgot " + poke.currentMoves[move - 1].name + " and learned " + poke.learned_move.name + "!";
+                poke.currentMoves[move-1] = poke.learned_move;
                 yield return new WaitForSeconds(2);
             }
             forgetMenuOpen = false;
