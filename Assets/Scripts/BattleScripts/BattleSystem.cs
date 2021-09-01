@@ -1059,8 +1059,8 @@ namespace Pokemon
                 yield return new WaitForSeconds(2);
             }
 
-            //Only applies to statuses that have %chance unable to attack and rolls unable to attack from CanAttack()
-            if (!Player.pokemon.CanAttack())
+            //Only applies to statuses that have %chance unable to attack and rolls unable to attack from RollCanAttack()
+            if (!Player.pokemon.RollCanAttack())
             {
 
                 //Debug.Log("Unable to attack becasue of :" + playerUnit.pokemon.UnableToAttackStatusName);

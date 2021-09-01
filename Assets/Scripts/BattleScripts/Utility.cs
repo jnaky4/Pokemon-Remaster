@@ -18,10 +18,23 @@ namespace Pokemon
         /// <returns>Returns true if the hit becomes a crit, false otherwise.</returns>
         public static bool CriticalHit(Unit unit)
         {
-            
 
 
-            int num = Utility.rnd.Next(1, 100);
+            // Next Range is from:
+            //      (min to max-1) 
+            // ie   1 to (101 - 1) 
+            // or   1 to 100
+
+            /*
+             * using Gen 2-5 Crit Pobability based on stages
+             * Gen II-V	            Gen VI	        Gen VII onwards:
+                +0	1/16 (6.25%)	1/16 (6.25%)	1/24 (~4.167%)
+                +1	1/8 (12.5%)	    1/8 (12.5%)	    1/8 (12.5%)
+                +2	1/4 (25%)	    1/2 (50%)	    1/2 (50%)
+                +3	1/3 (~33.3%)	Always (100%)	Always (100%)
+                ++4 1/2 (50%)       Always (100%)	Always (100%)
+             */
+            int num = Utility.rnd.Next(1, 101);
             if (unit.pokemon.critical_stage == 0)
             {
                 if (num <= 6) return true;
@@ -45,6 +58,33 @@ namespace Pokemon
             return false;
         }
 
+        public static double CritChance(Unit unit)
+        {
+            double chance = 0;
+            switch (unit.pokemon.critical_stage)
+            {
+                case 0:
+                    chance = 1.0 / 16.0;
+                    break;
+                case 1:
+                    chance = 1.0 / 8.0;
+                    break;
+                case 2:
+                    chance = 1.0 / 4.0;
+                    break;
+                case 3:
+                    chance = 1.0 / 3.0;
+                    break;
+                case 4:
+                case 5:
+                case 6:
+                    chance = 1.0 / 2.0;
+                    break;
+            }
+            return chance;
+
+        }
+
 
         /// <summary>
         /// Calculates how much damage is done based on the types of the attacker and defender
@@ -54,21 +94,33 @@ namespace Pokemon
         /// <param name="attack">The move we want to use.</param>
         /// <param name="crit">A bool that lets us know if the attack is a crit or not.</param>
         /// <returns>This returns the type1 advantage of the defender multiplied by the type2 advantage of the defender.</returns>
-        public static int CalculateDamage(Unit attacker, Unit defender, Moves attack, bool crit, double dmg_multiplier, double stab)
+        public static int CalculateDamage(Unit attacker, Unit defender, Moves attack, bool crit, double dmg_multiplier, double stab, double rand = -1)
         {
             double damage = 0;
             //calculates the damage multiplier for attacking move on both defender types
             //double dmg_multiplier = EffectivenessMultiplier(attack, defender.pokemon);
             double critical = (crit) ? 1.5 : 1; //If it is a crit, multiply by 1.5
+
+            //From Generation III onward, it is a random integer percentage between 0.85 and 1.00 (inclusive)
+            double random = rand;
+
+           
+
+            if (random != -1)
+            {
+                //assume inccorect range set, should be 101
+                if (random == 100) random += 1;
+                random /= 100;
+            }
+            else
+            {
+                //85 to 100.
+
+                double num = Utility.rnd.Next(85, 101);
+                random = num / 100; //Random number for the random element.
+                /*Debug.Log("Random: " + random);*/
+            }
             
-
-
-            //System.Random rnd = new System.Random();
-
-            //85 to 99
-            double num = Utility.rnd.Next(85, 100);
-            double random = num / 100; //Random number for the random element.
-            double burn = 1;
 
 
             //doesnt get used
@@ -165,18 +217,41 @@ namespace Pokemon
 
         public static bool isLethal(int damage, Pokemon target) => damage >= target.current_hp;
 
+
+        //TODO add status effects to turns until faint
         public static int turnsUntilFaint(int attackerDamage, Pokemon defending, BattleState whoGoesFirst)
         {
             int turnsUntilFaint = -1;
+            double self_damage = 0;
+            int remaining = defending.current_hp;
+
+            if (defending.HasStatus("Burn")){
+                self_damage = Status.get_status("Burn").self_damage;
+            }
+
             if (attackerDamage > 0)
             {
-                turnsUntilFaint = (int)Math.Ceiling((double)defending.current_hp / (double)attackerDamage);
+                turnsUntilFaint = 0;
+                while(remaining > 0)
+                {
+                    //Debug.Log("BURN DMG: " + Status.get_status("Burn").self_damage);
+                    //Debug.Log("BURN DMG: " + self_damage);
+                    //Debug.Log("Defender HP: " + remaining);
+                    remaining -= attackerDamage;
+                    //Debug.Log("Attacker Dmg: " + attackerDamage);
+                    remaining -= (int)(defending.max_hp * self_damage);
+                    //Debug.Log("Burn Dmg: " + (int)(defending.max_hp * self_damage));
+                    turnsUntilFaint++;
 
-                turnsUntilFaint += whoGoesFirst == BattleState.PLAYERTURN ? 0 : 1;
+                }
+
+                //turnsUntilFaint = (int)Math.Ceiling((double)defending.current_hp / (double)attackerDamage);
+
+                //turnsUntilFaint += whoGoesFirst == BattleState.PLAYERTURN ? 0 : 1;
             }
             return turnsUntilFaint;
         }
-
+        
     }
 }
 

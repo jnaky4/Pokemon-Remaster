@@ -155,16 +155,62 @@ namespace Pokemon
             //Data on players Pokemon
             double playerEmul = Utility.EffectivenessMultiplier(playerAttack, pokemon);
             double playerStab = Utility.STAB(playerAttack, Player.pokemon);
+
+            /*
+            * using Gen 2-5 Crit Pobability based on stages
+            * Stage Gen II-V	    Gen VI	        Gen VII onwards:
+            * +0	1/16 (6.25%)	1/16 (6.25%)	1/24 (~4.167%)
+            * +1	1/8 (12.5%)	    1/8 (12.5%)	    1/8 (12.5%)
+            * +2	1/4 (25%)	    1/2 (50%)	    1/2 (50%)
+            * +3	1/3 (~33.3%)	Always (100%)	Always (100%)
+            * ++4   1/2 (50%)       Always (100%)	Always (100%)
+            */
+
+            int playerMinDamage = Utility.CalculateDamage(Player, this, playerAttack, false, playerEmul, playerStab, 85);
+            int playerMaxNoCrit = Utility.CalculateDamage(Player, this, playerAttack, false, playerEmul, playerStab, 100);
             int playerDamage = Utility.CalculateDamage(Player, this, playerAttack, false, playerEmul, playerStab);
+            int playerMinCrit = Utility.CalculateDamage(Player, this, playerAttack, false, playerEmul, playerStab, 85);
+            int playerMaxDamage = Utility.CalculateDamage(Player, this, playerAttack, true, playerEmul, playerStab, 100);
+
+            double playerCritChance = Utility.CritChance(Player) * 100;
+
             bool playerAttackLethal = Utility.isLethal(playerDamage, pokemon);
 
 
             int AIturnsUntilFaint = Utility.turnsUntilFaint(playerDamage, pokemon, whoGoesFirst);
 
+            /* Weight Evaluation of AI attack.
+             * 10: Guaranteed AI win, AI Attacking First
+             * 9: Guaranteed AI win, AI Attacking Second
+             * 8: AI will 2KO, AI Attacking First
+             * 7: 2KO, AI Attacking Second
+             * 6: 
+             * 5:
+             * 4:
+             * 3:
+             * 2:
+             * 1: Guaranteed faint, AI Attacking First
+             * 0: Guaranteed faint, AI Attacking Second
+             * -1: Non Damaging, AI Attacking First
+             * -2: Non Damaging, AI attacking Second
+             */
 
-             
+            /* TODO:
+             * Determine if wild or trainer
+             * Determine non damaging moves impact
+             * 
+             * 
+             * 
+             * 
+             * 
+             */
+            
 
             Debug.Log("AI HP: " + pokemon.current_hp);
+            Debug.Log("Player Min Damage: " + playerMinDamage);
+            Debug.Log("Plauyer Max No Crit: " + playerMaxNoCrit);
+            Debug.Log("Player Max Damage: " + playerMaxDamage);
+            Debug.Log("Crit Chance: " + playerCritChance + "%" );
             Debug.Log("Player Damage: " + playerDamage);
             Debug.Log("AI will faint in " + AIturnsUntilFaint + " turns");
 
@@ -218,9 +264,9 @@ namespace Pokemon
                     killsEnemy = Utility.isLethal(decided_attack_damage, Player.pokemon);
                     //Debug.Log(attack.Key + " Lethal? " + Utility.isLethal(decided_attack_damage, Player.pokemon));
                     playerTurnsUntilFaint = Utility.turnsUntilFaint(decided_attack_damage, Player.pokemon, whoGoesFirst);
-                    Debug.Log("Player HP: " + Player.pokemon.current_hp);
+/*                   Debug.Log("Player HP: " + Player.pokemon.current_hp);
                     Debug.Log("AI Damage: " + decided_attack_damage);
-                    Debug.Log("Player will faint in " + playerTurnsUntilFaint + " turns");
+                    Debug.Log("Player will faint in " + playerTurnsUntilFaint + " turns");*/
 
                 }
 

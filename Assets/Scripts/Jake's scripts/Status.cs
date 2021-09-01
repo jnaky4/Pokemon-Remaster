@@ -136,6 +136,8 @@ namespace Pokemon
             return false;
         }
 
+
+        //Since both are .5 stat reduction we could instead remove the afct_st_mul and check variable affect_stat != "null"
         public static void StatReduce(Unit unit, Status status)
         {
             switch (status.affect_stat)

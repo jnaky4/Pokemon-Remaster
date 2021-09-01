@@ -828,7 +828,7 @@ namespace Pokemon
 
 
         //checks all statuses in pokemon.statuses for unable to attack chance, returns true if able to still attack
-        public bool CanAttack()
+        public bool RollCanAttack()
         {
             foreach (Status status in this.statuses)
             {
@@ -853,16 +853,12 @@ namespace Pokemon
             
             return this.can_attack;
         }
-        
+
         /// <summary>
         /// Checks if pokemon is fainted
         /// </summary>
         /// <returns>returns true if pokemon health is <= 0</returns>
-        public bool IsFainted()
-        {
-            //Debug.Log(this.name + " current HP: " + this.current_hp);
-            return (this.current_hp <= 0);
-        }
+        public bool IsFainted() { return (this.current_hp <= 0); }
 
         /// <summary>
         /// At start of turn checks if any statuses remaining turns = 0
@@ -926,7 +922,8 @@ namespace Pokemon
         /// <returns>true/false</returns>
         public bool HasStatus(string name)
         {
-        return this.statuses.Contains(Status.get_status(name));
+            foreach (Status status in statuses) if (status.name == name) return true;
+            return false;
         }
 
         /// <summary>
@@ -936,28 +933,23 @@ namespace Pokemon
         /// <returns>true if the pokemon has a persisting status</returns>
         public bool HasPersistenceStatus()
         {
-            bool hasPersistence = false;
-            foreach(Status status in this.statuses)
-            {
-                if (status.persistence)
-                {
-                    hasPersistence = true;
-                }
-            }
-
-            return hasPersistence; 
+            foreach(Status status in this.statuses) if (status.persistence) return true;
+            return false; 
         }
+
+        public int getMoveCount()
+        {
+            int count = 0;
+            for (int i = 0; i < 4; i++) if (this.currentMoves[i] != null) count++;
+            return count;
+        }
+
 
         public int getMoveIndex(string name)
         {
-            for(int i = 0; i < 4; i++)
-            {
-                if(this.currentMoves[i] != null)
-                {
-                    if (this.currentMoves[i].name == name) return i;
-                }
-                
-            }
+
+            for(int i = 0; i < this.getMoveCount(); i++) if (this.currentMoves[i].name == name) return i;
+
             Debug.Log("ERROR: Move not found on Pokemon");
             return 0;
         }
