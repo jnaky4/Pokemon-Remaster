@@ -223,23 +223,35 @@ namespace Pokemon
         {
             int turnsUntilFaint = -1;
             double self_damage = 0;
-            int remaining = defending.current_hp;
+            int remaining_hp = defending.current_hp;
 
             if (defending.HasStatus("Burn")){
                 self_damage = Status.get_status("Burn").self_damage;
+            }
+            if (defending.HasStatus("Poison"))
+            {
+                self_damage = Status.get_status("Poison").self_damage;
+            }
+            if (defending.HasStatus("Confusion"))
+            {
+                self_damage = Status.get_status("Confusion").self_damage;
+            }
+            if (defending.HasStatus("Seeded"))
+            {
+                self_damage = Status.get_status("Seeded").self_damage;
             }
 
             if (attackerDamage > 0)
             {
                 turnsUntilFaint = 0;
-                while(remaining > 0)
+                while(remaining_hp > 0)
                 {
                     //Debug.Log("BURN DMG: " + Status.get_status("Burn").self_damage);
                     //Debug.Log("BURN DMG: " + self_damage);
                     //Debug.Log("Defender HP: " + remaining);
-                    remaining -= attackerDamage;
+                    remaining_hp -= attackerDamage;
                     //Debug.Log("Attacker Dmg: " + attackerDamage);
-                    remaining -= (int)(defending.max_hp * self_damage);
+                    remaining_hp -= (int)(defending.max_hp * self_damage);
                     //Debug.Log("Burn Dmg: " + (int)(defending.max_hp * self_damage));
                     turnsUntilFaint++;
 

@@ -620,14 +620,14 @@ namespace Pokemon
         }
 
         /// <summary>
-        /// <para>For AI Pokemon</para>
-        /// <para>looks at all moves a pokemon has and checks if they are at a level to auto upgrade to the next tier</para>
-        /// <para>Upgraded Moves:</para>
-        /// <para>Start Moves  -> lvl 20               -> lvl 38       -> lvl 50</para>
-        /// <para>Ember        -> lvl flame Wheel      -> Flamethrower -> Fire Blast</para>
-        /// <para>Bubble       -> Water Gun            -> Surf         -> Hydropump</para>
-        /// <para>Vinewhip     -> Mega Drain           -> Razor Leaf   -> Solar Beam</para>
-        /// <para>Thundershock -> Volt Switch          -> Thunder Bolt -> Thunder</para>
+        /// For AI Pokemon
+        /// looks at all moves a pokemon has and checks if they are at a level to auto upgrade to the next tier
+        /// Upgraded Moves:
+        /// Start Moves  -> lvl 20               -> lvl 38       -> lvl 50
+        /// Ember        -> lvl flame Wheel      -> Flamethrower -> Fire Blast
+        /// Bubble       -> Water Gun            -> Surf         -> Hydropump
+        /// Vinewhip     -> Mega Drain           -> Razor Leaf   -> Solar Beam
+        /// Thundershock -> Volt Switch          -> Thunder Bolt -> Thunder
         /// </summary>
         public void UpgradeMoves()
         {
@@ -936,6 +936,7 @@ namespace Pokemon
             foreach(Status status in this.statuses) if (status.persistence) return true;
             return false; 
         }
+
 
         public int getMoveCount()
         {
