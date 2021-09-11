@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 namespace Pokemon
 {
@@ -263,7 +264,161 @@ namespace Pokemon
             }
             return turnsUntilFaint;
         }
-        
+
+        public static Dictionary<string, int> CalculateEachMoveDamage(Pokemon attacking_pokemon, Unit Attacker, Unit Defender)
+        {
+            Dictionary<string, int> available_moves = new Dictionary<string, int>();
+
+            for (int i = 0; i < attacking_pokemon.CountMoves(); i++)
+            {
+                //Debug.Log(this.pokemon.currentMoves[i].name);
+
+                if (attacking_pokemon.currentMoves[i].base_power > 0 && attacking_pokemon.currentMoves[i].current_pp > 0)
+                {
+                    double emul = Utility.EffectivenessMultiplier(attacking_pokemon.currentMoves[i], Defender.pokemon);
+                    double stab = Utility.STAB(attacking_pokemon.currentMoves[i], attacking_pokemon);
+                    //Debug.Log("Effectiveness: " + emul);
+                    int potentialDmg = Utility.CalculateDamage(Attacker, Defender, attacking_pokemon.currentMoves[i], false, emul, stab);
+                    available_moves.Add(attacking_pokemon.currentMoves[i].name, potentialDmg);
+                    Debug.Log(attacking_pokemon.currentMoves[i].name + " might do " + potentialDmg + " damage.");
+                }
+            }
+            return available_moves;
+        }
+
+
+        /// <summary>
+        /// Takes a Dictionary of Pokemon Moves and their estimated damage 
+        /// and returns the best attack based on damage. If damage is equal between 2 moves, 
+        /// checks if one has higher priority
+        /// </summary>
+        /// <param name="available_moves"></param>
+        /// <returns>the best attack based on damage or null if no move was chosen</returns>
+        public static Moves DecideHighestDamagingAttack(Dictionary<string, int> available_moves)
+        {
+            int decided_move_damage = 0;
+            Moves decided_move = null;
+
+            foreach (KeyValuePair<string, int> attack in available_moves)
+            {
+                //If attack does more damage replace decided move
+                if (attack.Value > decided_move_damage)
+                {
+                    decided_move_damage = attack.Value;
+                    decided_move = Moves.get_move(attack.Key);
+                }
+
+                else if (attack.Value == decided_move_damage)
+                {
+                    //if moves do same damage and new one has higher priority, replace decided move
+                    if (Moves.get_move(attack.Key).priority > decided_move.priority)
+                    {
+                        decided_move_damage = attack.Value;
+                        decided_move = Moves.get_move(attack.Key);
+
+                    }
+                    //TODO should we add other checks like status chance?
+                    //else if ()
+                }
+            }
+
+            return decided_move;
+        }
+
+/*        public static Dictionary<string, int> CalculateEachMoveStatus(Pokemon pokemon, Unit Defender)
+        {
+            Dictionary<string, int> available_moves = new Dictionary<string, int>();
+
+            for (int i = 0; i < pokemon.CountMoves(); i++)
+            {
+                //Debug.Log(this.pokemon.currentMoves[i].name);
+
+*//*                if (pokemon.currentMoves[i].base_power > 0 && pokemon.currentMoves[i].current_pp > 0)
+                {
+                    double emul = Utility.EffectivenessMultiplier(pokemon.currentMoves[i], Defender.pokemon);
+                    double stab = Utility.STAB(pokemon.currentMoves[i], pokemon);
+                    //Debug.Log("Effectiveness: " + emul);
+                    int potentialDmg = Utility.CalculateDamage(Attacker, Defender, pokemon.currentMoves[i], false, emul, stab);
+                    available_moves.Add(pokemon.currentMoves[i].name, potentialDmg);
+                    Debug.Log(pokemon.currentMoves[i].name + " might do " + potentialDmg + " damage.");
+                }*//*
+            }
+            return available_moves;
+        }*/
+
+        public static bool AMIFaster(Pokemon I, Pokemon Enemy)
+        {
+            return I.current_speed > Enemy.current_speed;
+        }
+
+        public static Moves DecideBestStatusAttack(Pokemon attackingPokemon, Pokemon defendingPokemon, int turnsUnilThisFaints = 0, int TurnsUntilEnemyFaints = 0, bool EnemyAttackLethal = false)
+        {
+            
+            Moves decided_move = null;
+            Status decided_move_status = null;
+            double decided_move_status_chance = 0;
+
+            for (int i = 0; i < attackingPokemon.CountMoves(); i++)
+            {
+                //does move have status
+                if(attackingPokemon.currentMoves[i].status.name != "null")
+                {
+                    //is status persisting and defending already has
+                    if (attackingPokemon.currentMoves[i].status.persistence && defendingPokemon.HasPersistenceStatus())
+                    {
+                        Debug.Log(defendingPokemon.name + " already has a persisting status, can't apply another");
+                    }
+                    //is defending immune to status
+                    else if (defendingPokemon.ImmuneToStatus(attackingPokemon.currentMoves[i].status))
+                    {
+                        Debug.Log(defendingPokemon.name + " is immune to " + attackingPokemon.currentMoves[i].status.name);
+                    }
+                    //compare status with decided move status
+                    else
+                    {
+                        //is there a move yet?
+                        if(decided_move == null)
+                        {
+                            decided_move = attackingPokemon.currentMoves[i];
+                            decided_move_status = attackingPokemon.currentMoves[i].status;
+                            decided_move_status_chance = attackingPokemon.currentMoves[i].status_chance;
+                        }
+
+                        else
+                        {
+                            if(decided_move_status_chance < attackingPokemon.currentMoves[i].status_chance)
+                            {
+                                decided_move = attackingPokemon.currentMoves[i];
+                                decided_move_status = attackingPokemon.currentMoves[i].status;
+                                decided_move_status_chance = attackingPokemon.currentMoves[i].status_chance;
+                            }
+
+
+/*                            if (EnemyAttackLethal)
+                            {
+                                if (Utility.AMIFaster(attackingPokemon, defendingPokemon))
+                                {
+
+                                }
+
+                                
+                            }*/
+                            //check which status is best
+                            //Which move has the highest chance of status
+                            //Which status is best Freeze > Sleep > Paralysis > Burn > poison : confusion, Flinch, Seeded?
+                            //
+
+                        }
+
+
+                    }
+                 
+                }
+            }
+
+            return decided_move;
+        }
+
     }
 }
 

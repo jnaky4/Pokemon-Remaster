@@ -337,7 +337,9 @@ namespace Pokemon
 
         public void SetHP(int newHP, Unit unit, string whichplayer)
         {
+            //sets negative to true if pokemon health is less than slider value
             this.negative = newHP < hpSlider.value ? true : false;
+            //
             tempHP = newHP;
             if (newHP != hpSlider.value) updateHp = true;
 
@@ -350,8 +352,8 @@ namespace Pokemon
 
         }
         /// <summary>
+        /// PLAYER HUD
         /// Sets the HUD with pokemon name, level, hp, moves, the types of balls the player has, and the pokemon the player has.
-        /// Player hud.
         /// </summary>
         /// <param name="unit">The unit we want to set all of this shit is.</param>
         /// <param name="isPlayer">if set to <c>true</c> [is player].</param>
@@ -376,6 +378,7 @@ namespace Pokemon
         }
 
         /// <summary>
+        /// ENEMY HUD
         /// Sets the HUD with just name, level, and hp.
         /// This gets called to update enemy hud.
         /// </summary>
@@ -749,12 +752,20 @@ namespace Pokemon
             return color;
         }
 
+
+        /// <summary>
+        /// Updates Sliders for HP and EXP for each pokemon
+        /// </summary>
         private void Update()
         {
+            //checks if tempHP set in SetHp
             if ((int)hpSlider.value == tempHP) updateHp = false;
             if (updateHp && negative)
             {
+                
                 hpSlider.value = (int)hpSlider.value - 1;
+                //Debug.Log("HP Sider Value:" + hpSlider.value);
+                currentHP.text = hpSlider.value.ToString() + "/" + hpSlider.maxValue;
                 if ((int)hpSlider.value == tempHP)
                 {
                     updateHp = false;
@@ -764,6 +775,8 @@ namespace Pokemon
             if (updateHp && !negative)
             {
                 hpSlider.value = (int)hpSlider.value + 1;
+                //Debug.Log("HP Sider Value:" + hpSlider.value);
+                currentHP.text = hpSlider.value.ToString() + "/" + hpSlider.maxValue;
                 if ((int)hpSlider.value == tempHP)
                 {
                     updateHp = false;

@@ -938,18 +938,18 @@ namespace Pokemon
         }
 
 
-        public int getMoveCount()
+        public bool ImmuneToStatus(Status attacking_status)
         {
-            int count = 0;
-            for (int i = 0; i < 4; i++) if (this.currentMoves[i] != null) count++;
-            return count;
+            if (attacking_status.ignore_type == this.type1.name) return true;
+            if (attacking_status.ignore_type == this.type2.name) return true;
+            return false;
         }
 
 
         public int getMoveIndex(string name)
         {
 
-            for(int i = 0; i < this.getMoveCount(); i++) if (this.currentMoves[i].name == name) return i;
+            for(int i = 0; i < this.CountMoves(); i++) if (this.currentMoves[i].name == name) return i;
 
             Debug.Log("ERROR: Move not found on Pokemon");
             return 0;

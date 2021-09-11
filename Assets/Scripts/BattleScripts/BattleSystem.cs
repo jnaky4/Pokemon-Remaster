@@ -546,6 +546,11 @@ namespace Pokemon
                 //Pick move for AI decision
                 //enemyUnit.pokemon.decide_move();
                 moveNum = enemyUnit.DecideMove(playerMove, playerUnit);
+                if (moveNum == -1)
+                {
+                    moveNum = Utility.rnd.Next(enemyUnit.pokemon.CountMoves());
+                }
+
                 enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
                 
                 Debug.Log("Enemy Decided to use: " + enemyMove.name);
@@ -721,8 +726,8 @@ namespace Pokemon
                 }
                 else
                 {
-                    
-                    dialogueText.text = "Your attack missed!";
+                    dialogueText.text = state == BattleState.PLAYERTURN ? "Your attack missed!" : "Enemy attack missed!";
+
                     yield return new WaitForSeconds(2);
                 }
 
