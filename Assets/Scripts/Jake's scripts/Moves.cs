@@ -24,7 +24,8 @@ namespace Pokemon
         public string current_stat_change;
         public int stat_change_amount;
         public int priority;
-        public double heal;
+        public double heal_percent;
+        public double damage_recovered;
         public string description;
 
 
@@ -39,7 +40,7 @@ namespace Pokemon
             int accuracy, string category, Status status, double status_chance,
             string status_target, int max_per_turn, int min_per_turn, int max_turns, int min_turns,
             string target, double chance_stat_change, string current_stat_change,
-            int stat_change_amount, int priority, double heal, string description)
+            int stat_change_amount, int priority, double heal_percent, double damage_recovered, string description)
         {
             this.name = move;
             this.type = move_type;
@@ -60,7 +61,8 @@ namespace Pokemon
             this.current_stat_change = current_stat_change;
             this.stat_change_amount = stat_change_amount;
             this.priority = priority;
-            this.heal = heal;
+            this.heal_percent = heal_percent;
+            this.damage_recovered = damage_recovered;
             this.description = description;
 
         }
@@ -94,7 +96,8 @@ namespace Pokemon
                     all_moves[i]["Current_Stat_Change"].ToString(),
                     int.Parse(all_moves[i]["Stat_Change_Amount"].ToString()),
                     int.Parse(all_moves[i]["Priority"].ToString()),
-                    double.Parse(all_moves[i]["Heal"].ToString()),
+                    double.Parse(all_moves[i]["Heal_Percent"].ToString()),
+                    double.Parse(all_moves[i]["Damage_Recovered"].ToString()),
                     all_moves[i]["Effect"].ToString()
                     ); ;
 
@@ -113,7 +116,7 @@ namespace Pokemon
                 move_reference.status_target, move_reference.max_per_turn, move_reference.min_per_turn,
                 move_reference.max_turns, move_reference.min_turns, move_reference.target,
                 move_reference.chance_stat_change, move_reference.current_stat_change,
-                move_reference.stat_change_amount, move_reference.priority, move_reference.heal,
+                move_reference.stat_change_amount, move_reference.priority, move_reference.heal_percent, move_reference.damage_recovered,
                 move_reference.description);
 
             return new_move;

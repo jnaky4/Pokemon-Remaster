@@ -755,7 +755,7 @@ namespace Pokemon
 
         }
 
-        public IEnumerator AttackDialogue(Moves attack, Unit Attacker, Unit Defender, double effectivenessMultiplier, Status applied_Status, bool crit, int damage)
+        public IEnumerator AttackDialogue(Moves attack, Unit Attacker, Unit Defender, double effectivenessMultiplier, Status applied_Status, bool crit, int damage, int healed)
         {
 
             //Your/enemy Pokemons stat rose/fell
@@ -805,6 +805,14 @@ namespace Pokemon
 
 
             }
+            
+            if (attack.heal_percent > 0)
+            {
+                dialogueText.text = namePrefix + Attacker.pokemon.name + "recovered " + healed +" health";
+                yield return new WaitForSeconds(2);
+            }
+            
+            
             Unit appllied_status_to = attack.status_target == "self" ? Attacker : Defender;
 
             if (applied_Status.name == "immune")
@@ -879,13 +887,22 @@ namespace Pokemon
             //Debug.Log("Stab: " + stab);
 
             int damage = Utility.CalculateDamage(Attacker, Defender, attack, crit, dmg_multiplier, stab);
-
             //Debug.Log(playerUnit.damage);
 
             bool isDead = Defender.TakeDamage(Attacker.damage);
 
-            if (attack.heal > 0) Attacker.TakeDamage(-Attacker.damage * attack.heal);
-            if (attack.heal < 0) Attacker.TakeDamage(Attacker.damage * -attack.heal);
+            if (attack.damage_recovered != 0) Attacker.TakeDamage(-Attacker.damage * attack.damage_recovered);
+
+
+            int heal = 0;
+            if (attack.heal_percent > 0)
+            {
+                heal = (int)(Attacker.pokemon.max_hp * attack.heal_percent);
+                if (heal + Attacker.pokemon.current_hp > Attacker.pokemon.max_hp) heal = Attacker.pokemon.max_hp - Attacker.pokemon.current_hp;
+                Attacker.TakeDamage(-heal);
+            }
+                
+             
 
             if(state == BattleState.PLAYERTURN)
             {
@@ -904,7 +921,7 @@ namespace Pokemon
                 playerHUD.SetHP(Defender.pokemon.current_hp, Defender, "enemy");
             }
 
-            yield return StartCoroutine(AttackDialogue(attack, Attacker, Defender, dmg_multiplier, applied_Status, crit, damage));
+            yield return StartCoroutine(AttackDialogue(attack, Attacker, Defender, dmg_multiplier, applied_Status, crit, damage, heal));
 
             yield return StartCoroutine(IsEitherPokemonDead());
         }
