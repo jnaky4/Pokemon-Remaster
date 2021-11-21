@@ -63,7 +63,7 @@ Hi Jump Kick,Fighting,20,85,90,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,
 Horn Attack,Normal,25,65,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. A sharp horn is driven hard into the target to inflict damage.
 Horn Drill,Normal,5,-1,30,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,A single-hit knockout attack. Learned only by Pokémon with a horn or horns.
 Hydro Pump,Water,5,120,85,Special,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,"The strongest WATER-type attack. However, while it is powerful, it may miss the target."
-Hyper Beam,Normal,5,150,90,Special,null,0,enemy,1,1,2,2,enemy,0,null,0,0,0,"An extremely powerful attack. The attacker becomes so tired, it has to rest the next turn."
+Hyper Beam,Normal,5,150,90,Special,Recharging,1,self,1,1,1,1,enemy,0,null,0,0,0,"An extremely powerful attack. The attacker becomes so tired, it has to rest the next turn."
 Hyper Fang,Normal,15,80,90,Physical,Flinch,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,A NORMAL-type attack. Has a one-in-ten chance of making the target flinch.
 Hypnosis,Psychic,20,-1,60,Status,Sleep,1,enemy,1,1,1,1,enemy,0,null,0,0,0,A special PSYCHIC-type move. The target is hypnotized into a deep sleep.
 Ice Beam,Ice,10,95,100,Special,Freeze,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,An ICE-type attack. Has a one-in-ten chance of freezing the target solid.

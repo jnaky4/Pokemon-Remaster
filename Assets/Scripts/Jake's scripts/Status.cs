@@ -81,9 +81,10 @@ namespace Pokemon
             {"Flinch", new Status(      "Flinch",    "Flinched",    false,  "null",     0,      1.0,    "null",     1,          0,      1,      1)},
             {"Confusion", new Status(   "Confusion", "Confused",    false,  "null",     .175,   .33,    "null",     1,          0,      5,      2)},
             {"Seeded", new Status(      "Seeded",    "Seeded",      false,  "null",     .0625,  0,      "null",     1,          0,      -1,     -1)},
+            {"Recharging", new Status(  "Recharging", "Recharge",   false,  "null",     0,      1.0,    "null",     1,          0,      2,      2)},
             //for csv, does nothing
             {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1)},
-            {"immune", new Status(      "immune",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1) }
+            {"immune", new Status(      "immune",     "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1) }
 
         };
 
@@ -162,10 +163,14 @@ namespace Pokemon
 
 
         //Takes the attacking move and the pokemon and checks if attack can apply status
-        public static Status Apply_Attack_Status_Effect(Moves attacking_move, Unit Defending)
+        public static Status Apply_Attack_Status_Effect(Moves attacking_move, Unit Attacking, Unit Defending)
         {
             //if move has no status, return
             if (attacking_move.status.name == "null") return Status.get_status("null");
+
+            //if status targets self, apply to self
+            if (attacking_move.status_target == "self") Defending = Attacking;
+
             //Debug.Log("Attack has status");
             //if status is a perm status and there is already a perm status
             if (attacking_move.status.persistence && Defending.pokemon.HasPersistenceStatus()) return Status.get_status("null");

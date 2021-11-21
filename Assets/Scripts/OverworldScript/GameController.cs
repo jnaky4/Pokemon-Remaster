@@ -19,14 +19,16 @@ namespace Pokemon
         public static bool starterChosen = false;
 
         //public GameObject player;
-        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() {/*{"Ground",1 }*/ };
+        
+        //public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() {/*{"Ground",1 }*/ };
+        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Boulder", 1 }, { "Cascade", 1 }, { "Thunder", 1 }, { "Rainbow", 1 }, { "Soul", 1 }, { "Marsh", 1 }, { "Volcano", 1 }, { "Earth", 1 }, { "Elite Four", 1 } };
 
         public static string location = "Pallet Town";
         public static string prevLocation = "Pallet Town";
         public static string scene = "Pallet Town";
 
         //Game Level Cap
-        public static int level_cap = 10;
+        public static int level_cap = 100;
 
         //combat data
         public static Pokemon[] opponentPokemon = new Pokemon[6];

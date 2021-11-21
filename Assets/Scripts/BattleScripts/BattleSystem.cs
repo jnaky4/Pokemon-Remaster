@@ -805,15 +805,21 @@ namespace Pokemon
 
 
             }
+            Unit appllied_status_to = attack.status_target == "self" ? Attacker : Defender;
 
             if (applied_Status.name == "immune")
             {
-                dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
+                dialogueText.text = namePrefix + appllied_status_to.pokemon.name + " is immune!";
                 yield return new WaitForSeconds(2);
             }
             else if (applied_Status.name != "null")
             {
-                dialogueText.text = Defender.pokemon.name + " became " + applied_Status.adj + "!";
+                //newer switch stament
+                dialogueText.text = applied_Status.name switch
+                {
+                    "Recharging" => appllied_status_to.pokemon.name + " must " + applied_Status.adj + "!",
+                    _ => appllied_status_to.pokemon.name + " became " + applied_Status.adj + "!",
+                };
                 yield return new WaitForSeconds(2);
             }
 
@@ -865,7 +871,7 @@ namespace Pokemon
             if (attack.current_stat_change != "null") Unit.SetStages(attack, Attacker, Defender);
 
 
-            Status applied_Status = Status.Apply_Attack_Status_Effect(attack, Defender);
+            Status applied_Status = Status.Apply_Attack_Status_Effect(attack, Attacker, Defender);
             
             double dmg_multiplier = Utility.EffectivenessMultiplier(attack, Defender.pokemon);
             //Debug.Log("Damage Multiplier: " + dmg_multiplier);

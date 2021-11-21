@@ -223,24 +223,10 @@ namespace Pokemon
         public static int turnsUntilFaint(int attackerDamage, Pokemon defending, BattleState whoGoesFirst)
         {
             int turnsUntilFaint = -1;
-            double self_damage = 0;
+            double self_damage = getStatusDamage(defending);
             int remaining_hp = defending.current_hp;
 
-            if (defending.HasStatus("Burn")){
-                self_damage = Status.get_status("Burn").self_damage;
-            }
-            if (defending.HasStatus("Poison"))
-            {
-                self_damage = Status.get_status("Poison").self_damage;
-            }
-            if (defending.HasStatus("Confusion"))
-            {
-                self_damage = Status.get_status("Confusion").self_damage;
-            }
-            if (defending.HasStatus("Seeded"))
-            {
-                self_damage = Status.get_status("Seeded").self_damage;
-            }
+
 
             if (attackerDamage > 0)
             {
@@ -418,7 +404,31 @@ namespace Pokemon
 
             return decided_move;
         }
+        
 
+        public static double getStatusDamage(Pokemon pokemon)
+        {
+            double status_damage = 0;
+
+            if (pokemon.HasStatus("Burn"))
+            {
+                status_damage = Status.get_status("Burn").self_damage;
+            }
+            if (pokemon.HasStatus("Poison"))
+            {
+                status_damage = Status.get_status("Poison").self_damage;
+            }
+            if (pokemon.HasStatus("Confusion"))
+            {
+                status_damage = Status.get_status("Confusion").self_damage;
+            }
+            if (pokemon.HasStatus("Seeded"))
+            {
+                status_damage = Status.get_status("Seeded").self_damage;
+            }
+
+            return status_damage;
+        }
     }
 }
 

@@ -7,6 +7,8 @@ namespace Pokemon
 {
     public class StartMenu : MonoBehaviour
     {
+        public bool develop_mode = true;
+
         public Vector2 startingPosition;
         public VectorValue playerPosition;
         public PlayerData player;
@@ -15,7 +17,8 @@ namespace Pokemon
         public bool starterChosen;
         public Vector2 initialValue;
         public Pokemon[] playerPokemon;
-        public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
+        //public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
+        public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Boulder", 1 }, { "Cascade", 1 }, { "Thunder", 1 }, { "Rainbow", 1 }, { "Soul", 1 }, { "Marsh", 1 }, { "Volcano", 1 }, { "Earth", 1 }, { "Elite Four", 1 } };
 
         private void Start()
         {
@@ -39,6 +42,40 @@ namespace Pokemon
 
         public void NewGame()
         {
+
+            if (develop_mode)
+            {
+                Debug.Log("Development Mode Started");
+                GameController.starterChosen = true;
+                //Exeggutor
+                GameController.playerPokemon[0] = new Pokemon(103, 100, "Sleep Powder", "Mega Drain", "Explosion", "Psychic");
+                //Tauros
+                GameController.playerPokemon[1] = new Pokemon(128, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
+                //Rhydon
+                GameController.playerPokemon[2] = new Pokemon(112, 100, "Rock Slide", "Earthquake", "Body Slam"/*,"Substitute"*/);
+                //Chansey
+                GameController.playerPokemon[3] = new Pokemon(113, 100, "Thunder Wave", "Thunderbolt", "Ice Beam", "Soft-Boiled");
+                //Starmie
+                GameController.playerPokemon[4] = new Pokemon(121, 100, "Surf", "Blizzard", "Recover", "Thunderbolt");
+                //Zapdos
+                GameController.playerPokemon[5] = new Pokemon(145, 100, "Drill Peck", "Toxic", "Thunder Wave", "Thunderbolt");
+
+                /*GameController.playerPokemon[1] = new Pokemon(25, 20, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
+                GameController.playerPokemon[2] = new Pokemon(60, 19, "Water Gun", "Bubble", "Splash", "Crabhammer", 7900);
+                GameController.playerPokemon[3] = new Pokemon(69, 17, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 5500);
+                GameController.playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");
+                */
+            }
+            else
+            {
+                int level = 5;
+                int dex = 25;
+                string move1 = "Tackle", move2 = "Tail Whip";
+                GameController.starterChosen = false;
+                GameController.playerPokemon[0] = new Pokemon(dex, level, move1, move2);
+            }
+
+
             //Debug.Log("new game starts");
             GameController.player.pokeBalls = 99;
             GameController.player.greatBalls = 0;
@@ -54,7 +91,10 @@ namespace Pokemon
             GameController.player.name = "Red";
             GameController.location = "Pallet Town";
             GameController.scene = "Pallet Town";
-            GameController.starterChosen = false;
+
+
+            
+            
 
             /*
             playerPosition.initialValue.x = 3.5f;
@@ -62,16 +102,6 @@ namespace Pokemon
             playerPosition.initialValue.x = startingPosition.x;
             playerPosition.initialValue.y = startingPosition.y;
 
-            int level = 5;
-            int dex = 25;
-            string move1 = "Tackle", move2 = "Tail Whip";
-
-            GameController.playerPokemon[0] = new Pokemon(dex, level, move1, move2);
-            /*GameController.playerPokemon[1] = new Pokemon(25, 20, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
-            GameController.playerPokemon[2] = new Pokemon(60, 19, "Water Gun", "Bubble", "Splash", "Crabhammer", 7900);
-            GameController.playerPokemon[3] = new Pokemon(69, 17, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 5500);
-            GameController.playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");
-            */
 
             SceneManager.LoadSceneAsync(GameController.scene);
         }
