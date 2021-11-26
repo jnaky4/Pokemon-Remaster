@@ -165,31 +165,33 @@ namespace Pokemon
         //Takes the attacking move and the pokemon and checks if attack can apply status
         public static Status Apply_Attack_Status_Effect(Moves attacking_move, Unit Attacking, Unit Defending)
         {
+            
             //if move has no status, return
             if (attacking_move.status.name == "null") return Status.get_status("null");
 
+            Unit Target = Defending;
             //if status targets self, apply to self
-            if (attacking_move.status_target == "self") Defending = Attacking;
+            if (attacking_move.status_target == "self") Target = Attacking;
 
             //Debug.Log("Attack has status");
             //if status is a perm status and there is already a perm status
-            if (attacking_move.status.persistence && Defending.pokemon.HasPersistenceStatus()) return Status.get_status("null");
+            if (attacking_move.status.persistence && Target.pokemon.HasPersistenceStatus()) return Status.get_status("null");
             
 
             //Debug.Log("attacking_move.status.name " + attacking_move.status.name);
             //Debug.Log("Defending.pokemon.HasStatus(attacking_move.status.name )" + Defending.pokemon.HasStatus(attacking_move.status.name));
 
             //if same status applied, don't apply
-            if (Defending.pokemon.HasStatus(attacking_move.status.name)) return Status.get_status("null");
+            if (Target.pokemon.HasStatus(attacking_move.status.name)) return Status.get_status("null");
             //Debug.Log("Attack status not already on pokemon");
 
             //if the status ignore type is either of the Defending pokemons types, return immune
-            if (attacking_move.status.ignore_type == Defending.pokemon.type1.name) return Status.get_status("immune");
-            if(attacking_move.status.ignore_type == Defending.pokemon.type2.name) return Status.get_status("immune");
+            if (attacking_move.status.ignore_type == Target.pokemon.type1.name) return Status.get_status("immune");
+            if(attacking_move.status.ignore_type == Target.pokemon.type2.name) return Status.get_status("immune");
             //Debug.Log("Pokemon Type not ignore type");
 
             //if defender is immune to attack type, dont apply
-            if (Utility.EffectivenessMultiplier(attacking_move, Defending.pokemon) == 0) return Status.get_status("null");
+            if (Utility.EffectivenessMultiplier(attacking_move, Target.pokemon) == 0) return Status.get_status("null");
             //Debug.Log("Pokemon not immune to attack");
 
             //if roll to apply status fails dont apply status
@@ -200,8 +202,8 @@ namespace Pokemon
 
             attacking_move.status.remaining_turns = rnd.Next(attacking_move.status.min_duration, attacking_move.status.max_duration + 1);
             //Debug.Log("Status Remaining Turns: " + attacking_move.status.remaining_turns);
-            Defending.pokemon.statuses.Add(attacking_move.status);
-            StatReduce(Defending, attacking_move.status);
+            Target.pokemon.statuses.Add(attacking_move.status);
+            //StatReduce(Defending, attacking_move.status);
             
 
             return attacking_move.status;

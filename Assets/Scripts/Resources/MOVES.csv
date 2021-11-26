@@ -168,3 +168,4 @@ Wing Attack,Flying,35,35,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,0,
 Withdraw,Water,40,-1,100,Status,null,0,enemy,1,1,1,1,self,1,Defense,1,0,0,0,"Used mainly by Pokémon with shells. By withdrawing into the shell, DEFENSE is increased."
 Wrap,Normal,20,15,85,Physical,null,0,enemy,1,1,5,2,enemy,0,null,0,0,0,0,Traps and squeezes the target over two to five turns. The target cannot move while under attack.
 X-Scissor,Bug,15,80,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,0,The user slashes at the foe by crossing its scythes or claws as if they were a pair of scissors.
+Test,Normal,15,0,100,Status,null,0,self,1,1,1,1,self,1,Attack,6,1,0,0,Test

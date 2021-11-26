@@ -22,7 +22,7 @@ namespace Pokemon
             var header = Regex.Split(lines[0], SPLIT_RE);
             for (var i = 1; i < lines.Length; i++)
             {
-
+                //Debug.Log(lines[i]);
                 var values = Regex.Split(lines[i], SPLIT_RE);
                 if (values.Length == 0 || values[0] == "") continue;
 

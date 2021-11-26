@@ -9,7 +9,6 @@ Pokemon Object
     A Pokemon will be derived from a pokemon object
         Each pokemon generated in the game will have the following Example Attributes:
 
-        //DONE
         name: Charizard
         dexnum: 6
         level: 55
@@ -247,13 +246,13 @@ namespace Pokemon
         //stages range from -6 to 6, used during damage calculation
         public int critical_stage = 0;
 
-        public int attack_stage = 0;
-        public int defense_stage = 0;
-        public int sp_attack_stage = 0;
-        public int sp_defense_stage = 0;
-        public int speed_stage = 0;
-        public int accuracy_stage = 0;
-        public int evasion_stage = 0;
+        public int stage_attack = 0;
+        public int stage_defense = 0;
+        public int stage_sp_attack = 0;
+        public int stage_sp_defense = 0;
+        public int stage_speed = 0;
+        public int stage_accuracy = 0;
+        public int stage_evasion = 0;
 
         public int sleep = 0;
 
@@ -291,13 +290,13 @@ namespace Pokemon
         {
 
 
-            this.attack_stage = 0;
-            this.defense_stage = 0;
-            this.sp_attack_stage = 0;
-            this.sp_defense_stage = 0;
-            this.speed_stage = 0;
-            this.accuracy_stage = 0;
-            this.evasion_stage = 0;
+            this.stage_attack = 0;
+            this.stage_defense = 0;
+            this.stage_sp_attack = 0;
+            this.stage_sp_defense = 0;
+            this.stage_speed = 0;
+            this.stage_accuracy = 0;
+            this.stage_evasion = 0;
             this.critical_stage = 0;
 
         }

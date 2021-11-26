@@ -105,7 +105,7 @@ namespace Pokemon
             //From Generation III onward, it is a random integer percentage between 0.85 and 1.00 (inclusive)
             double random = rand;
 
-           
+            double attacker_burn_multiplier = attacker.pokemon.HasStatus("Burn") ? .5 : 1;
 
             if (random != -1)
             {
@@ -134,11 +134,46 @@ namespace Pokemon
             {
                 if(attack.category == "Physical")
                 {
-                    damage = (((((2 * attacker.pokemon.level) / 5) + 2) * attack.base_power * (attacker.pokemon.current_attack / defender.pokemon.current_defense)) / 50) + 2; //Basic attacking
+                    /*                    
+                    Debug.Log("Physical Attack");
+                    Debug.Log(attacker.pokemon.name);
+                    Debug.Log("current attack: " + attacker.pokemon.current_attack);
+                    Debug.Log("atk stage: " + attacker.pokemon.stage_attack);
+                    Debug.Log("attacker Burned: " + attacker.pokemon.HasStatus("Burn"));
+
+                    Debug.Log(defender.pokemon.name);
+                    Debug.Log("current def: " + defender.pokemon.current_defense);
+                    Debug.Log("def stage: " + defender.pokemon.stage_defense);
+                    */
+                    int attack_vs_defense = attacker.pokemon.current_attack / defender.pokemon.current_defense;
+                    attack_vs_defense = attack_vs_defense == 0 ? 1 : attack_vs_defense;
+
+                    damage = (((((2 * attacker.pokemon.level) / 5) + 2) * attack.base_power * (attack_vs_defense)) / 50) + 2; //Basic attacking
+                    damage *= attacker_burn_multiplier; //Burn only applies to physical
                 }
                 else
                 {
-                    damage = (((((2 * attacker.pokemon.level) / 5) + 2) * attack.base_power * (attacker.pokemon.current_sp_attack / defender.pokemon.current_sp_defense)) / 50) + 2;
+                    /*                    
+                    Debug.Log("Special Attack");
+                    Debug.Log(attacker.pokemon.name);
+                    Debug.Log("current sp_attack: " + attacker.pokemon.current_sp_attack);
+                    Debug.Log("sp_atk stage: " + attacker.pokemon.stage_sp_attack);
+
+                    Debug.Log(defender.pokemon.name);
+                    Debug.Log("current sp_defense: " + defender.pokemon.current_sp_defense);
+                    Debug.Log("sp_def stage: " + defender.pokemon.stage_sp_defense);
+
+                    Debug.Log(defender.pokemon.name + " current Sp_def: " + defender.pokemon.current_sp_defense);
+                    */
+
+                    int sp_attack_vs_sp_defense = attacker.pokemon.current_sp_attack / defender.pokemon.current_sp_defense;
+                    sp_attack_vs_sp_defense = sp_attack_vs_sp_defense == 0 ? 1 : sp_attack_vs_sp_defense;
+
+                    damage = (((((2 * attacker.pokemon.level) / 5) + 2) * attack.base_power * (sp_attack_vs_sp_defense)) / 50) + 2;
+                    //Debug.Log("Attacker Sp_atk: " + attacker.pokemon.current_sp_attack);
+                    //Debug.Log("Defender Sp_def: " + defender.pokemon.current_sp_defense);
+
+                    //Debug.Log("Damage = ((2 * (level)" + attacker.pokemon.level + " * (base power)" + attack.base_power + " * (sp_atk/sp_def)" + (attacker.pokemon.current_sp_attack / defender.pokemon.current_sp_defense) + ") / 50) + 2 * (crit)" + critical + " * (stab)" + stab + " * rand " + rand + " * (multplier)" + dmg_multiplier);
                 }
                 
                 damage *= (critical * stab * random * dmg_multiplier); //Extra multipliers.
@@ -205,7 +240,10 @@ namespace Pokemon
             //1,1, or 0,0
             if(playerPokemon.current_speed != enemyPokemon.current_speed)
             {
-                return playerPokemon.current_speed > enemyPokemon.current_speed ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
+                double player_paralyzed_multiplier = playerPokemon.HasStatus("Paralysis") ? .5 : 1;
+                double enemy_paralyzed_multiplier = enemyPokemon.HasStatus("Paralysis") ? .5 : 1; 
+
+                return playerPokemon.current_speed * player_paralyzed_multiplier > enemyPokemon.current_speed * enemy_paralyzed_multiplier ? BattleState.PLAYERTURN : BattleState.ENEMYTURN;
             }
             //same priority, same speed
             else
@@ -266,7 +304,7 @@ namespace Pokemon
                     //Debug.Log("Effectiveness: " + emul);
                     int potentialDmg = Utility.CalculateDamage(Attacker, Defender, attacking_pokemon.currentMoves[i], false, emul, stab);
                     available_moves.Add(attacking_pokemon.currentMoves[i].name, potentialDmg);
-                    Debug.Log(attacking_pokemon.currentMoves[i].name + " might do " + potentialDmg + " damage.");
+                    //Debug.Log(attacking_pokemon.currentMoves[i].name + " might do " + potentialDmg + " damage.");
                 }
             }
             return available_moves;

@@ -47,10 +47,10 @@ namespace Pokemon
             {
                 Debug.Log("Development Mode Started");
                 GameController.starterChosen = true;
-                //Exeggutor
-                GameController.playerPokemon[0] = new Pokemon(103, 100, "Sleep Powder", "Mega Drain", "Explosion", "Psychic");
                 //Tauros
-                GameController.playerPokemon[1] = new Pokemon(128, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
+                GameController.playerPokemon[0] = new Pokemon(128, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
+                //Exeggutor
+                GameController.playerPokemon[1] = new Pokemon(103, 100, "Sleep Powder", "Mega Drain", "Explosion", "Psychic");
                 //Rhydon
                 GameController.playerPokemon[2] = new Pokemon(112, 100, "Rock Slide", "Earthquake", "Body Slam"/*,"Substitute"*/);
                 //Chansey

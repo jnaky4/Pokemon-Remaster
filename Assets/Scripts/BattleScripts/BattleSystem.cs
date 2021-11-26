@@ -592,7 +592,6 @@ namespace Pokemon
                 shouldnt apply if:
                     attack missed
                     multi turn move
-             
              */
             if (playerMoveNum >= 0) playerUnit.DoPP(playerMoveNum);
             
@@ -745,6 +744,13 @@ namespace Pokemon
             Debug.Log("Current/Max SP_Defense " + Attacker.pokemon.current_sp_defense + "/" + Attacker.pokemon.max_sp_defense);
             Debug.Log("Current/Max speed " + Attacker.pokemon.current_speed + "/" + Attacker.pokemon.max_speed);
 
+            Debug.Log("Attack Stage " + Attacker.pokemon.stage_attack);
+            Debug.Log("Sp_Atk Stage " + Attacker.pokemon.stage_sp_attack);
+            Debug.Log("Defense Stage " + Attacker.pokemon.stage_defense);
+            Debug.Log("Sp_Def Stage " + Attacker.pokemon.stage_sp_defense);
+            Debug.Log("Speed Stage " + Attacker.pokemon.stage_speed);
+            Debug.Log("Accuracy Stage " + Attacker.pokemon.stage_accuracy);
+            Debug.Log("Evasion Stage " + Attacker.pokemon.stage_evasion);
         }
 
         public bool AccuracyCheck(Moves attack, Unit Attacker, Unit Defender)
@@ -887,7 +893,7 @@ namespace Pokemon
             //Debug.Log("Stab: " + stab);
 
             int damage = Utility.CalculateDamage(Attacker, Defender, attack, crit, dmg_multiplier, stab);
-            //Debug.Log(playerUnit.damage);
+            Debug.Log("Damage: " + damage);
 
             bool isDead = Defender.TakeDamage(Attacker.damage);
 
