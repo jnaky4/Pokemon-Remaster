@@ -670,7 +670,8 @@ namespace Pokemon
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     yield return new WaitForSeconds(2);
 
-                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+                    AISwapPokemon(5);
+/*                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
                     {
                         if (GameController.opponentPokemon[j].current_hp > 0)
                         {
@@ -685,7 +686,7 @@ namespace Pokemon
                             phaseOpponentSprite = 2;
                             break;
                         }
-                    }
+                    }*/
 
                 }
                 //neither dead, do status effects
@@ -695,6 +696,36 @@ namespace Pokemon
 
             state = BattleState.PLAYERTURN;
             PlayerMakesDecision();
+
+        }
+
+        public IEnumerator AISwapPokemon(int index = -1)
+        {
+            if (state != BattleState.POKEMONFAINTED) state = BattleState.PLAYERTURN;
+            if(index != -1 && GameController.opponentPokemon[index] != null && GameController.opponentPokemon[index].current_hp > 0){
+
+                enemyUnit.pokemon = GameController.opponentPokemon[index];
+            }
+            //no next pokemon specified, pick the next available
+            else
+            {
+                for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
+                {
+                    if (GameController.opponentPokemon[j].current_hp > 0)
+                    {
+                        enemyUnit.pokemon = GameController.opponentPokemon[j];
+                        break;
+                    }
+                }
+            }
+            //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
+            dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
+
+            yield return new WaitForSeconds(1.0f);
+            GameController.soundFX = enemyUnit.pokemon.dexnum.ToString();
+            enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
+            SetOpponentSprite(enemyUnit, enemySprite);
+            phaseOpponentSprite = 2;
 
         }
 
@@ -850,6 +881,10 @@ namespace Pokemon
         private IEnumerator AttackXYZ(Moves attack, Unit Attacker, Unit Defender)
         {
 
+
+
+            PrintStats(Attacker);
+            PrintStats(Defender);
             //PrintStats(Attacker);
 
 

@@ -145,9 +145,11 @@ namespace Pokemon
                     Debug.Log("current def: " + defender.pokemon.current_defense);
                     Debug.Log("def stage: " + defender.pokemon.stage_defense);
                     */
-                    int attack_vs_defense = attacker.pokemon.current_attack / defender.pokemon.current_defense;
+                    double attack_vs_defense = attacker.pokemon.current_attack / defender.pokemon.current_defense;
                     attack_vs_defense = attack_vs_defense == 0 ? 1 : attack_vs_defense;
 
+
+                        
                     damage = (((((2 * attacker.pokemon.level) / 5) + 2) * attack.base_power * (attack_vs_defense)) / 50) + 2; //Basic attacking
                     damage *= attacker_burn_multiplier; //Burn only applies to physical
                 }
@@ -166,7 +168,7 @@ namespace Pokemon
                     Debug.Log(defender.pokemon.name + " current Sp_def: " + defender.pokemon.current_sp_defense);
                     */
 
-                    int sp_attack_vs_sp_defense = attacker.pokemon.current_sp_attack / defender.pokemon.current_sp_defense;
+                    double sp_attack_vs_sp_defense = attacker.pokemon.current_sp_attack / defender.pokemon.current_sp_defense;
                     sp_attack_vs_sp_defense = sp_attack_vs_sp_defense == 0 ? 1 : sp_attack_vs_sp_defense;
 
                     damage = (((((2 * attacker.pokemon.level) / 5) + 2) * attack.base_power * (sp_attack_vs_sp_defense)) / 50) + 2;

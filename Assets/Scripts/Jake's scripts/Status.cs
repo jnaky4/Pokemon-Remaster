@@ -72,14 +72,14 @@ namespace Pokemon
              * min_duration: (1 to 5):  -1 means always persist
              * max_duration: (1 to 5):  -1 means always persist
              */
-            //                          name         adj            persist ig_type     s_dmg%  u_atk%  afct_st     afct_st_mul rmv_ch  max_dur min_dur
+            //                          name         adj            persist ig_type     s_dmg%  u_atk%  afct_st     afct_st_mul rmv_ch  min_dur max_dur
             {"Burn",  new Status(       "Burn",      "Burned",      true,   "Fire",     .125,   0,      "Attack",   .5,         0,      -1,     -1)},
             {"Freeze",  new Status(     "Freeze",    "Frozen",      true,   "Ice",      0,      1.0,    "null",     1,          .2,     -1,     -1)},
-            {"Sleep",  new Status(      "Sleep",     "Asleep",      true,   "null",     0,      1.0,    "null",     1,          0,      3,      1)},
+            {"Sleep",  new Status(      "Sleep",     "Asleep",      true,   "null",     0,      1.0,    "null",     1,          .4,      6,      6)},
             {"Paralysis", new Status(   "Paralysis", "Paralyzed",   true,   "Electric", 0,      .25,    "Speed",    .5,         0,      -1,     -1)},
             {"Poison", new Status(      "Poison",    "Poisoned",    true,   "Poison",   .125,   0,      "null",     1,          0,      -1,     -1)},
             {"Flinch", new Status(      "Flinch",    "Flinched",    false,  "null",     0,      1.0,    "null",     1,          0,      1,      1)},
-            {"Confusion", new Status(   "Confusion", "Confused",    false,  "null",     .175,   .33,    "null",     1,          0,      5,      2)},
+            {"Confusion", new Status(   "Confusion", "Confused",    false,  "null",     .175,   .33,    "null",     1,          0,      3,      6)},
             {"Seeded", new Status(      "Seeded",    "Seeded",      false,  "null",     .0625,  0,      "null",     1,          0,      -1,     -1)},
             {"Recharging", new Status(  "Recharging", "Recharge",   false,  "null",     0,      1.0,    "null",     1,          0,      2,      2)},
             //for csv, does nothing
@@ -106,7 +106,7 @@ namespace Pokemon
         
 
 
-        public Status(string name, string adj, bool persistance, string ignore_type, double self_damage, double unable_to_attack_chance, string affect_stat, double affect_stat_mulitplier, double removal_chance, int max_duration, int min_duration)
+        public Status(string name, string adj, bool persistance, string ignore_type, double self_damage, double unable_to_attack_chance, string affect_stat, double affect_stat_mulitplier, double removal_chance, int min_duration, int max_duration)
         {
             this.name = name;
             this.adj = adj;
