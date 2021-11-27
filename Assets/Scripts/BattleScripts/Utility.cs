@@ -256,11 +256,11 @@ namespace Pokemon
 
         }
 
-        public static bool isLethal(int damage, Pokemon target) => damage >= target.current_hp;
+        public static bool IsLethal(int damage, Pokemon target) => damage >= target.current_hp;
 
 
         //TODO add status effects to turns until faint
-        public static int turnsUntilFaint(int attackerDamage, Pokemon defending, BattleState whoGoesFirst)
+        public static int TurnsUntilFaint(int attackerDamage, Pokemon defending, BattleState whoGoesFirst)
         {
             int turnsUntilFaint = -1;
             double self_damage = getStatusDamage(defending);
@@ -304,7 +304,7 @@ namespace Pokemon
                     double emul = Utility.EffectivenessMultiplier(attacking_pokemon.currentMoves[i], Defender.pokemon);
                     double stab = Utility.STAB(attacking_pokemon.currentMoves[i], attacking_pokemon);
                     //Debug.Log("Effectiveness: " + emul);
-                    int potentialDmg = Utility.CalculateDamage(Attacker, Defender, attacking_pokemon.currentMoves[i], false, emul, stab);
+                    int potentialDmg = Utility.CalculateDamage(Attacker, Defender, attacking_pokemon.currentMoves[i], false, emul, stab, 85);
                     available_moves.Add(attacking_pokemon.currentMoves[i].name, potentialDmg);
                     //Debug.Log(attacking_pokemon.currentMoves[i].name + " might do " + potentialDmg + " damage.");
                 }
@@ -468,6 +468,20 @@ namespace Pokemon
             }
 
             return status_damage;
+        }
+        public static Moves LeastDamagingMoveThatKills(Dictionary<string, int> available_moves, Pokemon Target)
+        {
+
+            KeyValuePair<string, int> leastDamagingLethal = new KeyValuePair<string, int>("null", 0);
+            foreach (KeyValuePair<string, int> attack in available_moves)
+            {
+                if (Utility.IsLethal(attack.Value, Target) && attack.Value > leastDamagingLethal.Value)
+                {
+                    leastDamagingLethal = attack;
+                }
+            }
+            if (leastDamagingLethal.Value > 0) return Moves.get_move(leastDamagingLethal.Key);
+            else return null;
         }
     }
 }

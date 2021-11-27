@@ -145,7 +145,7 @@ namespace Pokemon
             }
         }
 
-
+        
 
         //TODO Finish out AI decisions 
         public int DecideMove(Moves playerAttack, Unit Player)
@@ -178,10 +178,10 @@ namespace Pokemon
 
             double playerCritChance = Utility.CritChance(Player) * 100;
 
-            bool playerAttackLethal = Utility.isLethal(playerDamage, pokemon);
+            bool playerAttackLethal = Utility.IsLethal(playerDamage, pokemon);
 
             BattleState whoGoesFirst = Utility.WhoGoesFirst(Moves.get_move("Tackle"), playerAttack, pokemon, Player.pokemon);
-            int AIturnsUntilFaint = Utility.turnsUntilFaint(playerDamage, pokemon, whoGoesFirst);
+            int AIturnsUntilFaint = Utility.TurnsUntilFaint(playerDamage, pokemon, whoGoesFirst);
 
             /* Weight Evaluation of AI attack.
              * 10: Guaranteed AI win, AI Attacking First
@@ -227,33 +227,45 @@ namespace Pokemon
             int decided_move_damage;
             int playerTurnsUntilFaint = -1;
             Moves highest_damaging_move;
+            Moves least_damaging_lethal_move;
             bool killsEnemy = false;
 
             //Debug.Log("Enemy has " + enemyhealth + " hp.");
 
 
-            //does estimated damage calculation for each move the AI pokemon has
+            //does estimated minmum damage calculation for each move the AI pokemon has
             available_moves = Utility.CalculateEachMoveDamage(this.pokemon, this, Player);
             //gets the highest damaging move
             highest_damaging_move = Utility.DecideHighestDamagingAttack(available_moves);
+            //gets the least damaging move that is lethal
+            least_damaging_lethal_move = Utility.LeastDamagingMoveThatKills(available_moves, Player.pokemon);
+
 
             if(highest_damaging_move != null)
             {
                 //who will go first
                 whoGoesFirst = Utility.WhoGoesFirst(highest_damaging_move, playerAttack, pokemon, Player.pokemon);
                 decided_move_damage = available_moves[highest_damaging_move.name];
-                playerTurnsUntilFaint = Utility.turnsUntilFaint(decided_move_damage, Player.pokemon, whoGoesFirst);
+                playerTurnsUntilFaint = Utility.TurnsUntilFaint(decided_move_damage, Player.pokemon, whoGoesFirst);
                 decided_move_index = this.pokemon.getMoveIndex(highest_damaging_move.name);
-                killsEnemy = Utility.isLethal(decided_move_damage, Player.pokemon);
+                killsEnemy = Utility.IsLethal(decided_move_damage, Player.pokemon);
             }
 
+            if(least_damaging_lethal_move != null)
+            {
+                decided_move_index = this.pokemon.getMoveIndex(least_damaging_lethal_move.name);
+            }
 
 
 
             if(playerTurnsUntilFaint > 3)
             {
                 Moves status_move = Utility.DecideBestStatusAttack(this.pokemon, Player.pokemon);
-                if(status_move != null) Debug.Log("Best Status Moves: " + status_move.name);
+                if (status_move != null)
+                {
+                    Debug.Log("Best Status Moves: " + status_move.name);
+                    if (!Player.pokemon.HasStatus(status_move.status.name)) decided_move_index = this.pokemon.getMoveIndex(status_move.name);
+                }
 
             }
 

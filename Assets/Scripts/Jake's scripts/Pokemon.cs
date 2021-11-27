@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Linq;
 
 /*
 Pokemon Object
@@ -79,7 +80,8 @@ namespace Pokemon
 
             //adds persisting status to pokemon if it had prior to evolving
             if (statuses != null) this.statuses = statuses;
-
+            
+           
 
 
             //get learnset added to learnset_dictionary for this pokemon
@@ -96,7 +98,12 @@ namespace Pokemon
             {
                 this.type2 = Type.get_type("Null");
             }
+
+            this.gender = SetGender(pokedex_entry.gender_ratio);
+
             GetImagePath();
+
+
         }
 
         public static Dictionary<int, string> dictionary_pokemon = new Dictionary<int, string> {
@@ -199,6 +206,8 @@ namespace Pokemon
         public Type type1;
 
         public Type type2;
+
+        public char gender;
 
         //list of learnable moves
         public List<Learnset> learnset = new List<Learnset>();
@@ -605,15 +614,18 @@ namespace Pokemon
 
 
                 //Every current Stat but HP is reset
-                this.current_attack = this.HasStatus("Burn") ? this.current_attack : this.max_attack;
+                this.current_attack = this.max_attack;
                 this.current_defense = this.max_defense;
                 this.current_sp_attack = this.max_sp_attack;
                 this.current_sp_defense = this.max_sp_defense;
-                this.current_speed = this.HasStatus("Paralysis") ? this.current_speed : this.max_speed;
+                this.current_speed = this.max_speed;
+                //this.current_speed = this.HasStatus("Paralysis") ? this.current_speed : this.max_speed;
+                //this.current_attack = this.HasStatus("Burn") ? this.current_attack : this.max_attack;
             }
 
             //reset stages
             ResetStages();
+            //TODO figure out why this is 1
             this.current_accuracy = 1;
             this.current_evasion = 1;
         }
@@ -953,6 +965,25 @@ namespace Pokemon
             Debug.Log("ERROR: Move not found on Pokemon");
             return 0;
         }
+        public char SetGender(string ratio)
+        {
+            int[] ratio_arr = ratio.Split('|').Select(Int32.Parse).ToArray<int>();
+            switch (ratio_arr[0], ratio_arr[1])
+            {
+                case (-1, -1):
+                    return 'u';
+                case (-1, 1):
+                    return 'm';
+                case (1, -1):
+                    return 'f';
+                default:
+                    int roll = Utility.rnd.Next(ratio_arr[0] + ratio_arr[1]);
+                    return roll < ratio_arr[0] ? 'f' : 'm';
+            }
+
+
+        }
     }
+
 
 }
