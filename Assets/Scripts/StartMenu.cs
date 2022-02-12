@@ -23,14 +23,14 @@ namespace Pokemon
         private void Start()
         {
             //Debug.Log("executing Start");
-            Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS");
-            Moves.all_moves = BattleSystem.load_CSV("MOVES");
-            Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK");
-            Learnset.all_learnset = BattleSystem.load_CSV("LEARNSET");
-            Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON");
+            Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS_GEN2");
+            Moves.all_moves = BattleSystem.load_CSV("MOVES_GEN2");
+            Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK_GEN2");
+            Learnset.all_learnset = BattleSystem.load_CSV("LEARNSET_GEN2");
+            Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON_GEN2");
             Route.all_routes = BattleSystem.load_CSV("ROUTES");
             Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
-            TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
+            //TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
             Items.all_Items = BattleSystem.load_CSV("Items");
 
             Type.load_type();
@@ -47,18 +47,20 @@ namespace Pokemon
             {
                 Debug.Log("Development Mode Started");
                 GameController.starterChosen = true;
+                /*GameController.playerPokemon[0] = new Pokemon(155, 5, "Tackle");*/
                 //Tauros
                 GameController.playerPokemon[0] = new Pokemon(128, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
                 //Exeggutor
                 GameController.playerPokemon[1] = new Pokemon(103, 100, "Sleep Powder", "Mega Drain", "Explosion", "Psychic");
                 //Rhydon
-                GameController.playerPokemon[2] = new Pokemon(112, 100, "Rock Slide", "Earthquake", "Body Slam"/*,"Substitute"*/);
+                GameController.playerPokemon[2] = new Pokemon(112, 100, "Rock Slide", "Earthquake", "Body Slam"/*, "Substitute"*/);
                 //Chansey
                 GameController.playerPokemon[3] = new Pokemon(113, 100, "Thunder Wave", "Thunderbolt", "Ice Beam", "Soft-Boiled");
                 //Starmie
                 GameController.playerPokemon[4] = new Pokemon(121, 100, "Surf", "Blizzard", "Recover", "Thunderbolt");
                 //Zapdos
                 GameController.playerPokemon[5] = new Pokemon(145, 100, "Drill Peck", "Toxic", "Thunder Wave", "Thunderbolt");
+
 
                 /*GameController.playerPokemon[1] = new Pokemon(25, 20, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
                 GameController.playerPokemon[2] = new Pokemon(60, 19, "Water Gun", "Bubble", "Splash", "Crabhammer", 7900);

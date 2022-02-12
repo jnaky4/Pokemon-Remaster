@@ -8,7 +8,8 @@ namespace Pokemon
 {
     public class Type
     {
-        public enum Types { Fire, Water, Grass, Electric, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dragon, Normal, Null }
+        //Not Used
+        public enum Types { Fire, Water, Grass, Electric, Ice, Fighting, Poison, Ground, Flying, Psychic, Bug, Rock, Ghost, Dragon, Dark, Steel, Normal, Null }
 
 
         //Atk typ           Fr  Wa  Gr  El  Ic  Fg  Po  Gd  Fl  Py  Bg  Ro  Gh  Dr  No  Nu    
@@ -28,6 +29,33 @@ namespace Pokemon
         ///*Dragon*/	    1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	2,	1   1
         ///*Normal*/	    1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	1,	.5,	0,	1,	1   1
         ///*Null*/          1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1,  1   1
+
+        /*
+         * 
+         *  Attacking,  Fr Wa Gr El Ic Fg Po Gd Fl Py Bg Ro Gh Dr Dk St No Nu
+            Fi          .5 .5 2  1  2  1  1  1  1  1  2  .5 1  .5 1  2  1  1
+            Wa          2  .5 .5 1  1  1  1  2  1  1  1  2  1  .5 1  1  1  1
+            Gr          5  2  .5 1  1  1  .5 2  .5 1  .5 2  1  .5 1  .5 1  1
+            El          1  2  .5 .5 1  1  1  0  2  1  1  1  1  .5 1  1  1  1
+            Ic          1  .5 1,0.5,1,1,2,2,1,1,1,1,2,1,0.5,1,1
+            Fg          1,1,1,1,2,1,0.5,1,0.5,0.5,0.5,2,0,1,2,2,2,1
+            Po          1,1,2,1,1,1,0.5,0.5,1,1,2,0.5,0.5,1,1,0,1,1
+            Gd          2,1,0.5,2,1,1,2,1,0,1,0.5,2,1,1,1,2,1,1
+            Fl          1,1,2,0.5,1,2,1,1,1,1,2,0.5,1,1,1,0.5,1,1
+            Ps          1,1,1,1,1,2,2,1,1,0.5,1,1,1,1,0,0.5,1,1
+            Bg          0.5,1,2,1,1,0.5,2,1,0.5,2,1,1,0.5,1,2,0.5,1,1
+            Ro          2,1,1,1,2,0.5,1,0.5,2,1,2,1,1,1,1,0.5,1,1
+            Gh          1,1,1,1,1,1,1,1,1,0,1,1,2,1,0.5,0.5,0,1
+            Dr          1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,0.5,1,1
+            Dk          1,1,1,1,1,0.5,1,1,1,2,1,1,2,1,0.5,0.5,1,1
+            St          0.5,0.5,1,0.5,2,1,1,1,1,1,1,2,1,1,1,0.5,1,1
+            No          1,1,1,1,1,1,1,1,1,1,1,0.5,0,1,1,0.5,1,1
+            Nu          1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+         * 
+         * 
+         * 
+         */
+
 
 
         //CSV's get loaded into these Lists
@@ -56,7 +84,10 @@ namespace Pokemon
         public double attack_rock;
         public double attack_ghost;
         public double attack_dragon;
+        public double attack_dark;
+        public double attack_steel;
         public double attack_normal;
+        public double attack_null;
 
         public Type(
             string name,
@@ -75,7 +106,10 @@ namespace Pokemon
             double a_rock,
             double a_ghost,
             double a_dragon,
-            double a_normal)
+            double a_dark,
+            double a_steel,
+            double a_normal,
+            double a_null)
 
         {
             this.name = name;
@@ -94,10 +128,10 @@ namespace Pokemon
             this.attack_rock = a_rock;
             this.attack_ghost = a_ghost;
             this.attack_dragon = a_dragon;
+            this.attack_dark = a_dark;
+            this.attack_steel = a_steel;
             this.attack_normal = a_normal;
-
-
-
+            this.attack_null = a_null;
         }
         public static void load_type()
         {
@@ -120,8 +154,10 @@ namespace Pokemon
                 double attack_rock = double.Parse(type_attack[i]["Rock"].ToString());
                 double attack_ghost = double.Parse(type_attack[i]["Ghost"].ToString());
                 double attack_dragon = double.Parse(type_attack[i]["Dragon"].ToString());
+                double attack_dark = double.Parse(type_attack[i]["Dark"].ToString());
+                double attack_steel = double.Parse(type_attack[i]["Steel"].ToString());
                 double attack_normal = double.Parse(type_attack[i]["Normal"].ToString());
-
+                double attack_null = double.Parse(type_attack[i]["Null"].ToString());
 
 
                 Type temp_type = new Type
@@ -141,7 +177,10 @@ namespace Pokemon
                     attack_rock,
                     attack_ghost,
                     attack_dragon,
-                    attack_normal
+                    attack_dark,
+                    attack_steel,
+                    attack_normal,
+                    attack_null
                     );
 
                 type_dictionary.Add(temp_type_str, temp_type);
@@ -171,6 +210,8 @@ namespace Pokemon
                     ["Rock"] = double.Parse(type_attack[i]["Rock"].ToString()),
                     ["Ghost"] = double.Parse(type_attack[i]["Ghost"].ToString()),
                     ["Dragon"] = double.Parse(type_attack[i]["Dragon"].ToString()),
+                    ["Dark"] = double.Parse(type_attack[i]["Dark"].ToString()),
+                    ["Steel"] = double.Parse(type_attack[i]["Steel"].ToString()),
                     ["Normal"] = double.Parse(type_attack[i]["Normal"].ToString()),
                     ["Null"] = double.Parse(type_attack[i]["Null"].ToString()),
                 };
@@ -178,7 +219,6 @@ namespace Pokemon
 
                 string type = type_attack[i]["Attacking"].ToString();
                 attacking_type_dict[type] = temp;
-                
             }
         }
 
