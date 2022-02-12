@@ -1,101 +1,252 @@
 PokedexNum,Pokemon_Name,Type1,Type2,Stage,Evolve_Level,Gender_Ratio,Height,Weight,Description,Category,Leveling_Speed,Base_Exp,Catch_Rate
-152,Chikorita,Grass,-,Basic,16,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-153,Bayleef,Grass,-,Intermediate,32,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-154,Meganium,Grass,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-155,Cyndaquil,Fire,-,Basic,14,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-156,Quilava,Fire,-,Intermediate,36,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-157,Typhlosion,Fire,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-158,Totodile,Water,-,Basic,18,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-159,Croconaw,Water,-,Intermediate,30,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-160,Feraligatr,Water,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-161,Sentret,Normal,-,Basic,15,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-162,Furret,Normal,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-163,Hoothoot,Normal,Flying,Basic,20,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-164,Noctowl,Normal,Flying,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-165,Ledyba,Bug,Flying,Basic,18,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-166,Ledian,Bug,Flying,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-167,Spinarak,Bug,Poison,Basic,22,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-168,Ariados,Bug,Poison,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-169,Crobat,Poison,Flying,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-170,Chinchou,Water,Electric,Basic,27,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-171,Lanturn,Water,Electric,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-172,Pichu,Electric,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-173,Cleffa,Normal,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-174,Igglybuff,Normal,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-175,Togepi,Normal,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-176,Togetic,Normal,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-177,Natu,Psychic,Flying,Basic,25,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-178,Xatu,Psychic,Flying,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-179,Mareep,Electric,-,Basic,15,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-180,Flaaffy,Electric,-,Intermediate,30,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-181,Ampharos,Electric,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-182,Bellossom,Grass,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-183,Marill,Water,-,Basic,18,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-184,Azumarill,Water,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-185,Sudowoodo,Rock,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-186,Politoed,Water,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-187,Hoppip,Grass,Flying,Basic,18,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-188,Skiploom,Grass,Flying,Intermediate,27,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-189,Jumpluff,Grass,Flying,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-190,Aipom,Normal,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-191,Sunkern,Grass,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-192,Sunflora,Grass,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-193,Yanma,Bug,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-194,Wooper,Water,Ground,Basic,20,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-195,Quagsire,Water,Ground,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-196,Espeon,Psychic,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-197,Umbreon,Dark,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-198,Murkrow,Dark,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-199,Slowking,Water,Psychic,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-200,Misdreavus,Ghost,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-201,Unown,Psychic,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-202,Wobbuffet,Psychic,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-203,Girafarig,Normal,Psychic,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-204,Pineco,Bug,-,Basic,31,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-205,Forretress,Bug,Steel,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-206,Dunsparce,Normal,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-207,Gligar,Ground,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-208,Steelix,Steel,Ground,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-209,Snubbull,Normal,-,Basic,23,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-210,Granbull,Normal,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-211,Qwilfish,Water,Poison,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-212,Scizor,Bug,Steel,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-213,Shuckle,Bug,Rock,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-214,Heracross,Bug,Fighting,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-215,Sneasel,Dark,Ice,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-216,Teddiursa,Normal,-,Basic,30,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-217,Ursaring,Normal,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-218,Slugma,Fire,-,Basic,38,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-219,Magcargo,Fire,Rock,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-220,Swinub,Ice,Ground,Basic,33,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-221,Piloswine,Ice,Ground,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-222,Corsola,Water,Rock,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-223,Remoraid,Water,-,Basic,25,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-224,Octillery,Water,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-225,Delibird,Ice,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-226,Mantine,Water,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-227,Skarmory,Steel,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-228,Houndour,Dark,Fire,Basic,24,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-229,Houndoom,Dark,Fire,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-230,Kingdra,Water,Dragon,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-231,Phanpy,Ground,-,Basic,25,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-232,Donphan,Ground,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-233,Porygon2,Normal,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-234,Stantler,Normal,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-235,Smeargle,Normal,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-236,Tyrogue,Fighting,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-237,Hitmontop,Fighting,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-238,Smoochum,Ice,Psychic,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-239,Elekid,Electric,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-240,Magby,Fire,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-241,Miltank,Normal,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-242,Blissey,Normal,-,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-243,Raikou,Electric,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-244,Entei,Fire,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-245,Suicune,Water,-,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-246,Larvitar,Rock,Ground,Basic,30,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-247,Pupitar,Rock,Ground,Intermediate,55,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-248,Tyranitar,Rock,Dark,Final,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-249,Lugia,Psychic,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-250,Ho-Oh,Fire,Flying,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
-251,Celebi,Psychic,Grass,Basic,-1,Genderless,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1,300,45
+1,Bulbasaur,Grass,Poison,Basic,16,1|7,0.7,6.9,A strange seed was planted on its back at birth. The plant sprouts and grows with this POKÈMON.,Seed  ,1,64,45
+2,Ivysaur,Grass,Poison,Intermediate,32,1|7,1,13,"When the bulb on its back grows large, it appears to lose the ability to stand on its hind legs.",Seed  ,1,142,45
+3,Venusaur,Grass,Poison,Final,-1,1|7,2,100,The plant blooms when it is absorbing solar energy. It stays on the move to seek sunlight.,Seed  ,1,263,45
+4,Charmander,Fire,-,Basic,16,1|7,0.6,8.5,"Obviously prefers hot places. When it rains, steam is said to spout from the tip of its tail.",Lizard  ,1,62,45
+5,Charmeleon,Fire,-,Intermediate,36,1|7,1.1,19,"When it swings its burning tail, it elevates the temperature to unbearably high levels.",Flame  ,1,142,45
+6,Charizard,Fire,Flying,Final,-1,1|7,1.7,90.5,Spits fire that is hot enough to melt boulders. Known to cause forest fires unintentionally.,Flame  ,1,267,45
+7,Squirtle,Water,-,Basic,16,1|7,0.5,9,"After birth, its back swells and hardens into a shell. Powerfully sprays foam from its mouth.",Tiny Turtle  ,1,63,45
+8,Wartortle,Water,-,Intermediate,36,1|7,1,22.5,"Often hides in water to stalk unwary prey. For swimming fast, it moves its ears to maintain balance.",Turtle  ,1,142,45
+9,Blastoise,Water,-,Final,-1,1|7,1.6,85.5,A brutal POKÈMON with pressurized water jets on its shell. They are used for high speed tackles.,Shellfish  ,1,265,45
+10,Caterpie,Bug,-,Basic,7,1|1,0.3,2.9,Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.,Worm  ,0.8,39,255
+11,Metapod,Bug,-,Intermediate,10,1|1,0.7,9.9,"This POKÈMON is vulnerable to attack while its shell is soft, exposing its weak and tender body.",Cocoon  ,0.8,72,120
+12,Butterfree,Bug,Flying,Final,-1,1|1,1.1,32,"In battle, it flaps its wings at high speed to release highly toxic dust into the air.",Butterfly  ,0.8,198,45
+13,Weedle,Bug,Poison,Basic,7,1|1,0.3,3.2,"Often found in forests, eating leaves. It has a sharp venomous stinger on its head.",Hairy  ,0.8,39,255
+14,Kakuna,Bug,Poison,Intermediate,10,1|1,0.6,10,"Almost incapable of moving, this POKÈMON can only harden its shell to protect itself from predators.",Cocoon  ,0.8,72,120
+15,Beedrill,Bug,Poison,Final,-1,1|1,1,29.5,Flies at high speed and attacks using its large venomous stingers on its forelegs and tail.,Poison Bee  ,0.8,198,45
+16,Pidgey,Normal,Flying,Basic,18,1|1,0.3,1.8,A common sight in forests and woods. It flaps its wings at ground level to kick up blinding sand.,Tiny Bird  ,1,50,255
+17,Pidgeotto,Normal,Flying,Intermediate,36,1|1,1.1,30,"Very protective of its sprawling territorial area, this POKÈMON will fiercely peck at any intruder.",Bird  ,1,122,120
+18,Pidgeot,Normal,Flying,Final,-1,1|1,1.5,39.5,"When hunting, it skims the surface of water at high speed to pick off unwary prey such as MAGIKARP.",Bird  ,1,240,45
+19,Rattata,Normal,-,Basic,20,1|1,0.3,3.5,"Bites anything when it attacks. Small and very quick, it is a common sight in many places.",Mouse  ,0.8,51,255
+20,Raticate,Normal,-,Final,-1,1|1,0.7,18.5,It uses its whiskers to maintain its balance. It apparently slows down if they are cut off.,Mouse  ,0.8,145,127
+21,Spearow,Normal,Flying,Basic,20,1|1,0.3,2,Eats bugs in grassy areas. It has to flap its short wings at high speed to stay airborne.,Tiny Bird  ,0.8,52,255
+22,Fearow,Normal,Flying,Final,-1,1|1,1.2,38,"With its huge and magnificent wings, it can keep aloft without ever having to land for rest.",Beak  ,0.8,155,90
+23,Ekans,Poison,-,Basic,20,1|1,2,6.9,"Moves silently and stealthily. Eats the eggs of birds, such as PIDGEY and SPEAROW, whole.",Snake  ,0.8,58,255
+24,Arbok,Poison,-,Final,-1,1|1,3.5,65,It is rumored that the ferocious warning markings on its belly differ from area to area.,Cobra  ,0.8,157,90
+25,Pikachu,Electric,-,Basic,-1,1|1,0.4,6,"When several of these POKÈMON gather, their electricity could build and cause lightning storms.",Mouse  ,0.8,112,190
+26,Raichu,Electric,-,Final,-1,1|1,0.8,66.1,Its long tail serves as a ground to protect itself from its own high voltage power.,Mouse  ,0.8,243,75
+27,Sandshrew,Ground,-,Basic,22,1|1,0.6,12,Burrows deep underground in arid locations far from water. It only emerges to hunt for food.,Mouse  ,0.8,60,255
+28,Sandslash,Ground,-,Final,-1,1|1,1,29.5,Curls up into a spiny ball when threatened. It can roll while curled up to attack or escape.,Mouse  ,0.8,158,90
+29,Nidoran,Poison,-,Basic,16,1|-1,0.4,7,"Although small, its venomous barbs render this POKÈMON dangerous. The female has smaller horns.",Poison Pin  ,1,55,235
+30,Nidorina,Poison,-,Intermediate,-1,1|-1,0.8,20,The femaleís horn develops slowly. Prefers physical attacks such as clawing and biting.,Poison Pin  ,1,128,120
+31,Nidoqueen,Poison,Ground,Final,-1,1|-1,1.3,60,Its hard scales provide strong protection. It uses its hefty bulk to execute powerful moves.,Drill  ,1,253,45
+32,Nidoran,Poison,-,Basic,16,-1|1,0.5,9,"Stiffens its ears to sense danger. The larger its horns, the more powerful its secreted venom.",Poison Pin  ,1,55,235
+33,Nidorino,Poison,-,Intermediate,-1,-1|1,0.9,19.5,An aggressive POKÈMON that is quick to attack. The horn on its head secretes a powerful venom.,Poison Pin  ,1,128,120
+34,Nidoking,Poison,Ground,Final,-1,-1|1,1.4,62,"It uses its powerful tail in battle to smash, constrict, then break the preyís bones.",Drill  ,1,253,45
+35,Clefairy,Normal,-,Basic,-1,3|1,0.6,7.5,Its magical and cute appeal has many admirers. It is rare and found only in certain areas.,Fairy  ,0.8,113,150
+36,Clefable,Normal,-,Final,-1,3|1,1.3,40,A timid fairy POKÈMON that is rarely seen. It will run and hide the moment it senses people.,Fairy  ,0.8,242,25
+37,Vulpix,Fire,Ice,Basic,-1,3|1,2,22,"At the time of birth, it has just one tail. The tail splits from its tip as it grows older.",Fox  ,0.8,60,190
+38,Ninetales,Fire,Ice,Final,-1,3|1,1.1,19.9,Very smart and very vengeful. Grabbing one of its many tails could result in a 1000-year curse.,Fox  ,0.8,177,75
+39,Jigglypuff,Normal,-,Basic,-1,3|1,0.5,5.5,"When its huge eyes light up, it sings a mysteriously soothing melody that lulls its enemies to sleep.",Balloon  ,0.8,95,170
+40,Wigglytuff,Normal,-,Final,-1,3|1,1,12,"The body is soft and rubbery. When angered, it will suck in air and inflate itself to an enormous size.",Balloon  ,0.8,218,50
+41,Zubat,Poison,Flying,Basic,22,1|1,0.8,7.5,Forms colonies in perpetually dark places. Uses ultrasonic waves to identify and approach targets.,Bat  ,0.8,49,255
+42,Golbat,Poison,Flying,Final,-1,1|1,1.6,55,"Once it strikes, it will not stop draining energy from the victim even if it gets too heavy to fly.",Bat  ,0.8,159,90
+43,Oddish,Grass,Poison,Basic,21,1|1,0.5,5.4,"During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds.",Weed  ,1,64,255
+44,Gloom,Grass,Poison,Intermediate,-1,1|1,0.8,8.6,The fluid that oozes from its mouth isnít drool. It is a nectar that is used to attract prey.,Weed  ,1,138,120
+45,Vileplume,Grass,Poison,Final,-1,1|1,1.2,18.6,"The larger its petals, the more toxic pollen it contains. Its big head is heavy and hard to hold up.",Flower  ,1,245,45
+46,Paras,Bug,Grass,Basic,24,1|1,0.3,5.4,Burrows to suck tree roots. The mushrooms on its back grow by drawing nutrients from the bug host.,Mushroom  ,0.8,57,190
+47,Parasect,Bug,Grass,Final,-1,1|1,1,29.5,A host-parasite pair in which the parasite mushroom has taken over the host bug. Prefers damp places.,Mushroom  ,0.8,142,75
+48,Venonat,Bug,Poison,Basic,31,1|1,1,30,Lives in the shadows of tall trees where it eats insects. It is attracted by light at night.,Insect  ,0.8,61,190
+49,Venomoth,Bug,Poison,Final,-1,1|1,1.5,12.5,The dust-like scales covering its wings are color coded to indicate the kinds of poison it has.,Poison Moth  ,0.8,158,75
+50,Diglett,Ground,-,Basic,26,1|1,0.2,0.8,Lives about one yard underground where it feeds on plant roots. It sometimes appears above ground.,Mole  ,0.8,53,255
+51,Dugtrio,Ground,-,Final,-1,1|1,0.7,33.3,A team of DIGLETT triplets. It triggers huge earthquakes by burrowing 60 miles underground.,Mole  ,0.8,149,50
+52,Meowth,Normal,-,Basic,28,1|1,0.4,4.2,Adores circular objects. Wanders the streets on a nightly basis to look for dropped loose change.,Scratch Cat  ,0.8,58,255
+53,Persian,Normal,-,Final,-1,1|1,1,32,"Although its fur has many admirers, it is tough to raise as a pet because of its fickle meanness.",Classy Cat  ,0.8,154,90
+54,Psyduck,Water,-,Basic,33,1|1,0.8,19.6,"While lulling its enemies with its vacant look, this wily POKÈMON will use psychokinetic powers.",Duck  ,0.8,64,190
+55,Golduck,Water,-,Final,-1,1|1,1.7,76.6,"Often seen swimming elegantly by lake shores. It is often mistaken for the Japanese monster, Kappa.",Duck  ,0.8,175,75
+56,Mankey,Fighting,-,Basic,28,1|1,0.5,28,Extremely quick to anger. It could be docile one moment then thrashing away the next instant.,Pig Monkey  ,0.8,61,190
+57,Primeape,Fighting,-,Final,-1,1|1,1,32,Always furious and tenacious to boot. It will not abandon chasing its quarry until it is caught.,Pig Monkey  ,0.8,159,75
+58,Growlithe,Fire,-,Basic,-1,1|3,0.7,19,Very protective of its territory. It will bark and bite to repel intruders from its space.,Puppy  ,1.2,70,190
+59,Arcanine,Fire,-,Final,-1,1|3,1.9,155,A POKÈMON that has been admired since the past for its beauty. It runs agilely as if on wings.,Legendary  ,1.2,194,75
+60,Poliwag,Water,-,Basic,25,1|1,0.6,12.4,Its newly grown legs prevent it from running. It appears to prefer swimming than trying to stand.,Tadpole  ,1,60,255
+61,Poliwhirl,Water,-,Intermediate,-1,1|1,1,20,"Capable of living in or out of water. When out of water, it sweats to keep its body slimy.",Tadpole  ,1,135,120
+62,Poliwrath,Water,Fighting,Final,-1,1|1,1.3,54,An adept swimmer at both the front crawl and breast stroke. Easily overtakes the best human swimmers.,Tadpole  ,1,255,45
+63,Abra,Psychic,-,Basic,16,1|3,0.9,19.5,"Using its ability to read minds, it will identify impending danger and TELEPORT to safety.",Psi  ,1,62,200
+64,Kadabra,Psychic,-,Intermediate,36,1|3,1.3,56.5,It emits special alpha waves from its body that induce headaches just by being close by.,Psi  ,1,140,100
+65,Alakazam,Psychic,-,Final,-1,1|3,1.5,48,"Its brain can outperform a supercomputer. Its intelligence quotient is said to be 5,000.",Psi  ,1,250,50
+66,Machop,Fighting,-,Basic,28,1|3,0.8,19.5,Loves to build its muscles. It trains in all styles of martial arts to become even stronger.,Superpower  ,1,61,180
+67,Machoke,Fighting,-,Intermediate,38,1|3,1.5,70.5,"Its muscular body is so powerful, it must wear a power save belt to be able to regulate its motions.",Superpower  ,1,142,90
+68,Machamp,Fighting,-,Final,-1,1|3,1.6,130,"Using its heavy muscles, it throws powerful punches that can send the victim clear over the horizon.",Superpower  ,1,253,45
+69,Bellsprout,Grass,Poison,Basic,21,1|1,0.7,4,A carnivorous POKÈMON that traps and eats bugs. It uses its root feet to soak up needed moisture.,Flower  ,1,60,255
+70,Weepinbell,Grass,Poison,Intermediate,-1,1|1,1,6.4,It spits out POISONPOWDER to immobilize the enemy and then finishes it with a spray of ACID.,Flycatcher  ,1,137,120
+71,Victreebel,Grass,Poison,Final,-1,1|1,1.7,15.5,"Said to live in huge colonies deep in jungles, although no one has ever returned from there.",Flycatcher  ,1,245,45
+72,Tentacool,Water,Poison,Basic,30,1|1,0.9,45.5,Drifts in shallow seas. Anglers who hook them by accident are often punished by its stinging acid.,Jellyfish  ,1.2,67,190
+73,Tentacruel,Water,Poison,Final,-1,1|1,1.6,55,"The tentacles are normally kept short. On hunts, they are extended to ensnare and immobilize prey.",Jellyfish  ,1.2,180,60
+74,Geodude,Rock,Ground,Basic,25,1|1,0.4,20,"Found in fields and mountains. Mistaking them for boulders, people often step or trip on them.",Rock  ,1,60,255
+75,Graveler,Rock,Ground,Intermediate,35,1|1,1,105,Rolls down slopes to move. It rolls over any obstacle without slowing or changing its direction.,Rock  ,1,137,120
+76,Golem,Rock,Ground,Final,-1,1|1,1.4,300,Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without damage.,Megaton  ,1,248,45
+77,Ponyta,Fire,-,Basic,40,1|1,1,30,Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time.,Fire Horse  ,1,82,190
+78,Rapidash,Fire,-,Final,-1,1|1,1.7,95,"Very competitive, this POKÈMON will chase anything that moves fast in the hopes of racing it.",Fire Horse  ,1,175,60
+79,Slowpoke,Water,Psychic,Basic,37,1|1,1.2,36,Incredibly slow and dopey. It takes 5 seconds for it to feel pain when under attack.,Dopey  ,0.8,63,190
+80,Slowbro,Water,Psychic,Final,-1,1|1,1.6,78.5,The SHELLDER that is latched onto SLOWPOKEís tail is said to feed on the hostís left over scraps.,Hermit Crab  ,0.8,172,75
+81,Magnemite,Electric,-,Basic,30,-1|-1,0.3,6,Uses anti-gravity to stay suspended. Appears without warning and uses THUNDER WAVE and similar moves.,Magnet  ,0.8,65,190
+82,Magneton,Electric,-,Final,-1,-1|-1,1,60,Formed by several MAGNEMITEs linked together. They frequently appear when sunspots flare up.,Magnet  ,0.8,163,60
+83,Farfetch'd,Normal,Flying,Basic,-1,1|1,0.8,15,The sprig of green onions it holds is its weapon. It is used much like a metal sword.,Wild Duck  ,0.8,132,45
+84,Doduo,Normal,Flying,Basic,31,1|1,1.4,39.2,A bird that makes up for its poor flying with its fast foot speed. Leaves giant footprints.,Twin Bird  ,0.8,62,190
+85,Dodrio,Normal,Flying,Final,-1,1|1,1.8,85.2,"Uses its three brains to execute complex plans. While two heads sleep, one head stays awake.",Triple Bird  ,0.8,165,45
+86,Seel,Water,-,Basic,34,1|1,1.1,90,The protruding horn on its head is very hard. It is used for bashing through thick ice.,Sea Lion  ,0.8,65,190
+87,Dewgong,Water,Ice,Final,-1,1|1,1.7,120,Stores thermal energy in its body. Swims at a steady 8 knots even in intensely cold waters.,Sea Lion  ,0.8,166,75
+88,Grimer,Poison,-,Basic,38,1|1,0.9,30,Appears in filthy areas. Thrives by sucking up polluted sludge that is pumped out of factories.,Sludge  ,0.8,65,190
+89,Muk,Poison,-,Final,-1,1|1,1.2,30,"Thickly covered with a filthy, vile sludge. It is so toxic, even its footprints contain poison.",Sludge  ,0.8,175,75
+90,Shellder,Water,-,Basic,-1,1|1,0.3,4,Its hard shell repels any kind of attack. It is vulnerable only when its shell is open.,Bivalve  ,1.2,61,190
+91,Cloyster,Water,Ice,Final,-1,1|1,1.5,132.5,"When attacked, it launches its horns in quick volleys. Its innards have never been seen.",Bivalve  ,1.2,184,60
+92,Gastly,Ghost,Poison,Basic,25,1|1,1.3,0.1,"Almost invisible, this gaseous POKÈMON cloaks the target and puts it to sleep without notice.",Gas  ,1,62,190
+93,Haunter,Ghost,Poison,Intermediate,36,1|1,1.6,0.1,"Because of its ability to slip through block walls, it is said to be from another dimension.",Gas  ,1,142,90
+94,Gengar,Ghost,Poison,Final,-1,1|1,1.5,40.5,"Under a full moon, this POKÈMON likes to mimic the shadows of people and laugh at their fright.",Shadow  ,1,250,45
+95,Onix,Rock,Ground,Basic,-1,1|1,8.8,210,"As it grows, the stone portions of its body harden to become similar to a diamond, but colored black.",Rock Snake  ,0.8,77,45
+96,Drowzee,Psychic,-,Basic,26,1|1,1,32.4,Puts enemies to sleep then eats their dreams. Occasionally gets sick from eating bad dreams.,Hypnosis  ,0.8,66,190
+97,Hypno,Psychic,-,Final,-1,1|1,1.6,75.6,"When it locks eyes with an enemy, it will use a mix of PSI moves such as HYPNOSIS and CONFUSION.",Hypnosis  ,0.8,169,75
+98,Krabby,Water,-,Basic,28,1|1,0.4,6.5,"Its pincers are not only powerful weapons, they are used for balance when walking sideways.",River Crab  ,0.8,65,225
+99,Kingler,Water,-,Final,-1,1|1,1.3,60,"The large pincer has 10000 hp of crushing power. However, its huge size makes it unwieldy to use.",Pincer  ,0.8,166,60
+100,Voltorb,Electric,-,Basic,30,-1|-1,0.5,10.4,"Usually found in power plants. Easily mistaken for a POKÈ BALL, they have zapped many people.",Ball  ,0.8,66,190
+101,Electrode,Electric,-,Final,-1,-1|-1,1.2,66.6,It stores electric energy under very high pressure. It often explodes with little or no provocation.,Ball  ,0.8,172,60
+102,Exeggcute,Grass,Psychic,Basic,-1,1|1,0.4,2.5,"Often mistaken for eggs. When disturbed, they quickly gather and attack in swarms.",Egg  ,1.2,65,90
+103,Exeggutor,Grass,Psychic,Final,-1,1|1,2,120,"Legend has it that on rare occasions, one of its heads will drop off and continue on as an EXEGGCUTE.",Coconut  ,1.2,186,45
+104,Cubone,Ground,-,Basic,28,1|1,0.4,6.5,"Because it never removes its skull helmet, no one has ever seen this POKÈMONís real face.",Lonely  ,0.8,64,190
+105,Marowak,Ground,-,Final,-1,1|1,1,45,The bone it holds is its key weapon. It throws the bone skillfully like a boomerang to KO targets.,Bone Keeper  ,0.8,149,75
+106,Hitmonlee,Fighting,-,Basic,-1,-1|1,1.5,49.8,"When in a hurry, its legs lengthen progressively. It runs smoothly with extra long, loping strides.",Kicking  ,0.8,159,45
+107,Hitmonchan,Fighting,-,Basic,-1,-1|1,1.4,50.2,"While apparently doing nothing, it fires punches in lightning fast volleys that are impossible to see.",Punching  ,0.8,159,45
+108,Lickitung,Normal,-,Basic,-1,1|1,1.2,65.5,Its tongue can be extended like a chameleonís. It leaves a tingling sensation when it licks enemies.,Licking  ,0.8,77,45
+109,Koffing,Poison,-,Basic,35,1|1,0.6,1,"Because it stores several kinds of toxic gases in its body, it is prone to exploding without warning.",Poison Gas  ,0.8,68,190
+110,Weezing,Poison,-,Final,-1,1|1,1.2,9.5,"Where two kinds of poison gases meet, 2 KOFFINGs can fuse into a WEEZING over many years.",Poison Gas  ,0.8,172,60
+111,Rhyhorn,Ground,Rock,Basic,42,1|1,1,115,Its massive bones are 1000 times harder than human bones. It can easily knock a trailer flying.,Spikes  ,1.2,69,120
+112,Rhydon,Ground,Rock,Final,-1,1|1,1.9,120,"Protected by an armor-like hide, it is capable of living in molten lava of 3,600 degrees.",Drill  ,1.2,170,60
+113,Chansey,Normal,-,Basic,-1,1|1,1.1,34.6,A rare and elusive POKÈMON that is said to bring happiness to those who manage to get it.,Egg  ,0.8,395,30
+114,Tangela,Grass,-,Basic,-1,1|1,1,35,The whole body is swathed with wide vines that are similar to seaweed. Its vines shake as it walks.,Vine  ,0.8,87,45
+115,Kangaskhan,Normal,-,Basic,-1,1|-1,2.2,80,The infant rarely ventures out of its motherís protective pouch until it is 3 years old.,Parent  ,0.8,172,45
+116,Horsea,Water,-,Basic,32,1|1,0.4,8,Known to shoot down flying bugs with precision blasts of ink from the surface of the water.,Dragon  ,0.8,59,225
+117,Seadra,Water,-,Final,-1,1|1,1.2,25,Capable of swimming backwards by rapidly flapping its wing-like pectoral fins and stout tail.,Dragon  ,0.8,154,75
+118,Goldeen,Water,-,Basic,33,1|1,0.6,15,"Its tail fin billows like an elegant ballroom dress, giving it the nickname of the Water Queen.",Goldfish  ,0.8,64,225
+119,Seaking,Water,-,Final,-1,1|1,1.3,39,"In the autumn spawning season, they can be seen swimming powerfully up rivers and creeks.",Goldfish  ,0.8,158,60
+120,Staryu,Water,-,Basic,-1,-1|-1,0.8,34.5,An enigmatic POKÈMON that can effortlessly regenerate any appendage it loses in battle.,Starshape  ,1.2,68,225
+121,Starmie,Water,Psychic,Final,-1,-1|-1,1.1,80,Its central core glows with the seven colors of the rainbow. Some people value the core as a gem.,Mysterious  ,1.2,182,60
+122,Mr. Mime,Psychic,-,Basic,-1,-1|1,1.3,54.5,"If interrupted while it is miming, it will slap around the offender with its broad hands.",Barrier  ,0.8,161,45
+123,Scyther,Bug,Flying,Basic,-1,1|1,1.5,56,"With ninja-like agility and speed, it can create the illusion that there is more than one.",Mantis  ,0.8,100,45
+124,Jynx,Ice,Psychic,Basic,-1,1|-1,1.4,40.6,It seductively wiggles its hips as it walks. It can cause people to dance in unison with it.,Humanshape  ,0.8,159,45
+125,Electabuzz,Electric,-,Basic,-1,1|3,1.1,30,"Normally found near power plants, they can wander away and cause major blackouts in cities.",Electric  ,0.8,172,45
+126,Magmar,Fire,-,Basic,-1,1|3,1.3,44.5,Its body always burns with an orange glow that enables it to hide perfectly among flames.,Spitfire  ,0.8,173,45
+127,Pinsir,Bug,-,Basic,-1,1|1,1.5,55,"If it fails to crush the victim in its pincers, it will swing it around and toss it hard.",Stagbeetle  ,1.2,175,45
+128,Tauros,Normal,-,Basic,-1,-1|1,1.4,88.4,"When it targets an enemy, it charges furiously while whipping its body with its long tails.",Wild Bull  ,1.2,172,45
+129,Magikarp,Water,-,Basic,20,1|1,0.9,10,"In the distant past, it was somewhat stronger than the horribly weak descendants that exist today.",Fish  ,1.2,40,252
+130,Gyarados,Water,Flying,Final,-1,1|1,6.5,235,"Rarely seen in the wild. Huge and vicious, it is capable of destroying entire cities in a rage.",Atrocious  ,1.2,189,45
+131,Lapras,Water,Ice,Basic,-1,1|1,2.5,220,A POKÈMON that has been overhunted almost to extinction. It can ferry people across the water.,Transport  ,1.2,187,45
+132,Ditto,Normal,-,Basic,-1,-1|-1,0.3,4,Capable of copying an enemyís genetic code to instantly transform itself into a duplicate of the enemy.,Transform  ,0.8,101,35
+133,Eevee,Normal,-,Basic,-1,1|7,0.3,6.5,Its genetic code is irregular. It may mutate if it is exposed to radiation from element STONEs.,Evolution  ,0.8,65,45
+134,Vaporeon,Water,-,Final,-1,1|7,1,29,Lives close to water. Its long tail is ridged with a fin which is often mistaken for a mermaidís.,Bubble Jet  ,0.8,184,45
+135,Jolteon,Electric,-,Final,-1,1|7,0.8,24.5,It accumulates negative ions in the atmosphere to blast out 10000-volt lightning bolts.,Lightning  ,0.8,184,45
+136,Flareon,Fire,-,Final,-1,1|7,0.9,25,"When storing thermal energy in its body, its temperature could soar to over 1600 degrees.",Flame  ,0.8,184,45
+137,Porygon,Normal,-,Basic,-1,-1|-1,0.8,36.5,A POKÈMON that consists entirely of programming code. Capable of moving freely in cyberspace.,Virtual  ,0.8,79,45
+138,Omanyte,Rock,Water,Basic,40,1|7,0.4,7.5,"Although long extinct, in rare cases, it can be genetically resurrected from fossils.",Spiral  ,0.8,71,45
+139,Omastar,Rock,Water,Final,-1,1|7,1,35,A prehistoric POKÈMON that died out when its heavy shell made it impossible to catch prey.,Spiral  ,0.8,173,45
+140,Kabuto,Rock,Water,Basic,40,1|7,0.5,11.5,A POKÈMON that was resurrected from a fossil found in what was once the ocean floor eons ago.,Shellfish  ,0.8,71,45
+141,Kabutops,Rock,Water,Final,-1,1|7,1.3,40.5,Its sleek shape is perfect for swimming. It slashes prey with its claws and drains the body fluids.,Shellfish  ,0.8,173,45
+142,Aerodactyl,Rock,Flying,Basic,-1,1|7,1.8,59,"A ferocious, prehistoric POKÈMON that goes for the enemyís throat with its serrated saw-like fangs.",Fossil  ,1.2,180,45
+143,Snorlax,Normal,-,Basic,-1,1|7,2.1,460,"Very lazy. Just eats and sleeps. As its rotund bulk builds, it becomes steadily more slothful.",Sleeping  ,1.2,189,25
+144,Articuno,Ice,Flying,Basic,-1,-1|-1,1.7,55.4,A legendary bird POKÈMON that is said to appear to doomed people who are lost in icy mountains.,Freeze  ,1.2,290,3
+145,Zapdos,Electric,Flying,Basic,-1,-1|-1,1.6,52.6,A legendary bird POKÈMON that is said to appear from clouds while dropping enormous lightning bolts.,Electric  ,1.2,290,3
+146,Moltres,Fire,Flying,Basic,-1,-1|-1,2,60,Known as the legendary bird of fire. Every flap of its wings creates a dazzling flash of flames.,Flame  ,1.2,290,3
+147,Dratini,Dragon,-,Basic,30,1|1,1.8,3.3,Long considered a mythical POKÈMON until recently when a small colony was found living underwater.,Dragon  ,1.2,60,45
+148,Dragonair,Dragon,-,Intermediate,55,1|1,4,16.5,A mystical POKÈMON that exudes a gentle aura. Has the ability to change climate conditions.,Dragon  ,1.2,147,45
+149,Dragonite,Dragon,Flying,Final,-1,1|1,2.2,210,An extremely rarely seen marine POKÈMON. Its intelligence is said to match that of humans.,Dragon  ,1.2,300,45
+150,Mewtwo,Psychic,-,Basic,-1,-1|-1,2,122,It was created by a scientist after years of horrific gene splicing and DNA engineering experiments.,Genetic  ,1.2,340,3
+151,Mew,Psychic,-,Basic,-1,-1|-1,0.4,4,So rare that it is still said to be a mirage by many experts. Only a few people have seen it worldwide.,New Species  ,1.2,300,3
+152,Chikorita,Grass,-,Basic,16,1|7,0.9,6.4,A sweet aroma gently wafts from the leaf on its head. It is docile and loves to soak up the sun's rays.,Leaf,1,64,45
+153,Bayleef,Grass,-,Intermediate,32,1|7,1.2,15.8,"	The scent of spices comes from around its neck. Somehow, sniffing it makes you want to fight.",Leaf,1,142,45
+154,Meganium,Grass,-,Final,-1,1|7,1.8,100.5,The aroma that rises from its petals contains a substance that calms aggressive feelings.,Herb,1,263,45
+155,Cyndaquil,Fire,-,Basic,14,1|7,0.5,7.9,"It is timid, and always curls itself up in a ball. If attacked, it flares up its back for protection.",Fire Mouse,1,62,45
+156,Quilava,Fire,-,Intermediate,36,1|7,0.9,19,Be careful if it turns its back during battle. It means that it will attack with the fire on its back.,Volcano,1,142,45
+157,Typhlosion,Fire,-,Basic,-1,1|7,1.7,79.5,"If its rage peaks, it becomes so hot that anything that touches it will instantly go up in flames.",Volcano,1,267,45
+158,Totodile,Water,-,Basic,18,1|7,0.6,9.5,Its well-developed jaws are powerful and capable of crushing anything. Even its trainer must be careful.,Big Jaw,1,63,45
+159,Croconaw,Water,-,Intermediate,30,1|7,1.1,25,"If it loses a fang, a new one grows back in its place. There are always 48 fangs lining its mouth.",Big Jaw,1,142,45
+160,Feraligatr,Water,-,Final,-1,1|7,2.3,88.8,"When it bites with its massive and powerful jaws, it shakes its head and savagely tears its victim up.",Big Jaw,1,265,45
+161,Sentret,Normal,-,Basic,15,1|1,0.8,6,"A very cautious PokÈmon, it raises itself up using its tail to get a better view of its surroundings.",Scout,1,43,255
+162,Furret,Normal,-,Final,-1,1|1,1.8,32.5,It makes a nest to suit its long and skinny body. The nest is impossible for other PokÈmon to enter.,Long Body,1,145,90
+163,Hoothoot,Normal,Flying,Basic,20,1|1,0.7,21.2,"It always stands on one foot. It changes feet so fast, the movement can rarely be seen.",Owl,1,52,255
+164,Noctowl,Normal,Flying,Final,-1,1|1,1.6,40.8,Its eyes are specially adapted. They concentrate even faint light and enable it to see in the dark.,Owl,1,158,90
+165,Ledyba,Bug,Flying,Basic,18,1|1,1,10.8,It is very timid. It will be afraid to move if it is alone. But it will be active if it is in a group.,Five Star,0.8,53,255
+166,Ledian,Bug,Flying,Final,-1,1|1,1.4,35.6,"When the stars flicker in the night sky, it flutters about, scattering a glowing powder.",Five Star,0.8,137,90
+167,Spinarak,Bug,Poison,Basic,22,1|1,0.5,8.5,"	It lies still in the same pose for days in its web, waiting for its unsuspecting prey to wander close.",String Spit,0.8,50,255
+168,Ariados,Bug,Poison,Final,-1,1|1,1.1,33.5,It spins string not only from its rear but also from its mouth. It is hard to tell which end is which.,Long Leg,0.8,140,90
+169,Crobat,Poison,Flying,Final,-1,1|1,1.8,75,It flies so silently through the dark on its four wings that it may not be noticed even when nearby.,Bat,0.8,268,90
+170,Chinchou,Water,Electric,Basic,27,1|1,0.5,12,It shoots positive and negative electricity between the tips of its two antennae and zaps its enemies.,Angler,1.2,66,190
+171,Lanturn,Water,Electric,Final,-1,1|1,1.2,22.5,The light it emits is so bright that it can illuminate the sea's surface from a depth of over three miles.,Light,1.2,161,75
+172,Pichu,Electric,-,Basic,-1,1|1,0.3,2,It is not yet skilled at storing electricity. It may send out a jolt if amused or startled.,Tiny Mouse,1,41,190
+173,Cleffa,Normal,-,Basic,-1,3|1,0.3,3,"Because of its unusual, star-like silhouette, people believe that it came here on a meteor.",Star Shape,0.8,44,150
+174,Igglybuff,Normal,-,Basic,-1,3|1,0.3,1,"It has a very soft body. If it starts to roll, it will bounce all over and be impossible to stop.",Balloon,0.8,42,170
+175,Togepi,Normal,-,Basic,-1,1|7,0.3,1.5,The shell seems to be filled with joy. It is said that it will share good luck when treated kindly.,Spike Ball,0.8,49,190
+176,Togetic,Normal,Flying,Basic,-1,1|7,0.6,3.2,"They say that it will appear before kindhearted, caring people and shower them with happiness.",Happiness,0.8,142,75
+177,Natu,Psychic,Flying,Basic,25,1|1,0.2,2,"Because its wings aren't yet fully grown, it has to hop to get around. It is always staring at something.",Tiny Bird,1,64,190
+178,Xatu,Psychic,Flying,Final,-1,1|1,1.5,15,They say that it stays still and quiet because it is seeing both the past and future at the same time.,Mystic,1,165,75
+179,Mareep,Electric,-,Basic,15,1|1,0.6,7.8,"If static electricity builds in its body, its fleece doubles in volume. Touching it will shock you.",Wool,1,56,235
+180,Flaaffy,Electric,-,Intermediate,30,1|1,0.8,13.3,"As a result of storing too much electricity, it developed patches where even downy wool won't grow.",Wool,1,128,120
+181,Ampharos,Electric,-,Final,-1,1|1,1.4,61.5,The tail's tip shines brightly and can be seen from far away. It acts as a beacon for lost people.,Light,1,255,45
+182,Bellossom,Grass,-,Final,-1,1|1,0.4,5.8,Bellossom gather at times and appear to dance. They say that the dance is a ritual to summon the sun.,Flower,1,245,45
+183,Marill,Water,-,Basic,18,1|1,0.4,8.5,"The tip of its tail, which contains oil that is lighter than water, lets it swim without drowning.",Aqua Mouse,0.8,88,190
+184,Azumarill,Water,-,Final,-1,1|1,0.8,28.5,"By keeping still and listening intently, it can tell what is in even wild, fast-moving rivers.",Aqua Rabbit,0.8,210,75
+185,Sudowoodo,Rock,-,Basic,-1,1|1,1.2,38,"Although it always pretends to be a tree, its composition appears to be closer to a rock than a plant.",Imitation,1,144,65
+186,Politoed,Water,-,Final,-1,1|1,1.1,33.9,"If Poliwag and Poliwhirl hear its echoing cry, they respond by gathering from far and wide.",Frog,1,250,45
+187,Hoppip,Grass,Flying,Basic,18,1|1,0.4,0.5,"To keep from being blown away by the wind, they gather in clusters. They do enjoy gentle breezes, though.",Cottonweed,1,50,255
+188,Skiploom,Grass,Flying,Intermediate,27,1|1,0.6,1,The bloom on top of its head opens and closes as the temperature fluctuates up and down.,Cottonweed,1,119,120
+189,Jumpluff,Grass,Flying,Final,-1,1|1,0.8,3,"Once it catches the wind, it deftly controls its cotton-puff spores to float, even around the world.",Cottonweed,1,230,45
+190,Aipom,Normal,-,Basic,-1,1|1,0.8,11.5,Its tail is so powerful that it can use it to grab a tree branch and hold itself up in the air.,Long Tail,0.8,72,45
+191,Sunkern,Grass,-,Basic,-1,1|1,0.3,4,"It may drop out of the sky suddenly. If attacked by a Spearow, it will violently shake its leaves.",Seed,1,36,235
+192,Sunflora,Grass,-,Final,-1,1|1,0.8,8.5,"It converts sunlight into energy. In the darkness after sunset, it closes its petals and becomes still.",Sun,1,149,120
+193,Yanma,Bug,Flying,Basic,-1,1|1,1.2,38,"If it flaps its wings really fast, it can generate shock waves that will shatter windows in the area.",Clear Wing,1,78,75
+194,Wooper,Water,Ground,Basic,20,1|1,0.4,8.5,This PokÈmon lives in cold water. It will leave the water to search for food when it gets cold outside.,Water Fish,1,42,255
+195,Quagsire,Water,Ground,Final,-1,1|1,1.4,75,"This carefree PokÈmon has an easy-going nature. While swimming, it always bumps into boat hulls.",Water Fish,1,151,90
+196,Espeon,Psychic,-,Final,-1,1|7,0.9,26.5,It uses the fine hair that covers its body to sense air currents and predict its enemy's actions.,Sun,1,184,45
+197,Umbreon,Dark,-,Final,-1,1|7,1,27,"When agitated, this PokÈmon protects itself by spraying poisonous sweat from its pores.",Moonlight,1,184,45
+198,Murkrow,Dark,Flying,Basic,-1,1|1,0.5,2.1,"Feared and loathed by many, it is believed to bring misfortune to all those who see it at night.",Darkness,1,81,30
+199,Slowking,Water,Psychic,Final,-1,1|1,2,79.5,"It has incredible intellect and intuition. Whatever the situation, it remains calm and collected.",Royal,1,172,70
+200,Misdreavus,Ghost,-,Basic,-1,1|1,0.7,1,It likes playing mischievous tricks such as screaming and wailing to startle people at night.,Screech,0.8,87,45
+201,Unown,Psychic,-,Basic,-1,1|1,0.5,5,Their shapes look like hieroglyphs on ancient tablets. It is said that the two are somehow related.,Symbol,1,118,225
+202,Wobbuffet,Psychic,-,Basic,-1,1|1,1.3,28.5,"	It hates light and shock. If attacked, it inflates its body to pump up its counterstrike.",Patient,1,142,45
+203,Girafarig,Normal,Psychic,Basic,-1,1|1,1.5,41.5,"Its tail has a small brain of its own. Beware! If you get close, it may react to your scent and bite.",Long Kneck,1,203,60
+204,Pineco,Bug,-,Basic,31,1|1,0.6,7.2,It likes to make its shell thicker by adding layers of tree bark. The additional weight doesn't bother it.,Bag Worm,1,58,190
+205,Forretress,Bug,Steel,Final,-1,1|1,1.2,125.8,Its entire body is shielded by a steel-hard shell. What lurks inside the armor is a total mystery.,Bag Worm,1,205,75
+206,Dunsparce,Normal,-,Basic,-1,1|1,1.5,14,"When spotted, this PokÈmon escapes backward by furiously boring into the ground with its tail.",Land Snake,1,206,190
+207,Gligar,Ground,Flying,Basic,-1,1|1,1.1,64.8,It flies straight at its target's face then clamps down on the startled victim to inject poison.,Fly Scorpion,1,86,60
+208,Steelix,Steel,Ground,Final,-1,1|1,9.2,400,"Its body has been compressed deep under the ground. As a result, it is even harder than a diamond.",Iron Snake,1,208,25
+209,Snubbull,Normal,-,Basic,23,3|1,0.6,7.8,"Although it looks frightening, it is actually kind and affectionate. It is very popular among women.",Fairy,0.8,60,190
+210,Granbull,Normal,-,Final,-1,3|1,1.4,48.7,"It is actually timid and easily spooked. If attacked, it flails about to fend off its attacker.",Fairy,0.8,158,75
+211,Qwilfish,Water,Poison,Basic,-1,1|1,0.5,3.9,"To fire its poison spikes, it must inflate its body by drinking over 2.6 gallons of water all at once.",Balloon,1,88,45
+212,Scizor,Bug,Steel,Final,-1,1|1,1.8,118,It swings its eye-patterned pincers up to scare its foes. This makes it look like it has three heads.,Pincer,1,175,25
+213,Shuckle,Bug,Rock,Basic,-1,1|1,0.6,20.5,The Berries it stores in its vase-like shell decompose and become a gooey liquid.,Mold,1,177,190
+214,Heracross,Bug,Fighting,Basic,-1,1|1,1.5,54,This powerful PokÈmon thrusts its prized horn under its enemies' bellies then lifts and throws them.,Single Horn,1.2,175,45
+215,Sneasel,Dark,Ice,Basic,-1,1|1,0.9,28,"Its paws conceal sharp claws. If attacked, it suddenly extends the claws and startles its enemy.",Sharp Claw,1,86,60
+216,Teddiursa,Normal,-,Basic,30,1|1,0.6,8.8,"If it finds honey, its crescent mark glows. It always licks its paws because they are soaked with honey.",Little Bear,1,66,120
+217,Ursaring,Normal,-,Final,-1,1|1,1.8,125.8,"Although it is a good climber, it prefers to snap trees with its forelegs and eat fallen Berries.",Hibernator,1,175,60
+218,Slugma,Fire,-,Basic,38,1|1,0.7,35,"It never sleeps. It has to keep moving because if it stopped, its magma body would cool and harden.",Lava,1,50,190
+219,Magcargo,Fire,Rock,Final,-1,1|1,0.8,55,The shell on its back is just skin that has cooled and hardened. It breaks easily with a slight touch.,Lava,1,151,75
+220,Swinub,Ice,Ground,Basic,33,1|1,0.4,6.5,It rubs its snout on the ground to find and dig up food. It sometimes discovers hot springs.,Pig,1.2,50,225
+221,Piloswine,Ice,Ground,Final,-1,1|1,1.1,55.8,"Because the long hair all over its body obscures its sight, it just keeps charging repeatedly.",Swine,1.2,158,75
+222,Corsola,Water,Rock,Basic,-1,3|1,0.6,5,It continuously sheds and grows. The tip of its head is prized as a treasure for its beauty.,Coral,0.8,144,60
+223,Remoraid,Water,-,Basic,25,1|1,0.6,12,It has superb accuracy. The water it shoots out can strike even moving prey from more than 300 feet.,Jet,1,60,190
+224,Octillery,Water,-,Basic,-1,1|1,0.9,28.5,It traps enemies with its suction-cupped tentacles then smashes them with its rock-hard head.,Jet,1,168,75
+225,Delibird,Ice,Flying,Basic,-1,1|1,0.9,35.3,It carries food all day long. There are tales about lost people who were saved by the food it had.,Delivery,0.8,116,45
+226,Mantine,Water,Flying,Basic,-1,1|1,2.1,220,"As it majestically swims, it doesn't care if Remoraid attach to it for scavenging its leftovers.",Kite,1.2,170,25
+227,Skarmory,Steel,Flying,Basic,-1,1|1,1.7,50.5,"Its sturdy wings look heavy, but they are actually hollow and light, allowing it to fly freely in the sky.",Armor Bird,1,163,25
+228,Houndour,Dark,Fire,Basic,24,1|1,0.6,10.8,It uses different kinds of cries for communicating with others of its kind and for pursuing its prey.,Dark,1.2,66,120
+229,Houndoom,Dark,Fire,Final,-1,1|1,1.4,35,"If you are burned by the flames it shoots from its mouth, the pain will never go away.",Dark,1.2,175,45
+230,Kingdra,Water,Dragon,Final,-1,1|1,1.8,152,It is said that it usually hides in underwater caves. It can create whirlpools by yawning.,Dragon,1,270,45
+231,Phanpy,Ground,-,Basic,25,1|1,0.5,33.5,"It swings its long snout around playfully, but because it is so strong, that can be dangerous.",Long Nose,1,66,120
+232,Donphan,Ground,-,Final,-1,1|1,1.1,120,"It has sharp, hard tusks and a rugged hide. Its Tackle is strong enough to knock down a house.",Armor Bird,1,175,60
+233,Porygon2,Normal,-,Final,-1,-1|-1,0.6,32.5,"This upgraded version of Porygon is designed for space exploration. It can't fly, though.",Virtual,1,180,45
+234,Stantler,Normal,-,Basic,-1,1|1,1.4,71.2,The curved antlers subtly change the flow of air to create a strange space where reality is distorted.,Big Horn,1,163,45
+235,Smeargle,Normal,-,Basic,-1,1|1,1.2,58,A special fluid oozes from the tip of its tail. It paints the fluid everywhere to mark its territory.,Painter,0.8,88,45
+236,Tyrogue,Fighting,-,Basic,-1,-1|1,0.7,21,"It is always bursting with energy. To make itself stronger, it keeps on fighting even if it loses.",Scuffle,1,42,75
+237,Hitmontop,Fighting,-,Basic,-1,-1|1,1.4,48,"If you become enchanted by its smooth, elegant, dance-like kicks, you may get drilled hard.",Handstand,1,159,45
+238,Smoochum,Ice,Psychic,Basic,-1,1|-1,0.4,6,Its lips are the most sensitive parts on its body. It always uses its lips first to examine things.,Kiss,1,61,45
+239,Elekid,Electric,-,Basic,-1,1|3,0.6,23.5,"It rotates its arms to generate electricity, but it tires easily, so it charges up only a little bit.",Electric  ,1,72,45
+240,Magby,Fire,-,Basic,-1,1|3,0.7,21.4,"Each and every time it inhales and exhales, hot embers dribble out of its mouth and nostrils.",Live Coal,1,73,45
+241,Miltank,Normal,-,Basic,-1,1|-1,1.2,75.5,"Its milk is packed with nutrition, making it the ultimate beverage for the sick or weary.",Milk Cow,1.2,172,45
+242,Blissey,Normal,-,Final,-1,1|-1,1.5,46.8,Anyone who takes even one bite of Blissey's egg becomes unfailingly caring and pleasant to everyone.,Happiness,0.8,635,30
+243,Raikou,Electric,-,Basic,-1,-1|-1,1.9,178,The rain clouds it carries let it fire thunderbolts at will. They say that it descended with lightning.,Thunder,1.2,290,3
+244,Entei,Fire,-,Basic,-1,-1|-1,2.1,198,"Volcanoes erupt when it barks. Unable to restrain its extreme power, it races headlong around the land.",Volcano,1.2,290,3
+245,Suicune,Water,-,Basic,-1,-1|-1,2,187,"Said to be the reincarnation of north winds, it can instantly purify filthy, murky water.",Aurora,1.2,290,3
+246,Larvitar,Rock,Ground,Basic,30,1|1,0.6,72,"	It feeds on soil. After it has eaten a large mountain, it will fall asleep so it can grow.",Rock Skin,1.2,60,45
+247,Pupitar,Rock,Ground,Intermediate,55,1|1,1.2,152,"Its shell is as hard as sheet rock, and it is also very strong. Its Thrashing can topple a mountain.",Hard Shell,1.2,144,45
+248,Tyranitar,Rock,Dark,Final,-1,1|1,2,202,"Its body can't be harmed by any sort of attack, so it is very eager to make challenges against enemies.",Armor,1.2,300,45
+249,Lugia,Psychic,Flying,Basic,-1,-1|-1,5.2,216,It is said that it quietly spends its time deep at the bottom of the sea because its powers are too strong.,Diving,1.2,340,3
+250,Ho-Oh,Fire,Flying,Basic,-1,-1|-1,3.8,199,Legends claim this PokÈmon flies the world's skies continuously on its magnificent seven-colored wings.,Rainbow,1.2,340,3
+251,Celebi,Psychic,Grass,Basic,-1,-1|-1,0.6,5,This PokÈmon wanders across time. Grass and trees flourish in the forests in which it has appeared.,Time Travel,1,300,3

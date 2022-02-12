@@ -97,7 +97,7 @@ Poison Powder,Poison,35,-1,75,Status,Poison,1,enemy,1,1,1,1,enemy,0,null,0,0,0,0
 Poison Sting,Poison,35,15,100,Physical,Poison,0.2,enemy,1,1,1,1,enemy,0,null,0,0,0,0,A POISON-type attack. Has a one-in- five chance of leaving the target with the lingering effects of poison.
 Pound,Normal,35,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,0,A NORMAL-type attack. Slightly stronger than TACKLE. Many Pokémon know this move.
 Psybeam,Psychic,20,65,100,Special,Confusion,0.1,enemy,1,1,1,1,enemy,0,null,0,0,0,0,A PSYCHIC-type attack. Has a one-in-ten chance of making the target confused.
-Psychic,Psychic,10,90,100,Special,null,0,enemy,1,1,1,1,enemy,0.3,Special Defense,-1,0,0,0,A PSYCHIC-type attack. Has a one-in-three chance of lowering the target's SPECIAL rating.
+Psychic,Psychic,10,90,100,Special,null,0,enemy,1,1,1,1,enemy,0.33,Special Defense,-1,0,0,0,A PSYCHIC-type attack. Has a one-in-three chance of lowering the target's SPECIAL rating.
 Psywave,Psychic,15,-1,80,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,0,A PSYCHIC-type attack of varying intensity. It occasionally inflicts heavy damage.
 Quick Attack,Normal,30,40,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,1,0,0,"An attack that always strikes first. If both Pokémon use this, the one with higher SPEED attacks first."
 Rage,Normal,20,20,100,Physical,null,0,enemy,1,1,1,1,enemy,0,null,0,0,0,0,A non-stop attack move. The user's ATTACK power increases every time it sustains damage.

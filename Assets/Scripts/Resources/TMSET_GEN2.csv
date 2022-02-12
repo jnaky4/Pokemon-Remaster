@@ -1,0 +1,2586 @@
+DexNum,TM_HM,Move_Name,Type
+152,TM02,Headbutt,Normal
+152,TM03,Curse,Ghost
+152,TM06,Toxic,Poison
+152,TM10,Hidden Power,Normal
+152,TM11,Sunny Day,Fire
+152,TM12,Sweet Scent,Normal
+152,TM13,Snore,Normal
+152,TM17,Protect,Normal
+152,TM19,Giga Drain,Grass
+152,TM20,Endure,Normal
+152,TM21,Frustration,Normal
+152,TM22,SolarBeam,Grass
+152,TM23,Iron Tail,Steel
+152,TM27,Return,Normal
+152,TM31,Mud-Slap,Ground
+152,TM32,Double Team,Normal
+152,TM34,Swagger,Normal
+152,TM35,Sleep Talk,Normal
+152,TM43,Detect,Fighting
+152,TM44,Rest,Psychic
+152,TM45,Attract,Normal
+152,HM01,Cut,Normal
+152,HM05,Flash,Normal
+153,TM02,Headbutt,Normal
+153,TM03,Curse,???
+153,TM06,Toxic,Poison
+153,TM08,Rock Smash,Fighting
+153,TM10,Hidden Power,Normal
+153,TM11,Sunny Day,Fire
+153,TM12,Sweet Scent,Normal
+153,TM13,Snore,Normal
+153,TM17,Protect,Normal
+153,TM19,Giga Drain,Grass
+153,TM20,Endure,Normal
+153,TM21,Frustration,Normal
+153,TM22,SolarBeam,Grass
+153,TM23,Iron Tail,Steel
+153,TM27,Return,Normal
+153,TM31,Mud-Slap,Ground
+153,TM32,Double Team,Normal
+153,TM34,Swagger,Normal
+153,TM35,Sleep Talk,Normal
+153,TM43,Detect,Fighting
+153,TM44,Rest,Psychic
+153,TM45,Attract,Normal
+153,TM49,Fury Cutter,Bug
+153,HM01,Cut,Normal
+153,HM04,Strength,Normal
+153,HM05,Flash,Normal
+154,TM02,Headbutt,Normal
+154,TM03,Curse,???
+154,TM06,Toxic,Poison
+154,TM08,Rock Smash,Fighting
+154,TM10,Hidden Power,Normal
+154,TM11,Sunny Day,Fire
+154,TM12,Sweet Scent,Normal
+154,TM13,Snore,Normal
+154,TM15,Hyper Beam,Normal
+154,TM17,Protect,Normal
+154,TM19,Giga Drain,Grass
+154,TM20,Endure,Normal
+154,TM21,Frustration,Normal
+154,TM22,SolarBeam,Grass
+154,TM23,Iron Tail,Steel
+154,TM26,Earthquake,Ground
+154,TM27,Return,Normal
+154,TM31,Mud-Slap,Ground
+154,TM32,Double Team,Normal
+154,TM34,Swagger,Normal
+154,TM35,Sleep Talk,Normal
+154,TM43,Detect,Fighting
+154,TM44,Rest,Psychic
+154,TM45,Attract,Normal
+154,TM49,Fury Cutter,Bug
+154,HM01,Cut,Normal
+154,HM04,Strength,Normal
+154,HM05,Flash,Normal
+155,TM02,Headbutt,Normal
+155,TM03,Curse,???
+155,TM04,Rollout,Rock
+155,TM06,Toxic,Poison
+155,TM10,Hidden Power,Normal
+155,TM11,Sunny Day,Fire
+155,TM13,Snore,Normal
+155,TM17,Protect,Normal
+155,TM20,Endure,Normal
+155,TM21,Frustration,Normal
+155,TM23,Iron Tail,Steel
+155,TM27,Return,Normal
+155,TM28,Dig,Ground
+155,TM31,Mud-Slap,Ground
+155,TM32,Double Team,Normal
+155,TM34,Swagger,Normal
+155,TM35,Sleep Talk,Normal
+155,TM38,Fire Blast,Fire
+155,TM39,Swift,Normal
+155,TM40,Defense Curl,Normal
+155,TM43,Detect,Fighting
+155,TM44,Rest,Psychic
+155,TM45,Attract,Normal
+155,HM01,Cut,Normal
+155,TM02,Headbutt,Normal
+156,TM03,Curse,???
+156,TM04,Rollout,Rock
+156,TM05,Roar,Normal
+156,TM06,Toxic,Poison
+156,TM08,Rock Smash,Fighting
+156,TM10,Hidden Power,Normal
+156,TM11,Sunny Day,Fire
+156,TM13,Snore,Normal
+156,TM17,Protect,Normal
+156,TM20,Endure,Normal
+156,TM21,Frustration,Normal
+156,TM23,Iron Tail,Steel
+156,TM27,Return,Normal
+156,TM28,Dig,Ground
+156,TM31,Mud-Slap,Ground
+156,TM32,Double Team,Normal
+156,TM34,Swagger,Normal
+156,TM35,Sleep Talk,Normal
+156,TM38,Fire Blast,Fire
+156,TM39,Swift,Normal
+156,TM40,Defense Curl,Normal
+156,TM43,Detect,Fighting
+156,TM44,Rest,Psychic
+156,TM45,Attract,Normal
+156,TM49,Fury Cutter,Bug
+156,HM01,Cut,Normal
+156,HM04,Strength,Normal
+157,TM01,DynamicPunch,Fighting
+157,TM02,Headbutt,Normal
+157,TM03,Curse,???
+157,TM04,Rollout,Rock
+157,TM05,Roar,Normal
+157,TM06,Toxic,Poison
+157,TM08,Rock Smash,Fighting
+157,TM10,Hidden Power,Normal
+157,TM11,Sunny Day,Fire
+157,TM13,Snore,Normal
+157,TM15,Hyper Beam,Normal
+157,TM17,Protect,Normal
+157,TM20,Endure,Normal
+157,TM21,Frustration,Normal
+157,TM23,Iron Tail,Steel
+157,TM26,Earthquake,Ground
+157,TM27,Return,Normal
+157,TM28,Dig,Ground
+157,TM31,Mud-Slap,Ground
+157,TM32,Double Team,Normal
+157,TM34,Swagger,Normal
+157,TM35,Sleep Talk,Normal
+157,TM38,Fire Blast,Fire
+157,TM39,Swift,Normal
+157,TM40,Defense Curl,Normal
+157,TM41,ThunderPunch,Electric
+157,TM43,Detect,Fighting
+157,TM44,Rest,Psychic
+157,TM45,Attract,Normal
+157,TM48,Fire Punch,Fire
+157,TM49,Fury Cutter,Bug
+157,HM01,Cut,Normal
+157,HM04,Strength,Normal
+158,TM01,DynamicPunch,Fighting
+158,TM02,Headbutt,Normal
+158,TM03,Curse,???
+158,TM06,Toxic,Poison
+158,TM10,Hidden Power,Normal
+158,TM13,Snore,Normal
+158,TM14,Blizzard,Ice
+158,TM16,Icy Wind,Ice
+158,TM17,Protect,Normal
+158,TM18,Rain Dance,Water
+158,TM20,Endure,Normal
+158,TM21,Frustration,Normal
+158,TM23,Iron Tail,Steel
+158,TM27,Return,Normal
+158,TM28,Dig,Ground
+158,TM31,Mud-Slap,Ground
+158,TM32,Double Team,Normal
+158,TM33,Ice Punch,Ice
+158,TM34,Swagger,Normal
+158,TM35,Sleep Talk,Normal
+158,TM43,Detect,Fighting
+158,TM44,Rest,Psychic
+158,TM45,Attract,Normal
+158,HM01,Cut,Normal
+158,HM03,Surf,Water
+158,HM06,Whirlpool,Water
+159,TM01,DynamicPunch,Fighting
+159,TM02,Headbutt,Normal
+159,TM03,Curse,???
+159,TM05,Roar,Normal
+159,TM06,Toxic,Poison
+159,TM08,Rock Smash,Fighting
+159,TM10,Hidden Power,Normal
+159,TM13,Snore,Normal
+159,TM14,Blizzard,Ice
+159,TM16,Icy Wind,Ice
+159,TM17,Protect,Normal
+159,TM18,Rain Dance,Water
+159,TM20,Endure,Normal
+159,TM21,Frustration,Normal
+159,TM23,Iron Tail,Steel
+159,TM27,Return,Normal
+159,TM28,Dig,Ground
+159,TM31,Mud-Slap,Ground
+159,TM32,Double Team,Normal
+159,TM33,Ice Punch,Ice
+159,TM34,Swagger,Normal
+159,TM35,Sleep Talk,Normal
+159,TM43,Detect,Fighting
+159,TM44,Rest,Psychic
+159,TM45,Attract,Normal
+159,TM49,Fury Cutter,Bug
+159,HM01,Cut,Normal
+159,HM03,Surf,Water
+159,HM04,Strength,Normal
+159,HM06,Whirlpool,Water
+160,TM01,DynamicPunch,Fighting
+160,TM02,Headbutt,Normal
+160,TM03,Curse,???
+160,TM05,Roar,Normal
+160,TM06,Toxic,Poison
+160,TM08,Rock Smash,Fighting
+160,TM10,Hidden Power,Normal
+160,TM13,Snore,Normal
+160,TM14,Blizzard,Ice
+160,TM15,Hyper Beam,Normal
+160,TM16,Icy Wind,Ice
+160,TM17,Protect,Normal
+160,TM18,Rain Dance,Water
+160,TM20,Endure,Normal
+160,TM21,Frustration,Normal
+160,TM23,Iron Tail,Steel
+160,TM26,Earthquake,Ground
+160,TM27,Return,Normal
+160,TM28,Dig,Ground
+160,TM31,Mud-Slap,Ground
+160,TM32,Double Team,Normal
+160,TM33,Ice Punch,Ice
+160,TM34,Swagger,Normal
+160,TM35,Sleep Talk,Normal
+160,TM43,Detect,Fighting
+160,TM44,Rest,Psychic
+160,TM45,Attract,Normal
+160,TM49,Fury Cutter,Bug
+160,HM01,Cut,Normal
+160,HM03,Surf,Water
+160,HM04,Strength,Normal
+160,HM06,Whirlpool,Water
+161,TM01,DynamicPunch,Fighting
+161,TM02,Headbutt,Normal
+161,TM03,Curse,???
+161,TM04,Rollout,Rock
+161,TM06,Toxic,Poison
+161,TM10,Hidden Power,Normal
+161,TM11,Sunny Day,Fire
+161,TM13,Snore,Normal
+161,TM17,Protect,Normal
+161,TM20,Endure,Normal
+161,TM21,Frustration,Normal
+161,TM23,Iron Tail,Steel
+161,TM27,Return,Normal
+161,TM28,Dig,Ground
+161,TM30,Shadow Ball,Ghost
+161,TM31,Mud-Slap,Ground
+161,TM32,Double Team,Normal
+161,TM33,Ice Punch,Ice
+161,TM34,Swagger,Normal
+161,TM35,Sleep Talk,Normal
+161,TM39,Swift,Normal
+161,TM40,Defense Curl,Normal
+161,TM41,ThunderPunch,Electric
+161,TM43,Detect,Fighting
+161,TM44,Rest,Psychic
+161,TM45,Attract,Normal
+161,TM46,Thief,Dark
+161,TM48,Fire Punch,Fire
+161,TM49,Fury Cutter,Bug
+161,HM01,Cut,Normal
+161,HM03,Surf,Water
+162,TM01,DynamicPunch,Fighting
+162,TM02,Headbutt,Normal
+162,TM03,Curse,???
+162,TM04,Rollout,Rock
+162,TM06,Toxic,Poison
+162,TM10,Hidden Power,Normal
+162,TM11,Sunny Day,Fire
+162,TM13,Snore,Normal
+162,TM15,Hyper Beam,Normal
+162,TM17,Protect,Normal
+162,TM20,Endure,Normal
+162,TM21,Frustration,Normal
+162,TM23,Iron Tail,Steel
+162,TM27,Return,Normal
+162,TM28,Dig,Ground
+162,TM30,Shadow Ball,Ghost
+162,TM31,Mud-Slap,Ground
+162,TM32,Double Team,Normal
+162,TM33,Ice Punch,Ice
+162,TM34,Swagger,Normal
+162,TM35,Sleep Talk,Normal
+162,TM39,Swift,Normal
+162,TM40,Defense Curl,Normal
+162,TM41,ThunderPunch,Electric
+162,TM43,Detect,Fighting
+162,TM44,Rest,Psychic
+162,TM45,Attract,Normal
+162,TM46,Thief,Dark
+162,TM48,Fire Punch,Fire
+162,TM49,Fury Cutter,Bug
+162,HM01,Cut,Normal
+162,HM03,Surf,Water
+162,HM04,Strength,Normal
+163,TM03,Curse,???
+163,TM06,Toxic,Poison
+163,TM10,Hidden Power,Normal
+163,TM11,Sunny Day,Fire
+163,TM13,Snore,Normal
+163,TM17,Protect,Normal
+163,TM20,Endure,Normal
+163,TM21,Frustration,Normal
+163,TM27,Return,Normal
+163,TM31,Mud-Slap,Ground
+163,TM32,Double Team,Normal
+163,TM34,Swagger,Normal
+163,TM35,Sleep Talk,Normal
+163,TM39,Swift,Normal
+163,TM42,Dream Eater,Psychic
+163,TM43,Detect,Fighting
+163,TM44,Rest,Psychic
+163,TM45,Attract,Normal
+163,TM46,Thief,Dark
+163,TM47,Steel Wing,Steel
+163,TM50,Nightmare,Ghost
+163,HM02,Fly,Flying
+163,HM05,Flash,Normal
+164,TM03,Curse,???
+164,TM06,Toxic,Poison
+164,TM10,Hidden Power,Normal
+164,TM11,Sunny Day,Fire
+164,TM13,Snore,Normal
+164,TM15,Hyper Beam,Normal
+164,TM17,Protect,Normal
+164,TM20,Endure,Normal
+164,TM21,Frustration,Normal
+164,TM27,Return,Normal
+164,TM31,Mud-Slap,Ground
+164,TM32,Double Team,Normal
+164,TM34,Swagger,Normal
+164,TM35,Sleep Talk,Normal
+164,TM39,Swift,Normal
+164,TM42,Dream Eater,Psychic
+164,TM43,Detect,Fighting
+164,TM44,Rest,Psychic
+164,TM45,Attract,Normal
+164,TM46,Thief,Dark
+164,TM47,Steel Wing,Steel
+164,TM50,Nightmare,Ghost
+164,HM02,Fly,Flying
+164,HM05,Flash,Normal
+165,TM01,DynamicPunch,Fighting
+165,TM02,Headbutt,Normal
+165,TM03,Curse,???
+165,TM04,Rollout,Rock
+165,TM06,Toxic,Poison
+165,TM10,Hidden Power,Normal
+165,TM11,Sunny Day,Fire
+165,TM12,Sweet Scent,Normal
+165,TM13,Snore,Normal
+165,TM17,Protect,Normal
+165,TM19,Giga Drain,Grass
+165,TM20,Endure,Normal
+165,TM21,Frustration,Normal
+165,TM22,SolarBeam,Grass
+165,TM27,Return,Normal
+165,TM28,Dig,Ground
+165,TM32,Double Team,Normal
+165,TM33,Ice Punch,Ice
+165,TM34,Swagger,Normal
+165,TM35,Sleep Talk,Normal
+165,TM39,Swift,Normal
+165,TM41,ThunderPunch,Electric
+165,TM44,Rest,Psychic
+165,TM45,Attract,Normal
+165,TM46,Thief,Dark
+165,HM05,Flash,Normal
+166,TM01,DynamicPunch,Fighting
+166,TM02,Headbutt,Normal
+166,TM03,Curse,???
+166,TM04,Rollout,Rock
+166,TM06,Toxic,Poison
+166,TM10,Hidden Power,Normal
+166,TM11,Sunny Day,Fire
+166,TM12,Sweet Scent,Normal
+166,TM13,Snore,Normal
+166,TM15,Hyper Beam,Normal
+166,TM17,Protect,Normal
+166,TM19,Giga Drain,Grass
+166,TM20,Endure,Normal
+166,TM21,Frustration,Normal
+166,TM22,SolarBeam,Grass
+166,TM27,Return,Normal
+166,TM28,Dig,Ground
+166,TM32,Double Team,Normal
+166,TM33,Ice Punch,Ice
+166,TM34,Swagger,Normal
+166,TM35,Sleep Talk,Normal
+166,TM39,Swift,Normal
+166,TM41,ThunderPunch,Electric
+166,TM44,Rest,Psychic
+166,TM45,Attract,Normal
+166,TM46,Thief,Dark
+166,HM05,Flash,Normal
+167,TM03,Curse,???
+167,TM06,Toxic,Poison
+167,TM10,Hidden Power,Normal
+167,TM11,Sunny Day,Fire
+167,TM13,Snore,Normal
+167,TM17,Protect,Normal
+167,TM19,Giga Drain,Grass
+167,TM20,Endure,Normal
+167,TM21,Frustration,Normal
+167,TM22,SolarBeam,Grass
+167,TM27,Return,Normal
+167,TM28,Dig,Ground
+167,TM29,Psychic,Psychic
+167,TM32,Double Team,Normal
+167,TM34,Swagger,Normal
+167,TM35,Sleep Talk,Normal
+167,TM36,Sludge Bomb,Poison
+167,TM44,Rest,Psychic
+167,TM45,Attract,Normal
+167,TM46,Thief,Dark
+167,HM05,Flash,Normal
+168,TM03,Curse,???
+168,TM06,Toxic,Poison
+168,TM10,Hidden Power,Normal
+168,TM11,Sunny Day,Fire
+168,TM13,Snore,Normal
+168,TM15,Hyper Beam,Normal
+168,TM17,Protect,Normal
+168,TM19,Giga Drain,Grass
+168,TM20,Endure,Normal
+168,TM21,Frustration,Normal
+168,TM22,SolarBeam,Grass
+168,TM27,Return,Normal
+168,TM28,Dig,Ground
+168,TM29,Psychic,Psychic
+168,TM32,Double Team,Normal
+168,TM34,Swagger,Normal
+168,TM35,Sleep Talk,Normal
+168,TM36,Sludge Bomb,Poison
+168,TM44,Rest,Psychic
+168,TM45,Attract,Normal
+168,TM46,Thief,Dark
+168,HM05,Flash,Normal
+169,TM03,Curse,???
+169,TM06,Toxic,Poison
+169,TM10,Hidden Power,Normal
+169,TM11,Sunny Day,Fire
+169,TM13,Snore,Normal
+169,TM15,Hyper Beam,Normal
+169,TM17,Protect,Normal
+169,TM19,Giga Drain,Grass
+169,TM20,Endure,Normal
+169,TM21,Frustration,Normal
+169,TM27,Return,Normal
+169,TM32,Double Team,Normal
+169,TM34,Swagger,Normal
+169,TM35,Sleep Talk,Normal
+169,TM39,Swift,Normal
+169,TM43,Detect,Fighting
+169,TM44,Rest,Psychic
+169,TM45,Attract,Normal
+169,TM46,Thief,Dark
+169,TM47,Steel Wing,Steel
+169,HM02,Fly,Flying
+170,TM03,Curse,???
+170,TM06,Toxic,Poison
+170,TM07,Zap Cannon,Electric
+170,TM10,Hidden Power,Normal
+170,TM13,Snore,Normal
+170,TM17,Protect,Normal
+170,TM18,Rain Dance,Water
+170,TM20,Endure,Normal
+170,TM21,Frustration,Normal
+170,TM25,Thunder,Electric
+170,TM27,Return,Normal
+170,TM32,Double Team,Normal
+170,TM34,Swagger,Normal
+170,TM35,Sleep Talk,Normal
+170,TM44,Rest,Psychic
+170,TM45,Attract,Normal
+170,HM03,Surf,Water
+170,HM05,Flash,Normal
+170,HM06,Whirlpool,Water
+170,HM07,Waterfall,Water
+171,TM03,Curse,???
+171,TM06,Toxic,Poison
+171,TM07,Zap Cannon,Electric
+171,TM10,Hidden Power,Normal
+171,TM13,Snore,Normal
+171,TM15,Hyper Beam,Normal
+171,TM17,Protect,Normal
+171,TM18,Rain Dance,Water
+171,TM20,Endure,Normal
+171,TM21,Frustration,Normal
+171,TM25,Thunder,Electric
+171,TM27,Return,Normal
+171,TM32,Double Team,Normal
+171,TM34,Swagger,Normal
+171,TM35,Sleep Talk,Normal
+171,TM44,Rest,Psychic
+171,TM45,Attract,Normal
+171,HM03,Surf,Water
+171,HM05,Flash,Normal
+171,HM06,Whirlpool,Water
+171,HM07,Waterfall,Water
+172,TM02,Headbutt,Normal
+172,TM03,Curse,???
+172,TM04,Rollout,Rock
+172,TM06,Toxic,Poison
+172,TM07,Zap Cannon,Electric
+172,TM10,Hidden Power,Normal
+172,TM13,Snore,Normal
+172,TM17,Protect,Normal
+172,TM18,Rain Dance,Water
+172,TM20,Endure,Normal
+172,TM21,Frustration,Normal
+172,TM23,Iron Tail,Steel
+172,TM25,Thunder,Electric
+172,TM27,Return,Normal
+172,TM31,Mud-Slap,Ground
+172,TM32,Double Team,Normal
+172,TM34,Swagger,Normal
+172,TM35,Sleep Talk,Normal
+172,TM39,Swift,Normal
+172,TM40,Defense Curl,Normal
+172,TM43,Detect,Fighting
+172,TM44,Rest,Psychic
+172,TM45,Attract,Normal
+172,HM05,Flash,Normal
+173,TM02,Headbutt,Normal
+173,TM03,Curse,???
+173,TM04,Rollout,Rock
+173,TM06,Toxic,Poison
+173,TM07,Zap Cannon,Electric
+173,TM09,Psych Up,Normal
+173,TM10,Hidden Power,Normal
+173,TM11,Sunny Day,Fire
+173,TM13,Snore,Normal
+173,TM16,Icy Wind,Ice
+173,TM17,Protect,Normal
+173,TM18,Rain Dance,Water
+173,TM20,Endure,Normal
+173,TM21,Frustration,Normal
+173,TM22,SolarBeam,Grass
+173,TM23,Iron Tail,Steel
+173,TM27,Return,Normal
+173,TM29,Psychic,Psychic
+173,TM30,Shadow Ball,Ghost
+173,TM31,Mud-Slap,Ground
+173,TM32,Double Team,Normal
+173,TM34,Swagger,Normal
+173,TM35,Sleep Talk,Normal
+173,TM38,Fire Blast,Fire
+173,TM40,Defense Curl,Normal
+173,TM42,Dream Eater,Psychic
+173,TM43,Detect,Fighting
+173,TM44,Rest,Psychic
+173,TM45,Attract,Normal
+173,TM50,Nightmare,Ghost
+173,HM05,Flash,Normal
+174,TM02,Headbutt,Normal
+174,TM03,Curse,???
+174,TM04,Rollout,Rock
+174,TM06,Toxic,Poison
+174,TM07,Zap Cannon,Electric
+174,TM09,Psych Up,Normal
+174,TM10,Hidden Power,Normal
+174,TM11,Sunny Day,Fire
+174,TM13,Snore,Normal
+174,TM16,Icy Wind,Ice
+174,TM17,Protect,Normal
+174,TM18,Rain Dance,Water
+174,TM20,Endure,Normal
+174,TM21,Frustration,Normal
+174,TM22,SolarBeam,Grass
+174,TM27,Return,Normal
+174,TM29,Psychic,Psychic
+174,TM30,Shadow Ball,Ghost
+174,TM31,Mud-Slap,Ground
+174,TM32,Double Team,Normal
+174,TM34,Swagger,Normal
+174,TM35,Sleep Talk,Normal
+174,TM38,Fire Blast,Fire
+174,TM40,Defense Curl,Normal
+174,TM42,Dream Eater,Psychic
+174,TM43,Detect,Fighting
+174,TM44,Rest,Psychic
+174,TM45,Attract,Normal
+174,TM50,Nightmare,Ghost
+174,HM05,Flash,Normal
+175,TM02,Headbutt,Normal
+175,TM03,Curse,???
+175,TM04,Rollout,Rock
+175,TM06,Toxic,Poison
+175,TM07,Zap Cannon,Electric
+175,TM08,Rock Smash,Fighting
+175,TM09,Psych Up,Normal
+175,TM10,Hidden Power,Normal
+175,TM11,Sunny Day,Fire
+175,TM13,Snore,Normal
+175,TM17,Protect,Normal
+175,TM18,Rain Dance,Water
+175,TM20,Endure,Normal
+175,TM21,Frustration,Normal
+175,TM22,SolarBeam,Grass
+175,TM27,Return,Normal
+175,TM29,Psychic,Psychic
+175,TM30,Shadow Ball,Ghost
+175,TM31,Mud-Slap,Ground
+175,TM32,Double Team,Normal
+175,TM34,Swagger,Normal
+175,TM35,Sleep Talk,Normal
+175,TM38,Fire Blast,Fire
+175,TM39,Swift,Normal
+175,TM40,Defense Curl,Normal
+175,TM42,Dream Eater,Psychic
+175,TM43,Detect,Fighting
+175,TM44,Rest,Psychic
+175,TM45,Attract,Normal
+175,HM05,Flash,Normal
+176,TM02,Headbutt,Normal
+176,TM03,Curse,???
+176,TM04,Rollout,Rock
+176,TM06,Toxic,Poison
+176,TM07,Zap Cannon,Electric
+176,TM08,Rock Smash,Fighting
+176,TM09,Psych Up,Normal
+176,TM10,Hidden Power,Normal
+176,TM11,Sunny Day,Fire
+176,TM13,Snore,Normal
+176,TM15,Hyper Beam,Normal
+176,TM17,Protect,Normal
+176,TM18,Rain Dance,Water
+176,TM20,Endure,Normal
+176,TM21,Frustration,Normal
+176,TM22,SolarBeam,Grass
+176,TM27,Return,Normal
+176,TM29,Psychic,Psychic
+176,TM30,Shadow Ball,Ghost
+176,TM31,Mud-Slap,Ground
+176,TM32,Double Team,Normal
+176,TM34,Swagger,Normal
+176,TM35,Sleep Talk,Normal
+176,TM38,Fire Blast,Fire
+176,TM39,Swift,Normal
+176,TM40,Defense Curl,Normal
+176,TM42,Dream Eater,Psychic
+176,TM43,Detect,Fighting
+176,TM44,Rest,Psychic
+176,TM45,Attract,Normal
+176,TM47,Steel Wing,Steel
+176,HM02,Fly,Flying
+176,HM05,Flash,Normal
+177,TM03,Curse,???
+177,TM06,Toxic,Poison
+177,TM09,Psych Up,Normal
+177,TM10,Hidden Power,Normal
+177,TM11,Sunny Day,Fire
+177,TM13,Snore,Normal
+177,TM17,Protect,Normal
+177,TM19,Giga Drain,Grass
+177,TM20,Endure,Normal
+177,TM21,Frustration,Normal
+177,TM22,SolarBeam,Grass
+177,TM27,Return,Normal
+177,TM29,Psychic,Psychic
+177,TM32,Double Team,Normal
+177,TM34,Swagger,Normal
+177,TM35,Sleep Talk,Normal
+177,TM39,Swift,Normal
+177,TM42,Dream Eater,Psychic
+177,TM43,Detect,Fighting
+177,TM44,Rest,Psychic
+177,TM45,Attract,Normal
+177,TM46,Thief,Dark
+177,TM50,Nightmare,Ghost
+177,HM05,Flash,Normal
+178,TM03,Curse,???
+178,TM06,Toxic,Poison
+178,TM09,Psych Up,Normal
+178,TM10,Hidden Power,Normal
+178,TM11,Sunny Day,Fire
+178,TM13,Snore,Normal
+178,TM15,Hyper Beam,Normal
+178,TM17,Protect,Normal
+178,TM19,Giga Drain,Grass
+178,TM20,Endure,Normal
+178,TM21,Frustration,Normal
+178,TM22,SolarBeam,Grass
+178,TM27,Return,Normal
+178,TM29,Psychic,Psychic
+178,TM32,Double Team,Normal
+178,TM34,Swagger,Normal
+178,TM35,Sleep Talk,Normal
+178,TM39,Swift,Normal
+178,TM42,Dream Eater,Psychic
+178,TM43,Detect,Fighting
+178,TM44,Rest,Psychic
+178,TM45,Attract,Normal
+178,TM46,Thief,Dark
+178,TM50,Nightmare,Ghost
+178,HM02,Fly,Flying
+178,HM05,Flash,Normal
+179,TM02,Headbutt,Normal
+179,TM03,Curse,???
+179,TM06,Toxic,Poison
+179,TM07,Zap Cannon,Electric
+179,TM10,Hidden Power,Normal
+179,TM13,Snore,Normal
+179,TM17,Protect,Normal
+179,TM18,Rain Dance,Water
+179,TM20,Endure,Normal
+179,TM21,Frustration,Normal
+179,TM23,Iron Tail,Steel
+179,TM25,Thunder,Electric
+179,TM27,Return,Normal
+179,TM32,Double Team,Normal
+179,TM34,Swagger,Normal
+179,TM35,Sleep Talk,Normal
+179,TM39,Swift,Normal
+179,TM40,Defense Curl,Normal
+179,TM44,Rest,Psychic
+179,TM45,Attract,Normal
+179,HM05,Flash,Normal
+180,TM01,DynamicPunch,Fighting
+180,TM02,Headbutt,Normal
+180,TM03,Curse,???
+180,TM06,Toxic,Poison
+180,TM07,Zap Cannon,Electric
+180,TM08,Rock Smash,Fighting
+180,TM10,Hidden Power,Normal
+180,TM13,Snore,Normal
+180,TM17,Protect,Normal
+180,TM18,Rain Dance,Water
+180,TM20,Endure,Normal
+180,TM21,Frustration,Normal
+180,TM23,Iron Tail,Steel
+180,TM25,Thunder,Electric
+180,TM27,Return,Normal
+180,TM32,Double Team,Normal
+180,TM34,Swagger,Normal
+180,TM35,Sleep Talk,Normal
+180,TM39,Swift,Normal
+180,TM40,Defense Curl,Normal
+180,TM41,ThunderPunch,Electric
+180,TM44,Rest,Psychic
+180,TM45,Attract,Normal
+180,TM48,Fire Punch,Fire
+180,HM04,Strength,Normal
+180,HM05,Flash,Normal
+181,TM01,DynamicPunch,Fighting
+181,TM02,Headbutt,Normal
+181,TM03,Curse,???
+181,TM06,Toxic,Poison
+181,TM07,Zap Cannon,Electric
+181,TM08,Rock Smash,Fighting
+181,TM10,Hidden Power,Normal
+181,TM13,Snore,Normal
+181,TM15,Hyper Beam,Normal
+181,TM17,Protect,Normal
+181,TM18,Rain Dance,Water
+181,TM20,Endure,Normal
+181,TM21,Frustration,Normal
+181,TM23,Iron Tail,Steel
+181,TM25,Thunder,Electric
+181,TM27,Return,Normal
+181,TM32,Double Team,Normal
+181,TM34,Swagger,Normal
+181,TM35,Sleep Talk,Normal
+181,TM39,Swift,Normal
+181,TM40,Defense Curl,Normal
+181,TM41,ThunderPunch,Electric
+181,TM44,Rest,Psychic
+181,TM45,Attract,Normal
+181,TM48,Fire Punch,Fire
+181,HM04,Strength,Normal
+181,HM05,Flash,Normal
+182,TM03,Curse,???
+182,TM06,Toxic,Poison
+182,TM10,Hidden Power,Normal
+182,TM11,Sunny Day,Fire
+182,TM12,Sweet Scent,Normal
+182,TM13,Snore,Normal
+182,TM15,Hyper Beam,Normal
+182,TM17,Protect,Normal
+182,TM19,Giga Drain,Grass
+182,TM20,Endure,Normal
+182,TM21,Frustration,Normal
+182,TM22,SolarBeam,Grass
+182,TM27,Return,Normal
+182,TM32,Double Team,Normal
+182,TM34,Swagger,Normal
+182,TM35,Sleep Talk,Normal
+182,TM44,Rest,Psychic
+182,TM45,Attract,Normal
+182,HM01,Cut,Normal
+182,HM05,Flash,Normal
+183,TM01,DynamicPunch,Fighting
+183,TM02,Headbutt,Normal
+183,TM03,Curse,???
+183,TM04,Rollout,Rock
+183,TM06,Toxic,Poison
+183,TM10,Hidden Power,Normal
+183,TM13,Snore,Normal
+183,TM14,Blizzard,Ice
+183,TM16,Icy Wind,Ice
+183,TM17,Protect,Normal
+183,TM18,Rain Dance,Water
+183,TM20,Endure,Normal
+183,TM21,Frustration,Normal
+183,TM23,Iron Tail,Steel
+183,TM27,Return,Normal
+183,TM31,Mud-Slap,Ground
+183,TM32,Double Team,Normal
+183,TM33,Ice Punch,Ice
+183,TM34,Swagger,Normal
+183,TM35,Sleep Talk,Normal
+183,TM39,Swift,Normal
+183,TM40,Defense Curl,Normal
+183,TM44,Rest,Psychic
+183,TM45,Attract,Normal
+183,HM03,Surf,Water
+183,HM06,Whirlpool,Water
+183,HM07,Waterfall,Water
+184,TM01,DynamicPunch,Fighting
+184,TM02,Headbutt,Normal
+184,TM03,Curse,???
+184,TM04,Rollout,Rock
+184,TM06,Toxic,Poison
+184,TM08,Rock Smash,Fighting
+184,TM10,Hidden Power,Normal
+184,TM13,Snore,Normal
+184,TM14,Blizzard,Ice
+184,TM15,Hyper Beam,Normal
+184,TM16,Icy Wind,Ice
+184,TM17,Protect,Normal
+184,TM18,Rain Dance,Water
+184,TM20,Endure,Normal
+184,TM21,Frustration,Normal
+184,TM23,Iron Tail,Steel
+184,TM27,Return,Normal
+184,TM31,Mud-Slap,Ground
+184,TM32,Double Team,Normal
+184,TM33,Ice Punch,Ice
+184,TM34,Swagger,Normal
+184,TM35,Sleep Talk,Normal
+184,TM39,Swift,Normal
+184,TM40,Defense Curl,Normal
+184,TM44,Rest,Psychic
+184,TM45,Attract,Normal
+184,HM03,Surf,Water
+184,HM04,Strength,Normal
+184,HM06,Whirlpool,Water
+184,HM07,Waterfall,Water
+185,TM01,DynamicPunch,Fighting
+185,TM02,Headbutt,Normal
+185,TM03,Curse,???
+185,TM04,Rollout,Rock
+185,TM06,Toxic,Poison
+185,TM08,Rock Smash,Fighting
+185,TM09,Psych Up,Normal
+185,TM10,Hidden Power,Normal
+185,TM11,Sunny Day,Fire
+185,TM13,Snore,Normal
+185,TM17,Protect,Normal
+185,TM20,Endure,Normal
+185,TM21,Frustration,Normal
+185,TM26,Earthquake,Ground
+185,TM27,Return,Normal
+185,TM28,Dig,Ground
+185,TM31,Mud-Slap,Ground
+185,TM32,Double Team,Normal
+185,TM33,Ice Punch,Ice
+185,TM34,Swagger,Normal
+185,TM35,Sleep Talk,Normal
+185,TM37,Sandstorm,Rock
+185,TM40,Defense Curl,Normal
+185,TM41,ThunderPunch,Electric
+185,TM44,Rest,Psychic
+185,TM45,Attract,Normal
+185,TM46,Thief,Dark
+185,TM48,Fire Punch,Fire
+185,HM04,Strength,Normal
+186,TM01,DynamicPunch,Fighting
+186,TM02,Headbutt,Normal
+186,TM03,Curse,???
+186,TM06,Toxic,Poison
+186,TM08,Rock Smash,Fighting
+186,TM10,Hidden Power,Normal
+186,TM13,Snore,Normal
+186,TM14,Blizzard,Ice
+186,TM15,Hyper Beam,Normal
+186,TM16,Icy Wind,Ice
+186,TM17,Protect,Normal
+186,TM18,Rain Dance,Water
+186,TM20,Endure,Normal
+186,TM21,Frustration,Normal
+186,TM26,Earthquake,Ground
+186,TM27,Return,Normal
+186,TM29,Psychic,Psychic
+186,TM31,Mud-Slap,Ground
+186,TM32,Double Team,Normal
+186,TM33,Ice Punch,Ice
+186,TM34,Swagger,Normal
+186,TM35,Sleep Talk,Normal
+186,TM40,Defense Curl,Normal
+186,TM43,Detect,Fighting
+186,TM44,Rest,Psychic
+186,TM45,Attract,Normal
+186,TM46,Thief,Dark
+186,HM03,Surf,Water
+186,HM04,Strength,Normal
+186,HM06,Whirlpool,Water
+186,HM07,Waterfall,Water
+187,TM02,Headbutt,Normal
+187,TM03,Curse,???
+187,TM06,Toxic,Poison
+187,TM10,Hidden Power,Normal
+187,TM11,Sunny Day,Fire
+187,TM12,Sweet Scent,Normal
+187,TM13,Snore,Normal
+187,TM17,Protect,Normal
+187,TM19,Giga Drain,Grass
+187,TM20,Endure,Normal
+187,TM21,Frustration,Normal
+187,TM22,SolarBeam,Grass
+187,TM27,Return,Normal
+187,TM32,Double Team,Normal
+187,TM34,Swagger,Normal
+187,TM35,Sleep Talk,Normal
+187,TM40,Defense Curl,Normal
+187,TM44,Rest,Psychic
+187,TM45,Attract,Normal
+187,HM05,Flash,Normal
+188,TM02,Headbutt,Normal
+188,TM03,Curse,???
+188,TM06,Toxic,Poison
+188,TM10,Hidden Power,Normal
+188,TM11,Sunny Day,Fire
+188,TM12,Sweet Scent,Normal
+188,TM13,Snore,Normal
+188,TM17,Protect,Normal
+188,TM19,Giga Drain,Grass
+188,TM20,Endure,Normal
+188,TM21,Frustration,Normal
+188,TM22,SolarBeam,Grass
+188,TM27,Return,Normal
+188,TM32,Double Team,Normal
+188,TM34,Swagger,Normal
+188,TM35,Sleep Talk,Normal
+188,TM40,Defense Curl,Normal
+188,TM44,Rest,Psychic
+188,TM45,Attract,Normal
+188,HM05,Flash,Normal
+189,TM02,Headbutt,Normal
+189,TM03,Curse,???
+189,TM06,Toxic,Poison
+189,TM10,Hidden Power,Normal
+189,TM11,Sunny Day,Fire
+189,TM12,Sweet Scent,Normal
+189,TM13,Snore,Normal
+189,TM15,Hyper Beam,Normal
+189,TM17,Protect,Normal
+189,TM19,Giga Drain,Grass
+189,TM20,Endure,Normal
+189,TM21,Frustration,Normal
+189,TM22,SolarBeam,Grass
+189,TM27,Return,Normal
+189,TM32,Double Team,Normal
+189,TM34,Swagger,Normal
+189,TM35,Sleep Talk,Normal
+189,TM40,Defense Curl,Normal
+189,TM44,Rest,Psychic
+189,TM45,Attract,Normal
+189,HM05,Flash,Normal
+190,TM01,DynamicPunch,Fighting
+190,TM02,Headbutt,Normal
+190,TM03,Curse,???
+190,TM06,Toxic,Poison
+190,TM07,Zap Cannon,Electric
+190,TM08,Rock Smash,Fighting
+190,TM10,Hidden Power,Normal
+190,TM11,Sunny Day,Fire
+190,TM13,Snore,Normal
+190,TM17,Protect,Normal
+190,TM20,Endure,Normal
+190,TM21,Frustration,Normal
+190,TM23,Iron Tail,Steel
+190,TM25,Thunder,Electric
+190,TM27,Return,Normal
+190,TM30,Shadow Ball,Ghost
+190,TM31,Mud-Slap,Ground
+190,TM32,Double Team,Normal
+190,TM33,Ice Punch,Ice
+190,TM34,Swagger,Normal
+190,TM35,Sleep Talk,Normal
+190,TM39,Swift,Normal
+190,TM40,Defense Curl,Normal
+190,TM41,ThunderPunch,Electric
+190,TM42,Dream Eater,Psychic
+190,TM43,Detect,Fighting
+190,TM44,Rest,Psychic
+190,TM45,Attract,Normal
+190,TM46,Thief,Dark
+190,TM48,Fire Punch,Fire
+190,TM49,Fury Cutter,Bug
+190,TM50,Nightmare,Ghost
+190,HM01,Cut,Normal
+190,HM04,Strength,Normal
+191,TM03,Curse,???
+191,TM06,Toxic,Poison
+191,TM10,Hidden Power,Normal
+191,TM11,Sunny Day,Fire
+191,TM12,Sweet Scent,Normal
+191,TM13,Snore,Normal
+191,TM17,Protect,Normal
+191,TM19,Giga Drain,Grass
+191,TM20,Endure,Normal
+191,TM21,Frustration,Normal
+191,TM22,SolarBeam,Grass
+191,TM27,Return,Normal
+191,TM32,Double Team,Normal
+191,TM34,Swagger,Normal
+191,TM35,Sleep Talk,Normal
+191,TM36,Sludge Bomb,Poison
+191,TM44,Rest,Psychic
+191,TM45,Attract,Normal
+191,HM01,Cut,Normal
+191,HM05,Flash,Normal
+192,TM03,Curse,???
+192,TM06,Toxic,Poison
+192,TM10,Hidden Power,Normal
+192,TM11,Sunny Day,Fire
+192,TM12,Sweet Scent,Normal
+192,TM13,Snore,Normal
+192,TM15,Hyper Beam,Normal
+192,TM17,Protect,Normal
+192,TM19,Giga Drain,Grass
+192,TM20,Endure,Normal
+192,TM21,Frustration,Normal
+192,TM22,SolarBeam,Grass
+192,TM27,Return,Normal
+192,TM32,Double Team,Normal
+192,TM34,Swagger,Normal
+192,TM35,Sleep Talk,Normal
+192,TM36,Sludge Bomb,Poison
+192,TM44,Rest,Psychic
+192,TM45,Attract,Normal
+192,HM01,Cut,Normal
+192,HM05,Flash,Normal
+193,TM02,Headbutt,Normal
+193,TM03,Curse,???
+193,TM06,Toxic,Poison
+193,TM10,Hidden Power,Normal
+193,TM11,Sunny Day,Fire
+193,TM13,Snore,Normal
+193,TM17,Protect,Normal
+193,TM19,Giga Drain,Grass
+193,TM20,Endure,Normal
+193,TM21,Frustration,Normal
+193,TM22,SolarBeam,Grass
+193,TM27,Return,Normal
+193,TM32,Double Team,Normal
+193,TM34,Swagger,Normal
+193,TM35,Sleep Talk,Normal
+193,TM39,Swift,Normal
+193,TM43,Detect,Fighting
+193,TM44,Rest,Psychic
+193,TM45,Attract,Normal
+193,TM46,Thief,Dark
+193,HM05,Flash,Normal
+194,TM01,DynamicPunch,Fighting
+194,TM02,Headbutt,Normal
+194,TM03,Curse,???
+194,TM04,Rollout,Rock
+194,TM06,Toxic,Poison
+194,TM08,Rock Smash,Fighting
+194,TM10,Hidden Power,Normal
+194,TM13,Snore,Normal
+194,TM17,Protect,Normal
+194,TM18,Rain Dance,Water
+194,TM20,Endure,Normal
+194,TM21,Frustration,Normal
+194,TM23,Iron Tail,Steel
+194,TM26,Earthquake,Ground
+194,TM27,Return,Normal
+194,TM28,Dig,Ground
+194,TM31,Mud-Slap,Ground
+194,TM32,Double Team,Normal
+194,TM33,Ice Punch,Ice
+194,TM34,Swagger,Normal
+194,TM35,Sleep Talk,Normal
+194,TM36,Sludge Bomb,Poison
+194,TM37,Sandstorm,Rock
+194,TM40,Defense Curl,Normal
+194,TM44,Rest,Psychic
+194,TM45,Attract,Normal
+194,HM03,Surf,Water
+194,HM05,Flash,Normal
+194,HM06,Whirlpool,Water
+195,TM01,DynamicPunch,Fighting
+195,TM02,Headbutt,Normal
+195,TM03,Curse,???
+195,TM04,Rollout,Rock
+195,TM06,Toxic,Poison
+195,TM08,Rock Smash,Fighting
+195,TM10,Hidden Power,Normal
+195,TM13,Snore,Normal
+195,TM15,Hyper Beam,Normal
+195,TM17,Protect,Normal
+195,TM18,Rain Dance,Water
+195,TM20,Endure,Normal
+195,TM21,Frustration,Normal
+195,TM23,Iron Tail,Steel
+195,TM26,Earthquake,Ground
+195,TM27,Return,Normal
+195,TM28,Dig,Ground
+195,TM31,Mud-Slap,Ground
+195,TM32,Double Team,Normal
+195,TM33,Ice Punch,Ice
+195,TM34,Swagger,Normal
+195,TM35,Sleep Talk,Normal
+195,TM36,Sludge Bomb,Poison
+195,TM37,Sandstorm,Rock
+195,TM40,Defense Curl,Normal
+195,TM44,Rest,Psychic
+195,TM45,Attract,Normal
+195,HM03,Surf,Water
+195,HM04,Strength,Normal
+195,HM05,Flash,Normal
+195,HM06,Whirlpool,Water
+196,TM02,Headbutt,Normal
+196,TM03,Curse,???
+196,TM06,Toxic,Poison
+196,TM07,Zap Cannon,Electric
+196,TM09,Psych Up,Normal
+196,TM10,Hidden Power,Normal
+196,TM11,Sunny Day,Fire
+196,TM13,Snore,Normal
+196,TM15,Hyper Beam,Normal
+196,TM17,Protect,Normal
+196,TM18,Rain Dance,Water
+196,TM20,Endure,Normal
+196,TM21,Frustration,Normal
+196,TM23,Iron Tail,Steel
+196,TM27,Return,Normal
+196,TM29,Psychic,Psychic
+196,TM30,Shadow Ball,Ghost
+196,TM31,Mud-Slap,Ground
+196,TM32,Double Team,Normal
+196,TM34,Swagger,Normal
+196,TM35,Sleep Talk,Normal
+196,TM39,Swift,Normal
+196,TM42,Dream Eater,Psychic
+196,TM43,Detect,Fighting
+196,TM44,Rest,Psychic
+196,TM45,Attract,Normal
+196,TM50,Nightmare,Ghost
+196,HM01,Cut,Normal
+196,HM05,Flash,Normal
+197,TM02,Headbutt,Normal
+197,TM03,Curse,???
+197,TM06,Toxic,Poison
+197,TM07,Zap Cannon,Electric
+197,TM09,Psych Up,Normal
+197,TM10,Hidden Power,Normal
+197,TM11,Sunny Day,Fire
+197,TM13,Snore,Normal
+197,TM15,Hyper Beam,Normal
+197,TM17,Protect,Normal
+197,TM18,Rain Dance,Water
+197,TM20,Endure,Normal
+197,TM21,Frustration,Normal
+197,TM23,Iron Tail,Steel
+197,TM27,Return,Normal
+197,TM29,Psychic,Psychic
+197,TM30,Shadow Ball,Ghost
+197,TM31,Mud-Slap,Ground
+197,TM32,Double Team,Normal
+197,TM34,Swagger,Normal
+197,TM35,Sleep Talk,Normal
+197,TM39,Swift,Normal
+197,TM42,Dream Eater,Psychic
+197,TM43,Detect,Fighting
+197,TM44,Rest,Psychic
+197,TM45,Attract,Normal
+197,TM50,Nightmare,Ghost
+197,HM01,Cut,Normal
+197,HM05,Flash,Normal
+198,TM03,Curse,???
+198,TM06,Toxic,Poison
+198,TM09,Psych Up,Normal
+198,TM10,Hidden Power,Normal
+198,TM11,Sunny Day,Fire
+198,TM13,Snore,Normal
+198,TM16,Icy Wind,Ice
+198,TM17,Protect,Normal
+198,TM20,Endure,Normal
+198,TM21,Frustration,Normal
+198,TM27,Return,Normal
+198,TM30,Shadow Ball,Ghost
+198,TM31,Mud-Slap,Ground
+198,TM32,Double Team,Normal
+198,TM34,Swagger,Normal
+198,TM35,Sleep Talk,Normal
+198,TM39,Swift,Normal
+198,TM42,Dream Eater,Psychic
+198,TM43,Detect,Fighting
+198,TM44,Rest,Psychic
+198,TM45,Attract,Normal
+198,TM46,Thief,Dark
+198,TM47,Steel Wing,Steel
+198,TM50,Nightmare,Ghost
+198,HM02,Fly,Flying
+199,TM01,DynamicPunch,Fighting
+199,TM02,Headbutt,Normal
+199,TM03,Curse,???
+199,TM06,Toxic,Poison
+199,TM07,Zap Cannon,Electric
+199,TM08,Rock Smash,Fighting
+199,TM09,Psych Up,Normal
+199,TM10,Hidden Power,Normal
+199,TM11,Sunny Day,Fire
+199,TM13,Snore,Normal
+199,TM14,Blizzard,Ice
+199,TM15,Hyper Beam,Normal
+199,TM16,Icy Wind,Ice
+199,TM17,Protect,Normal
+199,TM18,Rain Dance,Water
+199,TM20,Endure,Normal
+199,TM21,Frustration,Normal
+199,TM23,Iron Tail,Steel
+199,TM26,Earthquake,Ground
+199,TM27,Return,Normal
+199,TM28,Dig,Ground
+199,TM29,Psychic,Psychic
+199,TM30,Shadow Ball,Ghost
+199,TM31,Mud-Slap,Ground
+199,TM32,Double Team,Normal
+199,TM33,Ice Punch,Ice
+199,TM34,Swagger,Normal
+199,TM35,Sleep Talk,Normal
+199,TM38,Fire Blast,Fire
+199,TM39,Swift,Normal
+199,TM42,Dream Eater,Psychic
+199,TM44,Rest,Psychic
+199,TM45,Attract,Normal
+199,TM49,Fury Cutter,Bug
+199,TM50,Nightmare,Ghost
+199,HM03,Surf,Water
+199,HM04,Strength,Normal
+199,HM05,Flash,Normal
+199,HM06,Whirlpool,Water
+200,TM02,Headbutt,Normal
+200,TM03,Curse,???
+200,TM06,Toxic,Poison
+200,TM07,Zap Cannon,Electric
+200,TM09,Psych Up,Normal
+200,TM10,Hidden Power,Normal
+200,TM11,Sunny Day,Fire
+200,TM13,Snore,Normal
+200,TM17,Protect,Normal
+200,TM18,Rain Dance,Water
+200,TM20,Endure,Normal
+200,TM21,Frustration,Normal
+200,TM25,Thunder,Electric
+200,TM27,Return,Normal
+200,TM29,Psychic,Psychic
+200,TM30,Shadow Ball,Ghost
+200,TM32,Double Team,Normal
+200,TM34,Swagger,Normal
+200,TM35,Sleep Talk,Normal
+200,TM39,Swift,Normal
+200,TM40,Defense Curl,Normal
+200,TM42,Dream Eater,Psychic
+200,TM44,Rest,Psychic
+200,TM45,Attract,Normal
+200,TM46,Thief,Dark
+200,TM50,Nightmare,Ghost
+200,HM05,Flash,Normal
+203,TM02,Headbutt,Normal
+203,TM03,Curse,???
+203,TM06,Toxic,Poison
+203,TM07,Zap Cannon,Electric
+203,TM08,Rock Smash,Fighting
+203,TM09,Psych Up,Normal
+203,TM10,Hidden Power,Normal
+203,TM11,Sunny Day,Fire
+203,TM13,Snore,Normal
+203,TM17,Protect,Normal
+203,TM20,Endure,Normal
+203,TM21,Frustration,Normal
+203,TM23,Iron Tail,Steel
+203,TM25,Thunder,Electric
+203,TM26,Earthquake,Ground
+203,TM27,Return,Normal
+203,TM29,Psychic,Psychic
+203,TM30,Shadow Ball,Ghost
+203,TM31,Mud-Slap,Ground
+203,TM32,Double Team,Normal
+203,TM34,Swagger,Normal
+203,TM35,Sleep Talk,Normal
+203,TM39,Swift,Normal
+203,TM42,Dream Eater,Psychic
+203,TM44,Rest,Psychic
+203,TM45,Attract,Normal
+203,TM46,Thief,Dark
+203,TM50,Nightmare,Ghost
+203,HM04,Strength,Normal
+204,TM02,Headbutt,Normal
+204,TM03,Curse,???
+204,TM04,Rollout,Rock
+204,TM06,Toxic,Poison
+204,TM08,Rock Smash,Fighting
+204,TM10,Hidden Power,Normal
+204,TM11,Sunny Day,Fire
+204,TM12,Sweet Scent,Normal
+204,TM13,Snore,Normal
+204,TM17,Protect,Normal
+204,TM19,Giga Drain,Grass
+204,TM20,Endure,Normal
+204,TM21,Frustration,Normal
+204,TM22,SolarBeam,Grass
+204,TM27,Return,Normal
+204,TM32,Double Team,Normal
+204,TM34,Swagger,Normal
+204,TM35,Sleep Talk,Normal
+204,TM40,Defense Curl,Normal
+204,TM44,Rest,Psychic
+204,TM45,Attract,Normal
+204,HM04,Strength,Normal
+205,TM02,Headbutt,Normal
+205,TM03,Curse,???
+205,TM04,Rollout,Rock
+205,TM06,Toxic,Poison
+205,TM08,Rock Smash,Fighting
+205,TM10,Hidden Power,Normal
+205,TM11,Sunny Day,Fire
+205,TM12,Sweet Scent,Normal
+205,TM13,Snore,Normal
+205,TM15,Hyper Beam,Normal
+205,TM17,Protect,Normal
+205,TM19,Giga Drain,Grass
+205,TM20,Endure,Normal
+205,TM21,Frustration,Normal
+205,TM22,SolarBeam,Grass
+205,TM27,Return,Normal
+205,TM32,Double Team,Normal
+205,TM34,Swagger,Normal
+205,TM35,Sleep Talk,Normal
+205,TM37,Sandstorm,Rock
+205,TM40,Defense Curl,Normal
+205,TM44,Rest,Psychic
+205,TM45,Attract,Normal
+205,HM04,Strength,Normal
+206,TM02,Headbutt,Normal
+206,TM03,Curse,???
+206,TM04,Rollout,Rock
+206,TM06,Toxic,Poison
+206,TM07,Zap Cannon,Electric
+206,TM08,Rock Smash,Fighting
+206,TM09,Psych Up,Normal
+206,TM10,Hidden Power,Normal
+206,TM11,Sunny Day,Fire
+206,TM13,Snore,Normal
+206,TM17,Protect,Normal
+206,TM18,Rain Dance,Water
+206,TM20,Endure,Normal
+206,TM21,Frustration,Normal
+206,TM22,SolarBeam,Grass
+206,TM23,Iron Tail,Steel
+206,TM25,Thunder,Electric
+206,TM27,Return,Normal
+206,TM28,Dig,Ground
+206,TM31,Mud-Slap,Ground
+206,TM32,Double Team,Normal
+206,TM34,Swagger,Normal
+206,TM35,Sleep Talk,Normal
+206,TM40,Defense Curl,Normal
+206,TM42,Dream Eater,Psychic
+206,TM44,Rest,Psychic
+206,TM45,Attract,Normal
+206,TM46,Thief,Dark
+206,TM50,Nightmare,Ghost
+206,HM04,Strength,Normal
+207,TM02,Headbutt,Normal
+207,TM03,Curse,???
+207,TM06,Toxic,Poison
+207,TM08,Rock Smash,Fighting
+207,TM10,Hidden Power,Normal
+207,TM11,Sunny Day,Fire
+207,TM13,Snore,Normal
+207,TM17,Protect,Normal
+207,TM20,Endure,Normal
+207,TM21,Frustration,Normal
+207,TM23,Iron Tail,Steel
+207,TM27,Return,Normal
+207,TM32,Double Team,Normal
+207,TM34,Swagger,Normal
+207,TM35,Sleep Talk,Normal
+207,TM36,Sludge Bomb,Poison
+207,TM37,Sandstorm,Rock
+207,TM39,Swift,Normal
+207,TM43,Detect,Fighting
+207,TM44,Rest,Psychic
+207,TM45,Attract,Normal
+207,TM46,Thief,Dark
+207,TM49,Fury Cutter,Bug
+207,HM01,Cut,Normal
+207,HM04,Strength,Normal
+208,TM02,Headbutt,Normal
+208,TM03,Curse,???
+208,TM04,Rollout,Rock
+208,TM05,Roar,Normal
+208,TM06,Toxic,Poison
+208,TM08,Rock Smash,Fighting
+208,TM10,Hidden Power,Normal
+208,TM11,Sunny Day,Fire
+208,TM13,Snore,Normal
+208,TM15,Hyper Beam,Normal
+208,TM17,Protect,Normal
+208,TM20,Endure,Normal
+208,TM21,Frustration,Normal
+208,TM23,Iron Tail,Steel
+208,TM24,DragonBreath,Dragon
+208,TM26,Earthquake,Ground
+208,TM27,Return,Normal
+208,TM28,Dig,Ground
+208,TM31,Mud-Slap,Ground
+208,TM32,Double Team,Normal
+208,TM34,Swagger,Normal
+208,TM35,Sleep Talk,Normal
+208,TM37,Sandstorm,Rock
+208,TM40,Defense Curl,Normal
+208,TM44,Rest,Psychic
+208,TM45,Attract,Normal
+208,HM01,Cut,Normal
+208,HM04,Strength,Normal
+209,TM01,DynamicPunch,Fighting
+209,TM02,Headbutt,Normal
+209,TM03,Curse,???
+209,TM05,Roar,Normal
+209,TM06,Toxic,Poison
+209,TM07,Zap Cannon,Electric
+209,TM08,Rock Smash,Fighting
+209,TM10,Hidden Power,Normal
+209,TM11,Sunny Day,Fire
+209,TM13,Snore,Normal
+209,TM17,Protect,Normal
+209,TM18,Rain Dance,Water
+209,TM20,Endure,Normal
+209,TM21,Frustration,Normal
+209,TM25,Thunder,Electric
+209,TM27,Return,Normal
+209,TM30,Shadow Ball,Ghost
+209,TM31,Mud-Slap,Ground
+209,TM32,Double Team,Normal
+209,TM33,Ice Punch,Ice
+209,TM34,Swagger,Normal
+209,TM35,Sleep Talk,Normal
+209,TM36,Sludge Bomb,Poison
+209,TM40,Defense Curl,Normal
+209,TM41,ThunderPunch,Electric
+209,TM43,Detect,Fighting
+209,TM44,Rest,Psychic
+209,TM45,Attract,Normal
+209,TM46,Thief,Dark
+209,TM48,Fire Punch,Fire
+209,HM04,Strength,Normal
+210,TM01,DynamicPunch,Fighting
+210,TM02,Headbutt,Normal
+210,TM03,Curse,???
+210,TM05,Roar,Normal
+210,TM06,Toxic,Poison
+210,TM07,Zap Cannon,Electric
+210,TM08,Rock Smash,Fighting
+210,TM10,Hidden Power,Normal
+210,TM11,Sunny Day,Fire
+210,TM13,Snore,Normal
+210,TM15,Hyper Beam,Normal
+210,TM17,Protect,Normal
+210,TM18,Rain Dance,Water
+210,TM20,Endure,Normal
+210,TM21,Frustration,Normal
+210,TM25,Thunder,Electric
+210,TM27,Return,Normal
+210,TM30,Shadow Ball,Ghost
+210,TM31,Mud-Slap,Ground
+210,TM32,Double Team,Normal
+210,TM33,Ice Punch,Ice
+210,TM34,Swagger,Normal
+210,TM35,Sleep Talk,Normal
+210,TM36,Sludge Bomb,Poison
+210,TM40,Defense Curl,Normal
+210,TM41,ThunderPunch,Electric
+210,TM43,Detect,Fighting
+210,TM44,Rest,Psychic
+210,TM45,Attract,Normal
+210,TM46,Thief,Dark
+210,TM48,Fire Punch,Fire
+210,HM04,Strength,Normal
+211,TM02,Headbutt,Normal
+211,TM03,Curse,???
+211,TM04,Rollout,Rock
+211,TM06,Toxic,Poison
+211,TM10,Hidden Power,Normal
+211,TM13,Snore,Normal
+211,TM14,Blizzard,Ice
+211,TM16,Icy Wind,Ice
+211,TM17,Protect,Normal
+211,TM18,Rain Dance,Water
+211,TM20,Endure,Normal
+211,TM21,Frustration,Normal
+211,TM27,Return,Normal
+211,TM32,Double Team,Normal
+211,TM34,Swagger,Normal
+211,TM35,Sleep Talk,Normal
+211,TM36,Sludge Bomb,Poison
+211,TM39,Swift,Normal
+211,TM40,Defense Curl,Normal
+211,TM44,Rest,Psychic
+211,TM45,Attract,Normal
+211,HM03,Surf,Water
+211,HM06,Whirlpool,Water
+211,HM07,Waterfall,Water
+212,TM02,Headbutt,Normal
+212,TM03,Curse,???
+212,TM06,Toxic,Poison
+212,TM08,Rock Smash,Fighting
+212,TM10,Hidden Power,Normal
+212,TM11,Sunny Day,Fire
+212,TM13,Snore,Normal
+212,TM15,Hyper Beam,Normal
+212,TM17,Protect,Normal
+212,TM20,Endure,Normal
+212,TM21,Frustration,Normal
+212,TM27,Return,Normal
+212,TM32,Double Team,Normal
+212,TM34,Swagger,Normal
+212,TM35,Sleep Talk,Normal
+212,TM37,Sandstorm,Rock
+212,TM39,Swift,Normal
+212,TM43,Detect,Fighting
+212,TM44,Rest,Psychic
+212,TM45,Attract,Normal
+212,TM46,Thief,Dark
+212,TM47,Steel Wing,Steel
+212,TM49,Fury Cutter,Bug
+212,HM01,Cut,Normal
+212,HM04,Strength,Normal
+213,TM02,Headbutt,Normal
+213,TM03,Curse,???
+213,TM04,Rollout,Rock
+213,TM06,Toxic,Poison
+213,TM08,Rock Smash,Fighting
+213,TM10,Hidden Power,Normal
+213,TM11,Sunny Day,Fire
+213,TM13,Snore,Normal
+213,TM17,Protect,Normal
+213,TM20,Endure,Normal
+213,TM21,Frustration,Normal
+213,TM26,Earthquake,Ground
+213,TM27,Return,Normal
+213,TM28,Dig,Ground
+213,TM31,Mud-Slap,Ground
+213,TM32,Double Team,Normal
+213,TM34,Swagger,Normal
+213,TM35,Sleep Talk,Normal
+213,TM36,Sludge Bomb,Poison
+213,TM37,Sandstorm,Rock
+213,TM40,Defense Curl,Normal
+213,TM44,Rest,Psychic
+213,TM45,Attract,Normal
+213,HM04,Strength,Normal
+213,HM05,Flash,Normal
+214,TM02,Headbutt,Normal
+214,TM03,Curse,???
+214,TM06,Toxic,Poison
+214,TM08,Rock Smash,Fighting
+214,TM10,Hidden Power,Normal
+214,TM11,Sunny Day,Fire
+214,TM13,Snore,Normal
+214,TM17,Protect,Normal
+214,TM20,Endure,Normal
+214,TM21,Frustration,Normal
+214,TM26,Earthquake,Ground
+214,TM27,Return,Normal
+214,TM32,Double Team,Normal
+214,TM34,Swagger,Normal
+214,TM35,Sleep Talk,Normal
+214,TM43,Detect,Fighting
+214,TM44,Rest,Psychic
+214,TM45,Attract,Normal
+214,TM46,Thief,Dark
+214,TM49,Fury Cutter,Bug
+214,HM01,Cut,Normal
+214,HM04,Strength,Normal
+215,TM01,DynamicPunch,Fighting
+215,TM02,Headbutt,Normal
+215,TM03,Curse,???
+215,TM06,Toxic,Poison
+215,TM08,Rock Smash,Fighting
+215,TM09,Psych Up,Normal
+215,TM10,Hidden Power,Normal
+215,TM13,Snore,Normal
+215,TM14,Blizzard,Ice
+215,TM16,Icy Wind,Ice
+215,TM17,Protect,Normal
+215,TM18,Rain Dance,Water
+215,TM20,Endure,Normal
+215,TM21,Frustration,Normal
+215,TM23,Iron Tail,Steel
+215,TM27,Return,Normal
+215,TM28,Dig,Ground
+215,TM30,Shadow Ball,Ghost
+215,TM31,Mud-Slap,Ground
+215,TM32,Double Team,Normal
+215,TM33,Ice Punch,Ice
+215,TM34,Swagger,Normal
+215,TM35,Sleep Talk,Normal
+215,TM39,Swift,Normal
+215,TM40,Defense Curl,Normal
+215,TM42,Dream Eater,Psychic
+215,TM43,Detect,Fighting
+215,TM44,Rest,Psychic
+215,TM45,Attract,Normal
+215,TM46,Thief,Dark
+215,TM49,Fury Cutter,Bug
+215,TM50,Nightmare,Ghost
+215,HM01,Cut,Normal
+215,HM03,Surf,Water
+215,HM04,Strength,Normal
+216,TM01,DynamicPunch,Fighting
+216,TM02,Headbutt,Normal
+216,TM03,Curse,???
+216,TM04,Rollout,Rock
+216,TM05,Roar,Normal
+216,TM06,Toxic,Poison
+216,TM07,Zap Cannon,Electric
+216,TM08,Rock Smash,Fighting
+216,TM10,Hidden Power,Normal
+216,TM11,Sunny Day,Fire
+216,TM13,Snore,Normal
+216,TM17,Protect,Normal
+216,TM20,Endure,Normal
+216,TM21,Frustration,Normal
+216,TM26,Earthquake,Ground
+216,TM27,Return,Normal
+216,TM28,Dig,Ground
+216,TM31,Mud-Slap,Ground
+216,TM32,Double Team,Normal
+216,TM33,Ice Punch,Ice
+216,TM34,Swagger,Normal
+216,TM35,Sleep Talk,Normal
+216,TM39,Swift,Normal
+216,TM40,Defense Curl,Normal
+216,TM41,ThunderPunch,Electric
+216,TM44,Rest,Psychic
+216,TM45,Attract,Normal
+216,TM46,Thief,Dark
+216,TM48,Fire Punch,Fire
+216,TM49,Fury Cutter,Bug
+216,HM01,Cut,Normal
+216,HM04,Strength,Normal
+217,TM01,DynamicPunch,Fighting
+217,TM02,Headbutt,Normal
+217,TM03,Curse,???
+217,TM04,Rollout,Rock
+217,TM05,Roar,Normal
+217,TM06,Toxic,Poison
+217,TM07,Zap Cannon,Electric
+217,TM08,Rock Smash,Fighting
+217,TM10,Hidden Power,Normal
+217,TM11,Sunny Day,Fire
+217,TM13,Snore,Normal
+217,TM15,Hyper Beam,Normal
+217,TM17,Protect,Normal
+217,TM20,Endure,Normal
+217,TM21,Frustration,Normal
+217,TM26,Earthquake,Ground
+217,TM27,Return,Normal
+217,TM28,Dig,Ground
+217,TM31,Mud-Slap,Ground
+217,TM32,Double Team,Normal
+217,TM33,Ice Punch,Ice
+217,TM34,Swagger,Normal
+217,TM35,Sleep Talk,Normal
+217,TM39,Swift,Normal
+217,TM40,Defense Curl,Normal
+217,TM41,ThunderPunch,Electric
+217,TM44,Rest,Psychic
+217,TM45,Attract,Normal
+217,TM46,Thief,Dark
+217,TM48,Fire Punch,Fire
+217,TM49,Fury Cutter,Bug
+217,HM01,Cut,Normal
+217,HM04,Strength,Normal
+218,TM03,Curse,???
+218,TM04,Rollout,Rock
+218,TM06,Toxic,Poison
+218,TM08,Rock Smash,Fighting
+218,TM10,Hidden Power,Normal
+218,TM11,Sunny Day,Fire
+218,TM13,Snore,Normal
+218,TM17,Protect,Normal
+218,TM20,Endure,Normal
+218,TM21,Frustration,Normal
+218,TM27,Return,Normal
+218,TM31,Mud-Slap,Ground
+218,TM32,Double Team,Normal
+218,TM34,Swagger,Normal
+218,TM35,Sleep Talk,Normal
+218,TM38,Fire Blast,Fire
+218,TM40,Defense Curl,Normal
+218,TM44,Rest,Psychic
+218,TM45,Attract,Normal
+219,TM03,Curse,???
+219,TM04,Rollout,Rock
+219,TM06,Toxic,Poison
+219,TM08,Rock Smash,Fighting
+219,TM10,Hidden Power,Normal
+219,TM11,Sunny Day,Fire
+219,TM13,Snore,Normal
+219,TM15,Hyper Beam,Normal
+219,TM17,Protect,Normal
+219,TM20,Endure,Normal
+219,TM21,Frustration,Normal
+219,TM26,Earthquake,Ground
+219,TM27,Return,Normal
+219,TM31,Mud-Slap,Ground
+219,TM32,Double Team,Normal
+219,TM34,Swagger,Normal
+219,TM35,Sleep Talk,Normal
+219,TM38,Fire Blast,Fire
+219,TM40,Defense Curl,Normal
+219,TM44,Rest,Psychic
+219,TM45,Attract,Normal
+219,HM04,Strength,Normal
+220,TM02,Headbutt,Normal
+220,TM03,Curse,???
+220,TM05,Roar,Normal
+220,TM06,Toxic,Poison
+220,TM08,Rock Smash,Fighting
+220,TM10,Hidden Power,Normal
+220,TM13,Snore,Normal
+220,TM14,Blizzard,Ice
+220,TM16,Icy Wind,Ice
+220,TM17,Protect,Normal
+220,TM18,Rain Dance,Water
+220,TM20,Endure,Normal
+220,TM21,Frustration,Normal
+220,TM26,Earthquake,Ground
+220,TM27,Return,Normal
+220,TM31,Mud-Slap,Ground
+220,TM32,Double Team,Normal
+220,TM34,Swagger,Normal
+220,TM35,Sleep Talk,Normal
+220,TM40,Defense Curl,Normal
+220,TM43,Detect,Fighting
+220,TM44,Rest,Psychic
+220,TM45,Attract,Normal
+220,HM04,Strength,Normal
+221,TM02,Headbutt,Normal
+221,TM03,Curse,???
+221,TM05,Roar,Normal
+221,TM06,Toxic,Poison
+221,TM08,Rock Smash,Fighting
+221,TM10,Hidden Power,Normal
+221,TM13,Snore,Normal
+221,TM14,Blizzard,Ice
+221,TM15,Hyper Beam,Normal
+221,TM16,Icy Wind,Ice
+221,TM17,Protect,Normal
+221,TM18,Rain Dance,Water
+221,TM20,Endure,Normal
+221,TM21,Frustration,Normal
+221,TM26,Earthquake,Ground
+221,TM27,Return,Normal
+221,TM31,Mud-Slap,Ground
+221,TM32,Double Team,Normal
+221,TM34,Swagger,Normal
+221,TM35,Sleep Talk,Normal
+221,TM40,Defense Curl,Normal
+221,TM43,Detect,Fighting
+221,TM44,Rest,Psychic
+221,TM45,Attract,Normal
+221,HM04,Strength,Normal
+222,TM02,Headbutt,Normal
+222,TM03,Curse,???
+222,TM04,Rollout,Rock
+222,TM06,Toxic,Poison
+222,TM08,Rock Smash,Fighting
+222,TM10,Hidden Power,Normal
+222,TM11,Sunny Day,Fire
+222,TM13,Snore,Normal
+222,TM17,Protect,Normal
+222,TM18,Rain Dance,Water
+222,TM20,Endure,Normal
+222,TM21,Frustration,Normal
+222,TM26,Earthquake,Ground
+222,TM27,Return,Normal
+222,TM29,Psychic,Psychic
+222,TM31,Mud-Slap,Ground
+222,TM32,Double Team,Normal
+222,TM34,Swagger,Normal
+222,TM35,Sleep Talk,Normal
+222,TM37,Sandstorm,Rock
+222,TM40,Defense Curl,Normal
+222,TM44,Rest,Psychic
+222,TM45,Attract,Normal
+222,HM03,Surf,Water
+222,HM04,Strength,Normal
+222,HM06,Whirlpool,Water
+223,TM03,Curse,???
+223,TM06,Toxic,Poison
+223,TM10,Hidden Power,Normal
+223,TM13,Snore,Normal
+223,TM15,Hyper Beam,Normal
+223,TM17,Protect,Normal
+223,TM18,Rain Dance,Water
+223,TM20,Endure,Normal
+223,TM21,Frustration,Normal
+223,TM27,Return,Normal
+223,TM31,Mud-Slap,Ground
+223,TM32,Double Team,Normal
+223,TM34,Swagger,Normal
+223,TM35,Sleep Talk,Normal
+223,TM39,Swift,Normal
+223,TM40,Defense Curl,Normal
+223,TM44,Rest,Psychic
+223,TM45,Attract,Normal
+223,TM46,Thief,Dark
+223,HM03,Surf,Water
+223,HM06,Whirlpool,Water
+224,TM03,Curse,???
+224,TM06,Toxic,Poison
+224,TM10,Hidden Power,Normal
+224,TM13,Snore,Normal
+224,TM15,Hyper Beam,Normal
+224,TM17,Protect,Normal
+224,TM18,Rain Dance,Water
+224,TM20,Endure,Normal
+224,TM21,Frustration,Normal
+224,TM27,Return,Normal
+224,TM31,Mud-Slap,Ground
+224,TM32,Double Team,Normal
+224,TM34,Swagger,Normal
+224,TM35,Sleep Talk,Normal
+224,TM39,Swift,Normal
+224,TM40,Defense Curl,Normal
+224,TM44,Rest,Psychic
+224,TM45,Attract,Normal
+224,TM46,Thief,Dark
+224,HM03,Surf,Water
+224,HM06,Whirlpool,Water
+225,TM02,Headbutt,Normal
+225,TM03,Curse,???
+225,TM06,Toxic,Poison
+225,TM10,Hidden Power,Normal
+225,TM13,Snore,Normal
+225,TM14,Blizzard,Ice
+225,TM16,Icy Wind,Ice
+225,TM17,Protect,Normal
+225,TM18,Rain Dance,Water
+225,TM20,Endure,Normal
+225,TM21,Frustration,Normal
+225,TM27,Return,Normal
+225,TM31,Mud-Slap,Ground
+225,TM32,Double Team,Normal
+225,TM34,Swagger,Normal
+225,TM35,Sleep Talk,Normal
+225,TM39,Swift,Normal
+225,TM43,Detect,Fighting
+225,TM44,Rest,Psychic
+225,TM45,Attract,Normal
+225,TM46,Thief,Dark
+225,HM02,Fly,Flying
+226,TM02,Headbutt,Normal
+226,TM03,Curse,???
+226,TM06,Toxic,Poison
+226,TM10,Hidden Power,Normal
+226,TM13,Snore,Normal
+226,TM14,Blizzard,Ice
+226,TM16,Icy Wind,Ice
+226,TM17,Protect,Normal
+226,TM18,Rain Dance,Water
+226,TM20,Endure,Normal
+226,TM21,Frustration,Normal
+226,TM27,Return,Normal
+226,TM31,Mud-Slap,Ground
+226,TM32,Double Team,Normal
+226,TM34,Swagger,Normal
+226,TM35,Sleep Talk,Normal
+226,TM39,Swift,Normal
+226,TM44,Rest,Psychic
+226,TM45,Attract,Normal
+226,HM03,Surf,Water
+226,HM06,Whirlpool,Water
+226,HM07,Waterfall,Water
+227,TM03,Curse,???
+227,TM06,Toxic,Poison
+227,TM10,Hidden Power,Normal
+227,TM11,Sunny Day,Fire
+227,TM13,Snore,Normal
+227,TM17,Protect,Normal
+227,TM20,Endure,Normal
+227,TM21,Frustration,Normal
+227,TM27,Return,Normal
+227,TM31,Mud-Slap,Ground
+227,TM32,Double Team,Normal
+227,TM34,Swagger,Normal
+227,TM35,Sleep Talk,Normal
+227,TM37,Sandstorm,Rock
+227,TM39,Swift,Normal
+227,TM43,Detect,Fighting
+227,TM44,Rest,Psychic
+227,TM45,Attract,Normal
+227,TM46,Thief,Dark
+227,TM47,Steel Wing,Steel
+227,HM01,Cut,Normal
+227,HM02,Fly,Flying
+228,TM02,Headbutt,Normal
+228,TM03,Curse,???
+228,TM05,Roar,Normal
+228,TM06,Toxic,Poison
+228,TM08,Rock Smash,Fighting
+228,TM10,Hidden Power,Normal
+228,TM11,Sunny Day,Fire
+228,TM13,Snore,Normal
+228,TM17,Protect,Normal
+228,TM20,Endure,Normal
+228,TM21,Frustration,Normal
+228,TM22,SolarBeam,Grass
+228,TM23,Iron Tail,Steel
+228,TM27,Return,Normal
+228,TM30,Shadow Ball,Ghost
+228,TM31,Mud-Slap,Ground
+228,TM32,Double Team,Normal
+228,TM34,Swagger,Normal
+228,TM35,Sleep Talk,Normal
+228,TM36,Sludge Bomb,Poison
+228,TM38,Fire Blast,Fire
+228,TM39,Swift,Normal
+228,TM42,Dream Eater,Psychic
+228,TM43,Detect,Fighting
+228,TM44,Rest,Psychic
+228,TM45,Attract,Normal
+228,TM46,Thief,Dark
+228,TM50,Nightmare,Ghost
+229,TM02,Headbutt,Normal
+229,TM03,Curse,???
+229,TM05,Roar,Normal
+229,TM06,Toxic,Poison
+229,TM08,Rock Smash,Fighting
+229,TM10,Hidden Power,Normal
+229,TM11,Sunny Day,Fire
+229,TM13,Snore,Normal
+229,TM15,Hyper Beam,Normal
+229,TM17,Protect,Normal
+229,TM20,Endure,Normal
+229,TM21,Frustration,Normal
+229,TM22,SolarBeam,Grass
+229,TM23,Iron Tail,Steel
+229,TM27,Return,Normal
+229,TM30,Shadow Ball,Ghost
+229,TM31,Mud-Slap,Ground
+229,TM32,Double Team,Normal
+229,TM34,Swagger,Normal
+229,TM35,Sleep Talk,Normal
+229,TM36,Sludge Bomb,Poison
+229,TM38,Fire Blast,Fire
+229,TM39,Swift,Normal
+229,TM42,Dream Eater,Psychic
+229,TM43,Detect,Fighting
+229,TM44,Rest,Psychic
+229,TM45,Attract,Normal
+229,TM46,Thief,Dark
+229,TM50,Nightmare,Ghost
+229,HM04,Strength,Normal
+230,TM02,Headbutt,Normal
+230,TM03,Curse,???
+230,TM06,Toxic,Poison
+230,TM10,Hidden Power,Normal
+230,TM13,Snore,Normal
+230,TM14,Blizzard,Ice
+230,TM15,Hyper Beam,Normal
+230,TM16,Icy Wind,Ice
+230,TM17,Protect,Normal
+230,TM18,Rain Dance,Water
+230,TM20,Endure,Normal
+230,TM21,Frustration,Normal
+230,TM24,DragonBreath,Dragon
+230,TM27,Return,Normal
+230,TM32,Double Team,Normal
+230,TM34,Swagger,Normal
+230,TM35,Sleep Talk,Normal
+230,TM39,Swift,Normal
+230,TM44,Rest,Psychic
+230,TM45,Attract,Normal
+230,HM03,Surf,Water
+230,HM06,Whirlpool,Water
+230,HM07,Waterfall,Water
+231,TM02,Headbutt,Normal
+231,TM03,Curse,???
+231,TM04,Rollout,Rock
+231,TM05,Roar,Normal
+231,TM06,Toxic,Poison
+231,TM08,Rock Smash,Fighting
+231,TM10,Hidden Power,Normal
+231,TM11,Sunny Day,Fire
+231,TM13,Snore,Normal
+231,TM17,Protect,Normal
+231,TM20,Endure,Normal
+231,TM21,Frustration,Normal
+231,TM26,Earthquake,Ground
+231,TM27,Return,Normal
+231,TM31,Mud-Slap,Ground
+231,TM32,Double Team,Normal
+231,TM34,Swagger,Normal
+231,TM35,Sleep Talk,Normal
+231,TM37,Sandstorm,Rock
+231,TM40,Defense Curl,Normal
+231,TM44,Rest,Psychic
+231,TM45,Attract,Normal
+231,HM04,Strength,Normal
+232,TM02,Headbutt,Normal
+232,TM03,Curse,???
+232,TM04,Rollout,Rock
+232,TM05,Roar,Normal
+232,TM06,Toxic,Poison
+232,TM08,Rock Smash,Fighting
+232,TM10,Hidden Power,Normal
+232,TM11,Sunny Day,Fire
+232,TM13,Snore,Normal
+232,TM15,Hyper Beam,Normal
+232,TM17,Protect,Normal
+232,TM20,Endure,Normal
+232,TM21,Frustration,Normal
+232,TM26,Earthquake,Ground
+232,TM27,Return,Normal
+232,TM31,Mud-Slap,Ground
+232,TM32,Double Team,Normal
+232,TM34,Swagger,Normal
+232,TM35,Sleep Talk,Normal
+232,TM37,Sandstorm,Rock
+232,TM40,Defense Curl,Normal
+232,TM44,Rest,Psychic
+232,TM45,Attract,Normal
+232,HM04,Strength,Normal
+233,TM03,Curse,???
+233,TM06,Toxic,Poison
+233,TM07,Zap Cannon,Electric
+233,TM09,Psych Up,Normal
+233,TM10,Hidden Power,Normal
+233,TM11,Sunny Day,Fire
+233,TM13,Snore,Normal
+233,TM14,Blizzard,Ice
+233,TM15,Hyper Beam,Normal
+233,TM16,Icy Wind,Ice
+233,TM17,Protect,Normal
+233,TM18,Rain Dance,Water
+233,TM20,Endure,Normal
+233,TM21,Frustration,Normal
+233,TM23,Iron Tail,Steel
+233,TM25,Thunder,Electric
+233,TM27,Return,Normal
+233,TM29,Psychic,Psychic
+233,TM32,Double Team,Normal
+233,TM34,Swagger,Normal
+233,TM35,Sleep Talk,Normal
+233,TM39,Swift,Normal
+233,TM40,Defense Curl,Normal
+233,TM42,Dream Eater,Psychic
+233,TM44,Rest,Psychic
+233,TM46,Thief,Dark
+233,TM50,Nightmare,Ghost
+233,HM05,Flash,Normal
+234,TM02,Headbutt,Normal
+234,TM03,Curse,???
+234,TM05,Roar,Normal
+234,TM06,Toxic,Poison
+234,TM09,Psych Up,Normal
+234,TM10,Hidden Power,Normal
+234,TM11,Sunny Day,Fire
+234,TM13,Snore,Normal
+234,TM17,Protect,Normal
+234,TM18,Rain Dance,Water
+234,TM20,Endure,Normal
+234,TM21,Frustration,Normal
+234,TM26,Earthquake,Ground
+234,TM27,Return,Normal
+234,TM29,Psychic,Psychic
+234,TM31,Mud-Slap,Ground
+234,TM32,Double Team,Normal
+234,TM34,Swagger,Normal
+234,TM35,Sleep Talk,Normal
+234,TM39,Swift,Normal
+234,TM42,Dream Eater,Psychic
+234,TM43,Detect,Fighting
+234,TM44,Rest,Psychic
+234,TM45,Attract,Normal
+234,TM46,Thief,Dark
+234,TM50,Nightmare,Ghost
+234,HM05,Flash,Normal
+236,TM02,Headbutt,Normal
+236,TM03,Curse,???
+236,TM06,Toxic,Poison
+236,TM08,Rock Smash,Fighting
+236,TM10,Hidden Power,Normal
+236,TM11,Sunny Day,Fire
+236,TM13,Snore,Normal
+236,TM17,Protect,Normal
+236,TM20,Endure,Normal
+236,TM21,Frustration,Normal
+236,TM27,Return,Normal
+236,TM31,Mud-Slap,Ground
+236,TM32,Double Team,Normal
+236,TM34,Swagger,Normal
+236,TM35,Sleep Talk,Normal
+236,TM39,Swift,Normal
+236,TM43,Detect,Fighting
+236,TM44,Rest,Psychic
+236,TM45,Attract,Normal
+236,TM46,Thief,Dark
+236,HM04,Strength,Normal
+237,TM02,Headbutt,Normal
+237,TM03,Curse,???
+237,TM06,Toxic,Poison
+237,TM08,Rock Smash,Fighting
+237,TM10,Hidden Power,Normal
+237,TM11,Sunny Day,Fire
+237,TM13,Snore,Normal
+237,TM17,Protect,Normal
+237,TM20,Endure,Normal
+237,TM21,Frustration,Normal
+237,TM27,Return,Normal
+237,TM28,Dig,Ground
+237,TM31,Mud-Slap,Ground
+237,TM32,Double Team,Normal
+237,TM34,Swagger,Normal
+237,TM35,Sleep Talk,Normal
+237,TM39,Swift,Normal
+237,TM43,Detect,Fighting
+237,TM44,Rest,Psychic
+237,TM45,Attract,Normal
+237,TM46,Thief,Dark
+237,HM04,Strength,Normal
+238,TM01,DynamicPunch,Fighting
+238,TM03,Curse,???
+238,TM06,Toxic,Poison
+238,TM09,Psych Up,Normal
+238,TM10,Hidden Power,Normal
+238,TM12,Sweet Scent,Normal
+238,TM13,Snore,Normal
+238,TM14,Blizzard,Ice
+238,TM16,Icy Wind,Ice
+238,TM17,Protect,Normal
+238,TM18,Rain Dance,Water
+238,TM20,Endure,Normal
+238,TM21,Frustration,Normal
+238,TM27,Return,Normal
+238,TM29,Psychic,Psychic
+238,TM30,Shadow Ball,Ghost
+238,TM31,Mud-Slap,Ground
+238,TM32,Double Team,Normal
+238,TM33,Ice Punch,Ice
+238,TM34,Swagger,Normal
+238,TM35,Sleep Talk,Normal
+238,TM42,Dream Eater,Psychic
+238,TM44,Rest,Psychic
+238,TM45,Attract,Normal
+238,TM46,Thief,Dark
+238,TM50,Nightmare,Ghost
+239,TM01,DynamicPunch,Fighting
+239,TM02,Headbutt,Normal
+239,TM03,Curse,???
+239,TM06,Toxic,Poison
+239,TM07,Zap Cannon,Electric
+239,TM10,Hidden Power,Normal
+239,TM13,Snore,Normal
+239,TM17,Protect,Normal
+239,TM18,Rain Dance,Water
+239,TM20,Endure,Normal
+239,TM21,Frustration,Normal
+239,TM25,Thunder,Electric
+239,TM27,Return,Normal
+239,TM29,Psychic,Psychic
+239,TM31,Mud-Slap,Ground
+239,TM32,Double Team,Normal
+239,TM33,Ice Punch,Ice
+239,TM34,Swagger,Normal
+239,TM35,Sleep Talk,Normal
+239,TM39,Swift,Normal
+239,TM41,ThunderPunch,Electric
+239,TM43,Detect,Fighting
+239,TM44,Rest,Psychic
+239,TM45,Attract,Normal
+239,TM46,Thief,Dark
+239,TM48,Fire Punch,Fire
+239,HM05,Flash,Normal
+240,TM01,DynamicPunch,Fighting
+240,TM02,Headbutt,Normal
+240,TM03,Curse,???
+240,TM06,Toxic,Poison
+240,TM10,Hidden Power,Normal
+240,TM11,Sunny Day,Fire
+240,TM13,Snore,Normal
+240,TM17,Protect,Normal
+240,TM20,Endure,Normal
+240,TM21,Frustration,Normal
+240,TM23,Iron Tail,Steel
+240,TM27,Return,Normal
+240,TM29,Psychic,Psychic
+240,TM31,Mud-Slap,Ground
+240,TM32,Double Team,Normal
+240,TM34,Swagger,Normal
+240,TM35,Sleep Talk,Normal
+240,TM38,Fire Blast,Fire
+240,TM41,ThunderPunch,Electric
+240,TM43,Detect,Fighting
+240,TM44,Rest,Psychic
+240,TM45,Attract,Normal
+240,TM46,Thief,Dark
+240,TM48,Fire Punch,Fire
+241,TM01,DynamicPunch,Fighting
+241,TM02,Headbutt,Normal
+241,TM03,Curse,???
+241,TM04,Rollout,Rock
+241,TM06,Toxic,Poison
+241,TM07,Zap Cannon,Electric
+241,TM08,Rock Smash,Fighting
+241,TM09,Psych Up,Normal
+241,TM10,Hidden Power,Normal
+241,TM11,Sunny Day,Fire
+241,TM12,Sweet Scent,Normal
+241,TM13,Snore,Normal
+241,TM14,Blizzard,Ice
+241,TM15,Hyper Beam,Normal
+241,TM16,Icy Wind,Ice
+241,TM17,Protect,Normal
+241,TM18,Rain Dance,Water
+241,TM20,Endure,Normal
+241,TM21,Frustration,Normal
+241,TM23,Iron Tail,Steel
+241,TM25,Thunder,Electric
+241,TM26,Earthquake,Ground
+241,TM27,Return,Normal
+241,TM30,Shadow Ball,Ghost
+241,TM31,Mud-Slap,Ground
+241,TM32,Double Team,Normal
+241,TM33,Ice Punch,Ice
+241,TM34,Swagger,Normal
+241,TM35,Sleep Talk,Normal
+241,TM37,Sandstorm,Rock
+241,TM40,Defense Curl,Normal
+241,TM41,ThunderPunch,Electric
+241,TM44,Rest,Psychic
+241,TM45,Attract,Normal
+241,TM48,Fire Punch,Fire
+241,HM03,Surf,Water
+241,HM04,Strength,Normal
+242,TM01,DynamicPunch,Fighting
+242,TM02,Headbutt,Normal
+242,TM03,Curse,???
+242,TM04,Rollout,Rock
+242,TM06,Toxic,Poison
+242,TM07,Zap Cannon,Electric
+242,TM08,Rock Smash,Fighting
+242,TM10,Hidden Power,Normal
+242,TM11,Sunny Day,Fire
+242,TM13,Snore,Normal
+242,TM14,Blizzard,Ice
+242,TM15,Hyper Beam,Normal
+242,TM16,Icy Wind,Ice
+242,TM17,Protect,Normal
+242,TM18,Rain Dance,Water
+242,TM20,Endure,Normal
+242,TM21,Frustration,Normal
+242,TM22,SolarBeam,Grass
+242,TM25,Thunder,Electric
+242,TM27,Return,Normal
+242,TM29,Psychic,Psychic
+242,TM30,Shadow Ball,Ghost
+242,TM31,Mud-Slap,Ground
+242,TM32,Double Team,Normal
+242,TM34,Swagger,Normal
+242,TM35,Sleep Talk,Normal
+242,TM37,Sandstorm,Rock
+242,TM38,Fire Blast,Fire
+242,TM40,Defense Curl,Normal
+242,TM42,Dream Eater,Psychic
+242,TM44,Rest,Psychic
+242,TM45,Attract,Normal
+242,HM04,Strength,Normal
+242,HM05,Flash,Normal
+243,TM02,Headbutt,Normal
+243,TM03,Curse,???
+243,TM05,Roar,Normal
+243,TM06,Toxic,Poison
+243,TM07,Zap Cannon,Electric
+243,TM08,Rock Smash,Fighting
+243,TM09,Psych Up,Normal
+243,TM10,Hidden Power,Normal
+243,TM11,Sunny Day,Fire
+243,TM13,Snore,Normal
+243,TM15,Hyper Beam,Normal
+243,TM17,Protect,Normal
+243,TM18,Rain Dance,Water
+243,TM20,Endure,Normal
+243,TM21,Frustration,Normal
+243,TM23,Iron Tail,Steel
+243,TM25,Thunder,Electric
+243,TM27,Return,Normal
+243,TM28,Dig,Ground
+243,TM31,Mud-Slap,Ground
+243,TM32,Double Team,Normal
+243,TM34,Swagger,Normal
+243,TM35,Sleep Talk,Normal
+243,TM37,Sandstorm,Rock
+243,TM39,Swift,Normal
+243,TM43,Detect,Fighting
+243,TM44,Rest,Psychic
+243,HM01,Cut,Normal
+243,HM04,Strength,Normal
+243,HM05,Flash,Normal
+244,TM02,Headbutt,Normal
+244,TM03,Curse,???
+244,TM05,Roar,Normal
+244,TM06,Toxic,Poison
+244,TM08,Rock Smash,Fighting
+244,TM09,Psych Up,Normal
+244,TM10,Hidden Power,Normal
+244,TM11,Sunny Day,Fire
+244,TM13,Snore,Normal
+244,TM15,Hyper Beam,Normal
+244,TM17,Protect,Normal
+244,TM18,Rain Dance,Water
+244,TM20,Endure,Normal
+244,TM21,Frustration,Normal
+244,TM22,SolarBeam,Grass
+244,TM23,Iron Tail,Steel
+244,TM27,Return,Normal
+244,TM28,Dig,Ground
+244,TM31,Mud-Slap,Ground
+244,TM32,Double Team,Normal
+244,TM34,Swagger,Normal
+244,TM35,Sleep Talk,Normal
+244,TM37,Sandstorm,Rock
+244,TM38,Fire Blast,Fire
+244,TM39,Swift,Normal
+244,TM43,Detect,Fighting
+244,TM44,Rest,Psychic
+244,HM01,Cut,Normal
+244,HM04,Strength,Normal
+244,HM05,Flash,Normal
+245,TM02,Headbutt,Normal
+245,TM03,Curse,???
+245,TM05,Roar,Normal
+245,TM06,Toxic,Poison
+245,TM08,Rock Smash,Fighting
+245,TM09,Psych Up,Normal
+245,TM10,Hidden Power,Normal
+245,TM11,Sunny Day,Fire
+245,TM13,Snore,Normal
+245,TM14,Blizzard,Ice
+245,TM15,Hyper Beam,Normal
+245,TM16,Icy Wind,Ice
+245,TM17,Protect,Normal
+245,TM18,Rain Dance,Water
+245,TM20,Endure,Normal
+245,TM21,Frustration,Normal
+245,TM23,Iron Tail,Steel
+245,TM27,Return,Normal
+245,TM28,Dig,Ground
+245,TM31,Mud-Slap,Ground
+245,TM32,Double Team,Normal
+245,TM34,Swagger,Normal
+245,TM35,Sleep Talk,Normal
+245,TM37,Sandstorm,Rock
+245,TM39,Swift,Normal
+245,TM43,Detect,Fighting
+245,TM44,Rest,Psychic
+245,HM01,Cut,Normal
+245,HM03,Surf,Water
+245,HM06,Whirlpool,Water
+245,HM07,Waterfall,Water
+246,TM02,Headbutt,Normal
+246,TM03,Curse,???
+246,TM06,Toxic,Poison
+246,TM10,Hidden Power,Normal
+246,TM11,Sunny Day,Fire
+246,TM13,Snore,Normal
+246,TM15,Hyper Beam,Normal
+246,TM17,Protect,Normal
+246,TM18,Rain Dance,Water
+246,TM20,Endure,Normal
+246,TM21,Frustration,Normal
+246,TM26,Earthquake,Ground
+246,TM27,Return,Normal
+246,TM28,Dig,Ground
+246,TM31,Mud-Slap,Ground
+246,TM32,Double Team,Normal
+246,TM34,Swagger,Normal
+246,TM35,Sleep Talk,Normal
+246,TM37,Sandstorm,Rock
+246,TM43,Detect,Fighting
+246,TM44,Rest,Psychic
+246,TM45,Attract,Normal
+247,TM02,Headbutt,Normal
+247,TM03,Curse,???
+247,TM06,Toxic,Poison
+247,TM10,Hidden Power,Normal
+247,TM11,Sunny Day,Fire
+247,TM13,Snore,Normal
+247,TM15,Hyper Beam,Normal
+247,TM17,Protect,Normal
+247,TM18,Rain Dance,Water
+247,TM20,Endure,Normal
+247,TM21,Frustration,Normal
+247,TM26,Earthquake,Ground
+247,TM27,Return,Normal
+247,TM28,Dig,Ground
+247,TM31,Mud-Slap,Ground
+247,TM32,Double Team,Normal
+247,TM34,Swagger,Normal
+247,TM35,Sleep Talk,Normal
+247,TM37,Sandstorm,Rock
+247,TM43,Detect,Fighting
+247,TM44,Rest,Psychic
+247,TM45,Attract,Normal
+248,TM01,DynamicPunch,Fighting
+248,TM02,Headbutt,Normal
+248,TM03,Curse,???
+248,TM05,Roar,Normal
+248,TM06,Toxic,Poison
+248,TM08,Rock Smash,Fighting
+248,TM10,Hidden Power,Normal
+248,TM11,Sunny Day,Fire
+248,TM13,Snore,Normal
+248,TM15,Hyper Beam,Normal
+248,TM17,Protect,Normal
+248,TM18,Rain Dance,Water
+248,TM20,Endure,Normal
+248,TM21,Frustration,Normal
+248,TM23,Iron Tail,Steel
+248,TM24,DragonBreath,Dragon
+248,TM26,Earthquake,Ground
+248,TM27,Return,Normal
+248,TM28,Dig,Ground
+248,TM31,Mud-Slap,Ground
+248,TM32,Double Team,Normal
+248,TM34,Swagger,Normal
+248,TM35,Sleep Talk,Normal
+248,TM37,Sandstorm,Rock
+248,TM38,Fire Blast,Fire
+248,TM43,Detect,Fighting
+248,TM44,Rest,Psychic
+248,TM45,Attract,Normal
+248,TM48,Fire Punch,Fire
+248,TM49,Fury Cutter,Bug
+248,TM50,Nightmare,Ghost
+248,HM01,Cut,Normal
+248,HM03,Surf,Water
+248,HM04,Strength,Normal
+249,TM02,Headbutt,Normal
+249,TM03,Curse,???
+249,TM05,Roar,Normal
+249,TM06,Toxic,Poison
+249,TM07,Zap Cannon,Electric
+249,TM08,Rock Smash,Fighting
+249,TM09,Psych Up,Normal
+249,TM10,Hidden Power,Normal
+249,TM11,Sunny Day,Fire
+249,TM13,Snore,Normal
+249,TM14,Blizzard,Ice
+249,TM15,Hyper Beam,Normal
+249,TM16,Icy Wind,Ice
+249,TM17,Protect,Normal
+249,TM18,Rain Dance,Water
+249,TM19,Giga Drain,Grass
+249,TM20,Endure,Normal
+249,TM21,Frustration,Normal
+249,TM23,Iron Tail,Steel
+249,TM24,DragonBreath,Dragon
+249,TM25,Thunder,Electric
+249,TM26,Earthquake,Ground
+249,TM27,Return,Normal
+249,TM29,Psychic,Psychic
+249,TM30,Shadow Ball,Ghost
+249,TM31,Mud-Slap,Ground
+249,TM32,Double Team,Normal
+249,TM34,Swagger,Normal
+249,TM35,Sleep Talk,Normal
+249,TM37,Sandstorm,Rock
+249,TM39,Swift,Normal
+249,TM42,Dream Eater,Psychic
+249,TM43,Detect,Fighting
+249,TM44,Rest,Psychic
+249,TM47,Steel Wing,Steel
+249,TM50,Nightmare,Ghost
+249,HM02,Fly,Flying
+249,HM03,Surf,Water
+249,HM04,Strength,Normal
+249,HM06,Whirlpool,Water
+249,HM07,Waterfall,Water
+250,TM03,Curse,???
+250,TM05,Roar,Normal
+250,TM06,Toxic,Poison
+250,TM07,Zap Cannon,Electric
+250,TM08,Rock Smash,Fighting
+250,TM09,Psych Up,Normal
+250,TM10,Hidden Power,Normal
+250,TM11,Sunny Day,Fire
+250,TM13,Snore,Normal
+250,TM15,Hyper Beam,Normal
+250,TM17,Protect,Normal
+250,TM18,Rain Dance,Water
+250,TM19,Giga Drain,Grass
+250,TM20,Endure,Normal
+250,TM21,Frustration,Normal
+250,TM22,SolarBeam,Grass
+250,TM24,DragonBreath,Dragon
+250,TM25,Thunder,Electric
+250,TM26,Earthquake,Ground
+250,TM27,Return,Normal
+250,TM29,Psychic,Psychic
+250,TM30,Shadow Ball,Ghost
+250,TM31,Mud-Slap,Ground
+250,TM32,Double Team,Normal
+250,TM34,Swagger,Normal
+250,TM35,Sleep Talk,Normal
+250,TM37,Sandstorm,Rock
+250,TM38,Fire Blast,Fire
+250,TM39,Swift,Normal
+250,TM42,Dream Eater,Psychic
+250,TM43,Detect,Fighting
+250,TM44,Rest,Psychic
+250,TM47,Steel Wing,Steel
+250,TM50,Nightmare,Ghost
+250,HM02,Fly,Flying
+250,HM04,Strength,Normal
+250,HM05,Flash,Normal
+251,TM03,Curse,???
+251,TM06,Toxic,Poison
+251,TM09,Psych Up,Normal
+251,TM10,Hidden Power,Normal
+251,TM11,Sunny Day,Fire
+251,TM12,Sweet Scent,Normal
+251,TM13,Snore,Normal
+251,TM15,Hyper Beam,Normal
+251,TM17,Protect,Normal
+251,TM18,Rain Dance,Water
+251,TM19,Giga Drain,Grass
+251,TM20,Endure,Normal
+251,TM21,Frustration,Normal
+251,TM22,SolarBeam,Grass
+251,TM27,Return,Normal
+251,TM29,Psychic,Psychic
+251,TM30,Shadow Ball,Ghost
+251,TM31,Mud-Slap,Ground
+251,TM32,Double Team,Normal
+251,TM34,Swagger,Normal
+251,TM35,Sleep Talk,Normal
+251,TM37,Sandstorm,Rock
+251,TM39,Swift,Normal
+251,TM40,Defense Curl,Normal
+251,TM42,Dream Eater,Psychic
+251,TM43,Detect,Fighting
+251,TM44,Rest,Psychic
+251,TM50,Nightmare,Ghost
+251,HM05,Flash,Normal
