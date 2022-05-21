@@ -13,7 +13,7 @@ namespace Pokemon
         //private int spawnRate = 101;
 
         //uncomment this for no spawn rate
-        private int spawnRate = 0;
+        private int spawnRate = 101;
 
         public float moveSpeed;
         public VectorValue startingPosition;
@@ -88,12 +88,13 @@ namespace Pokemon
                 {
                     //new code
                     character.Animator.IsMoving = false;
-
-                    Dictionary<string, Route> route1_dic = Route.get_route(GameController.location);
                     string terrain = "Grass";
+
+                    List<Route> route1_spawns = Route.get_route(GameController.location);
+                    Pokemon wild_spawn = generate_wild_pokemon(route1_spawns, terrain);
                     //list of spcific completed badges
 
-                    Pokemon wild_spawn = generate_wild_pokemon(route1_dic, terrain);
+                    
                     GameController.opponentPokemon[0] = wild_spawn;
                     GameController.music = "Battle Wild Begin";
                     GameController.isCatchable = true;
@@ -129,32 +130,36 @@ namespace Pokemon
             }
         }
 
-        //Gets all available pokemon to spawn from dictionary, Current # gym badges, list of specific Gyms Beaten
-        private Pokemon generate_wild_pokemon(Dictionary<string, Route> route, string terrain)
+        //Gets all available pokemon to spawn from list, Current # gym badges, list of specific Gyms Beaten
+        private Pokemon generate_wild_pokemon(List<Route> routeSpawns, string terrain)
         {
             GameController.update_level_cap();
             int num_badges = GameController.badges_completed.Count;
             //dictionary of gyms beaten
             double sum_probability = 0;
+
+            List<Route> possible_spawns2 = new List<Route>();
             Dictionary<string, Route> possible_spawns = new Dictionary<string, Route>();
             List<Dictionary<string, Route>> final_list = new List<Dictionary<string, Route>>();
 
             //make a new dictionary of possible spawning pokemon
-            foreach (KeyValuePair<string, Route> wild_spawn in route)
+            foreach (Route wild_spawn in routeSpawns)
             {
                 if (
                     //required badges for pokemon spawn less than or equal to current player badges
-                    (wild_spawn.Value.required_badges <= num_badges)
+                    (wild_spawn.required_badges <= num_badges)
                     ||
                     //either they have the gym required, or the pokemon spawns at any
-                    (GameController.badges_completed.ContainsKey(wild_spawn.Value.gym_available.ToString()) || wild_spawn.Value.gym_available.ToString() == "any")
+                    (GameController.badges_completed.ContainsKey(wild_spawn.gym_available.ToString()) || wild_spawn.gym_available.ToString() == "any")
                     &&
                     //the pokemon spawns in the specified terrain
-                    terrain == wild_spawn.Value.terrain
+                    terrain == wild_spawn.terrain
                     )
                 {
-                    sum_probability += wild_spawn.Value.spawn_chance;
-                    possible_spawns.Add(wild_spawn.Key, wild_spawn.Value);
+                    sum_probability += wild_spawn.spawn_chance;
+
+                    possible_spawns2.Add(wild_spawn);
+                    /*possible_spawns.Add(wild_spawn.Key, wild_spawn.Value);*/
                 }
             }
 
@@ -163,9 +168,9 @@ namespace Pokemon
             //double temp = 0;
             //sum_probability: sum of chance of all pokemon that can spawn
             //possibile_spawns: Dictionary of <dexnum, Route object> of all pokemon that can spawn in that route after filtering
-            foreach (KeyValuePair<string, Route> wild_spawn in possible_spawns)
+            foreach ( Route wild_spawn in possible_spawns2)
             {
-                wild_spawn.Value.spawn_chance /= sum_probability;
+                wild_spawn.spawn_chance /= sum_probability;
             }
 
             double random = UnityEngine.Random.Range(0.0f, 1.0f);
@@ -178,13 +183,13 @@ namespace Pokemon
             return item;
             */
 
-            foreach (KeyValuePair<string, Route> wild_spawn in possible_spawns)
+            foreach (Route wild_spawn in possible_spawns2)
             {
-                cumulativeProbability += wild_spawn.Value.spawn_chance;
+                cumulativeProbability += wild_spawn.spawn_chance;
                 if (random <= cumulativeProbability)
                 {
                     //level_min and level_max are negative values, ie take away this many levels from the level cap
-                    int random_level = UnityEngine.Random.Range(wild_spawn.Value.level_min - 1, wild_spawn.Value.level_max) + 1;
+                    int random_level = UnityEngine.Random.Range(wild_spawn.level_min - 1, wild_spawn.level_max) + 1;
                     //Debug.Log("Random Level: " + random_level);
 
                     // if level_cap > pokemon_cap
@@ -192,14 +197,14 @@ namespace Pokemon
                     // add in random_level takeaway from cap
                     int level_cap = GameController.level_cap;
 
-                    if (level_cap > wild_spawn.Value.cap)
+                    if (level_cap > wild_spawn.cap)
                     {
-                        level_cap = wild_spawn.Value.cap;
+                        level_cap = wild_spawn.cap;
                     }
                     level_cap += random_level;
 
                     //new Pokemon(wild_spawn.Value.dexnum, level_cap);
-                    Pokemon temp_pokemon = Learnset.add_wild_moves(wild_spawn.Value.dexnum, level_cap);
+                    Pokemon temp_pokemon = Learnset.add_wild_moves(wild_spawn.dexnum, level_cap);
 
                     return temp_pokemon;
                 }

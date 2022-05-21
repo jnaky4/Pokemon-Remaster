@@ -28,7 +28,6 @@ namespace Pokemon
             Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK_GEN2");
             Learnset.all_learnset = BattleSystem.load_CSV("LEARNSET_GEN2");
             Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON_GEN2");
-            Route.all_routes = BattleSystem.load_CSV("ROUTES");
             Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
             //TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
             Items.all_Items = BattleSystem.load_CSV("Items");
