@@ -16,63 +16,6 @@ namespace Pokemon
         public string intro_dialogue;
         public string exit_dialogue;
 
-        /*        public int p1_dexNum;
-                public int p1_lvl_from_cap;
-                public string p1_moves;
-                public string p1_p_moves;
-
-                public int p2_dexNum;
-                public int p2_lvl_from_cap;
-                public string p2_moves;
-                public string p2_p_moves;
-
-                public int p3_dexNum;
-                public int p3_lvl_from_cap;
-                public string p3_moves;
-                public string p3_p_moves;
-
-                public int p4_dexNum;
-                public int p4_lvl_from_cap;
-                public string p4_moves;
-                public string p4_p_moves;
-
-                public int p5_dexNum;
-                public int p5_lvl_from_cap;
-                public string p5_moves;
-                public string p5_p_moves;
-
-                public int p6_dexNum;
-                public int p6_lvl_from_cap;
-                public string p6_moves;
-                public string p6_p_moves;*/
-        /*        public Trainer(string route, string name, string type, int money_mult, string intro_dialogue, string exit_dialogue,
-                    Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemon3, Pokemon pokemon4, Pokemon pokemon5, Pokemon pokemon6) : this(route, name, type, money_mult, intro_dialogue, exit_dialogue, pokemon1, pokemon2, pokemon3, pokemon4, pokemon5)
-                {
-
-                }
-
-                public Trainer(string route, string name, string type, int money_mult, string intro_dialogue, string exit_dialogue,
-                    Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemon3, Pokemon pokemon4, Pokemon pokemon5) : this(route, name, type, money_mult, intro_dialogue, exit_dialogue, pokemon1, pokemon2, pokemon3, pokemon4)
-                {
-
-                }
-                public Trainer(string route, string name, string type, int money_mult, string intro_dialogue, string exit_dialogue,
-                    Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemon3, Pokemon pokemon4) : this(route, name, type, money_mult, intro_dialogue, exit_dialogue, pokemon1, pokemon2, pokemon3)
-                {
-
-                }
-
-                public Trainer(string route, string name, string type, int money_mult, string intro_dialogue, string exit_dialogue,
-                    Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemon3) : this(route, name, type, money_mult, intro_dialogue, exit_dialogue, pokemon1, pokemon2)
-                {
-
-                }
-                public Trainer(string route, string name, string type, int money_mult, string intro_dialogue, string exit_dialogue,
-                    Pokemon pokemon1, Pokemon pokemon2) : this(route, name, type, money_mult, intro_dialogue, exit_dialogue, pokemon1)
-                {
-
-                }*/
-        //public Trainer(string route, string name, string type, int money_mult, string intro_dialogue, string exit_dialogue,Pokemon pokemon1)
         public Trainer(string name, string type, int money_mult, string intro_dialogue, string exit_dialogue,
         Pokemon pokemon1 = null, Pokemon pokemon2 = null, Pokemon pokemon3 = null, Pokemon pokemon4 = null, Pokemon pokemon5 = null, Pokemon pokemon6 = null)
         {
