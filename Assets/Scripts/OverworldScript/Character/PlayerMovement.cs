@@ -90,7 +90,7 @@ namespace Pokemon
                     character.Animator.IsMoving = false;
                     string terrain = "Grass";
 
-                    List<Route> route1_spawns = Route.get_route(GameController.location);
+                    List<RouteSpawn> route1_spawns = RouteSpawn.get_route(GameController.location);
                     Pokemon wild_spawn = generate_wild_pokemon(route1_spawns, terrain);
                     //list of spcific completed badges
 
@@ -131,19 +131,19 @@ namespace Pokemon
         }
 
         //Gets all available pokemon to spawn from list, Current # gym badges, list of specific Gyms Beaten
-        private Pokemon generate_wild_pokemon(List<Route> routeSpawns, string terrain)
+        private Pokemon generate_wild_pokemon(List<RouteSpawn> routeSpawns, string terrain)
         {
             GameController.update_level_cap();
             int num_badges = GameController.badges_completed.Count;
             //dictionary of gyms beaten
             double sum_probability = 0;
 
-            List<Route> possible_spawns2 = new List<Route>();
-            Dictionary<string, Route> possible_spawns = new Dictionary<string, Route>();
-            List<Dictionary<string, Route>> final_list = new List<Dictionary<string, Route>>();
+            List<RouteSpawn> possible_spawns2 = new List<RouteSpawn>();
+            Dictionary<string, RouteSpawn> possible_spawns = new Dictionary<string, RouteSpawn>();
+            List<Dictionary<string, RouteSpawn>> final_list = new List<Dictionary<string, RouteSpawn>>();
 
             //make a new dictionary of possible spawning pokemon
-            foreach (Route wild_spawn in routeSpawns)
+            foreach (RouteSpawn wild_spawn in routeSpawns)
             {
                 if (
                     //required badges for pokemon spawn less than or equal to current player badges
@@ -168,7 +168,7 @@ namespace Pokemon
             //double temp = 0;
             //sum_probability: sum of chance of all pokemon that can spawn
             //possibile_spawns: Dictionary of <dexnum, Route object> of all pokemon that can spawn in that route after filtering
-            foreach ( Route wild_spawn in possible_spawns2)
+            foreach ( RouteSpawn wild_spawn in possible_spawns2)
             {
                 wild_spawn.spawn_chance /= sum_probability;
             }
@@ -183,7 +183,7 @@ namespace Pokemon
             return item;
             */
 
-            foreach (Route wild_spawn in possible_spawns2)
+            foreach (RouteSpawn wild_spawn in possible_spawns2)
             {
                 cumulativeProbability += wild_spawn.spawn_chance;
                 if (random <= cumulativeProbability)
