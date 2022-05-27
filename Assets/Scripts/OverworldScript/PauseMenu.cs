@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using System;
+using System.IO;
 
 namespace Pokemon
 {
@@ -12,6 +13,10 @@ namespace Pokemon
         public VectorValue playerPosition;
         public GameObject pauseMenuUI;
         public GameObject saveButton;
+        public GameObject inventoryMenu;
+        public GameObject panel;
+        public Transform itemSlotTemplate;
+
         public Text progress;
         public GameObject progressBadges;
         public GameObject otherProgress;
@@ -80,6 +85,7 @@ namespace Pokemon
             releaseUI.SetActive(false);
             //pokePosition.SetActive(false);
             progress.text = GameController.player.name;
+            setItems();
         }
 
         // Update is called once per frame
@@ -108,6 +114,7 @@ namespace Pokemon
             otherProgress.SetActive(false);
             pokeUI.SetActive(false);
             releaseUI.SetActive(false);
+            inventoryMenu.SetActive(false);
             //pokePosition.SetActive(false);
             Time.timeScale = 1f;
             GameIsPaused = false;
@@ -126,15 +133,38 @@ namespace Pokemon
             SetPokemon();
         }
 
+        public void DisplayItemMenu()
+        {
+            progressBadges.SetActive(false);
+            otherProgress.SetActive(false);
+            pauseMenuUI.SetActive(false);
+            pokeUI.SetActive(false);
+            releaseUI.SetActive(false);
+            inventoryMenu.SetActive(true);
+        }
+
+        public void setItems() {
+            foreach(Items item in GameController.inventory)
+            {
+                var itemSlot = Instantiate(itemSlotTemplate, panel.transform);
+                itemSlot.GetComponentsInChildren<Text>()[0].text = item.name;
+                itemSlot.GetComponentsInChildren<Text>()[1].text = item.count.ToString();
+
+                string path = Path.Combine("Images", "Items", item.name);
+                itemSlot.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>(path);          
+
+            }
+        }
+
         private void SetPokemon()
         {
             var x = 0;
-            string path = "Images/Menu Icons/Pokemon/";
+            string path = Path.Combine("Images","Menu Icons", "Pokemon");
             if (GameController.playerPokemon[0] != null)
             {
                 x++;
                 pokeCanvas1.SetActive(true);
-                pokeImage1.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name);
+                pokeImage1.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name));
                 pokeName1.text = "" + GameController.playerPokemon[0].name + ", Level " + GameController.playerPokemon[0].level + "\nHP: " + GameController.playerPokemon[0].current_hp + "/" + GameController.playerPokemon[0].max_hp;
                 pokeColor1.color = GetColorOfMove(GameController.playerPokemon[0].type1.name);
             }
@@ -144,7 +174,7 @@ namespace Pokemon
             {
                 x++;
                 pokeCanvas2.SetActive(true);
-                pokeImage2.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[1].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[1].name);
+                pokeImage2.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[1].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[1].name));
                 pokeName2.text = "" + GameController.playerPokemon[1].name + ", Level " + GameController.playerPokemon[1].level + "\nHP: " + GameController.playerPokemon[1].current_hp + "/" + GameController.playerPokemon[1].max_hp;
                 pokeColor2.color = GetColorOfMove(GameController.playerPokemon[1].type1.name);
             }
@@ -153,7 +183,7 @@ namespace Pokemon
             {
                 x++;
                 pokeCanvas3.SetActive(true);
-                pokeImage3.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[2].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[2].name);
+                pokeImage3.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[2].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[2].name));
                 pokeName3.text = "" + GameController.playerPokemon[2].name + ", Level " + GameController.playerPokemon[2].level + "\nHP: " + GameController.playerPokemon[2].current_hp + "/" + GameController.playerPokemon[2].max_hp;
                 pokeColor3.color = GetColorOfMove(GameController.playerPokemon[2].type1.name);
             }
@@ -162,7 +192,7 @@ namespace Pokemon
             {
                 x++;
                 pokeCanvas4.SetActive(true);
-                pokeImage4.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[3].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[3].name);
+                pokeImage4.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[3].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[3].name));
                 pokeName4.text = "" + GameController.playerPokemon[3].name + ", Level " + GameController.playerPokemon[3].level + "\nHP: " + GameController.playerPokemon[3].current_hp + "/" + GameController.playerPokemon[3].max_hp;
                 pokeColor4.color = GetColorOfMove(GameController.playerPokemon[3].type1.name);
             }
@@ -171,7 +201,7 @@ namespace Pokemon
             {
                 x++;
                 pokeCanvas5.SetActive(true);
-                pokeImage5.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[4].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[4].name);
+                pokeImage5.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[4].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[4].name));
                 pokeName5.text = "" + GameController.playerPokemon[4].name + ", Level " + GameController.playerPokemon[4].level + "\nHP: " + GameController.playerPokemon[4].current_hp + "/" + GameController.playerPokemon[4].max_hp;
                 pokeColor5.color = GetColorOfMove(GameController.playerPokemon[4].type1.name);
             }
@@ -180,7 +210,7 @@ namespace Pokemon
             {
                 x++;
                 pokeCanvas6.SetActive(true);
-                pokeImage6.sprite = Resources.Load<Sprite>(path + GameController.playerPokemon[5].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[5].name);
+                pokeImage6.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[5].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[5].name));
                 pokeName6.text = "" + GameController.playerPokemon[5].name + ", Level " + GameController.playerPokemon[5].level + "\nHP: " + GameController.playerPokemon[5].current_hp + "/" + GameController.playerPokemon[5].max_hp;
                 pokeColor6.color = GetColorOfMove(GameController.playerPokemon[5].type1.name);
             }
@@ -357,6 +387,7 @@ namespace Pokemon
             pauseMenuUI.SetActive(false);
             pokeUI.SetActive(false);
             releaseUI.SetActive(false);
+            inventoryMenu.SetActive(false);
             //pokePosition.SetActive(false);
         }
 
@@ -367,6 +398,7 @@ namespace Pokemon
             pauseMenuUI.SetActive(false);
             releaseUI.SetActive(false);
             pokeUI.SetActive(true);
+            inventoryMenu.SetActive(false);
             //pokePosition.SetActive(true);
         }
 
