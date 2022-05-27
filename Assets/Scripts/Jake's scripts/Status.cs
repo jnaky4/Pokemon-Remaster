@@ -85,15 +85,12 @@ namespace Pokemon
             //for csv, does nothing
             {"null", new Status(        "null",       "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1)},
             {"immune", new Status(      "immune",     "null",       false,  "null",     0,      0,      "null",     1,          0,      -1,     -1) }
-
         };
 
         public string name;
         public string adj;
-
         //if the move persist outside battle/switched out
         public bool persistence;
-
         public string ignore_type;
         public double self_damage;
         public double unable_to_attack_chance;
@@ -103,8 +100,6 @@ namespace Pokemon
         public int max_duration;
         public int min_duration;
         public int remaining_turns = 0;
-        
-
 
         public Status(string name, string adj, bool persistance, string ignore_type, double self_damage, double unable_to_attack_chance, string affect_stat, double affect_stat_mulitplier, double removal_chance, int min_duration, int max_duration)
         {
@@ -158,8 +153,6 @@ namespace Pokemon
             }
             
         }
-
-
 
 
         //Takes the attacking move and the pokemon and checks if attack can apply status
