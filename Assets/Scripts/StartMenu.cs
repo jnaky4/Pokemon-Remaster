@@ -30,7 +30,7 @@ namespace Pokemon
             Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON_GEN2");
             Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
             //TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
-            Items.all_Items = BattleSystem.load_CSV("Items");
+            Items.all_Items = BattleSystem.load_CSV("ITEMS");
 
             Type.load_type();
             Moves.load_moves();
