@@ -6,8 +6,24 @@ Paralyze Heal,Paralysis,0,200,Cures Paralysis
 Awakening,Sleep,0,200,Cures Sleep
 Ice Heal,Freeze,0,250,Cures Freeze
 Burn Heal,Burn,0,250,Cures Burn
-Poke Ball,null,0,200,Used to catch Pokemon
-Great Ball,null,0,600,Used to catch Pokemon
-Ultra Ball,null,0,1200,Used to catch Pokemon
-Master Ball,null,0,10000,Used to catch Pokemon
+Pokeball,null,0,200,Used to catch Pokemon
+Greatball,null,0,600,Used to catch Pokemon
+Ultraball,null,0,1200,Used to catch Pokemon
+Masterball,null,0,10000,Used to catch Pokemon
 Repel,null,0,350,Prevents Random Attacks
+Rare Candy,null,0,1000,Levels Up a Pokemon
+Water Stone,null,0,1000,A stone used to make certain kinds of Pokemon evolve
+Thunder Stone,null,0,1000,A stone used to make certain kinds of Pokemon evolve
+Fire Stone,null,0,1000,A stone used to make certain kinds of Pokemon evolve
+Leaf Stone,null,0,1000,A stone used to make certain kinds of Pokemon evolve
+Full Heal,null,0,1000,Levels Up a Pokemon
+Clefairy Doll,null,0,1000,Levels Up a Pokemon
+Moon Stone,null,0,1000,A stone used to make certain kinds of Pokemon evolve
+Lemonade,null,80,1000,Restores 80 HP
+Soda,null,80,1000,Restores 80 HP
+Water,null,80,1000,Restores 80 HP
+Silph Scope,null,0,1000,Silph Scope
+Dome Fossil,null,0,1000,Dome Fossil
+Helix Fossil,null,0,1000,Helix Fossil
+Hyper Potion,null,200,1500,Restore 200 HP
+Max Potion,null,300,2500,Restores 300 HP
