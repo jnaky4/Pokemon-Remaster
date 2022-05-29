@@ -149,13 +149,13 @@ namespace Pokemon
                 var itemSlot = Instantiate(itemSlotTemplate, panel.transform);
                 itemSlot.GetComponentsInChildren<Text>()[0].text = item.name;
                 itemSlot.GetComponentsInChildren<Text>()[1].text = item.count.ToString();
-
+                //itemSlot.name = item.name;
+                itemSlot.gameObject.name = item.name;
                 string path = Path.Combine("Images", "Items", item.name);
                 itemSlot.GetComponentsInChildren<Image>()[1].sprite = Resources.Load<Sprite>(path);          
 
             }
         }
-
         private void SetPokemon()
         {
             var x = 0;

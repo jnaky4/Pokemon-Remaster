@@ -17,8 +17,9 @@ namespace Pokemon
         public bool starterChosen;
         public Vector2 initialValue;
         public Pokemon[] playerPokemon;
-        //public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
-        public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Boulder", 1 }, { "Cascade", 1 }, { "Thunder", 1 }, { "Rainbow", 1 }, { "Soul", 1 }, { "Marsh", 1 }, { "Volcano", 1 }, { "Earth", 1 }, { "Elite Four", 1 } };
+        
+        public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
+        //public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Boulder", 1 }, { "Cascade", 1 }, { "Thunder", 1 }, { "Rainbow", 1 }, { "Soul", 1 }, { "Marsh", 1 }, { "Volcano", 1 }, { "Earth", 1 }, { "Elite Four", 1 } };
 
         private void Start()
         {
@@ -61,6 +62,8 @@ namespace Pokemon
                 GameController.playerPokemon[5] = new Pokemon(145, 100, "Drill Peck", "Toxic", "Thunder Wave", "Thunderbolt");
 
 
+                badges_completed = new Dictionary<string, int>{ { "Boulder", 1 }, { "Cascade", 1 }, { "Thunder", 1 }, { "Rainbow", 1 }, { "Soul", 1 }, { "Marsh", 1 }, { "Volcano", 1 }, { "Earth", 1 }, { "Elite Four", 1 } };
+                
                 /*GameController.playerPokemon[1] = new Pokemon(25, 20, "Thunder Wave", "Quick Attack", "Thunder Shock", "Growl");
                 GameController.playerPokemon[2] = new Pokemon(60, 19, "Water Gun", "Bubble", "Splash", "Crabhammer", 7900);
                 GameController.playerPokemon[3] = new Pokemon(69, 17, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 5500);
