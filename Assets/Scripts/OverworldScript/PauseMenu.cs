@@ -188,7 +188,25 @@ namespace Pokemon
             }
             else pokeCanvas1.SetActive(false);
 
-            if (GameController.playerPokemon[1] != null)
+            for(int i = 0; i < 6; i++)
+            {
+                if (GameController.playerPokemon[i] != null)
+                {
+                    x++;
+                    UpdateActivePokemon(i, true);
+                    UpdatePokemonObjectName(i);
+                    UpdateImageSprite(i);
+                    UpdatePokemonText(i, SetCanvasText(i));
+                    UpdateBackgroundColor(i);
+                }
+                else
+                {
+                    UpdateActivePokemon(i, false);
+                }
+
+            }
+
+/*            if (GameController.playerPokemon[1] != null)
             {
                 x++;
                 pokeCanvas2.SetActive(true);
@@ -237,7 +255,7 @@ namespace Pokemon
                 pokeName6.text = SetCanvasText(5);
                 pokeColor6.color = GetColorOfMove(GameController.playerPokemon[5].type1.name);
             }
-            else pokeCanvas6.SetActive(false);
+            else pokeCanvas6.SetActive(false);*/
 
             if (x >= 6) SetDropdown(pokeDrop6, x, 6);
             if (x >= 5) SetDropdown(pokeDrop5, x, 5);
@@ -436,6 +454,8 @@ namespace Pokemon
             bool usedItem = false;
             usedItem = HealPokemon(i, PauseMenu.usingItem.restore_health) || usedItem;
             usedItem = ClearPokemonStatus(i, PauseMenu.usingItem.status_heal) || usedItem;
+            usedItem = EvolvePokemon(i) || usedItem;
+
             if (usedItem){ UpdateItemCount(); }
 
 
@@ -450,6 +470,95 @@ namespace Pokemon
             panel.SetActive(true);
             usingItem = null;
         }
+        public bool EvolvePokemon(int i)
+        {
+            
+            if (GameController.playerPokemon[i].pokedex_entry.evolve_item == usingItem.name)
+            {
+                GameController.playerPokemon[i].Evolve();
+                UpdatePokemonObjectName(i);
+                UpdateImageSprite(i);
+                UpdatePokemonText(i, SetCanvasText(i));
+                UpdateBackgroundColor(i);
+                return true;
+            }
+            return false;
+        }
+        public void UpdateBackgroundColor(int i) {
+            switch (i)
+            {
+                case 0:
+                    pokeColor1.color = GetColorOfMove(GameController.playerPokemon[i].type1.name);
+                    break;
+                case 1:
+                    pokeColor2.color = GetColorOfMove(GameController.playerPokemon[i].type1.name);
+                    break;
+                case 2:
+                    pokeColor3.color = GetColorOfMove(GameController.playerPokemon[i].type1.name);
+                    break;
+                case 3:
+                    pokeColor4.color = GetColorOfMove(GameController.playerPokemon[i].type1.name);
+                    break;
+                case 4:
+                    pokeColor5.color = GetColorOfMove(GameController.playerPokemon[i].type1.name);
+                    break;
+                case 5:
+                    pokeColor6.color = GetColorOfMove(GameController.playerPokemon[i].type1.name);
+                    break;
+            }
+        }
+
+        public void UpdateImageSprite(int i)
+        {
+            string path = Path.Combine("Images", "Menu Icons", "Pokemon");
+            path = Path.Combine(path, GameController.playerPokemon[i].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[i].name);
+            switch (i)
+            {
+                case 0:
+                    pokeImage1.sprite = Resources.Load<Sprite>(path);
+                    break;
+                case 1:
+                    pokeImage2.sprite = Resources.Load<Sprite>(path);
+                    break;
+                case 2:
+                    pokeImage3.sprite = Resources.Load<Sprite>(path);
+                    break;
+                case 3:
+                    pokeImage4.sprite = Resources.Load<Sprite>(path);
+                    break;
+                case 4:
+                    pokeImage5.sprite = Resources.Load<Sprite>(path);
+                    break;
+                case 5:
+                    pokeImage6.sprite = Resources.Load<Sprite>(path);
+                    break;
+            }
+        }
+        public void UpdatePokemonObjectName(int i)
+        {
+            switch (i)
+            {
+                case 0:
+                    pokeCanvas1.gameObject.name = GameController.playerPokemon[i].name;
+                    break;
+                case 1:
+                    pokeCanvas2.gameObject.name = GameController.playerPokemon[i].name;
+                    break;
+                case 2:
+                    pokeCanvas3.gameObject.name = GameController.playerPokemon[i].name;
+                    break;
+                case 3:
+                    pokeCanvas4.gameObject.name = GameController.playerPokemon[i].name;
+                    break;
+                case 4:
+                    pokeCanvas5.gameObject.name = GameController.playerPokemon[i].name;
+                    break;
+                case 5:
+                    pokeCanvas6.gameObject.name = GameController.playerPokemon[i].name;
+                    break;
+            }
+        }
+
         public bool ClearPokemonStatus(int i, Status toHeal)
         {
             if (GameController.playerPokemon[i].statuses.Count == 0) return false;
@@ -459,6 +568,7 @@ namespace Pokemon
             UpdatePokemonText(i,SetCanvasText(i));
             return true;
         }
+
         public bool HealPokemon(int i, int healAmount)
         {
             if (PauseMenu.usingItem.restore_health == 0) return false; 
@@ -493,6 +603,31 @@ namespace Pokemon
                     break;
                 case 5:
                     pokeName6.text = menuText;
+                    break;
+            }
+        }
+
+        public void UpdateActivePokemon(int i, bool active)
+        {
+            switch (i)
+            {
+                case 0:
+                    pokeCanvas1.SetActive(active);
+                    break;
+                case 1:
+                    pokeCanvas2.SetActive(active);
+                    break;
+                case 2:
+                    pokeCanvas3.SetActive(active);
+                    break;
+                case 3:
+                    pokeCanvas4.SetActive(active);
+                    break;
+                case 4:
+                    pokeCanvas5.SetActive(active);
+                    break;
+                case 5:
+                    pokeCanvas6.SetActive(active);
                     break;
             }
         }

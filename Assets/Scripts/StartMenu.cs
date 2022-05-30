@@ -48,6 +48,9 @@ namespace Pokemon
                 Debug.Log("Development Mode Started");
                 GameController.starterChosen = true;
                 /*GameController.playerPokemon[0] = new Pokemon(155, 5, "Tackle");*/
+
+                //vulpix for evolving
+                //GameController.playerPokemon[0] = new Pokemon(37, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
                 //Tauros
                 GameController.playerPokemon[0] = new Pokemon(128, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
                 GameController.playerPokemon[0].statuses.Add(Status.get_status("Paralysis"));

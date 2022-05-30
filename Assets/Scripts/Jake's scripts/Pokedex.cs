@@ -15,6 +15,7 @@ namespace Pokemon
         public string type2;
         public string stage;
         public int evolve_level;
+        public string evolve_item;
         public string gender_ratio;
         public double height;
         public double weight;
@@ -46,6 +47,7 @@ namespace Pokemon
             this.type2 = Pokedex.all_pokedex[this.dexnum - 1]["Type2"].ToString();
             this.stage = Pokedex.all_pokedex[this.dexnum - 1]["Stage"].ToString();
             this.evolve_level = int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Evolve_Level"].ToString());
+            this.evolve_item = Pokedex.all_pokedex[this.dexnum - 1]["Evolve_Item"].ToString();
             this.gender_ratio = Pokedex.all_pokedex[this.dexnum - 1]["Gender_Ratio"].ToString();
             this.height = double.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Height"].ToString());
             this.weight = double.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Weight"].ToString());
