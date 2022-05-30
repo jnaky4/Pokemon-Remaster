@@ -50,6 +50,7 @@ namespace Pokemon
                 /*GameController.playerPokemon[0] = new Pokemon(155, 5, "Tackle");*/
                 //Tauros
                 GameController.playerPokemon[0] = new Pokemon(128, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
+                GameController.playerPokemon[0].statuses.Add(Status.get_status("Paralysis"));
                 //Exeggutor
                 GameController.playerPokemon[1] = new Pokemon(103, 100, "Sleep Powder", "Mega Drain", "Explosion", "Psychic");
                 //Rhydon

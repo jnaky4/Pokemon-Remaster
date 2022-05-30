@@ -17,13 +17,16 @@ namespace Pokemon
         public static PlayerData player = (new GameObject("PlayerData")).AddComponent<PlayerData>();
         public static bool inCombat = false;
         public static bool starterChosen = false;
+        //Items.getItem("Full Heal")
         public static List<Items> inventory = new List<Items>() 
         {  
             Items.getItem("Potion"), Items.getItem("Hyper Potion"), Items.getItem("Max Potion"),
             Items.getItem("Pokeball"), Items.getItem("Greatball"), Items.getItem("Ultraball"), Items.getItem("Masterball"),
             Items.getItem("Water"), Items.getItem("Soda"), Items.getItem("Lemonade"),
             Items.getItem("Water Stone"), Items.getItem("Thunder Stone"), Items.getItem("Fire Stone"), Items.getItem("Moon Stone"),
-            Items.getItem("Rare Candy"), Items.getItem("Full Heal"), Items.getItem("Clefairy Doll"), Items.getItem("Silph Scope"),
+            Items.getItem("Rare Candy"), 
+            new Items("Full Heal", Status.get_status("null"), 0, 0, "", true, 2), 
+            Items.getItem("Clefairy Doll"), Items.getItem("Silph Scope"),
             Items.getItem("Dome Fossil"), Items.getItem("Helix Fossil"),
         };
         //public GameObject player;

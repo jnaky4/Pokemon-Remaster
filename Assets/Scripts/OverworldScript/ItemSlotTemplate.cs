@@ -8,11 +8,16 @@ namespace Pokemon {
     {
         public GameObject UseButton;
         public GameObject TossButton;
+        public Items item;
+
         public void SelectItem()
         {
             DeselectOthers();
-            UseButton = transform.Find("Use Button").gameObject;
-            UseButton.SetActive(true);
+            if (item.useable)
+            {
+                UseButton = transform.Find("Use Button").gameObject;
+                UseButton.SetActive(true);
+            }
             TossButton = transform.Find("Toss Button").gameObject;
             TossButton.SetActive(true);
         }
@@ -27,18 +32,35 @@ namespace Pokemon {
         }
         public void TossItem()
         {
-            Debug.Log("CLICKED");
-            string name = transform.GetChild(0).gameObject.GetComponent<Text>().text;
             Items itemInList = GameController.inventory.Find(item => item.name == name);
-            Debug.Log(itemInList.name);
             bool destroyed = GameController.inventory.Remove(itemInList);
-            Debug.Log(destroyed);
             var panel = GameObject.FindGameObjectWithTag("ItemPanel");
             foreach (Transform itemSlot in panel.transform)
             {
                 if(itemSlot.name == name) { Destroy(itemSlot.gameObject); }
             }
             Destroy(this);
+        }
+
+        public void UseItem()
+        {
+            GameObject.FindGameObjectWithTag("ItemPanel").SetActive(false);
+            PauseMenu.usingItem = item;
+            GameObject MainMenu = GameObject.FindGameObjectWithTag("MainMenuContainer");
+            /*PauseMenu.PokeMenu();*/
+            MainMenu.transform.GetChild(3).gameObject.SetActive(true);
+            if (PauseMenu.usingItem != null)
+            {
+                var PlayersPokemon = GameObject.FindGameObjectsWithTag("PokemonMenuPlayersPokemon");
+                foreach (GameObject pokemon in PlayersPokemon)
+                {
+                    //activate button on pokemon
+                    pokemon.gameObject.GetComponent<Button>().interactable = true;
+                    //hide other options for pokemon
+                    pokemon.transform.GetChild(3).gameObject.SetActive(false);
+                    pokemon.transform.GetChild(4).gameObject.SetActive(false);
+                }
+            }
         }
     }
 }

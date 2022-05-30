@@ -8,6 +8,10 @@ TagManager:
   - DialogUI
   - ItemSlot
   - ItemPanel
+  - PokemonMenu
+  - MainMenu
+  - MainMenuContainer
+  - PokemonMenuPlayersPokemon
   layers:
   - Default
   - TransparentFX

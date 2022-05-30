@@ -17,8 +17,10 @@ namespace Pokemon
         public int price;
         public string description;
         public int count;
+        public bool useable;
 
-        Items(string name, Status status_heal, int restore_health, int price, string description, int amount = 1)
+
+        public Items(string name, Status status_heal, int restore_health, int price, string description, bool useable = false, int amount = 1 )
         {
             this.name = name;
             this.status_heal = status_heal;
@@ -26,6 +28,7 @@ namespace Pokemon
             this.price = price;
             this.description = description;
             this.count = amount;
+            this.useable = useable;
             //items_dict.Add(name, this);
         }
 
@@ -40,7 +43,8 @@ namespace Pokemon
                 int restore_health = int.Parse(Items.all_Items[i]["Health"].ToString());
                 int price = int.Parse(Items.all_Items[i]["Price"].ToString());
                 string description = Items.all_Items[i]["Description"].ToString();
-                Items temp_item = new Items(name, status_heal, restore_health, price, description);
+                bool useable = bool.Parse(Items.all_Items[i]["Use Overworld"].ToString());
+                Items temp_item = new Items(name, status_heal, restore_health, price, description, useable);
                 items_dict.Add(name, temp_item);
             }
         }
