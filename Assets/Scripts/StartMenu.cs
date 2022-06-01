@@ -73,6 +73,7 @@ namespace Pokemon
                 GameController.playerPokemon[3] = new Pokemon(69, 17, "Leech Seed", "Vine Whip", "Poison Powder", "Razor Leaf", 5500);
                 GameController.playerPokemon[4] = new Pokemon(12, 20, "Sleep Powder", "Poison Powder", "Stun Spore", "Psychic");
                 */
+                
             }
             else
             {
@@ -85,15 +86,15 @@ namespace Pokemon
 
 
             //Debug.Log("new game starts");
-            GameController.player.pokeBalls = 99;
+/*            GameController.player.pokeBalls = 99;
             GameController.player.greatBalls = 0;
             GameController.player.ultraBalls = 0;
-            GameController.player.masterBalls = 1;
+            GameController.player.masterBalls = 1;*/
 
-            GameController.player.displayPokeBalls = true;
+/*            GameController.player.displayPokeBalls = true;
             GameController.player.displayGreatBalls = true;
             GameController.player.displayUltraBalls = true;
-            GameController.player.displayMasterBalls = true;
+            GameController.player.displayMasterBalls = true;*/
 
             GameController.player.money = 3000;
             GameController.player.name = "Red";

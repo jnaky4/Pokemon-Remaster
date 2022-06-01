@@ -20,14 +20,18 @@ namespace Pokemon
         //Items.getItem("Full Heal")
         public static List<Items> inventory = new List<Items>() 
         {  
-            Items.getItem("Potion"), Items.getItem("Hyper Potion"), Items.getItem("Max Potion"),
-            Items.getItem("Pokeball"), Items.getItem("Greatball"), Items.getItem("Ultraball"), Items.getItem("Masterball"),
-            Items.getItem("Water"), Items.getItem("Soda"), Items.getItem("Lemonade"),
-            Items.getItem("Water Stone"), Items.getItem("Thunder Stone"), Items.getItem("Fire Stone"), Items.getItem("Moon Stone"),
-            Items.getItem("Rare Candy"), 
-            new Items("Full Heal", Status.get_status("null"), 0, 0, "", true, 2), 
-            Items.getItem("Clefairy Doll"), Items.getItem("Silph Scope"),
-            Items.getItem("Dome Fossil"), Items.getItem("Helix Fossil"),
+            Items.getItem("Potion"), 
+            //Items.getItem("Hyper Potion"), Items.getItem("Max Potion"),
+            new Items("Pokeball", Status.get_status("null"), 0, 0, "", true, 20),
+            //Items.getItem("Pokeball"), 
+            //Items.getItem("Greatball"), 
+            //Items.getItem("Ultraball"), Items.getItem("Masterball"),
+            //Items.getItem("Water"), Items.getItem("Soda"), Items.getItem("Lemonade"),
+            //Items.getItem("Water Stone"), Items.getItem("Thunder Stone"), Items.getItem("Fire Stone"), Items.getItem("Moon Stone"),
+            //Items.getItem("Rare Candy"), 
+            //new Items("Full Heal", Status.get_status("null"), 0, 0, "", true, 2), 
+            //Items.getItem("Clefairy Doll"), Items.getItem("Silph Scope"),
+            //Items.getItem("Dome Fossil"), Items.getItem("Helix Fossil"),
         };
         //public GameObject player;
         
@@ -189,5 +193,13 @@ namespace Pokemon
         {
             level_cap = ((badges_completed.Count * 10) + 10);
         }
+
+        public static void UpdateInventory(string updateItem)
+        {
+            Items inventoryItem = inventory.Find(item => item.name == updateItem);
+            inventoryItem.count--;
+            if(inventoryItem.count == 0) { inventory.Remove(inventoryItem); }
+        }
     }
+
 }

@@ -132,6 +132,7 @@ namespace Pokemon
             GameIsPaused = true;
             SetImages();
             SetPokemon();
+
         }
 
         public void DisplayItemMenu()
@@ -141,11 +142,15 @@ namespace Pokemon
             pauseMenuUI.SetActive(false);
             pokeUI.SetActive(false);
             releaseUI.SetActive(false);
+            SetItems();
             inventoryMenu.SetActive(true);
         }
 
         public void SetItems() {
-            foreach(Items item in GameController.inventory)
+
+            foreach (Transform child in panel.transform) { Destroy(child.gameObject); }
+
+            foreach (Items item in GameController.inventory)
             {
                 var itemSlot = Instantiate(itemSlotTemplate, panel.transform);
                 itemSlot.GetComponentsInChildren<Text>()[0].text = item.name;
@@ -157,36 +162,25 @@ namespace Pokemon
             }
         }
 
-        private string SetCanvasText(int pokemonIndex)
+        private string GetCanvasText(int pokemonIndex)
         {
-            string canvasText = "";
-            canvasText += GameController.playerPokemon[pokemonIndex].name;
-            canvasText += ", Level " + GameController.playerPokemon[pokemonIndex].level + "\n";
+            string canvasText = $"{GameController.playerPokemon[pokemonIndex].name}" +
+                $", Level {GameController.playerPokemon[pokemonIndex].level}\n";
+            string canvasEndText = $"HP: {GameController.playerPokemon[pokemonIndex].current_hp}" +
+                $"/{GameController.playerPokemon[pokemonIndex].max_hp}";
 
-            string canvasEndText = "";
-            canvasEndText += " HP: " + GameController.playerPokemon[pokemonIndex].current_hp;
-            canvasEndText += "/" + GameController.playerPokemon[pokemonIndex].max_hp;
 
             foreach (Status status in GameController.playerPokemon[pokemonIndex].statuses)
             {
                 if (status.persistence) return canvasText + status.adj + canvasEndText;
             }
+
             return canvasText + canvasEndText;
         }
         private void SetPokemon()
         {
             var x = 0;
             string path = Path.Combine("Images","Menu Icons", "Pokemon");
-            if (GameController.playerPokemon[0] != null)
-            {
-                x++;
-                pokeCanvas1.SetActive(true);
-                pokeCanvas1.gameObject.name = GameController.playerPokemon[0].name;
-                pokeImage1.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[0].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[0].name));
-                pokeName1.text = SetCanvasText(0);
-                pokeColor1.color = GetColorOfMove(GameController.playerPokemon[0].type1.name);
-            }
-            else pokeCanvas1.SetActive(false);
 
             for(int i = 0; i < 6; i++)
             {
@@ -196,66 +190,11 @@ namespace Pokemon
                     UpdateActivePokemon(i, true);
                     UpdatePokemonObjectName(i);
                     UpdateImageSprite(i);
-                    UpdatePokemonText(i, SetCanvasText(i));
+                    UpdatePokemonText(i, GetCanvasText(i));
                     UpdateBackgroundColor(i);
                 }
-                else
-                {
-                    UpdateActivePokemon(i, false);
-                }
-
+                else { UpdateActivePokemon(i, false); }
             }
-
-/*            if (GameController.playerPokemon[1] != null)
-            {
-                x++;
-                pokeCanvas2.SetActive(true);
-                pokeCanvas2.gameObject.name = GameController.playerPokemon[1].name;
-                pokeImage2.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[1].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[1].name));
-                pokeName2.text = SetCanvasText(1);
-                pokeColor2.color = GetColorOfMove(GameController.playerPokemon[1].type1.name);
-            }
-            else pokeCanvas2.SetActive(false);
-            if (GameController.playerPokemon[2] != null)
-            {
-                x++;
-                pokeCanvas3.SetActive(true);
-                pokeCanvas3.gameObject.name = GameController.playerPokemon[2].name;
-                pokeImage3.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[2].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[2].name));
-                pokeName3.text = SetCanvasText(2);
-                pokeColor3.color = GetColorOfMove(GameController.playerPokemon[2].type1.name);
-            }
-            else pokeCanvas3.SetActive(false);
-            if (GameController.playerPokemon[3] != null)
-            {
-                x++;
-                pokeCanvas4.SetActive(true);
-                pokeCanvas4.gameObject.name = GameController.playerPokemon[3].name;
-                pokeImage4.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[3].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[3].name));
-                pokeName4.text = SetCanvasText(3);
-                pokeColor4.color = GetColorOfMove(GameController.playerPokemon[3].type1.name);
-            }
-            else pokeCanvas4.SetActive(false);
-            if (GameController.playerPokemon[4] != null)
-            {
-                x++;
-                pokeCanvas5.SetActive(true);
-                pokeCanvas5.gameObject.name = GameController.playerPokemon[4].name;
-                pokeImage5.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[4].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[4].name));
-                pokeName5.text = SetCanvasText(4);
-                pokeColor5.color = GetColorOfMove(GameController.playerPokemon[4].type1.name);
-            }
-            else pokeCanvas5.SetActive(false);
-            if (GameController.playerPokemon[5] != null)
-            {
-                x++;
-                pokeCanvas6.SetActive(true);
-                pokeCanvas6.gameObject.name = GameController.playerPokemon[5].name;
-                pokeImage6.sprite = Resources.Load<Sprite>(Path.Combine(path, GameController.playerPokemon[5].dexnum.ToString().PadLeft(3, '0') + GameController.playerPokemon[5].name));
-                pokeName6.text = SetCanvasText(5);
-                pokeColor6.color = GetColorOfMove(GameController.playerPokemon[5].type1.name);
-            }
-            else pokeCanvas6.SetActive(false);*/
 
             if (x >= 6) SetDropdown(pokeDrop6, x, 6);
             if (x >= 5) SetDropdown(pokeDrop5, x, 5);
@@ -284,6 +223,7 @@ namespace Pokemon
             releaseText.text = "Are you sure you want to release " + GameController.playerPokemon[i] + "?";
             releaseNumber = i;
         }
+
         public void OnYes()
         {
             GameController.playerPokemon[releaseNumber] = null;
@@ -478,7 +418,7 @@ namespace Pokemon
                 GameController.playerPokemon[i].Evolve();
                 UpdatePokemonObjectName(i);
                 UpdateImageSprite(i);
-                UpdatePokemonText(i, SetCanvasText(i));
+                UpdatePokemonText(i, GetCanvasText(i));
                 UpdateBackgroundColor(i);
                 return true;
             }
@@ -565,7 +505,7 @@ namespace Pokemon
             if (toHeal == Status.get_status("null") && usingItem.name != "Full Heal") return false;
             if (GameController.playerPokemon[i].statuses.Contains(toHeal)) { GameController.playerPokemon[i].statuses.Remove(toHeal); }
             if(usingItem.name == "Full Heal") { GameController.playerPokemon[i].statuses.Clear(); }
-            UpdatePokemonText(i,SetCanvasText(i));
+            UpdatePokemonText(i,GetCanvasText(i));
             return true;
         }
 
@@ -577,7 +517,7 @@ namespace Pokemon
             if ( current_hp != 0 && current_hp != max_hp)
             {
                 GameController.playerPokemon[i].current_hp = current_hp + healAmount > max_hp ? max_hp : current_hp + PauseMenu.usingItem.restore_health;
-                UpdatePokemonText(i, SetCanvasText(i));
+                UpdatePokemonText(i, GetCanvasText(i));
                 return true;
             }
             return false;
