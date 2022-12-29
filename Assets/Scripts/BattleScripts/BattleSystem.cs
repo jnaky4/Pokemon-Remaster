@@ -670,7 +670,7 @@ namespace Pokemon
                     //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     yield return new WaitForSeconds(2);
 
-                    AISwapPokemon(5);
+                    yield return StartCoroutine(AISwapPokemon());
 /*                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
                     {
                         if (GameController.opponentPokemon[j].current_hp > 0)
@@ -713,11 +713,15 @@ namespace Pokemon
                 {
                     if (GameController.opponentPokemon[j].current_hp > 0)
                     {
+                 
                         enemyUnit.pokemon = GameController.opponentPokemon[j];
                         break;
                     }
                 }
             }
+
+
+
             //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
             dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
 
