@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public enum BattleState { START, PLAYERTURN, ENEMYTURN, ONLYENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, POKEMONFAINTED, ENDCOMBATPHASE, PLAYERSWAPPED }
+public enum BattleState { START, PLAYERTURN, ENEMYTURN, ONLYENEMYTURN, WON, LOST, RUNAWAY, CAUGHTPOKEMON, POKEMONFAINTED, ENDCOMBATPHASE, PLAYERSWAPPED, ENEMYSWAPPED }
 
 namespace Pokemon
 {
@@ -330,7 +330,6 @@ namespace Pokemon
                 }
                 else
                 {
-                    //Debug.Log("End Animation now");
                     PlayerAttackAnim.EndAnimation();
                     playerAttack = false;
                     endofanimation = true;
@@ -523,10 +522,12 @@ namespace Pokemon
             //Debug.Log("MOVE NUMBER" + playerMoveNum);
 
             //TODO check if Struggle is working properly and how to clean this up
-            int moveNum = -1;
+            int moveNum = -1, swapIndex = -1;
             bool struggle = false;
             if (enemyContinuingAttack == 0) struggle = Utility.EnemyStruggle(enemyUnit);
-            Moves enemyMove, playerMove;
+            Moves enemyMove = null, playerMove = null;
+            
+            
             // Attack enemyAttack, playerAttack;
 
             
@@ -545,24 +546,28 @@ namespace Pokemon
             }
             else
             {            
-/*                do
-                {*/
-                //Pick move for AI decision
-                //enemyUnit.pokemon.decide_move();
                 moveNum = enemyUnit.DecideMove(playerMove, playerUnit);
-                if (moveNum == -1)
-                {
-                    moveNum = Utility.rnd.Next(enemyUnit.pokemon.CountMoves());
+                switch(moveNum){
+                    //enemy decided to swap
+                    case -2:
+                        enemyMove = null;
+                        swapIndex = enemyUnit.PickBestSwap(playerMove, playerUnit.pokemon);
+                        break;
+                    //enemy couldnt decide
+                    case -1:
+                        moveNum = Utility.rnd.Next(enemyUnit.pokemon.CountMoves());
+                        enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
+                        break;
+                    case 0:
+                    case 1:
+                    case 2:
+                    case 3:
+                        enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
+                        Debug.Log("Enemy Decided to use: " + enemyMove.name);
+                        break;
                 }
-
-                enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
-                
-                Debug.Log("Enemy Decided to use: " + enemyMove.name);
-/*                    moveNum = rnd.Next(enemyUnit.pokemon.CountMoves());
-                enemyMove = enemyUnit.pokemon.currentMoves[moveNum];*/
-/*                }
-                while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);*/
             }
+
 
 
             ClosePokemonMenu();
@@ -572,10 +577,6 @@ namespace Pokemon
 
             //grabs name for animation
             playerMoveName = playerMove.name;
-            enemyMoveName = enemyMove.name;
-
-
-
             //TODO Mulitturn attack logic, check if correctly works
             if (playerMoveNum != -2 && playerMove.max_turns > 1)
             {
@@ -584,42 +585,50 @@ namespace Pokemon
             }
 
             if (playerMoveNum == -2) playerContinuingAttack--;
-
-            if (enemyContinuingAttack != 0) enemyContinuingAttack--;
-            
-            else if (enemyMove.max_turns > 1)
-            {
-                enemyContinuingAttack = Utility.rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
-                enemyMoveStorage = enemyMove;
-            }
-
-
-            /*
-                TODO move inside logic of if the attack hit
-                shouldnt apply if:
-                    attack missed
-                    multi turn move
-             */
             if (playerMoveNum >= 0) playerUnit.DoPP(playerMoveNum);
+
+            if (enemyMove != null){
+                enemyMoveName = enemyMove.name;
+                if (enemyContinuingAttack != 0) enemyContinuingAttack--;
+                else if (enemyMove.max_turns > 1)
+                {
+                    enemyContinuingAttack = Utility.rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
+                    enemyMoveStorage = enemyMove;
+                }
+
+
+                /*
+                    TODO move inside logic of if the attack hit
+                    shouldnt apply if:
+                        attack missed
+                        multi turn move
+                */
+
+                
+                if (enemyMove.current_pp >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
+
+
+                /*
+                * TODO figure out what this does
+                * hit when pokeball catch fails
+                */
+
             
-            if (enemyMove.current_pp >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
+                // hit when pokeball catch fails or pokemon fails to run away
+                if (playerMoveNum == -3) state = BattleState.ONLYENEMYTURN;
+                else
+                {
+                    state = Utility.WhoGoesFirst(playerMove, enemyMove, playerUnit.pokemon, enemyUnit.pokemon);
+                    who_went_first = state;
 
-
-            /*
-             * TODO figure out what this does
-             * hit when pokeball catch fails
-             */
-
-           
-            // hit when pokeball catch fails or pokemon fails to run away
-            if (playerMoveNum == -3) state = BattleState.ONLYENEMYTURN;
-            else
-            {
-                state = Utility.WhoGoesFirst(playerMove, enemyMove, playerUnit.pokemon, enemyUnit.pokemon);
-                who_went_first = state;
+                }
+            }
+            else {
+                state = BattleState.ENEMYSWAPPED;
+                enemyInitialAttack = false;
+                enemyAttack = false;
 
             }
-            
 
 
             //TODO need to merge Multiturn attacks with this logic
@@ -641,6 +650,11 @@ namespace Pokemon
                     break;
                 case BattleState.ONLYENEMYTURN:
                     yield return StartCoroutine(MultiAttackPerTurn(enemyMove, enemyUnit, playerUnit));
+                    break;
+                case BattleState.ENEMYSWAPPED:
+                    yield return StartCoroutine(AISwapPokemon(swapIndex));
+                    state = BattleState.PLAYERTURN;
+                    yield return StartCoroutine(MultiAttackPerTurn(playerMove, playerUnit, enemyUnit));
                     break;
                 default:
                     break;
@@ -672,31 +686,12 @@ namespace Pokemon
                 {
                     //Gain EXP
                     if(!playerUnit.pokemon.IsFainted()) yield return StartCoroutine(GainEXP());
-
                     dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                    //is the pokemon catachble? yes its wild, set exp_multiplier to 1, no? 1.5
                     yield return new WaitForSeconds(2);
 
                     yield return StartCoroutine(AISwapPokemon());
-/*                    for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
-                    {
-                        if (GameController.opponentPokemon[j].current_hp > 0)
-                        {
-                            enemyUnit.pokemon = GameController.opponentPokemon[j];
-                            //GameController.soundFX = GameController.opponentPokemon[j].dexnum.ToString();
-                            dialogueText.text = GameController.opponentType + " " + GameController.opponentName + " sent out a " + enemyUnit.pokemon.name + "!";
-
-                            yield return new WaitForSeconds(1.0f);
-                            GameController.soundFX = enemyUnit.pokemon.dexnum.ToString();
-                            enemyHUD.SetHUD(enemyUnit, false, player, GameController.playerPokemon);
-                            SetOpponentSprite(enemyUnit, enemySprite);
-                            phaseOpponentSprite = 2;
-                            break;
-                        }
-                    }*/
 
                 }
-                //neither dead, do status effects
             }
 
 
@@ -718,9 +713,9 @@ namespace Pokemon
             {
                 for (int j = 0; j < GameController.opponentPokemon.Count(s => s != null); j++)
                 {
-                    if (GameController.opponentPokemon[j].current_hp > 0)
+                    if (GameController.opponentPokemon[j].current_hp > 0 && enemyUnit.pokemon.name != GameController.opponentPokemon[j].name)
                     {
-                 
+                        
                         enemyUnit.pokemon = GameController.opponentPokemon[j];
                         break;
                     }
@@ -906,8 +901,8 @@ namespace Pokemon
             yield return new WaitForSeconds(0.75f);
 
 
-            if(state == BattleState.PLAYERTURN) playerInitialAttack = true;
-            else enemyInitialAttack = true;
+            if(state == BattleState.PLAYERTURN){ playerInitialAttack = true; }
+            else { enemyInitialAttack = true; }
 
                     
             if (attack.name == "Growl") GameController.soundFX = Attacker.pokemon.dexnum.ToString();
@@ -1332,12 +1327,12 @@ namespace Pokemon
             // up to 3 shakes, it is possible to have 3 shakes and catch / not catch pokemon
             // shakes are scaled so that if the roll is far away from the catch threshold it is 1 shake
             // if the roll is very close to the catch threshold it is 3 shakes
-            int catchRoll = (int) Utility.rnd.Next(256);
+            int catchRoll =  Utility.rnd.Next(256);
             DetermineCatchResult(typeOfPokeball, enemyUnit, catchRoll);
             //PokeballShakes was optimized so much that we need a wait here
             yield return new WaitForSeconds(.5f);
             PokeballShakes(ballShakes); //beginCatch set to true
-            yield return new WaitUntil(() => (beginCatch == false && playCatch == false));
+            yield return new WaitUntil(() => beginCatch == false && playCatch == false);
             if (state == BattleState.CAUGHTPOKEMON)
             {
                 dialogueText.text = enemyUnit.pokemon.name + " was caught!";
@@ -2672,7 +2667,7 @@ namespace Pokemon
 
         #region Jake's functions
 
-        public static List<Dictionary<string, object>> load_CSV(string name)
+        public static List<Dictionary<string, object>> LoadCSV(string name)
         {
             return CSVReader.Read(name);
         }
