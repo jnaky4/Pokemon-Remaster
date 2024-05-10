@@ -195,7 +195,7 @@ namespace Pokemon
 
 //             return (int)damage;
 //         }
-       public static int CalculateDamage(Pokemon attacker, Pokemon defender, Moves attack)
+       public static int CalculateDamage(Pokemon attacker, Pokemon defender, Moves attack, char fixValues = 'n')
         {
             //A/D Attack/Defense || Special Attack/Special Defense 
 
@@ -219,6 +219,7 @@ namespace Pokemon
                     break;
             }
 
+            
             //using globals for dialogue
             BattleSystem.crit = CriticalHit(attacker);
             crits = BattleSystem.crit ? 1.5 : 1;
@@ -235,11 +236,29 @@ namespace Pokemon
 
             /// ( ((2 x level / 5) + 2) x Power x A/D ) / 50
             /// x Burn x Screen x Targets x Weather x FF + 2 ) 
-            /// x Stockpile x Critical x DoubleDmg x Charge x HH x STAB x Type1 x Type2 x Random
+            /// x Stockpile x Critical x DoubleDmg x Charge x HH x STAB x Type1 x Type2 x Random(.85 - 1)
             /// Ref: https://bulbapedia.bulbagarden.net/wiki/Damage
-            
-            
-            double newDamage = (((2 * attacker.level / 5 * attack.base_power * ad / 50) + 2) * burn * screen * targets * weather * ff + 2) * crits * HH * STAB * types * r;
+            double newDamage;
+            switch (fixValues){
+                //least damage
+                case 's':
+                    newDamage = (((2 * attacker.level / 5 * attack.base_power * ad / 50) + 2) * burn * screen * targets * weather * ff + 2) * 1 * HH * STAB * types * .85;
+                    break;
+                //avg
+                //todo fix avg calc - crit not set correctly
+                // case 'a':
+                //     newDamage = (((2 * attacker.level / 5 * attack.base_power * ad / 50) + 2) * burn * screen * targets * weather * ff + 2) * 1.25 * HH * STAB * types * .925;
+                //     break;
+                //case max damage
+                case 'h':
+                    newDamage = (((2 * attacker.level / 5 * attack.base_power * ad / 50) + 2) * burn * screen * targets * weather * ff + 2) * 1.5 * HH * STAB * types * 1;
+                    break;   
+                default:
+                    newDamage = (((2 * attacker.level / 5 * attack.base_power * ad / 50) + 2) * burn * screen * targets * weather * ff + 2) * crits * HH * STAB * types * r;
+                    break;
+
+            }
+             
             // newDamage *= ad * burn * screen * targets * weather * ff + 2;
             // newDamage *= crits * HH * STAB * types * r;
 

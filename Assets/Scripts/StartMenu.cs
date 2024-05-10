@@ -24,14 +24,14 @@ namespace Pokemon
         private void Start()
         {
             //Debug.Log("executing Start");
-            Pokemon.all_base_stats = BattleSystem.load_CSV("BASE_STATS_GEN2");
-            Moves.all_moves = BattleSystem.load_CSV("MOVES_GEN2");
-            Type.type_attack = BattleSystem.load_CSV("TYPE_ATTACK_GEN2");
-            Learnset.all_learnset = BattleSystem.load_CSV("LEARNSET_GEN2");
-            Pokedex.all_pokedex = BattleSystem.load_CSV("POKEMON_GEN2");
-            Trainer.all_trainers = BattleSystem.load_CSV("TRAINERS");
+            Pokemon.all_base_stats = BattleSystem.LoadCSV("BASE_STATS_GEN2");
+            Moves.all_moves = BattleSystem.LoadCSV("MOVES_GEN2");
+            Type.type_attack = BattleSystem.LoadCSV("TYPE_ATTACK_GEN2");
+            Learnset.all_learnset = BattleSystem.LoadCSV("LEARNSET_GEN2");
+            Pokedex.all_pokedex = BattleSystem.LoadCSV("POKEMON_GEN2");
+            Trainer.all_trainers = BattleSystem.LoadCSV("TRAINERS");
             //TMSet.all_TMSet = BattleSystem.load_CSV("TMSET");
-            Items.all_Items = BattleSystem.load_CSV("ITEMS");
+            Items.all_Items = BattleSystem.LoadCSV("ITEMS");
 
             Type.load_type();
             Moves.load_moves();

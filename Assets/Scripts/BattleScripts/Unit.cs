@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Pokemon
 {
@@ -78,6 +79,25 @@ namespace Pokemon
                 }
             }
         }
+
+
+        /*
+        Pokemon Roles
+        wallbreaker
+        setup sweeper
+        wall
+        pivot
+        staller
+        berry sweeper
+        generalist
+        fast attacker
+        bulky attacker
+        bulky support
+        bulky setup
+        */
+
+
+
         //TODO Finish out AI decisions 
         public int DecideMove(Moves playerAttack, Unit Player)
         {
@@ -88,8 +108,8 @@ namespace Pokemon
             //Debug.Log(whoGoesFirst);
 
             //Data on players Pokemon
-            double playerEmul = Utility.EffectivenessMultiplier(playerAttack, pokemon);
-            double playerStab = Utility.STAB(playerAttack, Player.pokemon);
+            // double playerEmul = Utility.EffectivenessMultiplier(playerAttack, pokemon);
+            // double playerStab = Utility.STAB(playerAttack, Player.pokemon);
 
             /*
             * using Gen 2-5 Crit Pobability based on stages
@@ -123,7 +143,7 @@ namespace Pokemon
              * 5:
              * 4:
              * 3:
-             * 2:
+             * 2: 
              * 1: Guaranteed faint, AI Attacking First
              * 0: Guaranteed faint, AI Attacking Second
              * -1: Non Damaging, AI Attacking First
@@ -205,7 +225,56 @@ namespace Pokemon
                 return 0;
             }*/
             return decided_move_index;
+            // return -2;
+        }
+        public int PickBestSwap(Moves playerAttack, Pokemon playerPokemon){
+            
+            (int, int)[] attackerDamageMap = GetAttackDamageOnValidPokemon(playerAttack, playerPokemon);
+            (int, int) lowestTuple = GetLowest(attackerDamageMap);
+            return lowestTuple.Item1;
+
+        }
+        public (int, int)[] GetAttackDamageOnValidPokemon(Moves playerAttack, Pokemon playerPokemon)
+        {
+            List<(int, int)> pokemonDamageList = new List<(int, int)>();
+
+            for (int i = 0; i < GameController.opponentPokemon.Length; i++)
+            {
+                Pokemon pokemon = GameController.opponentPokemon[i];
+                
+                // Check if the Pokémon is valid (not null and has positive current HP)
+                if (pokemon != null && pokemon.current_hp > 0)
+                {
+                    // Calculate damage for the current Pokémon
+                    int damage = Utility.CalculateDamage(playerPokemon, pokemon, playerAttack, 's');
+                    
+                    // Store the index and its corresponding damage as a tuple in the list
+                    pokemonDamageList.Add((i, damage));
+                }
+            }
+
+            // Convert the list of tuples to an array and return
+            return pokemonDamageList.ToArray();
         }
 
-    }
+        public (int, int) GetLowest((int, int)[] attackerDamageArray)
+        {
+            int pokemonIndex = -1;
+            int lowestDamage = int.MaxValue; // Start with a high value, assuming damage can't exceed this
+
+            // Iterate through the array of tuples to find the pokemon(index value) that will receive the least amount of damage
+            foreach ((int index, int damage) in attackerDamageArray)
+            {
+                if (damage < lowestDamage)
+                {
+                    lowestDamage = damage;
+                    pokemonIndex = index;
+                }
+            }
+
+            // Return the index and damage with lowest damage
+            return (pokemonIndex, lowestDamage);
+        }
+            }
+
 }
