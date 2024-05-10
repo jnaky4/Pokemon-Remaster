@@ -32,7 +32,7 @@ namespace Pokemon
         public Moves(string move)
         {
             //this.Moves = move_dictionary[move];
-            this.name = move;
+            name = move;
 
         }
 
@@ -42,10 +42,10 @@ namespace Pokemon
             string target, double chance_stat_change, string current_stat_change,
             int stat_change_amount, int priority, double heal_percent, double damage_recovered, string description)
         {
-            this.name = move;
-            this.type = move_type;
-            this.current_pp = pp;
-            this.maxpp = pp;
+            name = move;
+            type = move_type;
+            current_pp = pp;
+            maxpp = pp;
             this.base_power = base_power;
             this.accuracy = accuracy;
             this.category = category;
@@ -67,8 +67,8 @@ namespace Pokemon
 
         }
         //public static string[][] move_list = new string[151][];
-        public static Dictionary<string, Moves> move_dictionary = new Dictionary<string, Moves>();
-        public static List<Dictionary<string, object>> all_moves = new List<Dictionary<string, object>>();
+        public static Dictionary<string, Moves> move_dictionary = new();
+        public static List<Dictionary<string, object>> all_moves = new();
 
         public static void load_moves()
         {
@@ -77,14 +77,14 @@ namespace Pokemon
             {
 
                 //creates a new move object in dictionary to access later
-                Moves move = new Moves(
+                Moves move = new(
                     all_moves[i]["Name"].ToString(),
                     Type.get_type(all_moves[i]["Type"].ToString()),
                     int.Parse(all_moves[i]["PP"].ToString()),
                     int.Parse(all_moves[i]["Att."].ToString()),
                     int.Parse(all_moves[i]["Acc."].ToString()),
                     all_moves[i]["Category"].ToString(),
-                    Status.get_status(all_moves[i]["Status"].ToString()),
+                    Status.GetStatus(all_moves[i]["Status"].ToString()),
                     double.Parse(all_moves[i]["Status_Chance"].ToString()),
                     all_moves[i]["Status_Target"].ToString(),
                     int.Parse(all_moves[i]["Max_Per_Turn"].ToString()),
@@ -110,7 +110,7 @@ namespace Pokemon
         public static Moves get_move(string move)
         {
             Moves move_reference = Moves.move_dictionary[move];
-            Moves new_move = new Moves(move_reference.name, move_reference.type,
+            Moves new_move = new(move_reference.name, move_reference.type,
                 move_reference.maxpp, move_reference.base_power, move_reference.accuracy,
                 move_reference.category, move_reference.status, move_reference.status_chance,
                 move_reference.status_target, move_reference.max_per_turn, move_reference.min_per_turn,

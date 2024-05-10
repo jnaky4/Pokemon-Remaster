@@ -18,11 +18,11 @@ namespace Pokemon
         public static bool inCombat = false;
         public static bool starterChosen = false;
         //Items.getItem("Full Heal")
-        public static List<Items> inventory = new List<Items>() 
+        public static List<Items> inventory = new() 
         {  
             Items.getItem("Potion"), 
             //Items.getItem("Hyper Potion"), Items.getItem("Max Potion"),
-            new Items("Pokeball", Status.get_status("null"), 0, 0, "", true, 20),
+            new Items("Pokeball", Status.GetStatus("null"), 0, 0, "", true, 20),
             //Items.getItem("Pokeball"), 
             //Items.getItem("Greatball"), 
             //Items.getItem("Ultraball"), Items.getItem("Masterball"),
@@ -36,7 +36,7 @@ namespace Pokemon
         //public GameObject player;
         
         //public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() {/*{"Ground",1 }*/ };
-        public static Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Boulder", 1 }, { "Cascade", 1 }, { "Thunder", 1 }, { "Rainbow", 1 }, { "Soul", 1 }, { "Marsh", 1 }, { "Volcano", 1 }, { "Earth", 1 }, { "Elite Four", 1 } };
+        public static Dictionary<string, int> badges_completed = new() { { "Boulder", 1 }, { "Cascade", 1 }, { "Thunder", 1 }, { "Rainbow", 1 }, { "Soul", 1 }, { "Marsh", 1 }, { "Volcano", 1 }, { "Earth", 1 }, { "Elite Four", 1 } };
 
         public static string location = "Pallet Town";
         public static string prevLocation = "Pallet Town";
@@ -73,7 +73,7 @@ namespace Pokemon
         public static string soundFX = null;
 
         //rnd
-        public static System.Random _rnd = new System.Random();
+        public static System.Random _rnd = new();
 
         private static GameController Instance = null;
 

@@ -23,7 +23,7 @@ namespace Pokemon {
         }
         void DeselectOthers()
         {
-            var clones = GameObject.FindGameObjectsWithTag(this.tag);
+            var clones = GameObject.FindGameObjectsWithTag(tag);
             foreach (GameObject itemSlot in clones)
             {
                 itemSlot.transform.GetChild(3).gameObject.SetActive(false);

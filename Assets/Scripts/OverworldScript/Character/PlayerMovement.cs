@@ -138,9 +138,9 @@ namespace Pokemon
             //dictionary of gyms beaten
             double sum_probability = 0;
 
-            List<RouteSpawn> possible_spawns2 = new List<RouteSpawn>();
-            Dictionary<string, RouteSpawn> possible_spawns = new Dictionary<string, RouteSpawn>();
-            List<Dictionary<string, RouteSpawn>> final_list = new List<Dictionary<string, RouteSpawn>>();
+            List<RouteSpawn> possible_spawns2 = new();
+            Dictionary<string, RouteSpawn> possible_spawns = new();
+            List<Dictionary<string, RouteSpawn>> final_list = new();
 
             //make a new dictionary of possible spawning pokemon
             foreach (RouteSpawn wild_spawn in routeSpawns)
@@ -211,7 +211,7 @@ namespace Pokemon
             }
 
             //If no pokemon found to spawn? spawn a lvl 69 Slowbro
-            Pokemon temp_pokemon2 = new Pokemon(80, 69, "Hyper Beam", "Flamethrower", "Psychic", "Recover");
+            Pokemon temp_pokemon2 = new(80, 69, "Hyper Beam", "Flamethrower", "Psychic", "Recover");
             return temp_pokemon2;
         }
     }

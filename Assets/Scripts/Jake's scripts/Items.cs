@@ -9,8 +9,8 @@ namespace Pokemon
 {
     public class Items
     {
-        public static List<Dictionary<string, object>> all_Items = new List<Dictionary<string, object>>();
-        public static Dictionary<string, Items> items_dict = new Dictionary<string, Items>();
+        public static List<Dictionary<string, object>> all_Items = new();
+        public static Dictionary<string, Items> items_dict = new();
         public string name;
         public Status status_heal;
         public int restore_health;
@@ -27,7 +27,7 @@ namespace Pokemon
             this.restore_health = restore_health;
             this.price = price;
             this.description = description;
-            this.count = amount;
+            count = amount;
             this.useable = useable;
             //items_dict.Add(name, this);
         }
@@ -39,12 +39,12 @@ namespace Pokemon
             {
                 
                 string name = Items.all_Items[i]["Name"].ToString();
-                Status status_heal = Status.get_status(Items.all_Items[i]["Status"].ToString());
+                Status status_heal = Status.GetStatus(Items.all_Items[i]["Status"].ToString());
                 int restore_health = int.Parse(Items.all_Items[i]["Health"].ToString());
                 int price = int.Parse(Items.all_Items[i]["Price"].ToString());
                 string description = Items.all_Items[i]["Description"].ToString();
                 bool useable = bool.Parse(Items.all_Items[i]["Use Overworld"].ToString());
-                Items temp_item = new Items(name, status_heal, restore_health, price, description, useable);
+                Items temp_item = new(name, status_heal, restore_health, price, description, useable);
                 items_dict.Add(name, temp_item);
             }
         }
@@ -54,16 +54,16 @@ namespace Pokemon
         }
         public void addAmount(int amount)
         {
-            this.count += amount;
+            count += amount;
         }
         public void subtractAmount(int amount)
         {
-            this.count -= amount;
-            if(count < 0) this.count = 0;
+            count -= amount;
+            if(count < 0) count = 0;
         }
         public void updateAmount(int amount)
         {
-            this.count = amount;
+            count = amount;
         }
     }
 }

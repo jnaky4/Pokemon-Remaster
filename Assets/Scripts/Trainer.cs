@@ -5,7 +5,7 @@ namespace Pokemon
 {
     public class Trainer
     {
-        public static List<Dictionary<string, object>> all_trainers = new List<Dictionary<string, object>>();
+        public static List<Dictionary<string, object>> all_trainers = new();
         public Pokemon[] trainer_team = new Pokemon[6];
 
 
@@ -25,12 +25,12 @@ namespace Pokemon
             this.intro_dialogue = intro_dialogue;
             this.exit_dialogue = exit_dialogue;
 
-            this.trainer_team[0] = pokemon1;
-            this.trainer_team[1] = pokemon2;
-            this.trainer_team[2] = pokemon3;
-            this.trainer_team[3] = pokemon4;
-            this.trainer_team[4] = pokemon5;
-            this.trainer_team[5] = pokemon6;
+            trainer_team[0] = pokemon1;
+            trainer_team[1] = pokemon2;
+            trainer_team[2] = pokemon3;
+            trainer_team[3] = pokemon4;
+            trainer_team[4] = pokemon5;
+            trainer_team[5] = pokemon6;
 
 
         }
@@ -38,7 +38,7 @@ namespace Pokemon
         //grabs a dictionary of trainers from the route, to add to route
         public static Dictionary<string, Trainer> get_route_trainers(string route)
         {
-            Dictionary<string, Trainer> route_trainers = new Dictionary<string, Trainer>();
+            Dictionary<string, Trainer> route_trainers = new();
             for (var i = 0; i < all_trainers.Count; i++)
             {
                 if (route == Trainer.all_trainers[i]["Route"].ToString())
@@ -128,7 +128,7 @@ namespace Pokemon
                      * Pokemon pokemon5 = null, 
                      * Pokemon pokemon6 = null*/
 
-                    Trainer temp_trainer = new Trainer(
+                    Trainer temp_trainer = new(
                         Trainer.all_trainers[i]["Name"].ToString(),
                         Trainer.all_trainers[i]["Type"].ToString(),
                         int.Parse(Trainer.all_trainers[i]["Money"].ToString()),
@@ -152,7 +152,7 @@ namespace Pokemon
         {
 
             List<Learnset> pokemons_learnset;
-            List<Learnset> learnable_moves = new List<Learnset>();
+            List<Learnset> learnable_moves = new();
 
             Moves[] temp_moves = new Moves[4];
             //count of how many moves are going to be added after permanent moves
@@ -166,7 +166,7 @@ namespace Pokemon
 
             //level_from_cap is a negative number
             //create temp pokemon to get evolve level
-            Pokemon temp_pokemon = new Pokemon(temp_dexNum, (GameController.level_cap + level_from_cap));
+            Pokemon temp_pokemon = new(temp_dexNum, (GameController.level_cap + level_from_cap));
             //while pokemons current level > evolve_level, evolve to next pokemon
             while ((temp_pokemon.pokedex_entry.evolve_level != -1) && (temp_pokemon.pokedex_entry.evolve_level <= (GameController.level_cap + level_from_cap)))
             {

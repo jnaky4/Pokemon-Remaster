@@ -59,12 +59,12 @@ namespace Pokemon
 
 
         //CSV's get loaded into these Lists
-        public static List<Dictionary<string, object>> type_attack = new List<Dictionary<string, object>>();
+        public static List<Dictionary<string, object>> type_attack = new();
         //public static List<Dictionary<string, object>> type_defend = new List<Dictionary<string, object>>();
         //After a Static Dictionary of Types is created with load_type()
-        public static Dictionary<string, Type> type_dictionary = new Dictionary<string, Type>();
+        public static Dictionary<string, Type> type_dictionary = new();
 
-        public static Dictionary<string, Dictionary<string, double>> attacking_type_dict = new Dictionary<string, Dictionary<string, double>>();
+        public static Dictionary<string, Dictionary<string, double>> attacking_type_dict = new();
 
         public string name;
 
@@ -114,24 +114,24 @@ namespace Pokemon
         {
             this.name = name;
             //for attacking
-            this.attack_fire = a_fire;
-            this.attack_water = a_water;
-            this.attack_grass = a_grass;
-            this.attack_electric = a_electric;
-            this.attack_ice = a_ice;
-            this.attack_fighting = a_fighting;
-            this.attack_poison = a_poison;
-            this.attack_ground = a_ground;
-            this.attack_flying = a_flying;
-            this.attack_psychic = a_psychic;
-            this.attack_bug = a_bug;
-            this.attack_rock = a_rock;
-            this.attack_ghost = a_ghost;
-            this.attack_dragon = a_dragon;
-            this.attack_dark = a_dark;
-            this.attack_steel = a_steel;
-            this.attack_normal = a_normal;
-            this.attack_null = a_null;
+            attack_fire = a_fire;
+            attack_water = a_water;
+            attack_grass = a_grass;
+            attack_electric = a_electric;
+            attack_ice = a_ice;
+            attack_fighting = a_fighting;
+            attack_poison = a_poison;
+            attack_ground = a_ground;
+            attack_flying = a_flying;
+            attack_psychic = a_psychic;
+            attack_bug = a_bug;
+            attack_rock = a_rock;
+            attack_ghost = a_ghost;
+            attack_dragon = a_dragon;
+            attack_dark = a_dark;
+            attack_steel = a_steel;
+            attack_normal = a_normal;
+            attack_null = a_null;
         }
         public static void load_type()
         {
@@ -160,8 +160,7 @@ namespace Pokemon
                 double attack_null = double.Parse(type_attack[i]["Null"].ToString());
 
 
-                Type temp_type = new Type
-                    (
+                Type temp_type = new                    (
                     temp_type_str,
                     attack_fire,
                     attack_water,
@@ -194,7 +193,7 @@ namespace Pokemon
             {
 
 
-                Dictionary<string, double> temp = new Dictionary<string, double>
+                Dictionary<string, double> temp = new()
                 {
                     ["Fire"] = double.Parse(type_attack[i]["Fire"].ToString()),
                     ["Water"] = double.Parse(type_attack[i]["Water"].ToString()),

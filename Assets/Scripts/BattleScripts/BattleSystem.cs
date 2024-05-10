@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,13 +34,13 @@ namespace Pokemon
 
 
         //[SerializeField] List<Sprite> AttackSprites;
-        private List<Sprite> AttackSprites = new List<Sprite>();
+        private List<Sprite> AttackSprites = new();
         public String pathLeft;
         public String pathRight;
         public String pathBreak;
-        public List<Sprite> spritesLeft = new List<Sprite>();
-        public List<Sprite> spritesRight = new List<Sprite>();
-        public List<Sprite> spritesBreak = new List<Sprite>();
+        public List<Sprite> spritesLeft = new();
+        public List<Sprite> spritesRight = new();
+        public List<Sprite> spritesBreak = new();
 
 
         private SpriteAnimator PlayerAttackAnim;
@@ -153,18 +152,20 @@ namespace Pokemon
         private Moves playerMoveStorage;
         private Moves enemyMoveStorage;
 
+
         private int phasePlayerSprite = 0; //0 means no phasing, 1 means phase out, 2 means phase in
         private int phaseOpponentSprite = 0;
 
         private bool wantsToEvolve;
 
         public int player_attack_damage = 0;
-        Status player_applied_status;
-        double player_dmg_multiplier;
-        double player_stab;
-        bool player_crit;
+
         BattleState who_went_first;
-        Moves player_attack;
+
+        public static double effectivenessMultiplier;
+        public static Status applied_Status;
+        public static bool crit;
+
 
 
         #endregion Declaration of variables
@@ -505,7 +506,7 @@ namespace Pokemon
             CloseMovesMenu();
             CloseBallsMenu();
 
-
+            
             //TODO find out what this does
             if (playerMoveNum >= 0)
             {
@@ -526,6 +527,9 @@ namespace Pokemon
             bool struggle = false;
             if (enemyContinuingAttack == 0) struggle = Utility.EnemyStruggle(enemyUnit);
             Moves enemyMove, playerMove;
+            // Attack enemyAttack, playerAttack;
+
+            
             if (playerMoveNum == -2) playerMove = playerMoveStorage;
 
             else if (playerMoveNum >= 0) playerMove = playerUnit.pokemon.currentMoves[playerMoveNum];
@@ -560,6 +564,7 @@ namespace Pokemon
                 while (enemyUnit.pokemon.currentMoves[moveNum].current_pp == 0);*/
             }
 
+
             ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
@@ -568,6 +573,8 @@ namespace Pokemon
             //grabs name for animation
             playerMoveName = playerMove.name;
             enemyMoveName = enemyMove.name;
+
+
 
             //TODO Mulitturn attack logic, check if correctly works
             if (playerMoveNum != -2 && playerMove.max_turns > 1)
@@ -734,6 +741,7 @@ namespace Pokemon
         }
 
 
+    
         public IEnumerator MultiAttackPerTurn(Moves Attack, Unit Attacker, Unit Defender)
         {
             //BEGIN TURN STATUS UPDATE
@@ -745,7 +753,7 @@ namespace Pokemon
             {
                 //Debug.Log("BattleState: " + state);
                 //Debug.Log("Can Attack");
-                if (AccuracyCheck(Attack, Attacker, Defender))
+                if (CheckAccuracy(Attack, Attacker.pokemon, Defender.pokemon))
                 {
                     //number of moves per turn the player/enemy can attack
                     int NumTimesAttack = Utility.rnd.Next(Attack.min_per_turn, Attack.max_per_turn + 1);
@@ -772,12 +780,6 @@ namespace Pokemon
         public void PrintStats(Unit Attacker)
         {
             Debug.Log(Attacker.pokemon.name);
-            Debug.Log("Current/Max HP  " + Attacker.pokemon.current_hp + "/" + Attacker.pokemon.max_hp);
-            Debug.Log("Current/Max Attack " + Attacker.pokemon.current_attack + "/" + Attacker.pokemon.max_attack);
-            Debug.Log("Current/Max SP_Attack " + Attacker.pokemon.current_sp_attack + "/" + Attacker.pokemon.max_sp_attack);
-            Debug.Log("Current/Max Defense " + Attacker.pokemon.current_defense + "/" + Attacker.pokemon.max_defense);
-            Debug.Log("Current/Max SP_Defense " + Attacker.pokemon.current_sp_defense + "/" + Attacker.pokemon.max_sp_defense);
-            Debug.Log("Current/Max speed " + Attacker.pokemon.current_speed + "/" + Attacker.pokemon.max_speed);
 
             Debug.Log("Attack Stage " + Attacker.pokemon.stage_attack);
             Debug.Log("Sp_Atk Stage " + Attacker.pokemon.stage_sp_attack);
@@ -788,15 +790,16 @@ namespace Pokemon
             Debug.Log("Evasion Stage " + Attacker.pokemon.stage_evasion);
         }
 
-        public bool AccuracyCheck(Moves attack, Unit Attacker, Unit Defender)
+        //TODO fix accuracy check
+        public bool CheckAccuracy(Moves attack, Pokemon Attacker, Pokemon Defender)
         {
-            int num = Utility.rnd.Next(1, 100);
-            if (num <= (attack.accuracy * Attacker.pokemon.current_accuracy * Defender.pokemon.current_evasion)) return true;
+            double num = Utility.rnd.Next(1, 101);
+            if (num <= attack.accuracy * Utility.StageAccuracyEvasionMultiplier("Accuracy", Attacker) * Utility.StageAccuracyEvasionMultiplier("Evasion", Defender)) return true;
             else return false;
 
         }
 
-        public IEnumerator AttackDialogue(Moves attack, Unit Attacker, Unit Defender, double effectivenessMultiplier, Status applied_Status, bool crit, int damage, int healed)
+        public IEnumerator AttackDialogue(Moves attack, Unit Attacker, Unit Defender, int damage, int healed)
         {
 
             //Your/enemy Pokemons stat rose/fell
@@ -884,13 +887,10 @@ namespace Pokemon
         /// <returns>Nothing</returns>
         private IEnumerator AttackXYZ(Moves attack, Unit Attacker, Unit Defender)
         {
-
-
-
-            PrintStats(Attacker);
-            PrintStats(Defender);
-            //PrintStats(Attacker);
-
+            Debug.Log("Attacker: " + Attacker.pokemon.name);
+            Debug.Log("Defender: " + Defender.pokemon.name);
+            // PrintStats(Attacker);
+            // PrintStats(Defender);
 
             if (state == BattleState.PLAYERTURN)
             {
@@ -900,6 +900,7 @@ namespace Pokemon
             }
 
             SetDownButtons();      
+
 
             dialogueText.text = Attacker.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(0.75f);
@@ -911,32 +912,21 @@ namespace Pokemon
                     
             if (attack.name == "Growl") GameController.soundFX = Attacker.pokemon.dexnum.ToString();
             else GameController.soundFX = attack.name;
-            while (!endofanimation)
-            {
-                yield return null;
-            }
+            while (!endofanimation) yield return null;
+            
             endofanimation = false;
 
-            bool crit = Utility.CriticalHit(Attacker);
+            if (attack.current_stat_change != "null") Unit.SetStages(attack, Defender);
+
+            applied_Status = Status.Apply_Attack_Status_Effect(attack, Attacker, Defender);
             
 
-
-            if (attack.current_stat_change != "null") Unit.SetStages(attack, Attacker, Defender);
-
-
-            Status applied_Status = Status.Apply_Attack_Status_Effect(attack, Attacker, Defender);
-            
-            double dmg_multiplier = Utility.EffectivenessMultiplier(attack, Defender.pokemon);
-            //Debug.Log("Damage Multiplier: " + dmg_multiplier);
-            double stab = Utility.STAB(attack, Attacker.pokemon);
-            //Debug.Log("Stab: " + stab);
-
-            int damage = Utility.CalculateDamage(Attacker, Defender, attack, crit, dmg_multiplier, stab);
+            int damage = Utility.CalculateDamage(Attacker.pokemon, Defender.pokemon, attack);
             Debug.Log("Damage: " + damage);
 
-            bool isDead = Defender.TakeDamage(Attacker.damage);
+            Defender.TakeDamage(damage);
 
-            if (attack.damage_recovered != 0) Attacker.TakeDamage(-Attacker.damage * attack.damage_recovered);
+            if (attack.damage_recovered != 0) Attacker.TakeDamage(damage * attack.damage_recovered);
 
 
             int heal = 0;
@@ -947,8 +937,7 @@ namespace Pokemon
                 Attacker.TakeDamage(-heal);
             }
                 
-             
-
+            
             if(state == BattleState.PLAYERTURN)
             {
                 playerHUD.SetHP(Attacker.pokemon.current_hp, Attacker, "player");
@@ -966,7 +955,12 @@ namespace Pokemon
                 playerHUD.SetHP(Defender.pokemon.current_hp, Defender, "enemy");
             }
 
-            yield return StartCoroutine(AttackDialogue(attack, Attacker, Defender, dmg_multiplier, applied_Status, crit, damage, heal));
+            yield return StartCoroutine(AttackDialogue(attack, Attacker, Defender, damage, heal));
+
+            //global reset
+            crit = false;
+            effectivenessMultiplier = 1;
+            applied_Status = null;
 
             yield return StartCoroutine(IsEitherPokemonDead());
         }
@@ -1606,7 +1600,7 @@ namespace Pokemon
                     GameController.player.greatBalls = player.numGreatBalls;
                     GameController.player.ultraBalls = player.numUltraBalls;
                     GameController.player.masterBalls = player.numMasterBalls;
-                    if (GameController.playerPokemon[i].statuses.Contains(Status.get_status("Seeded"))) GameController.playerPokemon[i].statuses.Remove(Status.get_status("Seeded"));
+                    if (GameController.playerPokemon[i].statuses.Contains(Status.GetStatus("Seeded"))) GameController.playerPokemon[i].statuses.Remove(Status.GetStatus("Seeded"));
                 }
             }
 
@@ -1722,13 +1716,14 @@ namespace Pokemon
                 CloseMovesMenu();
                 ClosePokemonMenu();
                 SetDownButtons();
-                if (playerUnit.pokemon.current_speed > enemyUnit.pokemon.current_speed)
+
+                if (playerUnit.pokemon.max_speed * Utility.StageMultiplier("Speed", playerUnit.pokemon) > enemyUnit.pokemon.max_speed * Utility.StageMultiplier("Speed", enemyUnit.pokemon))
                 {
                     state = BattleState.RUNAWAY;
                     StartCoroutine(EndBattle());
                     yield break;
                 }
-                double a = playerUnit.pokemon.current_speed;
+                double a = playerUnit.pokemon.max_speed * Utility.StageMultiplier("Speed", playerUnit.pokemon);
                 double b = a / 4;
                 b %= 256;
                 if (b == 0)

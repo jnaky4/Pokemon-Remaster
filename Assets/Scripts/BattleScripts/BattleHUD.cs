@@ -338,7 +338,7 @@ namespace Pokemon
         public void SetHP(int newHP, Unit unit, string whichplayer)
         {
             //sets negative to true if pokemon health is less than slider value
-            this.negative = newHP < hpSlider.value ? true : false;
+            negative = newHP < hpSlider.value ? true : false;
             //
             tempHP = newHP;
             if (newHP != hpSlider.value) updateHp = true;
@@ -554,7 +554,7 @@ namespace Pokemon
 
         private Color GetColorOfMove(string type)
         {
-            Color color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
+            Color color = new(244f / 255f, 100f / 255f, 138f / 255f, 1);
             switch (type)
             {
                 case "Normal":
@@ -670,7 +670,7 @@ namespace Pokemon
 
         private Color GetDarkColorOfMove(string type)
         {
-            Color color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+            Color color = new(109f / 255f, 109f / 255f, 78f / 255f, 1);
             switch (type)
             {
                 case "Normal":
