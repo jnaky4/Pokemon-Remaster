@@ -17,7 +17,7 @@ public class TrainerController : MonoBehaviour
 
     private void Awake()
     {
-        trainerName = this.name;
+        trainerName = name;
         character = GetComponent<Character>();
     }
 

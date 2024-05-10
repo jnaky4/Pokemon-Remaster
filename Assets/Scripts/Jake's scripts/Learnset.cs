@@ -10,7 +10,7 @@ namespace Pokemon
     public class Learnset
     {
         //public static string[][] all_learnset = new string[1089][];
-        public static List<Dictionary<string, object>> all_learnset = new List<Dictionary<string, object>>();
+        public static List<Dictionary<string, object>> all_learnset = new();
         public int level;
         public Moves move;
         public override string ToString()
@@ -26,7 +26,7 @@ namespace Pokemon
 
         public static List<Learnset> get_learnset(int dexnum)
         {
-            List<Learnset> pokemons_learnset = new List<Learnset>();
+            List<Learnset> pokemons_learnset = new();
             //Console.WriteLine(Pokemon.learnset.Length);
             for (var i = 0; i < all_learnset.Count; i++)
             {
@@ -35,7 +35,7 @@ namespace Pokemon
                 if (dexnum == int.Parse(Learnset.all_learnset[i]["dexnum"].ToString()))
                 {
 
-                    Learnset temp = new Learnset(int.Parse(Learnset.all_learnset[i]["lvl"].ToString()), Learnset.all_learnset[i]["move"].ToString());
+                    Learnset temp = new(int.Parse(Learnset.all_learnset[i]["lvl"].ToString()), Learnset.all_learnset[i]["move"].ToString());
                     pokemons_learnset.Add(temp);
                 }
             }
@@ -44,19 +44,19 @@ namespace Pokemon
 
         public int Get_lvl()
         {
-            return this.level;
+            return level;
         }
         Moves Get_move()
         {
-            return this.move;
+            return move;
         }
         public static Pokemon add_wild_moves(int dexnum, int level)
         {
 
             //create a temp pokemon to grab the learnset
-            Pokemon temp_pokemon = new Pokemon(dexnum, level);
+            Pokemon temp_pokemon = new(dexnum, level);
             List<Learnset> pokemons_learnset = temp_pokemon.learnset;
-            List<Learnset> learnable_moves = new List<Learnset>();
+            List<Learnset> learnable_moves = new();
             
             //add all moves to learnable moves that are equal or lower lvl than the wild pokemon
             foreach (Learnset learnable_move in pokemons_learnset)

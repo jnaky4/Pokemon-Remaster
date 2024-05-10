@@ -18,7 +18,7 @@ namespace Pokemon
         public Vector2 initialValue;
         public Pokemon[] playerPokemon;
         
-        public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { };
+        public Dictionary<string, int> badges_completed = new() { };
         //public Dictionary<string, int> badges_completed = new Dictionary<string, int>() { { "Boulder", 1 }, { "Cascade", 1 }, { "Thunder", 1 }, { "Rainbow", 1 }, { "Soul", 1 }, { "Marsh", 1 }, { "Volcano", 1 }, { "Earth", 1 }, { "Elite Four", 1 } };
 
         private void Start()
@@ -53,7 +53,7 @@ namespace Pokemon
                 //GameController.playerPokemon[0] = new Pokemon(37, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
                 //Tauros
                 GameController.playerPokemon[0] = new Pokemon(128, 100, "Body Slam", "Earthquake", "Blizzard", "Hyper Beam");
-                GameController.playerPokemon[0].statuses.Add(Status.get_status("Paralysis"));
+                GameController.playerPokemon[0].statuses.Add(Status.GetStatus("Paralysis"));
                 //Exeggutor
                 GameController.playerPokemon[1] = new Pokemon(103, 100, "Sleep Powder", "Mega Drain", "Explosion", "Psychic");
                 //Rhydon

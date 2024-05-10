@@ -502,7 +502,7 @@ namespace Pokemon
         public bool ClearPokemonStatus(int i, Status toHeal)
         {
             if (GameController.playerPokemon[i].statuses.Count == 0) return false;
-            if (toHeal == Status.get_status("null") && usingItem.name != "Full Heal") return false;
+            if (toHeal == Status.GetStatus("null") && usingItem.name != "Full Heal") return false;
             if (GameController.playerPokemon[i].statuses.Contains(toHeal)) { GameController.playerPokemon[i].statuses.Remove(toHeal); }
             if(usingItem.name == "Full Heal") { GameController.playerPokemon[i].statuses.Clear(); }
             UpdatePokemonText(i,GetCanvasText(i));
@@ -771,7 +771,7 @@ namespace Pokemon
 
         private Color GetColorOfMove(string type)
         {
-            Color color = new Color(244f / 255f, 100f / 255f, 138f / 255f, 1);
+            Color color = new(244f / 255f, 100f / 255f, 138f / 255f, 1);
             switch (type)
             {
                 case "Normal":
@@ -855,7 +855,7 @@ namespace Pokemon
 
         private Color GetDarkColorOfMove(string type)
         {
-            Color color = new Color(109f / 255f, 109f / 255f, 78f / 255f, 1);
+            Color color = new(109f / 255f, 109f / 255f, 78f / 255f, 1);
             switch (type)
             {
                 case "Normal":

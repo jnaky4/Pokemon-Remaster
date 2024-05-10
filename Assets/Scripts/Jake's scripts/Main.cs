@@ -57,7 +57,7 @@ namespace Pokemon
 
             for (int i = 1; i < 152; i++)
             {
-                Pokemon TestPokemon = new Pokemon(i, 50, "Flamethrower", "Earthquake", "Wing Attack", "Slash");
+                Pokemon TestPokemon = new(i, 50, "Flamethrower", "Earthquake", "Wing Attack", "Slash");
                 /*                Debug.Log("Name " + TestPokemon.name);
                                 Debug.Log("Base Attack " + TestPokemon.base_attack + " Current Attack " + TestPokemon.current_attack);
                                 Debug.Log("Type1: " + TestPokemon.type1.type);

@@ -7,7 +7,7 @@ namespace Pokemon
     {
         /*public static string[][] pokedex = new string[152][];*/
         /*public static Dictionary<int, Pokedex> pokedex_dictionary = new Dictionary<int, Pokedex>();*/
-        public static List<Dictionary<string, object>> all_pokedex = new List<Dictionary<string, object>>();
+        public static List<Dictionary<string, object>> all_pokedex = new();
 
         public int dexnum;
         public string name;
@@ -42,20 +42,20 @@ namespace Pokemon
 
             //int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["HP"].ToString());
 
-            this.name = Pokedex.all_pokedex[this.dexnum - 1]["Pokemon_Name"].ToString();
-            this.type1 = Pokedex.all_pokedex[this.dexnum - 1]["Type1"].ToString();
-            this.type2 = Pokedex.all_pokedex[this.dexnum - 1]["Type2"].ToString();
-            this.stage = Pokedex.all_pokedex[this.dexnum - 1]["Stage"].ToString();
-            this.evolve_level = int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Evolve_Level"].ToString());
-            this.evolve_item = Pokedex.all_pokedex[this.dexnum - 1]["Evolve_Item"].ToString();
-            this.gender_ratio = Pokedex.all_pokedex[this.dexnum - 1]["Gender_Ratio"].ToString();
-            this.height = double.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Height"].ToString());
-            this.weight = double.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Weight"].ToString());
-            this.description = Pokedex.all_pokedex[this.dexnum - 1]["Description"].ToString();
-            this.category = Pokedex.all_pokedex[this.dexnum - 1]["Category"].ToString();
-            this.leveling_speed = double.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Leveling_Speed"].ToString());
-            this.base_exp = int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Base_Exp"].ToString());
-            this.catch_rate = int.Parse(Pokedex.all_pokedex[this.dexnum - 1]["Catch_Rate"].ToString());
+            name = Pokedex.all_pokedex[dexnum - 1]["Pokemon_Name"].ToString();
+            type1 = Pokedex.all_pokedex[dexnum - 1]["Type1"].ToString();
+            type2 = Pokedex.all_pokedex[dexnum - 1]["Type2"].ToString();
+            stage = Pokedex.all_pokedex[dexnum - 1]["Stage"].ToString();
+            evolve_level = int.Parse(Pokedex.all_pokedex[dexnum - 1]["Evolve_Level"].ToString());
+            evolve_item = Pokedex.all_pokedex[dexnum - 1]["Evolve_Item"].ToString();
+            gender_ratio = Pokedex.all_pokedex[dexnum - 1]["Gender_Ratio"].ToString();
+            height = double.Parse(Pokedex.all_pokedex[dexnum - 1]["Height"].ToString());
+            weight = double.Parse(Pokedex.all_pokedex[dexnum - 1]["Weight"].ToString());
+            description = Pokedex.all_pokedex[dexnum - 1]["Description"].ToString();
+            category = Pokedex.all_pokedex[dexnum - 1]["Category"].ToString();
+            leveling_speed = double.Parse(Pokedex.all_pokedex[dexnum - 1]["Leveling_Speed"].ToString());
+            base_exp = int.Parse(Pokedex.all_pokedex[dexnum - 1]["Base_Exp"].ToString());
+            catch_rate = int.Parse(Pokedex.all_pokedex[dexnum - 1]["Catch_Rate"].ToString());
 
            
 
@@ -73,12 +73,12 @@ namespace Pokemon
         public string get_type1()
         {
             //Console.WriteLine("TYPE1: " + this.type1);
-            return this.type1;
+            return type1;
         }
         public string get_type2()
         {
             //Console.WriteLine("TYPE2: " + this.type2);
-            return this.type2;
+            return type2;
 
 
 

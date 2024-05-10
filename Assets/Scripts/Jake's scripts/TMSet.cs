@@ -5,14 +5,14 @@ namespace Pokemon
 {
     public class TMSet
     {
-        public static List<Dictionary<string, object>> all_TMSet = new List<Dictionary<string, object>>();
+        public static List<Dictionary<string, object>> all_TMSet = new();
 
         string TM_name;
         Moves move;
 
         public static Dictionary<string, Moves> get_TMSet(int dexNum)
         {
-            Dictionary<string, Moves> TM_Set = new Dictionary<string, Moves>();
+            Dictionary<string, Moves> TM_Set = new();
             bool at_index = false;
             if (dexNum <= 75)
             {
