@@ -66,8 +66,7 @@ namespace Pokemon
         private bool playCatch;
         private bool breakOut;
         private int breakOutFrame;
-        private string playerMoveName;
-        private string enemyMoveName;
+
         //all of this stuff is for animation
 
         public Unit playerUnit;
@@ -147,24 +146,18 @@ namespace Pokemon
         public GameObject poke6;
         public Button backPoke;
       
-        private int playerContinuingAttack = 0;
-        private int enemyContinuingAttack = 0;
-        private Moves playerMoveStorage;
-        private Moves enemyMoveStorage;
-
+        private Moves playerCurrentMove;
+        private Moves enemyCurrentMove;
 
         private int phasePlayerSprite = 0; //0 means no phasing, 1 means phase out, 2 means phase in
         private int phaseOpponentSprite = 0;
 
         private bool wantsToEvolve;
 
-        public int player_attack_damage = 0;
-
-        BattleState who_went_first;
-
         public static double effectivenessMultiplier;
         public static Status applied_Status;
         public static bool crit;
+
 
 
 
@@ -317,7 +310,7 @@ namespace Pokemon
 
             if (playerInitialAttack == true)
             {
-                GetAttackSprites(playerMoveName);
+                GetAttackSprites(playerCurrentMove.name);
                 PlayerAttackAnim.Start();
                 playerInitialAttack = false;
                 playerAttack = true;
@@ -338,7 +331,7 @@ namespace Pokemon
 
             if (enemyInitialAttack == true)
             {
-                GetAttackSprites(enemyMoveName);
+                GetAttackSprites(enemyCurrentMove.name);
                 EnemyAttackAnim.Start();
                 enemyInitialAttack = false;
                 enemyAttack = true;
@@ -493,208 +486,132 @@ namespace Pokemon
         /// <summary>
         /// Decides who attacks first, based on priority of the move, then the speed of each pokemon, then random
         /// </summary>
-        /// <param name="playerMoveNum">The player move number. -1 if struggle, -2 if continuing attack.</param>
+        /// <param name="playerMoveNum">The player move number. -1 if struggle, -2 if continuing attack., -3 pokeball</param>
         /// <returns>Nothing</returns>
         private IEnumerator CombatPhase(int playerMoveNum)
         {
 
-            //Debug.Log("START <COMBAT PHASE>");
 
             SetDownButtons();
             ClosePokemonMenu();
             CloseMovesMenu();
             CloseBallsMenu();
 
+            bool aiStruggle = Utility.NoMovesLeft(enemyUnit);
+            bool playerStruggle = Utility.NoMovesLeft(playerUnit);
+
             
-            //TODO find out what this does
-            if (playerMoveNum >= 0)
-            {
-                if (playerUnit.pokemon.currentMoves[playerMoveNum].current_pp == 0)
-                {
-                    dialogueText.text = "No remaining PP for " + playerUnit.pokemon.currentMoves[playerMoveNum].name + "!";
-                    yield return new WaitForSeconds(2);
-                    PlayerMakesDecision();
-                    yield break;
-                }
+            switch (playerMoveNum){
+                case -3: //pokeball used
+                    state = BattleState.ONLYENEMYTURN;
+                    break;
+                case -2: //continuing attack
+                    playerCurrentMove.turnsLeft--;
+                    break;
+                case -1: //struggle
+                    //TODO fix stuggle
+                    break;
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                    if (playerUnit.pokemon.currentMoves[playerMoveNum].current_pp == 0)
+                    {
+                        dialogueText.text = "No remaining PP for " + playerUnit.pokemon.currentMoves[playerMoveNum].name + "!";
+                        yield return new WaitForSeconds(2);
+                        PlayerMakesDecision();
+                        yield break;
+                    }
+                    playerCurrentMove = playerUnit.pokemon.currentMoves[playerMoveNum];
+                    if (playerCurrentMove.max_turns > 1) playerCurrentMove.turnsLeft = Utility.rnd.Next(playerCurrentMove.min_turns, playerCurrentMove.max_turns + 1);
+                    playerUnit.DoPP(playerMoveNum);
+                    break;
             }
 
+            ClosePokemonMenu();
+            CloseMovesMenu();
+            CloseBallsMenu();
+            SetDownButtons();
 
-            //Debug.Log("MOVE NUMBER" + playerMoveNum);
+            int swapIndex = -1;
+      
+            if (enemyCurrentMove != null && enemyCurrentMove.turnsLeft > 0) {
+                enemyCurrentMove.turnsLeft--;
+            } else {
+                int enemyMoveNum = enemyUnit.DecideMove(playerCurrentMove, playerUnit);
 
-            //TODO check if Struggle is working properly and how to clean this up
-            int moveNum = -1, swapIndex = -1;
-            bool struggle = false;
-            if (enemyContinuingAttack == 0) struggle = Utility.EnemyStruggle(enemyUnit);
-            Moves enemyMove = null, playerMove = null;
-            
-            
-            // Attack enemyAttack, playerAttack;
-
-            
-            if (playerMoveNum == -2) playerMove = playerMoveStorage;
-
-            else if (playerMoveNum >= 0) playerMove = playerUnit.pokemon.currentMoves[playerMoveNum];
-            else playerMove = playerUnit.pokemon.struggle;
-
-            if (enemyContinuingAttack != 0)
-            {
-                enemyMove = enemyMoveStorage;
-            }
-            else if (struggle)
-            {
-                enemyMove = enemyUnit.pokemon.struggle;
-            }
-            else
-            {            
-                moveNum = enemyUnit.DecideMove(playerMove, playerUnit);
-                switch(moveNum){
+                switch(enemyMoveNum){
                     //enemy decided to swap
                     case -2:
-                        enemyMove = null;
-                        swapIndex = enemyUnit.PickBestSwap(playerMove, playerUnit.pokemon);
+                        enemyCurrentMove = null;
+                        swapIndex = enemyUnit.PickBestSwap(playerCurrentMove, playerUnit.pokemon);
+                        state = BattleState.ENEMYSWAPPED;
+                        enemyInitialAttack = false;
+                        enemyAttack = false;
                         break;
                     //enemy couldnt decide
                     case -1:
-                        moveNum = Utility.rnd.Next(enemyUnit.pokemon.CountMoves());
-                        enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
+                        enemyMoveNum = Utility.rnd.Next(enemyUnit.pokemon.CountMoves());
+                        enemyCurrentMove = enemyUnit.pokemon.currentMoves[enemyMoveNum];
                         break;
                     case 0:
                     case 1:
                     case 2:
                     case 3:
-                        enemyMove = enemyUnit.pokemon.currentMoves[moveNum];
-                        Debug.Log("Enemy Decided to use: " + enemyMove.name);
+                        enemyCurrentMove = enemyUnit.pokemon.currentMoves[enemyMoveNum];
+                        if (enemyCurrentMove.max_turns > 1) enemyCurrentMove.turnsLeft = Utility.rnd.Next(enemyCurrentMove.min_turns, enemyCurrentMove.max_turns + 1);
+                        enemyUnit.DoPP(enemyMoveNum);
+                        Debug.Log("Enemy Decided to use: " + enemyCurrentMove.name);
                         break;
                 }
             }
 
+            if(state != BattleState.ONLYENEMYTURN  && state != BattleState.ENEMYSWAPPED ) state = Utility.WhoGoesFirst(playerCurrentMove, enemyCurrentMove, playerUnit.pokemon, enemyUnit.pokemon);
 
 
-            ClosePokemonMenu();
-            CloseMovesMenu();
-            CloseBallsMenu();
-            SetDownButtons();
-
-            //grabs name for animation
-            playerMoveName = playerMove.name;
-            //TODO Mulitturn attack logic, check if correctly works
-            if (playerMoveNum != -2 && playerMove.max_turns > 1)
-            {
-                playerContinuingAttack = Utility.rnd.Next(playerMove.min_turns, playerMove.max_turns + 1);
-                playerMoveStorage = playerMove;
-            }
-
-            if (playerMoveNum == -2) playerContinuingAttack--;
-            if (playerMoveNum >= 0) playerUnit.DoPP(playerMoveNum);
-
-            if (enemyMove != null){
-                enemyMoveName = enemyMove.name;
-                if (enemyContinuingAttack != 0) enemyContinuingAttack--;
-                else if (enemyMove.max_turns > 1)
-                {
-                    enemyContinuingAttack = Utility.rnd.Next(enemyMove.min_turns, enemyMove.max_turns + 1);
-                    enemyMoveStorage = enemyMove;
-                }
-
-
-                /*
-                    TODO move inside logic of if the attack hit
-                    shouldnt apply if:
-                        attack missed
-                        multi turn move
-                */
-
-                
-                if (enemyMove.current_pp >= 0) enemyUnit.DoPP(moveNum); //If it is not struggle, take down some PP.
-
-
-                /*
-                * TODO figure out what this does
-                * hit when pokeball catch fails
-                */
-
-            
-                // hit when pokeball catch fails or pokemon fails to run away
-                if (playerMoveNum == -3) state = BattleState.ONLYENEMYTURN;
-                else
-                {
-                    state = Utility.WhoGoesFirst(playerMove, enemyMove, playerUnit.pokemon, enemyUnit.pokemon);
-                    who_went_first = state;
-
-                }
-            }
-            else {
-                state = BattleState.ENEMYSWAPPED;
-                enemyInitialAttack = false;
-                enemyAttack = false;
-
-            }
-
-
-            //TODO need to merge Multiturn attacks with this logic
             switch (state)
             {
-
                 case BattleState.PLAYERTURN:
-                    yield return StartCoroutine(MultiAttackPerTurn(playerMove, playerUnit, enemyUnit));
+                    yield return StartCoroutine(MultiAttackPerTurn(playerCurrentMove, playerUnit, enemyUnit));
                     //did a pokemon die
                     if (state == BattleState.POKEMONFAINTED) break;
                     state = BattleState.ENEMYTURN;
-                    yield return StartCoroutine(MultiAttackPerTurn(enemyMove, enemyUnit, playerUnit));
+                    yield return StartCoroutine(MultiAttackPerTurn(enemyCurrentMove, enemyUnit, playerUnit));
                     break;
                 case BattleState.ENEMYTURN:
-                    yield return StartCoroutine(MultiAttackPerTurn(enemyMove, enemyUnit, playerUnit));
+                    yield return StartCoroutine(MultiAttackPerTurn(enemyCurrentMove, enemyUnit, playerUnit));
                     if (state == BattleState.POKEMONFAINTED) break;
                     state = BattleState.PLAYERTURN;
-                    yield return StartCoroutine(MultiAttackPerTurn(playerMove, playerUnit, enemyUnit));
+                    yield return StartCoroutine(MultiAttackPerTurn(playerCurrentMove, playerUnit, enemyUnit));
                     break;
                 case BattleState.ONLYENEMYTURN:
-                    yield return StartCoroutine(MultiAttackPerTurn(enemyMove, enemyUnit, playerUnit));
+                    yield return StartCoroutine(MultiAttackPerTurn(enemyCurrentMove, enemyUnit, playerUnit));
                     break;
                 case BattleState.ENEMYSWAPPED:
                     yield return StartCoroutine(AISwapPokemon(swapIndex));
                     state = BattleState.PLAYERTURN;
-                    yield return StartCoroutine(MultiAttackPerTurn(playerMove, playerUnit, enemyUnit));
+                    yield return StartCoroutine(MultiAttackPerTurn(playerCurrentMove, playerUnit, enemyUnit));
                     break;
                 default:
                     break;
             }
-
-
             
-            //Debug.Log("END <COMBAT PHASE>");
-            //Debug.Log("START <END OF BOTH TURNS PHASE>");
 
             //End turn status updates for both pokemon
             yield return StartCoroutine(EndRoundStatusUpdate("Player", playerUnit, enemyUnit));
             yield return StartCoroutine(EndRoundStatusUpdate("Enemy", enemyUnit, playerUnit));
 
+            if (playerUnit.pokemon.IsFainted()) yield return StartCoroutine(SwapPokemonOnHUD());
 
-
-
-
-            //if one of the pokemon died
-            if (state == BattleState.POKEMONFAINTED)
+            if (enemyUnit.pokemon.IsFainted())
             {
-                if (playerUnit.pokemon.IsFainted())
-                {
-                    //SWAP POKEMON
-                    yield return StartCoroutine(SwapPokemonOnHUD());
-                }  
+                //Gain EXP
+                if(!playerUnit.pokemon.IsFainted()) yield return StartCoroutine(GainEXP());
+                dialogueText.text = enemyUnit.pokemon.name + " faints!";
+                yield return new WaitForSeconds(2);
+                yield return StartCoroutine(AISwapPokemon());
 
-                if (enemyUnit.pokemon.IsFainted())
-                {
-                    //Gain EXP
-                    if(!playerUnit.pokemon.IsFainted()) yield return StartCoroutine(GainEXP());
-                    dialogueText.text = enemyUnit.pokemon.name + " faints!";
-                    yield return new WaitForSeconds(2);
-
-                    yield return StartCoroutine(AISwapPokemon());
-
-                }
             }
-
-
 
             state = BattleState.PLAYERTURN;
             PlayerMakesDecision();
@@ -797,22 +714,19 @@ namespace Pokemon
         public IEnumerator AttackDialogue(Moves attack, Unit Attacker, Unit Defender, int damage, int healed)
         {
 
-            //Your/enemy Pokemons stat rose/fell
             if (attack.current_stat_change != "null")
             {
-                //player target enemy or enemy target self: enemy Pokemons stat rose/fell!
-                //player target self or enemy target player: your Pokemons stat rose/fell
                 string prefix = ((state == BattleState.PLAYERTURN && attack.target == "enemy") || (state == BattleState.ENEMYTURN && attack.target == "self")) ? "Enemy " : "Your ";
 
-                string rosefell = attack.stat_change_amount > 0 ? " rose!" : " fell!";
+                string rosefell = attack.stat_change_amount > 0 ? "rose" : "fell";
                 string target = attack.target == "enemy" ? Defender.pokemon.name : Attacker.pokemon.name;
 
-                dialogueText.text = prefix + target + "'s " + attack.current_stat_change + rosefell; //If you lower their stat
+                dialogueText.text = $"{prefix} {target}'s {attack.current_stat_change} {rosefell}!";
                 yield return new WaitForSeconds(1);
             }
 
 
-            string namePrefix = (state == BattleState.PLAYERTURN) ? "Enemy " : "Your ";
+            string namePrefix = (state == BattleState.PLAYERTURN) ? "Enemy" : "Your";
 
             if (attack.base_power > 0)
             {
@@ -823,31 +737,29 @@ namespace Pokemon
                 }
                 switch (effectivenessMultiplier)
                 {
-                    case double s when (s > 1):
+                    case double s when s > 1:
                         GameController.soundFX = "Super Effective";
                         dialogueText.text = "It's super effective!";
                         break;
-                    case double s when ((s < 1) && (s != 0)):
+                    case double s when s < 0:
                         GameController.soundFX = "Not Very Effective";
                         dialogueText.text = "It's not very effective...";
                         break;
                     case 0:
-                        dialogueText.text = namePrefix + Defender.pokemon.name + " is immune!";
+                        dialogueText.text = $"{namePrefix} {Defender.pokemon.name} is immune!";
                         break;
                     case 1:
                     default:
                         GameController.soundFX = "Damage";
-                        dialogueText.text = namePrefix + Defender.pokemon.name + " took " + damage + " damage";
+                        dialogueText.text = $"{namePrefix} {Defender.pokemon.name} took {damage} damage";
                         break;
                 }
                 yield return new WaitForSeconds(2);
-
-
             }
             
             if (attack.heal_percent > 0)
             {
-                dialogueText.text = namePrefix + Attacker.pokemon.name + "recovered " + healed +" health";
+                dialogueText.text = $"{namePrefix} {Attacker.pokemon.name} recovered {healed} health";
                 yield return new WaitForSeconds(2);
             }
             
@@ -856,7 +768,7 @@ namespace Pokemon
 
             if (applied_Status.name == "immune")
             {
-                dialogueText.text = namePrefix + appllied_status_to.pokemon.name + " is immune!";
+                dialogueText.text = $"{namePrefix} {appllied_status_to.pokemon.name} is immune!";
                 yield return new WaitForSeconds(2);
             }
             else if (applied_Status.name != "null")
@@ -869,8 +781,6 @@ namespace Pokemon
                 };
                 yield return new WaitForSeconds(2);
             }
-
-
             
         }
 
@@ -882,6 +792,8 @@ namespace Pokemon
         /// <returns>Nothing</returns>
         private IEnumerator AttackXYZ(Moves attack, Unit Attacker, Unit Defender)
         {
+            // Attack attacking = new Attack();
+            
             Debug.Log("Attacker: " + Attacker.pokemon.name);
             Debug.Log("Defender: " + Defender.pokemon.name);
             // PrintStats(Attacker);
@@ -894,8 +806,7 @@ namespace Pokemon
                 CloseBallsMenu();
             }
 
-            SetDownButtons();      
-
+            SetDownButtons();
 
             dialogueText.text = Attacker.pokemon.name + " used " + attack.name + "!";
             yield return new WaitForSeconds(0.75f);
@@ -1372,7 +1283,8 @@ namespace Pokemon
             }
             else
             {
-                playerContinuingAttack = 0;
+                playerCurrentMove.turnsLeft = 0;
+                
                 phasePlayerSprite = 1;
 
                 if (!playerUnit.pokemon.IsFainted()) dialogueText.text = "Get out of there, " + playerUnit.pokemon.name + "!";
@@ -1802,63 +1714,12 @@ namespace Pokemon
         }
 
         /// <summary>
-        /// Called when [pokemon0] button is pressed. Brings out the first pokemon in the player's array.
+        /// Called when [pokemon] button is pressed. Brings out the pokemon in the player's array.
         /// </summary>
-        public void OnPokemon0()
-        {
+        public void OnPokemon(int index){
             ClosePokemonMenu();
             SetDownButtons();
-            StartCoroutine(TryToSwitchPokemon(0));
-        }
-
-        /// <summary>
-        /// Called when [pokemon1] button is pressed. Brings out the second pokemon in the player's array.
-        /// </summary>
-        public void OnPokemon1()
-        {
-            ClosePokemonMenu();
-            SetDownButtons();
-            StartCoroutine(TryToSwitchPokemon(1));
-        }
-
-        /// <summary>
-        /// Called when [pokemon2] button is pressed. Brings out the third pokemon in the player's array.
-        /// </summary>
-        public void OnPokemon2()
-        {
-            ClosePokemonMenu();
-            SetDownButtons();
-            StartCoroutine(TryToSwitchPokemon(2));
-        }
-
-        /// <summary>
-        /// Called when [pokemon3] button is pressed. Brings out the fourth pokemon in the player's array.
-        /// </summary>
-        public void OnPokemon3()
-        {
-            ClosePokemonMenu();
-            SetDownButtons();
-            StartCoroutine(TryToSwitchPokemon(3));
-        }
-
-        /// <summary>
-        /// Called when [pokemon4] button is pressed. Brings out the fifth pokemon in the player's array.
-        /// </summary>
-        public void OnPokemon4()
-        {
-            ClosePokemonMenu();
-            SetDownButtons();
-            StartCoroutine(TryToSwitchPokemon(4));
-        }
-
-        /// <summary>
-        /// Called when [pokemon5] button is pressed. Brings out the sixth pokemon in the player's array.
-        /// </summary>
-        public void OnPokemon5()
-        {
-            ClosePokemonMenu();
-            SetDownButtons();
-            StartCoroutine(TryToSwitchPokemon(5));
+            StartCoroutine(TryToSwitchPokemon(index));
         }
 
         /// <summary>
@@ -1866,22 +1727,13 @@ namespace Pokemon
         /// </summary>
         public void OpenMovesMenu()
         {
-            if (playerContinuingAttack != 0)
+            if (playerCurrentMove != null && playerCurrentMove.turnsLeft != 0)
             {
                 StartCoroutine(CombatPhase(-2));
                 return;
             }
 
-            bool struggle = false;
-            for (int i = 0; i < playerUnit.pokemon.currentMoves.Count(s => s != null); i++)
-            {
-                if (playerUnit.pokemon.currentMoves[i].current_pp == 0)
-                {
-                    struggle = true;
-                }
-                struggle = false;
-            }
-            if (struggle)
+            if (Utility.NoMovesLeft(playerUnit))
             {
                 StartCoroutine(CombatPhase(-1));
                 return;
@@ -1922,43 +1774,12 @@ namespace Pokemon
         }
 
         /// <summary>
-        /// Selects the first attack. Top left.
+        /// Selects the attack. from the menu.
         /// </summary>
-        public void Attack1()
-        {
+        public void Attack(int index){
             CloseMovesMenu();
             SetDownButtons();
-            StartCoroutine(CombatPhase(0));
-        }
-
-        /// <summary>
-        /// Selects the second attack. bottom left.
-        /// </summary>
-        public void Attack2()
-        {
-            CloseMovesMenu();
-            SetDownButtons();
-            StartCoroutine(CombatPhase(1));
-        }
-
-        /// <summary>
-        /// Selects the third attack. bottom right.
-        /// </summary>
-        public void Attack3()
-        {
-            CloseMovesMenu();
-            SetDownButtons();
-            StartCoroutine(CombatPhase(2));
-        }
-
-        /// <summary>
-        /// Selects the fourth attack. Top right.
-        /// </summary>
-        public void Attack4()
-        {
-            CloseMovesMenu();
-            SetDownButtons();
-            StartCoroutine(CombatPhase(3));
+            StartCoroutine(CombatPhase(index));
         }
 
         /// <summary>
@@ -2001,29 +1822,8 @@ namespace Pokemon
             StartCoroutine(CatchPokemon("Master"));
         }
 
-        public void Forget1()
-        {
-            StartCoroutine(ForgetMove(1, playerUnit.pokemon));
-        }
-
-        public void Forget2()
-        {
-            StartCoroutine(ForgetMove(2, playerUnit.pokemon));
-        }
-
-        public void Forget3()
-        {
-            StartCoroutine(ForgetMove(3, playerUnit.pokemon));
-        }
-
-        public void Forget4()
-        {
-            StartCoroutine(ForgetMove(4, playerUnit.pokemon));
-        }
-
-        public void Forget5()
-        {
-            StartCoroutine(ForgetMove(5, playerUnit.pokemon));
+        public void Forget(int index){
+            StartCoroutine(ForgetMove(index, playerUnit.pokemon));
         }
 
         public void Yes()
