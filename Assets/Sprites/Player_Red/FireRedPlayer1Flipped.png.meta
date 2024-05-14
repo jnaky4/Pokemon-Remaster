@@ -435,7 +435,7 @@ TextureImporter:
       213: -647493061473606891
     second: FireRedPlayer1Flipped_143
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -452,10 +452,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -465,8 +467,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -494,6 +496,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -505,6 +509,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -517,6 +522,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -529,6 +535,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -541,6 +548,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -3580,9 +3588,153 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      FireRedPlayer1Flipped_0: 3938143436275592783
+      FireRedPlayer1Flipped_1: -5884110163247745068
+      FireRedPlayer1Flipped_10: -5613774120035617479
+      FireRedPlayer1Flipped_100: 2478748810205282926
+      FireRedPlayer1Flipped_101: -4621792738757949663
+      FireRedPlayer1Flipped_102: -8795137202874942925
+      FireRedPlayer1Flipped_103: 5913550805732301539
+      FireRedPlayer1Flipped_104: 5138748653197515478
+      FireRedPlayer1Flipped_105: 5866855984912055699
+      FireRedPlayer1Flipped_106: 2910691458459970765
+      FireRedPlayer1Flipped_107: 345053457288254373
+      FireRedPlayer1Flipped_108: -4026636059077012702
+      FireRedPlayer1Flipped_109: -7261002027595199969
+      FireRedPlayer1Flipped_11: -4682095488210234880
+      FireRedPlayer1Flipped_110: 7550259711922528705
+      FireRedPlayer1Flipped_111: -4058557336570200435
+      FireRedPlayer1Flipped_112: -3922740099764831164
+      FireRedPlayer1Flipped_113: -1412086920785965886
+      FireRedPlayer1Flipped_114: -6148258162890123708
+      FireRedPlayer1Flipped_115: -1956901880092295964
+      FireRedPlayer1Flipped_116: -7270625447777823026
+      FireRedPlayer1Flipped_117: 5995959533398269210
+      FireRedPlayer1Flipped_118: -5751467786529297288
+      FireRedPlayer1Flipped_119: -5816279656351087330
+      FireRedPlayer1Flipped_12: -4773376737304010552
+      FireRedPlayer1Flipped_120: -5864137588769550417
+      FireRedPlayer1Flipped_121: -4387554513093804083
+      FireRedPlayer1Flipped_122: 8181988405948578549
+      FireRedPlayer1Flipped_123: 4404060427956419491
+      FireRedPlayer1Flipped_124: 3713119670512398879
+      FireRedPlayer1Flipped_125: 8348882447755271772
+      FireRedPlayer1Flipped_126: 8586890783172846936
+      FireRedPlayer1Flipped_127: 2787945084514429088
+      FireRedPlayer1Flipped_128: 7067072942119218034
+      FireRedPlayer1Flipped_129: -6242132747203588329
+      FireRedPlayer1Flipped_13: 6781490860262813896
+      FireRedPlayer1Flipped_130: -4490780119460578591
+      FireRedPlayer1Flipped_131: 3784415249899138424
+      FireRedPlayer1Flipped_132: -5914672439715919310
+      FireRedPlayer1Flipped_133: 7397303797474197471
+      FireRedPlayer1Flipped_134: -3714432830324254577
+      FireRedPlayer1Flipped_135: -1638287368952646757
+      FireRedPlayer1Flipped_136: -8432379805063667257
+      FireRedPlayer1Flipped_137: 4025973427447744335
+      FireRedPlayer1Flipped_138: -2588144084481858681
+      FireRedPlayer1Flipped_139: 323938420719049548
+      FireRedPlayer1Flipped_14: -5235268194356852009
+      FireRedPlayer1Flipped_140: -8863204298413080563
+      FireRedPlayer1Flipped_141: -650013965582068980
+      FireRedPlayer1Flipped_142: -4276124753078378346
+      FireRedPlayer1Flipped_143: -647493061473606891
+      FireRedPlayer1Flipped_15: -8363153458027916623
+      FireRedPlayer1Flipped_16: 4636824349092384273
+      FireRedPlayer1Flipped_17: -6640145387336771981
+      FireRedPlayer1Flipped_18: 1800974707651987156
+      FireRedPlayer1Flipped_19: -8331217221929732197
+      FireRedPlayer1Flipped_2: -6467152305121700921
+      FireRedPlayer1Flipped_20: -7391710314139263266
+      FireRedPlayer1Flipped_21: 243390297541228769
+      FireRedPlayer1Flipped_22: -220705722937087448
+      FireRedPlayer1Flipped_23: -1910614987483057130
+      FireRedPlayer1Flipped_24: -7031372624574560207
+      FireRedPlayer1Flipped_25: -8620264522459290435
+      FireRedPlayer1Flipped_26: -231456360924482337
+      FireRedPlayer1Flipped_27: 122099730593140302
+      FireRedPlayer1Flipped_28: -9221422393836221292
+      FireRedPlayer1Flipped_29: -4746183203804196521
+      FireRedPlayer1Flipped_3: 3601704205501420595
+      FireRedPlayer1Flipped_30: 8112398972512685213
+      FireRedPlayer1Flipped_31: -8579836498231582311
+      FireRedPlayer1Flipped_32: 1955248799900599493
+      FireRedPlayer1Flipped_33: 188573264874343270
+      FireRedPlayer1Flipped_34: -8565058942516571342
+      FireRedPlayer1Flipped_35: -4727915204100052565
+      FireRedPlayer1Flipped_36: -5425751286168100687
+      FireRedPlayer1Flipped_37: -7439721741907115933
+      FireRedPlayer1Flipped_38: -6423060236497718041
+      FireRedPlayer1Flipped_39: 1179958881987513929
+      FireRedPlayer1Flipped_4: -5364816491802523740
+      FireRedPlayer1Flipped_40: 9168873732575643452
+      FireRedPlayer1Flipped_41: 7487562570363728369
+      FireRedPlayer1Flipped_42: 8656016258390066667
+      FireRedPlayer1Flipped_43: 1586598401375199294
+      FireRedPlayer1Flipped_44: 2491304746118915209
+      FireRedPlayer1Flipped_45: -7896389896845348564
+      FireRedPlayer1Flipped_46: 4744094077232374292
+      FireRedPlayer1Flipped_47: -7847242216700044832
+      FireRedPlayer1Flipped_48: 6988345286568921483
+      FireRedPlayer1Flipped_49: 4922248177277790744
+      FireRedPlayer1Flipped_5: 5790155806366185040
+      FireRedPlayer1Flipped_50: -340646896984741882
+      FireRedPlayer1Flipped_51: -1999712808360217118
+      FireRedPlayer1Flipped_52: -176940402338846427
+      FireRedPlayer1Flipped_53: -4320920420987819869
+      FireRedPlayer1Flipped_54: -4751916331488971885
+      FireRedPlayer1Flipped_55: -2460391216105037014
+      FireRedPlayer1Flipped_56: -4438735529112316409
+      FireRedPlayer1Flipped_57: 6876374649597420764
+      FireRedPlayer1Flipped_58: -5905232656102037465
+      FireRedPlayer1Flipped_59: -7001232931613881949
+      FireRedPlayer1Flipped_6: 4900568894975287646
+      FireRedPlayer1Flipped_60: -2272458118969585557
+      FireRedPlayer1Flipped_61: -6098609500587633972
+      FireRedPlayer1Flipped_62: -3384265729227247006
+      FireRedPlayer1Flipped_63: -4127377061851097970
+      FireRedPlayer1Flipped_64: -8099051870007557180
+      FireRedPlayer1Flipped_65: 8255672169279379786
+      FireRedPlayer1Flipped_66: 5316228909835088293
+      FireRedPlayer1Flipped_67: 7640971389489596340
+      FireRedPlayer1Flipped_68: 9200002519991470363
+      FireRedPlayer1Flipped_69: 8261566318443681577
+      FireRedPlayer1Flipped_7: 2763030403561725336
+      FireRedPlayer1Flipped_70: -4972858038421949216
+      FireRedPlayer1Flipped_71: 1228333848863892515
+      FireRedPlayer1Flipped_72: 3486056239757848165
+      FireRedPlayer1Flipped_73: 8995325721272234076
+      FireRedPlayer1Flipped_74: 6147573613441802895
+      FireRedPlayer1Flipped_75: 8886176114959875819
+      FireRedPlayer1Flipped_76: 3666442725985613321
+      FireRedPlayer1Flipped_77: 8147696702508721974
+      FireRedPlayer1Flipped_78: -312629688067751562
+      FireRedPlayer1Flipped_79: -315550345349529397
+      FireRedPlayer1Flipped_8: -3933457306877506623
+      FireRedPlayer1Flipped_80: -5652912309053454263
+      FireRedPlayer1Flipped_81: -4548337299409237678
+      FireRedPlayer1Flipped_82: -2370564628286429669
+      FireRedPlayer1Flipped_83: 3792649391740914654
+      FireRedPlayer1Flipped_84: 51788455877248351
+      FireRedPlayer1Flipped_85: -6275976367475111886
+      FireRedPlayer1Flipped_86: 2760872866773658033
+      FireRedPlayer1Flipped_87: 2787942408051988569
+      FireRedPlayer1Flipped_88: -8844504495035173807
+      FireRedPlayer1Flipped_89: -2231981841471290979
+      FireRedPlayer1Flipped_9: -3841902288425107146
+      FireRedPlayer1Flipped_90: 6358388919925284106
+      FireRedPlayer1Flipped_91: 3751309739924768417
+      FireRedPlayer1Flipped_92: -6522542829278227919
+      FireRedPlayer1Flipped_93: -6016611354288944062
+      FireRedPlayer1Flipped_94: 1846834451463516077
+      FireRedPlayer1Flipped_95: -8740580819047810811
+      FireRedPlayer1Flipped_96: -5242062595183856319
+      FireRedPlayer1Flipped_97: 746113800366770621
+      FireRedPlayer1Flipped_98: -5070573864116583269
+      FireRedPlayer1Flipped_99: 3177442668655423868
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

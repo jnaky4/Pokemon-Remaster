@@ -422,7 +422,7 @@ namespace Pokemon
         /// Determines if the enemy Pokemon has any remaining moves or if it has to use struggle.
         /// </summary>
         /// <returns>True if they have to struggle, false otherwise.</returns>
-        public static bool EnemyStruggle(Unit unit)
+        public static bool NoMovesLeft(Unit unit)
         {
             int i;
             bool struggle = false;

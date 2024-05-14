@@ -1335,7 +1335,7 @@ TextureImporter:
       213: -1540987200168527764
     second: Trainer Sprites Flipped_443
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -1352,10 +1352,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -1365,8 +1367,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -1394,6 +1396,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -1405,6 +1409,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -1417,6 +1422,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -1429,6 +1435,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -1441,6 +1448,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -10780,9 +10788,453 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Trainer Sprites Flipped_0: 72246027570445202
+      Trainer Sprites Flipped_1: 3485878662839179019
+      Trainer Sprites Flipped_10: 1886021197837019522
+      Trainer Sprites Flipped_100: -6204611942075744741
+      Trainer Sprites Flipped_101: 1822814470278198909
+      Trainer Sprites Flipped_102: 8368506541228092162
+      Trainer Sprites Flipped_103: 4088708083633878128
+      Trainer Sprites Flipped_104: -7229363660928664752
+      Trainer Sprites Flipped_105: 2351855844183717270
+      Trainer Sprites Flipped_106: 4702783254870044904
+      Trainer Sprites Flipped_107: -283585365543846498
+      Trainer Sprites Flipped_108: 3615818729435262416
+      Trainer Sprites Flipped_109: -3636911758792174652
+      Trainer Sprites Flipped_11: -5669393852647370227
+      Trainer Sprites Flipped_110: -7500251527741155446
+      Trainer Sprites Flipped_111: 4107588415484099785
+      Trainer Sprites Flipped_112: -294837620658512080
+      Trainer Sprites Flipped_113: -3548055271934119388
+      Trainer Sprites Flipped_114: -8240265523504355357
+      Trainer Sprites Flipped_115: 5719106577506042165
+      Trainer Sprites Flipped_116: -6036021080843231139
+      Trainer Sprites Flipped_117: -3384083608043732764
+      Trainer Sprites Flipped_118: 6499517306290945307
+      Trainer Sprites Flipped_119: 1638410017753377015
+      Trainer Sprites Flipped_12: -4023286332052372674
+      Trainer Sprites Flipped_120: -8377269707367964646
+      Trainer Sprites Flipped_121: -4057810515674429966
+      Trainer Sprites Flipped_122: 323757552302993675
+      Trainer Sprites Flipped_123: -5026393961554415627
+      Trainer Sprites Flipped_124: -924286035220155285
+      Trainer Sprites Flipped_125: -2685502778063527074
+      Trainer Sprites Flipped_126: 5247423641487985588
+      Trainer Sprites Flipped_127: 6971190607678759464
+      Trainer Sprites Flipped_128: 2714252051892761684
+      Trainer Sprites Flipped_129: 4298688728507146164
+      Trainer Sprites Flipped_13: -2941548578630348749
+      Trainer Sprites Flipped_130: -1334559679088492683
+      Trainer Sprites Flipped_131: -978637025407482283
+      Trainer Sprites Flipped_132: -3364389593143861419
+      Trainer Sprites Flipped_133: -5987645204181526149
+      Trainer Sprites Flipped_134: 1185454872658160080
+      Trainer Sprites Flipped_135: 383997109981731190
+      Trainer Sprites Flipped_136: 6396879263222779140
+      Trainer Sprites Flipped_137: 1993952328357529251
+      Trainer Sprites Flipped_138: 8356487685672393772
+      Trainer Sprites Flipped_139: -8289765901426010482
+      Trainer Sprites Flipped_14: -8148480621832063836
+      Trainer Sprites Flipped_140: 4869790681181207558
+      Trainer Sprites Flipped_141: 6818665602518543550
+      Trainer Sprites Flipped_142: 1296746605778801382
+      Trainer Sprites Flipped_143: -7052864338008158891
+      Trainer Sprites Flipped_144: -8239293766391598396
+      Trainer Sprites Flipped_145: -1444964090474540725
+      Trainer Sprites Flipped_146: 4042810769982369489
+      Trainer Sprites Flipped_147: 9128542016518867295
+      Trainer Sprites Flipped_148: -8075723103100732137
+      Trainer Sprites Flipped_149: 4510762225000502614
+      Trainer Sprites Flipped_15: -2956243203107468107
+      Trainer Sprites Flipped_150: 1336046419792107488
+      Trainer Sprites Flipped_151: 4433135652726297544
+      Trainer Sprites Flipped_152: 6621946667184600975
+      Trainer Sprites Flipped_153: 1524589767288649085
+      Trainer Sprites Flipped_154: -3989970028101185223
+      Trainer Sprites Flipped_155: -5181350454394391978
+      Trainer Sprites Flipped_156: -5980699287245944774
+      Trainer Sprites Flipped_157: 5316760049294713251
+      Trainer Sprites Flipped_158: 2997621159544213137
+      Trainer Sprites Flipped_159: -4473329346234200086
+      Trainer Sprites Flipped_16: -3754302600252347866
+      Trainer Sprites Flipped_160: 1404830672558751576
+      Trainer Sprites Flipped_161: -1982440163975252738
+      Trainer Sprites Flipped_162: -282403208290145622
+      Trainer Sprites Flipped_163: 3493616360644516883
+      Trainer Sprites Flipped_164: -4046511556114496420
+      Trainer Sprites Flipped_165: 243238348146263391
+      Trainer Sprites Flipped_166: -7375336074991413349
+      Trainer Sprites Flipped_167: 5314740107000563751
+      Trainer Sprites Flipped_168: -1567249541453313315
+      Trainer Sprites Flipped_169: 9004233173780115780
+      Trainer Sprites Flipped_17: -3034747732797359546
+      Trainer Sprites Flipped_170: 8202348976211721979
+      Trainer Sprites Flipped_171: 1735885104340836800
+      Trainer Sprites Flipped_172: 4538899783634583893
+      Trainer Sprites Flipped_173: 983435808610697312
+      Trainer Sprites Flipped_174: 4618732044546121152
+      Trainer Sprites Flipped_175: 8461260909334675666
+      Trainer Sprites Flipped_176: 2840126075864280507
+      Trainer Sprites Flipped_177: 6868992532851644001
+      Trainer Sprites Flipped_178: 8240022962733357597
+      Trainer Sprites Flipped_179: 2635866644086038968
+      Trainer Sprites Flipped_18: 4571656925417359638
+      Trainer Sprites Flipped_180: 6563719946468633207
+      Trainer Sprites Flipped_181: 8385489253766949629
+      Trainer Sprites Flipped_182: -3003861889792804850
+      Trainer Sprites Flipped_183: 2528720044674238644
+      Trainer Sprites Flipped_184: 3394425591834441988
+      Trainer Sprites Flipped_185: 6459266524046795943
+      Trainer Sprites Flipped_186: 6786399266090141053
+      Trainer Sprites Flipped_187: -110923760238729187
+      Trainer Sprites Flipped_188: -6926312467429182750
+      Trainer Sprites Flipped_189: 7520029044115880069
+      Trainer Sprites Flipped_19: -9061270086729073964
+      Trainer Sprites Flipped_190: 8294648408035720592
+      Trainer Sprites Flipped_191: -6755437484931376526
+      Trainer Sprites Flipped_192: 7950936277422098639
+      Trainer Sprites Flipped_193: -1007351855800354368
+      Trainer Sprites Flipped_194: 5806228658597876571
+      Trainer Sprites Flipped_195: 5024749832876667072
+      Trainer Sprites Flipped_196: -3816166184812994041
+      Trainer Sprites Flipped_197: -8110069691882066087
+      Trainer Sprites Flipped_198: -625860151051986018
+      Trainer Sprites Flipped_199: 6617487181745055044
+      Trainer Sprites Flipped_2: 4896253967397968218
+      Trainer Sprites Flipped_20: -6006475453202569766
+      Trainer Sprites Flipped_200: -3416561252479819286
+      Trainer Sprites Flipped_201: 7537579975963686335
+      Trainer Sprites Flipped_202: 3551488704531668574
+      Trainer Sprites Flipped_203: 1955943512086544820
+      Trainer Sprites Flipped_204: -7685499691290082705
+      Trainer Sprites Flipped_205: 7944924028305751624
+      Trainer Sprites Flipped_206: -8413663574842859622
+      Trainer Sprites Flipped_207: 4402371240680939087
+      Trainer Sprites Flipped_208: 6138425137124830001
+      Trainer Sprites Flipped_209: -3223717940971756142
+      Trainer Sprites Flipped_21: 3633558185867060505
+      Trainer Sprites Flipped_210: -1347585299495629582
+      Trainer Sprites Flipped_211: 7865947798674081919
+      Trainer Sprites Flipped_212: -7669788110818567326
+      Trainer Sprites Flipped_213: -7372740072716852384
+      Trainer Sprites Flipped_214: -3384802458598934728
+      Trainer Sprites Flipped_215: 1109016132165635420
+      Trainer Sprites Flipped_216: -8451628188079534931
+      Trainer Sprites Flipped_217: -1731144378604849457
+      Trainer Sprites Flipped_218: -5668090649218128716
+      Trainer Sprites Flipped_219: 8974643837204588783
+      Trainer Sprites Flipped_22: -4133781728134237041
+      Trainer Sprites Flipped_220: 7337061478187522606
+      Trainer Sprites Flipped_221: -5439722835760602180
+      Trainer Sprites Flipped_222: -958291909508636902
+      Trainer Sprites Flipped_223: -755068969664220640
+      Trainer Sprites Flipped_224: -3158190896944927833
+      Trainer Sprites Flipped_225: 2357759081348760374
+      Trainer Sprites Flipped_226: -8472343504593462821
+      Trainer Sprites Flipped_227: -7944005577228331441
+      Trainer Sprites Flipped_228: 3170608257216963709
+      Trainer Sprites Flipped_229: -4861995798663338838
+      Trainer Sprites Flipped_23: -5538920830201369480
+      Trainer Sprites Flipped_230: 5869542652285653726
+      Trainer Sprites Flipped_231: -2553629262100596530
+      Trainer Sprites Flipped_232: -5501430758098260748
+      Trainer Sprites Flipped_233: -4342677723850046634
+      Trainer Sprites Flipped_234: 9208752760238538970
+      Trainer Sprites Flipped_235: -4825622596623790099
+      Trainer Sprites Flipped_236: -6734774157084976040
+      Trainer Sprites Flipped_237: -791837223908943499
+      Trainer Sprites Flipped_238: -728378764931519252
+      Trainer Sprites Flipped_239: 5576660437825489910
+      Trainer Sprites Flipped_24: -6707616617049098283
+      Trainer Sprites Flipped_240: -2216336483271990685
+      Trainer Sprites Flipped_241: 7800151500916175459
+      Trainer Sprites Flipped_242: -8369680993531363547
+      Trainer Sprites Flipped_243: 54037602475841799
+      Trainer Sprites Flipped_244: 3205922857214532994
+      Trainer Sprites Flipped_245: -1986552912688017914
+      Trainer Sprites Flipped_246: 5110654513012010741
+      Trainer Sprites Flipped_247: 4320939971717309888
+      Trainer Sprites Flipped_248: 3832790554021017202
+      Trainer Sprites Flipped_249: -5189890859190703243
+      Trainer Sprites Flipped_25: 6729722612818160730
+      Trainer Sprites Flipped_250: 2401588167197517673
+      Trainer Sprites Flipped_251: 23176218257496846
+      Trainer Sprites Flipped_252: -2436379146424227065
+      Trainer Sprites Flipped_253: -7441799564304511069
+      Trainer Sprites Flipped_254: 8482135284610307767
+      Trainer Sprites Flipped_255: 1739407759148791929
+      Trainer Sprites Flipped_256: 6545346939575400184
+      Trainer Sprites Flipped_257: -5338156938150720344
+      Trainer Sprites Flipped_258: -174858995300908553
+      Trainer Sprites Flipped_259: -5992047944008086174
+      Trainer Sprites Flipped_26: -1706612963358958841
+      Trainer Sprites Flipped_260: -4686862278076180507
+      Trainer Sprites Flipped_261: 8545746381726081985
+      Trainer Sprites Flipped_262: -4722792189929497467
+      Trainer Sprites Flipped_263: 5754701562850612564
+      Trainer Sprites Flipped_264: 2300785823180924256
+      Trainer Sprites Flipped_265: 7014549059988183192
+      Trainer Sprites Flipped_266: 177423654432129550
+      Trainer Sprites Flipped_267: -4619051190450044605
+      Trainer Sprites Flipped_268: -4466569553746612310
+      Trainer Sprites Flipped_269: 6776109915371399034
+      Trainer Sprites Flipped_27: -1457726374603660346
+      Trainer Sprites Flipped_270: 6725305720243794904
+      Trainer Sprites Flipped_271: -5256802823154715271
+      Trainer Sprites Flipped_272: -8004951668914722025
+      Trainer Sprites Flipped_273: 2445748301147775073
+      Trainer Sprites Flipped_274: 1426983260874168228
+      Trainer Sprites Flipped_275: 2853755698872549658
+      Trainer Sprites Flipped_276: 253110454774306226
+      Trainer Sprites Flipped_277: 7299927728604105159
+      Trainer Sprites Flipped_278: 4418449258218224779
+      Trainer Sprites Flipped_279: 4814568932306693944
+      Trainer Sprites Flipped_28: -2786550823071820764
+      Trainer Sprites Flipped_280: -5648782103981555482
+      Trainer Sprites Flipped_281: -4487792292452608072
+      Trainer Sprites Flipped_282: 2460728043710711070
+      Trainer Sprites Flipped_283: 5413766420079669992
+      Trainer Sprites Flipped_284: 8422446435954085602
+      Trainer Sprites Flipped_285: -4042863997567551920
+      Trainer Sprites Flipped_286: -6902167874849397593
+      Trainer Sprites Flipped_287: -8038850409773119516
+      Trainer Sprites Flipped_288: 3866976762052944442
+      Trainer Sprites Flipped_289: 1933904042149038556
+      Trainer Sprites Flipped_29: -8174618851885778914
+      Trainer Sprites Flipped_290: 5903805542543323982
+      Trainer Sprites Flipped_291: 4306306835918434512
+      Trainer Sprites Flipped_292: -1134775755909889428
+      Trainer Sprites Flipped_293: 1927629955318859609
+      Trainer Sprites Flipped_294: -8007748271687813332
+      Trainer Sprites Flipped_295: 5614311429132972603
+      Trainer Sprites Flipped_296: 1362430209326845611
+      Trainer Sprites Flipped_297: 5417223218535463095
+      Trainer Sprites Flipped_298: 570493046278422166
+      Trainer Sprites Flipped_299: -9106866566733652950
+      Trainer Sprites Flipped_3: 1781046592281679018
+      Trainer Sprites Flipped_30: 2744850071977243813
+      Trainer Sprites Flipped_300: -1680563691220462058
+      Trainer Sprites Flipped_301: -357036938633684229
+      Trainer Sprites Flipped_302: -431231940243075504
+      Trainer Sprites Flipped_303: 7464087407020512159
+      Trainer Sprites Flipped_304: -2781267332770283254
+      Trainer Sprites Flipped_305: 1664021631344648865
+      Trainer Sprites Flipped_306: -3364385408002359812
+      Trainer Sprites Flipped_307: 3880672560520915376
+      Trainer Sprites Flipped_308: 9006760760364036754
+      Trainer Sprites Flipped_309: 8732375371473398911
+      Trainer Sprites Flipped_31: 9000452118124115591
+      Trainer Sprites Flipped_310: 1853508847116413864
+      Trainer Sprites Flipped_311: -2701099740884250383
+      Trainer Sprites Flipped_312: 2239928974816262525
+      Trainer Sprites Flipped_313: -7349567987628021320
+      Trainer Sprites Flipped_314: 4696905062860426245
+      Trainer Sprites Flipped_315: 8070679354432926000
+      Trainer Sprites Flipped_316: 6744206079817747779
+      Trainer Sprites Flipped_317: -3395598817021448419
+      Trainer Sprites Flipped_318: -8456920177487345166
+      Trainer Sprites Flipped_319: -3126886134290598500
+      Trainer Sprites Flipped_32: 7421691229211135705
+      Trainer Sprites Flipped_320: -8820790679682821208
+      Trainer Sprites Flipped_321: 5945511780000819141
+      Trainer Sprites Flipped_322: -3301056519703204150
+      Trainer Sprites Flipped_323: 8552038480585970225
+      Trainer Sprites Flipped_324: 6530321704878262217
+      Trainer Sprites Flipped_325: 8566568557317816987
+      Trainer Sprites Flipped_326: -999728164121836200
+      Trainer Sprites Flipped_327: 4752133131124798082
+      Trainer Sprites Flipped_328: -3393994034134877608
+      Trainer Sprites Flipped_329: 8489435687483918492
+      Trainer Sprites Flipped_33: -823949527796455008
+      Trainer Sprites Flipped_330: 1346276125686904035
+      Trainer Sprites Flipped_331: 7454017165672490869
+      Trainer Sprites Flipped_332: -2031605315982201006
+      Trainer Sprites Flipped_333: -5279957412901300207
+      Trainer Sprites Flipped_334: 7483707654234309446
+      Trainer Sprites Flipped_335: 6860530314180901076
+      Trainer Sprites Flipped_336: -3717642792746280108
+      Trainer Sprites Flipped_337: 3370735139228854352
+      Trainer Sprites Flipped_338: 3363501770792311409
+      Trainer Sprites Flipped_339: 7618414537791891687
+      Trainer Sprites Flipped_34: 3895996495393464020
+      Trainer Sprites Flipped_340: -8338030268596255574
+      Trainer Sprites Flipped_341: -5860877037407576141
+      Trainer Sprites Flipped_342: -1862343699245633629
+      Trainer Sprites Flipped_343: 1875504569509785740
+      Trainer Sprites Flipped_344: 1441084000321005884
+      Trainer Sprites Flipped_345: -2604755241120899029
+      Trainer Sprites Flipped_346: 34521370917059202
+      Trainer Sprites Flipped_347: 857632230950006060
+      Trainer Sprites Flipped_348: -3686551779567389979
+      Trainer Sprites Flipped_349: 4055389883009815315
+      Trainer Sprites Flipped_35: -4847463396420637591
+      Trainer Sprites Flipped_350: -124645166667988321
+      Trainer Sprites Flipped_351: 3027667482018787354
+      Trainer Sprites Flipped_352: 1324879505682741806
+      Trainer Sprites Flipped_353: -1738072284061898545
+      Trainer Sprites Flipped_354: 3254025128655663854
+      Trainer Sprites Flipped_355: -6418977851984215956
+      Trainer Sprites Flipped_356: -2952368907978697591
+      Trainer Sprites Flipped_357: -9019088403964687253
+      Trainer Sprites Flipped_358: -7274779487064494610
+      Trainer Sprites Flipped_359: 981917960763599481
+      Trainer Sprites Flipped_36: -7558351797224082181
+      Trainer Sprites Flipped_360: -4088385834153800199
+      Trainer Sprites Flipped_361: 2459679102137402119
+      Trainer Sprites Flipped_362: -764720099754160634
+      Trainer Sprites Flipped_363: -8307221456000681977
+      Trainer Sprites Flipped_364: -5320610509967988134
+      Trainer Sprites Flipped_365: 9219790819150594477
+      Trainer Sprites Flipped_366: -8312242573134913023
+      Trainer Sprites Flipped_367: -3099487220824276149
+      Trainer Sprites Flipped_368: 4032114854623023033
+      Trainer Sprites Flipped_369: -4955909548542883619
+      Trainer Sprites Flipped_37: -6484569508027385726
+      Trainer Sprites Flipped_370: 6085522186117846447
+      Trainer Sprites Flipped_371: -5019552849229202823
+      Trainer Sprites Flipped_372: -1877192139688402299
+      Trainer Sprites Flipped_373: 2697001015306949226
+      Trainer Sprites Flipped_374: 5958988939919791896
+      Trainer Sprites Flipped_375: 8175910328369974848
+      Trainer Sprites Flipped_376: -2529948153066443112
+      Trainer Sprites Flipped_377: -7469612816099129027
+      Trainer Sprites Flipped_378: -5016147118533531479
+      Trainer Sprites Flipped_379: 8655152772287433738
+      Trainer Sprites Flipped_38: 6935000886694731562
+      Trainer Sprites Flipped_380: 1983334283699651763
+      Trainer Sprites Flipped_381: -7650838974247070999
+      Trainer Sprites Flipped_382: -5963209794344217122
+      Trainer Sprites Flipped_383: -466958838860937093
+      Trainer Sprites Flipped_384: -414907255405392359
+      Trainer Sprites Flipped_385: -217746243865397172
+      Trainer Sprites Flipped_386: -4930488777959640904
+      Trainer Sprites Flipped_387: -8369927724838070061
+      Trainer Sprites Flipped_388: 5155204396622117460
+      Trainer Sprites Flipped_389: 3046178150516119282
+      Trainer Sprites Flipped_39: -8125631022864416885
+      Trainer Sprites Flipped_390: -4384472646906341837
+      Trainer Sprites Flipped_391: 435480897974532099
+      Trainer Sprites Flipped_392: 6293122260460824614
+      Trainer Sprites Flipped_393: -6126316850295652310
+      Trainer Sprites Flipped_394: -2063629237475783357
+      Trainer Sprites Flipped_395: 9112236508602979109
+      Trainer Sprites Flipped_396: -3205392674026574599
+      Trainer Sprites Flipped_397: -3300551938425755348
+      Trainer Sprites Flipped_398: 8784489977262385728
+      Trainer Sprites Flipped_399: -5233589580076441021
+      Trainer Sprites Flipped_4: -606524825854057506
+      Trainer Sprites Flipped_40: 8710458926082847787
+      Trainer Sprites Flipped_400: 6081047261476609747
+      Trainer Sprites Flipped_401: -2309485895075191087
+      Trainer Sprites Flipped_402: 2489772398037031773
+      Trainer Sprites Flipped_403: -595482313736910610
+      Trainer Sprites Flipped_404: 5994559450443205135
+      Trainer Sprites Flipped_405: 5402201889093295551
+      Trainer Sprites Flipped_406: -4151727425177376728
+      Trainer Sprites Flipped_407: -7200839309203000918
+      Trainer Sprites Flipped_408: -1803552986306934091
+      Trainer Sprites Flipped_409: -8779113198017370349
+      Trainer Sprites Flipped_41: 5506365115933839554
+      Trainer Sprites Flipped_410: 5485788638514781913
+      Trainer Sprites Flipped_411: 7712358127901585327
+      Trainer Sprites Flipped_412: 6628809468901376579
+      Trainer Sprites Flipped_413: 8337956136842232743
+      Trainer Sprites Flipped_414: 8649517850816526419
+      Trainer Sprites Flipped_415: -1300511091216684294
+      Trainer Sprites Flipped_416: 1173441685670145761
+      Trainer Sprites Flipped_417: 1667053574407453720
+      Trainer Sprites Flipped_418: 8740816459130073884
+      Trainer Sprites Flipped_419: -8709947490360548914
+      Trainer Sprites Flipped_42: -8577220607586130866
+      Trainer Sprites Flipped_420: -8449282491300113575
+      Trainer Sprites Flipped_421: -2118503488207700094
+      Trainer Sprites Flipped_422: -7016506717509452527
+      Trainer Sprites Flipped_423: -2846695580955646198
+      Trainer Sprites Flipped_424: -5665009322401435500
+      Trainer Sprites Flipped_425: 119499895127226724
+      Trainer Sprites Flipped_426: -1993251530106087402
+      Trainer Sprites Flipped_427: -8167641569059695915
+      Trainer Sprites Flipped_428: -3718651754861380815
+      Trainer Sprites Flipped_429: 3298241197457940624
+      Trainer Sprites Flipped_43: 2326791867780976167
+      Trainer Sprites Flipped_430: 3841271891782597007
+      Trainer Sprites Flipped_431: -7798812340066886448
+      Trainer Sprites Flipped_432: -2275174717810027874
+      Trainer Sprites Flipped_433: 629020185983993571
+      Trainer Sprites Flipped_434: -2812937915250251474
+      Trainer Sprites Flipped_435: 4102430311554569693
+      Trainer Sprites Flipped_436: 3763601357291181436
+      Trainer Sprites Flipped_437: -8886241723868608843
+      Trainer Sprites Flipped_438: -6681346889081971111
+      Trainer Sprites Flipped_439: -7659139430773394618
+      Trainer Sprites Flipped_44: -4200673140626677091
+      Trainer Sprites Flipped_440: -5847578465518134577
+      Trainer Sprites Flipped_441: -9117805152386627169
+      Trainer Sprites Flipped_442: 2200840713101213134
+      Trainer Sprites Flipped_443: -1540987200168527764
+      Trainer Sprites Flipped_45: 6356158754871782243
+      Trainer Sprites Flipped_46: -7753979067415605249
+      Trainer Sprites Flipped_47: 3843361371608389332
+      Trainer Sprites Flipped_48: -8250014916725991649
+      Trainer Sprites Flipped_49: 561762007968900902
+      Trainer Sprites Flipped_5: -8474290753194921659
+      Trainer Sprites Flipped_50: 3063498652711538340
+      Trainer Sprites Flipped_51: 6537638118920071942
+      Trainer Sprites Flipped_52: 1277545127477914619
+      Trainer Sprites Flipped_53: 2932605453422754159
+      Trainer Sprites Flipped_54: -2149892668409620069
+      Trainer Sprites Flipped_55: 1533160160597167377
+      Trainer Sprites Flipped_56: -7441403900619646741
+      Trainer Sprites Flipped_57: 7840016799123668850
+      Trainer Sprites Flipped_58: 5337061241370614991
+      Trainer Sprites Flipped_59: 4275379718043839647
+      Trainer Sprites Flipped_6: -1564996636804836964
+      Trainer Sprites Flipped_60: -4373841910030978479
+      Trainer Sprites Flipped_61: 4494529544240523154
+      Trainer Sprites Flipped_62: -6390412658543891919
+      Trainer Sprites Flipped_63: -7041563269826903226
+      Trainer Sprites Flipped_64: 2297769025129615275
+      Trainer Sprites Flipped_65: 4083818489243354701
+      Trainer Sprites Flipped_66: -6125367161036140672
+      Trainer Sprites Flipped_67: -6533850378722869251
+      Trainer Sprites Flipped_68: 8344094950603873371
+      Trainer Sprites Flipped_69: 6616564038112907722
+      Trainer Sprites Flipped_7: -7042641872894910259
+      Trainer Sprites Flipped_70: -958238854170341848
+      Trainer Sprites Flipped_71: 1347466441565472876
+      Trainer Sprites Flipped_72: -7697980957845781051
+      Trainer Sprites Flipped_73: -4217640237152690471
+      Trainer Sprites Flipped_74: 8690720509532305602
+      Trainer Sprites Flipped_75: -3737616603377124259
+      Trainer Sprites Flipped_76: -9016183199165072159
+      Trainer Sprites Flipped_77: -3438386768590659504
+      Trainer Sprites Flipped_78: -8739145981273349638
+      Trainer Sprites Flipped_79: 7002250958378581573
+      Trainer Sprites Flipped_8: 7920990656918088360
+      Trainer Sprites Flipped_80: -1814729101185846737
+      Trainer Sprites Flipped_81: 8380108102673756869
+      Trainer Sprites Flipped_82: 6294720129237211115
+      Trainer Sprites Flipped_83: -4173336299944476825
+      Trainer Sprites Flipped_84: -5899942634015796751
+      Trainer Sprites Flipped_85: -5745469762799710154
+      Trainer Sprites Flipped_86: -1424763404999686717
+      Trainer Sprites Flipped_87: 8608634319553673218
+      Trainer Sprites Flipped_88: 5584661537766536993
+      Trainer Sprites Flipped_89: 5767836473277683478
+      Trainer Sprites Flipped_9: -808635113928761151
+      Trainer Sprites Flipped_90: 1657407228761815010
+      Trainer Sprites Flipped_91: 3543982344065133779
+      Trainer Sprites Flipped_92: 6230377686073893193
+      Trainer Sprites Flipped_93: 8121590109239209244
+      Trainer Sprites Flipped_94: 4862343354218621537
+      Trainer Sprites Flipped_95: 8574692423885680544
+      Trainer Sprites Flipped_96: -1422452987055565546
+      Trainer Sprites Flipped_97: -3360027901811437383
+      Trainer Sprites Flipped_98: 3231777575105120431
+      Trainer Sprites Flipped_99: -538229224211540327
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
